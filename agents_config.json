@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "agent_name": "Glean Agents",
+    "status": "in_progress",
+    "priority": 1,
+    "notes": "Research started at 2026-04-25 18:01:12"
+  },
+  {
+    "id": 2,
+    "agent_name": "Watson Orchestrate",
+    "status": "completed",
+    "priority": 1,
+    "notes": "Added by direct_research.py at 2026-04-28T02:52:00.596478",
+    "last_updated": "2026-04-28T02:52:53.288269"
+  },
+  {
+    "id": 3,
+    "agent_name": "Kimi ok computer",
+    "status": "failed",
+    "priority": 1,
+    "notes": "Added via CLI at 2026-04-28T03:19:25.930413",
+    "last_updated": "2026-04-28T03:20:01.412325"
+  },
+  {
+    "id": 4,
+    "agent_name": "Kimi ok Computer",
+    "status": "in-progress",
+    "priority": 1,
+    "notes": "Added via CLI at 2026-04-28T03:20:24.972108",
+    "last_updated": "2026-04-29T12:36:16.680469"
+  }
+]

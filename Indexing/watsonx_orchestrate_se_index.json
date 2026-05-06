@@ -1,0 +1,715 @@
+{
+  "Agent_Name": "IBM watsonx Orchestrate",
+  "Description": [
+    {
+      "Summary": "IBM watsonx Orchestrate is an enterprise AI workflow orchestration platform that enables organizations to build, deploy, and manage AI agents automating business processes across domains such as HR, IT, and finance. It provides an open-source Agent Development Kit (ADK) of CLI utilities and Python modules for creating, testing, and deploying custom agents and tools.",
+      "evidence": [
+        {
+          "quote": "The Agent Development Kit (ADK) is a comprehensive set of CLI utilities and Python modules that enables you to create, test, and deploy agents and tools for watsonx Orchestrate.",
+          "citation": "[4]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "The public ADK repository (ibm-watsonx-orchestrate-adk) is composed of Python (99.3%) with a small amount of other languages. The core watsonx Orchestrate platform itself is closed-source; only the Agent Development Kit (ADK) is publicly available.",
+        "evidence": [
+          {
+            "quote": "Python 99.3%",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "153 stars on GitHub as of April 2026 for the IBM/ibm-watsonx-orchestrate-adk repository.",
+        "evidence": [
+          {
+            "quote": "153 stars",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "61 contributors to the IBM/ibm-watsonx-orchestrate-adk repository.",
+        "evidence": [
+          {
+            "quote": "61 contributors",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "27 releases from v1.x through v2.8.0 (released April 14, 2026), with v2.0.0 released November 25, 2025 — approximately 8 releases in 5 months, suggesting a roughly bi-weekly cadence.",
+        "evidence": [
+          {
+            "quote": "The watsonx Orchestrate ADK version 2.8.0 is now available!",
+            "citation": "[2]"
+          },
+          {
+            "quote": "Starting from version 2.0.0, watsonx Orchestrate ADK documentation is now versioned per ADK release.",
+            "citation": "[2]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "Python is the primary language of the ADK repository at 99.3%.",
+        "evidence": [
+          {
+            "quote": "Python 99.3%",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Last_Updated": [
+      {
+        "Summary": "The last commit to the ADK was approximately 2 weeks before the research date (April 2026), corresponding to the main-release-2.8.0 branch.",
+        "evidence": [
+          {
+            "quote": "pip install --upgrade ibm-watsonx-orchestrate==2.8.0",
+            "citation": "[6]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "Summary": "The ADK team uses Hatch as the build and test runner. Developers run the test suite with 'hatch run test' and check coverage with 'hatch run cov'. An automated evaluation framework using ground-truth datasets allows agents to be benchmarked, with results repeated across multiple runs to assess robustness. Vulnerability (red-team) testing is also practiced to uncover weaknesses in agent policies.",
+          "evidence": [
+            {
+              "quote": "Run tests: hatch run test. Run coverage report: hatch run cov",
+              "citation": "[1]"
+            },
+            {
+              "quote": "The evaluate command lets you test and benchmark your agents using ground truth datasets. These datasets can be created automatically (with the generate or record commands) or prepared manually.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Evaluations can be repeated multiple times to assess performance robustness. This is configured by setting the n_runs parameter in the YAML configuration file.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Hatch is used for building and running tests in the ADK. The ADK's own evaluation framework (orchestrate evaluations) benchmarks agent behavior using ground-truth datasets and Langfuse for observability. Red-teaming is conducted via the 'orchestrate evaluations red-teaming' command group. Tool call arguments are automatically normalized during evaluation to reduce false negatives.",
+          "evidence": [
+            {
+              "quote": "Install dev dependencies: pip install -e '.[dev]'",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Tool call arguments are automatically normalized during evaluation. This ensures that minor differences in formatting — such as capitalization, key order, value types, or list order — no longer result in mismatches.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "The evaluate command supports evaluation with Langfuse.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "The orchestrate evaluations red-teaming command group provides tools to list attacks, plan scenarios, and run evaluations.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "61 contributors participate in the ADK repository. Vulnerability testing is documented as a critical step for AI engineers and security practitioners working with the platform.",
+          "evidence": [
+            {
+              "quote": "Vulnerability testing is a critical step in evaluating AI systems because it: Uncovers weaknesses in agent policies and safeguards. Validates compliance with security and ethical guidelines.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The evaluation framework records metrics including Tool Call Precision, Tool Call Recall, Journey Success Rate, Text Match Score, and Average Response Time. Langfuse integration was added in v2.1.0. Red-team attacks are aligned with OWASP Top 10 for LLM Applications (2025): LLM01 Prompt Injection, LLM06 Excessive Agency, LLM07 System Prompt Leakage, LLM09 Misinformation.",
+          "evidence": [
+            {
+              "quote": "The evaluation framework now supports evaluation with Langfuse. You can learn more about it in Agentops evaluation.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "Summary": "The watsonx Orchestrate team documents a GitOps-inspired deployment strategy for agents, flows, and tools using standard CI/CD tools such as Jenkins, GitLab CI, or GitHub Actions together with the wxO CLI. The platform maintains a CI/CD-neutral stance, providing CLI tools and APIs that customers adopt into their own pipelines. A two-tenant architecture (non-production and production) with branch-based promotion is recommended.",
+          "evidence": [
+            {
+              "quote": "This document proposes a GitOps-inspired deployment strategy for watsonx Orchestrate (wxO) agents, flows, and tools that works without Kubernetes or Argo CD access. The approach uses standard CI/CD tools such as Jenkins, GitLab CI, or GitHub Actions together with the wxO CLI.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "watsonx Orchestrate maintains a CI/CD-neutral stance, providing CLI tools and APIs that enable customers to adopt agent lifecycle management into their own existing CI/CD pipelines, regardless of the specific tools or practices they use",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The ADK is distributed via PyPI as 'ibm-watsonx-orchestrate' and supports deployment to IBM Cloud, AWS, AWS Gov, and on-premises environments. The build system is Hatch. CI/CD integration is achieved through the wxO CLI alongside Jenkins, GitLab CI, or GitHub Actions. Package validation against an allowlist was added in v2.8.0.",
+          "evidence": [
+            {
+              "quote": "You can use these agents and tools across all watsonx Orchestrate offerings, including: watsonx Orchestrate AWS, watsonx Orchestrate AWS Gov, watsonx Orchestrate IBM Cloud, watsonx Orchestrate on-premises, watsonx Orchestrate Developer Edition",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Added validation for Python packages defined in requirements.txt against the Python package allowlist",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "DevOps engineers and platform teams adopt the CI/CD strategy. IBM staff provide the recommended deployment patterns and documented tutorials for pipeline integration.",
+          "evidence": [
+            {
+              "quote": "The ADK includes a powerful CLI that streamlines the process of building, testing, and importing agents and tools into watsonx Orchestrate.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Branch protection rules are specified in the CI/CD tutorial: develop requires pull request reviews for feature merges; main requires CAB approval, change ticket, and final sign-off. Semantic versioning with environment suffixes is used. Because watsonx Orchestrate supports only one agent version per environment, creating a new agent with a different name is recommended for breaking changes.",
+          "evidence": [
+            {
+              "quote": "Because wxO supports only one agent version per environment, it is better to create a new agent with a different name rather than upgrade an existing agent in a breaking way.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "Summary": "The ADK repository uses GitHub Pull Requests as the primary code review mechanism. A CODEOWNERS file in .github/ controls review assignments. Commit messages follow a conventional commit format (e.g., 'chore(codeowners):', 'feat(examples):', 'fix(openapi):'). The CI/CD deployment tutorial documents branch protection rules requiring PR reviews before merges to the develop branch and CAB approval for production (main).",
+          "evidence": [
+            {
+              "quote": "chore(codeowners): Update CODEOWNERS",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "GitHub Pull Requests are used for code review. The repository has a .whitesource file for security scanning via WhiteSource/Mend, and a .secrets.baseline file indicating that secret scanning (detect-secrets) is configured as a pre-commit or CI check.",
+          "evidence": [
+            {
+              "quote": "Pull requests 8",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "CODEOWNERS in .github/ assigns designated reviewers to parts of the codebase. The CI/CD guide specifies that production merges (main branch) require CAB approval, a change ticket, and final sign-off, implying a cross-functional review board.",
+          "evidence": [
+            {
+              "quote": "main: requires CAB approval, change ticket, and final sign-off",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The ADK repository uses MIT license and has a Security policy and Code of Conduct. The .whitesource configuration and .secrets.baseline file signal automated security and secrets scanning as part of the review pipeline.",
+          "evidence": [
+            {
+              "quote": "MIT license",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "orchestrate --version command returns wrong version",
+          "Description": "The orchestrate --version command might not work or return the wrong version due to conflicting Python environments. Workaround is to run 'which orchestrate' and ensure it points to the correct virtual environment.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Tool import permission error after Developer Edition upgrade",
+          "Description": "After upgrading watsonx Orchestrate Developer Edition, importing a tool triggers permission issues. Running 'docker volume rm docker_tools-runtime-data' triggers a clean reinstall.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "MCP tool upload requires zip instead of folder path",
+          "Description": "When uploading MCP tools from the filesystem, users must zip the tool folder. Pointing to the root folder directly is not working as expected.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Tool renaming not propagated back to MCP",
+          "Description": "When a tool name is modified within watsonx Orchestrate, the change is not propagated back to MCP. Tool updates are unidirectional, flowing only from MCP to watsonx Orchestrate.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Agentic workflow tool fails after OpenAPI tool re-import",
+          "Description": "If you delete an OpenAPI tool from the CLI and re-import the same tool, the agentic workflow tool fails because the re-imported tool gets a different tool ID and no longer matches the original reference.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Tools running prematurely before all inputs are provided",
+          "Description": "Depending on the LLM in use, tools might start running before all required inputs are provided. The recommended workaround is to try a different LLM.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "First interaction with an agent might fail to call a tool",
+          "Description": "The first message sent to the agent in Developer Edition may fail due to insufficient startup time or pod failure. Workaround is to wait a couple of minutes and retry.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Agent returns an empty message ('None') instead of tool calls",
+          "Description": "In certain scenarios the LLM responds with 'None' instead of making tool calls. Switching the agent's style to 'default' is the recommended workaround.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Agent makes multiple calls for the same tool after every message",
+          "Description": "The agent might run the same tool multiple times per interaction. Providing explicit instructions in the agent definition to run the tool only once, or switching the model, resolves the issue.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Agent ignores valid tools and returns incomplete responses",
+          "Description": "Agents occasionally return incomplete responses with invalid tool calls when the agent recognizes the tool's response as invalid. Defining the tool as YAML with a clearer description mitigates the issue.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Inconsistent transfer between multi-agent collaborators",
+          "Description": "Agent-to-agent communication in multi-agent collaboration may fail due to improper instruction formatting or invalid responses. Explicit transfer instructions in the agent definition are required.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Async OpenAPI tools cannot access auto-detected local IP",
+          "Description": "In Developer Edition, external async tools can't access the auto-detected local IP since it isn't publicly reachable. Setting CALLBACK_HOST_URL to a public endpoint (e.g., via ngrok) enables callbacks.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Tool call not working for watsonx/mistralai/pixtral-12b model",
+          "Description": "Tool invocation does not function when the pixtral-12b model is used via the watsonx provider.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Gemini models return UNEXPECTED_TOOL_CALL error during tool invocation",
+          "Description": "Gemini models occasionally fail when invoking a tool, returning an UNEXPECTED_TOOL_CALL error. A temporary workaround is to retry the request.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "LLaMA models convert array of strings argument to single string",
+          "Description": "LLaMA models accept only a single string as an argument. If passed an array of strings, they convert it into a single string, which may lead to incorrect results when calling a tool that expects an array.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Python tools hit 2-minute request timeout",
+          "Description": "Python tools use a 2-minute request timeout including environment startup. Requests to external services taking more than about 90 seconds will hit the timeout. OpenAPI tools are recommended for long-running operations.",
+          "Citation": "[3]"
+        },
+        {
+          "Issue_Title": "Voice-configs import failure in on-premises environments (v2.7.0 fix)",
+          "Description": "Importing voice configurations failed in on-premises environments. Fixed in v2.7.0.",
+          "Citation": "[2]"
+        },
+        {
+          "Issue_Title": "Webchat embed command failed for deployed agents (v2.2.0 fix)",
+          "Description": "The webchat embed command failed for deployed agents. Fixed in v2.2.0.",
+          "Citation": "[2]"
+        },
+        {
+          "Issue_Title": "Deleting an agent also deleted attached modular knowledge (v2.0.0 fix)",
+          "Description": "Deleting an agent also deleted the modular knowledge attached to it. Fixed in v2.0.0.",
+          "Citation": "[2]"
+        },
+        {
+          "Issue_Title": "OpenAPI specs with circular jsonref objects could not be imported (v2.3.0 fix)",
+          "Description": "OpenAPI specs containing circular jsonref objects could not be imported into the ADK. Fixed in v2.3.0.",
+          "Citation": "[2]"
+        },
+        {
+          "Issue_Title": "Agent did not respond when running a flow tool through orchestrate chat ask (v2.4.0 fix)",
+          "Description": "An agent did not respond when running a flow tool through the orchestrate chat ask command. Fixed in v2.4.0.",
+          "Citation": "[2]"
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "Bug tracking for the ADK is handled through IBM Support for enterprise customers, with known issues and workarounds documented in a dedicated Known Issues and Limitations page on the developer portal. Release notes use a structured format with separate Bug Fixes sections (🐛). Common patterns across issues include LLM model-specific tool call failures, Docker-level permission errors after upgrades, and tool ID consistency problems during re-import workflows. Workarounds are documented inline until permanent fixes are released.",
+          "evidence": [
+            {
+              "quote": "See the known issues and limitations, and learn how to circumvent them until they get fixed",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Customers of watsonx Orchestrate can raise issues with the ADK or the Developer Edition server to IBM Support",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "IBM Support portal (ibm.com/mysupport) is the official channel for filing issues. The ADK developer portal maintains a Known Issues page as a living document. Release notes track resolved bugs per version using emoji-categorized sections.",
+          "evidence": [
+            {
+              "quote": "Fixed an issue where importing voice configurations failed in on-premises environments.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Fixed an issue where OpenAPI specs containing circular jsonref objects could not be imported into the ADK.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "IBM engineers maintain the Known Issues page and release fixes in bi-weekly ADK releases. IBM staff members (e.g., Laurent de Clermont-Tonnerre) respond to community bug reports in the IBM TechXchange Community forum.",
+          "evidence": [
+            {
+              "quote": "Fixed an issue where an agent did not respond when running a flow tool through orchestrate chat ask.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "A recurring pattern in issues is LLM-dependent non-deterministic behavior: tool calls fail, run prematurely, or repeat depending on the underlying model. The recommended mitigation strategy is model switching. Docker volume conflicts are another recurring class after upgrades. Timeout constraints (2 minutes for Python tools) represent a documented architectural limitation.",
+          "evidence": [
+            {
+              "quote": "Depending on the LLM you use, tools might start running before you provide all required inputs. To solve this, try a different LLM in your agent.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Python tools use a 2-minute request timeout, including environment startup.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "Summary": "The ADK follows an approximately bi-weekly release cadence with structured versioning. Semantic versioning is used: MAJOR for breaking changes, MINOR for backward-compatible features, PATCH for bug fixes. The CI/CD tutorial documents a GitOps-inspired branching strategy with branch-based environment promotion (feature → develop → qa → staging → main). Documentation is versioned per ADK release starting from v2.0.0.",
+          "evidence": [
+            {
+              "quote": "Git tags mark releases using semantic versioning (MAJOR.MINOR.PATCH). MAJOR: breaking changes in I/O or behavior. MINOR: backward-compatible features. PATCH: bug fixes.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Starting from version 2.0.0, watsonx Orchestrate ADK documentation is now versioned per ADK release.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Git and GitHub are the primary version control and project management tools. The CI/CD strategy uses GitOps principles with environment-specific branches. The ADK developer portal serves as the documentation and release communication channel.",
+          "evidence": [
+            {
+              "quote": "The approach uses standard CI/CD tools such as Jenkins, GitLab CI, or GitHub Actions together with the wxO CLI.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The ADK engineering team at IBM drives the release cadence. The project has 61 contributors. The CI/CD guide implies a Change Advisory Board (CAB) is involved in production promotion approvals.",
+          "evidence": [
+            {
+              "quote": "main: requires CAB approval, change ticket, and final sign-off",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Public preview features are used as a mechanism for incremental feature rollout before general availability. Examples include 'Public Preview' labels on Customer Care style support and Skills specifications. Migration guides are published alongside breaking changes (e.g., Llama to GPT-OSS-120b migration guide in v2.4.0).",
+          "evidence": [
+            {
+              "quote": "A migration guide is now available to help you switch from Llama to the GPT-OSS-120b model.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "IBM communicates with developers and the community via the IBM TechXchange Community forum, which hosts 458 threads, 119 blogs, and 72 library documents. IBM staff members respond directly to bug reports and questions. The CI/CD deployment documentation was shared with the community in response to community requests. An ideas portal at watson-orchestrate.ideas.ibm.com is used for product feedback.",
+          "evidence": [
+            {
+              "quote": "we progressed a lot since, and now have it all documented @ https://developer.watson-orchestrate.ibm.com/tutorials/ci_cd/deployment-cicd-approach-1",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The IBM TechXchange Community is the primary public forum for developer communication. The ADK developer portal at developer.watson-orchestrate.ibm.com serves as the official documentation and communication channel. IBM Support at ibm.com/mysupport is used for issue escalation.",
+          "evidence": [
+            {
+              "quote": "458 threads, 119 blogs, 72 library documents",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "IBM engineers and IBM staff (such as Laurent de Clermont-Tonnerre) engage directly with community members in forums. The TechXchange Community serves both enterprise customers and independent developers.",
+          "evidence": [
+            {
+              "quote": "Debug with confidence: The new Debug Experience on watsonx Orchestrate (Preview)",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Architecture Decision Records (ADRs) and runbooks are mentioned in the CI/CD tutorial as part of the recommended repository structure (docs/adr/ and docs/runbooks/ directories). This suggests documented decision-making practices are encouraged for teams adopting watsonx Orchestrate in enterprise pipelines.",
+          "evidence": [
+            {
+              "quote": "This document proposes a GitOps-inspired deployment strategy for watsonx Orchestrate (wxO) agents, flows, and tools that works without Kubernetes or Argo CD access.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "The ADK team treats documentation as a first-class artifact: documentation is versioned per ADK release starting from v2.0.0, meaning every release ships with a matching documentation snapshot. Release notes use a consistent structured format (🚀 New Features, 🔧 Enhancements, 🐛 Bug Fixes, 📘 Guides). Migration guides are published for breaking changes. A dedicated Known Issues page is maintained as a living document.",
+          "evidence": [
+            {
+              "quote": "Starting from version 2.0.0, watsonx Orchestrate ADK documentation is now versioned per ADK release. If you want to view a specific ADK documentation version, change the documentation version in the version dropdown located at the top left of the page.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The official developer documentation is hosted at developer.watson-orchestrate.ibm.com and appears to be built with a Mintlify-based documentation platform (inferred from CDN references to mintcdn.com/ibm-*). IBM product documentation is hosted separately at ibm.com/docs/en/watsonx/watson-orchestrate/current. The ADK is distributed with pyproject.toml and Hatch build configuration.",
+          "evidence": [
+            {
+              "quote": "The Agent Development Kit (ADK) is a comprehensive set of CLI utilities and Python modules that enables you to create, test, and deploy agents and tools for watsonx Orchestrate.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "IBM technical writers and engineers co-author the documentation. The TechXchange Community also contributes 119 blogs as supplementary documentation. IBM staff post debug and tutorial blog posts (e.g., 'Debug with confidence: The new Debug Experience on watsonx Orchestrate').",
+          "evidence": [
+            {
+              "quote": "Debug with confidence: The new Debug Experience on watsonx Orchestrate (Preview)",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The CI/CD deployment tutorial recommends that adopting teams maintain an 'adk/' folder for agent YAML definitions, a 'docs/adr/' folder for Architecture Decision Records, and a 'docs/runbooks/' folder — mirroring IBM's own internal documentation structure. Improved docstring warnings for Python tool imports (v2.3.0) indicate documentation quality is enforced at the tooling level.",
+          "evidence": [
+            {
+              "quote": "Improved invalid docstring warnings: You now receive clearer and more accurate messages when a Python tool import fails because of incorrect docstrings.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Watsonx Orchestrate engineers manage LLM integration through Model Policies that coordinate multiple models for load-balancing and fallback. Models can be exported and imported via the ADK CLI. The platform supports a broad set of LLM providers: watsonx.ai, Groq (GPT-OSS), AWS Bedrock, Google Gemini, Meta LLaMA, and custom AI Gateway models. Red-team evaluations are aligned with OWASP Top 10 LLM Applications (2025) to validate prompt safety.",
+          "evidence": [
+            {
+              "quote": "Model policies allow for the coordination of multiple models to accomplish tasks like load-balancing and fallback.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "watsonx Orchestrate now supports Groq GPT-OSS models.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Langfuse is the primary observability tool for monitoring LLM traces and prompt behavior, integrated natively into the ADK. IBM's native telemetry framework can be activated with the '--with-ibm-telemetry' flag. The ADK provides 'orchestrate settings observability langfuse configure' for Langfuse setup and 'orchestrate observability traces search' for trace querying. Model policies (YAML) are used for multi-model coordination. The ADK also supports MCP servers as agent-agnostic Skill specifications.",
+          "evidence": [
+            {
+              "quote": "watsonx Orchestrate provides observability through a native integration with an open-source project known as Langfuse.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "To enable IBM's native observability framework, start watsonx Orchestrate Developer Edition server with the --with-ibm-telemetry or -i flag",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Use the MCP servers and agent-agnostic Skill specifications provided by IBM watsonx Orchestrate to help coding agents build solutions more reliably while reducing large context overhead.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "AI/ML engineers and platform engineers manage LLM model selection, model policies, and observability configuration. Security practitioners use the red-teaming evaluation commands to assess LLM vulnerability. The ADK team at IBM maintains the integration with Langfuse and IBM telemetry.",
+          "evidence": [
+            {
+              "quote": "Vulnerability testing is a critical step in evaluating AI systems because it: Uncovers weaknesses in agent policies and safeguards. Validates compliance with security and ethical guidelines.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The 'mask_pii: true' option in Langfuse configuration enables PII masking in traces. OAuth Client Credentials authentication for virtual models via the AI Gateway was added in v2.8.0. A migration guide exists for switching from LLaMA to GPT-OSS-120b. The v2.4.0 release added support for Bedrock's openai.gpt-oss-120b-1:0 model. Model policies and configurations can be exported via the ADK CLI for version-controlled storage.",
+          "evidence": [
+            {
+              "quote": "OAuth client credentials authentication: Added support for OAuth Client Credentials authentication for virtual models through the AI Gateway.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Export models and model polices: Use the ADK CLI to export models and model policies from watsonx Orchestrate.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/IBM/ibm-watsonx-orchestrate-adk",
+      "Date_Created": "2024-01-01",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[2]": {
+      "Website_Type": "Official Documentation — Release Notes",
+      "Link": "https://developer.watson-orchestrate.ibm.com/release/release",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[3]": {
+      "Website_Type": "Official Documentation — Known Issues",
+      "Link": "https://developer.watson-orchestrate.ibm.com/release/knownissues",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[4]": {
+      "Website_Type": "Official Documentation — Product Overview",
+      "Link": "https://developer.watson-orchestrate.ibm.com/getting_started/what_is",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[5]": {
+      "Website_Type": "Official Documentation — IBM Product Docs",
+      "Link": "https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[6]": {
+      "Website_Type": "Package Registry — PyPI",
+      "Link": "https://pypi.org/project/ibm-watsonx-orchestrate/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[7]": {
+      "Website_Type": "Official Documentation — Troubleshooting",
+      "Link": "https://developer.watson-orchestrate.ibm.com/release/troubleshooting",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[8]": {
+      "Website_Type": "Official Documentation — Evaluation Framework",
+      "Link": "https://developer.watson-orchestrate.ibm.com/evaluate/evaluate",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[9]": {
+      "Website_Type": "Official Documentation — LLM Vulnerability Testing",
+      "Link": "https://developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[10]": {
+      "Website_Type": "Official Documentation — LLM Observability",
+      "Link": "https://developer.watson-orchestrate.ibm.com/llm/observability",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[11]": {
+      "Website_Type": "Official Documentation — Model Policies",
+      "Link": "https://developer.watson-orchestrate.ibm.com/llm/model_policies",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[12]": {
+      "Website_Type": "Official Documentation — CI/CD Deployment Tutorial",
+      "Link": "https://developer.watson-orchestrate.ibm.com/tutorials/ci_cd/deployment-cicd-approach-1",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[13]": {
+      "Website_Type": "Developer Forum — IBM TechXchange Community",
+      "Link": "https://community.ibm.com/community/user/automation/communities/community-home?CommunityKey=3ad46381-9535-462e-85c9-568b21f4b067",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[14]": {
+      "Website_Type": "Official Documentation — Developer Edition Setup",
+      "Link": "https://developer.watson-orchestrate.ibm.com/developer_edition/wxOde_setup",
+      "Date_Created": "2025-11-25",
+      "Date_Pulled": "2026-04-28"
+    },
+    "[15]": {
+      "Website_Type": "Official Documentation — Skills Specifications",
+      "Link": "https://developer.watson-orchestrate.ibm.com/agents/skills",
+      "Date_Created": "2026-03-27",
+      "Date_Pulled": "2026-04-28"
+    }
+  }
+}

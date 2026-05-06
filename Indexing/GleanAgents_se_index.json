@@ -1,0 +1,711 @@
+{
+  "Agent_Name": "Glean Agents",
+  "Description": [
+    {
+      "Summary": "Glean Agents is a closed-source enterprise AI agent and workplace search platform that automates knowledge-work tasks such as engineering standup reports, sales prospecting, code review assistance, and employee onboarding by indexing and reasoning over company data from tools like Slack, GitHub, and Jira.",
+      "evidence": [
+        {
+          "quote": "The engineering agents are available in the Glean agent library as part of the February Drop.",
+          "citation": "[4]"
+        },
+        {
+          "quote": "An open architecture mindset is different. It acknowledges that there is no single monolith that can keep pace with the speed of AI innovation.",
+          "citation": "[5]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "The core Glean Agents product is closed-source enterprise SaaS, so total lines of code are not disclosed. Glean does maintain ~35 public auxiliary repositories under the gleanwork GitHub organization (SDKs, API clients, MCP servers, connectors, CLI). The flagship public repo gleanwork/mcp-server is 95.7% TypeScript, 3.8% JavaScript, 0.5% Dockerfile, with 595 commits on main.",
+        "evidence": [
+          {
+            "quote": "TypeScript 95.7% JavaScript 3.8% Dockerfile 0.5%",
+            "citation": "[9]"
+          },
+          {
+            "quote": "595 Commits",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "No public repo exists for the core Glean Agents product. Across Glean's public auxiliary repositories the most-starred are remote-mcp-server (158 stars), mcp-server (56 stars), glean-agent-toolkit (55 stars), glean-cli (43 stars), and claude-plugins (20 stars).",
+        "evidence": [
+          {
+            "quote": "remote-mcp-serverPublic ... 158 stars",
+            "citation": "[8]"
+          },
+          {
+            "quote": "gleanwork/mcp-server ... 56 stars",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "Contributor counts for the core Glean Agents product are not disclosed because the source code is private. Public auxiliary repositories on the gleanwork org show small contributor pools, consistent with Glean engineers pushing SDK/MCP tooling rather than community-driven development.",
+        "evidence": [
+          {
+            "quote": "gleanwork/mcp-server Public",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "Glean ships customer-facing capabilities on a monthly 'Drops' cadence (e.g., the February 2026 Drop introduced eight engineering agents). Internally, ranking code is rolled out nightly for Glean and weekly for customers. Public auxiliary repos are also actively maintained: gleanwork/mcp-server has 32 releases and was last updated Apr 21, 2026.",
+        "evidence": [
+          {
+            "quote": "The engineering agents are available in the Glean agent library as part of the February Drop.",
+            "citation": "[4]"
+          },
+          {
+            "quote": "Since server restarts were no longer normally needed, we started rolling out ranking changes more frequently—nightly for internal deployment, and weekly for customers.",
+            "citation": "[1]"
+          },
+          {
+            "quote": "Releases 32 ... Release 0.10.1 Latest Mar 6, 2026",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "Glean's core Index Server is written in Java. Glean's public tooling repositories are predominantly TypeScript (MCP servers, API clients, connectors), Python (indexing SDK, langchain integration, agent toolkit), Go (CLI, Go API client), and Java (api-client-java, glean-proxy).",
+        "evidence": [
+          {
+            "quote": "Fortunately, this particular server was written in Java, which has a mechanism for dynamically loading code.",
+            "citation": "[1]"
+          },
+          {
+            "quote": "TypeScript 95.7% JavaScript 3.8% Dockerfile 0.5%",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Last_Updated": [
+      {
+        "Summary": "The core Glean Agents source repository is private and its last-updated timestamp is not disclosed. The most recent public engineering blog post on Glean Agents is dated Feb 20, 2026, and the public gleanwork/mcp-server repository was last updated Apr 21, 2026.",
+        "evidence": [
+          {
+            "quote": "The engineering agents are available in the Glean agent library as part of the February Drop.",
+            "citation": "[4]"
+          },
+          {
+            "quote": "mcp-serverPublic MCP server for Glean API integration ... Updated Apr 21, 2026",
+            "citation": "[8]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "Summary": "Glean engineers run large-scale, structured evaluations on agents using curated evalsets of ~20 real-world examples paired with ideal responses, graded on a small set of binary sub-metrics (completeness, personalization, tone, groundedness) under a single 'north star' metric. They continuously sample real user queries and feedback (upvotes/downvotes) into the evalset to keep evaluations aligned with evolving usage.",
+          "evidence": [
+            {
+              "quote": "At Glean, we've been running large-scale evaluations for years, building on what we learned from search.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "A good evaluation starts with an evalset: a representative set of user instructions paired with the ideal responses.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "When it comes to grading metrics, simple binary scoring (0 or 1) works best. It avoids the confusion that comes with partial scores and keeps results clear and consistent.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "You can even sample real user queries and add them to your evaluation to keep your evalset fresh and aligned with evolving user needs.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The team uses LLM-as-judge automated graders aligned to human subject-matter expert and user feedback, plus platform-level metrics (accuracy, relevance, instruction following, completeness, correctness, groundedness) tracked continuously in the background.",
+          "evidence": [
+            {
+              "quote": "Most of these are graded by LLMs aligned to user feedback such as upvotes and downvotes, as well as human subject matter experts.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Glean continuously runs platform-level evaluations in the background, tracking metrics like accuracy, relevance, and instruction following to ensure agents stay reliable at scale.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Alongside query sampling, automating grading using LLMs is a great way to scale your evaluations as your userbase grows.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Evalsets are co-curated with internal subject-matter experts (e.g., the sales team for a sales-prospecting agent), and grading involves both LLM judges and human SMEs reviewing samples.",
+          "evidence": [
+            {
+              "quote": "Start by asking a few user subject matter experts to help curate a small, high-quality set of about 20 real-world examples.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "For example, when we built a sales prospecting agent, we asked the sales team what makes a great first-touch email.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Glean explicitly treats AI workflow testing as fundamentally different from deterministic QA, layering data-quality, model-quality, adversarial-robustness, and business-impact tests; for production ranking releases the team also sends a warmup request before flipping configuration to avoid first-load latency.",
+          "evidence": [
+            {
+              "quote": "Testing AI automation workflows demands a fundamentally different approach than traditional software quality assurance.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Hence for production releases, we typically send a warmup request before switching the configuration.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "Summary": "Glean engineers built a custom dynamic-deployment mechanism that loads new code versions of their stateful Java Index Server from Cloud Storage without restarting the process, enabling nightly internal rollouts and weekly customer rollouts of ranking changes, and supporting instant rollback via online configuration change.",
+          "evidence": [
+            {
+              "quote": "We realized that much of the problem was solved if we could avoid restarting our Index Server to receive code updates in the common case.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Since server restarts were no longer normally needed, we started rolling out ranking changes more frequently—nightly for internal deployment, and weekly for customers.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Rolling back a problematic release could be done instantly with an online configuration change.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Custom Java ClassLoaders combined with the ObjectWeb ASM bytecode library are used to remap class package names with release tags and load multiple code versions from Cloud Storage in seconds. Glean is deployed in single-tenant isolated environments on AWS, Azure, or GCP.",
+          "evidence": [
+            {
+              "quote": "After looking into custom ClassLoaders, we prototyped loading a Java JAR archive from Cloud Storage and using the classes in our process, without a restart.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "We used some open source libraries (e.g. ObjectWeb ASM) to help build this remapping tool.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Run Glean in a fully isolated, single-tenant environment that keeps your data and platform secure, either Glean-hosted or in your own AWS, Azure, or GCP cloud.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The ranking team at Glean drove the incremental-deployment work; they were the consumers whose iteration speed was being limited by 15+ minute Index Server preload times before the change.",
+          "evidence": [
+            {
+              "quote": "To help build these features, we wanted frequent iterative releases for our ranking team.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "And our engineers found that their development cadence was unnecessarily slowed down by long server restart times.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Each release tag is associated with errors and isolated from other experiments, providing strong versioning across simultaneously running code versions in the same server.",
+          "evidence": [
+            {
+              "quote": "Strong versioning: Errors could be associated with specific release tags, and different experiments were isolated from each other.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "Summary": "Glean ships a Pull Request Review agent and a Resolve GitHub PR Feedback agent that the team itself uses to keep review quality consistent as the org scales—the agents scan code changes, suggest improvements, flag risk areas, aggregate unresolved comments, and produce prioritized checklists with file references.",
+          "evidence": [
+            {
+              "quote": "Pull request reviews remain one of the most common sources of delay. Reviewers need to understand code changes in context, assess alignment with design intent, and ensure consistency with existing standards.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The pull request review agent scans code changes, suggests improvements, and flags areas that may need closer attention to support faster, more consistent reviews.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The resolve GitHub PR feedback agent aggregates unresolved comments, classifies them by priority, and generates an actionable checklist with file references and relevant context so engineers can close out reviews faster.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "GitHub is used as the code-review platform; Glean's own Pull Request Review and Resolve GitHub PR Feedback agents augment that workflow.",
+          "evidence": [
+            {
+              "quote": "Engineering time rarely disappears in one big way. It gets lost in small, repeatable moments where context is scattered, handoffs are frequent, and progress depends on someone knowing where to look.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Glean accelerates software engineering workflows with context-aware agents that work across the systems engineers already use — repositories, tickets, documents, and communication tools.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Reviewers across distributed engineering teams; the agents are positioned as supporting reviewers rather than replacing them, with humans still resolving review threads.",
+          "evidence": [
+            {
+              "quote": "As teams scale, review quality becomes uneven and feedback cycles lengthen.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "Security scan results for local-mcp-server - 90.1/100",
+          "Issue_Number": 348,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/348",
+          "Status": "Open",
+          "Description": "AgentSeal adversarial scan flagged that people_profile_search exposes a broad set of employee PII (email, manager_email, department) in tool outputs, raising data-minimization concerns for the local MCP server.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "Your tool has been listed on the AEGIS Protocol skill registry",
+          "Issue_Number": 346,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/346",
+          "Status": "Open",
+          "Description": "External notification that @gleanwork/local-mcp-server was listed on the AEGIS Protocol on-chain trust and attestation registry for AI agent tools (Base Mainnet).",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[BUG] npx @gleanwork/local-mcp-server fails with EUNSUPPORTEDPROTOCOL for workspace:*",
+          "Issue_Number": 345,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/345",
+          "Status": "Open",
+          "Description": "Running `npx -y @gleanwork/local-mcp-server` fails with npm error EUNSUPPORTEDPROTOCOL: 'Unsupported URL Type \"workspace:\": workspace:*' — the published package leaks a pnpm workspace protocol dependency that npm cannot resolve.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[FEATURE] Adopt provider-prefixed tool names for all exposed MCP tools to ensure clear namespacing",
+          "Issue_Number": 254,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/254",
+          "Status": "Open",
+          "Description": "When integrating multiple MCP servers from different providers, generic tool names cause namespace collisions. Request to adopt provider-prefixed tool names across all exposed Glean MCP tools.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[FEATURE] claude-code project-specific mcp",
+          "Issue_Number": 206,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/206",
+          "Status": "Open",
+          "Description": "The VSCode client supports `--workspace` to add Glean to workspace-scoped MCP servers, but the claude-code client only supports adding Glean to the global MCP server list — request for project-specific configuration parity.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[BUG] Warnings in tests RE: requests without a request handler",
+          "Issue_Number": 186,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/186",
+          "Status": "Open",
+          "Description": "Test suite emits MSW warnings ('intercepted a request without a matching request handler') for unmocked OAuth authorization-server metadata requests in src/test/auth/authorize.test.ts, indicating incomplete request handler coverage.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[FEATURE] Option to deploy MCP server as SSE",
+          "Issue_Number": 100,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/100",
+          "Status": "Open",
+          "Description": "In many corporate environments running local MCP servers is impractical. Request to create an SSE-based MCP that can be deployed via Docker to a Kubernetes cluster, with user auth handled through user config.",
+          "Citation": "[8]"
+        },
+        {
+          "Issue_Title": "[FEATURE] Force overwriting MCP Server configuration",
+          "Issue_Number": 42,
+          "URL": "https://github.com/gleanwork/mcp-server/issues/42",
+          "Status": "Open",
+          "Description": "Follow-up to the new `configure` command (#38): support updating an existing MCP configuration when authentication credentials change, including a `--force` flag to overwrite current configuration.",
+          "Citation": "[8]"
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "Glean engineers profile production failures to specific release tags, ship fixes via online configuration changes (instant rollback), and document recurring tuning problems (caching, parallel fetches, package remapping) as part of the team's incremental-deployment system.",
+          "evidence": [
+            {
+              "quote": "Errors could be associated with specific release tags, and different experiments were isolated from each other.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Like in any implementation, there was some tuning needed to make the mechanism work well.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Custom remapping/build tooling on top of ObjectWeb ASM, Cloud Storage for JAR distribution, and online configuration flags for rollback. Reinforcement-learning-driven enterprise memory grades agent runs on correctness, completeness, and efficiency to derive better tool-use strategies.",
+          "evidence": [
+            {
+              "quote": "We used some open source libraries (e.g. ObjectWeb ASM) to help build this remapping tool.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Enterprise memory at Glean uses reinforcement learning to find the optimal tool use strategies.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "We grade the results on correctness, completeness, and efficiency, and feed the learnings back into the system in natural language—the language of LLMs.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Glean's ranking, agentic engine, and platform engineering teams own bug-resolution paths, with engineering leadership (CEO Arvind Jain) publicly framing the architectural tradeoffs.",
+          "evidence": [
+            {
+              "quote": "To help build these features, we wanted frequent iterative releases for our ranking team.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "Summary": "Glean follows a fast-iteration, experiment-driven methodology: nightly internal rollouts, weekly customer rollouts, monthly public 'Drops' (e.g., February Drop 2026), and a context-then-orchestration loop where every agent run produces traces that improve the platform's context layer.",
+          "evidence": [
+            {
+              "quote": "Since server restarts were no longer normally needed, we started rolling out ranking changes more frequently—nightly for internal deployment, and weekly for customers.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "The engineering agents are available in the Glean agent library as part of the February Drop.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "This feedback loop—context informing orchestration, and orchestration strengthening context—is what makes reliable, long-running automation possible.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Glean uses developer-experiment workflows where engineers upload a JAR with a release tag and quickly see results in the production-like Index Server, avoiding the need for dedicated dev clusters or restarts.",
+          "evidence": [
+            {
+              "quote": "We also started using this mechanism for developer experiments; rather than coordinating use of a development cluster and waiting for a server restart, they could just upload a Jar file and quickly see the results.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Engineering, Product, and PMM contributors co-author public engineering posts (e.g., Eddie Zhou, Arjun Landes, Sneha Chaudhari and Julie Mills on context engineering; Harshi Murthy, Sharad Jain, Aditya Kumar and Chenhao Yang on engineering agents), indicating cross-functional authorship of engineering decisions.",
+          "evidence": [
+            {
+              "quote": "Eddie Zhou\nEngineering\nArjun Landes\nEngineering\nSneha Chaudhari\nEngineering\nJulie Mills\nPMM",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Harshi Murthy\nProduct Manager\nSharad Jain\nSoftware Engineer\nAditya Kumar\nEngineering\nChenhao Yang\nSoftware Engineer",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Glean intentionally rejects monolithic platform design in favor of a horizontally layered, open agent stack (context, models, orchestration, interfaces, security) so each layer can evolve on its own timeline.",
+          "evidence": [
+            {
+              "quote": "An open architecture mindset is different. It acknowledges that there is no single monolith that can keep pace with the speed of AI innovation.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "A well-designed agent stack is inherently future-proof and centralized because each horizontal layer can improve on its own timeline—without requiring you to rebuild the world around it.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "Glean's engineering organization itself is the customer-zero of its agent suite for daily standups, onboarding, and self-evaluation; standups are generated from prior-day work, PRs, and tickets, and onboarding agents surface key docs, Slack channels, and SMEs for newly rotated engineers.",
+          "evidence": [
+            {
+              "quote": "The engineering standup agent generates standup updates from the previous working day's work, pull requests, and tickets, giving teams a clear, consistent snapshot of progress.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The engineering project onboarding agent accelerates onboarding by surfacing what matters: project purpose, key documents, relevant tickets, important areas of the codebase, and domain experts.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Communication and collaboration occur across Slack, GitHub, Jira, and internal documentation systems, all of which Glean's connectors index and make available to its agents.",
+          "evidence": [
+            {
+              "quote": "Codebases are larger, teams are more distributed, and institutional knowledge is increasingly fragmented across tools like GitHub, Jira, Slack, and internal documentation systems.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Distributed engineering teams, engineering managers (who use the self-evaluation agent for performance reviews), and new hires going through onboarding rotations.",
+          "evidence": [
+            {
+              "quote": "Engineers are expected to reflect on their impact, yet relevant artifacts are spread across months of work. Managers face the same challenge when preparing reviews and feedback.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "Glean engineers publish substantive engineering posts on the company blog (engineering.glean.com / glean.com/blog) covering deployment internals, evaluation methodology, context engineering, and agent architecture, typically co-authored by engineers and updated with explicit 'Last updated' dates.",
+          "evidence": [
+            {
+              "quote": "Last updated Jan 27, 2026.",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Last updated Feb 10, 2026.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "A Launch Documentation agent assembles release notes and supporting docs by pulling from specs, Jira tickets, and merged changes; the public blog uses 'AI Summary by Glean' summaries auto-generated for each post.",
+          "evidence": [
+            {
+              "quote": "The launch documentation agent assembles release notes and supporting documentation by pulling from specs, tickets, and merged changes to create a consistent, complete launch record.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "AI Summary by Glean",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Engineering, Product Management, and Product Marketing contributors co-author public docs (e.g., 'Eddie Zhou, Engineering' and 'Julie Mills, PMM' co-author the context-engineering post).",
+          "evidence": [
+            {
+              "quote": "Eddie Zhou\nEngineering\nArjun Landes\nEngineering\nSneha Chaudhari\nEngineering\nJulie Mills\nPMM",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Glean is explicitly model-agnostic, picking different LLMs for different jobs (image generation, code generation, deep research, lightweight routing). Prompt-engineering practice favors minimal system prompts, a clear menu of prioritized tools, and allowing early exploration; tool names and descriptions are evolved over time as new tools are evaluated. Improvement priority is: refine instructions, structure context, tune parameters (e.g., temperature), then swap LLMs.",
+          "evidence": [
+            {
+              "quote": "At Glean, we already select different models for different jobs—image generation, code generation, deep research, lightweight routing—regardless of provider.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Like many others, we've found that with AI agents, minimizing system prompts, giving agents a clear menu of prioritized tools, and allowing early exploration leads to higher-quality results.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Tool names and descriptions evolve over time so that as tools are evaluated and new ones are added, they continue to perform optimally.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "As a rule of thumb, make agent changes in this order: Refine instructions... Structure context... Tune parameters... Choose LLMs.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Glean integrates the Model Context Protocol (MCP) as a complementary layer alongside its own indexing system via hybrid connectors, layered with knowledge graphs, specialized indexes (calendar, dashboards, unstructured), tool search, and an enterprise-memory subsystem trained with reinforcement learning to refine tool-use strategies.",
+          "evidence": [
+            {
+              "quote": "At Glean, we treat MCP as complementary, combining it with our indexing system through hybrid connectors to achieve both real-time freshness and unified enterprise understanding.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Enterprise memory at Glean uses reinforcement learning to find the optimal tool use strategies.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "GPT-5 has pushed long-horizon reasoning forward, Claude remains the strongest on code and tool use, and Gemini Flash shows what's possible with extremely fast, low-latency inference.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "AI/ML engineers, platform engineers, and ranking engineers at Glean own LLM integration and prompt management; agent builders inside customer organizations also tune instructions, sources, and parameters using Glean's evaluation tools.",
+          "evidence": [
+            {
+              "quote": "Everyone should learn how to evaluate agents, not just because it builds confidence in agent quality, but because it teaches you how to best use your agent platform.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Glean enforces a security-by-design boundary on LLM integration: zero-retention agreements with model providers, RAG architecture that minimizes LLM data exposure, alignment models that pre-scan every write action before execution, plus prompt-injection, malicious-code, and toxic-content protections.",
+          "evidence": [
+            {
+              "quote": "Zero-retention agreements with model providers ensure your data is never stored or used for model training.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "That's why we added protection against agents veering off scope, using alignment models (beta) that pre-scan every write action before it executes.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Customers get single-tenant connectors, enforced data permissions, and a RAG architecture that minimizes LLM data exposure.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/incrementally-deploying-ranking-code-at-glean",
+      "Date_Created": "2026-01-27",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[2]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/enterprise-agent-evaluation-guide",
+      "Date_Created": "2026-01-27",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[3]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/perspectives/how-to-effectively-test-ai-automation-workflows-before-deployment",
+      "Date_Created": "2025-11-23",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[4]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/engineering-agents-feb-drop-2026",
+      "Date_Created": "2026-02-20",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[5]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/emerging-agent-stack-2026",
+      "Date_Created": "2026-02-10",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[6]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/context-for-ai",
+      "Date_Created": "2026-01-27",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[7]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://www.glean.com/security",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-25"
+    },
+    "[8]": {
+      "Title": "gleanwork/mcp-server — Issues",
+      "URL": "https://github.com/gleanwork/mcp-server/issues",
+      "Source": "GitHub",
+      "Accessed": "2026-04-26",
+      "Note": "8 open issues on the public Glean MCP server repository (auxiliary tooling for Glean Agents; the core Agents product remains closed-source)."
+    },
+    "[9]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/mcp-server",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    }
+  }
+}

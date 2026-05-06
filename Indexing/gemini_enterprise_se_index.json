@@ -1,0 +1,826 @@
+{
+  "Agent_Name": "Google Gemini Enterprise",
+  "Description": {
+    "value": "Google Gemini Enterprise (also marketed as Google Agentspace) is a closed-source enterprise AI agent platform built on Google Cloud that enables organizations to deploy and orchestrate intelligent AI agents for workplace knowledge retrieval, multi-step workflow automation, and enterprise productivity at scale.",
+    "evidence": [
+      {
+        "quote": "Gemini Enterprise is an intranet search, AI assistant, and agentic platform. Gemini Enterprise includes prebuilt connectors for commonly-used third-party applications like Confluence, Jira, Microsoft SharePoint, and ServiceNow",
+        "citation": "[1]"
+      },
+      {
+        "quote": "The Google Agentspace experience in the Google Cloud console and the default application is referred to as Gemini Enterprise",
+        "citation": "[3]"
+      }
+    ]
+  },
+  "Repository_Statistics": {
+    "Lines_of_Code": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Stars": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Contributors": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Forks": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Open_Issues": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Update_Frequency": {
+      "value": "Not Available - No Public Repository. Public signals show near-daily production release notes since January 2025.",
+      "evidence": [
+        {
+          "quote": "This page documents production updates to Gemini Enterprise. Check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.",
+          "citation": "[3]"
+        }
+      ]
+    },
+    "Primary_Language": {
+      "value": "Not Available - No Public Repository",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Last_Updated": {
+      "value": "Not Available - No Public Repository. Most recent public release note entry: April 30, 2026.",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise users now have access to 3.1 Pro and 3 Flash in Limited Availability... We are currently monitoring the model's performance and determining the appropriate, long-term SLOs.",
+          "citation": "[3]"
+        }
+      ]
+    }
+  },
+  "SE_Practices": {
+    "Testing_and_Evaluation": {
+      "Practices": [
+        {
+          "Summary": "Gemini Enterprise uses a staged feature lifecycle — Private Preview, Public Preview, and General Availability (GA) — as a quality gate before features reach all production users. For example, Agent Designer was in Private Preview (April 9, 2025) before reaching GA (January 12, 2026), a nine-month staged rollout.",
+          "evidence": [
+            {
+              "quote": "Agent Designer is now generally available (GA). (January 12, 2026; previously announced at Private Preview on April 9, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "SLO monitoring is used to assess model quality for newly launched model tiers. After releasing Gemini 3.1 Pro and 3 Flash in Limited Availability, the team explicitly stated it was determining the long-term SLOs, indicating SLO-based quality gates for model releases.",
+          "evidence": [
+            {
+              "quote": "We are currently monitoring the model's performance and determining the appropriate, long-term SLOs.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Administrator-facing observability tooling allows monitoring of platform quality metrics and distributed traces in production, providing visibility into system health after deployment.",
+          "evidence": [
+            {
+              "quote": "Gemini Enterprise administrators can enable observability settings to view metrics in Metrics Explorer and traces and spans in Trace Explorer.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Not Available — Gemini Enterprise is a closed-source product; specific internal testing frameworks, unit/integration test suites, and pre-deployment evaluation pipelines are not publicly disclosed. The following reflects Google-wide engineering culture (labeled as such per research methodology): Google's Test Automation Platform (TAP) handles more than 50,000 unique changes and four billion test cases per day. Fast, reliable tests (unit tests) run on presubmit; slower, larger-scoped tests run post-submit. Hermetic testing (self-contained test environments with no external dependencies) is used to reduce instability in larger-scoped tests.",
+          "evidence": [
+            {
+              "quote": "Every day it [TAP] is responsible for handling more than 50,000 unique changes and running more than four billion individual test cases. TAP is the beating heart of Google's development infrastructure.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Our general rule of thumb is: only fast, reliable ones [on presubmit]. You can accept some loss of coverage on presubmit, but that means you need to catch any issues that slip by on post-submit.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Hermetic tests: tests run against a test environment (i.e., application servers and resources) that is entirely self-contained (i.e., no external dependencies like production backends).",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Metrics Explorer and Trace Explorer (Google Cloud Observability) are available to Gemini Enterprise admins to monitor platform quality signals. Internal testing tooling (e.g., TAP, Forge) is Google-wide infrastructure but not confirmed as specific to Gemini Enterprise.",
+          "evidence": [
+            {
+              "quote": "Gemini Enterprise administrators can enable observability settings to view metrics in Metrics Explorer and traces and spans in Trace Explorer.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Although engineers can run tests locally, most test executions happen in a distributed build-and-test system called Forge. Forge allows engineers to run their builds and tests in our datacenters, which maximizes parallelism.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — Gemini Enterprise is a closed-source product; the composition of its internal QA, red-teaming, or evaluation teams is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional evaluation details such as benchmark datasets, golden query sets, HITL evaluation workflows, or LLM-as-judge pipelines are not publicly disclosed for Gemini Enterprise.",
+          "evidence": []
+        }
+      ]
+    },
+    "CICD_and_Deployment": {
+      "Practices": [
+        {
+          "Summary": "Gemini Enterprise practices continuous deployment to production, evidenced by near-daily public release notes since January 2025. Production updates span new features, bug fixes, breaking changes, security patches, and deprecations, all documented in the official release notes page.",
+          "evidence": [
+            {
+              "quote": "This page documents production updates to Gemini Enterprise. Check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Gemini Enterprise follows a staged rollout model: Private Preview → Public Preview → General Availability (GA). The GA launch of the overall product was July 31, 2025. Individual features follow the same staged lifecycle; Agent Designer went from Private Preview (April 9, 2025) to GA (January 12, 2026), a nine-month rollout.",
+          "evidence": [
+            {
+              "quote": "Gemini Enterprise is generally available (GA). (July 31, 2025)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Agent Designer is now generally available (GA). (January 12, 2026; previously at Private Preview on April 9, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Product lifecycle management is tracked publicly; the product was renamed from Google Agentspace to Gemini Enterprise on October 9, 2025, signaling formal milestone-based product management.",
+          "evidence": [
+            {
+              "quote": "The Google Agentspace experience in the Google Cloud console and the default application is referred to as Gemini Enterprise. (October 9, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide engineering culture (not confirmed as Gemini Enterprise-specific): Release automation assembles release candidates (RCs) from green head — code that has passed the continuous build. Any change to Google's codebase can be rolled back with two clicks. Feature flags and experiments are used as a selective continuous deployment strategy to avoid pushing entire binaries on every change.",
+          "evidence": [
+            {
+              "quote": "Release candidate (RC): A cohesive, deployable unit created by an automated process, assembled of code, configuration, and other dependencies that have passed the continuous build.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Any change to Google's codebase can be rolled back with two clicks!",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Doing a selective Continuous Deployment, through experiments or feature flags, is a common strategy.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide engineering culture: Large-scale automated code changes across the monorepo are made using the Rosie tool, which finds all affected files, splits them into separate changes, and sends them out for automated review with presubmit checks.",
+          "evidence": [
+            {
+              "quote": "Rosie works by finding all files in the repository that need to be modified, splitting them up into separate changes, and sending those changes out for review.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Google-wide CI/CD infrastructure includes TAP (Test Automation Platform) for continuous build and testing, Forge for distributed build execution, and Rosie for large-scale automated changes. Specific CI/CD tooling for Gemini Enterprise is not publicly disclosed.",
+          "evidence": [
+            {
+              "quote": "We run a massive continuous build, called the Test Automation Platform (TAP), of our entire codebase.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Although engineers can run tests locally, most test executions happen in a distributed build-and-test system called Forge.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's internal DevOps or SRE team structure is not publicly disclosed. Google-wide: each team has a Build Cop responsible for keeping tests passing and executing rollbacks when breakages occur.",
+          "evidence": [
+            {
+              "quote": "To deal with such breakages, each team has a 'Build Cop.' The Build Cop's responsibility is keeping all the tests passing in their particular project, regardless of who breaks them.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Specific CI/CD pipeline configuration, deployment tooling (e.g., Kubernetes namespaces, Borg job specs), or rollout percentages for Gemini Enterprise are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "Code_Review": {
+      "Practices": [
+        {
+          "Summary": "Not Available — Gemini Enterprise is a closed-source product; its internal code review processes (pull request requirements, approval thresholds, tooling) are not publicly disclosed. The following reflects Google-wide engineering culture (labeled as such per research methodology).",
+          "evidence": []
+        },
+        {
+          "Summary": "Google-wide: Reviewers approve a CL (changelist) once it improves the overall code health of the system, even if the CL is not perfect. The standard is progressive improvement, not perfection. Non-mandatory polish comments are prefixed with 'Nit:' to indicate the author may choose to ignore them.",
+          "evidence": [
+            {
+              "quote": "In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn't perfect.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Reviewers should always feel free to leave comments expressing that something could be better, but if it's not very important, prefix it with something like 'Nit: ' to let the author know that it's just a point of polish that they could choose to ignore.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Technical facts and data override personal preferences in code review decisions. On style matters, the official style guide is authoritative; if no style guide rule applies, the reviewer should accept the author's preference.",
+          "evidence": [
+            {
+              "quote": "Technical facts and data overrule opinions and personal preferences.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: When code review conflicts cannot be resolved between author and reviewer, the standard escalation path is: face-to-face or video discussion → broader team discussion → Technical Lead → Eng Manager. CLs should never be left unresolved indefinitely.",
+          "evidence": [
+            {
+              "quote": "Often the escalation path is to a broader team discussion, having a Technical Lead weigh in, asking for a decision from a maintainer of the code, or asking an Eng Manager to help out. Don't let a CL sit around because the author and the reviewer can't come to an agreement.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Code reviews should receive a first response within one business day. If a reviewer cannot complete a full review, they should send a quick response indicating when they will get to it or suggest other available reviewers. Large CLs should be split into smaller, reviewable units.",
+          "evidence": [
+            {
+              "quote": "One business day is the maximum time it should take to respond to a code review request (i.e., first thing the next morning).",
+              "citation": "[7]"
+            },
+            {
+              "quote": "If somebody sends you a code review that is so large you're not sure when you will be able to have time to review it, your typical response should be to ask the developer to split the CL into several smaller CLs that build on each other.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Code ownership is enforced via OWNERS files at every level of the monorepo file hierarchy. OWNERS files list engineers authorized to approve commits within their subtree, providing granular ownership that scales across thousands of engineers.",
+          "evidence": [
+            {
+              "quote": "At every level of the file hierarchy, we can find OWNERS files that list the usernames of engineers that are allowed to approve commits within that subtree of the repository.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Not Available — The specific code review tooling used for Gemini Enterprise (e.g., internal Critique tool, Gerrit, or other) is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's code review team structure (number of required approvals, senior reviewer roles) is not publicly disclosed. Google-wide: OWNERS file holders have approval rights for their repository subtrees.",
+          "evidence": [
+            {
+              "quote": "At every level of the file hierarchy, we can find OWNERS files that list the usernames of engineers that are allowed to approve commits within that subtree of the repository.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional Gemini Enterprise-specific code review practices (e.g., static analysis gates, security review requirements, documentation review) are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "Bug_Solving_and_Issue_Tracking": {
+      "Issues": [
+        {
+          "Title": "CVE-2026-1727: Potential Cloud Storage Namespace Hijacking ('Bucket Squatting')",
+          "Description": "A security vulnerability allowed potential hijacking of Cloud Storage bucket names used by the platform. Google automatically deployed fixes and safeguards server-side; no user action was required.",
+          "evidence": [
+            {
+              "quote": "Mitigation for Potential Cloud Storage Namespace Hijacking ('Bucket Squatting')... We have enhanced our systems to ensure the integrity and proper ownership of Cloud Storage resources used by the platform... No action is required from users. The necessary fixes and safeguards have been automatically deployed.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "Agent Designer: Model configuration cleared during model transition (Gemini 3 Pro to 3.1 Pro Preview)",
+          "Description": "Agent model configurations were cleared or failed to appear when Gemini 3 Pro (Preview) transitioned to Gemini 3.1 Pro (Preview), disrupting agent workflows during a model upgrade window.",
+          "evidence": [
+            {
+              "quote": "Fixed an issue in Agent Designer that caused agent model configurations to be cleared or fail to appear during the transition from Gemini 3 Pro (Preview) to Gemini 3.1 Pro (Preview). (March 4, 2026 Fixed)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "Dialogflow/HTTP agent response routing: responses always come from the sub-agent, not the Agentspace assistant",
+          "Description": "When a Dialogflow or HTTP agent was integrated into an Agentspace assistant, all responses came from the sub-agent rather than the Agentspace assistant, breaking the intended response orchestration.",
+          "evidence": [
+            {
+              "quote": "When you interact with a Dialogflow or HTTP agent integrated in an Agentspace assistant, the responses that you receive are always from the Dialogflow or HTTP agent and not from the Agentspace assistant. (June 11, 2025 Known Issue)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "SharePoint connector: incremental sync causes duplicate documents for file entity types",
+          "Description": "Incremental syncs in SharePoint connector data stores produced duplicate documents for file entity types, requiring users to run a full sync manually or wait for the next scheduled full sync as a workaround.",
+          "evidence": [
+            {
+              "quote": "Performing an incremental sync in a SharePoint connector data store can cause duplicate documents for file entity types... As a one-time solution, you can avoid duplication by either running a full sync manually or waiting for the next scheduled full sync. (August 21, 2025 Breaking Change)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "ServiceNow ACL behavior changed from too-permissive to least-privilege to prevent data leaks",
+          "Description": "The ACL behavior for ServiceNow incidents was too permissive, creating a risk of data leaks. The team changed it to least-privilege access control, a breaking change that significantly reduces exposure.",
+          "evidence": [
+            {
+              "quote": "The access-control list (ACL) behavior for ServiceNow incidents has significantly changed, from too permissive to least-privilege behavior. This change drastically reduces the possibility of data leaks. (September 23, 2025 Breaking Change)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "LLM system instructions removed to prevent system prompt override vulnerability",
+          "Description": "A configuration option allowed LLM-related system instructions to be overridden by users, creating a prompt injection/override security risk. The configuration was removed entirely to close the vulnerability.",
+          "evidence": [
+            {
+              "quote": "To prevent the assistant's LLM-related system instructions from being overridden, the LLM system instructions configuration has been removed from Agentspace Enterprise. (July 15, 2025 Deprecated)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "Sync-since window parameter removed to fix connector data quality issues",
+          "Description": "The ability to manually set a sync-since window for data connectors produced suboptimal data quality and connector performance. The feature was deprecated and the platform now automatically determines the sync window.",
+          "evidence": [
+            {
+              "quote": "To improve data quality and connector performance, the ability to set a 'Sync since' window for data connectors has been removed. Agentspace Enterprise automatically determines the sync window to ensure optimal quality. (July 2, 2025 Deprecated)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "ServiceNow connector: url_suffix parameter could no longer be manually specified",
+          "Description": "The ServiceNow connector was updated to automatically fetch the url_suffix parameter instead of allowing manual specification, removing a source of misconfiguration.",
+          "evidence": [
+            {
+              "quote": "The ServiceNow connector automatically fetches the url_suffix parameter for your service portal when you grant the connector access to the required ServiceNow tables. You can no longer manually specify the url_suffix parameter. (July 11, 2025 Change)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "Outlook federated search entity renamed from 'events' to 'calendar' for consistency",
+          "Description": "The events entity in the Outlook data store for federated search was renamed to calendar to maintain naming consistency across connectors, a breaking change for any configurations referencing the old entity name.",
+          "evidence": [
+            {
+              "quote": "To maintain consistency, the events entity in the Outlook data store for federated search has been renamed to calendar. (July 24, 2025 Change)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Title": "Chat box autocomplete menu disabled; @ mentions preserved",
+          "Description": "The autocomplete menu that appeared as users typed in the chat box was disabled to reduce interface noise, while the @ mentions feature was preserved as the explicit way to reference items.",
+          "evidence": [
+            {
+              "quote": "The autocomplete menu no longer appears as a user types in the chat box. Users can still use the mentions feature by typing @ in the chat box. (January 27, 2026 Change)",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "Bug fixes, security patches, breaking changes, known issues, and deprecated functionality are all documented in public release notes. The release note entries show a pattern of: (1) security vulnerabilities patched server-side with no user action required; (2) breaking changes that alter connector or configuration behavior, documented with workarounds; (3) known issues that remain open with manual workarounds published; (4) features removed to improve data quality or close security vulnerabilities. Automatic server-side remediation (CVE-2026-1727) shows that critical security issues are fixed without requiring user intervention.",
+          "evidence": [
+            {
+              "quote": "This page documents production updates to Gemini Enterprise. Check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's internal issue tracking system (e.g., Buganizer, Jira, or equivalent), bug triage workflow, severity classification system, or debugging tools are not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — The composition of Gemini Enterprise's bug-fixing team (bug triagers, on-call engineers, security response teams) is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional bug-solving context such as regression testing policies after fixes, SLAs for critical bug resolution, or internal post-mortem practices are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "SE_Methodology": {
+      "Practices": [
+        {
+          "Summary": "Gemini Enterprise uses admin-controlled feature toggles for model availability, requiring an explicit administrator action to enable preview model tiers. This pattern isolates preview capabilities behind a configuration gate, preventing unintended exposure to unstable model versions.",
+          "evidence": [
+            {
+              "quote": "A Gemini Enterprise admin must enable the Gemini 3.1 Pro (Preview) toggle within the Model availability feature control. (February 19, 2026)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Backward compatibility is explicitly maintained when new platform capabilities are introduced. Existing agent configurations are preserved on the prior editor when new UI experiences (e.g., the visual flow builder) are introduced for newly created agents.",
+          "evidence": [
+            {
+              "quote": "The visual flow builder is available for all new agents created after this release. Existing agents will continue to use the familiar editor to ensure backward compatibility. (November 19, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Not Available — Gemini Enterprise's internal development methodology (Agile, Scrum, sprint cadence, team size, roadmap management) is not publicly disclosed. The following reflects Google-wide engineering culture (labeled as such per research methodology).",
+          "evidence": []
+        },
+        {
+          "Summary": "Google-wide: Trunk-based development with no long-lived dev branches is the standard. The One-Version Rule mandates that developers must never have a choice of 'What version of this component should I depend upon?', eliminating dependency divergence. Work is committed in small increments against trunk regularly.",
+          "evidence": [
+            {
+              "quote": "Trunk-based development... one repository, no dev branches... a particularly scalable policy approach.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Developers must never have a choice of 'What version of this component should I depend upon?' Colloquially, this becomes something like a 'One-Version Rule.'",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Work should be done in small increments against trunk, committed regularly.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Large-scale automated changes across the monorepo are executed using tooling (Rosie) rather than manual branch-based coordination. Presubmit checks gate all changes before they land in the repository.",
+          "evidence": [
+            {
+              "quote": "Rosie works by finding all files in the repository that need to be modified, splitting them up into separate changes, and sending those changes out for review.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's internal project management tools (e.g., Jira, internal sprint boards) are not publicly disclosed. Google-wide tooling includes Rosie (large-scale automated changes), Piper (internal centralized VCS), and Blaze/Forge (build system).",
+          "evidence": [
+            {
+              "quote": "Rosie works by finding all files in the repository that need to be modified, splitting them up into separate changes, and sending those changes out for review.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's engineering team structure (tech leads, engineering managers, product managers) is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional details about Gemini Enterprise's development lifecycle (sprint length, retrospectives, dogfooding practices) are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "Not Available — Gemini Enterprise is a closed-source product; its internal team communication practices (Slack channels, design documents, RFCs, standups, on-call rotations) are not publicly disclosed. The following reflects Google-wide engineering culture (labeled as such per research methodology).",
+          "evidence": []
+        },
+        {
+          "Summary": "Google-wide: Bug reports and issues are open with full comment history visible to all engineers (excluding customer PII), enabling cross-team learning from integration failures and supporting a culture of shared visibility.",
+          "evidence": [
+            {
+              "quote": "Bugs (e.g., tickets or issues) at Google are open with full comment history for all to see and learn from (with the exception, again, of customer PII).",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: A unified test reporting system is available so that any engineer can look up any build or test run, including all logs, whether from local runs or automated CI runs. This transparency supports cross-team debugging and collaboration.",
+          "evidence": [
+            {
+              "quote": "We have a unified test reporting system in which anyone can easily look up a build or test run, including all logs (excluding user Personally Identifiable Information [PII]), whether for an individual engineer's local run or on an automated development or staging build.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Each team designates a Build Cop role — an engineer responsible for keeping all tests passing and communicating build breakages to the team. This role formalizes accountability for build health and cross-team communication during breakages.",
+          "evidence": [
+            {
+              "quote": "Each team has a 'Build Cop.' The Build Cop's responsibility is keeping all the tests passing in their particular project, regardless of who breaks them. When a Build Cop is notified of a failing test in their project, they drop whatever they are doing and fix the build.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google-wide: Code review conflicts that cannot be resolved through comment threads are escalated to face-to-face or video discussions, and the outcome of those discussions must be recorded as a comment on the changelist for future readers.",
+          "evidence": [
+            {
+              "quote": "When coming to consensus becomes especially difficult, it can help to have a face-to-face meeting or a video conference between the reviewer and the author, instead of just trying to resolve the conflict through code review comments. (If you do this, though, make sure to record the results of the discussion as a comment on the CL, for future readers.)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Not Available — Gemini Enterprise's internal communication tools (Slack, Google Chat, mailing lists, internal wikis) are not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — The team structure for Gemini Enterprise (number of engineers, team leads, community contributors) is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional team communication details (onboarding processes, design review cadence, contributor onboarding) are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "Gemini Enterprise maintains structured public release notes documenting all production updates: new features, bug fixes, known issues, breaking changes, and deprecated functionality. The release notes are published with each production deployment and are available as Atom/RSS feeds and via BigQuery for programmatic access.",
+          "evidence": [
+            {
+              "quote": "This page documents production updates to Gemini Enterprise. Check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "The release notes are also available as an Atom feed and RSS feed from the Release Notes page, as well as via BigQuery.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Official documentation is organized into structured sections: Overview, Concepts, How-to guides, API and reference, and Resources. This hierarchical documentation structure supports different user profiles (conceptual readers, task-oriented practitioners, API integrators).",
+          "evidence": [
+            {
+              "quote": "Official documentation is structured into: Overview, Concepts, How-to guides, API and reference, and Resources sections.",
+              "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "Summary": "New observability metrics are documented at release time with references to monitored resources and metrics pages, indicating that documentation of new platform capabilities is released alongside the feature.",
+          "evidence": [
+            {
+              "quote": "DataConnector Request Count: A new metric, dataconnector.googleapis.com/enterprise_search/request_count, has been added. For more information, see the monitored resources and metrics documentation. (April 1, 2026)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Not Available — Internal documentation practices such as doc review processes, freshness policies, documentation ownership, or technical writer workflows are not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Google Cloud documentation platform hosts all official Gemini Enterprise documentation. Release notes are also distributed via Atom feed, RSS feed, and BigQuery export.",
+          "evidence": [
+            {
+              "quote": "The release notes are also available as an Atom feed and RSS feed from the Release Notes page, as well as via BigQuery.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available — The team responsible for documentation (technical writers, developer advocates, product managers) for Gemini Enterprise is not publicly disclosed.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Additional documentation practices (API documentation generation tools, doc coverage requirements, style guides) are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Gemini Enterprise provides a multi-model selector in its search interface, allowing users to choose between Gemini 2.5 Flash, Gemini 2.5 Pro, or Auto (automatic model selection). This gives users control over the latency/quality tradeoff at query time.",
+          "evidence": [
+            {
+              "quote": "The search bar contains a model selector. For example, you can choose the Gemini 2.5 flash or the Gemini 2.5 pro model, or you can leave the selector set to Auto, the default setting which automatically selects the model for you. (June 17, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Model availability for preview model tiers is controlled via administrator-facing feature toggles. Preview models are not enabled by default; admins must explicitly opt in, providing a gated rollout mechanism for experimental models.",
+          "evidence": [
+            {
+              "quote": "A Gemini Enterprise admin must enable the Gemini 3.1 Pro (Preview) toggle within the Model availability feature control. (February 19, 2026)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "A purpose-tuned answer generation model (gemini-2.5-flash/answer_gen/v1) is deployed specifically for context-based question and answering tasks, showing that Gemini Enterprise uses task-specialized model variants rather than a single general-purpose model.",
+          "evidence": [
+            {
+              "quote": "gemini-2.5-flash/answer_gen/v1 model... This model is tuned to address context-based question and answering tasks. (June 26, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Gemini Enterprise supports Model Context Protocol (MCP) server integration, allowing enterprise customers to connect custom MCP servers to securely access private company data, internal tools, and third-party MCP-compliant systems within the platform.",
+          "evidence": [
+            {
+              "quote": "You can connect your custom Model Context Protocol (MCP) server with Gemini Enterprise to securely access your company's private data, custom internal tools, and MCP-compliant third-party systems. (April 28, 2026)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Model Armor is integrated to proactively screen both prompts and responses within Gemini Enterprise applications for safety and policy compliance, providing a safety layer at the LLM integration boundary.",
+          "evidence": [
+            {
+              "quote": "Model Armor helps proactively screen prompts and responses within Agentspace apps and NotebookLM Enterprise instances. (September 15, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "LLM system instruction configuration was removed to prevent users from overriding the assistant's core system prompt, addressing a prompt injection / system prompt override vulnerability. This represents a deliberate security-motivated constraint on LLM prompt management.",
+          "evidence": [
+            {
+              "quote": "To prevent the assistant's LLM-related system instructions from being overridden, the LLM system instructions configuration has been removed from Agentspace Enterprise. (July 15, 2025 Deprecated)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Model thinking / chain-of-thought reasoning is always hidden from users when generating answers, to protect potentially sensitive reasoning steps from being exposed in the UI.",
+          "evidence": [
+            {
+              "quote": "When generating an answer, the details of a model's thinking are always hidden to protect sensitive information. (October 31, 2025)",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "New model tiers released in Limited Availability are subject to ongoing SLO determination, indicating that model quality SLOs are defined post-initial-rollout based on observed production performance rather than pre-set before launch.",
+          "evidence": [
+            {
+              "quote": "Gemini Enterprise users now have access to 3.1 Pro and 3 Flash in Limited Availability... We are currently monitoring the model's performance and determining the appropriate, long-term SLOs. (April 30, 2026)",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Model Context Protocol (MCP) server integration and Model Armor (prompt/response safety screening) are the two primary publicly documented LLM integration tooling components for Gemini Enterprise. Internal prompt engineering tooling or evaluation frameworks are not publicly disclosed.",
+          "evidence": [
+            {
+              "quote": "You can connect your custom Model Context Protocol (MCP) server with Gemini Enterprise to securely access your company's private data, custom internal tools, and MCP-compliant third-party systems.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Model Armor helps proactively screen prompts and responses within Agentspace apps and NotebookLM Enterprise instances.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Administrators (Gemini Enterprise admins) control model availability feature toggles and observability settings. End users interact with model selectors and the MCP integration. Internal teams involved in model fine-tuning or prompt engineering are not publicly disclosed.",
+          "evidence": [
+            {
+              "quote": "A Gemini Enterprise admin must enable the Gemini 3.1 Pro (Preview) toggle within the Model availability feature control.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available — Internal LLM integration practices such as prompt version control, system prompt change review workflows, RAG pipeline configuration, or LLM fine-tuning practices for Gemini Enterprise are not publicly disclosed.",
+          "evidence": []
+        }
+      ]
+    }
+  },
+  "References": [
+    {
+      "id": "[1]",
+      "title": "Google Gemini Enterprise Official Product Page",
+      "url": "https://cloud.google.com/products/agentspace"
+    },
+    {
+      "id": "[2]",
+      "title": "Google Gemini Enterprise Official Documentation Overview",
+      "url": "https://cloud.google.com/gemini/enterprise/docs"
+    },
+    {
+      "id": "[3]",
+      "title": "Google Gemini Enterprise Release Notes",
+      "url": "https://cloud.google.com/gemini/enterprise/docs/release-notes"
+    },
+    {
+      "id": "[4]",
+      "title": "Software Engineering at Google — Chapter 23: Continuous Integration (Google-wide engineering culture)",
+      "url": "https://abseil.io/resources/swe-book/html/ch23.html"
+    },
+    {
+      "id": "[5]",
+      "title": "Software Engineering at Google — Chapter 22: Large-Scale Changes (Google-wide engineering culture)",
+      "url": "https://abseil.io/resources/swe-book/html/ch22.html"
+    },
+    {
+      "id": "[6]",
+      "title": "Google Engineering Practices — The Standard of Code Review (Google-wide engineering culture)",
+      "url": "https://google.github.io/eng-practices/review/reviewer/standard.html"
+    },
+    {
+      "id": "[7]",
+      "title": "Google Engineering Practices — Speed of Code Reviews (Google-wide engineering culture)",
+      "url": "https://google.github.io/eng-practices/review/reviewer/speed.html"
+    },
+    {
+      "id": "[8]",
+      "title": "Software Engineering at Google — Chapter 16: Version Control and Branch Management (Google-wide engineering culture)",
+      "url": "https://abseil.io/resources/swe-book/html/ch16.html"
+    }
+  ]
+}

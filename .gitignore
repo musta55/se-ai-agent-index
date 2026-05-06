@@ -1,0 +1,38 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Outputs (optional - comment out if you want to track these)
+outputs/*.json
+!outputs/.gitkeep
+evidence/
+!evidence/.gitkeep
+logs/
+!logs/.gitkeep
+
+# Mac
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*_raw_output.txt

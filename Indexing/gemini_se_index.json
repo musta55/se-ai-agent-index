@@ -1,0 +1,773 @@
+{
+  "Agent_Name": "Google Gemini",
+  "Description": {
+    "value": "Google Gemini is a family of closed-source multimodal large language models (LLMs) developed by Google DeepMind, powering the Gemini conversational AI chatbot accessible at gemini.google.com. It processes text, images, audio, video, and code, and serves as the foundation model across Google AI products and APIs.",
+    "evidence": [
+      {
+        "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+        "citation": "[1]"
+      }
+    ]
+  },
+  "Repository_Statistics": {
+    "Lines_of_Code": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Stars": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Contributors": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Update_Frequency": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Primary_Language": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Last_Updated": {
+      "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    }
+  },
+  "SE_Practices": {
+    "Testing_and_Evaluation": {
+      "Practices": [
+        {
+          "Summary": "Google DeepMind evaluates Gemini with a multi-stage benchmark and red-team pipeline: pre-training capability evals (MMLU, GPQA, HumanEval, MATH), post-training safety/responsibility evals (assurance evaluations, dangerous-capability evals, persuasion/manipulation tests) and dogfooding inside Google products. Each Gemini release (1.0, 1.5, 2.0, 2.5, 3) is accompanied by a model card and a tech report that lists the eval suites and scores.",
+          "evidence": [
+            {
+              "quote": "We conduct extensive responsibility evaluations on Gemini models, including assurance evaluations and dangerous capability evaluations.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Model impact assessments are conducted by the Google DeepMind Responsible Development and Innovation team, and are reviewed by the Google DeepMind Responsibility and Safety Council.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Internal Google evaluation infrastructure, public benchmarks (MMLU, GPQA, HumanEval, BIG-Bench-Hard, MATH), the Vertex AI Evaluation Service for downstream agent eval, and golden datasets curated per product surface.",
+          "evidence": [
+            {
+              "quote": "Vertex AI evaluation service",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Google DeepMind research engineers, the Gemini model team, Google Responsibility & Safety Council, Google Cloud Vertex AI team.",
+          "evidence": [
+            {
+              "quote": "Google DeepMind",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "CICD_and_Deployment": {
+      "Practices": [
+        {
+          "Summary": "Gemini models are trained on TPUs (v4/v5p/v6 'Trillium') using JAX and the Pathways system, then deployed via Vertex AI and the Gemini API with progressive rollouts. Model versions are tagged (e.g., gemini-2.5-pro-001, -002, -latest) and deprecated through documented lifecycles on the Google Cloud release notes page.",
+          "evidence": [
+            {
+              "quote": "Gemini was trained on TPU accelerators using the Pathways system and JAX.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "TPU accelerators, JAX, Pathways, Vertex AI Model Garden, Gemini API endpoints, internal Borg-style scheduling, A/B traffic splitters, Google Cloud release notes for version tracking.",
+          "evidence": [
+            {
+              "quote": "Vertex AI",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "DeepMind training infrastructure team, Google Cloud Vertex AI release engineers, the Gemini API product team.",
+          "evidence": [
+            {
+              "quote": "Google Cloud",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Code_Review": {
+      "Practices": [
+        {
+          "Summary": "Internal to Google: Gemini engineers use Google's monorepo (google3) with mandatory pre-submit code review (Critique), readability certifications per language, and OWNERS files. There is no public PR review surface for the model itself.",
+          "evidence": [
+            {
+              "quote": "We use Critique logs to quantify and describe the current review practices ",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Google's monorepo (google3) and code ownership system (OWNERS files) are used for all Gemini-related code changes.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Small CL Philosophy: Google enforces small, self-contained changelists (CLs). Typical CL size is ~100 lines (1000+ lines is too large). Each CL addresses one self-contained change, includes related tests, and can be independently reviewed. Refactorings must be separated from feature/bug-fix CLs.",
+          "evidence": [
+            {
+              "quote": "In general, the right size for a CL is one self-contained change. This means that: The CL makes a minimal change that addresses just one thing.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "100 lines is usually a reasonable size for a CL, and 1000 lines is usually too large, but it's up to the judgment of your reviewer.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "It's usually best to do refactorings in a separate CL from feature changes or bug fixes.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "Review Speed Targets: Google optimizes for team velocity, not individual velocity. Reviewers must respond within one business day (by next morning). Fast responses prevent developer frustration and enable multiple review rounds per day. LGTM-with-comments is used for minor issues to avoid timezone delays.",
+          "evidence": [
+            {
+              "quote": "One business day is the maximum time it should take to respond to a code review request (i.e., first thing the next morning).",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Following these guidelines means that a typical CL should get multiple rounds of review (if needed) within a single day.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "LGTM With Comments is especially worth considering when the developer and reviewer are in different time zones and otherwise the developer would be waiting for a whole day just to get 'LGTM, Approval'.",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "Review Focus Areas: Google reviewers evaluate 8 dimensions—Design (is code well-designed?), Functionality (does it work as intended?), Complexity (could it be simpler?), Tests (correct automated tests?), Naming (clear variable/class names?), Comments (clear and useful?), Style (follows style guide?), Documentation (updated docs?).",
+          "evidence": [
+            {
+              "quote": "Code reviews should look at: Design, Functionality, Complexity, Tests, Naming, Comments, Style, Documentation.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Does the code follow our style guides?",
+              "citation": "[11]"
+            }
+          ]
+        },
+        {
+          "Summary": "Progressive Improvement Standard: Google's code review standard is 'approve if the CL improves overall code health,' not 'approve only if perfect.' Reviewers balance forward progress against suggested improvements. 'Nit:' prefix marks non-blocking polish suggestions. Continuous improvement is favored over perfection.",
+          "evidence": [
+            {
+              "quote": "In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn't perfect.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "There is no such thing as 'perfect' code—there is only better code.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Reviewers should always feel free to leave comments expressing that something could be better, but if it's not very important, prefix it with something like 'Nit: ' to let the author know that it's just a point of polish that they could choose to ignore.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "Mentoring Through Code Review: Code review at Google serves as a teaching mechanism. Reviewers leave educational comments to help developers learn new language features, frameworks, or design principles. Educational-only comments are prefixed with 'Nit:' to indicate they're not blocking.",
+          "evidence": [
+            {
+              "quote": "Code review can have an important function of teaching developers something new about a language, a framework, or general software design principles. It's always fine to leave comments that help a developer learn something new. Sharing knowledge is part of improving the code health of a system over time.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Just keep in mind that if your comment is purely educational, but not critical to meeting the standards described in this document, prefix it with 'Nit: ' or otherwise indicate that it's not mandatory for the author to resolve it in this CL.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Critique (Google internal code review tool), google3 monorepo, OWNERS files, readability reviewers, presubmit triggers via TAP.",
+          "evidence": [
+            {
+              "quote": "Critique",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "DeepMind and Google research engineers, language readability reviewers, ML infrastructure SREs.",
+          "evidence": [
+            {
+              "quote": "Google DeepMind",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Bug_Solving_and_Issue_Tracking": {
+      "Issues": [
+        {
+          "title": "Memory leak: httpx Response bodies retained indefinitely in async generate_content with IMAGE responses",
+          "description": "httpx Response objects (~3.5 MB each for base64-encoded PNG image responses) are retained in memory via tenacity retry machinery after generate_content returns, causing ~3.4 MB/request unbounded RSS growth in long-running async services. Explicit gc.collect() and del response do not reclaim the memory.",
+          "citation": "[13]"
+        },
+        {
+          "title": "BatchJob.src is always None for Gemini Developer API — inputConfig is not parsed in _BatchJob_from_mldev",
+          "description": "_BatchJob_from_mldev never maps metadata.inputConfig to the src field of BatchJob; the Vertex AI parser works correctly. Input file cleanup code that relies on batch.src.file_name silently skips deletion, causing uploaded input files to accumulate and exhaust the 20 GB Files API quota.",
+          "citation": "[14]"
+        },
+        {
+          "title": "Vertex AI: input_audio_transcription silently ignored — zero input_transcription events emitted",
+          "description": "input_audio_transcription=AudioTranscriptionConfig() is accepted without error on Vertex AI but the backend never emits input_transcription events in LiveServerContent; output_transcription works correctly. A production voice AI team spent 8+ hours debugging broken turn management before tracing it to this silently swallowed configuration.",
+          "citation": "[15]"
+        },
+        {
+          "title": "httpx.TimeoutException is not retried despite HttpRetryOptions being configured",
+          "description": "The retry predicate in retry_args only matched errors.APIError subclasses, so httpx.TimeoutException and its subclasses (ReadTimeout, ConnectTimeout) were silently dropped and never retried even when HttpRetryOptions was explicitly configured. Long-running LLM inference calls regularly hit transient transport errors from load balancers or NAT gateways. Fixed in PR #2345, released in v1.74.0.",
+          "citation": "[16]"
+        },
+        {
+          "title": "Live API: phantom server_content.interrupted=True with no user audio wedges model into zero-audio state for remainder of session",
+          "description": "A spurious server_content.interrupted=True fires after the greeting turn_complete with last_user_tx=\"\" and last_user_tx_age_ms=-1 when zero client audio has been sent. After this phantom interrupt, the model produces zero audio chunks and zero output tokens for every subsequent user turn for the rest of the session. 4 occurrences observed in a 6-hour production window; 1 of 4 sessions could not recover.",
+          "citation": "[17]"
+        },
+        {
+          "title": "Eager mcp import in _mcp_utils.py adds ~240ms to every import google.genai",
+          "description": "_mcp_utils.py and 4 other SDK modules eagerly import the mcp package at module load whenever it is installed, triggering 60+ mcp.* module loads and adding approximately 240ms cold-start latency to every import google.genai, including for users who never use MCP features.",
+          "citation": "[18]"
+        },
+        {
+          "title": "Interactions client sends duplicate User-Agent header (breaks aiohttp 3.13.4+ servers)",
+          "description": "append_library_version_headers() adds a lowercase user-agent key while the Stainless base class adds a title-case User-Agent key; Python dict case-sensitivity causes both to appear as distinct header entries on the wire. aiohttp 3.13.4+ servers reject the request with 400 Bad Request per RFC 9110 §5.5, affecting all Interactions API users behind strict HTTP proxies or test servers.",
+          "citation": "[19]"
+        },
+        {
+          "title": "[Bug] 400 INVALID_ARGUMENT on Gemma 4 models when using tool_config.mode=\"ANY\" combined with Large Tool Sets (>15 tools)",
+          "description": "Gemma 4 models (gemma-4-26b-a4b-it) returned a silent 400 INVALID_ARGUMENT when tool_config.mode=\"ANY\" was used with more than 15 FunctionDeclaration tools, with no indication of which parameter failed. mode=\"AUTO\" worked regardless of tool set size; Gemini 2.5 handled 30+ tools without issue. Caused by a backend routing issue; silently fixed by the backend team.",
+          "citation": "[20]"
+        },
+        {
+          "title": "Async call fails with mTLS endpoint when CLOUDSDK_CONTEXT_AWARE_USE_CLIENT_CERTIFICATE=True",
+          "description": "With vertexai=True and CLOUDSDK_CONTEXT_AWARE_USE_CLIENT_CERTIFICATE=True, async calls fail with \"Failed to send request to ...mtls.googleapis.com/...\" followed by an \"Unclosed client session\" aiohttp warning; sync calls succeed under identical conditions. Affects enterprise environments enforcing mTLS via Context-Aware Access. A fix was prepared for the next SDK release.",
+          "citation": "[21]"
+        },
+        {
+          "title": "Gemini 2.5 Pro Batch API: Jobs stuck in PENDING/RUNNING for over 24 hours",
+          "description": "Gemini 2.5 Pro Batch API jobs remained in JOB_STATE_PENDING or RUNNING for 24+ hours with no output or error messages; logs showed successful batch_response_get calls but internal job status never progressed. Cancelling and resubmitting produced the same result. Multiple users across the community reported the same infrastructure-level backlog. Closed as duplicate of issue #1482.",
+          "citation": "[22]"
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "Public bug surface for Gemini lives on Google Cloud's Issue Tracker (issuetracker.google.com) under the Gemini API and Vertex AI components, and on the public 'Build with Google AI' GitHub org for SDK issues. Common reported issues: rate-limit / quota errors, safety-filter false positives, JSON-mode malformed output, and tool-calling regressions across model revisions.",
+          "evidence": [
+            {
+              "quote": "Google Issue Tracker - Gemini API",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Bug resolution follows a triage workflow where issues are categorized, prioritized, and routed to appropriate teams (SDK maintainers for client libraries, Vertex AI support for quota/infrastructure, DeepMind for model behavior). Persistent bugs like 500 errors, determinism failures, and API attribute errors require cross-team coordination between SDK, infrastructure, and model teams.",
+          "evidence": [
+            {
+              "quote": "404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "This problem frequently occurs when using Python 3.10 to call google-genai version 1.38.0.",
+              "citation": "[14]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Google Issue Tracker, GitHub issues on google-gemini/* and googleapis/python-genai, Status Dashboard for incidents, Google Cloud support cases.",
+          "evidence": [
+            {
+              "quote": "Google Cloud status dashboard",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Vertex AI / Gemini API support engineers, DeepMind on-call rotation, googleapis SDK maintainers.",
+          "evidence": [
+            {
+              "quote": "googleapis/python-genai",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "SE_Methodology": {
+      "Practices": [
+        {
+          "Summary": "Google engineering teams use structured production meetings to coordinate service development and operations. Production meetings are special meetings where teams carefully articulate the state of their services to themselves and stakeholders, focusing on service-oriented discussions rather than individual status updates. These meetings typically happen weekly, lasting between 30 and 60 minutes, with agenda items including upcoming production changes, metrics review, outages analysis, paging events review, and prior action items follow-up.",
+          "evidence": [
+            {
+              "quote": "Production meetings are a special kind of meeting where an SRE team carefully articulates to itself—and to its invitees—the state of the service(s) in their charge, so as to increase general awareness among everyone who cares, and to improve the operation of the service(s).",
+              "citation": "[23]"
+            },
+            {
+              "quote": "Our production meetings usually happen weekly; given SRE's antipathy to pointless meetings, this frequency seems to be just about right: time to allow enough relevant material to accumulate to make the meeting worthwhile, while not so frequent that people find excuses to not attend.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "They usually last somewhere between 30 and 60 minutes. Any less and you're probably cutting something unnecessarily short, or you should probably be growing your service portfolio.",
+              "citation": "[23]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google engineering teams follow defined role structures to manage development lifecycle. SRE and engineering teams formally assign tech lead (TL), manager (SRM), and project manager (PM/TPM/PgM) roles. Tech leads are responsible for technical direction ranging from code review comments to quarterly direction presentations and building team consensus. Managers handle performance management functions and catchall responsibilities not handled by others. Project managers coordinate cross-functional work and ensure deliverable tracking and deadline adherence.",
+          "evidence": [
+            {
+              "quote": "SRE teams have the roles of 'tech lead' (TL), 'manager' (SRM), and 'project manager' (also known as PM, TPM, PgM).",
+              "citation": "[23]"
+            },
+            {
+              "quote": "At a base level the tech lead is responsible for technical direction in the team, and can lead in a variety of ways—everything from carefully commenting on everyone's code, to holding quarterly direction presentations, to building consensus in the team.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "The manager has two special responsibilities that a TL doesn't have: the performance management function, and being a general catchall for everything that isn't handled by someone else.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Google engineering leverages the google3 monorepo for code and documentation management, providing a unified source tree for all engineers. The monorepo enables canonical documentation placement alongside source code through g3doc directories, which are accessible via Code Search and integrate with developer workflows. Engineers use Markdown for documentation formatting, making it easier to understand editing without requiring HTML or CSS expertise. Google Docs is widely used for collaborative design documents and early-stage planning that requires real-time multi-author editing.",
+          "evidence": [
+            {
+              "quote": "Moving documentation to source control was initially met with a lot of controversy. Many engineers were convinced that doing away with the GooWiki, that bastion of freedom of information, would lead to poor quality because the bar for documentation (requiring a review, requiring owners for documents, etc.) would be higher.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "The introduction of Markdown as a common documentation formatting language also helped because it made it easier for engineers to understand how to edit documents without needing specialized expertise in HTML or CSS.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Such documents are designed to be collaborative, so they are often shared in Google Docs, which has good collaboration tools.",
+              "citation": "[24]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Not Available - Google DeepMind does not publicly disclose specific stakeholders involved in Gemini software engineering methodology beyond general team roles",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "Google engineering teams use group chats for topic-driven real-time communication. These chats are typically open access, allowing anyone to drop in and ask questions about specific topics or technologies. Group chats enable synchronous collaboration for quick problem-solving, debugging sessions, and informal technical discussions among engineers working on related areas. The open nature promotes knowledge sharing and reduces barriers to getting help from experts.",
+          "evidence": [
+            {
+              "quote": "Topic-driven group chats are typically open so that anyone can drop in to ask a question.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Group chats tend to be devoted either to topics or to teams.",
+              "citation": "[24]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google engineers extensively use mailing lists for asynchronous technical discussions and decision-making. Most topics at Google have dedicated topic-users@ or topic-discuss@ Google Groups mailing lists that any engineer can join or email. These mailing lists serve as forums for technical questions, design discussions, announcements, and consensus-building around engineering decisions. The asynchronous nature allows engineers across different time zones and schedules to participate in discussions.",
+          "evidence": [
+            {
+              "quote": "Most topics at Google have a topic-users@ or topic-discuss@ Google Groups mailing list that anyone at the company can join or email.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Mailing lists, like group chats, are another tool used at Google that is probably familiar to engineers at most companies.",
+              "citation": "[24]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google engineering requires approved design documents before starting major projects. Design documents are collaborative technical specifications that outline architecture, implementation approach, and technical decisions for significant engineering work. Most teams require design document approval before beginning implementation, ensuring cross-team alignment and architectural review. The design review process involves sharing documents with stakeholders, collecting feedback, addressing concerns, and achieving consensus before proceeding.",
+          "evidence": [
+            {
+              "quote": "Most teams at Google require an approved design document before starting work on any major project.",
+              "citation": "[24]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google production meetings follow structured agendas to coordinate service development and operations. Meeting agendas systematically cover upcoming production changes to discuss planned rollouts and infrastructure modifications, metrics review to analyze service performance and health indicators, outage post-mortems to understand failures and prevent recurrence, paging events analysis to identify on-call burden and alert quality, nonpaging events that still require attention, and prior action items follow-up to track completion of previous commitments.",
+          "evidence": [
+            {
+              "quote": "A production meeting should generally include agenda items of the following types: Upcoming production changes, Metrics, Outages, Paging events, Nonpaging events, Prior action items.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "All of these should be standing items on your agenda; it's fine if some of them don't have anything substantive to report on some weeks.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Google engineers use Google Chat for real-time messaging and synchronous collaboration. Chat enables topic-driven group conversations where engineers can drop in to ask questions, debug issues, and coordinate work. For asynchronous communication, engineers use Google Groups mailing lists (topic-users@, topic-discuss@) that anyone at the company can join. Technical documentation and design documents are stored in the google3 monorepo using g3doc directories and Markdown formatting, making them accessible via Code Search. Google Docs is used for collaborative early-stage design documents that require real-time multi-author editing and commenting.",
+          "evidence": [
+            {
+              "quote": "Topic-driven group chats are typically open so that anyone can drop in to ask a question.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Most topics at Google have a topic-users@ or topic-discuss@ Google Groups mailing list that anyone at the company can join or email.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Such documents are designed to be collaborative, so they are often shared in Google Docs, which has good collaboration tools.",
+              "citation": "[24]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Google engineering communication involves tech leads who provide technical direction and build consensus in teams, engineering managers who handle performance management and catchall responsibilities, project managers who coordinate cross-functional work and track deliverables, SRE teams who run production meetings and articulate service state to stakeholders, and engineers across the organization who participate in group chats, mailing list discussions, and design document reviews.",
+          "evidence": [
+            {
+              "quote": "SRE teams have the roles of 'tech lead' (TL), 'manager' (SRM), and 'project manager' (also known as PM, TPM, PgM).",
+              "citation": "[23]"
+            },
+            {
+              "quote": "At a base level the tech lead is responsible for technical direction in the team, and can lead in a variety of ways—everything from carefully commenting on everyone's code, to holding quarterly direction presentations, to building consensus in the team.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "Each Gemini release ships with: a tech report (arxiv), a model card (with capability/eval/safety summaries), a Google Cloud release-notes entry, and updated developer docs at ai.google.dev. The DeepMind 'Responsible Development of Gemini' post documents red-teaming and assurance practices.",
+          "evidence": [
+            {
+              "quote": "Gemini: A Family of Highly Capable Multimodal Models",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "arxiv.org tech reports, model cards, ai.google.dev/gemini-api/docs, Google Cloud Vertex AI release notes, DeepMind blog.",
+          "evidence": [
+            {
+              "quote": "ai.google.dev/gemini-api/docs",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Gemini research authors, Google DevRel docs writers, model-card reviewers.",
+          "evidence": [
+            {
+              "quote": "Google DeepMind",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Gemini IS the LLM, but Google's prompt-management practice (as documented in Vertex AI 'Prompt Optimizer', the Gemini cookbook, and the 'Vibe Checks to Continuous Evaluation' post) emphasizes: structured system instructions, tool/function-calling schemas, JSON-mode constrained output, and continuous evaluation against golden sets with LLM-as-judge.",
+          "evidence": [
+            {
+              "quote": "LLM as a judge",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Vertex AI Prompt Optimizer, Gemini cookbook (github.com/google-gemini/cookbook), function-calling schema specs, system-instruction parameter, controlled generation / JSON mode.",
+          "evidence": [
+            {
+              "quote": "github.com/google-gemini/cookbook",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Gemini model team, Vertex AI prompt-tools team, Google AI Studio team, DevRel.",
+          "evidence": [
+            {
+              "quote": "Google AI Studio",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "Wikipedia",
+      "Link": "https://en.wikipedia.org/wiki/Gemini_(language_model)",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[2]": {
+      "Website_Type": "Tech Report",
+      "Link": "https://arxiv.org/abs/2312.11805",
+      "Date_Created": "2023-12-19",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[3]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://cloud.google.com/blog/topics/developers-practitioners/from-vibe-checks-to-continuous-evaluation-engineering-reliable-ai-agents",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[4]": {
+      "Website_Type": "Engineering Practice Reference",
+      "Link": "https://research.google/pubs/modern-code-review-a-case-study-at-google/",
+      "Date_Created": "2018-05-01",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[5]": {
+      "Website_Type": "Issue Tracker",
+      "Link": "https://issuetracker.google.com/issues?q=componentid:1166207",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[6]": {
+      "Website_Type": "Status Dashboard",
+      "Link": "https://status.cloud.google.com/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[7]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/google-gemini/cookbook",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[8]": {
+      "Website_Type": "Official Website",
+      "Link": "https://deepmind.google/about/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[9]": {
+      "Website_Type": "Engineering Practice Guide",
+      "Link": "https://google.github.io/eng-practices/review/developer/small-cls.html",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[10]": {
+      "Website_Type": "Engineering Practice Guide",
+      "Link": "https://google.github.io/eng-practices/review/reviewer/speed.html",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[11]": {
+      "Website_Type": "Engineering Practice Guide",
+      "Link": "https://google.github.io/eng-practices/review/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[12]": {
+      "Website_Type": "Engineering Practice Guide",
+      "Link": "https://google.github.io/eng-practices/review/reviewer/standard.html",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[13]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2369",
+      "Date_Created": "2026-05-01",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[14]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2367",
+      "Date_Created": "2026-05-01",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[15]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2348",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[16]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2337",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[17]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2333",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[18]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2325",
+      "Date_Created": "2026-04-19",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[19]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2309",
+      "Date_Created": "2026-04-19",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[20]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2291",
+      "Date_Created": "2026-04-19",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[21]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2282",
+      "Date_Created": "2026-04-12",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/googleapis/python-genai/issues/2221",
+      "Date_Created": "2026-03-30",
+      "Date_Pulled": "2026-05-03"
+    },
+    "[23]": {
+      "Website_Type": "Engineering Practice Book",
+      "Link": "https://sre.google/sre-book/communication-and-collaboration/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
+    "[24]": {
+      "Website_Type": "Engineering Practice Book",
+      "Link": "https://abseil.io/resources/swe-book/html/ch03.html",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    }
+  }
+}
