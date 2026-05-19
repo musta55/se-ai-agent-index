@@ -1,0 +1,672 @@
+{
+  "Agent_Name": "Perplexity Comet",
+  "Description": [
+    {
+      "Summary": "Perplexity Comet is a closed-source, Chromium-based AI browser that unifies traditional web browsing with agentic task execution. It contains two distinct AI layers: the Comet Assistant, a sidebar companion for reading, summarizing, and answering questions; and the Comet Agent, which autonomously executes multi-step tasks such as booking appointments, drafting emails, and managing workflows. Perplexity's search engine powers Comet by default, and the product targets both individual users and enterprise teams seeking intelligent workflow automation.",
+      "evidence": [
+        {
+          "quote": "While the Assistant focuses on understanding and explaining, the Agent focuses on doing and executing.",
+          "citation": "[3]"
+        },
+        {
+          "quote": "everything that can be delegated, from wrangling inboxes to ordering groceries, staying on top of finances to planning vacations.",
+          "citation": "[1]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Note": "Not Available - Perplexity Comet is a closed-source commercial AI browser. Engineering signals are drawn from official blog posts, security research publications, the Perplexity help center, and third-party security disclosures. No public repository or issue tracker exists.",
+    "Lines_of_Code": "Not Disclosed",
+    "Stars": "Not Applicable (closed-source product)",
+    "Contributors": "Perplexity internal engineering and security teams",
+    "Update_Frequency": "Active - Weekly changelog updates; Comet iOS launched March 2026, Comet Enterprise launched March 2026, prior feature releases shipping monthly throughout 2025",
+    "Primary_Language": "Not Disclosed (built on Chromium; TypeScript and C++ typical for Chromium-based browser development)",
+    "Last_Updated": "2026-05-17"
+  },
+  "SE_Practices": {
+    "Testing_and_Evaluation": {
+      "Practices": [
+        {
+          "Summary": "Perplexity developed BrowseSafe-Bench, a public evaluation suite of 14,719 real-world-style HTML examples for benchmarking AI browser agent security. The benchmark decomposes prompt injection attacks along three orthogonal axes: attack type (what the attacker wants), injection strategy (where the payload is hidden in the page), and linguistic style (how the instruction is phrased). This three-axis taxonomy helps the security team target training data gaps and systematically harden detection models.",
+          "evidence": [
+            {
+              "quote": "To study these attacks in a setting that looks like the real web, we built BrowseSafe, a detection model that we trained and open-sourced, and BrowseSafe-Bench, a public benchmark of 14,719 examples that mimic production pages.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "Summary": "Comet's security team collaborates continuously with external AI security researchers and red teams to grow their library of classifiers. Detection findings from real-world events and the bug bounty program feed directly into retraining cycles.",
+          "evidence": [
+            {
+              "quote": "Our classifier models are continuously updated on new attack vectors discovered through our bug bounty program, red team exercises, and real-world detection events, ensuring they evolve faster than the threat landscape.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "BrowseSafe-Bench evaluation results revealed that visible text attacks (footer sections, table cells) are significantly harder to detect than injections hidden in HTML comments or metadata attributes — a counterintuitive finding that reshaped training data composition. The team also found that adding just three benign distractor elements caused detection accuracy to drop from above 90% to roughly 81%, exposing model brittleness to authentic correlations.",
+          "evidence": [
+            {
+              "quote": "The presence of benign 'distractors' is critical. We found that introducing just three distractor elements caused detection accuracy to drop from over 90% to roughly 81%.",
+              "citation": "[16]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The security evaluation stack includes BrowseSafe-Bench (14,719 HTML examples on Hugging Face), the open-weight BrowseSafe detection model (Qwen-30B-A3B-Instruct-2507 fine-tune on Hugging Face), a synthetic data pipeline for generating hard negatives, and external red team exercises. The benchmark and model are fully open-sourced for community use.",
+          "evidence": [
+            {
+              "quote": "BrowseSafe and BrowseSafe-Bench are fully open-source. Any developer building autonomous agents can immediately harden their systems against prompt injection.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The Perplexity Security Team authors and maintains the detection models and evaluation benchmarks. External security researchers participate via the Vulnerability Disclosure Program and private bug bounty program, contributing new attack patterns to the retraining pipeline.",
+          "evidence": [
+            {
+              "quote": "We work with security researchers all over the world, around the clock, constantly identifying and repairing every new vulnerability.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "BrowseSafe-Bench includes 11 attack types, 9 injection strategies ranging from hidden fields to visible paragraphs and footers, and 3 linguistic styles from explicit commands to indirect hypothetical framing. Multilanguage attacks dropped average balanced accuracy to 76.0% across models, the lowest of any style tested.",
+          "evidence": [
+            {
+              "quote": "The benchmark includes 11 attack types, nine injection strategies spanning hidden fields to visible paragraphs and footers, and three linguistic styles, from explicit commands to indirect, camouflaged text.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ]
+    },
+    "CICD_and_Deployment": {
+      "Practices": [
+        {
+          "Summary": "Perplexity follows a gated, phased release strategy for Comet. New versions ship first to a small invite-only cohort of Max subscribers, then expand to broader Pro subscriber tiers, and finally to Enterprise Pro customers. This controlled rollout limits blast radius from regressions or security gaps at each stage before a full public release.",
+          "evidence": [
+            {
+              "quote": "Invite-only access will roll out slowly to our waitlist over the summer. New users will also receive a limited number of invites to share.",
+              "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "Summary": "Comet ships on a weekly release, with each release documented publicly in a rolling changelog. The team publishes a 'What We Shipped' entry every week, covering both individual and enterprise capabilities. This frequency implies a continuous integration pipeline capable of building, validating, and delivering browser-level changes at least weekly.",
+          "evidence": [
+            {
+              "quote": "03.27.26 Comet iOS Launch and Computer Updates - This week we shipped Comet iOS, many Computer updates for individuals and enterprise.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "03.13.26 What We Shipped - This week we shipped Comet Enterprise.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Internal CI/CD tooling (build systems, pipeline runners, infrastructure providers) is not publicly disclosed. Comet is built on the Chromium open-source project, which uses the GN meta-build system and Ninja build tool. This base imposes a well-established build and packaging infrastructure that the Perplexity engineering team extends for their agent-specific layers.",
+          "evidence": [
+            {
+              "quote": "Not Available - Closed Source Product. Internal pipeline tooling not publicly disclosed.",
+              "citation": ""
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The Perplexity engineering team owns the release pipeline and publishes the weekly changelog. The security team has a parallel ownership stake in the BrowseSafe model deployment cycle, coordinating classifier updates independently of the browser release schedule.",
+          "evidence": [
+            {
+              "quote": "Written by Perplexity Team",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Comet expanded from a desktop-only (macOS, Windows) product to iOS within nine months of launch.",
+          "evidence": [
+            {
+              "quote": "03.27.26 Comet iOS Launch and Computer Updates - This week we shipped Comet iOS, many Computer updates for individuals and enterprise.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review": {
+      "Practices": [
+        {
+          "Summary": "Perplexity's internal pull request workflows, code review practices are not publicly documented.",
+          "evidence": [
+            {
+              "quote": "Not Available - Closed Source Product",
+              "citation": ""
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "No public information is available on the specific code review tools used (e.g., GitHub Pull Requests, Gerrit, Phabricator) or automated review tooling such as linters or static analysis configurations.",
+          "evidence": [
+            {
+              "quote": "Not Available - Closed Source Product",
+              "citation": ""
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "No public information is available on who performs code reviews, who holds merge permissions, or how the review process is structured across the Perplexity engineering organization.",
+          "evidence": [
+            {
+              "quote": "Not Available - Closed Source Product",
+              "citation": ""
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The only indirect signal is the weekly shipping cadence visible in the public changelog. Consistent weekly releases across desktop, enterprise, and iOS targets suggest a development workflow with short integration cycles, though the underlying review and merge process is not disclosed.",
+          "evidence": [
+            {
+              "quote": "03.13.26 What We Shipped - This week we shipped Comet Enterprise.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_and_Issue_Tracking": {
+      "Issues": [
+        {
+          "Issue_Title": "Hidden MCP API in embedded Agentic Extension enables arbitrary local command execution on user devices",
+          "Issue_Number": "External Report — SquareX Security Research, Nov 19, 2025",
+          "Status": "Disclosed (Perplexity response not publicly confirmed)",
+          "Description": "Security researchers at SquareX found that Comet's embedded Agentic Extension exposes a hidden chrome.perplexity.mcp.addStdioServer API that allows extensions to execute arbitrary local OS commands — bypassing security controls that all traditional browsers explicitly prohibit. The API lacks any official documentation of its device-level access scope, and the embedded extensions are hidden from Comet's extension dashboard, preventing users from auditing or disabling them.",
+          "Citation": "[10]"
+        },
+        {
+          "Issue_Title": "Extension stomping attack: malicious extension impersonating Analytics Extension gains MCP API access",
+          "Issue_Number": "External Report — SquareX Security Research, Nov 19, 2025",
+          "Status": "Disclosed",
+          "Description": "SquareX demonstrated that an attacker can spoof the Analytics Extension ID via extension stomping, inject a script into perplexity.ai, invoke the Agentic Extension through the MCP, and execute arbitrary code (demonstrated with WannaCry) on the victim device. This attack chain is feasible via XSS, MitM, or insider threat, and the hidden extension architecture provides no user-visible warning.",
+          "Citation": "[10]"
+        },
+        {
+          "Issue_Title": "Prompt injection via hidden HTML/CSS instructions (white-on-white text, display:none, zero-font-size)",
+          "Issue_Number": "Security Research — BrowseSafe, Dec 2025",
+          "Status": "Mitigated (BrowseSafe Layer 1 classifier deployed)",
+          "Description": "Adversaries embed invisible instructions in webpage content through CSS techniques (white-on-white coloring, zero-font-size, display:none) or HTML comments. These are invisible to users but visible to vision models and HTML parsers. Comet's parallel-scanning BrowseSafe classifier intercepts this content before it reaches the agent's reasoning pipeline.",
+          "Citation": "[7]"
+        },
+        {
+          "Issue_Title": "Image-based prompt injection: text encoded in images exploits gap between human and AI perception",
+          "Issue_Number": "Security Research — BrowseSafe, Dec 2025",
+          "Status": "Mitigated (BrowseSafe classifier covers image-based vectors)",
+          "Description": "Attackers encode malicious instructions in images as text that is imperceptible to humans but visible to vision models. This exploits the fundamental asymmetry between human visual parsing and AI vision system parsing of the same content.",
+          "Citation": "[7]"
+        },
+        {
+          "Issue_Title": "Goal hijacking: external content overrides user's original query intent mid-task",
+          "Issue_Number": "Security Research — BrowseSafe, Dec 2025",
+          "Status": "Mitigated (Layer 1 classifier + Layer 2 structured prompting)",
+          "Description": "Malicious web content attempts to override the user's original instruction by using social engineering language, injecting tool names to trigger unintended actions, or building multi-turn attacks that accumulate across conversation history. The defense relies on both real-time classification and intent reinforcement prompts inserted at each tool decision point.",
+          "Citation": "[6]"
+        },
+        {
+          "Issue_Title": "Chrome extension data does not transfer to Comet on migration — users must reinstall and reconfigure all extensions",
+          "Issue_Number": "Help Center — Compatibility FAQ",
+          "Status": "Known Limitation",
+          "Description": "Users switching from Chrome to Comet cannot import existing Chrome extension data. All extensions must be individually reinstalled and fully reconfigured from scratch within Comet. This creates friction for enterprise migrations and reduces the benefit of Comet's Chrome extension compatibility claims.",
+          "Citation": "[4]"
+        },
+        {
+          "Issue_Title": "Comet requests Keychain access on macOS during install — causes user confusion and installation abandonment",
+          "Issue_Number": "Help Center — Installation FAQ",
+          "Status": "Documented (explanation added to help center)",
+          "Description": "On macOS, Comet prompts for Keychain access during installation, a standard Chromium browser behavior, but one unfamiliar to users not expecting an AI browser to request credential vault access. Users who deny the prompt lose autofill functionality. The help center added an explicit FAQ entry to clarify this behavior and reduce support requests.",
+          "Citation": "[4]"
+        },
+        {
+          "Issue_Title": "Local data sync limitation: bookmarks and history not synced to Perplexity cloud profile in early release",
+          "Issue_Number": "Privacy FAQ — Comet Resources",
+          "Status": "Planned (opt-in cloud sync on roadmap)",
+          "Description": "Early Comet releases store all browsing data — bookmarks, history, cookies — locally on the user's device only. Cloud sync with a Perplexity profile is not yet available at launch. This limits cross-device continuity for users who use Comet across multiple machines.",
+          "Citation": "[11]"
+        },
+        {
+          "Issue_Title": "Comet identified as using residential IP addresses — web server operators cannot distinguish Comet agent from regular browser traffic",
+          "Issue_Number": "External Report — Digiday, 2025",
+          "Status": "Unresolved (by design; no user-agent disclosure found)",
+          "Description": "Third-party reporting found that Comet routes web requests through users' residential IP addresses, making it indistinguishable from normal human browsing traffic. Comet does not publish a distinct user-agent string for its agent mode. This raises questions about web conduct and transparency toward site operators that rely on bot detection signals.",
+          "Citation": "[12]"
+        },
+        {
+          "Issue_Title": "Multi-turn content confusion: individually benign web content fragments accumulate across conversation history to cause persistent agent goal drift",
+          "Issue_Number": "Security Research — Mitigating Prompt Injection in Comet, Oct 22, 2025",
+          "Status": "Mitigated (Layer 1 classifier + Layer 2 structured prompting)",
+          "Description": "Adversaries craft sequences of individually innocuous web content fragments that, when accumulated across multiple conversation turns, collectively shift the agent away from the user's original intent. No single fragment triggers the classifier threshold on its own, so the attack pattern is harder to detect than single-page injection. Defense requires Layer 2 intent reinforcement prompts at every decision point to maintain goal alignment across turns.",
+          "Citation": "[6]"
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "Perplexity uses a Vulnerability Disclosure Program (VDP) covering all public-facing endpoints and user-facing clients. Researchers submit findings through a formal submission form. Valid disclosures earn acknowledgment and, depending on severity, rewards and invitations to a private bug bounty program. AI-specific issues such as hallucinations and model safety are explicitly out of scope.",
+          "evidence": [
+            {
+              "quote": "Perplexity's Vulnerability Disclosure Program (VDP) covers all public facing endpoints of Perplexity. All user-facing clients and API endpoints are in scope.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Security issues feed into a continuous classifier retraining loop: flagged boundary cases from production, red team exercises, and the bug bounty program generate synthetic training samples. This data allows the security team to proactively retrain BrowseSafe on emerging attack patterns before they become widespread.",
+          "evidence": [
+            {
+              "quote": "These flagged boundary cases can serve as the basis for new synthetic training samples. This allows researchers to proactively retrain the model.",
+              "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "Summary": "When the BrowseSafe classifier detects a potential prompt injection, Comet blocks the action and delivers a transparent notification to the user that identifies what was blocked, why content was flagged, and what specific instructions were detected. This transparency serves dual purposes: user education and security signal collection.",
+          "evidence": [
+            {
+              "quote": "If something looks unsafe, Comet doesn't move forward blindly or fail silently. Instead, it stops and provides a safe, controlled response. The detection is also logged for continuous improvement of our models.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Bug tracking tools are not publicly disclosed. External security disclosures are received through the VDP submission form. Internal production signals from the BrowseSafe classifier feed the retraining pipeline. Audit logs (available for organizations with 50+ Enterprise Pro seats) provide usage and activity tracking for enterprise incident investigation.",
+          "evidence": [
+            {
+              "quote": "Organization Admins can also review Comet telemetry data to monitor usage and performance within their organization.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The Perplexity Security Team manages the VDP and coordinates with external researchers. Enterprise organization admins use audit logs and telemetry dashboards for security monitoring. Help center articles authored by enterprise support staff document known compatibility issues and installation problems.",
+          "evidence": [
+            {
+              "quote": "We embrace the security research community and hope to foster a responsible and safe environment for reporting security vulnerabilities.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Comet is closed-source with no public issue tracker. Security incidents and compatibility issues surface through external security research reports, help center FAQ updates, and changelog entries rather than through a public GitHub issue list.",
+          "evidence": [
+            {
+              "quote": "We work with security researchers all over the world, around the clock, constantly identifying and repairing every new vulnerability.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ]
+    },
+    "SE_Methodology": {
+      "Practices": [
+        {
+          "Summary": "Security-first development is a stated lifecycle philosophy. The team explicitly rejects post-launch security additions; layered protections are treated as release criteria rather than optional features. This approach determines team composition, feature prioritization, and what counts as a shippable product.",
+          "evidence": [
+            {
+              "quote": "Experience has taught us that security isn't a feature to bolt on after launch, but a foundational requirement that requires reimagining how malicious action is conceived and where those attacks will come from.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Agile, Scrum, Kanban, sprint structure, and internal project management tooling are not publicly disclosed. The weekly 'What We Shipped' changelog format is indirect evidence of a continuous delivery process. Chromium as base platform reduces engineering scope by providing a mature browser foundation, allowing the team to direct velocity toward the AI layer rather than low-level browser infrastructure.",
+          "evidence": [
+            {
+              "quote": "This week we shipped Comet iOS, many Computer updates for individuals and enterprise.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "All blog posts and changelog entries are attributed collectively as 'Perplexity Team' or 'Perplexity Security Team'.",
+          "evidence": [
+            {
+              "quote": "Written by Perplexity Security Team",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Perplexity piloted Comet under an invite-only model before broad release. New users received a limited number of invites to share, creating a controlled rollout mechanism that limits blast radius from bugs or security issues at initial launch.",
+          "evidence": [
+            {
+              "quote": "Invite-only access will roll out slowly to our waitlist over the summer. New users will also receive a limited number of invites to share.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "Perplexity communicates product updates through a public weekly changelog, an engineering and product blog at perplexity.ai/hub/blog, and the Comet Resources hub at perplexity.ai/comet/resources. Enterprise teams have dedicated support contacts at comet@perplexity.ai and enterprise@perplexity.ai.",
+          "evidence": [
+            {
+              "quote": "For Comet-specific questions, get in touch with our team at comet@perplexity.ai. If you have questions about Perplexity Enterprise, email enterprise@perplexity.ai.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "User feedback flows through a public typeform at perplexity.typeform.com/feedbackpplx and through community channels including Discord and social media (X/Twitter, LinkedIn, Instagram, Threads, YouTube). The security team has a separate structured disclosure channel through the VDP submission form.",
+          "evidence": [
+            {
+              "quote": "Give Feedback — perplexity.typeform.com/feedbackpplx",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Communication channels include the public changelog (weekly), Perplexity Hub blog, Comet Resources article hub, Discord community server, X (Twitter), LinkedIn, YouTube, a feedback typeform, and enterprise-specific email addresses for support. Security researchers use the VDP submission form.",
+          "evidence": [
+            {
+              "quote": "Discord — discord.gg/perplexity-ai",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "End users receive product news via changelog and blog posts. Enterprise administrators interact through the admin dashboard and dedicated support email. External security researchers engage through the VDP. The broader developer community engages through Discord and the public API documentation.",
+          "evidence": [
+            {
+              "quote": "Perplexity's Vulnerability Disclosure Program (VDP) covers all public facing endpoints of Perplexity.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Internal team communication practices are not publicly disclosed. Comet's launch blog post and enterprise announcement blog post are authored collectively as 'Perplexity Team', with no individual author attribution, reflecting a team-first public communication style.",
+          "evidence": [
+            {
+              "quote": "Written by Perplexity Team",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "Perplexity maintains a dedicated Comet Resources hub at perplexity.ai/comet/resources as the primary user-facing documentation source. Articles cover the Assistant vs. Agent distinction, data privacy and security FAQs, and enterprise setup guides. The help center at perplexity.ai/help-center extends this with step-by-step installation guides for macOS and Windows enterprise deployments.",
+          "evidence": [
+            {
+              "quote": "Closest available documentations appears to be the resource hub at perplexity.ai/comet/resources.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "Security documentation receives dedicated treatment. The prompt injection defense architecture is publicly documented across two blog posts (the blog post on mitigating prompt injection and the BrowseSafe research post) and a peer-reviewed research paper (arxiv.org/abs/2511.20597). This separates the practitioner-facing explanation from the technical research paper, serving different audiences.",
+          "evidence": [
+            {
+              "quote": "Check out our dataset, model, and research paper at arxiv.org/abs/2511.20597.",
+              "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "Summary": "The Comet Data Privacy and Security FAQ documents data handling at a level of granularity suitable for enterprise procurement reviews: it specifies what data is stored locally vs. server-side, what triggers data transmission to Perplexity, how integration permissions are scoped, and how users can delete all stored data.",
+          "evidence": [
+            {
+              "quote": "Comet's approach sets a new standard for AI browsers: agentic, powerful, and fundamentally private by design.",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Documentation tooling includes the Comet Resources article hub, Perplexity Help Center (intercom-based), the public Hub engineering blog, Perplexity Trust Center at trust.perplexity.ai, and Security Documentation at perplexity.ai/hub/security. Compliance certifications (SOC 2 Type II, GDPR, PCI) are documented in the Trust Center.",
+          "evidence": [
+            {
+              "quote": "For documentation about Perplexity's Security and Compliance, visit Perplexity's Trust Center and Security Documentation.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Help center articles are authored by Perplexity support staff .Security documentation is published by the Perplexity Security Team. Research papers and technical blog posts are attributed to the Perplexity Team or Perplexity Research.",
+          "evidence": [
+            {
+              "quote": "Written by Emilio Morales — Comet for Enterprise",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "There is no public developer API or SDK documentation for Comet specifically. The Perplexity API documentation at docs.perplexity.ai covers the search API, not the browser agent. Comet's enterprise integration relies on Chromium policy documentation rather than a Comet-specific developer reference.",
+          "evidence": [
+            {
+              "quote": "Not Available - No public Comet developer API documentation found.",
+              "citation": ""
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Comet's LLM integration follows a layered prompt architecture: user instructions are treated as trusted input while all external web content is explicitly marked as untrusted in the model's prompt context. Tool-level system prompts include guardrail language at each step, and the original user query is continuously referenced by the routing system to prevent intent drift across multi-step tasks.",
+          "evidence": [
+            {
+              "quote": "External content is demarcated as untrusted in prompts, creating a clear distinction between user instructions and retrieved data. The routing system continuously references the original user query when selecting and executing tools.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Perplexity's memory system synthesizes user preferences and conversation history into a persistent personalization layer available across all supported models. Unlike history-as-training-data approaches, Perplexity retrieves relevant context from a memory store and injects it directly into responses. Users carry this memory context across model switches — from reasoning models for complex analysis, to fast models for quick queries — without losing continuity.",
+          "evidence": [
+            {
+              "quote": "Instead of treating your history as training data, Perplexity retrieves relevant context from your memory store and uses it directly in crafting better, more accurate answers.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Users can switch between reasoning models for complex analysis, fast models for quick queries, and specialized models for domain-specific work, all working from the same personalization layer.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "LLM integration tools include the BrowseSafe fine-tuned Qwen-30B-A3B-Instruct-2507 detector (open-sourced on Hugging Face), frontier LLMs (model unspecified) as reasoning backstops, Perplexity's search engine as the default knowledge retrieval layer, a cross-model memory store for personalization, and MCP (Model Context Protocol) for enterprise tool integrations.",
+          "evidence": [
+            {
+              "quote": "MCP support — Comet for Enterprise.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Perplexity is the search engine that powers Comet by default.",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The Perplexity Research team develops and publishes the BrowseSafe model and benchmark. Product teams define the memory personalization architecture. Enterprise customers configure MCP integrations and control which AI capabilities are available to users via agent permission policies.",
+          "evidence": [
+            {
+              "quote": "Agent Permission Controls - Control AI capabilities including website restrictions and action approvals.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Memory is automatically disabled in incognito mode and can be fully turned off by users at any time. All stored memory data is encrypted, and users can opt out of contributing to model improvement via AI Data Retention settings. Context portability across models is positioned as a user right, not a platform lock-in.",
+          "evidence": [
+            {
+              "quote": "You have complete control over what Perplexity remembers on your behalf: you can easily turn it off when needed. For added peace of mind, memory and your search history are automatically disabled in incognito mode.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "Perplexity Blog — Comet Launch Announcement",
+      "Link": "https://www.perplexity.ai/hub/blog/introducing-comet",
+      "Date_Created": "2025-07-09",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[2]": {
+      "Website_Type": "Perplexity Blog — Comet Enterprise Pro Launch",
+      "Link": "https://www.perplexity.ai/hub/blog/the-intelligent-business-introducing-comet-for-enterprise-pro",
+      "Date_Created": "2025-08-14",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[3]": {
+      "Website_Type": "Perplexity Comet Resources — Assistant vs. Agent",
+      "Link": "https://www.perplexity.ai/comet/resources/articles/comet-assistant-vs-agent",
+      "Date_Created": "2025-07-09",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[4]": {
+      "Website_Type": "Perplexity Help Center — Comet for Enterprise",
+      "Link": "https://www.perplexity.ai/help-center/en/articles/12781449-comet-for-enterprise",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[5]": {
+      "Website_Type": "Perplexity Security — Vulnerability Disclosure Program",
+      "Link": "https://www.perplexity.ai/hub/security-vdp",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[6]": {
+      "Website_Type": "Perplexity Blog — Mitigating Prompt Injection in Comet",
+      "Link": "https://www.perplexity.ai/hub/blog/mitigating-prompt-injection-in-comet",
+      "Date_Created": "2025-10-22",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[7]": {
+      "Website_Type": "Perplexity Blog — Building Safer AI Browsers with BrowseSafe",
+      "Link": "https://www.perplexity.ai/hub/blog/building-safer-ai-browsers-with-browsesafe",
+      "Date_Created": "2025-12-02",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[9]": {
+      "Website_Type": "Perplexity Changelog",
+      "Link": "https://perplexity.ai/changelog",
+      "Date_Created": "Ongoing",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[10]": {
+      "Website_Type": "PR Newswire — SquareX Security Disclosure",
+      "Link": "https://www.prnewswire.com/news-releases/obscure-mcp-api-in-comet-browser-breaches-user-trust-enabling-full-device-control-via-ai-browsers-302620308.html",
+      "Date_Created": "2025-11-19",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[11]": {
+      "Website_Type": "Perplexity Comet Resources — Data Privacy and Security FAQ",
+      "Link": "https://www.perplexity.ai/comet/resources/articles/comet-data-privacy-security-faq-s",
+      "Date_Created": "2025-07-09",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[12]": {
+      "Website_Type": "Digiday — Headless Browsing and AI Agents",
+      "Link": "https://digiday.com/media/wtf-is-headless-browsing-and-how-are-ai-agents-fueling-it/",
+      "Date_Created": "2025",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[13]": {
+      "Website_Type": "Perplexity Blog — Introducing AI Assistants with Memory",
+      "Link": "https://www.perplexity.ai/hub/blog/introducing-ai-assistants-with-memory",
+      "Date_Created": "2025-11-26",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[14]": {
+      "Website_Type": "Perplexity Comet — Official Product Page",
+      "Link": "https://www.perplexity.ai/comet",
+      "Date_Created": "2025-07-09",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[15]": {
+      "Website_Type": "Perplexity Security Documentation",
+      "Link": "https://www.perplexity.ai/hub/security",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[16]": {
+      "Website_Type": "ArXiv Research Paper — BrowseSafe",
+      "Link": "https://arxiv.org/abs/2511.20597",
+      "Date_Created": "2025-12-02",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[17]": {
+      "Website_Type": "Perplexity Legal — Comet Terms of Service",
+      "Link": "https://www.perplexity.ai/hub/legal/comet-terms-of-service",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[18]": {
+      "Website_Type": "Hugging Face — BrowseSafe Model",
+      "Link": "https://huggingface.co/perplexity-ai/browsesafe",
+      "Date_Created": "2025-12-02",
+      "Date_Pulled": "2026-05-17"
+    },
+    "[19]": {
+      "Website_Type": "Hugging Face — BrowseSafe-Bench Dataset",
+      "Link": "https://huggingface.co/datasets/perplexity-ai/browsesafe-bench",
+      "Date_Created": "2025-12-02",
+      "Date_Pulled": "2026-05-17"
+    }
+  }
+}

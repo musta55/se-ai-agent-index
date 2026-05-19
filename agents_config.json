@@ -2,32 +2,85 @@
   {
     "id": 1,
     "agent_name": "Glean Agents",
-    "status": "in_progress",
-    "priority": 1,
-    "notes": "Research started at 2026-04-25 18:01:12"
+    "indexing_status": "completed",
+    "reviewed": true
   },
   {
     "id": 2,
-    "agent_name": "Watson Orchestrate",
-    "status": "completed",
-    "priority": 1,
-    "notes": "Added by direct_research.py at 2026-04-28T02:52:00.596478",
-    "last_updated": "2026-04-28T02:52:53.288269"
+    "agent_name": "IBM watsonx Orchestrate",
+    "indexing_status": "completed",
+    "reviewed": true
   },
   {
     "id": 3,
-    "agent_name": "Kimi ok computer",
-    "status": "failed",
-    "priority": 1,
-    "notes": "Added via CLI at 2026-04-28T03:19:25.930413",
-    "last_updated": "2026-04-28T03:20:01.412325"
+    "agent_name": "HubSpot Breeze Studio",
+    "indexing_status": "completed",
+    "reviewed": true
   },
   {
     "id": 4,
-    "agent_name": "Kimi ok Computer",
-    "status": "in-progress",
-    "priority": 1,
-    "notes": "Added via CLI at 2026-04-28T03:20:24.972108",
-    "last_updated": "2026-04-29T12:36:16.680469"
+    "agent_name": "Google Gemini CLI",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 5,
+    "agent_name": "Google Gemini",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 6,
+    "agent_name": "Google Gemini Enterprise",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 7,
+    "agent_name": "Kimi Ok Computer",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 8,
+    "agent_name": "Browser Use",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 9,
+    "agent_name": "Opera Neon",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 10,
+    "agent_name": "Alibaba Mobile Agent",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 11,
+    "agent_name": "Perplexity Comet",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 12,
+    "agent_name": "Anthropic Claude Code",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 13,
+    "agent_name": "Amazon Q Developer",
+    "indexing_status": "completed",
+    "reviewed": true
+  },
+  {
+    "id": 14,
+    "agent_name": "Chatgpt Atlas",
+    "indexing_status": "pending",
+    "reviewed": false
   }
 ]

@@ -6,13 +6,29 @@ You are an expert Software Engineering (SE) Research Agent. Your goal is to inve
 
 **Target Agent: {agent_name}**
 
-Your mission is to analyze **how this system is maintained** by its engineering team, specifically what are their code review practices and bug solving practices, while developing and maintaining this agent, using rigorous open-coding methodology. The indexing will be used to derive common patterns or trends of software engineering practices (code review practices and bug solving practices) for this agentic system.
+Your mission is to analyze **how this system is developed, maintained, and deployed** by its engineering team using rigorous open-coding methodology. The indexing will be used to derive common patterns or trends of software engineering practices for this agentic system.
 
 ## Research Methodology
 
 In this task, you must conduct deep AI-mode searching to scrape publicly available data in a specific JSON format [given below] using the following sequential steps. **Strict adherence to these steps is required to ensure data validity.**
 
 **Execution Rule:** Use your web search tools to execute queries, and explicitly use your scraping tools to read the full text of articles before extracting. **Do not rely on search engine snippets.**
+
+### Step 0: Agent Description
+
+**Objective:** Before any repository research, establish what this agentic system actually does for its users.
+
+**Actions:**
+
+1. **Identify the agent's category, company name and purpose:**
+   - Is it a coding agent, conversational chatbot, computer-use/browser agent, sales/CRM agent, enterprise workflow platform, or other?
+   - What tasks does it automate or assist with?
+   - Which company build this agent?
+   - What is the deployment surface (CLI tool, web app, IDE plugin, API, enterprise SaaS)?
+2. **Find a concise description from an authoritative source** (official product page, repository README, or press release).
+3. **Output** a `Description` field following the same Summary + evidence (quote, citation) format as all other fields.
+
+---
 
 ### Step 1: Repository Discovery & Statistics
 
@@ -25,12 +41,21 @@ In this task, you must conduct deep AI-mode searching to scrape publicly availab
    - Search for the official GitHub repository for {agent_name}
    - Look for actual code repositories with format
    - Verify the repository matches the agent name (check README, description)
-2. **Read Configuration Files:**
+2. **Extract Repository Statistics** (each must have proper citation):
+
+   - **Lines of Code:** Estimate based on repository size/languages shown on GitHub
+   - **Stars:** Current star count from repository page
+   - **Contributors:** Number of contributors
+   - **Primary Language:** Main programming language(s) used
+   - **Update Frequency:** Average number of official releases or tags published per month over the last 6 months
+   - **Last Updated:** Most recent commit date
+3. **Read Configuration Files:**
 
    - README.md thoroughly
    - CONTRIBUTING.md (if available)
    - .github/ folder for workflow files, templates, guidelines
    - Any DEVELOPMENT.md, TESTING.md, or similar engineering docs
+   - CI/CD .yaml files for explicit deployment instructions
 
 **Evidence Required:** Each statistic must have a verbatim quote from the repository page or about page, plus citation number (Details refer to Evidence Format section).
 
@@ -73,49 +98,56 @@ In this task, you must conduct deep AI-mode searching to scrape publicly availab
   - Explore **multiple chapters** that align with the 8 research areas:
     - Testing/CI chapters → Testing_and_Reliability, Integration_and_Infrastructure
     - Code review chapters → Code_Review_Process
+    - Documentation chapters → Holistic_Documentation
+    - Communication/collaboration chapters → Team_Communication
   - Don't stop after finding one useful chapter - these comprehensive sources often have 10-30+ chapters
   - Extract practices that are broadly applicable to the company's engineering culture
 - **Note:** Most agents won't have such comprehensive sources - only search if you discover them
 
 **Focus Areas:** After gather the sources, look for explicit mentions of:
 
+- Testing frameworks and evaluation practices (Vitest, Playwright, Jest, Pytest)
 - Code review requirements and practices
+- CI/CD pipeline tools and deployment practices
+- Software development workflow and methodologies (Agile, Scrum, etc.)
 - Contribution guidelines and team structure
 - Engineering team insights from blog posts
+- Architecture decisions from technical articles
 - Internal testing tools, dogfooding practices
 - Developer discussions about challenges and solutions
 
-### Step 3: Issue Tracker Analysis (Minimum 10 Issues)
+### Step 3: Issue Tracker Analysis
 
-**Objective:** Analyze how the team tracks and resolves bugs internally to identify common engineering pitfalls.
+**Objective:** Identify recurring engineering pitfalls and architectural limitations from the issue tracker — not just list tickets.
 
 **Actions:**
 
-1. **Search the Issue Tracker:**
+1. **Browse open AND closed issues:**
 
-   - Use keywords: "bug", "regression", "test", "CI", "build", "deploy", "eval", "latency", "agent"
-   - Apply regex patterns if needed to filter relevant issues
-   - Select **minimum 10 recent or highly relevant issues based on the keywords**
+   - Closed issues reveal how the team actually resolves problems; do not skip them
+   - Look for issues that expose engineering challenges: dependency failures, async bugs, security gaps, missing test infrastructure, API contract mismatches, schema errors
+   - Avoid issues that are purely user feature requests with no engineering insight
+   - Select **10–15 issues** that together cover 3–5 distinct problem categories
 2. **For Each Issue, Extract:**
 
-   - Issue title (exact title from GitHub)
-   - Brief description (1-2 sentences summarizing the problem)
+   - Exact issue title
+   - Issue number
+   - Status (Open / Closed)
+   - 1–2 sentence description of the engineering problem and why it matters
    - Citation (reference number linked to the issue URL)
-3. **Identify Patterns:**
+3. **Synthesize Patterns:**
 
-   - Common engineering pitfalls and bugs
-   - Architectural limitations mentioned in issues
-   - Internal bug-resolution processes (labels, assignments, milestones)
-   - Testing gaps or quality issues
-   - How quickly issues are resolved
+   - What categories of bugs recur? (e.g., dependency leaks, async issues, security gaps)
+   - What do the patterns reveal about architectural weak spots or process gaps?
+   - Are there systemic gaps in testing, sandboxing, or schema validation?
 
-**Output:** Create an "Issues" array in Bug_Solving_Approaches section with all analyzed issues. The key motivation of tracking issues is to identify bug solving patterns and you must mention this in the summary of the bug solving section.
+**Output:** Populate the `Issues` array in `Bug_Solving_Approaches`. In the `Practices` sub-section, synthesize the issues into recurring problem categories — this is more valuable than a raw issue count.
 
-### Step 4: Deep Analysis Across 2 SE Practice Areas
+### Step 4: Deep Analysis Across 8 SE Practice Areas
 
 **Objective:** Extract detailed SE practices across all categories by analyzing all collected sources.
 
-**For Each of the 2 Areas Below:**
+**For Each of the 8 Areas Below:**
 
 Extract information in this structure:
 
@@ -131,9 +163,66 @@ Extract information in this structure:
   - **quote:** EXACT verbatim text from source (5-50 words). It must be a complete statement or sentence from the text that supports the summary. It must not be a file name, URL, or webpage title.
   - **citation:** Reference number [1], [2], etc.
 
-## 2 Critical Research Areas
+## 8 Critical Research Areas
 
-### 1. Code Review Process
+### 1. Testing & Reliability
+
+**What This Area Covers:**
+How do developers evaluate "agentic" behavior internally? Look for testing frameworks, self-testing loops, or human-in-the-loop (HITL) evaluation.
+
+**What to Look For:**
+
+- Testing frameworks used (Jest, Pytest, Vitest, Playwright, Selenium, Cypress, etc.)
+- Test coverage requirements or practices (e.g., "minimum 80% coverage")
+- Types of tests implemented (unit, integration, e2e, regression, performance)
+- CI/CD integration for automated testing
+- Evaluation of "agentic" behavior (HITL evaluation, automated evals, benchmarks)
+- Quality assurance processes and practices
+- Testing for LLM outputs, hallucination detection, accuracy metrics
+- Red teaming or adversarial testing practices
+
+**Questions to Answer:**
+
+- **Practices:** What testing practices do the developers use during the building of the agentic system? Do they rely on agents for testing? How do human developers and agents contribute to testing this agentic system?
+- **Tools:** What are the names of the tools used in testing or evaluating? (e.g., Playwright, Pytest, GitHub Actions for CI)
+- **Stakeholders:** Who is involved during testing? (e.g., QA engineers, red teamers, core maintainers)
+- **Others:** Any other relevant descriptions regarding evaluation, test coverage, or quality gates
+
+**Example Evidence:**
+
+```json
+"Tools": [{
+  "Summary": "Team uses Playwright for end-to-end testing with minimum 80% coverage requirement",
+  "evidence": [{
+    "quote": "All pull requests must maintain at least 80% test coverage and include Playwright e2e tests for user-facing features.",
+    "citation": "[3]"
+  }]
+}]
+```
+
+### 2. Integration & Infrastructure (CI/CD)
+
+**What This Area Covers:**
+How do they manage deployments, CI/CD pipelines, and infrastructure? What are the Continuous Integration and Continuous Deployment practices?
+
+**What to Look For:**
+
+- CI/CD pipeline setup and tools (GitHub Actions, Jenkins, CircleCI, GitLab CI, etc.)
+- Deployment frequency and processes (daily, weekly, continuous deployment)
+- Infrastructure tools and platforms (Docker, Kubernetes, Terraform, AWS, Azure, etc.)
+- Staging/production environments and deployment strategies
+- Deployment automation and rollback procedures
+- Infrastructure as Code (IaC) practices
+- Monitoring and observability tools (Datadog, New Relic, Prometheus, etc.)
+
+**Questions to Answer:**
+
+- **Practices:** What integration and deployment practices do they follow? How frequently do they deploy this agent? What deployment strategies are used (blue-green, canary, rolling)?
+- **Tools:** What are the names of the CI/CD and infrastructure tools? (e.g., GitHub Actions, Terraform, Kubernetes, Docker)
+- **Stakeholders:** Who manages the infrastructure? (e.g., DevOps engineers, SRE team, platform engineers)
+- **Others:** Any other relevant deployment details, infrastructure configuration, or operational practices
+
+### 3. Code Review Process
 
 **What This Area Covers:**
 What is the internal code review process of the human engineers/ developers building the agent?
@@ -155,39 +244,146 @@ What is the internal code review process of the human engineers/ developers buil
 - **Stakeholders:** Who performs code reviews? Who has merge permissions? (e.g., core maintainers, senior engineers, designated reviewers)
 - **Others:** Any other process descriptions, review timelines, or quality standards
 
-### 2. Bug-Solving Approaches
+### 4. Bug-Solving Approaches
 
 **What This Area Covers:**
-How do the developers maintain the agent's source code? What systems do they use to track and mitigate bugs in the agent's own codebase?
+How do the developers track, triage, and resolve bugs in the agent's own codebase? The goal is to identify **recurring engineering pitfalls and architectural limitations**, not just list individual tickets.
 
 **What to Look For:**
 
-- Issue tracking systems and processes (GitHub Issues, Jira, Linear, etc.)
-- Bug triage processes and workflows
-- Debugging tools and practices (Sentry, logging frameworks, debuggers)
-- Bug fix workflows and prioritization
-- Priority/severity classifications (critical, high, medium, low)
-- Bug reproduction and root cause analysis practices
-- Regression testing after bug fixes
-
-**SPECIAL REQUIREMENT:** Must include an "Issues" array with **minimum 10 analyzed issues**.
+- Issue tracking system used (GitHub Issues, Jira, Linear, etc.)
+- How bugs are triaged and prioritized (labels, milestones, assignees)
+- Debugging and observability tools (Sentry, structured logging, error tracing)
+- Fix workflow: how bugs move from open → diagnosed → resolved
+- Patterns across issues: what categories of problems recur?
 
 **Issue Search Strategy:**
 
-- Filter issues containing keywords: "bug", "regression", "test", "CI", "build", "deploy", "eval", "latency", "agent"
-- Use regex patterns if needed
-- Select recent or highly relevant issues
-- Extract: Issue title, description (1-2 sentences), and citation
+- Browse both **open and closed** issues — closed issues reveal how bugs were actually resolved
+- Look for issues that expose **engineering challenges**, not just user requests: dependency failures, API contract mismatches, async/concurrency bugs, security gaps, missing test infrastructure, schema errors
+- Prioritize issues that say something about *how the team builds the system*, not just what features users want
+- Extract **10–15 issues** that together illustrate 3–5 recurring problem categories
+
+**Issue Schema (per issue):**
+
+```json
+{
+  "Issue_Title": "Exact title from issue tracker",
+  "Issue_Number": 123,
+  "Status": "Open | Closed",
+  "Description": "1-2 sentences: what is the problem and why does it matter engineering-wise.",
+  "Citation": "[N]"
+}
+```
 
 **Questions to Answer:**
 
-- **Issues:** List of minimum 10 recent/relevant issues with titles, descriptions, and citations
-- **Practices:** What bug resolution practices are followed? How are bugs triaged and prioritized? Also, from the fetched 10 issues, create a summary of the bug solving approach.
-- **Tools:** What issue tracking and debugging tools are used? (e.g., Sentry, Jira, GitHub Issues, logging frameworks)
-- **Stakeholders:** Who is involved in the bug resolution process? (e.g., maintainers, bug triagers, community contributors)
-- **Others:** Any other bug-solving context, common pitfalls, or architectural limitations discovered
+- **Issues:** 10–15 issues selected to reveal engineering patterns, not for completeness
+- **Practices:** Synthesize the issues into 2–4 recurring problem categories. What does the pattern of bugs tell you about this team's engineering challenges, architectural weak spots, or process gaps?
+- **Tools:** What issue tracking and debugging tools are used? (e.g., GitHub Issues, Sentry, structured logs)
+- **Stakeholders:** Who triages and resolves bugs? (e.g., core maintainers, platform team, community contributors)
+- **Others:** Any architectural limitations, systemic gaps, or quality anti-patterns that appear across multiple issues
 
-**Objective:** Identify common engineering pitfalls, architectural limitations, and the internal bug-resolution process of the developers.
+**Objective:** Surface the *classes* of engineering problems this team repeatedly encounters — not a raw issue list.
+
+### 5. Software Engineering Methodology
+
+**What This Area Covers:**
+What methodologies do teams use to manage the development lifecycle?
+
+**What to Look For:**
+
+- Development methodologies and frameworks (Agile, Scrum, Kanban, Waterfall, etc.)
+- Sprint cycles or release cadences (2-week sprints, monthly releases, etc.)
+- Project management approaches and tools
+- Team structure and size (how many engineers, team composition)
+- Development lifecycle practices (planning, execution, retrospectives)
+- Rapid prototyping or internal dogfooding practices
+- Feature planning and roadmap management
+
+**Questions to Answer:**
+
+- **Practices:** What software engineering methodologies does the team use to align on development of this agent? How big is the team in size? What development lifecycle do they follow?
+- **Tools:** What is the name of the process or methodology? (e.g., Scrum, Agile, Kanban, waterfall, rapid prototyping, internal dogfooding)
+- **Stakeholders:** Who creates infrastructure or leads the engineering lifecycle? (e.g., engineering managers, tech leads, scrum masters)
+- **Others:** Any other relevant software development details, team organization, or process descriptions
+
+### 6. Team Communication
+
+**What This Area Covers:**
+How developers communicate and collaborate with each other during development. Focus on interpersonal communication channels, decision-making processes, and knowledge sharing. Also include automation/bots that facilitate communication workflows if available.
+
+**IMPORTANT DISTINCTION:**
+
+- **PRIMARY FOCUS:** Human-to-human communication practices (design docs, RFCs, Slack channels, email lists, meetings, decision-making discussions, knowledge sharing)
+- **ALSO INCLUDE:** Communication-related automation/bots if mentioned (e.g., Slack bots for notifications, PR comment bots, automated meeting summaries)
+- **EXCLUDE:** Pure workflow automation without human communication aspect (CI/CD triggers, deployment automation unrelated to team communication)
+
+**What to Look For:**
+
+- **Human Communication Channels:** Slack, Discord, Microsoft Teams, email lists, mailing lists, forums
+- **Collaborative Decision-Making:** RFCs (Request for Comments), design docs, ADRs (Architecture Decision Records), proposal reviews
+- **Knowledge Sharing Practices:** Internal wikis, Q&A platforms, office hours, presentations, newsletters, documentation collaboration
+- **Meeting Structures:** Standups, retrospectives, planning meetings, design reviews, sync meetings
+- **Contributor Onboarding:** Mentorship programs, onboarding documentation, welcome processes
+- **Communication Automation (if mentioned):** Bots for notifications, PR reviewers assignment, meeting scheduling, status updates
+
+**Questions to Answer:**
+
+- **Practices:** What communication practices does the team use to align on development? How do they onboard new contributors? How are decisions made through human discussion and collaboration?
+- **Tools:** What are the names of the communication tools and platforms? (e.g., Slack, Discord, Google Docs for design docs, YAQS, mailing lists)
+- **Stakeholders:** Who is involved in these communications? (e.g., core team, community contributors, maintainers, technical leads)
+- **Others:** Any other descriptions of communication workflows, meeting cadences, collaboration practices, or communication-facilitating automation
+
+### 7. Holistic Documentation
+
+**What This Area Covers:**
+The comprehensive documentation culture, systems, and practices. How is documentation treated as a first-class engineering artifact? Not just "what tools host docs" but "how do engineers approach documentation throughout the development lifecycle."
+
+**EMPHASIS:** Focus on documentation **culture, standards, and systematic practices** - how the team values, creates, maintains, and enforces documentation quality across the entire project.
+
+**What to Look For:**
+
+- **Documentation Culture:** Documentation-as-code practices, docs treated like production code, required before merging
+- **Documentation Standards:** Code comment requirements, documentation review processes, quality gates, style guides
+- **Maintenance Practices:** Update frequency, freshness policies, staleness detection, ownership models, deprecation handling
+- **Documentation Types:** API docs, tutorials, design docs, architecture docs, runbooks, conceptual guides, onboarding materials
+- **Review and Quality:** Documentation review processes (technical review, clarity review, writing review), approval workflows
+- **Tooling and Infrastructure:** Hosting platforms (ReadTheDocs, GitBook, GitHub Pages, Docusaurus), generation tools (Swagger, OpenAPI, JSDoc, Sphinx)
+- **Accessibility and Discoverability:** Search functionality, navigation, cross-linking, versioning, multi-language support
+- **Technical Writer Involvement:** Role of technical writers, collaboration with engineers, documentation ownership
+- **Testing and Validation:** Doc testing, example code validation, link checking, accessibility audits
+
+**Questions to Answer:**
+
+- **Practices:** What documentation culture and practices are followed? How is documentation created, reviewed, and maintained? What standards are enforced? How frequently is documentation updated and validated?
+- **Tools:** What tools are used to create, host, generate, and maintain documentation? (e.g., g3doc, ReadTheDocs, GitBook, Sphinx, Docusaurus, freshness metadata systems)
+- **Stakeholders:** Who writes, reviews, and maintains documentation? What roles are involved? (e.g., technical writers, document owners, engineers, reviewers)
+- **Others:** Any other descriptions of documentation workflows, comprehensive documentation systems, quality processes, or cultural practices around documentation
+
+### 8. LLM Integration & Prompt Management
+
+**What This Area Covers:**
+How do the engineers manage the agent's interaction with underlying models?
+
+**What to Look For:**
+
+- Prompt versioning practices and systems
+- LLM context management and optimization
+- Model selection/switching processes (GPT-4, Claude, Gemini, etc.)
+- Prompt engineering workflows and best practices
+- Tools for prompt management (LangSmith, Model Context Protocol - MCP, PromptLayer, etc.)
+- Evaluation frameworks for LLM outputs (accuracy, relevance, safety)
+- Fine-tuning or model customization practices
+- Token usage optimization and cost management
+- Fallback strategies for LLM failures
+
+**Questions to Answer:**
+
+- **Practices:** What practices are used for prompt versioning, managing LLM context, and environment feedback loops? How are prompts tested and evaluated?
+- **Tools:** What tools or protocols are used? (e.g., Model Context Protocol - MCP, LangSmith, PromptLayer, custom frameworks)
+- **Stakeholders:** Who manages prompts and LLM integration? (e.g., AI/ML engineers, prompt engineers, core developers)
+- **Others:** Any other descriptions of LLM integration workflows, optimization strategies, or quality controls
 
 ## Anti-Hallucination Rules & Output Instructions
 
@@ -273,8 +469,9 @@ How do the developers maintain the agent's source code? What systems do they use
 - Ensure the entire JSON is complete - do **not** truncate
 - Double-check JSON syntax: proper commas, balanced braces, valid structure
 - All citations [1], [2], etc. must have corresponding entries in References section
-- All 2 SE_Practices areas must be present with all 4 subsections each
-- Bug_Solving_Approaches must include Issues array with minimum 10 issues
+- All 8 SE_Practices areas must be present with all 4 subsections each
+- Repository_Statistics must have all required fields
+- Bug_Solving_Approaches must include an Issues array with 10–15 issues selected to reveal recurring engineering patterns
 
 ### Rule 6: Repository Not Found Handling
 
@@ -421,7 +618,155 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 ```json
 {
   "Agent_Name": "{agent_name}",
+  "Description": [
+    {
+      "Summary": "Brief 2-3 sentence description of what the system does: its category (coding agent, chatbot, computer-use agent, CRM/sales agent, enterprise workflow platform, etc.), primary capabilities, and deployment surface (CLI, web app, IDE plugin, API, SaaS).",
+      "evidence": [
+        {
+          "quote": "Exact verbatim sentence from official product page, README, or authoritative source describing the agent's purpose.",
+          "citation": "[1]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "Estimated 50K+ lines across Python and TypeScript based on repository language breakdown",
+        "evidence": [
+          {
+            "quote": "The repository contains approximately 45,231 lines of Python code and 12,450 lines of TypeScript.",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "14,523 stars on GitHub as of April 2024",
+        "evidence": [
+          {
+            "quote": "14.5k stars",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "87 contributors to the main repository",
+        "evidence": [
+          {
+            "quote": "87 contributors",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "Updated weekly with approximately 3-4 releases per month based on release history from Jan-Apr 2024",
+        "evidence": [
+          {
+            "quote": "We publish new releases approximately every 1-2 weeks based on feature completion and testing cycles.",
+            "citation": "[2]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "Python (75%), TypeScript (20%), other (5%)",
+        "evidence": [
+          {
+            "quote": "Python 75.3%",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ]
+  },
   "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "Summary": "Team uses Playwright for end-to-end testing with minimum 80% coverage requirement. All PRs must include tests before merge.",
+          "evidence": [
+            {
+              "quote": "All pull requests must maintain at least 80% test coverage and include Playwright e2e tests for user-facing features.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "We run a comprehensive test suite on every commit, including unit tests, integration tests, and end-to-end browser tests.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Playwright for e2e testing, Pytest for unit tests, GitHub Actions for CI automation",
+          "evidence": [
+            {
+              "quote": "We rely heavily on Playwright to ensure our agent can navigate DOM trees without hallucinating selectors.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Our test suite runs on GitHub Actions with parallel execution across 5 runners to speed up CI.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "QA engineers and core maintainers review test coverage before merge. Red team conducts adversarial testing quarterly.",
+          "evidence": [
+            {
+              "quote": "All tests must be reviewed by at least one QA engineer before merging to ensure comprehensive coverage.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Available",
+          "evidence": []
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "Summary": "...",
+          "evidence": [
+            {
+              "quote": "...",
+              "citation": "[X]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ]
+    },
     "Code_Review_Process": {
       "Practices": [
         {
@@ -491,6 +836,110 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
           "evidence": []
         }
       ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "...",
+          "evidence": []
+        }
+      ]
     }
   },
   "References": {
@@ -529,72 +978,10 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 2. **Valid JSON:** Must be parsable JSON with proper syntax (commas, braces, quotes)
 3. **No Truncation:** Do not cut off the JSON - include all sections fully
 4. **Minimum 10 Issues:** Bug_Solving_Approaches must have at least 10 issues
-5. **All 2 Areas:** All SE_Practices areas must be populated with all 4 subsections each
+5. **All 8 Areas:** All SE_Practices areas must be populated with all 4 subsections each
 6. **Complete References:** Every citation [1], [2], etc. must have a References entry
 7. **Verbatim Quotes:** All quotes must be exact text from sources
 8. **Real URLs:** All Links must be real, accessible URLs (no made-up paths)
-
-## Quality Review Checklist
-
-Before submitting your research, **verify ALL of the following:**
-
-### Source Quality
-
-- [ ] All quotes are VERBATIM (copy-pasted exactly from sources)
-- [ ] No paraphrasing or rewording in the evidence quotes
-- [ ] Every citation [1], [2], etc. has a corresponding entry in References
-- [ ] All URLs in References are real, accessible links (not guessed paths)
-- [ ] Date_Pulled is accurate (today's date in YYYY-MM-DD format)
-- [ ] Website_Type accurately describes each source
-
-### Content Focus
-
-- [ ] Focus is on DEVELOPMENT PRACTICES, not product features
-- [ ] No user-facing features substituted for development practices
-- [ ] Distinction is clear between "how developers built it" vs "what it does for users"
-- [ ] If internal information is unavailable, marked as "Not Available" (not substituted)
-
-### Completeness
-
-- [ ] Repository Statistics section is complete with evidence (or marked "Not Available")
-- [ ] Bug_Solving_Approaches includes **minimum 10 issues** with titles, descriptions, citations
-- [ ] All 2 SE_Practices areas are populated (or marked "Not Available")
-- [ ] Each SE practice area has all 4 subsections: Practices, Tools, Stakeholders, Others
-- [ ] **Minimum 15-20 total references** in References section
-- [ ] **At least 5-10 external sources** (blogs, papers, talks, not just GitHub)
-
-### JSON Validity
-
-- [ ] JSON is valid (no syntax errors, balanced braces, proper commas)
-- [ ] JSON is complete (not truncated or cut off)
-- [ ] No trailing commas in arrays or objects
-- [ ] All strings are properly quoted
-- [ ] All keys use underscores (Agent_Name, not AgentName)
-
-### Evidence Quality
-
-- [ ] No file names as quotes (e.g., "CONTRIBUTING.md")
-- [ ] No URLs as quotes (e.g., "https://...")
-- [ ] No single-word quotes (e.g., "GitHub Actions")
-- [ ] No webpage titles as quotes (e.g., "About Us")
-- [ ] All quotes are complete sentences or meaningful excerpts (5-50 words)
-- [ ] Quotes directly support their corresponding summaries
-
-### Anti-Hallucination
-
-- [ ] No made-up URLs or guessed file paths
-- [ ] No invented statistics or data
-- [ ] No assumptions presented as facts
-- [ ] All information traceable to actual sources
-- [ ] If unsure, marked as "Not Available" rather than guessing
-
-### Research Efficiency
-
-- [ ] No single website was attempted more than 5 times without success
-- [ ] When a source failed 5 times, moved to alternative sources
-- [ ] Failed sources are marked as "Not Available" with explanation
-- [ ] No infinite loops on the same extraction attempts
-- [ ] Research completed within reasonable timeframe (not stuck on one source)
 
 ## Common Pitfalls to Avoid
 
@@ -740,6 +1127,17 @@ Before submitting your research, **verify ALL of the following:**
 ```json
 {
   "Agent_Name": "Example Agent",
+  "Description": [
+    {
+      "Summary": "Example Agent is an open-source coding agent that assists developers with code generation, refactoring, and debugging through an IDE plugin and CLI interface.",
+      "evidence": [
+        {
+          "quote": "Example Agent is an AI-powered coding assistant that integrates directly into your IDE to help you write, review, and fix code.",
+          "citation": "[1]"
+        }
+      ]
+    }
+  ],
   "SE_Practices": {
     "Testing_and_Reliability": {
       "Practices": [{"Summary": "...", "evidence": []}],
@@ -760,8 +1158,9 @@ Your final output MUST be **ONLY the JSON structure**, starting with `{` and end
 The JSON must include:
 
 - Agent_Name
+- Description (agent category, capabilities, and deployment surface)
 - Repository_Statistics (with complete evidence arrays for ALL metrics)
-- SE_Practices (ALL 2 areas populated with Practices, Tools, Stakeholders, Others subsections)
+- SE_Practices (ALL 8 areas populated with Practices, Tools, Stakeholders, Others subsections)
 - Bug_Solving_Approaches.Issues (MINIMUM 10 issues, each with title, description, citation)
 - References (every citation [1], [2], etc. must have an entry)
 

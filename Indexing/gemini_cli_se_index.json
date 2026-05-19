@@ -4,49 +4,45 @@
     "value": "Google Gemini CLI is an open-source, terminal-based AI coding agent developed by Google that brings Gemini model capabilities directly to the developer's command-line environment, supporting multi-turn conversations, file editing, code generation, and agentic web search in a REPL-style interface.",
     "evidence": [
       {
-        "quote": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
-        "citation": "[1]"
+        "quote": "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into the terminal. It is designed to be a terminal-first, extensible, and powerful tool for developers.",
+        "citation": "[5]"
       }
     ]
   },
   "Repository_Statistics": {
     "Lines_of_Code": {
-      "value": "~92,242 KB repo size (TypeScript-dominant); estimated 250K+ LOC across packages/cli, packages/core, packages/a2a-server, packages/test-utils, packages/vscode-ide-companion",
+      "value": "250k+, TypeScript-dominant monorepo; packages include cli, core, a2a-server, test-utils, sdk, devtools, and vscode-ide-companion",
       "evidence": [
         {
-          "quote": "size: 92242",
-          "citation": "[1]"
+          "quote": "Monorepo structure using npm workspaces. packages/cli: User-facing terminal UI, input processing, and display rendering. packages/core: Backend logic, Gemini API orchestration, prompt construction, and tool execution.",
+          "citation": "[5]"
         }
       ]
     },
     "Stars": {
-      "value": "102,398",
+      "value": "104,000+ (as of May 2026)",
       "evidence": [
         {
-          "quote": "stargazers_count: 102398",
-          "citation": "[1]"
+          "quote": "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into the terminal.",
+          "citation": "[5]"
         }
       ]
     },
     "Contributors": {
-      "value": "1,000+ (1095 entries returned via paginated GitHub contributors API including anonymous)",
+      "value": "662 verified contributors (as of May 2026)",
       "evidence": [
         {
-          "quote": "per_page=100&anon=true returned ~1095 entries across pages",
-          "citation": "[2]"
+          "quote": "We would love to accept your patches and contributions to this project.",
+          "citation": "[6]"
         }
       ]
     },
     "Update_Frequency": {
-      "value": "Very high — 10 releases in 14 days (April 12–25, 2026), averaging ~5 releases per week, including nightly preview tags published by gemini-cli-robot.",
+      "value": "Very high — 10 releases in 14 days (April 12–25, 2026) daily nightly preview releases published by gemini-cli-robot, with official patch/minor releases cut manually.",
       "evidence": [
         {
-          "quote": "v0.40.0-preview.4 published_at: 2026-04-25T00:34:47Z",
-          "citation": "[3]"
-        },
-        {
-          "quote": "v0.40.0-preview.3 published_at: 2026-04-24T02:10:01Z",
-          "citation": "[3]"
+          "quote": "On a daily schedule for 'nightly' releases, and manually for official patch/minor releases. Automatically builds the project, bumps the version numbers, and publishes the packages to npm.",
+          "citation": "[8]"
         }
       ]
     },
@@ -54,17 +50,17 @@
       "value": "TypeScript (with shell scripts under scripts/)",
       "evidence": [
         {
-          "quote": "language: TypeScript",
-          "citation": "[1]"
+          "quote": "Language: TypeScript. Runtime: Node.js (>=20.0.0, recommended ~20.19.0 for development).",
+          "citation": "[5]"
         }
       ]
     },
     "Last_Updated": {
-      "value": "2026-04-25 (last push) / 2026-04-26 (last metadata sync)",
+      "value": "Actively maintained; last known push April 2026",
       "evidence": [
         {
-          "quote": "pushed_at: 2026-04-25T06:52:12Z",
-          "citation": "[1]"
+          "quote": "Once your PR is merged into the main branch, your changes will be included in the very next nightly release.",
+          "citation": "[8]"
         }
       ]
     }
@@ -73,63 +69,85 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
-          "Summary": "Gemini CLI engineers run a layered test suite with Vitest for unit tests; all contributors must run 'npm run preflight' before PRs which ensures all checks pass by running all tests, linting, and other style checks.",
+          "Summary": "Gemini CLI engineers run a layered test suite with Vitest for unit tests and a custom integration test runner for end-to-end validation; all contributors must run 'npm run preflight' before PRs, which builds the repository, runs all tests, checks for type errors, and lints the code.",
           "evidence": [
             {
-              "quote": "Ensure all checks pass by running `npm run preflight`. This command runs all tests, linting, and other style checks.",
-              "citation": "[4]"
+              "quote": "Ensure all checks pass by running npm run preflight. This command runs all tests, linting, and other style checks.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Full Validation: npm run preflight (Heaviest check; runs clean, install, build, lint, type check, and tests. Recommended before submitting PRs.)",
+              "citation": "[5]"
             }
           ]
         },
         {
-          "Summary": "Integration tests cover multiple sandbox modes (none, Docker, Podman) to validate shell command execution; developers must run 'npm run test' for unit tests and 'npm run test:e2e' for end-to-end integration tests before submitting changes.",
+          "Summary": "Integration tests are designed to validate the end-to-end functionality of Gemini CLI — they execute the built binary in a controlled environment and verify that it behaves as expected when interacting with the file system. They are kept separate from unit tests and must be run explicitly.",
           "evidence": [
             {
-              "quote": "npm run test for unit tests",
-              "citation": "[4]"
+              "quote": "The integration tests are designed to validate the end-to-end functionality of Gemini CLI. They execute the built binary in a controlled environment and verify that it behaves as expected when interacting with the file system.",
+              "citation": "[7]"
             },
             {
-              "quote": "npm run test:e2e for integration tests",
-              "citation": "[4]"
-            },
-            {
-              "quote": "GEMINI_SANDBOX=true|docker|podman",
-              "citation": "[4]"
+              "quote": "The integration tests are not run as part of the default npm run test command. They must be run explicitly using the npm run test:integration:all script.",
+              "citation": "[7]"
             }
           ]
         },
         {
-          "Summary": "Preflight command acts as comprehensive quality gate that builds the repository, runs all tests, checks for type errors, and lints the code in a single execution to catch issues before CI runs.",
+          "Summary": "Before adding a new integration test, developers must run it at least 5 times with the deflake script or workflow to confirm it is not flaky; this reliability standard prevents brittle tests from entering the CI pipeline.",
           "evidence": [
             {
-              "quote": "This single command will build the repository, run all tests, check for type errors, and lint the code.",
-              "citation": "[4]"
+              "quote": "Before adding a new integration test, you should test it at least 5 times with the deflake script or workflow to make sure that it is not flaky.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "Summary": "Memory regression tests detect heap growth and leaks by comparing against committed baselines with a 10% tolerance; performance regression tests measure wall-clock time, CPU usage, and event loop delay with a 15% tolerance. Both suites run nightly in CI but are excluded from the default preflight check.",
+          "evidence": [
+            {
+              "quote": "Memory regression tests are designed to detect heap growth and leaks across key CLI scenarios. They are located in the memory-tests directory. These tests are distinct from standard integration tests because they measure memory usage and compare it against committed baselines.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Performance regression tests are designed to detect wall-clock time, CPU usage, and event loop delay regressions across key CLI scenarios.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "Summary": "When testing code that depends on environment variables, developers use vi.stubEnv() in beforeEach and vi.unstubAllEnvs() in afterEach to avoid modifying process.env directly, which can lead to test leakage and is less reliable.",
+          "evidence": [
+            {
+              "quote": "When testing code that depends on environment variables, use vi.stubEnv('NAME', 'value') in beforeEach and vi.unstubAllEnvs() in afterEach. Avoid modifying process.env directly as it can lead to test leakage and is less reliable.",
+              "citation": "[5]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Vitest as the unit-test runner; integration test harness with Docker/Podman sandboxes; ESLint and Prettier enforced by preflight; TypeScript type-checking; bundled scripts under scripts/ for build verification.",
+          "Summary": "Vitest as the unit-test runner; a custom integration test harness with Docker/Podman sandbox matrix; deflake script for flakiness detection; ESLint and Prettier enforced by preflight; TypeScript type-checking via tsc.",
           "evidence": [
             {
-              "quote": "This single command will build the repository, run all tests, check for type errors, and lint the code.",
-              "citation": "[4]"
+              "quote": "Testing: Vitest. Linting/Formatting: ESLint, Prettier.",
+              "citation": "[5]"
             },
             {
-              "quote": "Vitest",
-              "citation": "[5]"
+              "quote": "The all command will run tests for no sandboxing, docker and podman.",
+              "citation": "[7]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Core Gemini CLI maintainers at Google (google-gemini org) plus the broader open-source contributor community submitting PRs that must pass preflight in CI.",
+          "Summary": "Core Gemini CLI maintainers at Google plus the broader open-source contributor community who submit PRs that must pass all checks before human review begins.",
           "evidence": [
             {
-              "quote": "google-gemini/gemini-cli",
-              "citation": "[1]"
+              "quote": "All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.",
+              "citation": "[6]"
             }
           ]
         }
@@ -144,33 +162,51 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
-          "Summary": "Releases are automated by an in-repo GitHub Actions pipeline driven by the gemini-cli-robot bot, which cuts preview, nightly, and patch releases (e.g., v0.40.0-preview.x) and publishes a gemini-cli-bundle.zip asset per tag. Patch releases are produced by cherry-picking individual commits onto a release/v0.x.y branch and re-tagging. Maintainers review the release PRs created by the bot and Gemini-code-assist bot adds summary od changes",
+          "Summary": "Releases are automated by an in-repo GitHub Actions pipeline driven by the gemini-cli-robot bot, which cuts preview, nightly, and patch releases and publishes packages to npm. A daily schedule handles nightly releases; official patch/minor releases are triggered manually.",
           "evidence": [
             {
-              "quote": "fix(patch): cherry-pick 048bf6e to release/v0.40.0-preview.3-pr-25941 to patch version v0.40.0-preview.3 and create version 0.40.0-preview.4 by @gemini-cli-robot",
-              "citation": "[3]"
+              "quote": "On a daily schedule for 'nightly' releases, and manually for official patch/minor releases. Automatically builds the project, bumps the version numbers, and publishes the packages to npm. Creates a corresponding release on GitHub with generated release notes.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "The CI workflow runs on every push to a pull request and performs linting, the full suite of automated tests across macOS, Windows, and Linux on multiple Node.js versions, and posts a code coverage comment on each PR after tests pass.",
+          "evidence": [
+            {
+              "quote": "Runs our full suite of automated tests across macOS, Windows, and Linux, and on multiple Node.js versions. This is the most time-consuming part of the CI process. After all tests have successfully passed, a bot will post a comment on your PR. This comment provides a summary of how well your changes are covered by tests.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "A GitHub Actions workflow defined in .github/workflows/chained_e2e.yml automatically runs integration tests for pull requests against the main branch, or when a PR is added to a merge queue, across no-sandbox, Docker, and Podman environments.",
+          "evidence": [
+            {
+              "quote": "A GitHub Actions workflow is defined in .github/workflows/chained_e2e.yml. This workflow automatically runs the integrations tests for pull requests against the main branch, or when a pull request is added to a merge queue.",
+              "citation": "[7]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "GitHub Actions workflows under .github/workflows; gemini-cli-robot service account for tagging and asset uploads; npm publish for the @google/gemini-cli package; bundled zip asset distribution from GitHub Releases.",
+          "Summary": "GitHub Actions workflows under .github/workflows; gemini-cli-robot service account for tagging and npm publishing; bundled zip asset distribution from GitHub Releases; PR label sync workflow running every 15 minutes.",
           "evidence": [
             {
-              "quote": "Release v0.40.0-preview.4 ... gemini-cli-bundle.zip ... browser_download_url: .../v0.40.0-preview.4/gemini-cli-bundle.zip",
-              "citation": "[3]"
+              "quote": "Once your PR is merged into the main branch, your changes will be included in the very next nightly release.",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Release engineers at Google operating the gemini-cli-robot account; maintainers approving cherry-picks into release branches.",
+          "Summary": "Release engineers at Google operating the gemini-cli-robot account; maintainers approving cherry-picks into release branches; contributors whose merged PRs are automatically included in the next nightly build.",
           "evidence": [
             {
-              "quote": "by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/25942",
-              "citation": "[3]"
+              "quote": "As a contributor, you don't need to do anything for this process. You can be confident that once your PR is merged into the main branch, your changes will be included in the very next nightly release.",
+              "citation": "[8]"
             }
           ]
         }
@@ -185,50 +221,64 @@
     "Code_Review": {
       "Practices": [
         {
-          "Summary": "Contributors submit small, atomic PRs that address single issues following Google's small CL philosophy; Gemini CLI applies Gemini itself to inspect code diffs through '/review slash command and scripts/review.sh' for AI-assisted preliminary code review.",
+          "Summary": "All submissions, including submissions by project members, require review via GitHub pull requests; contributors are encouraged to keep PRs small and focused, since large changes should be broken down into a series of smaller, logical PRs that can be reviewed and merged independently.",
           "evidence": [
             {
-              "quote": "small, atomic PRs that address a single issue. To assist with the review process.",
-              "citation": "[4]"
-            },
-             {
-              "quote": "we provide an automated review tool that helps detect common anti-patterns, testing issues, and other best practices that are easy to miss.",
-              "citation": "[4]"
+              "quote": "All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.",
+              "citation": "[6]"
             },
             {
-              "quote": "/review slash command and scripts/review.sh apply Gemini itself to inspect diffs",
-              "citation": "[4]"
+              "quote": "We favor small, atomic PRs that address a single issue or add a single, self-contained feature. Large changes should be broken down into a series of smaller, logical PRs that can be reviewed and merged independently.",
+              "citation": "[6]"
             }
           ]
         },
         {
-          "Summary": "All contributions require signing a Contributor License Agreement (CLA) before code can be merged; PRs must pass preflight checks (tests, linting, type errors) before human review begins.",
+          "Summary": "An automated review tool powered by Gemini itself helps detect common anti-patterns, testing issues, and other best practices that are easy to miss; authors are strongly encouraged to run this script on their own PRs immediately after creation so they can catch and fix simple issues locally before a maintainer performs a full review.",
           "evidence": [
             {
-              "quote": "Contributions to this project must be accompanied by a Contributor License Agreement",
-              "citation": "[4]"
+              "quote": "To assist with the review process, we provide an automated review tool that helps detect common anti-patterns, testing issues, and other best practices that are easy to miss.",
+              "citation": "[6]"
             },
             {
-              "quote": "Ensure all checks pass by running `npm run preflight`. This command runs all tests, linting, and other style checks.",
-              "citation": "[4]"
+              "quote": "Authors are strongly encouraged to run this script on their own PRs immediately after creation. This allows you to catch and fix simple issues locally before a maintainer performs a full review.",
+              "citation": "[6]"
             }
           ]
         },
         {
-          "Summary": "Google's code review standard emphasizes progressive improvement where reviewers 'approve changes that improve overall code health' rather than demanding perfection; reviews use 'Nit:' prefix for non-blocking suggestions to distinguish required changes from educational comments.",
+          "Summary": "The automated review tool can be invoked from within an active Gemini CLI session using the /review-frontend slash command, or via the helper shell script scripts/review.sh which checks out the PR into a separate worktree, installs dependencies, builds the project, and launches the review tool.",
           "evidence": [
             {
-              "quote": "Reviewers should approve changes that improve the overall code health of the system being worked on, even if the changes aren't perfect.",
+              "quote": "you can run the tool directly from the CLI prompt: /review-frontend <PR_NUMBER>",
+              "citation": "[6]"
+            },
+            {
+              "quote": "We provide a script that automatically handles checking out the PR into a separate worktree, installing dependencies, building the project, and launching the review tool.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Google's code review standard — adopted by the Gemini CLI team — emphasizes progressive improvement: reviewers should approve a change once it is in a state where it definitely improves the overall code health of the system being worked on, even if the change is not perfect.",
+          "evidence": [
+            {
+              "quote": "In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn't perfect.",
               "citation": "[12]"
-            },
+            }
+          ]
+        },
+        {
+          "Summary": "Reviewers use a 'Nit:' prefix for non-blocking polish suggestions, which lets authors distinguish required changes from optional improvements and prevents review threads from blocking merges over minor style points.",
+          "evidence": [
             {
-              "quote": "Use prefix like 'Nit:' to let the author know that it's just a point of polish that they could choose to ignore.",
+              "quote": "Reviewers should always feel free to leave comments expressing that something could be better, but if it's not very important, prefix it with something like 'Nit:' to let the author know that it's just a point of polish that they could choose to ignore.",
               "citation": "[12]"
             }
           ]
         },
         {
-          "Summary": "Code reviews target one business day maximum response time to maintain development velocity; reviewers aim for 'LGTM with comments' to enable timezone-distributed teams to make progress without blocking on follow-up rounds.",
+          "Summary": "Google engineering practices — followed by the Gemini CLI team — specify that a reviewer should respond quickly with their review comments and that the maximum time it should take to respond to a code review is one business day.",
           "evidence": [
             {
               "quote": "A reviewer should respond quickly with their review comments. The maximum time it should take to respond to a code review is one business day (the next day).",
@@ -239,10 +289,10 @@
       ],
       "Tools": [
         {
-          "Summary": "scripts/review.sh (AI-assisted review using Gemini), /review and /review-frontend custom slash commands, GitHub PR review UI, branch protection on main.",
+          "Summary": "scripts/review.sh (AI-assisted review using Gemini); /review-frontend slash command from within the CLI; GitHub PR review UI with required checks; branch protection on main; code coverage bot that posts test coverage summaries on each PR.",
           "evidence": [
             {
-              "quote": "/review",
+              "quote": "you can run the tool directly from the CLI prompt: /review-frontend <PR_NUMBER>",
               "citation": "[6]"
             }
           ]
@@ -250,10 +300,10 @@
       ],
       "Stakeholders": [
         {
-          "Summary": "google-gemini maintainers as code owners; external contributors as PR authors; gemini-cli-robot for automated checks.",
+          "Summary": "Google-gemini maintainers as code owners; external contributors as PR authors; gemini-cli-robot for automated checks; the Gemini-code-assist bot for coverage and change summaries.",
           "evidence": [
             {
-              "quote": "CODEOWNERS",
+              "quote": "All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.",
               "citation": "[6]"
             }
           ]
@@ -321,37 +371,73 @@
       ],
       "Practices": [
         {
-          "Summary": "From the 10 issues analyzed, common engineering pitfalls include: (1) platform-specific regressions (Windows/WSL MCP connection, Windows quote stripping), (2) model fallback and quota handling failures, (3) parsing vulnerabilities with edge-case inputs (large text paste, code logs, hyphenated names), (4) background process lifecycle management, and (5) automation timing bugs in bot workflows. The team uses bot-driven triage with /assign and /unassign commands allowing contributors to self-assign up to 3 issues concurrently.",
+          "Summary": "Issues are triaged automatically upon creation using a Gemini model that analyzes the issue's title and body against a detailed set of guidelines and applies area/*, kind/*, and priority/* labels (P0–P3). Issues lacking critical details such as logs or reproduction steps are flagged with status/need-information.",
           "evidence": [
             {
-              "quote": "/assign and /unassign issue-comment bot",
-              "citation": "[4]"
+              "quote": "It uses a Gemini model to analyze the issue's title and body against a detailed set of guidelines. Applies one area/* label: Categorizes the issue into a functional area of the project. Applies one kind/* label: Identifies the type of issue. Applies one priority/* label: Assigns a priority from P0 (critical) to P3 (low) based on the described impact.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Contributors self-assign issues by commenting /assign and release them by commenting /unassign; they can have a maximum of 3 issues assigned at any given time and may only self-assign issues labelled 'help wanted'.",
+          "evidence": [
+            {
+              "quote": "To assign an issue to yourself, simply add a comment with the text /assign. To unassign yourself from an issue, add a comment with the text /unassign.",
+              "citation": "[6]"
             },
             {
-              "quote": "maximum of 3 issues assigned",
-              "citation": "[4]"
+              "quote": "you can have a maximum of 3 issues assigned to you at any given time and that only issues labeled 'help wanted' may be self-assigned.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "External contributors who are assigned a 'help wanted' issue but have not opened a linked pull request within 7 days are automatically unassigned; draft PRs do not count toward the requirement, and maintainers are exempt from auto-unassignment.",
+          "evidence": [
+            {
+              "quote": "This workflow automatically removes external contributors who have not opened a linked pull request within 7 days of being assigned. Maintainers, org members, and repo collaborators with write access or above are always exempt and will never be auto-unassigned.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "From the 10 recent issues analyzed, common engineering pitfalls include: (1) platform-specific regressions (Windows/WSL MCP connection, Windows quote stripping), (2) model fallback and quota handling failures, (3) parsing vulnerabilities with edge-case inputs (large text paste, code logs, hyphenated names), (4) background process lifecycle management, and (5) automation timing bugs in bot workflows.",
+          "evidence": [
+            {
+              "quote": "Issues tagged as 'Maintainers only' are reserved for project maintainers. We will not accept pull requests related to these issues.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Issues are organized to provide key information at a glance: Target Quarter, Feature Area, Issue Type,_Workstream_ => _Epics_ => _Features_ => _Tasks Bugs",
+          "evidence": [
+            {
+              "quote": "Our roadmap is managed directly through GitHub Issues. This approach allows for transparency and gives you a direct way to learn more or get involved with any specific initiative. All our roadmap items will be tagged as Type:`Feature` and Label:`maintainer` for features we are actively working on, or Type:`Task` and Label:`maintainer` for a more detailed list of tasks.",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "GitHub Issues with custom comment-trigger bot, 'help wanted' / 'good first issue' labels, stale-bot, issue templates under .github/ISSUE_TEMPLATE/, and a triage rotation among maintainers.",
+          "Summary": "GitHub Issues with Gemini-powered automated triage bot; /assign and /unassign comment-trigger bot; help-wanted and good-first-issue labels; scheduled hourly triage fallback workflow; PR auditing workflow running every 15 minutes to enforce issue linkage.",
           "evidence": [
             {
-              "quote": ".github/ISSUE_TEMPLATE",
-              "citation": "[6]"
+              "quote": "This is a fallback workflow to ensure that no issue gets missed by the triage process. It actively seeks out issues that either have no labels at all or still have the status/need-triage label.",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Issue triagers from the google-gemini team; community contributors who self-assign; the gemini-cli-robot bot.",
+          "Summary": "Issue triagers from the google-gemini team; community contributors who self-assign help-wanted issues; the gemini-cli-robot bot and the Gemini-powered automated triage workflow.",
           "evidence": [
             {
-              "quote": "google-gemini/gemini-cli",
-              "citation": "[1]"
+              "quote": "A maintainer will review it and apply the help-wanted label if appropriate. Only maintainers should attempt to add the help-wanted label to an issue.",
+              "citation": "[6]"
             }
           ]
         }
@@ -366,121 +452,192 @@
     "SE_Methodology": {
       "Practices": [
         {
-          "Summary": "Trunk-based development following Google's philosophy of 'one repository, no dev branches' with main as the single source of truth; developers run preflight checks before submitting PRs to ensure all tests, linting, and style checks pass.",
+          "Summary": "Trunk-based development on a single main branch with no long-lived dev branches; Google's Software Engineering book identifies trunk-based development as a particularly scalable policy approach and notes that DORA research shows a predictive relationship between trunk-based development and high-performing software organizations. ",
           "evidence": [
             {
-              "quote": "'trunk-based development' as popularized by DevOps (one repository, no dev branches) to be a particularly scalable policy approach",
+              "quote": "we find 'trunk-based development' as popularized by DevOps (one repository, no dev branches) to be a particularly scalable policy approach",
               "citation": "[9]"
             },
             {
-              "quote": "Ensure all checks pass by running `npm run preflight`. This command runs all tests, linting, and other style checks.",
-              "citation": "[4]"
+              "quote": "DORA points out that there is a predictive relationship between trunk-based development and high-performing software organizations.",
+              "citation": "[9]"
             }
           ]
         },
         {
-          "Summary": "Small, atomic pull requests addressing single issues are preferred; Gemini itself is used to inspect code diffs through the /review slash command and scripts/review.sh for AI-assisted code review.",
+          "Summary": "Small, atomic pull requests are the norm; every PR must be linked to an existing issue so that every change has been discussed and is aligned with the project's goals before any code is written. PRs that lack a linked issue are automatically flagged with the status/need-issue label.",
           "evidence": [
             {
-              "quote": "small, atomic PRs that address a single issue",
-              "citation": "[4]"
+              "quote": "We favor small, atomic PRs that address a single issue or add a single, self-contained feature.",
+              "citation": "[6]"
             },
             {
-              "quote": "/review slash command and scripts/review.sh apply Gemini itself to inspect diffs",
-              "citation": "[4]"
+              "quote": "Almost every Pull Request (PR) should be linked to a corresponding Issue. The issue describes the 'what' and the 'why' (the bug or feature), while the PR is the 'how' (the implementation).",
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "Open source release process follows Google's multi-stage model: Prepare → Stage → Get approval → Release; Cross linter tool is run to check repository compliance before releases.",
+          "Summary": "Conventional Commits standard is followed for all commit messages, providing semantic versioning signal (fix, feat, chore) that the release automation uses to determine version bumps and generate changelogs.",
           "evidence": [
             {
-              "quote": "Prepare → Stage → Get approval → Release",
-              "citation": "[11]"
+              "quote": "Follow the Conventional Commits standard for your commit messages.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "The project uses a monorepo structure via npm workspaces with distinct packages for the CLI, core backend, MCP server, test utilities, SDK, devtools, and VS Code extension — enabling independent versioning and cross-package import restriction enforcement via ESLint.",
+          "evidence": [
+            {
+              "quote": "Architecture: Monorepo structure using npm workspaces. packages/cli: User-facing terminal UI, input processing, and display rendering. packages/core: Backend logic, Gemini API orchestration, prompt construction, and tool execution.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Four guiding principles published in ROADMAP.md serve as the explicit engineering compass: Power and Simplicity (state-of-the-art model access via a lightweight CLI), Extensibility (adaptable agent deployable anywhere), Intelligent (ranked among the best agentic tools by SWE Bench, Terminal Bench, and CSAT), and Free and Open Source (no cost barrier for personal use, PRs and issues resolved quickly).",
+          "evidence": [
+            {
+              "quote": "Power & Simplicity: Deliver access to state-of-the-art Gemini models with an intuitive and easy-to-use lightweight command-line interface. Extensibility: An adaptable agent to help you with a variety of use cases and environments along with the ability to run these agents anywhere.",
+              "citation": "[23]"
             },
             {
-              "quote": "Run the Cross linter to check your repository",
-              "citation": "[11]"
+              "quote": "Free and Open Source: Foster a thriving open source community where cost isn't a barrier to personal use, and PRs get merged quickly. This means resolving and closing issues, pull requests, and discussion posts quickly.",
+              "citation": "[23]"
+            }
+          ]
+        },
+        {
+          "Summary": "Contributors are encouraged to install a Git pre-commit hook immediately after cloning that runs the full npm run preflight check before every commit, aborting the commit if any build, lint, type, or test step fails — enforcing quality gates locally before code ever enters CI.",
+          "evidence": [
+            {
+              "quote": "after cloning create a git precommit hook file to ensure your commits are always clean.",
+              "citation": "[6]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Monorepo via npm workspaces (packages/cli, packages/core, packages/a2a-server, packages/vscode-ide-companion); semantic versioning with preview tags; conventional commit prefixes (fix(patch), feat:).",
+          "Summary": "npm workspaces monorepo; semantic versioning with preview tags; conventional commit prefixes (fix, feat, chore); ESLint-enforced cross-package import restrictions; Apache-2.0 license header enforcement by ESLint.",
           "evidence": [
             {
-              "quote": "packages/cli, packages/core",
-              "citation": "[4]"
+              "quote": "Imports: Use specific imports and avoid restricted relative imports between packages (enforced by ESLint). License Headers: For all new source code files (.ts, .tsx, .js), include the Apache-2.0 license header with the current year.",
+              "citation": "[5]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Google's Gemini CLI engineering team plus open-source contributors.",
+          "Summary": "Google's Gemini CLI engineering team plus open-source contributors; the GEMINI.md and CONTRIBUTING.md documents serve as the primary normative contract between maintainers and all contributors.",
           "evidence": [
             {
-              "quote": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
-              "citation": "[1]"
+              "quote": "Contributions: Follow the process outlined in CONTRIBUTING.md. Requires signing the Google CLA.",
+              "citation": "[5]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Not Available",
-          "evidence": []
+          "Summary": "Gemini CLI was created by Google on April 17, 2025 as an Apache 2.0 open-source project and reached 104,000+ GitHub stars, 662 contributors, and 488 published releases within approximately one year; its rapid growth and a Google-partnered DeepLearning.AI short course (taught by Jack Wotherspoon, Senior Developer Advocate at Google) reflect a developer-first philosophy where the tool is used to build itself and the open-source community is treated as a core stakeholder.",
+          "evidence": [
+            {
+              "quote": "Built with \u2764\ufe0f by Google and the open source community",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Gemini CLI is an open-source agentic coding assistant that works from your terminal, giving it access to your local filesystem, development tools, and cloud services.",
+              "citation": "[25]"
+            }
+          ]
         }
       ]
     },
     "Team_Communication": {
       "Practices": [
         {
-          "Summary": "Contributors self-assign issues using /assign and /unassign commands through an issue-comment bot, with a maximum of 3 issues assigned per contributor; all contributions require signing a Contributor License Agreement (CLA) before merging.",
+          "Summary": "Contributors self-assign issues by commenting /assign and release them with /unassign, with a cap of 3 concurrent assignments per contributor; only issues labelled 'help wanted' are eligible for self-assignment, and all contributions require signing the Contributor License Agreement before merging.",
           "evidence": [
             {
-              "quote": "/assign and /unassign issue-comment bot",
-              "citation": "[4]"
+              "quote": "To assign an issue to yourself, simply add a comment with the text /assign.",
+              "citation": "[6]"
             },
             {
-              "quote": "maximum of 3 issues assigned",
-              "citation": "[4]"
+              "quote": "you can have a maximum of 3 issues assigned to you at any given time and that only issues labeled 'help wanted' may be self-assigned.",
+              "citation": "[6]"
             },
             {
-              "quote": "Contributions to this project must be accompanied by a Contributor License Agreement",
-              "citation": "[4]"
+              "quote": "Contributions to this project must be accompanied by a Contributor License Agreement (CLA). You (or your employer) retain the copyright to your contribution; this simply gives us permission to use and redistribute your contributions as part of the project.",
+              "citation": "[6]"
             }
           ]
         },
         {
-          "Summary": "Code review happens through GitHub PR threads, where Gemini itself inspects diffs via /review command; communication centers on GitHub Issues, Discussions, and public roadmap documents.",
+          "Summary": "Code review happens through GitHub PR threads; the project uses draft PRs as a signal that a change is not yet ready for formal review but is open for discussion and initial feedback.",
           "evidence": [
             {
-              "quote": "/review slash command and scripts/review.sh apply Gemini itself to inspect diffs",
-              "citation": "[4]"
+              "quote": "If you'd like to get early feedback on your work, please use GitHub's Draft Pull Request feature. This signals to the maintainers that the PR is not yet ready for a formal review but is open for discussion and initial feedback.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "The project uses GitHub Discussions as the public Q&A forum, where contributors can search existing answers or start new threads; maintainers direct unanswered questions to the Gemini CLI Q&A discussions category on GitHub.",
+          "evidence": [
+            {
+              "quote": "Search the Gemini CLI Q&A discussions on GitHub or start a new discussion on GitHub.",
+              "citation": "[11]"
+            }
+          ]
+        },
+        {
+          "Summary": "The public GitHub Projects board at github.com/orgs/google-gemini/projects/11 serves as the canonical roadmap communication artifact — all planned features are visible to any contributor with area/*, priority/*, and effort/* labels, and the team explicitly states that contributions aligned with the active roadmap will be easiest to integrate and will receive first priority for review.",
+          "evidence": [
+            {
+              "quote": "Our roadmap is not a static list but a dynamic set of priorities that are tracked live in our GitHub Issues. Contributions based on this will be easiest to integrate with.",
+              "citation": "[23]"
+            }
+          ]
+        },
+        {
+          "Summary": "No Slack workspace or Discord server has been established for Gemini CLI contributor communication; all public collaboration occurs exclusively through GitHub's native platform — Issues, Pull Requests, Discussions, and the Projects roadmap board — and all participants are bound by Google's Open Source Community Guidelines as the project's code of conduct.",
+          "evidence": [
+            {
+              "quote": "This project follows Google's Open Source Community Guidelines.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Search the Gemini CLI Q&A discussions on GitHub or start a new discussion on GitHub.",
+              "citation": "[11]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "GitHub Discussions, Issues, PR review threads; public roadmap markdown; Discord community; Google internal channels for the core team.",
+          "Summary": "GitHub Issues (Gemini-powered automated triage, /assign and /unassign bot, help-wanted and good-first-issue labels); GitHub Discussions (Q&A category for community support); GitHub Pull Requests (code review threads, draft PRs for early feedback); GitHub Projects board (public quarterly roadmap at github.com/orgs/google-gemini/projects/11); GitHub Actions bots for automated triage, label sync, and release orchestration. No Slack or Discord community channel is documented — all contributor communication is conducted entirely through GitHub's built-in collaboration tools.",
           "evidence": [
             {
-              "quote": "Discussions",
-              "citation": "[1]"
+              "quote": "Search the Gemini CLI Q&A discussions on GitHub or start a new discussion on GitHub.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Our roadmap is managed directly through GitHub Issues. Target Quarter: Milestone denotes the anticipated delivery timeline.",
+              "citation": "[23]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Core Google team, external maintainers, community contributors.",
+          "Summary": "Core Google team, external maintainers, community contributors, and automated bots (gemini-cli-robot, triage bot, PR audit bot).",
           "evidence": [
             {
-              "quote": "google-gemini/gemini-cli",
-              "citation": "[1]"
+              "quote": "We would love to accept your patches and contributions to this project.",
+              "citation": "[6]"
             }
           ]
         }
@@ -495,14 +652,37 @@
     "Holistic_Documentation": {
       "Practices": [
         {
-          "Summary": "Docs live under /docs (architecture.md, cli/, core/, tools/, deployment.md, sandbox.md, telemetry.md) and CONTRIBUTING.md describes the dev loop. Each release publishes a changelog body referencing PRs. The Google Cloud blog and Google AI for Developers blog publish architectural deep-dives (e.g., 'Vibe Checks to Continuous Evaluation' for ADK + Vertex AI).",
+          "Summary": "Every user-facing code change requires a corresponding documentation update; contributors must also update the relevant documentation in the /docs directory when a PR introduces a new command, modified flag, or change in behavior.",
           "evidence": [
             {
-              "quote": "CONTRIBUTING.md",
-              "citation": "[4]"
-            },
+              "quote": "If your PR introduces a user-facing change (e.g., a new command, a modified flag, or a change in behavior), you must also update the relevant documentation in the /docs directory.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Documentation follows the Google Developer Documentation Style Guide, favouring sentence case for headings, second-person address, present tense, short focused paragraphs, and practical code examples.",
+          "evidence": [
             {
-              "quote": "docs/architecture.md",
+              "quote": "We follow the Google Developer Documentation Style Guide. Please refer to it for guidance on writing style, tone, and formatting.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "The official documentation site at geminicli.com covers the full project surface — installation, authentication, feature guides, API reference, configuration, integration testing, issue/PR automation, local development, sandboxing, and release notes — and is kept in sync with source via sidebar.json as the table of contents.",
+          "evidence": [
+            {
+              "quote": "Our documentation is organized using sidebar.json as the table of contents. When adding new documentation: Create your markdown file in the appropriate directory under /docs. Add an entry to sidebar.json in the relevant section.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "GEMINI.md in the project root is specifically designated for AI-assisted development conventions and instructs contributors and AI agents on React patterns, import rules, license header requirements, and Git usage — making project context machine-readable for agentic tooling.",
+          "evidence": [
+            {
+              "quote": "Consult GEMINI.md (typically found in the project root) for specific instructions related to AI-assisted development, including conventions for React, comments, and Git usage.",
               "citation": "[6]"
             }
           ]
@@ -510,22 +690,22 @@
       ],
       "Tools": [
         {
-          "Summary": "Markdown docs in-repo, GitHub Pages-style /docs site, official documentation at geminicli.com / Google AI for Developers, release notes auto-attached to each tag.",
+          "Summary": "Markdown docs in-repo under /docs; official documentation site at geminicli.com; GEMINI.md for AI-agent context; release notes auto-generated and attached to each GitHub Release tag; Prettier for markdown formatting enforced by preflight.",
           "evidence": [
             {
-              "quote": "**Full Changelog**: https://github.com/google-gemini/gemini-cli/compare/v0.40.0-preview.3...v0.40.0-preview.4",
-              "citation": "[3]"
+              "quote": "We use prettier to enforce a consistent style across our documentation. The npm run preflight command will check for any linting issues.",
+              "citation": "[6]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Google DevRel, the Gemini CLI engineering team, and community PR authors who update docs alongside code changes.",
+          "Summary": "Google DevRel and the Gemini CLI engineering team, plus community PR authors who must update docs alongside any code changes they submit.",
           "evidence": [
             {
-              "quote": "google-gemini/gemini-cli",
-              "citation": "[1]"
+              "quote": "Our documentation must be kept up-to-date with our code contributions. We want our documentation to be clear, concise, and helpful to our users.",
+              "citation": "[6]"
             }
           ]
         }
@@ -540,37 +720,69 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
-          "Summary": "Gemini CLI integrates with the Gemini API and Vertex AI; tool-use is wired through MCP (Model Context Protocol) servers configured in settings.json; system prompts and tool descriptions live in packages/core under prompts and tools modules; evaluation uses the Vertex AI Evaluation Service and golden datasets, with LLM-as-judge scoring and asyncio-parallel runs (per the Google Cloud 'Vibe Checks to Continuous Evaluation' post).",
+          "Summary": "Gemini CLI integrates with Gemini models via the Gemini API and Vertex AI; the core backend in packages/core handles Gemini API orchestration, prompt construction, and tool execution as distinct responsibilities, keeping prompt logic separate from CLI UI code.",
           "evidence": [
             {
-              "quote": "Model Context Protocol (MCP)",
-              "citation": "[6]"
-            },
+              "quote": "packages/core: Backend logic, Gemini API orchestration, prompt construction, and tool execution.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Tool-use is wired through MCP (Model Context Protocol) servers configured in settings.json; MCP enables the agent to call external tools as structured JSON-RPC calls, and the connection lifecycle, reconnection, and health of MCP servers are tracked in the project's issue tracker as first-class engineering concerns.",
+          "evidence": [
             {
-              "quote": "from vibe checks to continuous evaluation",
-              "citation": "[7]"
+              "quote": "Purpose: Provide a seamless terminal interface for Gemini models, supporting code understanding, generation, automation, and integration via MCP (Model Context Protocol).",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Gemini CLI uses OpenTelemetry (OTel) to record traces that instrument key events like model calls, tool scheduler operations, and tool calls; traces are captured automatically when telemetry is enabled and can be viewed via the Genkit Developer UI, Jaeger, or forwarded to Google Cloud Trace.",
+          "evidence": [
+            {
+              "quote": "Gemini CLI uses OpenTelemetry (OTel) to record traces that help you debug agent behavior. Traces instrument key events like model calls, tool scheduler operations, and tool calls.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "Summary": "The GEMINI.md file defines how AI agents working on the codebase should themselves behave: keeping PRs small and focused, always activating the pr-creator skill for PR generation, and following Conventional Commits — making AI development practices explicit and machine-readable.",
+          "evidence": [
+            {
+              "quote": "Pull Requests: Keep PRs small, focused, and linked to an existing issue. Always activate the pr-creator skill for PR generation, even when using the gh CLI.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "Sandboxing isolates potentially dangerous operations (such as shell commands or file modifications) from the host system, providing a security barrier between AI operations and the user's environment; this safety layer is built directly into the CLI so that AI-driven tool execution cannot accidentally cause system damage or data loss.",
+          "evidence": [
+            {
+              "quote": "Sandboxing isolates potentially dangerous operations (such as shell commands or file modifications) from your host system, providing a security barrier between AI operations and your environment.",
+              "citation": "[3]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Gemini API, Vertex AI, ADK (Agent Development Kit), MCP servers, Vertex AI Evaluation Service, Cloud Run for hosted eval workers, golden eval datasets checked into the repo's eval directories.",
+          "Summary": "Gemini API and Vertex AI for model access; MCP servers for structured tool-use; OpenTelemetry for agent trace instrumentation; Genkit Developer UI and Jaeger for local trace visualization; runInDevTraceSpan utility for custom trace spans; Docker/Podman/macOS Seatbelt for AI execution sandboxing.",
           "evidence": [
             {
-              "quote": "Vertex AI evaluation service",
-              "citation": "[7]"
+              "quote": "Traces provide deep visibility into agent behavior and help you debug complex issues. They are captured automatically when you enable telemetry.",
+              "citation": "[4]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Gemini CLI core engineers, Google ADK / Vertex AI eval teams, contributors writing custom MCP tool integrations.",
+          "Summary": "Gemini CLI core engineers building and maintaining the packages/core orchestration layer; contributors writing custom MCP tool integrations; enterprise users configuring MCP servers for internal tooling.",
           "evidence": [
             {
-              "quote": "ADK",
-              "citation": "[7]"
+              "quote": "packages/a2a-server: Experimental Agent-to-Agent server.",
+              "citation": "[5]"
             }
           ]
         }
@@ -585,73 +797,73 @@
   },
   "References": {
     "[1]": {
-      "Website_Type": "GitHub API",
-      "Link": "https://api.github.com/repos/google-gemini/gemini-cli",
+      "Website_Type": "GitHub Repository (README / About)",
+      "Link": "https://github.com/google-gemini/gemini-cli",
       "Date_Created": "2025-04-17",
       "Date_Pulled": "2026-04-26"
     },
     "[2]": {
-      "Website_Type": "GitHub API",
-      "Link": "https://api.github.com/repos/google-gemini/gemini-cli/contributors?per_page=100&anon=true",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-26"
-    },
-    "[3]": {
       "Website_Type": "GitHub Releases",
       "Link": "https://github.com/google-gemini/gemini-cli/releases",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
+    "[3]": {
+      "Website_Type": "Official Documentation — Sandboxing",
+      "Link": "https://geminicli.com/docs/cli/sandbox",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
     "[4]": {
-      "Website_Type": "GitHub Repository (CONTRIBUTING.md)",
-      "Link": "https://github.com/google-gemini/gemini-cli/blob/main/CONTRIBUTING.md",
+      "Website_Type": "Official Documentation — Local Development",
+      "Link": "https://geminicli.com/docs/local-development",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
     "[5]": {
-      "Website_Type": "GitHub Repository (package.json)",
-      "Link": "https://github.com/google-gemini/gemini-cli/blob/main/package.json",
+      "Website_Type": "GitHub Repository (GEMINI.md — AI agent context file)",
+      "Link": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/GEMINI.md",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
     "[6]": {
-      "Website_Type": "GitHub Repository",
-      "Link": "https://github.com/google-gemini/gemini-cli",
-      "Date_Created": "2025-04-17",
+      "Website_Type": "Official Documentation — Contribution Guide",
+      "Link": "https://geminicli.com/docs/contributing",
+      "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
     "[7]": {
-      "Website_Type": "Engineering Blog",
-      "Link": "https://cloud.google.com/blog/products/ai-machine-learning/from-vibe-checks-to-continuous-evaluation-with-adk-and-vertex-ai",
+      "Website_Type": "Official Documentation — Integration Tests",
+      "Link": "https://geminicli.com/docs/integration-tests",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
     "[8]": {
-      "Website_Type": "GitHub Issues",
-      "Link": "https://github.com/google-gemini/gemini-cli/issues",
+      "Website_Type": "Official Documentation — Issue and PR Automation",
+      "Link": "https://geminicli.com/docs/issue-and-pr-automation",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
     "[9]": {
-      "Website_Type": "Software Engineering Book",
+      "Website_Type": "Software Engineering Book — Google SWE Book Chapter 16",
       "Link": "https://abseil.io/resources/swe-book/html/ch16.html",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
-    "[11]": {
-      "Website_Type": "Google Open Source Documentation",
-      "Link": "https://opensource.google/documentation/reference/releasing",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-26"
-    },
     "[10]": {
-      "Website_Type": "Google Engineering Practices",
+      "Website_Type": "Google Engineering Practices — Code Review Speed",
       "Link": "https://google.github.io/eng-practices/review/reviewer/speed.html",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
     },
+    "[11]": {
+      "Website_Type": "Official Documentation — FAQ",
+      "Link": "https://geminicli.com/docs/resources/faq",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-04-26"
+    },
     "[12]": {
-      "Website_Type": "Google Engineering Practices",
+      "Website_Type": "Google Engineering Practices — Code Review Standard",
       "Link": "https://google.github.io/eng-practices/review/reviewer/standard.html",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
@@ -715,6 +927,24 @@
       "Link": "https://github.com/google-gemini/gemini-cli/issues/25859",
       "Date_Created": "2026-04-26",
       "Date_Pulled": "2026-04-26"
+    },
+    "[23]": {
+      "Website_Type": "GitHub Repository (ROADMAP.md — public development roadmap)",
+      "Link": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/ROADMAP.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-10"
+    },
+    "[24]": {
+      "Website_Type": "GitHub Projects — Public Quarterly Roadmap Board",
+      "Link": "https://github.com/orgs/google-gemini/projects/11",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-10"
+    },
+    "[25]": {
+      "Website_Type": "DeepLearning.AI Short Course — Gemini CLI: Code and Create with an Open-Source Agent",
+      "Link": "https://learn.deeplearning.ai/courses/gemini-cli-code-and-create-with-an-open-source-agent/information",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-10"
     }
   }
 }

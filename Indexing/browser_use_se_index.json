@@ -1,0 +1,1126 @@
+{
+  "Agent_Name": "Browser Use",
+  "Description": {
+    "value": "Browser Use is an open-source Python library (MIT) that makes websites accessible to AI agents. It connects large language models to a Chromium browser via CDP, extracting the DOM and screenshots on each step, then executing LLM-decided actions until the task is complete. Available as a pip package, a CLI tool, and a managed cloud API.",
+    "evidence": [
+      {
+        "quote": "Make websites accessible for AI agents.",
+        "citation": "[2]"
+      },
+      {
+        "quote": "The Agent class is the unit of work. You pass it a task, an LLM, and a BrowserSession. On each step it takes a screenshot and extracts the DOM in parallel, sends both to the LLM to decide the next action, executes that action, and repeats until the task is done.",
+        "citation": "[9]"
+      }
+    ]
+  },
+  "Repository_Statistics": {
+    "Lines_of_Code": {
+      "value": "Not directly published; repository is 97.9% Python with Shell scripts (1.4%) and minor other languages. 123 releases published to PyPI as of May 2026.",
+      "evidence": [
+        {
+          "quote": "Languages: Python 97.9%, Shell 1.4%, Other 0.7%",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Stars": {
+      "value": "94.1k GitHub stars",
+      "evidence": [
+        {
+          "quote": "94.1k stars",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Contributors": {
+      "value": "318 contributors",
+      "evidence": [
+        {
+          "quote": "318 Contributors",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Update_Frequency": {
+      "value": "Highly active — ~7 releases per month on average. 123 releases over 17 months (v0.1.0 on Nov 6, 2024 through v0.12.6 on Apr 2, 2026). Last commit 2 days before indexing date (May 2026).",
+      "evidence": [
+        {
+          "quote": "123 releases · Latest: 0.12.6",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Initial release — Nov 6, 2024 · Tag 0.1.0",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Primary_Language": {
+      "value": "Python (97.9%)",
+      "evidence": [
+        {
+          "quote": "Languages: Python 97.9%",
+          "citation": "[1]"
+        }
+      ]
+    },
+    "Last_Updated": {
+      "value": "May 2026 (2 days before indexing)",
+      "evidence": [
+        {
+          "quote": "Last commit: 2 days ago",
+          "citation": "[1]"
+        }
+      ]
+    }
+  },
+  "SE_Practices": {
+    "Testing_and_Evaluation": {
+      "Practices": [
+        {
+          "Summary": "An automated end-to-end evaluation pipeline runs 100 web agent tasks in parallel in under 5 minutes on every PR, using Blacksmith runners on GitHub Actions. Evaluation tasks are drawn from millions of real LLM-labeled user spans rather than synthetic environments, ensuring coverage of real-world page complexity.",
+          "evidence": [
+            {
+              "quote": "Using Blacksmith runners on GitHub Actions, we achieve insane scaling, running 100 complex web tasks in parallel in under 5 minutes end-to-end.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "We sourced our evaluation tasks from millions of LLM-labeled user spans rather than synthetic sites, because synthetic environments completely fail to capture the bizarre reality, complexity, and ugliness of how the actual web is built.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "We built the LLM judge directly into the agent code itself, running after the agent returns done. This means that the judge can also double as a real-time validation layer for the agent during regular use.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "This pipeline isn't just for manual testing—it runs automatically on every single PR in our open-source repo to guarantee we don't regress performance. ",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Statistical rigor is applied to evaluation: each task is run multiple times and results are aggregated with statistical bootstrapping, because single-run deterministic tests are unsuitable for non-deterministic web agents.",
+          "evidence": [
+            {
+              "quote": "You need real statistical rigor. That means running the exact same task multiple times, messing with a ton of agentic settings, ensuring perfect reproducibility of those settings, and aggregating the results with statistical bootstrapping.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "It's concerning that many AI agent benchmarks do not include error bars or variance estimations; coming from backgrounds in experimental particle physics, that lack of statistical rigor is alarming.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Unit and integration tests are defined under tests/ci/ and executed in a matrix build, where each test file becomes an independent GitHub Actions job. This enables parallel execution and isolated failure reporting for the core test suite.",
+          "evidence": [
+            {
+              "quote": "Run ./bin/test.sh — Run the core test suite that's executed in CI",
+              "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "Summary": "ClickHouse via Laminar stores every token, prompt, timing metric, and cost from evaluation runs, providing a queryable dataset of agent behavior. Browser session frames are also recorded and saved to Laminar.",
+          "evidence": [
+            {
+              "quote": "We stream every single token, prompt, timing metric, and cost directly into ClickHouse via Laminar, which efficiently handles the massive amount of LLM messages.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "We even record each browser session and save the frames to Laminar.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "gemini-2.5-flash is used as the LLM judge in the evaluation pipeline. It is forced to output a structured True/False JSON verdict with a reasoning field, achieving 87% alignment with human labels across 200 hand-labeled traces.",
+          "evidence": [
+            {
+              "quote": "gemini-2.5-flash powers our final judge, achieving an 87% alignment with human labels.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "We found that simple prompts and absolute True/False verdicts work best. Complex rubrics lead to indecisive judging.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "pytest (v9.0.2) with pytest-asyncio (v1.3.0) and pytest-xdist (v3.8.0) powers the automated test suite, supporting async test execution and parallel distributed runs.",
+          "evidence": [
+            {
+              "quote": "pytest==9.0.2, pytest-asyncio==1.3.0, pytest-xdist==3.8.0",
+              "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "Summary": "ClickHouse via Laminar stores every token, prompt, timing metric, and cost from evaluation runs, providing a queryable dataset of agent behavior. Browser session frames are also recorded and saved to Laminar.",
+          "evidence": [
+            {
+              "quote": "We stream every single token, prompt, timing metric, and cost directly into ClickHouse via Laminar, which efficiently handles the massive amount of LLM messages.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "We even record each browser session and save the frames to Laminar.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The engineering team runs the evaluation pipeline daily, sampling failure-reason strings extracted by Claude Code to identify and prioritize high-impact bug categories.",
+          "evidence": [
+            {
+              "quote": "We sample and classify these failure modes every day to find low-hanging fruit.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "The open-source community benefits from the evaluation results directly: the judge prompt and configuration are open-sourced in the browser-use repository, and a public benchmark is available at github.com/browser-use/benchmark.",
+          "evidence": [
+            {
+              "quote": "The judge prompt and settings are in our open-source agent at github.com/browser-use/browser-use. We have open-sourced one benchmark for LLM providers and researchers at github.com/browser-use/benchmark.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Evaluation failure clustering via embeddings was abandoned after proving ineffective. The team pivoted to having Claude Code read raw failure_reason strings, propose concrete categories, and iteratively subcategorize them into actionable buckets.",
+          "evidence": [
+            {
+              "quote": "Initially, we tried embedding and clustering the failed traces to find common issues. It was a complete failure—the clusters didn't represent actionable product improvements.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Claude reads hundreds of these raw reasons, suggests concrete categories, drops the small ones, and iteratively subcategorizes the big ones until we have highly specific, actionable error buckets.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ]
+    },
+    "CICD_and_Deployment": {
+      "Practices": [
+        {
+          "Summary": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: lint.yml (syntax, style, types on every push), test.yaml (matrix unit tests plus per-PR agent evaluation), and publish.yml (PyPI release triggered on a new GitHub release tag).",
+          "evidence": [
+            {
+              "quote": "jobs: syntax-errors / code-style / type-checker",
+              "citation": "[3]"
+            },
+            {
+              "quote": "on: release: types: [published] ... uv publish --trusted-publishing always",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "Summary": "The cloud production architecture uses an SQS-to-Lambda pattern: a FastAPI service (ECS Fargate) accepts task requests, writes a database row, drops an SQS message, and returns HTTP 202 in under 50 ms. A Lambda worker pulls each message and runs the agent to completion.",
+          "evidence": [
+            {
+              "quote": "The handler validates the payload, creates session and task rows in the database, commits, sends an SQS message, and returns HTTP 202 with the task ID in under 50 milliseconds. The work hasn't started yet.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "The API is a FastAPI service on ECS Fargate. Behind it is a standard SQS queue with one message per agent run carrying the task ID and execution config.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "Lambda's 15-minute hard limit is handled by a continuation mechanism: 2 minutes before the deadline, the agent checkpoints its state to S3, sends a new SQS message with an incremented counter, and a fresh Lambda invocation restores and resumes the session. Continuations are capped at 12 (~3 hours wall-clock).",
+          "evidence": [
+            {
+              "quote": "Two minutes before the Lambda deadline, the agent stops gracefully... The handler checkpoints state to S3, sends a new SQS message with the continuation counter incremented, and returns success. A new Lambda invocation picks up that message, fetches the state from S3, restores the Agent, and resumes from the last completed step.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "The same container image runs across local development, evaluation pipelines, and production. A single config switch (sandbox_mode: 'docker' | 'ukc') determines whether the image runs as a Docker container or a Unikraft micro-VM.",
+          "evidence": [
+            {
+              "quote": "Pattern 1: Single backend with agent loop and isolated terminal use sandbox; Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. The agent becomes disposable. No secrets to steal, no state to preserve, you can kill it, restart it, scale it independently. The control plane holds the truth..",
+              "citation": "[7]"
+            },
+            {
+              "quote": "The agent becomes disposable. No secrets to steal, no state to preserve, you can kill it, restart it, scale it independently. The control plane holds the truth. A single config switch (sandbox_mode: 'docker' | 'ukc') controls which path the code takes. We went with Pattern 2. The control plane holds all credentials and acts as a proxy for everything: LLM calls, file storage, billing. The sandbox receives three env variables and has no access to anything else. It runs as a Unikraft micro-VM in production and a Docker container in development and evals. Same image everywhere.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "GitHub Actions orchestrates all CI/CD stages: code quality gates (ruff, pyright, pre-commit), matrix test execution, per-PR agent evaluation via Blacksmith runners, and PyPI publishing on release.",
+          "evidence": [
+            {
+              "quote": "on: push: pull_request: ... jobs: syntax-errors / code-style / type-checker",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "AWS SQS, Lambda, ECS Fargate, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; the DLQ serves as a failure incident tracker.",
+          "evidence": [
+            {
+              "quote": "The DLQ is a fire alarm. When messages land there it usually means we introduced a regression or there's a deeper issue to investigate.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "Unikraft micro-VMs provision agent sandboxes in production, booting in under a second on dedicated bare metal in AWS. Each sandbox receives only SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID — no infrastructure credentials.",
+          "evidence": [
+            {
+              "quote": "Each agent gets its own Unikraft micro-VM, booting in under a second. The sandbox receives only three env variables from the outside world: SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID. No AWS keys, no database credentials, no API tokens.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "Summary": "uv (package manager), ruff (linter/formatter), and pyright (type checker) gate every commit via pre-commit hooks and GitHub Actions, ensuring code quality before merge.",
+          "evidence": [
+            {
+              "quote": "Always use uv instead of pip",
+              "citation": "[12]"
+            },
+            {
+              "quote": "ruff==0.14.14 ... pyright==1.1.408",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The cloud infrastructure team manages the SQS-Lambda-Fargate production stack and responds to DLQ incidents. Engineers investigate manually; there is no automatic re-drive.",
+          "evidence": [
+            {
+              "quote": "It's rare, and when it happens an engineer looks. We don't auto-redrive.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "Python developers and open-source contributors install the library via PyPI and benefit from the automated publish pipeline triggered on each GitHub release.",
+          "evidence": [
+            {
+              "quote": "uv publish --trusted-publishing always",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "Not Applicable",
+          "evidence": [
+            {
+              "quote": "",
+              "citation": ""
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review": {
+      "Practices": [
+        {
+          "Summary": "All contributors must run pre-commit before submitting a PR. The pre-commit pipeline enforces ruff-check (with auto-fix), ruff-format, pyright type checking, codespell spell-check, pyupgrade Python 3.11+ syntax, and a suite of file integrity checks (check-ast, check-toml, check-yaml, mixed-line-ending, detect-private-key).",
+          "evidence": [
+            {
+              "quote": "Pre-commit formatting: ALWAYS make sure to run pre-commit before making PRs.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "- id: ruff-check / ruff-format / pyright / codespell / pyupgrade / detect-private-key",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "Summary": "AGENTS.md provides authoritative coding standards for both human and AI contributors: use uv (not pip), apply Pydantic v2 models for all schemas, use descriptive names and docstrings, prefer structured ActionResult returns, and never create random example files.",
+          "evidence": [
+            {
+              "quote": "Type-safe coding: Use Pydantic v2 models for all internal action schemas, task inputs/outputs, and tools I/O. This ensures robust validation and LLM-call integrity.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Never create random examples: When asked to implement a feature never create new files that show off that feature → the code just gets messy.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "Pull requests automatically trigger the evaluate-tasks GitHub Actions job, which runs a set of real web tasks and posts the evaluation score as a PR comment, enabling data-driven assessment of whether a change improves or regresses agent performance.",
+          "evidence": [
+            {
+              "quote": "Post PR comment with score ... This pipeline isn't just for manual testing—it runs automatically on every single PR in our open-source repo to guarantee we don't regress performance.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "ruff (v0.12.10 in pre-commit) handles both linting and formatting, replacing flake8 and black. It is configured with auto-fix enabled and further parameterized via pyproject.toml.",
+          "evidence": [
+            {
+              "quote": "- repo: https://github.com/astral-sh/ruff-pre-commit / rev: v0.12.10 / hooks: ruff-check / ruff-format",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "Summary": "The detect-private-key pre-commit hook acts as a security gate to prevent credentials from being committed to the repository.",
+          "evidence": [
+            {
+              "quote": "- id: detect-private-key",
+              "citation": "[14]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "Pull request authors are required to pass all pre-commit and CI checks before code can be merged, ensuring a consistent quality bar across all contributions.",
+          "evidence": [
+            {
+              "quote": "Pre-commit formatting: ALWAYS make sure to run pre-commit before making PRs.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "AI coding agents (e.g., Claude Code, Cursor) are explicitly supported as contributors via AGENTS.md, which provides embedded documentation and coding rules they must follow when generating code for this repository.",
+          "evidence": [
+            {
+              "quote": "AGENTS.md Version 2 — guidelines for AI agents contributing to browser-use",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "check-added-large-files hook (maxkb=600) prevents oversized assets from being committed. pyupgrade enforces Python 3.11+ syntax constructs uniformly across the codebase.",
+          "evidence": [
+            {
+              "quote": "- id: check-added-large-files / args: [--maxkb=600] / - id: pyupgrade / args: [--py311-plus]",
+              "citation": "[14]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_and_Issue_Tracking": {
+      "Issues": [
+        {
+          "Issue_Title": "Bug: asyncio.gather without return_exceptions=True in _get_ax_tree_for_all_frames causes total DOM extraction failure",
+          "Issue_Number": 4778,
+          "Status": "Closed",
+          "Description": "Missing return_exceptions=True in an asyncio.gather call meant any single failing frame silently cancelled all other DOM extraction tasks, causing complete accessibility-tree failures. Reveals systemic gaps in async error propagation discipline.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: when using LMStudio nvidia/nemotron-3-nano-4b agent prints invalid json error",
+          "Issue_Number": 4769,
+          "Status": "Closed",
+          "Description": "LLM output from a locally-served model was not valid JSON, crashing the action-parsing loop with no graceful fallback. Exposes insufficient LLM output validation for non-standard model providers.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "[Bug] AttributeError: items when using Custom OpenAI/DeepSeek models (Pydantic ConfigDict clash)",
+          "Issue_Number": 4676,
+          "Status": "Closed",
+          "Description": "A Pydantic v2 ConfigDict conflict between browser-use's base model class and the LangChain wrapper for custom OpenAI-compatible endpoints caused an AttributeError at runtime. Highlights brittle model-compatibility handling across third-party LLM providers.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: list_chrome_profiles local_state Missing encoding parameter causes garbled output on non-ASCII systems",
+          "Issue_Number": 4673,
+          "Status": "Closed",
+          "Description": "Omitting an explicit encoding parameter when reading Chrome's local_state JSON file produced mojibake on non-UTF-8 system locales (e.g., Simplified Chinese). Indicates a systemic lack of explicit encoding handling in file I/O code paths.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: upload_image does not fail on file max limit",
+          "Issue_Number": 4670,
+          "Status": "Closed",
+          "Description": "The upload_image action silently accepted files exceeding the maximum allowed size instead of raising an error, allowing oversized payloads to reach downstream APIs. Points to missing input boundary validation in file-handling actions.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: upload_image should fail but passes when file does not meet validation criteria",
+          "Issue_Number": 4662,
+          "Status": "Closed",
+          "Description": "Companion to #4670 — validation logic for uploaded images was either absent or not enforced, allowing invalid files to pass through without error. Reveals a gap in systematic input validation testing for action primitives.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: mac install fails with RuntimeError: There is no current event loop in thread 'MainThread'.",
+          "Issue_Number": 4626,
+          "Status": "Closed",
+          "Description": "On macOS, calling asyncio APIs without an existing event loop in the main thread raised an unhandled RuntimeError at startup. Highlights async event-loop lifecycle mismanagement as a cross-platform compatibility risk.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: Pagination classifier mislabels first/last controls as prev/next when using shared symbols (\u00ab, \u00bb)",
+          "Issue_Number": 4620,
+          "Status": "Closed",
+          "Description": "The pagination-detection heuristic confused \u00ab/\u00bb glyphs (used as both first/last and previous/next in different designs) causing incorrect navigation. Exposes fragile symbol-based UI classification in the DOM-parsing layer.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: sensitive_data redaction breaks when one secret is substring of another (partial leak)",
+          "Issue_Number": 4609,
+          "Status": "Closed",
+          "Description": "When two secrets shared a substring relationship the shorter secret was masked first, leaving the longer one partially visible in LLM context and logs. A security-critical bug: partial credential leaks into prompt history.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: Windows: --profile fails with WinError 32 when Chrome is running (profile copy vs file locks)",
+          "Issue_Number": 4546,
+          "Status": "Closed",
+          "Description": "On Windows, attempting to copy a Chrome profile directory while Chrome held file locks caused a WinError 32 crash. Demonstrates platform-specific filesystem-locking assumptions not accounted for in the profile management code.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: close --all leaves daemon and temp-profile Chrome processes running",
+          "Issue_Number": 4539,
+          "Status": "Closed",
+          "Description": "The 'close --all' CLI command did not terminate background daemon and temporary Chrome profile processes, causing resource leaks on the host machine. Part of a pattern of incomplete process lifecycle management.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: action field returned as JSON string instead of list when done-text contains newlines (Claude Sonnet)",
+          "Issue_Number": 4510,
+          "Status": "Closed",
+          "Description": "When Claude Sonnet's done-action text contained newline characters the action field was serialized as a raw JSON string rather than a parsed list, breaking the action dispatcher. Reveals LLM-provider-specific output schema fragility.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "Bug: browser-use close does not terminate daemon and Chrome processes",
+          "Issue_Number": 4504,
+          "Status": "Closed",
+          "Description": "The base 'close' command also failed to fully shut down daemon and browser processes, leaving orphaned processes consuming system resources. Precursor to #4539 — same root pattern of incomplete subprocess teardown.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "browser-use fails to identify/click icon-only 'Create Test' button when tooltip is present but accessible label is missing",
+          "Issue_Number": 4801,
+          "Status": "Open",
+          "Description": "The DOM interaction layer relied on accessible labels rather than visual/tooltip context, causing the agent to skip buttons that have tooltips but no ARIA label. Reveals a systemic gap in the accessibility-tree-based element detection strategy.",
+          "Citation": "[17]"
+        },
+        {
+          "Issue_Title": "Bug: Azure OpenAI false content_filter / ResponsibleAIPolicyViolation (jailbreak detected) on normal navigation/login prompts",
+          "Issue_Number": 4783,
+          "Status": "Open",
+          "Description": "Azure OpenAI's content safety layer incorrectly flagged standard browser-use navigation and login prompts as jailbreak attempts, blocking normal agent operation. Highlights the lack of provider-specific prompt hardening or safety-filter bypass strategies.",
+          "Citation": "[17]"
+        }
+      ],
+      "Practices": [
+        {
+          "Summary": "GitHub Issues is the primary bug tracker with a dedicated 'bug' label. As of May 2026, 863 bug-labeled issues have been closed and 24 remain open, reflecting an active triage and resolution process.",
+          "evidence": [
+            {
+              "quote": "Open (24) Closed (863)",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "Summary": "The engineering blog serves as a public post-mortem record. A chronological account of 4,000 commits identifies recurring bug patterns: race conditions in distributed state, async event loop misuse, memory leaks from non-singleton HTTP clients, and cascading config failures.",
+          "evidence": [
+            {
+              "quote": "Most of my mistakes fall into a few patterns. I assumed instead of checking. I shipped without testing the full path. I picked the clever solution over the simple one. I didn't finish what I started.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Root-cause patterns are addressed systematically after recurring across multiple incidents: a datetime timezone mismatch appeared three separate times before triggering a 62-file refactor; a DB connection-holding-during-HTTP-call bug recurred in a different endpoint months after the first fix.",
+          "evidence": [
+            {
+              "quote": "This class of bug showed up three separate times before we addressed the root cause.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "The DB connection bug from July also came back. Different endpoint, same pattern: holding a database connection while making an HTTP call, so the pool drained under load.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "GitHub Issues with labels (bug, cli) provides structured tracking, milestone grouping, and community-sourced bug reports. Examples include #4609 (sensitive_data redaction partial leak) and #4778 (asyncio.gather missing return_exceptions=True causing DOM extraction failure).",
+          "evidence": [
+            {
+              "quote": "Bug: sensitive_data redaction breaks when one secret is substring of another (partial leak) — #4609",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Bug: asyncio.gather without return_exceptions=True in _get_ax_tree_for_all_frames causes total DOM extraction failure — #4778",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "Summary": "The AWS SQS Dead Letter Queue (DLQ) acts as a production incident alarm. Messages landing in the DLQ signal regressions or systemic failures, prompting immediate engineer investigation.",
+          "evidence": [
+            {
+              "quote": "The DLQ is a fire alarm. When messages land there it usually means we introduced a regression or there's a deeper issue to investigate. It's rare, and when it happens an engineer looks.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "Summary": "ClickHouse via Laminar provides trace-level observability for production agent runs, enabling engineers to query token usage, timing metrics, and step-by-step agent behavior to diagnose failures.",
+          "evidence": [
+            {
+              "quote": "We stream every single token, prompt, timing metric, and cost directly into ClickHouse via Laminar.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The engineering team investigates DLQ alarms and production incidents directly, reviewing agent traces in ClickHouse and correlating with APM signals to find root causes.",
+          "evidence": [
+            {
+              "quote": "APM made it look like a network issue because all HTTP calls slowed down at once, but the event loop was just frozen so nothing could complete.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "The open-source community (20k+ Discord members, GitHub contributors) reports bugs through Issues and Discussion threads, surfacing edge cases that production telemetry may not capture.",
+          "evidence": [
+            {
+              "quote": "More than 20k developers help each other. Check our GitHub Issues. Ask in our Discord community.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "A concurrent credits billing race condition was fixed by replacing asyncio.Lock (process-scoped, ineffective across pods) with SELECT ... FOR UPDATE (database-level row locking). An earlier clever fix had already caused a different problem at scale by locking the same user row exclusively under high load.",
+          "evidence": [
+            {
+              "quote": "Credit deduction used asyncio.Lock keyed by user ID in a Python dictionary. Works on one process but does nothing across pods. Concurrent requests on different pods could double-spend credits without either process knowing. Replaced it with SELECT ... FOR UPDATE, which is what I should have used from the start.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "Memory leak from non-singleton HTTP clients required seven commits in one day to fully resolve. ssl.create_default_context() was found to take ~1.8s of CPU per call, blocking the event loop under load.",
+          "evidence": [
+            {
+              "quote": "Every LLM call was creating a new httpx client and each one allocates a connection pool that never closes... ssl.create_default_context() takes ~1.8s of CPU, so per-request client creation was blocking the event loop under load. An entire day to learn that HTTP clients should be singletons.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ]
+    },
+    "SE_Methodology": {
+      "Practices": [
+        {
+          "Summary": "Browser Use adopts a minimal-agent philosophy: 'An agent is just a for-loop of messages. Give the LLM as much freedom as possible, then vibe-restrict based on evals' The original first agent was discarded and rebuilt from scratch after the team reverse-engineered Claude Code and Gemini CLI. They discovered that fewer abstractions produce more reliable agents, because LLM can learn from mistakes by reasoning.",
+          "evidence": [
+            {
+              "quote": "Agent frameworks fail not because models are weak, but because their action spaces are incomplete. Instead of defining every possible action up front, start from the opposite assumption: the model can do almost anything. Then restrict. Give the LLM as much freedom as possible, then vibe-restrict based on evals.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "The bitter lesson: The less you build, the more it works.",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "An 'inversion' principle guides feature design: start from maximal capability (expose raw CDP to the model), then restrict based on evaluation data rather than pre-defining a fixed action space. This allows the system to scale with improved models instead of fighting them.",
+          "evidence": [
+            {
+              "quote": "Instead of defining every possible action up front, start from the opposite assumption: the model can do almost anything. Then restrict. Give the LLM as much freedom as possible, then vibe-restrict based on evals.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "That's what lets the system scale with better models instead of fighting them.  Don't over-specify intelligence - let the model reason",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "The team moved from Playwright to raw CDP (Chrome DevTools Protocol) to eliminate a second network hop (Node.js relay server) and gain direct control over tab crash handling, cross-origin iframe routing, and browser events. A new event-driven watchdog architecture was introduced to respond to CDP events asynchronously.",
+          "evidence": [
+            {
+              "quote": "By switching to raw CDP we've massively increased the speed of element extraction, screenshots, and all our default actions.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Playwright also introduces a 2nd network hop going through a node.js playwright server websocket, which incurs a meaningful amount of latency when we do thousands of CDP calls.",
+              "citation": "[11]"
+            }
+          ]
+        },
+        {
+          "Summary": "Fast iteration with systematic learning: the cloud infrastructure was built through 4,000+ commits in one year. Mistakes were shipped, analyzed, and fixed forward. The gap between a working demo and production reliability defined the team's engineering maturity curve.",
+          "evidence": [
+            {
+              "quote": "The gap between 'works in a demo' and 'works at scale' is about 4,000 commits. This is what most of them looked like.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "You mess up, you learn, you mess up again, you learn again. The loop never stops, but you get faster at the learning part.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "The cdp-use library provides type-safe Python bindings auto-generated from official CDP protocol specifications, giving direct low-latency access to browser APIs without an intermediate relay layer.",
+          "evidence": [
+            {
+              "quote": "Check out the library here: github.com/browser-use/cdp-use",
+              "citation": "[11]"
+            }
+          ]
+        },
+        {
+          "Summary": "agent-sdk is open-sourced as a minimal reference implementation of the for-loop agent pattern, demonstrating the core primitives: a complete action space, a for-loop, an explicit done tool, and context management.",
+          "evidence": [
+            {
+              "quote": "We're open-sourcing this as agent-sdk.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The product and engineering leadership makes architectural decisions informed by evaluation data, deciding when to remove abstractions (Playwright), redesign subsystems (sandbox Pattern 1 → Pattern 2), or deprecate unused features (GIF generator, standalone billing service).",
+          "evidence": [
+            {
+              "quote": "I spent an afternoon building a Lambda-based GIF generator for agent run previews... Deleted it all a week later, 602 lines of infrastructure. Nobody needed GIF generation and nobody noticed when it was gone.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "Summary": "The open-source community provides feedback that shapes methodology decisions, including choosing which CDP/browser libraries to recommend and what API surface to expose.",
+          "evidence": [
+            {
+              "quote": "Try out our new libraries and beta releases with cdp-use and let us know your feedback!",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The Bitter Lesson from ML research (general computation beats hand-crafted knowledge) is applied directly to agent design: abstractions that encode developer assumptions about how the model should behave are treated as liabilities, not assets.",
+          "evidence": [
+            {
+              "quote": "Every time you add a 'smart' wrapper around model behavior — planning modules, verification layers, output parsers — you're encoding what you think the model should do. But the model was trained on millions of examples. Your abstractions become constraints that prevent the model from using what it learned.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "Summary": "Slack is the operational control center for the evaluation pipeline. Engineers trigger eval runs by pinging Claude in Slack; Claude Code automatically runs Python scripts, queries ClickHouse trace data, performs statistical A/B analysis, and posts findings back in the same thread.",
+          "evidence": [
+            {
+              "quote": "A developer pings Claude in Slack: 'Run an eval with five runs on the brand new gemini-3.1-pro-preview model. Compare it to existing results from gemini-3-pro and report if it is statistically significantly better.'",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Claude executes its generated SQL queries against ClickHouse and performs statistical A/B analysis, then posts a summary back in Slack suggesting why the delta occurred.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "GitHub Issues and Pull Requests serve as the primary asynchronous engineering forum: feature proposals, bug reports, and architectural discussions are tracked publicly with labels and milestone groupings.",
+          "evidence": [
+            {
+              "quote": "Issues 57 · Pull requests 171",
+              "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "Summary": "The engineering blog (browser-use.com/posts) functions as a long-form knowledge-sharing and incident retrospective channel, publishing detailed post-mortems and architecture deep-dives accessible to the broader community.",
+          "evidence": [
+            {
+              "quote": "Running millions of those agents in production with retries, timeouts, screenshots, audit trails, and billing requires infrastructure that took us 4,000+ commits to get right. This post is the architecture we use in production.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "Slack integrated with a custom MCP server enables Claude Code to directly trigger Blacksmith runners and receive results without leaving the communication channel.",
+          "evidence": [
+            {
+              "quote": "Claude triggers the Blacksmith runners via our custom MCP server and by running Python scripts. The traces stream into Laminar and ClickHouse.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Discord (20k+ members), Twitter/X, and LinkedIn serve as community communication channels for the open-source user base, bug discussions, and product announcements.",
+          "evidence": [
+            {
+              "quote": "More than 20k developers help each other. Ask in our Discord community.",
+              "citation": "[15]"
+            }
+          ]
+        },
+        {
+          "Summary": "Convex is used for real-time dashboard synchronization during evaluation runs, keeping team members in sync with active run status and live results.",
+          "evidence": [
+            {
+              "quote": "For the real-time UI state and making dashboards, we rely on Convex to keep our engineers in sync with active runs and results.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The engineering team uses Slack as its internal communication layer for evaluation-driven decision-making — deciding model upgrades, prompt changes, and code fixes based on Claude-generated analysis.",
+          "evidence": [
+            {
+              "quote": "The developer can then ping Claude to make changes to the codebase based on that theory. If a subsequent eval run proves the fix worked, we merge it.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "Summary": "Enterprise users can reach dedicated support at support@browser-use.com, while the general open-source community self-supports via Discord and GitHub Issues.",
+          "evidence": [
+            {
+              "quote": "Get support for your enterprise with support@browser-use.com",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "A public status page at status.browser-use.com provides real-time incident transparency for all users of the cloud service.",
+          "evidence": [
+            {
+              "quote": "Operational — status.browser-use.com",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "Summary": "docs.browser-use.com provides structured developer documentation covering quickstart, agent configuration (all parameters), browser configuration, tool customization, production deployment, and API references. It serves both local developers and cloud API consumers.",
+          "evidence": [
+            {
+              "quote": "To get started with Browser Use you need to install the package and create an .env file with your API key.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "See all helper methods in the AgentHistoryList source code.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "AGENTS.md in the repository root is a self-contained prompt document for AI coding agents. It embeds browser_use_docs inline, including development rules, code conventions, and concise API documentation, so AI tools have full context without external lookups.",
+          "evidence": [
+            {
+              "quote": "AGENTS.md Version 2 — guidelines for AI agents contributing to browser-use",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Follow the documentation in <browser_use_docs/>: some docs have been truncated, if unsure, you can visit or request the information from specific docs pages before proceeding.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "The agent includes built-in mechanisms for conversation audit trails (save_conversation_path parameter), browser session recording (record_video_dir, record_har_path, traces_dir), and cost tracking (calculate_cost), supporting post-hoc debugging and compliance.",
+          "evidence": [
+            {
+              "quote": "save_conversation_path: Path to save complete conversation history",
+              "citation": "[12]"
+            },
+            {
+              "quote": "record_video_dir: Directory to save video recordings as .mp4 files / record_har_path: Path to save network trace files as .har format",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "PostHog collects anonymous usage telemetry to help the team understand library adoption patterns and prioritize bug fixes. Users can opt out via the ANONYMIZED_TELEMETRY=false environment variable.",
+          "evidence": [
+            {
+              "quote": "Browser Use is free under the MIT license. To help us continue improving the library, we collect anonymous usage data with PostHog.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "You can disable telemetry by setting the environment variable: ANONYMIZED_TELEMETRY=false",
+              "citation": "[15]"
+            }
+          ]
+        },
+        {
+          "Summary": "Helper shell scripts (setup.sh, lint.sh, test.sh) in the repository provide onboarding shortcuts for contributors, covering environment setup, pre-commit execution, and test suite execution in a single command.",
+          "evidence": [
+            {
+              "quote": "./bin/setup.sh — Complete setup script. ./bin/lint.sh — Run all pre-commit hooks. ./bin/test.sh — Run the core test suite that's executed in CI.",
+              "citation": "[16]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "The documentation team maintains docs.browser-use.com and the engineering blog, ensuring end users, integrators, and contributors have up-to-date references and architectural context.",
+          "evidence": [
+            {
+              "quote": "Documentation: docs.cloud.browser-use.com / Blog: browser-use.com/posts / Changelog: browser-use.com/changelog",
+              "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "Summary": "End users and developers are primary documentation consumers: quickstart guides enable a working agent in under 5 minutes, while parameter references support advanced customization without source-code reading.",
+          "evidence": [
+            {
+              "quote": "ChatBrowserUse offers the fastest and most cost-effective models, completing tasks 3-5x faster. Get your API key at cloud.browser-use.com",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "The MIT license and transparent telemetry opt-out policy together reflect an open-source trust stance: the library is free, the data collection is disclosed, and the telemetry code is publicly available for inspection.",
+          "evidence": [
+            {
+              "quote": "Code is available in Telemetry Service: github.com/browser-use/browser-use/tree/main/browser_use/telemetry.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "Summary": "Browser Use supports multiple LLM providers through a unified invoke interface: ChatBrowserUse (custom, recommended), ChatAnthropic, ChatOpenAI, and ChatGoogle natively cover 95% of use cases. Additional providers (Groq, Azure OpenAI, OpenRouter, OCI) are supported through the broader ecosystem.",
+          "evidence": [
+            {
+              "quote": "Based on our telemetry, these account for 95% of use cases.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Same interface. Full control over caching, serialization, provider quirks. No magic. No surprises.",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "Ephemeral message management prevents context window overflow from large browser state payloads. Browser state tool outputs (DOM snapshots, screenshots, up to 50KB+ each) are automatically dropped after N invocations, keeping the LLM's context focused on recent state.",
+          "evidence": [
+            {
+              "quote": "Without ephemeral messages... after 20 browser interactions, you're at 1MB. The model starts losing coherence. It forgets the original task. It hallucinates elements that don't exist anymore.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "@tool('Get browser state', ephemeral=3)  # Keep last 3 only",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "A stateless LLM proxy architecture separates the sandbox from LLM credentials: the sandbox sends only new messages per step, and the control plane reconstructs the full conversation history on each call before forwarding to the provider.",
+          "evidence": [
+            {
+              "quote": "For each LLM call, the sandbox sends only the new messages. The control plane owns the full conversation history in the database, reconstructs it on each call, and forwards the complete context to the provider. This keeps the sandbox stateless.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "Summary": "ChatBrowserUse is a custom LLM API optimized for browser automation tasks, offering the highest accuracy, fastest speed, and lowest token cost of available providers. AGENTS.md instructs contributors to always default to and recommend it.",
+          "evidence": [
+            {
+              "quote": "always default to and recommend the model ChatBrowserUse — it's the best model for browser automation tasks (highest accuracy + fastest speed + lowest token cost) built especially for using the Browser Use library.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "Pydantic v2 models validate all LLM input and output schemas at system boundaries, ensuring robust parsing of LLM-generated tool calls and preventing malformed actions from propagating through the agent loop.",
+          "evidence": [
+            {
+              "quote": "Use Pydantic v2 models for all internal action schemas, task inputs/outputs, and tools I/O. This ensures robust validation and LLM-call integrity.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "override_system_message and extend_system_message agent parameters allow prompt customization without modifying source code. The agent prompting guide recommends being specific about action names and providing error recovery instructions in the task string.",
+          "evidence": [
+            {
+              "quote": "override_system_message: Completely replace the default system prompt. extend_system_message: Add additional instructions to the default system prompt.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "Summary": "End users select and configure LLM providers via environment variables and agent constructor parameters, with no required changes to library source code for provider switching.",
+          "evidence": [
+            {
+              "quote": "See Supported Models for more.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "The engineering team maintains LLM client abstractions and the ephemeral message logic, and uses gemini-2.5-flash as the evaluation judge to measure model performance changes across releases.",
+          "evidence": [
+            {
+              "quote": "gemini-2.5-flash powers our final judge, achieving an 87% alignment with human labels.",
+              "citation": "[8]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "Summary": "A third-party agent SDK caused a major production incident by making synchronous HTTP calls internally, freezing the async event loop and producing 262 gateway timeouts in 4 minutes. The fix (offloading sync calls to a thread pool) had already been applied to 1 of 21 call sites but never applied uniformly.",
+          "evidence": [
+            {
+              "quote": "A third-party agent SDK was making synchronous HTTP calls internally, and we were calling it from async handlers. When their API got slow the event loop froze and took down every endpoint with it. We had 262 gateway timeouts in 4 minutes. We already had the fix on 1 of 21 call sites. The comment literally said 'offload sync SDK call to thread to avoid blocking event loop.'",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": [
+    {
+      "id": "[1]",
+      "url": "https://github.com/browser-use/browser-use",
+      "description": "Browser Use GitHub repository — stars, forks, contributors, language stats, releases"
+    },
+    {
+      "id": "[2]",
+      "url": "https://raw.githubusercontent.com/browser-use/browser-use/main/pyproject.toml",
+      "description": "pyproject.toml — package metadata, dev dependencies (ruff, pytest, pyright, pre-commit)"
+    },
+    {
+      "id": "[3]",
+      "url": "https://github.com/browser-use/browser-use/blob/main/.github/workflows/lint.yml",
+      "description": "GitHub Actions lint workflow — ruff syntax/style, pyright type checking"
+    },
+    {
+      "id": "[4]",
+      "url": "https://github.com/browser-use/browser-use/blob/main/.github/workflows/test.yaml",
+      "description": "GitHub Actions test workflow — matrix CI tests across tests/ci/, evaluate-tasks per-PR eval job"
+    },
+    {
+      "id": "[5]",
+      "url": "https://github.com/browser-use/browser-use/blob/main/.github/workflows/publish.yml",
+      "description": "GitHub Actions publish workflow — PyPI release on GitHub release tag"
+    },
+    {
+      "id": "[6]",
+      "url": "https://browser-use.com/posts/everything-i-got-wrong",
+      "description": "Engineering blog: 'Everything I Got Wrong in the Last 4,000 Commits' — chronological incident retrospective"
+    },
+    {
+      "id": "[7]",
+      "url": "https://browser-use.com/posts/two-ways-to-sandbox-agents",
+      "description": "Engineering blog: 'How We Built Secure, Scalable Agent Sandbox Infrastructure' — Unikraft micro-VM and control plane architecture"
+    },
+    {
+      "id": "[8]",
+      "url": "https://browser-use.com/posts/our-browser-agent-evaluation-system",
+      "description": "Engineering blog: 'How we built scalable evaluation infrastructure for AI web agents' — Blacksmith runners, LLM judge, Slack orchestration"
+    },
+    {
+      "id": "[9]",
+      "url": "https://browser-use.com/posts/production-architecture-browser-use",
+      "description": "Engineering blog: 'A Production Architecture for the Browser Use Open-Source Library' — SQS-Lambda architecture, continuations, failure handling"
+    },
+    {
+      "id": "[10]",
+      "url": "https://browser-use.com/posts/bitter-lesson-agent-frameworks",
+      "description": "Engineering blog: 'The Bitter Lesson of Agent Frameworks' — minimal agent philosophy, ephemeral messages, done tool"
+    },
+    {
+      "id": "[11]",
+      "url": "https://browser-use.com/posts/playwright-to-cdp",
+      "description": "Engineering blog: 'Closer to the Metal: Leaving Playwright for CDP' — CDP migration, event-driven architecture"
+    },
+    {
+      "id": "[12]",
+      "url": "https://raw.githubusercontent.com/browser-use/browser-use/main/AGENTS.md",
+      "description": "AGENTS.md — AI agent coding guidelines, development rules, and embedded documentation"
+    },
+    {
+      "id": "[13]",
+      "url": "https://github.com/browser-use/browser-use/issues?q=is%3Aissue+is%3Aclosed+label%3Abug",
+      "description": "GitHub Issues — closed bugs (863 as of May 2026)"
+    },
+    {
+      "id": "[14]",
+      "url": "https://raw.githubusercontent.com/browser-use/browser-use/main/.pre-commit-config.yaml",
+      "description": ".pre-commit-config.yaml — ruff, pyright, pyupgrade, codespell, detect-private-key hooks"
+    },
+    {
+      "id": "[15]",
+      "url": "https://docs.browser-use.com/development/monitoring/telemetry",
+      "description": "Docs: Telemetry — PostHog anonymous usage collection, opt-out instructions"
+    },
+    {
+      "id": "[16]",
+      "url": "https://docs.browser-use.com/development/setup/local-setup",
+      "description": "Docs: Local Setup — development environment, helper scripts, run examples"
+    },
+    {
+      "id": "[17]",
+      "url": "https://github.com/browser-use/browser-use/issues?q=is%3Aissue+is%3Aopen+label%3Abug",
+      "description": "GitHub Issues — open bugs (24 as of May 2026)"
+    }
+  ]
+}

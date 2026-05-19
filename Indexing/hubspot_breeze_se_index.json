@@ -24,7 +24,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
-          "Summary": "HubSpot's testing practice is to use React Testing Library as its official UI testing framework, emphasizing user-focused tests over implementation details. The company migrated more than 76,000 tests from Enzyme to React Testing Library and runs frontend tests in the browser rather than JSDOM.",
+          "Summary": "HubSpot's testing practice is to use React Testing Library as its official UI testing framework, emphasizing user-focused tests over implementation details. In the testing migration, they collected runtime usage metrics accross team and then categorize packages into buckets. The team migrated simpler packages first to reduce risk and learn the process, and then postpone complex packages temporarily so they could contain technical debt. The company migrated more than 76,000 tests from Enzyme to React Testing Library and runs frontend tests in the browser rather than JSDOM. ",
           "evidence": [
             {
               "quote": "in August of 2022, we announced Testing Library as our official UI testing framework and began our migration.",
@@ -35,20 +35,49 @@
               "citation": "[2]"
             },
             {
+              "quote": "We instrumented Enzyme’s render methods to collect runtime usage metrics and started to build a picture of Enzyme usage across teams. We were then able to divide packages into buckets",
+              "citation": "[2]"
+            },
+            {
               "quote": "Our frontend test setup is unique compared to much of the open source ecosystem in that we exclusively run our frontend tests in the browser.",
               "citation": "[2]"
             }
           ]
         },
         {
-          "Summary": "HubSpot uses AI agents with hooks for testing validation, ensuring agents complete tasks only when builds pass and all changes are committed. AI fluency is now a baseline expectation for all engineering roles.",
+          "Summary": "Migration Story: The hubspot testing team adopts Testing Trophy strategy when embracing React Testing Library. The Testing Trophy is a testing strategy that prioritizes integration tests as the best balance between confidence, and maintenance cost, while still using static, unit, and end-to-end tests appropriately. At first, they documented guides for writing tests with common libraries and developed tools to minimize test fixture. By adopting this philosophy, teams felt empowered to take on the migration. Then while maintaining documentation and planning to migrate tests for quarters, they created separate tickets to track the work. But that was a lot of manual effort, so they built an internal system called Monarch as a centralized hub",
+          "evidence": [
+            {
+              "quote": "We created guides for how to write tests that used the most common libraries in our stack, and developed tooling to minimize the toil of creating test fixtures and mock network payloads.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "To keep teams in the loop with our overall progress, we shared quarterly updates with engineers.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "we also surfaced migration progress within our test reporter to give engineers real-time progress reports",
+              "citation": "[2]"
+            },
+            {
+              "quote": "For a given team, we took all Enzyme tests across all of their repositories, divided them into equal chunks across the remaining quarters we had allocated to this effort, and created separate tickets per quarter to track the work.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "Having a small team dedicated to this effort allowed us to focus on tasks that reduced migration friction and to reinforce testing best practices.",
+              "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "Summary": "HubSpot uses AI agents like claude code with hooks for testing validation, ensuring agents complete tasks only when builds pass and all changes are committed. AI fluency is now a baseline expectation for all engineering roles.",
           "evidence": [
             {
               "quote": "Agents can be tamed. Claude Code (and other tools such as OpenCode) have support for hooks, which can be used to inject behavior at various points in the tool call lifecycle or before the agent stops.",
               "citation": "[3]"
             },
             {
-              "quote": "Ensure the agent completes its task - block stopping until the build passes and all changes are committed and pushed to GitHub.",
+              "quote": "Ensure the agent completes its task - block stopping until the build passes and all changes are committed and pushed to GitHub. Crucible has served as the foundation for an internal evaluation framework for coding agents",
               "citation": "[3]"
             },
             {
@@ -58,11 +87,36 @@
           ]
         },
         {
-          "Summary": "HubSpot's API testing ensures compatibility with existing public APIs using Dropwizard's REST (JAX-RS) library for easy service standup.",
+          "Summary": "HubSpot runs usability tests in one-day sprints of 4–5 back-to-back remote sessions from a pre-screened customer database. Findings are immediately debriefed and posted to an internal wiki within 24 hours.",
           "evidence": [
             {
-              "quote": "The last part involved ensuring compatibility with our existing public APIs. All our public APIs use Dropwizard's REST (JAX-RS) library, which makes it very easy to stand up new services.",
-              "citation": "[1]"
+              "quote": "we execute each usability testing sprint in one day. This usually means four to five one-hour usability tests back to back",
+              "citation": "[10]"
+            },
+            {
+              "quote": "At HubSpot, we have an internal wiki where we post all of our findings.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Our Support folks watch and help customers interact with the software all day long and often see issues earlier than anybody.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "In this half hour we discuss observations, trends, bugs, usability issues and any inferences we make about why users did what they did. We also develop actionable takeaways and assign them to different members of the team. By figuring out the next steps after the tweaks, we can decide if more testing is needed or if the feature is ready for the beta group to test out. The whole group is kept in the loop as development progresses",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "Summary": "HubSpot uses TypeScript type-checks and husky pre-commit hooks locally, then runs Testing Trophy tests (unit, integration, e2e) in CI. Builds passing QA e2e tests are auto-deployed to production via Orion.",
+          "evidence": [
+            {
+              "quote": "we use TypeScript to check for type safety at compile-time. In addition, our toolchain includes husky pre-commit hooks that automatically review code syntax and style.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "builds deployed to QA which pass their end-to-end acceptance tests are automatically deployed to production—ready to be used by our customers.",
+              "citation": "[11]"
             }
           ]
         }
@@ -78,6 +132,15 @@
             {
               "quote": "Agents can be tamed. Claude Code (and other tools such as OpenCode) have support for hooks.",
               "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Testing toolchain includes remote usability testing platforms, TypeScript (compile-time type safety), husky pre-commit hooks, and Orion for automated e2e test runs and deployments.",
+          "evidence": [
+            {
+              "quote": "we use TypeScript to check for type safety at compile-time. In addition, our toolchain includes husky pre-commit hooks that automatically review code syntax and style.",
+              "citation": "[11]"
             }
           ]
         }
@@ -100,6 +163,15 @@
             {
               "quote": "We instrumented Enzyme's render methods to collect runtime usage metrics and started to build a picture of Enzyme usage across teams.",
               "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "Summary": "CD adoption required ~9 months and ~20 new test suites across 4 repositories. HubSpot deploys up to 100 times per day.",
+          "evidence": [
+            {
+              "quote": "It took our team about 9 months and approximately 20 new tests suites across 4 repositories to embrace Continuous Deployment.",
+              "citation": "[11]"
             }
           ]
         }
@@ -125,7 +197,7 @@
           ]
         },
         {
-          "Summary": "HubSpot optimized build performance using dedicated Kubernetes node pools with build cache mounted from host, reducing first build times from 10-15 minutes to 2-3 minutes. The platform leverages enterprise-grade features like auto-scaling, observability, and region-aware API routing via Cloudflare Workers.",
+          "Summary": "The team reduced slow Java build times by running build agents on dedicated Kubernetes node pool and reusing a host-mounted build cache, which cuts build times from 10–15 minutes to 2–3 minutes.",
           "evidence": [
             {
               "quote": "Builds (especially Java builds) were extremely slow! To solve this, we used learnings from our internal build infrastructure and began running agents on a dedicated Kubernetes node pool with a build cache mounted from the host.",
@@ -142,11 +214,15 @@
           ]
         },
         {
-          "Summary": "HubSpot emphasizes rapid deployment cycles, moving from ideation to product in hours or days rather than weeks with pragmatic documentation practices.",
+          "Summary": "Orion auto-promotes QA-passing builds to production. Teams use feature flags for gradual rollouts and monitor SLA and business metrics with automated alerts. Deploy frequency moved from weekly to daily.",
           "evidence": [
             {
-              "quote": "Problems go from ideation to product in hours or days, not weeks, and we're pragmatic about documentation and design practices that support our speed.",
-              "citation": "[5]"
+              "quote": "Our team went from deploying some of our apps once or twice per week to releasing new changes to production once or twice a day!",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Consider using feature flags to gradually roll out big changes. Implement an easy rollback process to quickly redeploy an older build if something goes wrong.",
+              "citation": "[11]"
             }
           ]
         }
@@ -158,6 +234,15 @@
             {
               "quote": "HubSpot already has an internal build and deploy system built on top of Kubernetes which runs over one million builds per day.",
               "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "Frontend CI/CD toolchain: TypeScript, husky pre-commit hooks, Orion (in-house deploy system), and feature flags for gradual rollouts.",
+          "evidence": [
+            {
+              "quote": "Orion, the HubSpot deploy system, then deploys them to a shared QA environment.",
+              "citation": "[11]"
             }
           ]
         }
@@ -180,6 +265,15 @@
             {
               "quote": "This reduced first build times for most repositories from 10-15 minutes to around 2-3 minutes.",
               "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "HubSpot runs 50,000+ frontend deploys/day across 3 data centers. CD adoption took ~9 months and ~20 new test suites per team.",
+          "evidence": [
+            {
+              "quote": "Ken discusses the challenges that come with adopting such a system at HubSpot's current scale, with over 50,000 deploys per day across 3 data centers.",
+              "citation": "[11]"
             }
           ]
         }
@@ -279,82 +373,69 @@
     "Bug_Solving_and_Issue_Tracking": {
       "Practices": [
         {
-          "Summary": "HubSpot uses comprehensive dashboards to track debugging metrics including token usage, API costs, and failure counts per tool to identify optimization opportunities. Teams use cross-team embeds to provide white-glove migration services for large-scale migrations.",
+          "Summary": "HubSpot's bug solving process relies on rapid tracing and automated rollbacks when standard monitoring fails. During the Feb 2026 incident, standard health checks failed to detect a permissions error because endpoints returned successful HTTP 200 responses with incorrect data. The incident was declared 16 minutes after full rollout due to customer support surges, and engineers resolved it via a full automated rollback within 37 minutes total.",
+          "evidence": [
+            {
+              "quote": "The access endpoint continued returning successful HTTP 200 responses, but with the wrong permission level. This meant standard error-rate monitoring did not flag the issue, and the deployment's automated health checks passed normally.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Internal incident is officially declared after a surge in customer support reports.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Upon identifying the scope of the UI lockout, our engineers traced the issue to the recent permissions configuration deployment. The team initiated a full automated rollback, reverting the system to its previous configuration state and restoring UI access...",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "Summary": "HubSpot uses per-tool dashboards to debug AI agents, tracking token usage, API costs, and failure counts to identify optimization opportunities. Agent hooks prevent premature task completion by blocking stops until builds pass and changes are committed.",
           "evidence": [
             {
               "quote": "We enabled debugging context through comprehensive dashboards that track token usage, API costs, failure counts, and more. We prioritized measuring usage not just per day, but per tool, which helped us identify where call volume and token usage could be reduced.",
               "citation": "[4]"
             },
             {
-              "quote": "We also used cross-team embeds to provide white-glove migration service for our largest consumers of Enzyme, or for teams that were concerned about meeting their deadline.",
-              "citation": "[2]"
-            },
-            {
-              "quote": "Having a small team dedicated to this effort allowed us to focus on tasks that reduced migration friction and to reinforce testing best practices.",
-              "citation": "[2]"
-            },
-             {
-              "quote": "Users can easily trigger a planning step on a GitHub issue by directly mentioning our internal bot (@SidekickAI create a plan). The plan will then be posted as a comment on the issue, where it can be edited by the user before moving on to the implementation step.",
-              "citation": "[2]"
-             }
-          ]
-        },
-        {
-          "Summary": "Engineers ensure AI agents handle errors gracefully through helpful error messages that allow models to self-correct. Common agent bugs included premature completion despite failing builds and forgetting to create pull requests.",
-          "evidence": [
-            {
-              "quote": "The model can still make mistakes. Ensure you return helpful errors to help the model correct itself.",
-              "citation": "[1]"
-            },
-            {
-              "quote": "Agents would often decide they were finished despite a failing build, not communicate adequately with users, or even entirely forget that they were supposed to create a pull request!",
+              "quote": "Ensure the agent completes its task - block stopping until the build passes and all changes are committed and pushed to GitHub.",
               "citation": "[3]"
-            }
-          ]
-        },
-        {
-          "Summary": "HubSpot intentionally uses short-lived access tokens decoupled from user identities for background data syncs, ensuring tokens only have required access scope.",
-          "evidence": [
-            {
-              "quote": "We intentionally avoided tying user identities to access tokens for background data syncs or automated workflows which don't expect user-level context during execution.",
-              "citation": "[1]"
-            },
-            {
-              "quote": "Because our access tokens are short-lived, we can safely assume that a token will only have the access that it should have.",
-              "citation": "[1]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "HubSpot uses comprehensive metrics dashboards for token/API cost monitoring, Monarch for migration campaign tracking, and emoji reaction feedback for continuous improvement of AI agents.",
+          "Summary": "Debugging stack: per-tool dashboards (token/API cost/failure tracking), automated rollback systems, pre-deployment validation checks, canary window test correlation with active deployments, and Claude Code hooks for agent task enforcement.",
           "evidence": [
             {
               "quote": "We enabled debugging context through comprehensive dashboards that track token usage, API costs, failure counts, and more.",
               "citation": "[4]"
+            },
+            {
+              "quote": "We are correlating test failures with active deployments so that failures during a rollout window are automatically escalated.",
+              "citation": "[12]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Bug resolution involves infrastructure teams, security teams, product teams, cross-team embed engineers, and testing infrastructure teams collaborating to improve AI agent reliability.",
+          "Summary": "On-call engineers triage and respond to incidents. Incident reports are authored by reliability engineers (Shilpa Varma, Kartik Vishwanath). DevEx AI team owns agent debugging infrastructure.",
           "evidence": [
             {
-              "quote": "We also used cross-team embeds to provide white-glove migration service for our largest consumers of Enzyme, or for teams that were concerned about meeting their deadline.",
-              "citation": "[2]"
+              "quote": "Upon identifying the scope of the UI lockout, our engineers traced the issue to the recent permissions configuration deployment.",
+              "citation": "[12]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Note: HubSpot Breeze Studio is a closed-source commercial product with no public issue tracker. Bug resolution practices are derived from engineering blog posts describing AI agent development, debugging dashboards for token tracking, Judge Agent quality gates, and emoji feedback loops for continuous improvement.",
+          "Summary": "HubSpot Breeze is closed-source with no public issue tracker. The Feb 2026 incident revealed that HTTP 200 responses with incorrect data bypassed standard error-rate monitoring — prompting a shift to response-correctness metrics.",
           "evidence": [
             {
-              "quote": "We enabled debugging context through comprehensive dashboards that track token usage, API costs, failure counts, and more.",
-              "citation": "[4]"
+              "quote": "The access endpoint continued returning successful HTTP 200 responses, but with the wrong permission level. This meant standard error-rate monitoring did not flag the issue.",
+              "citation": "[12]"
             }
           ]
         }
@@ -380,15 +461,15 @@
             {
               "quote": "We favor starting small and learning quickly by shipping. Problems go from ideation to product in hours or days, not weeks.",
               "citation": "[5]"
-            }, 
+            },
             {
               "quote": "All HubSpot engineers leverage modern AI tools, and AI fluency is now a baseline expectation for all engineering roles. We’ve developed agents to help with things like our design system modernization efforts, iterating on pull request feedback, and analyzing packages for patterns that could lead to flaky tests.",
               "citation": "[2]"
             },
-             {
+            {
               "quote": "From our past experience deploying local coding agents, we knew that giving them a tight feedback loop would be key to their success.",
               "citation": "[2]"
-             }
+            }
           ]
         },
         {
@@ -406,10 +487,32 @@
               "quote": "HubSpot has a mature engineering organization where creating new microservices is extremely easy, including microservices which interact directly with low-level infrastructure like Kubernetes.",
               "citation": "[3]"
             },
-             {
+            {
               "quote": "One example of this integration is our recent rollout of cloud coding agents for engineers, which have been live for planning, implementation, and code review at HubSpot for the past six months. To date, we have merged over 7,000 fully AI-generated pull requests and code reviewed over 50,000 pull requests authored by humans. We run all of the agents on our own infrastructure and tightly integrate them with GitHub, allowing HubSpot engineers to ship changes quickly and with more confidence than ever before",
               "citation": "[2]"
-             }
+            }
+          ]
+        },
+        {
+          "Summary": "They use Crucible Agent to track the execution of history, input, output token, and API server, and Kubernetes jobs, mainly for tracking their agentic products and deployment purposes for scalability and flexibility.",
+          "evidence": [
+            {
+              "quote": "Our platform, dubbed Crucible, consists of several components....",
+              "citation": "[3]"
+            },
+            {
+              "quote": "This approach has several advantages: it guarantees that every agent is sandboxed, it’s extremely easy to scale, and it’s flexible enough to handle many different kinds of requests",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "Summary": "HubSpot emphasizes rapid deployment cycles, moving from ideation to product in hours or days rather than weeks with pragmatic documentation practices.",
+          "evidence": [
+            {
+              "quote": "Problems go from ideation to product in hours or days, not weeks, and we're pragmatic about documentation and design practices that support our speed.",
+              "citation": "[5]"
+            }
           ]
         }
       ],
@@ -478,10 +581,6 @@
           "Summary": "Team culture emphasizes psychological safety, mutual support, continuous feedback. Permission models ensure users connecting via ChatGPT maintain same access controls as native HubSpot UI.",
           "evidence": [
             {
-              "quote": "When a user connects to HubSpot from within ChatGPT, they must not be able to query data they don't have access to. The actions taken via ChatGPT should reflect the same permissions and access controls the user would experience in HubSpot's native UI.",
-              "citation": "[1]"
-            },
-            {
               "quote": "We're building a great team. We help and support each other through questions, challenges, and growth. Being a part of the team is part of the reason we show up each day.",
               "citation": "[5]"
             },
@@ -494,11 +593,15 @@
       ],
       "Tools": [
         {
-          "Summary": "Communication infrastructure includes GitHub (code review, issues, PRs), Slack (@-mentions, integrations), Sidekick AI assistant, emoji reactions (👍👎), thread replies, internal RPC framework CHIRP, and permission-aware ChatGPT integration.",
+          "Summary": "Communication infrastructure includes GitHub (code review, issues, PRs),Discord,  Slack (@-mentions, integrations), Sidekick AI assistant, emoji reactions (👍👎), thread replies, internal RPC framework CHIRP, and permission-aware ChatGPT integration.",
           "evidence": [
             {
               "quote": "We implemented the simplest possible interface: emoji reactions on review comments and thread replies.",
               "citation": "[4]"
+            },
+            {
+              "quote": "Discord",
+              "citation": "[2]"
             },
             {
               "quote": "Sidekick is an AI assistant we had previously created to help engineers in navigating our internal documentation. We decided to extend its functionality using several new Crucible-based tools via @-mention on GitHub or Slack.",
@@ -751,6 +854,30 @@
       "Link": "https://www.npmjs.com/package/@hubspot/mcp-server",
       "Date_Created": "2025-06-XX",
       "Date_Pulled": "2026-04-27"
+    },
+    "[9]": {
+      "Website_Type": "HubSpot Engineering Blog - Testing Strategy",
+      "Link": "https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications",
+      "Date_Created": "2021-06-03",
+      "Date_Pulled": "2026-04-27"
+    },
+    "[10]": {
+      "Website_Type": "HubSpot UX Blog - Usability Testing",
+      "Link": "https://product.hubspot.com/blog/how-to-do-usability-testing-at-a-fast-paced-company",
+      "Date_Created": "2013-03-18",
+      "Date_Pulled": "2026-05-08"
+    },
+    "[11]": {
+      "Website_Type": "HubSpot Engineering Blog - Frontend CI/CD",
+      "Link": "https://product.hubspot.com/blog/ci-cd-deliver-value-customers",
+      "Date_Created": "2022-12-19",
+      "Date_Pulled": "2026-05-08"
+    },
+    "[12]": {
+      "Website_Type": "HubSpot Engineering Blog - Incident Report",
+      "Link": "https://product.hubspot.com/blog/hubspot-incident-report-february-25-2026",
+      "Date_Created": "2026-03-20",
+      "Date_Pulled": "2026-05-08"
     }
   }
 }

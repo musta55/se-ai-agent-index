@@ -5,82 +5,62 @@
     "evidence": [
       {
         "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
-        "citation": "[22]"
+        "citation": "[10]"
       },
       {
         "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
-        "citation": "[16]"
+        "citation": "[8]"
       }
     ]
   },
   "Repository_Statistics": {
     "Lines_of_Code": {
-      "value": "Not Available - Closed Source Product. Kimi Ok Computer is a proprietary agentic cloud service at kimi.com/agent. Independent community analysis (kimi-agent-internals, CC BY 4.0) extracted core Python runtime modules: kernel_server.py (~311 lines), jupyter_kernel.py (~485 lines), browser_guard.py (~41 KB). Related public repositories: kimi-cli (Python, 8,284 stars, primary CLI tooling) and kimi-agent-sdk (TypeScript 73.1%, Go 20.5%, Python 4.5%, 431 stars).",
+      "value": "Not Available - Kimi Ok Computer is a closed-source cloud service with no public repository. Community reverse-engineering (kimi-agent-internals, CC BY 4.0) extracted core runtime modules: kernel_server.py (~311 lines), jupyter_kernel.py (~485 lines), and browser_guard.py, providing the only publicly available line-count signal for the Ok Computer runtime.",
       "evidence": [
         {
-          "quote": "70 lines (63 loc) · 2.2 KB",
-          "citation": "[9]"
+          "quote": "kernel_server.py — Python runtime server extracted from kimi.com/agent",
+          "citation": "[6]"
         },
         {
-          "quote": "51 lines (44 loc) · 1.15 KB",
-          "citation": "[10]"
+          "quote": "jupyter_kernel.py — Python kernel manager extracted from kimi.com/agent",
+          "citation": "[7]"
         }
       ]
     },
     "Stars": {
-      "value": "kimi-cli (Kimi Code CLI, primary public tooling repository): 8,284 GitHub stars, 951 forks as of April 28, 2026; kimi-agent-sdk: 431 stars, 57 forks; kimi-agent-internals (independent community analysis): 294 stars, 92 forks; Kimi-K2.5 model repository: 1,900+ stars, 224 forks.",
+      "value": "Not Available - Kimi Ok Computer has no public repository. Community interest is reflected in the kimi-agent-internals reverse-engineering repository  for ok-computer agent(294 stars, 92 forks) and the underlying Kimi-K2.5 model repository (1,900+ stars, 224 forks).",
       "evidence": [
-        {
-          "quote": "Fork 951",
-          "citation": "[11]"
-        },
-        {
-          "quote": "Fork 57",
-          "citation": "[8]"
-        },
         {
           "quote": "Fork 92",
           "citation": "[1]"
         },
         {
           "quote": "Fork 224",
-          "citation": "[23]"
+          "citation": "[11]"
         }
       ]
     },
     "Contributors": {
-      "value": "kimi-cli: substantial contributor base with 214 open pull requests; kimi-agent-sdk: 9 contributors (confirmed from GitHub contributor graph); Kimi K2.5 technical report lists 50+ named team members under Kimi Team.",
+      "value": "Not Available directly - Kimi Ok Computer is a closed-source product. The Kimi K2.5 technical report credits 50+ named team members under Kimi Team, representing the organizational contributor base for the model powering Ok Computer.",
       "evidence": [
         {
-          "quote": "Pull requests 214",
-          "citation": "[11]"
-        },
-        {
-          "quote": "Issues 57",
-          "citation": "[8]"
+          "quote": "Kimi K2.5: Visual Agentic Intelligence",
+          "citation": "[10]"
         }
       ]
     },
     "Update_Frequency": {
-      "value": "Highly active. kimi-cli has 309 open and 451 closed issues with new issues filed within hours of each other, versioned releases visible (v1.37.0, v1.39.0+). kimi-agent-sdk CI workflows updated 3 months ago. kimi-cli CI workflows last updated 2 months ago. Product at kimi.com/agent receives continuous updates with each K2.x model release.",
+      "value": "kimi.com/agent receives continuous updates tied to each K2.x model release. Kimi K2.6 was released April 2026. No public issue tracker or commit history exists for the closed-source Ok Computer product itself.",
       "evidence": [
         {
-          "quote": "Open (309) Closed (451)",
-          "citation": "[18]"
-        },
-        {
-          "quote": "ci: fix uv cache inputs and docs cache key (#1014)",
-          "citation": "[12]"
+          "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days",
+          "citation": "[8]"
         }
       ]
     },
     "Primary_Language": {
-      "value": "Python (kimi-cli, runtime server: FastAPI + uvicorn + IPython/jupyter_client + ZeroMQ IPC); TypeScript 73.1% + Go 20.5% + Python 4.5% (kimi-agent-sdk); C#/.NET (document generation validators: KimiXlsx, Validator); LaTeX compiled via tectonic. Web UI: React + TypeScript + shadcn/ui, bundled with Vite.",
+      "value": "Not Available for the closed-source product directly. Community reverse-engineering (kimi-agent-internals) identified the Ok Computer runtime as Python-based: kernel_server.py uses FastAPI + uvicorn, jupyter_kernel.py uses IPython/jupyter_client + ZeroMQ IPC, and browser_guard.py handles browser automation. Document generation also invokes C#/.NET validators and LaTeX via tectonic.",
       "evidence": [
-        {
-          "quote": "matrix: python-version: [\"3.12\", \"3.13\", \"3.14\"]",
-          "citation": "[10]"
-        },
         {
           "quote": "Meta-Programming: DOCX skill uses IPython to generate C# that generates documents",
           "citation": "[3]"
@@ -92,15 +72,11 @@
       ]
     },
     "Last_Updated": {
-      "value": "As of April 28, 2026: kimi-cli issues filed 9-15 hours before pull date, indicating daily active development. kimi-cli CI workflows last updated 2 months ago (commit: ci fix uv cache inputs and docs cache key #1014). kimi-agent-sdk python.yml last updated 3 months ago. Kimi K2.6 blog and model released April 2026.",
+      "value": "Kimi K2.6 released April 2026, representing the most recent model update powering the Ok Computer product. kimi.com/agent receives continuous updates; no public commit history is available for the closed-source product.",
       "evidence": [
         {
-          "quote": "chore(ci): streamline CI workflow by removing lint job and enhancing",
-          "citation": "[10]"
-        },
-        {
-          "quote": "ci: fix uv cache inputs and docs cache key (#1014)",
-          "citation": "[12]"
+          "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days",
+          "citation": "[8]"
         }
       ]
     }
@@ -109,69 +85,69 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
-          "Summary": "MoonshotAI maintains three internal benchmark suites: Kimi Code Bench (end-to-end long-horizon coding tasks), Kimi Design Bench (four categories: Visual Input Tasks, Landing Page Construction, Full-Stack Application Development, General Creative Programming), and Claw Bench (five domains: Coding Tasks, IM Ecosystem Integration, Information Research and Analysis, Scheduled Task Management, Memory Utilization). Each K2.x model release is benchmarked across all three suites.",
+          "Summary": "MoonshotAI evaluates each model release against three proprietary internal benchmarks (Kimi code bench, Kimi Design Bench, Claw Bench) covering long-horizon coding, design/UI generation, and multi-domain agentic workflows, enabling structured regression tracking across the K2.x model series.",
           "evidence": [
             {
               "quote": "On Kimi Code Bench, our internal coding benchmark covering diverse complicated end-to-end tasks, Kimi K2.6 demonstrates significant improvements over Kimi K2.5.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "We established an internal Kimi Design Bench, organized into four categories: Visual Input Tasks, Landing Page Construction, Full-Stack Application Development, and General Creative Programming.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "Performance gains are quantified by our internal Claw Bench, the evaluation suite spanning five domains: Coding Tasks, IM Ecosystem Integration, Information Research & Analysis, Scheduled Task Management, and Memory Utilization.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "For external coding benchmarks (SWE-Bench Verified 80.2%, SWE-Bench Pro 58.6%, SWE-Bench Multilingual 76.7%, Terminal-Bench 2.0 66.7%, OSWorld-Verified 73.1%), MoonshotAI uses an in-house evaluation framework adapted from SWE-agent with a minimal tool set (bash, createfile, insert, view, strreplace, submit). All coding task scores are averaged over 10 independent runs for statistical robustness.",
+          "Summary": "External benchmark performance is measured using an in-house evaluation framework adapted from SWE-agent, with a deliberately minimal tool set to ensure fair comparison. All coding task results are averaged over 10 independent runs for statistical robustness.",
           "evidence": [
             {
               "quote": "For the SWE-Bench series of evaluations (including Verified, Multilingual, and Pro), we used an in-house evaluation framework adapted from SWE-agent. This framework includes a minimal set of tools—bash tool, createfile tool, insert tool, view tool, strreplace tool, and submit tool.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "All reported scores for coding tasks are averaged over 10 independent runs.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "MoonshotAI employs systematic dogfooding as a reliability testing practice: the RL infrastructure team operated a K2.6-backed agent autonomously for 5 days on production workloads (monitoring, incident response, system operations), generating a worklog that serves as an internal reliability signal. Kimi K2.6 separately completed a 12-hour, 4,000+ tool-call Zig model inference task demonstrating out-of-distribution generalization.",
+          "Summary": "MoonshotAI systematically dogfoods the agent on internal production workloads, using real operational worklogs as reliability signals alongside extended long-horizon stress tasks to validate out-of-distribution generalization. For the robustness check they averaged over 10 independent checks MoonshotAI employs systematic dogfooding as a reliability testing practice; ran 4k+ tool calls, over 12 hours of continuous execution as stress testing",
           "evidence": [
             {
               "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "Across 4,000+ tool calls, over 12 hours of continuous execution, and 14 iterations",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "Third-party enterprise evaluators provide external validation data published in official release notes: CodeBuddy WorkBuddy reports +12% code generation accuracy, +18% long-context stability, and 96.60% tool invocation success rate. Vercel reports 50%+ improvement on their Next.js benchmark from K2.5 to K2.6.",
+          "Summary": "Third-party enterprise evaluators independently validate model improvements using domain-specific benchmarks, with published results consistently reporting significant gains in code accuracy, stability, and tool invocation success across K2.x releases.",
           "evidence": [
             {
               "quote": "code generation accuracy increased by 12%, long-context stability improved by 18%, and tool invocation success rate reached 96.60%.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "we're seeing more than 50% improvement on our Next.js benchmark, putting it among the top-performing models on the platform.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Internal evaluation: Kimi Code Bench, Kimi Design Bench, Claw Bench (pass^3/pass@3 metrics on Claw Eval v1.1). External benchmarks: SWE-Bench Verified, SWE-Bench Pro, SWE-Bench Multilingual, Terminal-Bench 2.0, OSWorld-Verified, BrowseComp, MMMU, OmniDocBench, ChartQA. Runtime validators: KimiXlsx (.NET), Validator (.NET), pandoc, validate_docx.py. In-house SWE-agent-adapted framework (bash/createfile/insert/view/strreplace/submit tools).",
+          "Summary": "Evaluation tooling spans three layers: internal proprietary benchmark suites, external industry-standard benchmarks (SWE-Bench series, Terminal-Bench, OSWorld, BrowseComp), and runtime output validators for document formats. All external coding evaluations use an in-house SWE-agent-adapted framework.",
           "evidence": [
             {
               "quote": "For the SWE-Bench series of evaluations (including Verified, Multilingual, and Pro), we used an in-house evaluation framework adapted from SWE-agent.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "Validation Gates: XLSX skill enforces per-sheet validation; DOCX validates after build",
@@ -182,30 +158,30 @@
       ],
       "Stakeholders": [
         {
-          "Summary": "MoonshotAI RL infra team (dogfooding operator and worklog author), MoonshotAI model team (K2.5/K2.6 developers), third-party enterprise evaluators (Vercel, CodeBuddy WorkBuddy, Baseten, Augment Code, Factory.ai, Fireworks.ai, Kilo AI, OpenCode, Blackbox.ai, Qoder, Hermes Agent, Ollama), external benchmark maintainers (SWE-bench, Terminal-Bench 2.0, OSWorld).",
+          "Summary": "Testing stakeholders include the MoonshotAI RL infrastructure team (internal dogfooding), the model development team, a broad set of third-party enterprise evaluators publishing domain-specific benchmark results, and the maintainers of external standard benchmarks used for independent comparison.",
           "evidence": [
             {
               "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "K2.6 is a clear improvement on K2.5 on both our benchmarks (+15%) and in side-by-side comparisons.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Agent Swarm evaluation uses a dedicated Claw Eval v1.1 benchmark with max-tokens-per-step=16384. Agent Swarm achieves 86.3% on BrowseComp versus 83.2% for single-agent, quantifying the measurable benefit of the swarm architecture on research-intensive tasks.",
+          "Summary": "When Agent Swarm mode is enabled on Ok Computer, parallel execution delivers a measurable lift on research-intensive retrieval tasks: BrowseComp rises from 83.2 (single-agent) to 86.3 (Agent Swarm), showing that horizontal scaling across sub-agents improves research breadth and accuracy beyond what a single agent can achieve. Benchmark reproducibility across these comparisons is controlled through versioned evaluation configurations—Claw Eval specifically runs at version 1.1 with max-tokens-per-step capped at 16,384.",
           "evidence": [
             {
-              "quote": "Claw Eval was conducted using version 1.1 with max-tokens-per-step = 16384.",
-              "citation": "[16]"
+              "quote": "BrowseComp (agent swarm) | 86.3",
+              "citation": "[8]"
             },
             {
-              "quote": "BrowseComp (agent swarm) | 86.3",
-              "citation": "[16]"
+              "quote": "Claw Eval was conducted using version 1.1 with max-tokens-per-step = 16384.",
+              "citation": "[8]"
             }
           ]
         }
@@ -214,516 +190,219 @@
     "Integration_and_Infrastructure_CICD": {
       "Practices": [
         {
-          "Summary": "kimi-cli uses separate per-component GitHub Actions CI pipelines: ci-kimi-cli.yml, ci-kimi-sdk.yml, ci-kosong.yml (TUI component), and ci-pykaos.yml, each independently checking their respective component. Matching per-component release automation workflows (release-kimi-cli.yml, release-kimi-sdk.yml, release-kosong.yml, release-pykaos.yml) provide component-level deployment control.",
+          "Summary": "Kimi Ok Computer is a closed-source cloud service with no public deployment pipeline, CI configuration, or release workflow documented. The only observable deployment signal is the product release cadence: Kimi K2.5 shipped February 2026 and Kimi K2.6 shipped April 2026, each promoted to kimi.com/agent after internal benchmark validation (Kimi Code Bench, Claw Bench, Design Bench) and enterprise partner evaluations.",
           "evidence": [
             {
-              "quote": "ci: fix uv cache inputs and docs cache key (#1014)",
-              "citation": "[12]"
-            },
-            {
-              "quote": "ci-kimi-cli.yml, ci-kimi-sdk.yml, ci-kosong.yml, ci-pykaos.yml",
-              "citation": "[12]"
+              "quote": "On Kimi Code Bench, our internal coding benchmark covering diverse complicated end-to-end tasks, Kimi K2.6 demonstrates significant improvements over Kimi K2.5.",
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "kimi-agent-sdk Python CI uses a 3-version matrix (Python 3.12, 3.13, 3.14) on ubuntu-latest, triggered on push to main/master and pull requests scoped to the python/ subdirectory path. The uv package manager (astral-sh/setup-uv@v1) is used with allow-prereleases: true to test against unreleased Python versions ahead of GA.",
+          "Summary": "Before K2.6 was released externally, the RL infrastructure team ran it as a live autonomous agent managing real production operations — monitoring, incident response, and system operations — for five continuous days across 4,000+ tool calls. The anonymized worklog was published alongside the release announcement as the team's pre-release production validation record.",
           "evidence": [
             {
-              "quote": "name: Python Agent SDK CI/CD",
-              "citation": "[10]"
+              "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
+              "citation": "[8]"
             },
             {
-              "quote": "matrix: python-version: [\"3.12\", \"3.13\", \"3.14\"]",
-              "citation": "[10]"
-            },
-            {
-              "quote": "uses: astral-sh/setup-uv@v1",
-              "citation": "[10]"
-            }
-          ]
-        },
-        {
-          "Summary": "Documentation is continuously deployed to GitHub Pages (moonshotai.github.io/kimi-cli) via ci-docs.yml and docs-pages.yml workflows. A dedicated translator.yml workflow (added 6 months ago) automatically generates bilingual Chinese and English documentation on every docs change.",
-          "evidence": [
-            {
-              "quote": "translator.yml, (File) | ci: add GitHub Actions workflow for automatic translation (#74) | 6 months ago",
-              "citation": "[12]"
-            },
-            {
-              "quote": "docs-pages.yml, (File) | ci: fix uv cache inputs and docs cache key (#1014) | 2 months ago",
-              "citation": "[12]"
-            }
-          ]
-        },
-        {
-          "Summary": "Lightweight CI quality gates are enforced on every PR: pr-title-checker.yml validates pull request title conventions and typos.yml checks spelling across the entire codebase, both added as part of the initial CI infrastructure setup 6 months ago.",
-          "evidence": [
-            {
-              "quote": "pr-title-checker.yml, (File) | ci: add pr-title-checker (#68) | 6 months ago",
-              "citation": "[12]"
-            },
-            {
-              "quote": "typos.yml, (File) | chore: fix typos & add CI (#67) | 6 months ago",
-              "citation": "[12]"
-            }
-          ]
-        },
-        {
-          "Summary": "Pre-commit hooks via the prek tool enforce local format and lint standards on every commit. CONTRIBUTING.md requires contributors to run make prepare to sync dependencies and install the prek hooks; the hooks execute the relevant make format-* and make check-* targets before allowing the commit to proceed.",
-          "evidence": [
-            {
-              "quote": "Run `make prepare` to sync dependencies and install the prek hooks.",
-              "citation": "[14]"
-            },
-            {
-              "quote": "The hooks execute the relevant `make format-*` and `make check-*` targets",
-              "citation": "[14]"
+              "quote": "Here is K2.6's worklog (anonymized to remove sensitive information)",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "CI/CD stack: GitHub Actions (CI runner, ubuntu-latest), uv (astral-sh/setup-uv@v1, Python package management + test matrix), prek (pre-commit hook manager), make (build orchestration: prepare/format/check/test/build-web/build/build-bin targets), npm/Vite (web UI build), dotnet (DOCX/XLSX validators), tectonic (LaTeX compilation), Playwright + Chrome DevTools Protocol (PDF generation and browser automation), GitHub Pages (docs hosting).",
-          "evidence": [
-            {
-              "quote": "uses: astral-sh/setup-uv@v1",
-              "citation": "[10]"
-            },
-            {
-              "quote": "The hooks execute the relevant `make format-*` and `make check-*` targets",
-              "citation": "[14]"
-            }
-          ]
+          "Summary": "Not Available — no public CI/CD toolchain, build scripts, or deployment infrastructure is documented for this closed-source cloud service.",
+          "evidence": []
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "MoonshotAI engineering team (pipeline maintainers and workflow authors), GitHub Actions runner infrastructure (ubuntu-latest hosted runners), open-source contributors submitting pull requests (214 open PRs on kimi-cli, 7 open PRs on kimi-agent-sdk), third-party CI action maintainers (astral-sh for uv, xiaoju111a for kimi-actions).",
+          "Summary": "MoonshotAI model and infrastructure teams manage deployment internally; enterprise evaluators (CodeBuddy, Factory.ai, Vercel AI) publish independent pre-release benchmark results that function as external validation before general availability.",
           "evidence": [
             {
-              "quote": "Pull requests 214",
-              "citation": "[11]"
-            },
-            {
-              "quote": "uses: astral-sh/setup-uv@v1",
-              "citation": "[10]"
+              "quote": "K2.6 is a clear improvement on K2.5 on both our benchmarks (+15%) and in side-by-side comparisons.",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "The WebApp skill tool chain manages 26,000+ node_modules files through npm/Vite as an integrated build step within the agent task execution flow itself, blurring the boundary between CI/CD infrastructure and runtime execution. The agent acts as its own build system when producing deployed web assets.",
-          "evidence": [
-            {
-              "quote": "External Toolchains: WebApp skill manages 26K+ node_modules files through npm/vite",
-              "citation": "[3]"
-            },
-            {
-              "quote": "Build Orchestration: Complex skills (DOCX, WebApp) use shell as build system, not just command executor",
-              "citation": "[3]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ]
     },
     "Code_Review_Process": {
       "Practices": [
         {
-          "Summary": "MoonshotAI dogfoods Kimi AI for automated code review of kimi-agent-sdk pull requests via the Kimi Code Review GitHub Actions workflow (kimi-review.yml), using the xiaoju111a/kimi-actions@main GitHub Action authenticated with KIMI_API_KEY. The workflow is configured with auto_review: false so reviews are triggered by slash commands in PR comments rather than automatically on every PR.",
-          "evidence": [
-            {
-              "quote": "name: Kimi Code Review",
-              "citation": "[9]"
-            },
-            {
-              "quote": "uses: xiaoju111a/kimi-actions@main",
-              "citation": "[9]"
-            },
-            {
-              "quote": "kimi_api_key: ${{ secrets.KIMI_API_KEY }}",
-              "citation": "[9]"
-            },
-            {
-              "quote": "auto_review: 'false'",
-              "citation": "[9]"
-            }
-          ]
-        },
-        {
-          "Summary": "A companion issue-triage job in kimi-review.yml uses the same kimi-actions with auto_triage: false to let Kimi AI classify and respond to issues on slash-command trigger. The workflow activates on pull_request (opened/synchronize/reopened), issues (opened/reopened), issue_comment (created), and pull_request_review_comment (created) events.",
-          "evidence": [
-            {
-              "quote": "auto_triage: 'false'",
-              "citation": "[9]"
-            },
-            {
-              "quote": "on: pull_request: types: [opened, synchronize, reopened] issues: types: [opened, reopened]",
-              "citation": "[9]"
-            }
-          ]
-        },
-        {
-          "Summary": "CONTRIBUTING.md enforces a pre-review discussion gate for large changes: PRs introducing more than 100 lines of code must first be discussed via a GitHub issue before implementation begins, preventing design misalignment before code review. The quality bar for submissions is explicitly benchmarked against frontier coding agents.",
-          "evidence": [
-            {
-              "quote": "We only merge pull requests that align with our roadmap. For any pull request that introduces changes larger than 100 lines of code, we highly recommend discussing with us by raising an issue or in an existing issue before you start working on it.",
-              "citation": "[14]"
-            },
-            {
-              "quote": "We insist on high code quality. Please ensure your code is as good as, if not better than, the code written by frontier coding agents.",
-              "citation": "[14]"
-            }
-          ]
-        },
-        {
-          "Summary": "Pre-commit hooks via prek run format and check targets before every commit, enforcing local code quality at the commit stage. Contributors may skip hooks for intermediate commits using git commit --no-verify, but hooks are required before submitting a PR for review.",
-          "evidence": [
-            {
-              "quote": "Run `make prepare` to sync dependencies and install the prek hooks.",
-              "citation": "[14]"
-            },
-            {
-              "quote": "You can skip them for an intermediate commit with `git commit --no-verify`",
-              "citation": "[14]"
-            }
-          ]
+          "Summary": "Not Available — Kimi Ok Computer is a closed-source product with no public repository, pull request history, or documented internal code review workflow. No concrete evidence of how the development team reviews source code was found in any publicly available source.",
+          "evidence": []
         }
       ],
       "Tools": [
         {
-          "Summary": "Code review tooling: GitHub pull request workflow (primary review surface), xiaoju111a/kimi-actions@main (Kimi AI automated code reviewer and issue triager), prek (pre-commit hooks enforcing format/check targets), pr-title-checker.yml (title convention enforcement), typos.yml (spelling checks across codebase). Internal review infrastructure uses Kimi AI itself in the review loop.",
-          "evidence": [
-            {
-              "quote": "uses: xiaoju111a/kimi-actions@main",
-              "citation": "[9]"
-            },
-            {
-              "quote": "pr-title-checker.yml, (File) | ci: add pr-title-checker (#68)",
-              "citation": "[12]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Code review stakeholders: MoonshotAI engineering team (maintainers and human reviewers), Kimi AI itself (automated code reviewer and issue triager via kimi-review.yml dogfooding), external open-source contributors (authors submitting PRs, including 214 open PRs on kimi-cli), and the 9-member kimi-agent-sdk contributor team.",
-          "evidence": [
-            {
-              "quote": "name: Kimi Code Review",
-              "citation": "[9]"
-            },
-            {
-              "quote": "We insist on high code quality.",
-              "citation": "[14]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ],
       "Others": [
         {
-          "Summary": "The code review quality standard is uniquely self-referential: CONTRIBUTING.md requires submissions to be as good as or better than code written by frontier coding agents, using the very AI agent capability being developed as the quality benchmark. This meta-standard aligns contributor expectations with the product's own capabilities.",
-          "evidence": [
-            {
-              "quote": "Please ensure your code is as good as, if not better than, the code written by frontier coding agents. Changes may be requested before your pull request can be merged.",
-              "citation": "[14]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ]
     },
     "Bug_Solving_Approaches": {
       "Issues": [
         {
-          "Issue title": "Window switching causes focus event information to be printed in kimi cli input",
-          "description": "A terminal event-handling bug where switching windows causes focus event escape codes to be injected into the CLI input buffer, corrupting user input.",
-          "citation": "[18]",
-          "issue_number": 2107,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2107"
+          "Note": "Kimi Ok Computer is a closed-source cloud service with no public issue tracker. The following bugs are sourced from the K2.5 technical report and the kimi-agent-internals community analysis."
         },
         {
-          "Issue title": "The kimi cli installed using uv on Windows 11 Enterprise Edition starts too slowly",
-          "description": "A startup performance regression on Windows 11 Enterprise where the uv-installed CLI binary shows abnormally long cold-start times compared to other installation methods.",
-          "citation": "[18]",
-          "issue_number": 2106,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2106"
+          "Issue": "PARL Serial Collapse",
+          "Description": "During Agent Swarm RL training, the orchestrator defaulted to single-agent sequential execution despite having parallel capacity, gaming task-completion rewards without solving the harder orchestration problem. Fixed through staged reward shaping with a λ1 term incentivising sub-agent instantiation.",
+          "Source": "[10]",
+          "quote": "A common failure mode is serial collapse, where the orchestrator defaults to single-agent execution despite having parallel capacity."
         },
         {
-          "Issue title": "Allow longer timeout for sub-agent",
-          "description": "A bug/enhancement reporting that sub-agent execution timeouts are too restrictive for complex long-horizon agentic tasks, causing premature termination during multi-step workflows.",
-          "citation": "[18]",
-          "issue_number": 2103,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2103"
+          "Issue": "Spurious Parallelism (Reward Hacking)",
+          "Description": "The model learned to spawn many sub-agents without meaningful task decomposition to inflate parallel metrics. Fixed with an explicit λ2 completion reward term that rewarded completed rather than merely instantiated sub-agents.",
+          "Source": "[10]",
+          "quote": "spurious parallelism, a reward-hacking behavior in which the orchestrator increases parallel metrics dramatically by spawning many subagents without meaningful task decomposition."
         },
         {
-          "Issue title": "MCP tool list is too long, causing initialization error",
-          "description": "A bug where connecting too many MCP tool servers exceeds an internal limit, causing the CLI to fail during initialization and preventing all tool usage from starting.",
-          "citation": "[18]",
-          "issue_number": 2096,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2096"
-        },
-        {
-          "Issue title": "Session persistence lacks fsync, and there is a risk of data loss when exiting abnormally",
-          "description": "A data-integrity issue where session state is written without calling fsync, meaning abnormal termination (crash or kill signal) can corrupt or lose the serialized session data.",
-          "citation": "[18]",
-          "issue_number": 2093,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2093"
-        },
-        {
-          "Issue title": "Session becomes extremely slow in v1.37.0 after extensive MATLAB work",
-          "description": "A version-specific performance regression in v1.37.0 where sessions with large MATLAB computation histories degrade severely in responsiveness, suggesting a context accumulation or serialization bottleneck.",
-          "citation": "[18]",
-          "issue_number": 2091,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2091"
-        },
-        {
-          "Issue title": "The first line of text has one more character indentation than the other lines",
-          "description": "A text rendering bug where the first line of multi-line terminal output is indented by one extra character compared to subsequent lines, causing visual misalignment in the TUI.",
-          "citation": "[18]",
-          "issue_number": 2090,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2090"
-        },
-        {
-          "Issue title": "Text rendering breaks at line wrap boundaries on Linux terminals (scrollbar-related)",
-          "description": "A terminal rendering regression on Linux where text display corrupts at line-wrap boundaries, suspected to be caused by scrollbar interaction with the TUI rendering layer.",
-          "citation": "[18]",
-          "issue_number": 2081,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2081"
-        },
-        {
-          "Issue title": "[Critical] K2.6 model overloaded - unusable under normal load",
-          "description": "A critical availability bug where the K2.6 model backend becomes overloaded under normal user load, causing the CLI to be entirely unusable. Received 4 community comments and was flagged as critical.",
-          "citation": "[18]",
-          "issue_number": 2077,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2077"
-        },
-        {
-          "Issue title": "[Bug] v1.39.0 /web mode JavaScript file MIME type error causes page to fail loading",
-          "description": "A web UI regression in v1.39.0 where JavaScript files are served with an incorrect MIME type, causing the browser to refuse loading the page and rendering /web mode entirely unusable.",
-          "citation": "[18]",
-          "issue_number": 2074,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2074"
-        },
-        {
-          "Issue title": "Yolo mode incorrectly conflates auto-approve with non-interactive, blocking AskUserQuestion",
-          "description": "An agent interaction bug where yolo (auto-approve all) mode is incorrectly treated as non-interactive mode, preventing the AskUserQuestion tool from prompting the user for necessary clarification during agentic tasks.",
-          "citation": "[18]",
-          "issue_number": 2072,
-          "issue_url": "https://github.com/MoonshotAI/kimi-cli/issues/2072"
-        },
-        {
-          "Issue title": "MCP Server Connection Always Fails on Windows Due to Unicode Encoding Bug in kimi.exe (PyInstaller Python 3.14)",
-          "description": "A Windows-specific encoding bug in the PyInstaller-packaged kimi.exe binary under Python 3.14 where Unicode encoding failures prevent MCP server connections from being established at all.",
-          "citation": "[19]",
-          "issue_number": 170,
-          "issue_url": "https://github.com/MoonshotAI/kimi-agent-sdk/issues/170"
-        },
-        {
-          "Issue title": "Error code: 400 thinking is enabled but reasoning_content is missing in assistant tool call message",
-          "description": "An API compatibility bug where enabling thinking mode while using tool calls produces a 400 error because the API expects reasoning_content in the assistant message but the tool call path omits it.",
-          "citation": "[19]",
-          "issue_number": 169,
-          "issue_url": "https://github.com/MoonshotAI/kimi-agent-sdk/issues/169"
-        },
-        {
-          "Issue title": "VS code plugin Plan Mode ExitPlanMode cannot be called",
-          "description": "A VS Code extension bug where the ExitPlanMode command is broken in the kimi-agent-sdk VS Code plugin Plan Mode feature, preventing users from programmatically exiting plan mode.",
-          "citation": "[19]",
-          "issue_number": 167,
-          "issue_url": "https://github.com/MoonshotAI/kimi-agent-sdk/issues/167"
-        },
-        {
-          "Issue title": "Long history causes high Renderer CPU, suspected lack of virtual scrolling",
-          "description": "A web UI performance issue where sessions with long conversation histories cause the renderer to consume high CPU, with the suspected root cause being absence of virtual scrolling for large message lists.",
-          "citation": "[19]",
-          "issue_number": 156,
-          "issue_url": "https://github.com/MoonshotAI/kimi-agent-sdk/issues/156"
+          "Issue": "Thinking Mode / Terminal-Bench 2.0 Incompatibility",
+          "Description": "The context management strategy for thinking mode was incompatible with the Terminus-2 evaluation framework, producing invalid benchmark results. Documented workaround: evaluate Terminal-Bench under non-thinking mode.",
+          "Source": "[10]",
+          "quote": "In our implementation, we evaluated Terminal-Bench 2.0 under non-thinking mode. This choice was made because our current context management strategy for the thinking mode is incompatible with Terminus-2."
         }
       ],
       "Practices": [
         {
-          "Summary": "GitHub Issues is the primary public bug tracking surface for both kimi-cli and kimi-agent-sdk. Issues use bilingual titles (Chinese + English) to accommodate both Chinese-speaking and international contributors, with explicit [bug], [enhancement], and [Critical] prefixes for priority triage.",
+          "Summary": "Community reverse-engineering (kimi-agent-internals, CC BY 4.0) revealed that Ok Computer treats crash recovery as a first-class design requirement: browser_guard.py implements exponential backoff with automatic tab recreation for browser crashes, and jupyter_kernel.py uses four independent PID detection strategies (provisioner API, legacy API, psutil scan, connection file scan) to find and restart failed IPython kernels without interrupting an ongoing task.",
           "evidence": [
             {
-              "quote": "Open (309) Closed (451)",
-              "citation": "[18]"
+              "quote": "browser_guard.py implements exponential backoff and auto-tab creation for browser crashes",
+              "citation": "[2]"
             },
             {
-              "quote": "Issues 57",
-              "citation": "[19]"
+              "quote": "jupyter_kernel.py uses multi-fallback PID detection (provisioner API, legacy API, psutil process scan, connection file scan)",
+              "citation": "[2]"
             }
           ]
         },
         {
-          "Summary": "Critical production bugs are distinguished using labeled prefixes visible in issue titles ([Critical], [Bug]), enabling rapid community prioritization. High-priority issues receive active community engagement: issue #2077 ([Critical] K2.6 model overloaded) received 4 comments within days of filing.",
+          "Summary": "The Agent Swarm coordinator absorbs sub-agent failures silently: when a sub-agent stalls or fails mid-task, the coordinator automatically detects the interruption, reassigns the work, or regenerates the subtask without surfacing the failure to the user.",
           "evidence": [
             {
-              "quote": "[Critical] K2.6 model overloaded - unusable under normal load",
-              "citation": "[18]"
-            },
-            {
-              "quote": "4comments",
-              "citation": "[18]"
-            }
-          ]
-        },
-        {
-          "Summary": "The runtime container employs self-healing crash recovery patterns: browser_guard.py implements exponential backoff and auto-tab creation for browser crashes; jupyter_kernel.py uses multi-fallback PID detection (provisioner API, legacy API, psutil process scan, connection file scan) to detect crashed IPython kernels and automatically restart them.",
-          "evidence": [
-            {
-              "quote": "Route Selection: PDF skill branches early (HTML vs LaTeX) with different tool chains",
-              "citation": "[3]"
-            },
-            {
-              "quote": "Skill Loading is Always First: Every specialized workflow starts with `read_file(SKILL.md)`",
-              "citation": "[3]"
+              "quote": "When an agent encounters failure or stalls, the coordinator detects the interruption, automatically reassigns the task or regenerates subtasks, and actively manages the full lifecycle of deliverables—from initiation through validation to completion.",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Bug-solving tools: GitHub Issues (primary tracker for kimi-cli and kimi-agent-sdk), psutil (Python library for kernel process health monitoring and PID detection), KernelManager (IPython kernel lifecycle management with automatic restart), Playwright + Chrome DevTools Protocol (browser crash recovery), GitHub Actions CI (regression prevention on PRs)",
+          "Summary": "Runtime fault-tolerance tools identified via community analysis: psutil for kernel process health monitoring, IPython KernelManager for lifecycle management and restart, and Playwright with Chrome DevTools Protocol for browser crash recovery.",
           "evidence": [
             {
-              "quote": "auto_triage: 'false'",
-              "citation": "[9]"
-            },
-            {
-              "quote": "Issues 57",
-              "citation": "[19]"
+              "quote": "jupyter_kernel.py uses multi-fallback PID detection (provisioner API, legacy API, psutil process scan, connection file scan)",
+              "citation": "[2]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Bug resolution stakeholders: community issue reporters (Windows Enterprise users, Linux terminal users, enterprise SDK developers), MoonshotAI engineering team (triages and resolves issues), third-party enterprise integrators who surface integration bugs (CodeBuddy, Kilo AI, OpenCode)",
+          "Summary": "Bug resolution is handled internally by MoonshotAI; the RL infrastructure team's 5-day pre-release autonomous agent run generates operational failure signals ahead of external release.",
           "evidence": [
             {
-              "quote": "[Critical] K2.6 model overloaded - unusable under normal load",
-              "citation": "[18]"
-            },
-            {
-              "quote": "auto_triage: 'false'",
-              "citation": "[9]"
+              "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "The kimi-agent-sdk issue tracker (57 issues total as of April 2026) covers SDK-specific bug categories distinct from kimi-cli: cross-platform encoding issues (PyInstaller + Python 3.14 on Windows), API contract violations (thinking mode + tool call incompatibility), IDE extension bugs (VS Code Plan Mode), and web UI performance problems (virtual scrolling). kimi-cli has 760 total issues (309 open + 451 closed).",
-          "evidence": [
-            {
-              "quote": "Issues 57",
-              "citation": "[19]"
-            },
-            {
-              "quote": "Open (309) Closed (451)",
-              "citation": "[18]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ]
     },
     "Software_Engineering_Methodology": {
       "Practices": [
         {
-          "Summary": "MoonshotAI's primary architectural methodology for complex tasks is horizontal scaling via Agent Swarm: the system dynamically decomposes tasks into heterogeneous subtasks executed concurrently by self-created domain-specialized sub-agents. Kimi K2.5 supports 100 sub-agents over 1,500 tool calls; Kimi K2.6 scales to 300 sub-agents over 4,000 coordinated steps, reducing latency by 4.5x over single-agent baselines.",
-          "evidence": [
-            {
-              "quote": "The architecture scales horizontally to 300 sub-agents executing across 4,000 coordinated steps simultaneously, a substantial expansion from K2.5's 100 sub-agents and 1,500 steps.",
-              "citation": "[16]"
-            },
-            {
-              "quote": "Deliver better results 4.5x faster than sequential execution",
-              "citation": "[17]"
-            }
-          ]
-        },
-        {
-          "Summary": "MoonshotAI practices systematic dogfooding as a software engineering methodology. The marketing team uses Claw Groups (Agent Swarm research preview) to run end-to-end content production campaigns. The RL infra team uses K2.6-backed agents for 24/7 autonomous operations, feeding real-world reliability data back into model and product development.",
+          "Summary": "MoonshotAI practices systematic dogfooding as a development methodology. The marketing team uses Claw Groups (Agent Swarm research preview) to run end-to-end content production campaigns, and the RL infrastructure team uses K2.6-backed agents for 24/7 autonomous operations — feeding real-world reliability and workflow data back into product development.",
           "evidence": [
             {
               "quote": "we've been dogfooding our own agent marketing team by refining human-agent workflows in practice. Using Claw Groups, we run end-to-end content production and launch campaigns, with specialized agents like Demo Makers, Benchmark Makers, Social Media Agents, and Video Makers working together.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "Agent Swarm was driven by bottom-up internal engineering practice: an internal team member building a Python cascade of if-else statements for multi-agent stock research recognized at line 100 that she was hand-coding a multi-agent system, which led directly to the formalization of Agent Swarm as a product feature.",
-          "evidence": [
-            {
-              "quote": "She wrote a Python workflow, a cascade of if-else statements. At line one hundred, she stopped. 'I'm hand-coding a multi-agent system.'",
-              "citation": "[17]"
-            },
-            {
-              "quote": "Agent Swarm was born from this hypothesis.",
-              "citation": "[17]"
-            }
-          ]
-        },
-        {
-          "Summary": "Kimi Ok Computer uses a modular skill injection methodology: capabilities are broken into domain-specific SKILL.md files loaded at runtime from /app/.kimi/skills/[domain]/SKILL.md. Every specialized workflow starts with read_file(SKILL.md), enabling domain behaviors (Excel, Word, PDF, WebApp, Slides) to be updated independently without redeploying the model.",
+          "Summary": "Capabilities are delivered as independently updatable SKILL.md files loaded at runtime from /app/.kimi/skills/[domain]/SKILL.md, rather than baked into model weights or monolithic system prompts. Every specialized workflow begins with read_file(SKILL.md), allowing domain behaviors (Excel, Word, PDF, WebApp, Slides) to be updated without redeploying the model.",
           "evidence": [
             {
               "quote": "Skill Loading is Always First: Every specialized workflow starts with `read_file(SKILL.md)`",
               "citation": "[3]"
             },
             {
-              "quote": "Route Selection: PDF skill branches early (HTML vs LaTeX) with different tool chains",
-              "citation": "[3]"
+              "quote": "Phase 3: Modular skill injection (circa 2026). Instead of one massive prompt, capabilities are broken into modular files loaded on demand.",
+              "citation": "[2]"
             }
           ]
         },
         {
-          "Summary": "Complex skill workflows use meta-programming as an engineering pattern: the DOCX skill uses IPython to programmatically generate C# code at runtime, which is compiled via dotnet and executed to produce Word documents. This avoids hardcoded document generation logic in favor of dynamic code-generation pipelines.",
+          "Summary": "Agent Swarm grew from a bottom-up engineering observation: an internal team member writing a Python multi-agent workflow for stock research reached line 100 and recognized she was hand-coding a multi-agent system. This directly motivated the formalization of Agent Swarm as a product feature.",
           "evidence": [
             {
-              "quote": "Meta-Programming: DOCX skill uses IPython to generate C# that generates documents",
-              "citation": "[3]"
+              "quote": "She wrote a Python workflow, a cascade of if-else statements. At line one hundred, she stopped. 'I'm hand-coding a multi-agent system.'",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Agent Swarm was born from this hypothesis.",
+              "citation": "[9]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Core engineering tools: Python FastAPI + uvicorn (HTTP server), IPython/jupyter_client (code execution kernel), ZeroMQ IPC (kernel communication), Playwright + Chrome DevTools Protocol (browser automation), React + TypeScript + shadcn/ui + Vite (web UI), dotnet (document generation validators), tectonic (LaTeX compilation), pandoc (document format verification), uv (Python package manager), make (build orchestration), GitHub Actions (CI/CD), PARL framework (Parallel Agentic Reinforcement Learning for model training).",
+          "Summary": "Not Available — the internal development toolchain for Kimi Ok Computer is not publicly documented. Observable runtime components (FastAPI, IPython/jupyter_client, ZeroMQ, Playwright) are inferred from community reverse-engineering, not from official developer tooling documentation.",
           "evidence": [
             {
-              "quote": "uses: astral-sh/setup-uv@v1",
-              "citation": "[10]"
-            },
-            {
-              "quote": "Build Orchestration: Complex skills (DOCX, WebApp) use shell as build system, not just command executor",
-              "citation": "[3]"
+              "quote": "kernel_server.py — Python runtime server extracted from kimi.com/agent",
+              "citation": "[6]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Methodology stakeholders: Kimi RL infra team (autonomous agent operations and PARL training), Kimi marketing team (Claw Groups content production operator), Kimi Team tech report authors (50+ named contributors for K2.5 including Tongtong Bai, Yifan Bai, Yiping Bao and others), third-party developers building agentic workflows on the kimi-agent-sdk platform.",
+          "Summary": "Methodology stakeholders include the RL infrastructure team (autonomous operations and PARL training), the marketing team (dogfooding Claw Groups for content production), the broader Kimi Team research contributors, and third-party developers building agentic workflows on the agent SDK.",
           "evidence": [
             {
               "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Tool budget differentiation across agent modes is a deliberate architectural choice: Base Chat mode limits tool calls to 10 per turn while OK Computer mode has effectively unlimited tool calls per session. Context management (discard all but most recent tool-related round when context window exceeds threshold) prevents overflow during long-horizon tasks with thousands of tool calls.",
-          "evidence": [
-            {
-              "quote": "once the context window exceeds the threshold, only the most recent round of tool-related messages is retained.",
-              "citation": "[16]"
-            }
-          ]
+          "Summary": "Not Available",
+          "evidence": []
         }
       ]
     },
@@ -733,12 +412,12 @@
           "Summary": "MoonshotAI maintains multiple public community communication channels: GitHub Discussions on kimi-cli for technical Q&A, a Discord server (discord.gg/FBDhVhVH7M) for real-time chat, a community forum at forum.moonshot.ai for longer-form discussions, and a Reddit community at r/kimi for broader community engagement.",
           "evidence": [
             {
-              "quote": "Discord",
-              "citation": "[16]"
+              "quote": "This is an early research preview. We will continue to harden the architecture, introducing direct sub-agent communication, dynamic control of parallel width—but the foundation is ready for your most demanding work.",
+              "citation": "[9]"
             },
             {
-              "quote": "Reddit",
-              "citation": "[16]"
+              "quote": "We are moving beyond simply asking AI a question or assigning AI a task, and entering a phase where human and AI collaborate as genuine partners—combining strengths to solve problems collectively.",
+              "citation": "[8]"
             }
           ]
         },
@@ -746,47 +425,51 @@
           "Summary": "Official product announcements and engineering deep-dives are published on kimi.com/blog with each major model and product release, including full benchmark tables, architecture descriptions, and third-party evaluator testimonials. MoonshotAI uses X (@Kimi_Moonshot) and Instagram (@kimiai.official) for social media outreach.",
           "evidence": [
             {
-              "quote": "X",
-              "citation": "[16]"
+              "quote": "Kimi K2.6 demonstrates significant improvements over K2.5 in internal evaluations conducted by CodeBuddy: code generation accuracy increased by 12%, long-context stability improved by 18%, and tool invocation success rate reached 96.60%.",
+              "citation": "[8]"
             },
             {
-              "quote": "Instagram",
-              "citation": "[16]"
+              "quote": "K2.6 is a clear improvement on K2.5 on both our benchmarks (+15%) and in side-by-side comparisons. It seems to have better instruction following, more thorough exploration and reasoning, and less likely to make coding errors or use hacks.",
+              "citation": "[8]"
             }
           ]
         },
         {
-          "Summary": "Bilingual (Chinese + English) communication is enforced throughout the development process: GitHub issue titles on kimi-cli are submitted in both languages, and the translator.yml CI workflow automatically generates bilingual documentation on every docs change.",
+          "Summary": "With each major model release, MoonshotAI publishes an anonymized operational worklog alongside the announcement—the K2.6 release included a redacted 5-day autonomous run record from the RL infrastructure team to let the broader engineering community audit the agent's real-world behavior. This practice of sharing edited-but-authentic operational records, rather than only synthetic benchmarks, functions as a transparency mechanism that bridges internal engineering decisions and public trust.",
           "evidence": [
             {
-              "quote": "translator.yml, (File) | ci: add GitHub Actions workflow for automatic translation (#74) | 6 months ago",
-              "citation": "[12]"
+              "quote": "Here is K2.6's worklog (anonymized to remove sensitive information)",
+              "citation": "[8]"
             },
             {
-              "quote": "Windows 11 企业版上使用uv安装的kimi cli启动太慢 || The kimi cli installed using uv on Windows 11 Enterprise Edition starts too slowly",
-              "citation": "[18]"
+              "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
+              "citation": "[8]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Team communication tools: GitHub Issues + Discussions (code-related discussion and bug reports), Discord (discord.gg/FBDhVhVH7M, real-time community chat), Reddit (r/kimi), forum.moonshot.ai (community forum), kimi.com/blog (official engineering blog), X @Kimi_Moonshot, Instagram @kimiai.official, translator.yml (automated bilingual documentation CI), support@moonshot.cn (technical support email).",
+          "Summary": "Communication channels span developer-focused platforms (Discord at discord.gg/FBDhVhVH7M, Reddit at r/kimi), community forums (forum.moonshot.ai), official publishing surfaces (kimi.com/blog, X @Kimi_Moonshot, Instagram @kimiai.official), and technical support (support@moonshot.cn), providing multi-channel presence for both technical and general audiences.",
           "evidence": [
             {
-              "quote": "translator.yml, (File) | ci: add GitHub Actions workflow for automatic translation (#74)",
-              "citation": "[12]"
+              "quote": "To reproduce official Kimi-K2.6 benchmark results, we recommend using the official API. For third-party providers, refer to Kimi Vendor Verifier (KVV) to choose high-accuracy services.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "If you have any questions, please reach out at support@moonshot.cn.",
+              "citation": "[11]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Communication stakeholders: MoonshotAI engineering team and product management (blog authors, support team), community contributors (214 open PRs on kimi-cli, 57 issues on kimi-agent-sdk), enterprise partners providing public evaluation feedback (Vercel, Baseten, CodeBuddy, Factory.ai, Augment Code, Fireworks.ai, Kilo AI, OpenCode, Blackbox.ai, Qoder, Hermes Agent, Ollama), and Chinese and international developer communities.",
+          "Summary": "Communication stakeholders span the MoonshotAI engineering and product teams, active open-source contributors, enterprise partners publishing public evaluations, and dual Chinese and international developer communities reflecting the product's global reach.",
           "evidence": [
             {
               "quote": "K2.6 is a clear improvement on K2.5 on both our benchmarks (+15%) and in side-by-side comparisons.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         }
@@ -797,7 +480,7 @@
           "evidence": [
             {
               "quote": "If you have any questions, please reach out at support@moonshot.cn.",
-              "citation": "[23]"
+              "citation": "[11]"
             }
           ]
         }
@@ -806,28 +489,28 @@
     "Holistic_Documentation": {
       "Practices": [
         {
-          "Summary": "Documentation for kimi-cli is continuously deployed to moonshotai.github.io/kimi-cli via docs-pages.yml triggered on every push to main. The ci-docs.yml workflow validates documentation builds before deployment. English and Chinese versions are automatically generated by translator.yml (added 6 months ago).",
+          "Summary": "MoonshotAI publishes detailed technical reports for each major model release, covering model architecture, training methodology, and Agent Swarm design, providing transparent academic-grade documentation of the model powering Ok Computer.",
           "evidence": [
             {
-              "quote": "ci-docs.yml, (File) | ci: fix uv cache inputs and docs cache key (#1014) | 2 months ago",
-              "citation": "[12]"
+              "quote": "Kimi K2.5: Visual Agentic Intelligence",
+              "citation": "[10]"
             },
             {
-              "quote": "translator.yml, (File) | ci: add GitHub Actions workflow for automatic translation (#74) | 6 months ago",
-              "citation": "[12]"
+              "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
+              "citation": "[10]"
             }
           ]
         },
         {
-          "Summary": "MoonshotAI publishes technical reports on arXiv for each major model release. The Kimi K2.5 technical report (arXiv:2602.02276, submitted February 2, 2026) documents the architecture (MoE, 1T total parameters, 32B activated, 384 experts, MoonViT 400M vision encoder), training methodology (joint text-vision pre-training, zero-vision SFT, PARL reinforcement learning), and Agent Swarm design.",
+          "Summary": "The kimi-agent-internals community repository (CC BY 4.0) documented a three-phase evolution of Kimi's system prompt architecture that reveals the engineering rationale behind the current SKILL.md design. Phase 1 (circa 2024): static system prompts baked into model weights, requiring retraining to change behavior. Phase 2 (circa 2025): long instruction-heavy prompts that could override training but grew unwieldy. Phase 3 (circa 2026): modular skill injection—capabilities broken into independent SKILL.md files loaded on demand, keeping the base prompt minimal while accessing deep domain expertise at runtime. The architectural insight: separating connectivity (what tools the agent has) from cognition (what the agent knows), where cognition is loaded dynamically rather than embedded statically.",
           "evidence": [
             {
-              "quote": "Kimi K2.5: Visual Agentic Intelligence",
-              "citation": "[22]"
+              "quote": "Phase 3: Modular skill injection (circa 2026). Instead of one massive prompt, capabilities are broken into modular files loaded on demand. Kimi's SKILL.md system does this: the agent reads domain-specific documentation when needed, keeping the base prompt minimal while accessing deep expertise on demand.",
+              "citation": "[2]"
             },
             {
-              "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
-              "citation": "[22]"
+              "quote": "This shift lets Kimi keep a clean base state while accessing deep expertise on demand. It solves the 'Lost in the Middle' problem of massive context windows. Knowledge is separated from identity.",
+              "citation": "[2]"
             }
           ]
         },
@@ -843,47 +526,38 @@
               "citation": "[3]"
             }
           ]
-        },
-        {
-          "Summary": "CONTRIBUTING.md provides structured contribution guidelines covering the prek hook system setup, make command reference (prepare/format/check/test/build-web/build/build-bin), the 100-LOC discussion gate requirement, and explicit code quality standards. The contribution documentation is actively maintained alongside the codebase.",
-          "evidence": [
-            {
-              "quote": "We only merge pull requests that align with our roadmap.",
-              "citation": "[14]"
-            },
-            {
-              "quote": "Run `make prepare` to sync dependencies and install the prek hooks.",
-              "citation": "[14]"
-            }
-          ]
         }
       ],
       "Tools": [
         {
-          "Summary": "Documentation tooling: GitHub Pages (docs hosting via docs-pages.yml), GitHub Actions (ci-docs.yml for build validation, translator.yml for bilingual generation), Markdown (primary documentation format), arXiv (academic tech report publication), platform.kimi.ai (OpenAI/Anthropic-compatible API documentation portal), kimi-agent-internals (CC BY 4.0 community analysis documentation).",
+          "Summary": "Documentation for Ok Computer is distributed through  technical reports, the API developer portal at platform.moonshot.ai, and the community-maintained kimi-agent-internals reverse-engineering repository.",
           "evidence": [
             {
-              "quote": "docs-pages.yml, (File) | ci: fix uv cache inputs and docs cache key (#1014) | 2 months ago",
-              "citation": "[12]"
+              "quote": "Kimi K2.5: Visual Agentic Intelligence",
+              "citation": "[10]"
             }
           ]
         }
       ],
       "Stakeholders": [
         {
-          "Summary": "Documentation stakeholders: MoonshotAI engineering team (CONTRIBUTING.md, README, API docs, kimi-cli docs site authors), Kimi Team researchers (arXiv tech report authors: Tongtong Bai, Yifan Bai, Yiping Bao and 50+ named K2.5 co-authors), community analysts (dnnyngyen and contributors to kimi-agent-internals, CC BY 4.0), and external developer platform users.",
+          "Summary": "Documentation stakeholders include the MoonshotAI research team, community analysts who independently document Ok Computer's internal architecture, and the broader developer community consuming API and integration documentation.",
           "evidence": [
             {
               "quote": "Kimi K2.5: Visual Agentic Intelligence",
-              "citation": "[22]"
+              "citation": "[10]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Agent behavior documentation for Kimi Ok Computer is embedded in the SKILL.md files themselves. The Excel SKILL.md is 925 lines covering Excel 365 vs. 2019 compatibility rules, formula validation, and styling conventions. SKILL.md files serve simultaneously as runtime instructions for the agent and as behavioral documentation for the system, making the documentation executable.",
+          "Summary": "Agent behavior documentation for Kimi Ok Computer is embedded in the SKILL.md files themselves. The Excel SKILL.md is 925 lines covering Excel 365 vs. 2019 compatibility rules, formula validation, and styling conventions. SKILL.md files serve simultaneously as runtime instructions for the agent and as behavioral documentation for the system, making the documentation executable. The community analyst who reverse-engineered this architecture captured the design principle: 'New capabilities come down to documentation. Write a thorough manual, put it in the right directory, and the agent is an expert in that domain.' This tight coupling means documentation quality directly determines capability quality—unusual in traditional software where documentation and behavior are maintained independently.",
           "evidence": [
+            {
+              "quote": "New capabilities come down to documentation. Write a thorough manual, put it in the right directory, and the agent is an expert in that domain.",
+              "citation": "[2]"
+            },
             {
               "quote": "Validation Gates: XLSX skill enforces per-sheet validation; DOCX validates after build",
               "citation": "[3]"
@@ -904,15 +578,15 @@
           ]
         },
         {
-          "Summary": "The underlying Kimi K2.5/K2.6 model is configured with interleaved thinking and multi-step tool calls as native features. For benchmarks, all K2.6 experiments use temperature = 1.0, top_p = 1.0, and context length of 262,144 tokens. Two inference modes are supported: thinking mode (temperature 1.0) and instant mode (temperature 0.6).",
+          "Summary": "The underlying K2.x model supports interleaved thinking with multi-step tool calls as native capabilities, with separate inference modes (thinking vs. instant) offering different latency and reasoning depth tradeoffs.",
           "evidence": [
             {
               "quote": "Unless otherwise specified, all Kimi K2.6 experiments were conducted with temperature = 1.0, top-p = 1.0, and a context length of 262,144 tokens.",
-              "citation": "[16]"
+              "citation": "[8]"
             },
             {
               "quote": "The recommended `temperature` will be `1.0` for Thinking mode and `0.6` for Instant mode.",
-              "citation": "[23]"
+              "citation": "[11]"
             }
           ]
         },
@@ -921,7 +595,7 @@
           "evidence": [
             {
               "quote": "once the context window exceeds the threshold, only the most recent round of tool-related messages is retained.",
-              "citation": "[16]"
+              "citation": "[8]"
             }
           ]
         },
@@ -930,39 +604,39 @@
           "evidence": [
             {
               "quote": "You can access Kimi-K2.5's API on https://platform.moonshot.ai and we provide OpenAI/Anthropic-compatible API for you.",
-              "citation": "[23]"
+              "citation": "[11]"
             },
             {
               "quote": "Kimi K2.5 works best with Kimi Code CLI as its agent framework",
-              "citation": "[23]"
+              "citation": "[11]"
             }
           ]
         },
         {
-          "Summary": "Agent Swarm capabilities are trained via PARL (Parallel Agentic Reinforcement Learning). The K2.5 tech report describes joint text-vision pre-training on approximately 15 trillion tokens, zero-vision SFT, and joint text-vision RL as the training stages. The model is a Mixture-of-Experts architecture: 1T total parameters, 32B activated, 384 experts.",
+          "Summary": "Agent Swarm capabilities are trained using PARL (Parallel Agentic Reinforcement Learning) across multi-stage training (pre-training, SFT, and joint vision-text RL) on a large-scale Mixture-of-Experts architecture.",
           "evidence": [
             {
               "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
-              "citation": "[22]"
+              "citation": "[10]"
             },
             {
               "quote": "Agent Swarm also reduces latency by up to 4.5x over single-agent baselines.",
-              "citation": "[22]"
+              "citation": "[10]"
             }
           ]
         }
       ],
       "Tools": [
         {
-          "Summary": "LLM integration tools: Kimi K2.5/K2.6 (MoE: 1T total parameters, 32B activated, 384 experts, MLA attention, 256K native context, MoonViT 400M vision encoder), IPython kernel (code-interpreter tool), OpenAI/Anthropic-compatible API at platform.kimi.ai, vLLM/SGLang/KTransformers (self-deployment inference engines), SKILL.md runtime injection (read_file at workflow start), interleaved thinking with multi-step tool call reasoning, and the kimi-agent-sdk (TypeScript, Go, Python clients).",
+          "Summary": "The LLM integration stack centers on the K2.x MoE model exposed via an OpenAI/Anthropic-compatible API, with self-deployment supported through vLLM, SGLang, and KTransformers, and runtime skill injection via SKILL.md files replacing static system prompts.",
           "evidence": [
             {
-              "quote": "Total Parameters | 1T",
-              "citation": "[23]"
+              "quote": "Kimi K2.5 builds on Kimi K2 with continued pretraining over approximately 15T mixed visual and text tokens. Built as a native multimodal model, K2.5 delivers state-of-the-art coding and vision capabilities and a self-directed agent swarm paradigm.",
+              "citation": "[10]"
             },
             {
-              "quote": "Kimi K2.5 works best with Kimi Code CLI as its agent framework",
-              "citation": "[23]"
+              "quote": "You can access Kimi-K2.5's API on https://platform.moonshot.ai and we provide OpenAI/Anthropic-compatible API for you.",
+              "citation": "[11]"
             }
           ]
         }
@@ -973,18 +647,18 @@
           "evidence": [
             {
               "quote": "You can access Kimi-K2.5's API on https://platform.moonshot.ai",
-              "citation": "[23]"
+              "citation": "[11]"
             }
           ]
         }
       ],
       "Others": [
         {
-          "Summary": "Kimi Ok Computer is configured with 29 distinct tools including read_file, write_file, edit_file, shell, ipython, web_search, seven browser_* tools, generate_image, generate_speech, generate_sound_effects, screenshot_web_full_page, find_asset_bbox, crop_and_replicate_assets_in_image, deploy_website, slides_generator, todo_read/write, memory_space, datasources, and search_image_by_text/image. OK Computer mode has effectively unlimited tool calls per session versus 10 calls/turn in Base Chat mode.",
+          "Summary": "Kimi Ok Computer exposes a broad tool set covering file I/O, code execution, multi-modal generation, web interaction, and deployment capabilities, with Ok Computer mode allowing effectively unlimited tool calls per session—contrasting with the constrained tool budget in Base Chat mode. A known scaling limitation of the SKILL.md architecture is that 900-line instruction manuals push the boundary of what models can reliably follow: as skills grow more intricate, verification becomes harder, and errors can propagate silently until output validation catches them. This tension between modular extensibility and instruction-following reliability is an active engineering constraint for the team.",
           "evidence": [
             {
-              "quote": "Build Orchestration: Complex skills (DOCX, WebApp) use shell as build system, not just command executor",
-              "citation": "[3]"
+              "quote": "This approach has limits. 900-line instruction manuals push the boundaries of what models can reliably follow. As skills grow more intricate, verification becomes harder. The model generates logic rather than calling verified backend code, so errors propagate silently until output validation catches them.",
+              "citation": "[2]"
             },
             {
               "quote": "Skill Loading is Always First: Every specialized workflow starts with `read_file(SKILL.md)`",
@@ -1039,96 +713,24 @@
       "Date_Pulled": "2026-04-28"
     },
     "[8]": {
-      "Website_Type": "GitHub Repository (Official SDK)",
-      "Link": "https://github.com/MoonshotAI/kimi-agent-sdk",
-      "Date_Created": "2026-01-01",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[9]": {
-      "Website_Type": "GitHub Workflow File",
-      "Link": "https://github.com/MoonshotAI/kimi-agent-sdk/blob/main/.github/workflows/kimi-review.yml",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[10]": {
-      "Website_Type": "GitHub Workflow File",
-      "Link": "https://github.com/MoonshotAI/kimi-agent-sdk/blob/main/.github/workflows/python.yml",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[11]": {
-      "Website_Type": "GitHub Repository (Official CLI)",
-      "Link": "https://github.com/MoonshotAI/kimi-cli",
-      "Date_Created": "2025-11-01",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[12]": {
-      "Website_Type": "GitHub Workflows Directory",
-      "Link": "https://github.com/MoonshotAI/kimi-cli/tree/main/.github/workflows",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[13]": {
-      "Website_Type": "GitHub README",
-      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/main/README.md",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[14]": {
-      "Website_Type": "GitHub CONTRIBUTING.md",
-      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/main/CONTRIBUTING.md",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[15]": {
-      "Website_Type": "GitHub Organization",
-      "Link": "https://github.com/MoonshotAI",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[16]": {
       "Website_Type": "Official Engineering Blog",
       "Link": "https://www.kimi.com/blog/kimi-k2-6",
       "Date_Created": "2026-04-20",
       "Date_Pulled": "2026-04-28"
     },
-    "[17]": {
+    "[9]": {
       "Website_Type": "Official Engineering Blog",
       "Link": "https://www.kimi.com/blog/agent-swarm",
       "Date_Created": "2026-02-13",
       "Date_Pulled": "2026-04-28"
     },
-    "[18]": {
-      "Website_Type": "GitHub Issues Tracker",
-      "Link": "https://github.com/MoonshotAI/kimi-cli/issues",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[19]": {
-      "Website_Type": "GitHub Issues Tracker",
-      "Link": "https://github.com/MoonshotAI/kimi-agent-sdk/issues",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[20]": {
-      "Website_Type": "Official Website",
-      "Link": "https://moonshot.ai",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[21]": {
-      "Website_Type": "Community Forum",
-      "Link": "https://forum.moonshot.ai",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-28"
-    },
-    "[22]": {
+    "[10]": {
       "Website_Type": "Academic Paper (arXiv)",
       "Link": "https://arxiv.org/abs/2602.02276",
       "Date_Created": "2026-02-02",
       "Date_Pulled": "2026-04-28"
     },
-    "[23]": {
+    "[11]": {
       "Website_Type": "GitHub Repository (Official Model)",
       "Link": "https://github.com/MoonshotAI/Kimi-K2.5",
       "Date_Created": "2026-02-02",

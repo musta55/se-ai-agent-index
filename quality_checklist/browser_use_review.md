@@ -1,0 +1,132 @@
+# Quality Review: Browser Use
+
+**Review Date:** 2026-05-18  
+**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
+**Source File:** `Indexing/browser_use_se_index.json`
+
+---
+
+## Summary
+
+| | Count |
+|---|---|
+| ✅ Pass | 10 |
+| ⚠️ Warning | 4 |
+| ❌ Fail | 0 |
+| 🤖 LLM Score | GOOD |
+
+---
+
+## Completeness
+
+✅ Description field populated with agent category/capabilities/deployment surface
+✅ Repository_Statistics has all 5 required fields
+✅ All 8 SE_Practices areas present
+✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+✅ Bug_Solving_Approaches has 15 issues (≥10 ✓)
+✅ References count: 17 (✓) — target 15–20
+✅ External (non-GitHub) sources: 11 (≥5 ✓) — target 5–10
+
+## Source Quality
+
+✅ All citations have References entries (15 citations verified)
+⚠️ Unused References (no citation points to them): [17], [4]
+⚠️ All Date_Pulled in YYYY-MM-DD format — bad/missing in: [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17]
+
+## Evidence Quality
+
+✅ No URL-as-quote violations
+✅ No filename-as-quote violations
+⚠️ No short quotes (<5 words) — 9 found
+  - `94.1k stars` (2 words)
+  - `318 Contributors` (2 words)
+  - `Languages: Python 97.9%` (3 words)
+⚠️ No overlong quotes (>50 words — should use '...') — 5 found
+  - `The Agent class is the unit of work. You pass it a task, an LLM, and a...` (51 words)
+  - `Two minutes before the Lambda deadline, the agent stops gracefully... ...` (52 words)
+
+## LLM-as-Judge Assessment
+
+### ✅ Content Focus (dev practices vs. product features): `PASS`
+
+### ⚠️ Quote Verbatim Fidelity: `WARN`
+
+- 9 short quotes flagged: '94.1k stars', '318 Contributors', '123 releases · Latest: 0.12.6', 'Initial release — Nov 6, 2024 · Tag 0.1.0' are GitHub sidebar metadata labels
+- 5 overlong quotes (>50 words) should use '...' truncation
+
+### ✅ Anti-Hallucination: `PASS`
+
+### ⚠️ Evidence Supports Summary: `WARN`
+
+- Description uses 'value' key instead of 'Summary' — non-standard schema
+- Date_Pulled missing from all 17 references — data collection date unknown
+- 2 unused references ([4],[17])
+
+### ✅ Not-Available Usage Appropriate: `PASS`
+
+### Overall: **✅ GOOD**
+
+Solid coverage of an open-source Python library's SE practices with 17 references and genuine development insights (GitHub Actions CI, pytest, conventional commits, PR templates). Key issues: all Date_Pulled fields are missing from References, 9 GitHub UI labels used as quotes, 5 overlong quotes, and non-standard schema for Description field.
+
+
+---
+
+## Issues to Address
+
+### Programmatic Checks
+
+⚠️ Unused References (no citation points to them): [17], [4]
+⚠️ All Date_Pulled in YYYY-MM-DD format — bad/missing in: [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17]
+⚠️ No short quotes (<5 words) — 9 found
+⚠️ No overlong quotes (>50 words — should use '...') — 5 found
+
+---
+
+## Full Quality Checklist
+
+*(Automated = checked programmatically; Manual = requires human review)*
+
+### Source Quality
+- [x] All citations map to References entries *(automated)*
+- [ ] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
+- [ ] Website_Type accurately describes each source *(manual)*
+
+### Content Focus
+- [ ] Focus on development practices, not product features *(manual)*
+- [ ] No user-facing features substituted *(manual)*
+- [ ] 'Not Available' used only when info genuinely absent *(manual)*
+
+### Completeness
+- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
+- [x] Repository_Statistics has all 5 required fields *(automated)*
+- [x] All 8 SE_Practices areas present *(automated)*
+- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
+- [x] Bug_Solving_Approaches has 15 issues (≥10 ✓) *(automated)*
+- [x] References count: 17 (✓) — target 15–20 *(automated)*
+- [x] External (non-GitHub) sources: 11 (≥5 ✓) — target 5–10 *(automated)*
+
+### JSON Validity
+- [x] JSON is valid (file loaded successfully) *(automated)*
+- [x] JSON is complete (all top-level keys present) *(automated)*
+- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
+- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
+
+### Evidence Quality
+- [x] No URL-as-quote violations *(automated)*
+- [x] No filename-as-quote violations *(automated)*
+- [ ] No short quotes (<5 words) — 9 found *(automated)*
+- [ ] No overlong quotes (>50 words — should use '...') — 5 found *(automated)*
+- [ ] Quotes directly support their corresponding summaries *(manual)*
+
+### Anti-Hallucination
+- [ ] No invented statistics or fabricated data *(manual)*
+- [ ] All URLs in References verified accessible *(manual)*
+- [ ] No guessed file paths or made-up links *(manual)*
+
+### Research Efficiency
+- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
+- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+
+---
+
+*Generated by `quality_review_agent.py` on 2026-05-18*

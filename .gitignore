@@ -32,6 +32,9 @@ logs/
 # Mac
 .DS_Store
 
+# Downloaded reference sources (local cache — not tracked)
+web_sources/
+
 # Temporary files
 *.tmp
 *.bak
