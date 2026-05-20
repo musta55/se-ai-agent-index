@@ -6,21 +6,21 @@ A structured dataset and toolchain for analyzing **Software Engineering practice
 
 ## Dataset
 
-| # | Agent | Status | Review Score |
-|---|-------|--------|-------------|
-| 1 | Glean Agents | completed | GOOD |
-| 2 | IBM watsonx Orchestrate | completed | GOOD |
-| 3 | HubSpot Breeze Studio | completed | GOOD |
-| 4 | Google Gemini CLI | completed | NEEDS_IMPROVEMENT |
-| 5 | Google Gemini | completed | GOOD |
-| 6 | Google Gemini Enterprise | completed | NEEDS_IMPROVEMENT |
-| 7 | Kimi Ok Computer | completed | NEEDS_IMPROVEMENT |
-| 8 | Browser Use | completed | GOOD |
-| 9 | Opera Neon | completed | GOOD |
-| 10 | Alibaba Mobile Agent | completed | GOOD |
-| 11 | Perplexity Comet | completed | EXCELLENT |
-| 12 | Anthropic Claude Code | completed | GOOD |
-| 13 | Amazon Q Developer | completed | NEEDS_IMPROVEMENT |
+| #  | Agent                    | Status    | Review Score      |
+| -- | ------------------------ | --------- | ----------------- |
+| 1  | Glean Agents             | completed | GOOD              |
+| 2  | IBM watsonx Orchestrate  | completed | GOOD              |
+| 3  | HubSpot Breeze Studio    | completed | GOOD              |
+| 4  | Google Gemini CLI        | completed | NEEDS_IMPROVEMENT |
+| 5  | Google Gemini            | completed | GOOD              |
+| 6  | Google Gemini Enterprise | completed | NEEDS_IMPROVEMENT |
+| 7  | Kimi Ok Computer         | completed | NEEDS_IMPROVEMENT |
+| 8  | Browser Use              | completed | GOOD              |
+| 9  | Opera Neon               | completed | GOOD              |
+| 10 | Alibaba Mobile Agent     | completed | GOOD              |
+| 11 | Perplexity Comet         | completed | EXCELLENT         |
+| 12 | Anthropic Claude Code    | completed | GOOD              |
+| 13 | Amazon Q Developer       | completed | NEEDS_IMPROVEMENT |
 
 ---
 
@@ -65,7 +65,7 @@ SE Indexing Tool/
 ├── se_index.sh                     Main CLI (index / review / sources)
 ├── prompts/
 │   ├── prompts/research_prompt.md          Research methodology & JSON schema spec
-│   └── quality_checklist_template.md   Manual review checklist template
+│   └── quality_checklist_prompt.md   Manual review checklist template
 ├── agents_config.json              Agent registry (id, name, status, reviewed)
 ├── quality_review_agent.py         LLM-as-judge quality review script
 │
@@ -113,6 +113,7 @@ Registers the agent in `agents_config.json`, then **runs Claude Code autonomousl
 ```
 
 **What happens:**
+
 1. Agent is registered in `agents_config.json` (`indexing_status: pending`)
 2. `prompts/research_prompt.md` is substituted with the agent name and piped to `claude -p`
 3. Claude browses GitHub, blogs, docs, and papers (3–10 min)
@@ -134,13 +135,13 @@ Runs `quality_review_agent.py` against the agent's SE index JSON. Performs progr
 
 **What it checks:**
 
-| Category | Checks |
-|---|---|
-| Completeness | Description, Repository_Statistics (5 fields), all 8 SE areas, 4 subsections each, ≥10 bug issues, 15–20 references |
-| Citation mapping | Every `[N]` in evidence maps to a References entry |
-| Date format | All `Date_Pulled` in `YYYY-MM-DD` |
-| Evidence quality | No URL-as-quote, no filename-as-quote, no quotes < 5 words or > 50 words |
-| LLM-as-judge | Content focus, verbatim fidelity, anti-hallucination, evidence↔summary alignment, Not Available usage |
+| Category         | Checks                                                                                                                |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Completeness     | Description, Repository_Statistics (5 fields), all 8 SE areas, 4 subsections each, ≥10 bug issues, 15–20 references |
+| Citation mapping | Every `[N]` in evidence maps to a References entry                                                                  |
+| Date format      | All `Date_Pulled` in `YYYY-MM-DD`                                                                                 |
+| Evidence quality | No URL-as-quote, no filename-as-quote, no quotes < 5 words or > 50 words                                              |
+| LLM-as-judge     | Content focus, verbatim fidelity, anti-hallucination, evidence↔summary alignment, Not Available usage                |
 
 **Output scores:** `EXCELLENT` / `GOOD` / `NEEDS_IMPROVEMENT` / `POOR`
 
@@ -161,11 +162,11 @@ Runs `Indexing/pull_sources.py` to download every URL in the agent's `References
 
 **Download rules:**
 
-| URL type | Output |
-|---|---|
-| GitHub repo root (e.g. `github.com/owner/repo`) | Downloads `README.md` as `[N].md` |
+| URL type                                               | Output                                     |
+| ------------------------------------------------------ | ------------------------------------------ |
+| GitHub repo root (e.g.`github.com/owner/repo`)       | Downloads `README.md` as `[N].md`      |
 | GitHub blob `.md` / `.yml` / `.yaml` / `.json` | Downloads raw file with matching extension |
-| Any other URL | Downloads page HTML as `[N].html` |
+| Any other URL                                          | Downloads page HTML as `[N].html`        |
 
 Files are named by reference number: `[1].html`, `[9].md`, `[19].yml`, etc.
 
@@ -188,6 +189,7 @@ The `web_sources/` folder is gitignored — it is a local cache only.
 ```
 
 This single command:
+
 1. Adds the agent to `agents_config.json` (`indexing_status: pending`)
 2. Substitutes `"New Agent Name"` into `prompts/research_prompt.md`
 3. Runs `claude -p < prompts/research_prompt.md` non-interactively
@@ -196,6 +198,7 @@ This single command:
 6. Sets `indexing_status: completed` on success
 
 The research prompt guides Claude through:
+
 - Step 0: Agent description (category, company, deployment surface)
 - Step 1: Repository discovery & statistics (stars, contributors, LOC, language, update frequency)
 - Step 2: Official documentation & engineering blog analysis
@@ -268,16 +271,16 @@ Each agent index is stored as a JSON file in `Indexing/`. The canonical schema:
 
 ### 8 SE Practice Areas
 
-| Area | What to capture |
-|---|---|
-| **Testing_and_Reliability** | Unit/integration/E2E frameworks, CI test gates, coverage targets, reliability SLOs |
-| **Integration_and_Infrastructure_CICD** | CI/CD pipelines, deployment tools, release cadence, infrastructure-as-code |
-| **Code_Review_Process** | PR review policies, required reviewers, automated checks, review tooling |
-| **Bug_Solving_Approaches** | Issue triage, debugging workflow, postmortems, bug tracking tools |
-| **Software_Engineering_Methodology** | Agile/scrum practices, sprint structure, planning tools, versioning strategy |
-| **Team_Communication** | Internal comms tools, async vs sync patterns, standup rituals, onboarding |
-| **Holistic_Documentation** | Code docs, architecture docs, API references, changelogs, contributor guides |
-| **LLM_Integration_and_Prompt_Management** | How LLMs are integrated, prompt versioning, model switching, evaluation |
+| Area                                            | What to capture                                                                    |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Testing_and_Reliability**               | Unit/integration/E2E frameworks, CI test gates, coverage targets, reliability SLOs |
+| **Integration_and_Infrastructure_CICD**   | CI/CD pipelines, deployment tools, release cadence, infrastructure-as-code         |
+| **Code_Review_Process**                   | PR review policies, required reviewers, automated checks, review tooling           |
+| **Bug_Solving_Approaches**                | Issue triage, debugging workflow, postmortems, bug tracking tools                  |
+| **Software_Engineering_Methodology**      | Agile/scrum practices, sprint structure, planning tools, versioning strategy       |
+| **Team_Communication**                    | Internal comms tools, async vs sync patterns, standup rituals, onboarding          |
+| **Holistic_Documentation**                | Code docs, architecture docs, API references, changelogs, contributor guides       |
+| **LLM_Integration_and_Prompt_Management** | How LLMs are integrated, prompt versioning, model switching, evaluation            |
 
 Each area has four subsections: **Practices**, **Tools**, **Stakeholders**, **Others**.
 
@@ -305,23 +308,24 @@ Tracks the status of every agent in the dataset:
 ]
 ```
 
-| Field | Values |
-|---|---|
-| `indexing_status` | `pending` · `in-progress` · `completed` · `failed` |
-| `reviewed` | `false` · `true` (set automatically after `review` completes) |
+| Field               | Values                                                               |
+| ------------------- | -------------------------------------------------------------------- |
+| `indexing_status` | `pending` · `in-progress` · `completed` · `failed`        |
+| `reviewed`        | `false` · `true` (set automatically after `review` completes) |
 
 ---
 
 ## Quality Review Scores
 
-| Score | Meaning |
-|---|---|
-| **EXCELLENT** | No issues found; all checks pass; evidence is tight and on-target |
-| **GOOD** | Minor warnings only; overall solid research |
+| Score                       | Meaning                                                                     |
+| --------------------------- | --------------------------------------------------------------------------- |
+| **EXCELLENT**         | No issues found; all checks pass; evidence is tight and on-target           |
+| **GOOD**              | Minor warnings only; overall solid research                                 |
 | **NEEDS_IMPROVEMENT** | One or more significant issues (missing areas, bad evidence, low ref count) |
-| **POOR** | Multiple failures; index should be re-researched |
+| **POOR**              | Multiple failures; index should be re-researched                            |
 
 Review reports are in `quality_checklist/`. Each report shows:
+
 - Pass / Warning / Fail counts for all programmatic checks
 - LLM-as-judge assessment across 5 dimensions
 - A list of specific issues to address

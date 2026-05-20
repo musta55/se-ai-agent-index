@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).parent
 INDEXING_DIR = BASE_DIR / "Indexing"
 CHECKLIST_DIR = BASE_DIR / "quality_checklist"
 AGENTS_CONFIG = BASE_DIR / "agents_config.json"
+LLM_PROMPT_FILE = BASE_DIR / "prompts" / "llm_judge_prompt.txt"
 
 REQUIRED_SE_AREAS = [
     "Testing_and_Reliability",
@@ -270,58 +271,6 @@ def check_evidence(data):
 
 # ── LLM-as-judge ──────────────────────────────────────────────────────────────
 
-LLM_PROMPT = """\
-You are an expert SE research quality reviewer. Evaluate this SE Index JSON excerpt \
-against the Quality Review Checklist criteria.
-
-Agent: {agent_name}
-
-DESCRIPTION SUMMARY:
-{description}
-
-SAMPLE EVIDENCE (up to 2 quotes per subsection, from the first 4 SE areas):
-{sample}
-
-SAMPLE ISSUES (first 5 from Bug_Solving_Approaches):
-{issues}
-
-Respond with ONLY valid JSON — no markdown fences, no extra text:
-{{
-  "content_focus": {{
-    "score": "PASS|WARN|FAIL",
-    "issues": []
-  }},
-  "quote_verbatim": {{
-    "score": "PASS|WARN|FAIL",
-    "issues": []
-  }},
-  "anti_hallucination": {{
-    "score": "PASS|WARN|FAIL",
-    "issues": []
-  }},
-  "evidence_supports_summary": {{
-    "score": "PASS|WARN|FAIL",
-    "issues": []
-  }},
-  "not_available_usage": {{
-    "score": "PASS|WARN|FAIL",
-    "issues": []
-  }},
-  "overall_quality": {{
-    "score": "EXCELLENT|GOOD|NEEDS_IMPROVEMENT|POOR",
-    "summary": "2-3 sentences"
-  }}
-}}
-
-Scoring criteria:
-- content_focus FAIL: any summary/quote describes what the agent does FOR USERS (product feature) rather than how ENGINEERS BUILT IT (dev practice). WARN: borderline cases.
-- quote_verbatim WARN: a quote reads like a paraphrase; FAIL: clearly reworded.
-- anti_hallucination FAIL: specific statistics or claims that appear fabricated or lack citations. WARN: suspicious but unconfirmed.
-- evidence_supports_summary WARN: a summary claims X but the quoted text doesn't clearly demonstrate X.
-- not_available_usage WARN: "Not Available" appears in a major area where public engineering info almost certainly exists (e.g., a well-documented open-source tool marking Testing as Not Available).\
-"""
-
-
 def run_llm_judge(data, client):
     sample = {}
     for area in list(data.get("SE_Practices", {}).keys())[:4]:
@@ -344,11 +293,13 @@ def run_llm_judge(data, client):
     )
     desc = _description_summary(data) or "N/A"
 
-    prompt = LLM_PROMPT.format(
-        agent_name=data.get("Agent_Name", "Unknown"),
-        description=desc[:600],
-        sample=json.dumps(sample, indent=2)[:5000],
-        issues=json.dumps(issues_sample, indent=2)[:2000],
+    template = LLM_PROMPT_FILE.read_text(encoding="utf-8")
+    prompt = (
+        template
+        .replace("{agent_name}", data.get("Agent_Name", "Unknown"))
+        .replace("{description}", desc[:600])
+        .replace("{sample}", json.dumps(sample, indent=2)[:5000])
+        .replace("{issues}", json.dumps(issues_sample, indent=2)[:2000])
     )
 
     try:
