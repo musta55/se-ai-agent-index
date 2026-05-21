@@ -2,31 +2,7 @@
 
 A structured dataset and toolchain for analyzing **Software Engineering practices** of AI coding agents. Each agent is researched using open-coding methodology and stored as a validated JSON index — covering testing, CI/CD, code review, bug solving, methodology, team communication, documentation, and LLM integration.
 
----
-
-## Dataset
-
-| #  | Agent                    | Status    | Review Score      |
-| -- | ------------------------ | --------- | ----------------- |
-| 1  | Glean Agents             | completed | GOOD              |
-| 2  | IBM watsonx Orchestrate  | completed | GOOD              |
-| 3  | HubSpot Breeze Studio    | completed | GOOD              |
-| 4  | Google Gemini CLI        | completed | NEEDS_IMPROVEMENT |
-| 5  | Google Gemini            | completed | GOOD              |
-| 6  | Google Gemini Enterprise | completed | NEEDS_IMPROVEMENT |
-| 7  | Kimi Ok Computer         | completed | NEEDS_IMPROVEMENT |
-| 8  | Browser Use              | completed | GOOD              |
-| 9  | Opera Neon               | completed | GOOD              |
-| 10 | Alibaba Mobile Agent     | completed | GOOD              |
-| 11 | Perplexity Comet         | completed | EXCELLENT         |
-| 12 | Anthropic Claude Code    | completed | GOOD              |
-| 13 | Amazon Q Developer       | completed | NEEDS_IMPROVEMENT |
-
----
-
-## Quick Start — 3 Commands
-
-### Prerequisites
+## Prerequisites
 
 ```bash
 # 1. Copy .env and paste your Anthropic API key
