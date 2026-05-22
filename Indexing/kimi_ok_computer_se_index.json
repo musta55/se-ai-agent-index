@@ -1,5 +1,5 @@
 {
-  "Agent_Name": "Kimi Ok Computer",
+  "Agent_Name": "Kimi OK Computer",
   "Description": {
     "value": "Kimi Ok Computer is a proprietary closed-source computer-use AI agent developed by Moonshot AI, accessible at kimi.com/agent, that autonomously operates a cloud computing environment to complete complex multi-step tasks including web browsing, code execution, file manipulation, and visual reasoning. It is powered by the Kimi K2.x model family with Agent Swarm parallel orchestration.",
     "evidence": [
@@ -85,6 +85,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_1",
           "Summary": "MoonshotAI evaluates each model release against three proprietary internal benchmarks (Kimi code bench, Kimi Design Bench, Claw Bench) covering long-horizon coding, design/UI generation, and multi-domain agentic workflows, enabling structured regression tracking across the K2.x model series.",
           "evidence": [
             {
@@ -102,6 +103,7 @@
           ]
         },
         {
+          "q_id": "q_2",
           "Summary": "External benchmark performance is measured using an in-house evaluation framework adapted from SWE-agent, with a deliberately minimal tool set to ensure fair comparison. All coding task results are averaged over 10 independent runs for statistical robustness.",
           "evidence": [
             {
@@ -115,6 +117,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "MoonshotAI systematically dogfoods the agent on internal production workloads, using real operational worklogs as reliability signals alongside extended long-horizon stress tasks to validate out-of-distribution generalization. For the robustness check they averaged over 10 independent checks MoonshotAI employs systematic dogfooding as a reliability testing practice; ran 4k+ tool calls, over 12 hours of continuous execution as stress testing",
           "evidence": [
             {
@@ -128,6 +131,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Third-party enterprise evaluators independently validate model improvements using domain-specific benchmarks, with published results consistently reporting significant gains in code accuracy, stability, and tool invocation success across K2.x releases.",
           "evidence": [
             {
@@ -143,6 +147,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_5",
           "Summary": "Evaluation tooling spans three layers: internal proprietary benchmark suites, external industry-standard benchmarks (SWE-Bench series, Terminal-Bench, OSWorld, BrowseComp), and runtime output validators for document formats. All external coding evaluations use an in-house SWE-agent-adapted framework.",
           "evidence": [
             {
@@ -158,6 +163,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_6",
           "Summary": "Testing stakeholders include the MoonshotAI RL infrastructure team (internal dogfooding), the model development team, a broad set of third-party enterprise evaluators publishing domain-specific benchmark results, and the maintainers of external standard benchmarks used for independent comparison.",
           "evidence": [
             {
@@ -173,6 +179,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_7",
           "Summary": "When Agent Swarm mode is enabled on Ok Computer, parallel execution delivers a measurable lift on research-intensive retrieval tasks: BrowseComp rises from 83.2 (single-agent) to 86.3 (Agent Swarm), showing that horizontal scaling across sub-agents improves research breadth and accuracy beyond what a single agent can achieve. Benchmark reproducibility across these comparisons is controlled through versioned evaluation configurations—Claw Eval specifically runs at version 1.1 with max-tokens-per-step capped at 16,384.",
           "evidence": [
             {
@@ -190,6 +197,7 @@
     "Integration_and_Infrastructure_CICD": {
       "Practices": [
         {
+          "q_id": "q_8",
           "Summary": "Kimi Ok Computer is a closed-source cloud service with no public deployment pipeline, CI configuration, or release workflow documented. The only observable deployment signal is the product release cadence: Kimi K2.5 shipped February 2026 and Kimi K2.6 shipped April 2026, each promoted to kimi.com/agent after internal benchmark validation (Kimi Code Bench, Claw Bench, Design Bench) and enterprise partner evaluations.",
           "evidence": [
             {
@@ -199,6 +207,7 @@
           ]
         },
         {
+          "q_id": "q_37",
           "Summary": "Before K2.6 was released externally, the RL infrastructure team ran it as a live autonomous agent managing real production operations — monitoring, incident response, and system operations — for five continuous days across 4,000+ tool calls. The anonymized worklog was published alongside the release announcement as the team's pre-release production validation record.",
           "evidence": [
             {
@@ -214,12 +223,14 @@
       ],
       "Tools": [
         {
+          "q_id": "q_38",
           "Summary": "Not Available — no public CI/CD toolchain, build scripts, or deployment infrastructure is documented for this closed-source cloud service.",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_10",
           "Summary": "MoonshotAI model and infrastructure teams manage deployment internally; enterprise evaluators (CodeBuddy, Factory.ai, Vercel AI) publish independent pre-release benchmark results that function as external validation before general availability.",
           "evidence": [
             {
@@ -231,6 +242,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_39",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -239,24 +251,28 @@
     "Code_Review_Process": {
       "Practices": [
         {
+          "q_id": "q_40",
           "Summary": "Not Available — Kimi Ok Computer is a closed-source product with no public repository, pull request history, or documented internal code review workflow. No concrete evidence of how the development team reviews source code was found in any publicly available source.",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_41",
           "Summary": "Not Available",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_42",
           "Summary": "Not Available",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_43",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -288,6 +304,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_11",
           "Summary": "Community reverse-engineering (kimi-agent-internals, CC BY 4.0) revealed that Ok Computer treats crash recovery as a first-class design requirement: browser_guard.py implements exponential backoff with automatic tab recreation for browser crashes, and jupyter_kernel.py uses four independent PID detection strategies (provisioner API, legacy API, psutil scan, connection file scan) to find and restart failed IPython kernels without interrupting an ongoing task.",
           "evidence": [
             {
@@ -301,6 +318,7 @@
           ]
         },
         {
+          "q_id": "q_12",
           "Summary": "The Agent Swarm coordinator absorbs sub-agent failures silently: when a sub-agent stalls or fails mid-task, the coordinator automatically detects the interruption, reassigns the work, or regenerates the subtask without surfacing the failure to the user.",
           "evidence": [
             {
@@ -312,6 +330,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_13",
           "Summary": "Runtime fault-tolerance tools identified via community analysis: psutil for kernel process health monitoring, IPython KernelManager for lifecycle management and restart, and Playwright with Chrome DevTools Protocol for browser crash recovery.",
           "evidence": [
             {
@@ -323,6 +342,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_14",
           "Summary": "Bug resolution is handled internally by MoonshotAI; the RL infrastructure team's 5-day pre-release autonomous agent run generates operational failure signals ahead of external release.",
           "evidence": [
             {
@@ -334,6 +354,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_44",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -342,6 +363,7 @@
     "Software_Engineering_Methodology": {
       "Practices": [
         {
+          "q_id": "q_15",
           "Summary": "MoonshotAI practices systematic dogfooding as a development methodology. The marketing team uses Claw Groups (Agent Swarm research preview) to run end-to-end content production campaigns, and the RL infrastructure team uses K2.6-backed agents for 24/7 autonomous operations — feeding real-world reliability and workflow data back into product development.",
           "evidence": [
             {
@@ -351,6 +373,7 @@
           ]
         },
         {
+          "q_id": "q_16",
           "Summary": "Capabilities are delivered as independently updatable SKILL.md files loaded at runtime from /app/.kimi/skills/[domain]/SKILL.md, rather than baked into model weights or monolithic system prompts. Every specialized workflow begins with read_file(SKILL.md), allowing domain behaviors (Excel, Word, PDF, WebApp, Slides) to be updated without redeploying the model.",
           "evidence": [
             {
@@ -364,6 +387,7 @@
           ]
         },
         {
+          "q_id": "q_17",
           "Summary": "Agent Swarm grew from a bottom-up engineering observation: an internal team member writing a Python multi-agent workflow for stock research reached line 100 and recognized she was hand-coding a multi-agent system. This directly motivated the formalization of Agent Swarm as a product feature.",
           "evidence": [
             {
@@ -379,6 +403,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_45",
           "Summary": "Not Available — the internal development toolchain for Kimi Ok Computer is not publicly documented. Observable runtime components (FastAPI, IPython/jupyter_client, ZeroMQ, Playwright) are inferred from community reverse-engineering, not from official developer tooling documentation.",
           "evidence": [
             {
@@ -390,6 +415,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_18",
           "Summary": "Methodology stakeholders include the RL infrastructure team (autonomous operations and PARL training), the marketing team (dogfooding Claw Groups for content production), the broader Kimi Team research contributors, and third-party developers building agentic workflows on the agent SDK.",
           "evidence": [
             {
@@ -401,6 +427,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_46",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -409,6 +436,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_19",
           "Summary": "MoonshotAI maintains multiple public community communication channels: GitHub Discussions on kimi-cli for technical Q&A, a Discord server (discord.gg/FBDhVhVH7M) for real-time chat, a community forum at forum.moonshot.ai for longer-form discussions, and a Reddit community at r/kimi for broader community engagement.",
           "evidence": [
             {
@@ -422,6 +450,7 @@
           ]
         },
         {
+          "q_id": "q_20",
           "Summary": "Official product announcements and engineering deep-dives are published on kimi.com/blog with each major model and product release, including full benchmark tables, architecture descriptions, and third-party evaluator testimonials. MoonshotAI uses X (@Kimi_Moonshot) and Instagram (@kimiai.official) for social media outreach.",
           "evidence": [
             {
@@ -435,6 +464,7 @@
           ]
         },
         {
+          "q_id": "q_21",
           "Summary": "With each major model release, MoonshotAI publishes an anonymized operational worklog alongside the announcement—the K2.6 release included a redacted 5-day autonomous run record from the RL infrastructure team to let the broader engineering community audit the agent's real-world behavior. This practice of sharing edited-but-authentic operational records, rather than only synthetic benchmarks, functions as a transparency mechanism that bridges internal engineering decisions and public trust.",
           "evidence": [
             {
@@ -450,6 +480,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_22",
           "Summary": "Communication channels span developer-focused platforms (Discord at discord.gg/FBDhVhVH7M, Reddit at r/kimi), community forums (forum.moonshot.ai), official publishing surfaces (kimi.com/blog, X @Kimi_Moonshot, Instagram @kimiai.official), and technical support (support@moonshot.cn), providing multi-channel presence for both technical and general audiences.",
           "evidence": [
             {
@@ -465,6 +496,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_47",
           "Summary": "Communication stakeholders span the MoonshotAI engineering and product teams, active open-source contributors, enterprise partners publishing public evaluations, and dual Chinese and international developer communities reflecting the product's global reach.",
           "evidence": [
             {
@@ -476,6 +508,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_48",
           "Summary": "Technical support for model deployment questions is routed to support@moonshot.cn per the Kimi K2.5 official repository. The platform.kimi.ai developer API provides an OpenAI/Anthropic-compatible endpoint for integration, with a Kimi Vendor Verifier (KVV) tool available to validate third-party provider deployment accuracy.",
           "evidence": [
             {
@@ -489,6 +522,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_23",
           "Summary": "MoonshotAI publishes detailed technical reports for each major model release, covering model architecture, training methodology, and Agent Swarm design, providing transparent academic-grade documentation of the model powering Ok Computer.",
           "evidence": [
             {
@@ -502,6 +536,7 @@
           ]
         },
         {
+          "q_id": "q_24",
           "Summary": "The kimi-agent-internals community repository (CC BY 4.0) documented a three-phase evolution of Kimi's system prompt architecture that reveals the engineering rationale behind the current SKILL.md design. Phase 1 (circa 2024): static system prompts baked into model weights, requiring retraining to change behavior. Phase 2 (circa 2025): long instruction-heavy prompts that could override training but grew unwieldy. Phase 3 (circa 2026): modular skill injection—capabilities broken into independent SKILL.md files loaded on demand, keeping the base prompt minimal while accessing deep domain expertise at runtime. The architectural insight: separating connectivity (what tools the agent has) from cognition (what the agent knows), where cognition is loaded dynamically rather than embedded statically.",
           "evidence": [
             {
@@ -515,6 +550,7 @@
           ]
         },
         {
+          "q_id": "q_25",
           "Summary": "The independent analysis repository kimi-agent-internals (CC BY 4.0, 294 stars, 92 forks) provides the most detailed publicly available documentation of Kimi Ok Computer's internal architecture: how-kimi-works.md (overall architecture), execution-flows.md (tool chain dependency graphs with ASCII diagrams), container.md (runtime container deep-dive), and security.md (security posture notes).",
           "evidence": [
             {
@@ -530,6 +566,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_26",
           "Summary": "Documentation for Ok Computer is distributed through  technical reports, the API developer portal at platform.moonshot.ai, and the community-maintained kimi-agent-internals reverse-engineering repository.",
           "evidence": [
             {
@@ -541,6 +578,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_27",
           "Summary": "Documentation stakeholders include the MoonshotAI research team, community analysts who independently document Ok Computer's internal architecture, and the broader developer community consuming API and integration documentation.",
           "evidence": [
             {
@@ -552,6 +590,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_28",
           "Summary": "Agent behavior documentation for Kimi Ok Computer is embedded in the SKILL.md files themselves. The Excel SKILL.md is 925 lines covering Excel 365 vs. 2019 compatibility rules, formula validation, and styling conventions. SKILL.md files serve simultaneously as runtime instructions for the agent and as behavioral documentation for the system, making the documentation executable. The community analyst who reverse-engineered this architecture captured the design principle: 'New capabilities come down to documentation. Write a thorough manual, put it in the right directory, and the agent is an expert in that domain.' This tight coupling means documentation quality directly determines capability quality—unusual in traditional software where documentation and behavior are maintained independently.",
           "evidence": [
             {
@@ -569,6 +608,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_29",
           "Summary": "Kimi Ok Computer uses a modular runtime skill injection architecture: domain-specific SKILL.md files are loaded at the start of each specialized workflow from /app/.kimi/skills/[domain]/SKILL.md using the read_file tool. This replaces monolithic system prompts with modular, independently updatable capability files supporting six product surfaces: base-chat, ok-computer, docs, sheets, slides, and websites.",
           "evidence": [
             {
@@ -578,6 +618,7 @@
           ]
         },
         {
+          "q_id": "q_30",
           "Summary": "The underlying K2.x model supports interleaved thinking with multi-step tool calls as native capabilities, with separate inference modes (thinking vs. instant) offering different latency and reasoning depth tradeoffs.",
           "evidence": [
             {
@@ -591,6 +632,7 @@
           ]
         },
         {
+          "q_id": "q_31",
           "Summary": "Context management is a first-class engineering concern in the prompt pipeline: when the context window exceeds the threshold, only the most recent round of tool-related messages is retained (discard strategy). This prevents context window overflow during long-horizon tasks with thousands of tool calls without requiring full history compression.",
           "evidence": [
             {
@@ -600,6 +642,7 @@
           ]
         },
         {
+          "q_id": "q_32",
           "Summary": "Kimi K2.5/K2.6 is available via an OpenAI/Anthropic-compatible API at platform.moonshot.ai, with vLLM, SGLang, and KTransformers as supported self-deployment inference backends. A Kimi Vendor Verifier (KVV) tool validates third-party provider deployments for accuracy against official model behavior.",
           "evidence": [
             {
@@ -613,6 +656,7 @@
           ]
         },
         {
+          "q_id": "q_33",
           "Summary": "Agent Swarm capabilities are trained using PARL (Parallel Agentic Reinforcement Learning) across multi-stage training (pre-training, SFT, and joint vision-text RL) on a large-scale Mixture-of-Experts architecture.",
           "evidence": [
             {
@@ -628,6 +672,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_34",
           "Summary": "The LLM integration stack centers on the K2.x MoE model exposed via an OpenAI/Anthropic-compatible API, with self-deployment supported through vLLM, SGLang, and KTransformers, and runtime skill injection via SKILL.md files replacing static system prompts.",
           "evidence": [
             {
@@ -643,6 +688,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_35",
           "Summary": "LLM integration stakeholders: MoonshotAI model team (K2.5/K2.6 architecture and training), MoonshotAI RL infra team (PARL agent training and system prompt engineering), kimi-agent-sdk developers (SDK consuming the LLM API), third-party developers self-deploying via vLLM/SGLang, and enterprise partners integrating via the OpenAI-compatible API (Vercel AI Gateway, Fireworks.ai, Ollama, Baseten, etc.).",
           "evidence": [
             {
@@ -654,6 +700,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_36",
           "Summary": "Kimi Ok Computer exposes a broad tool set covering file I/O, code execution, multi-modal generation, web interaction, and deployment capabilities, with Ok Computer mode allowing effectively unlimited tool calls per session—contrasting with the constrained tool budget in Base Chat mode. A known scaling limitation of the SKILL.md architecture is that 900-line instruction manuals push the boundary of what models can reliably follow: as skills grow more intricate, verification becomes harder, and errors can propagate silently until output validation catches them. This tension between modular extensibility and instruction-following reliability is an active engineering constraint for the team.",
           "evidence": [
             {

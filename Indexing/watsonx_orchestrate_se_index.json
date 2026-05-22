@@ -1,6 +1,7 @@
 {
-  "Agent_Name": "IBM watsonx Orchestrate",
+  "Agent_Name": "WatsonX Orchestrate",
   "Description": {
+    "q_id": "q_49",
     "Summary": "IBM watsonx Orchestrate is an enterprise AI-agent orchestration platform backed by a public Python-based Agent Development Kit (ADK). Developers use the ADK CLI and library to author, test, and deploy multi-agent workflows locally on the Developer Edition before promoting to shared production tenants. The platform reached ADK version 2.9.0 in May 2026 after 10 iterative releases in six months.",
     "evidence": [
       {
@@ -19,13 +20,18 @@
     "Latest_Release": "2.9.0 (May 2026)",
     "Build_System": "Hatch / hatchling",
     "Test_Runner": "pytest (hatch run test / hatch run cov)",
-    "Python_Matrix": ["3.11", "3.12", "3.13"],
+    "Python_Matrix": [
+      "3.11",
+      "3.12",
+      "3.13"
+    ],
     "Issues_Tracker": "Disabled — bugs tracked via IBM Support portal and GitHub release-note bug-fix entries"
   },
   "SE_Practices": {
     "Testing_and_Reliability": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "The IBM Watsonx Orchestrate Agent Development Kit (ADK) is a set of tools designed to make it easy to build and deploy agents using IBM Watsonx Orchestrate. Contributors run, build, and test the ADK locally with new feature, enhancement. After that, they can connect to a production instance of watsonx orchestrate.",
           "evidence": [
             {
@@ -39,6 +45,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "In April 2026, IBM developers shipped the Build-Time Evaluation Experience — a simulation engine that lets builders run hundreds of synthetic conversations against an agent from within the UI before any real user sees it. Builders record a real conversation, let the system auto-extract key details into structured test cases, then re-run those test cases on demand to get a Journey Success score. Every time an agent's instructions or tool descriptions change, the builder re-runs the suite and watches the score move — replacing hours of manual spot-checking with a repeatable automated benchmark.",
           "evidence": [
             {
@@ -60,6 +67,7 @@
           ]
         },
         {
+          "q_id": "q_5",
           "Summary": "Kelly To shipped the Debug Experience in April 2026, giving builders an interactive visual canvas to step through agent execution turn-by-turn during development. Rather than hunting through raw JSON logs or OpenTelemetry spans, the developer can navigate a structured execution timeline and inspect the input, reasoning, and output at each individual step. When the agent routes incorrectly, the builder reviews the reasoning logic, adjusts agent instructions or tool descriptions, and reruns — a tight loop that catches behavioral drift before release.",
           "evidence": [
             {
@@ -85,6 +93,7 @@
           ]
         },
         {
+          "q_id": "q_6",
           "Summary": "The ADK ships a built-in red-teaming command group that simulates 15+ adversarial attack types against an agent — prompt injection, instruction override, role-play bypass, social engineering, encoded-text inputs, and foreign-language exploits — aligned to the OWASP Top 10 for LLM Applications 2025 (LLM01 Prompt Injection, LLM06 Excessive Agency, LLM07 System Prompt Leakage, LLM09 Misinformation). Builders run a subset of attacks first to validate their setup, then expand with the `-n` flag for broader variant coverage. The resulting attack success rates become a measurable benchmark developers improve against before deploying to production.",
           "evidence": [
             {
@@ -102,6 +111,7 @@
           ]
         },
         {
+          "q_id": "q_50",
           "Summary": "Agent behavior is evaluated against a formal ground-truth schema before deployment. Each test scenario is a structured JSON dataset containing the agent name, a dependency graph of expected tool calls, the desired tool arguments for each call, the expected final response quality, a human-readable 'story' of the user intent, and an opening sentence. The evaluation engine compares the agent's actual 'trajectory' (its live tool-call sequence and generated response) against this schema using a multi-tier fuzzy-match pipeline — LLM-as-judge first, then cosine similarity, then fuzzywuzzy WRatio — so natural-language variations in parameter values do not fail valid trajectories.",
           "evidence": [
             {
@@ -121,6 +131,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_8",
           "Summary": "The ADK's internal test suite is managed by the Hatch build system by executing the full pytest suite and generating a coverage report. The Build-Time Evaluation Experience, agent Debug Experience, and red-teaming CLI are all first-party testing tools embedded in the ADK.",
           "evidence": [
             {
@@ -134,6 +145,7 @@
           ]
         },
         {
+          "q_id": "q_51",
           "Summary": "OpenTelemetry (OTEL) spans power the Debug Experience and trace view, letting developers inspect every span generated during an agent run. As of ADK 2.7.0, Python tool functions can log custom OTEL spans from within their code for sub-operation granularity.",
           "evidence": [
             {
@@ -149,6 +161,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_9",
           "Summary": "Testing experience is owned by named product engineers: Kelly To authored and shipped the Debug Experience (April 2026), Alex Straley shipped the Build-Time Evaluation Experience (April 2026), and Bruno Fernandes Dos Santos published both features to the IBM community. The internal ADK library test suite is maintained by core owners Darragh-McGonigle and Eric-Grehan.",
           "evidence": [
             {
@@ -164,6 +177,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_10",
           "Summary": "The developers define and assess success criteria such as expected tool calls with desired parameters and final response quality.",
           "evidence": [
             {
@@ -181,6 +195,7 @@
     "Integration_and_Infrastructure_CICD": {
       "Practices": [
         {
+          "q_id": "q_11",
           "Summary": "Since November 2025, the ADK engineering team has shipped approximately two semantic-versioned minor releases per month — ten total from 2.0.0 (Nov 2025) through 2.9.0 (May 2026) — all tagged and published on GitHub Releases by core maintainers eric-grehan and Darragh-McGonigle.",
           "evidence": [
             {
@@ -194,6 +209,7 @@
           ]
         },
         {
+          "q_id": "q_12",
           "Summary": "The Developer Edition — the local production replica that developers test against — ships as a Docker Compose application managed entirely through the `orchestrate server` CLI. On startup, the server initializes infrastructure containers (PostgreSQL, MinIO, Milvus), runs Liquibase database migrations automatically, and waits until all services are healthy before accepting connections. The ADK 2.0.0 release was a major breaking change: it removed the separate Docker engine dependency (Rancher Desktop, Colima) that users previously had to install separately, requiring existing users to run `orchestrate server reset` followed by `docker system prune -a --volumes` before upgrading.",
           "evidence": [
             {
@@ -207,6 +223,7 @@
           ]
         },
         {
+          "q_id": "q_13",
           "Summary": "Security improvements are treated as first-class deployment concerns. The ADK 2.8.0 release replaced pre-signed URL file access with authenticated access across all file upload and download operations — eliminating a class of URL-sharing vulnerabilities from the platform's storage layer. This was highlighted as a headline feature in the Gustavo Villegas May 2026 Technical Touchpoint newsletter, signaling that security hardening is communicated to the developer community alongside user-facing features.",
           "evidence": [
             {
@@ -222,6 +239,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_14",
           "Summary": "Deployment toolchain: Docker Compose (Developer Edition local server), `orchestrate server start/stop/reset` CLI commands, Liquibase (automated schema migrations).",
           "evidence": [
             {
@@ -233,6 +251,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_16",
           "Summary": "Release management is owned by @eric-grehan and @Darragh-McGonigle, who tag and publish GitHub Releases. The flow_builder squad (@avchan, @sebastia) contributes the Flows component to each release. The broader CODEOWNERS team (@Eric-Marcoux, @dimitri-g, @gdburati, @benenbruen) oversees ADK, Developer Edition, and platform components. Developer communications on releases are authored by Gustavo Villegas (Technical Touchpoint newsletter) and the watsonx Orchestrate Blog Team.",
           "evidence": [
             {
@@ -244,6 +263,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_15",
           "Summary": "The 2.0.0 release in November 2025 was the most structurally disruptive, requiring users to delete their entire local Developer Edition install (docker system prune -a --volumes) before upgrading. The team removed all default credentials for Developer Edition services and hardened the default security posture — a deliberate choice to eliminate shared-secret anti-patterns even at the cost of a one-time migration burden for existing developers.",
           "evidence": [
             {
@@ -257,6 +277,7 @@
     "Code_Review_Process": {
       "Practices": [
         {
+          "q_id": "q_17",
           "Summary": "Each area of the codebase has designated owners who are automatically assigned to review any change to their area before it can be merged. Different teams own different modules, so reviews are always handled by the people most familiar with that part of the system.",
           "evidence": [
             {
@@ -270,6 +291,7 @@
           ]
         },
         {
+          "q_id": "q_18",
           "Summary": "Every change — whether it is a security fix, a documentation update, or a new release — requires at least one peer approval before it can be merged. Documentation quality is treated as equally important as code quality, with a style guide enforced from the earliest contributions.",
           "evidence": [
             {
@@ -283,6 +305,7 @@
           ]
         },
         {
+          "q_id": "q_52",
           "Summary": "Commit messages follow a consistent structured format that identifies what type of change was made and which part of the system it affected. This makes it straightforward to track what changed, generate release notes automatically, and separate documentation updates from functional changes.",
           "evidence": [
             {
@@ -294,6 +317,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_20",
           "Summary": "GitHub Pull Requests are used for all code reviews, with automatic reviewer assignment based on module ownership and a minimum one-approval requirement before any change can be merged.",
           "evidence": [
             {
@@ -305,6 +329,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_21",
           "Summary": "Review responsibilities are divided by module, with specific team members designated as owners for different parts of the codebase. This ensures every change is reviewed by someone with direct expertise in that area.",
           "evidence": [
             {
@@ -316,6 +341,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_53",
           "Summary": "The code review process is intentionally lightweight — one approval, clear ownership, and consistent commit message formatting. This keeps the review process fast without sacrificing accountability, allowing the team to ship updates frequently.",
           "evidence": [
             {
@@ -329,6 +355,7 @@
     "Bug_Solving_Approaches": {
       "Practices": [
         {
+          "q_id": "q_22",
           "Summary": "Issues resolved by the team fall into five recurring categories: (1) Environment and connectivity — the local development environment failing to start, deployment commands timing out, and connection failures when using enterprise on-premises setups; (2) Agent configuration and behavior — the AI-assisted builder failing when agents had external collaborators, pre-configured parameter values being silently dropped, and tool references not resolving correctly; (3) Data import and export — flows, knowledge bases, and API definitions not transferring correctly between environments due to missing or malformed data; (4) Authentication — shared team credentials not being scoped correctly, causing access failures for multiple users; (5) UI inconsistencies — features working in one view but not another, commands being accidentally hidden, and output formatting being unreadable in standard terminals. Community-reported issues also surface performance problems such as slow agent response times.",
           "evidence": [
             {
@@ -342,6 +369,7 @@
           ]
         },
         {
+          "q_id": "q_23",
           "Summary": "The IBM community forum functions as an external bug-signal channel: builders report issues that the engineering team monitors and typically addresses in the next release cycle. Known issues are explicitly called out in release notes under a 'Known Issues' subsection. This transparent pattern gives the community advance warning while a fix is in flight.",
           "evidence": [
             {
@@ -464,6 +492,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_24",
           "Summary": "Bug resolution tooling: GitHub Release Notes as the public bug registry, IBM Support portal for enterprise customer tickets (requires IBM ID), IBM community forum (461 threads) for community-reported issues, and `WXO_AGENT_DEPLOYMENT_TIMEOUT` as a developer-configurable escape hatch for environment-specific timeout thresholds.",
           "evidence": [
             {
@@ -475,6 +504,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_25",
           "Summary": "Core maintainers Darragh-McGonigle and eric-grehan triage and resolve the majority of ADK bugs documented in release notes. @avchan and @sebastia own flow_builder bug fixes. The IBM community forum surfaces community-reported regressions (Tony Begemy, Moab Alves Silva, Ramya Swarna) that feed back into the engineering team's prioritization. IBM Support handles paid-customer escalations outside the public repository.",
           "evidence": [
             {
@@ -488,6 +518,7 @@
     "Software_Engineering_Methodology": {
       "Practices": [
         {
+          "q_id": "q_26",
           "Summary": "The ADK documentation formalizes a four-stage iterative development lifecycle that every builder follows before deploying an agent to production: (1) Develop — build and configure the agent using the ADK CLI and Python tools; (2) Evaluate — run the trajectory evaluation suite against a ground-truth dataset to measure Journey Success; (3) Analyze — inspect failing trajectories to identify whether bugs lie in tool definitions, agent instructions, or parameter routing; (4) Improve — update the relevant artifact, re-run evaluations, and watch the score change. This loop is designed to repeat as many times as needed within the Developer Edition before production deployment ever occurs.",
           "evidence": [
             {
@@ -501,6 +532,7 @@
           ]
         },
         {
+          "q_id": "q_54",
           "Summary": "The ADK team ships on a bi-weekly minor-release train with semantic versioning (2.0.0 through 2.9.0 across six months, averaging one release every two weeks). Each release consolidates contributions from multiple product squads — ADK, Developer Edition, Flows, Evaluations, Channels, Observability, Builder, AI Gateway — into a single tagged version. Breaking changes are called out in a dedicated section with explicit migration steps, and the team maintains backwards compatibility within major versions. This cadence forces continuous integration discipline: squads must merge and stabilize contributions within each two-week window.",
           "evidence": [
             {
@@ -510,6 +542,7 @@
           ]
         },
         {
+          "q_id": "q_55",
           "Summary": "Developer tooling investment reflects a philosophy of eliminating friction at every stage of the engineering loop. The VSCode Extension (launched December 2025 at 0.1.0) brings webchat launch, environment switching, and asset export directly into the IDE — removing the context switch between editor and terminal. The new `orchestrate chat ask` command (ADK 2.3.0) lets developers talk to an agent directly from the CLI. Auto-discover (ADK 2.1.0) removes the requirement to manually decorate Python functions with `@tool`, automatically generating docstrings and parameter descriptions. These investments collectively compress the inner development loop.",
           "evidence": [
             {
@@ -523,6 +556,7 @@
           ]
         },
         {
+          "q_id": "q_56",
           "Summary": "Interoperability is treated as a first-class engineering concern. The ADK 2.9.0 release added Agent-to-Agent (A2A) protocol support, enabling external agents to communicate natively with watsonx Orchestrate agents through a standardized interface. The ADK also supports Model Context Protocol (MCP) tool nodes in flows, LangGraph custom agent integration, and AWS Bedrock as an LLM backend — all delivered as incremental protocol additions within the semantic-version release train.",
           "evidence": [
             {
@@ -538,6 +572,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_30",
           "Summary": "Core engineering methodology toolchain: Hatch build system, pytest for ADK library testing, `orchestrate` CLI for all build/deploy/test operations, Docker Compose for local environment management, GitHub for source control and release management, IBM community forum for external feedback loops, and PyPI for distribution. VSCode Extension (watson-devex.ibm-watsonx-orchestrate-agent-builder) integrates the full development loop into the IDE.",
           "evidence": [
             {
@@ -549,6 +584,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_31",
           "Summary": "The methodology is shaped by a 61-contributor team distributed across IBM's enterprise AI organization. Flow-builder specialists own the workflow authoring subsystem. Community feedback from 461 forum threads shapes the product roadmap through the Gustavo Villegas Technical Touchpoint newsletter.",
           "evidence": [
             {
@@ -565,6 +601,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_32",
           "Summary": "The most visible form of internal team coordination is through GitHub itself. Pull request descriptions, reviewer assignments via module ownership, and structured commit messages serve as the team's asynchronous coordination layer — communicating what changed, why it changed, and who is responsible for reviewing it. Each PR represents a documented, traceable unit of internal communication between the author and the designated reviewers.",
           "evidence": [
             {
@@ -578,6 +615,7 @@
           ]
         },
         {
+          "q_id": "q_33",
           "Summary": "Each release consolidates contributions from multiple squads — ADK, Developer Edition, Flows, Evaluations, Channels, Observability, Builder, and AI Gateway — into a single versioned release. The structured release notes, which list contributions from each squad in separate sections, are evidence of internal cross-squad coordination happening before each release is published. IBM's internal communication tools and meeting cadences are not publicly disclosed.",
           "evidence": [
             {
@@ -587,6 +625,7 @@
           ]
         },
         {
+          "q_id": "q_34",
           "Summary": "The team communicates decisions about module ownership and responsibilities through the CODEOWNERS file, which is itself updated through pull requests. Changes to who owns which part of the codebase go through the same review process as code changes, meaning ownership decisions are made transparently and collaboratively rather than by directive alone.",
           "evidence": [
             {
@@ -598,6 +637,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_35",
           "Summary": "GitHub Pull Requests and the CODEOWNERS file are the visible internal coordination tools. IBM's internal communication platforms (such as Slack, Microsoft Teams, or internal wikis) are not publicly disclosed.",
           "evidence": [
             {
@@ -609,6 +649,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_57",
           "Summary": "Internal coordination involves the module owners defined in CODEOWNERS, the release engineers who consolidate multi-squad contributions, and the feature engineers who author PRs. IBM does not publicly disclose whether it uses engineering managers, scrum masters, or designated leads to facilitate internal team communication.",
           "evidence": [
             {
@@ -620,6 +661,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_58",
           "Summary": "The team does maintain external communication channels — a monthly community newsletter, a public community forum, and live Ask Me Anything sessions tied to major product events. These channels are IBM-to-community communication, not internal team communication. IBM's internal communication practices (meetings, design docs, RFCs, chat tools) are not publicly available.",
           "evidence": [
             {
@@ -633,6 +675,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_36",
           "Summary": "The IBM team maintains a comprehensive developer documentation portal at developer.watson-orchestrate.ibm.com that covers the full builder journey end to end: ADK CLI reference, Developer Edition setup, agent authoring patterns, Python tool import, evaluation framework, red-teaming, LLM observability configuration, OTEL trace retrieval, channel configuration, AI Gateway setup, and full release history. Each major ADK release triggers a documentation update cycle synchronized with the GitHub release tag. This portal is the primary onboarding resource for new builders, referenced throughout the README and release notes.",
           "evidence": [
             {
@@ -646,6 +689,7 @@
           ]
         },
         {
+          "q_id": "q_37",
           "Summary": "The repository README serves as the primary developer quickstart document. It covers prerequisites, getting started, the orchestrate CLI command reference, Developer Edition startup workflow, and both test running commands (`hatch run test`, `hatch run cov`). README ownership is enforced by the CODEOWNERS file, requiring maintainer review on any README changes.",
           "evidence": [
             {
@@ -655,6 +699,7 @@
           ]
         },
         {
+          "q_id": "q_38",
           "Summary": "Internal configuration documentation is treated as a primary engineering artifact. PR #4 ('chore(docs): Adds documentation describing purpose of default.env') added prose documentation to a configuration file that previously had no explanation, suggesting the team actively closes documentation gaps discovered during code review. This PR was merged through the same approval workflow as production code changes, signaling that documentation debt is prioritized alongside feature work.",
           "evidence": [
             {
@@ -664,6 +709,7 @@
           ]
         },
         {
+          "q_id": "q_39",
           "Summary": "IBM Style compliance was established as the documentation standard from the first public PR ('updt: apply changes according to IBM Style'), aligning the ADK's developer-facing content with IBM's enterprise technical writing style guide. This ensures a consistent voice, terminology, and structure across the ADK docs, the community blog posts, and the official IBM Docs pages (ibm.com/docs/en/watsonx/watson-orchestrate) that describe the platform.",
           "evidence": [
             {
@@ -679,6 +725,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_40",
           "Summary": "Documentation stack: developer.watson-orchestrate.ibm.com (primary ADK developer docs), IBM Docs at ibm.com/docs/en/watsonx/watson-orchestrate (official product documentation), GitHub Releases (technical changelog and migration guides), IBM community forum (126 practitioner blogs), and the VSCode Extension marketplace page as supplemental documentation for IDE-native capabilities.",
           "evidence": [
             {
@@ -690,6 +737,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_41",
           "Summary": "Documentation is maintained by a distributed group: Darragh-McGonigle and Alex Haynes own the README; @Eric-Grehan and @erifsx manage CODEOWNERS and release notes; Bruno Fernandes Dos Santos, Kelly To, and Alex Straley author feature announcement blog posts in the IBM community; and the IBM technical writing team handles IBM Docs and IBM Style compliance. All documentation changes flow through the same PR review gate as code.",
           "evidence": [
             {
@@ -701,6 +749,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_42",
           "Summary": "The ADK developer documentation spans multiple content types: conceptual guides, CLI reference pages, how-to walkthroughs, evaluation framework schema definitions, red-teaming attack catalog, and per-version release notes. As of May 2026, a dedicated ADK release notes page (developer.watson-orchestrate.ibm.com/release/release) documents the full feature and bug-fix history from 2.0.0 through the current release, making it the authoritative changelog for builders who need to understand what changed between versions.",
           "evidence": [
             {
@@ -714,6 +763,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_43",
           "Summary": "watsonx Orchestrate integrates natively with Langfuse for LLM observability — tracking every model call's inputs, outputs, token counts, and cost at the span level. For teams handling sensitive data,  Langfuse configuration replaces personally identifiable information in trace payloads before they are sent to the Langfuse server, which enables compliance-aware tracing without disabling observability entirely.",
           "evidence": [
             {
@@ -727,6 +777,7 @@
           ]
         },
         {
+          "q_id": "q_44",
           "Summary": "The AI Gateway layer enforces model governance at the platform level. ADK 2.8.0 and 2.9.0 added an LLM denylist, allowing platform administrators to restrict which models individual agents or the entire tenant can access. OAuth Client Credentials authentication is available for virtual models routed through the AI Gateway, supporting enterprise identity federation. These governance features ensure that LLM model selection is not a purely individual developer decision — it is subject to organizational policy enforcement.",
           "evidence": [
             {
@@ -742,6 +793,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_45",
           "Summary": "LLM integration toolchain: Langfuse (observability, configurable via CLI, mask_pii support), IBM native telemetry server (localhost:8765, started with --with-ibm-telemetry), OpenTelemetry spans (including custom spans from Python tool functions as of ADK 2.7.0), `orchestrate observability search/export` for programmatic trace retrieval (ADK 2.5.0+), `orchestrate models list` for model inventory, and AI Gateway with LLM denylist and OAuth Client Credentials authentication.",
           "evidence": [
             {
@@ -755,6 +807,7 @@
           ]
         },
         {
+          "q_id": "q_46",
           "Summary": "Red-teaming and vulnerability testing toolset includes the `orchestrate evaluations red-teaming` command group, 15+ built-in attack types (prompt injection, instruction override, role-play bypass, encoded input bypass, system prompt leakage, excessive agency exploits), and a configurable `-n` flag for controlling attack variant count. Results report as per-attack-type success rates that map to OWASP Top 10 for LLM Applications 2025 categories.",
           "evidence": [
             {
@@ -766,6 +819,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_47",
           "Summary": "LLM integration is a cross-team concern: the ADK team owns the `orchestrate models list` and observability CLI commands; the AI Gateway squad owns denylist and OAuth enforcement.",
           "evidence": [
             {
@@ -777,6 +831,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_48",
           "Summary": "The platform's LLM integration philosophy combines developer freedom (wide model support, any-LLM configuration) with organizational guardrails (AI Gateway denylist, OAuth authentication, PII masking). The OWASP Top 10 for LLM Applications 2025 is explicitly embedded in the red-teaming attack taxonomy, implying that the team treats LLM security as a structured engineering discipline rather than an afterthought. The iterative Develop → Evaluate → Analyze → Improve loop applies specifically to prompt and instruction quality: every agent instruction change re-triggers the evaluation suite to measure the LLM output impact.",
           "evidence": [
             {

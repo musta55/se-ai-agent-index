@@ -104,6 +104,70 @@ with open(cfg_path, "w", encoding="utf-8") as f:
 PYEOF
 }
 
+# ── Command: query ────────────────────────────────────────────────────────────
+
+cmd_query() {
+    local agent_name="${1:-}"
+    local query_id="${2:-}"
+    [[ -z "$agent_name" || -z "$query_id" ]] && \
+        error "Usage: $0 query \"Agent Name\" \"q-{id}\"\nExample: $0 query \"HubSpot Breeze Studio\" \"q-3\""
+
+    check_python
+    python3 "$SCRIPT_DIR/query_runner.py" "$agent_name" "$query_id"
+}
+
+# ── Command: list queries for an agent ────────────────────────────────────────
+
+cmd_list_queries() {
+    local agent_name="${1:-}"
+    [[ -z "$agent_name" ]] && \
+        error "Usage: $0 list-queries \"Agent Name\""
+
+    check_python
+    local index_path="$SCRIPT_DIR/query_index.json"
+    if [[ ! -f "$index_path" ]]; then
+        error "query_index.json not found. Run: python3 build_query_index.py"
+    fi
+
+    python3 - "$agent_name" "$index_path" <<'PYEOF'
+import json, sys
+name_input, path = sys.argv[1], sys.argv[2]
+with open(path) as f:
+    index = json.load(f)
+lower = name_input.lower()
+matched = next((k for k in index if k.lower() == lower), None)
+if not matched:
+    matched = next((k for k in index if k.lower().startswith(lower) or lower.startswith(k.lower())), None)
+if not matched:
+    print(f"Agent '{name_input}' not found.", file=sys.stderr)
+    sys.exit(1)
+print(f"Agent: {matched}\n")
+for qid, entry in sorted(index[matched].items(), key=lambda x: int(x[0].split('-')[1])):
+    preview = (entry['summary'] or 'Not Available')[:80].replace('\n', ' ')
+    print(f"  {qid:<8} [{entry['column_label']}]  {preview}...")
+PYEOF
+}
+
+# ── Command: list available agents ────────────────────────────────────────────
+
+cmd_agents() {
+    check_python
+    local index_path="$SCRIPT_DIR/query_index.json"
+    if [[ ! -f "$index_path" ]]; then
+        error "query_index.json not found. Run: python3 build_query_index.py"
+    fi
+
+    python3 - "$index_path" <<'PYEOF'
+import json, sys
+with open(sys.argv[1]) as f:
+    index = json.load(f)
+print("Available agents:")
+for agent in sorted(index.keys()):
+    count = len(index[agent])
+    print(f"  {agent}  ({count} queries)")
+PYEOF
+}
+
 # ── Command: index ────────────────────────────────────────────────────────────
 
 cmd_index() {
@@ -140,6 +204,47 @@ cmd_index() {
     local safe_name output_file
     safe_name=$(safe_filename "$agent_name")
     output_file="$SCRIPT_DIR/Indexing/${safe_name}_se_index.json"
+
+    # Skip research if a valid JSON index already exists for this agent.
+    # Checks both the canonical safe-name path AND any existing file in Indexing/
+    # whose name fuzzy-matches the agent name (handles legacy naming like GleanAgents_).
+    local existing_file
+    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/Indexing" <<'PYEOF'
+import json, os, sys, re
+
+name = sys.argv[1].lower()
+indexing_dir = sys.argv[2]
+
+def normalize(s):
+    # lowercase, strip all non-alphanumeric, collapse to bare word sequence
+    return re.sub(r'[^a-z0-9]', '', s.lower())
+
+name_norm = normalize(name)
+
+for fname in sorted(os.listdir(indexing_dir)):
+    if not fname.endswith('.json'):
+        continue
+    # Strip known suffixes to get the agent stem
+    stem = re.sub(r'_?se_?index\.json$', '', fname, flags=re.IGNORECASE)
+    stem = re.sub(r'seindex\.json$', '', stem, flags=re.IGNORECASE)
+    stem_norm = normalize(stem)
+    if stem_norm == name_norm or name_norm in stem_norm or stem_norm in name_norm:
+        fpath = os.path.join(indexing_dir, fname)
+        try:
+            json.load(open(fpath))
+            print(fname)
+        except Exception:
+            pass
+PYEOF
+    )
+
+    if [[ -n "$existing_file" ]]; then
+        success "Index already exists: Indexing/$existing_file"
+        info "To re-index, delete the file first:"
+        echo "   rm \"$SCRIPT_DIR/Indexing/$existing_file\""
+        divider
+        return 0
+    fi
 
     echo ""
     info "Output file : Indexing/${safe_name}_se_index.json"
@@ -200,6 +305,17 @@ PYEOF
             success "SE index saved → Indexing/${safe_name}_se_index.json"
             update_indexing_status "$agent_name" "completed"
             success "Status updated → completed"
+            echo ""
+
+            # Automatically download web sources after successful index creation
+            info "Downloading reference web sources..."
+            divider
+            if python3 "$PULL_SOURCES" "$agent_name" 2>&1; then
+                success "Web sources cached → web_sources/${safe_name}/"
+            else
+                warn "Some sources failed to download (check web_sources/ for details)"
+            fi
+
             echo ""
             info "Run quality review next:"
             echo "   $0 review \"$agent_name\""
@@ -286,11 +402,15 @@ ${BOLD}SETUP (first time)${RESET}
 
 ${BOLD}COMMANDS${RESET}
 
-  ${CYAN}index${RESET}   "Agent Name"      Register agent + run Claude Code research autonomously
-  ${CYAN}review${RESET}  "Agent Name"      Run LLM-as-judge quality review for one agent
-  ${CYAN}review${RESET}  --all             Run quality review for all agents
-  ${CYAN}sources${RESET} "Agent Name"      Download all reference URLs locally for one agent
-  ${CYAN}sources${RESET} --all             Download reference URLs for all agents
+  ${CYAN}index${RESET}        "Agent Name"       Register agent + run research (auto-downloads sources)
+  ${CYAN}review${RESET}       "Agent Name"       Run LLM-as-judge quality review for one agent
+  ${CYAN}review${RESET}       --all              Run quality review for all agents
+  ${CYAN}sources${RESET}      "Agent Name"       Re-download reference URLs for one agent (manual)
+  ${CYAN}sources${RESET}      --all              Re-download reference URLs for all agents (manual)
+
+  ${CYAN}query${RESET}        "Agent" "q-{id}"   Fetch summary + evidence for a query ID
+  ${CYAN}list-queries${RESET} "Agent Name"       List all query IDs for an agent
+  ${CYAN}agents${RESET}                          List all agents in the query index
 
 ${BOLD}FULL WORKFLOW${RESET}
 
@@ -298,9 +418,21 @@ ${BOLD}FULL WORKFLOW${RESET}
   cp .env.example .env && nano .env   # paste API key
 
   # For each new agent:
-  ./se_index.sh index   "New Agent"   # research → Indexing/<name>_se_index.json
+  ./se_index.sh index   "New Agent"   # research + auto-download sources
+                                      # → Indexing/<name>_se_index.json
+                                      # → web_sources/<name>/
   ./se_index.sh review  "New Agent"   # quality check → quality_checklist/<name>_review.md
-  ./se_index.sh sources "New Agent"   # cache refs → web_sources/<name>/
+
+  # Manually curate Excel spreadsheet from JSON with q-ids
+  # → Analysis of SE AI Agent Index.xlsx (manual curation + verification)
+
+  # Build query index from curated spreadsheet:
+  python3 build_query_index.py        # builds query_index.json from Excel
+
+  # Query the index for verification:
+  ./se_index.sh query        "HubSpot Breeze Studio" "q-3"
+  ./se_index.sh list-queries "Anthropic Claude Code"
+  ./se_index.sh agents
 
 ${BOLD}FILES${RESET}
 
@@ -314,10 +446,12 @@ ${BOLD}FILES${RESET}
 
 ${BOLD}NOTES${RESET}
 
-  • 'index' runs Claude Code non-interactively (claude -p) — takes 3–10 min per agent
+  • 'index' runs Claude Code research + auto-downloads sources (3–10 min per agent)
   • Web tools only (WebSearch, WebFetch, Read) — no filesystem writes by Claude
   • ANTHROPIC_API_KEY is read from .env for both 'index' and 'review'
-  • 'sources' does not need an API key
+  • Sources are downloaded automatically after successful index creation
+  • 'sources' command available for manual re-download (no API key needed)
+  • All q-ids are embedded in JSON during generation (see prompts/research_prompt.md)
 
 EOF
 }
@@ -328,9 +462,12 @@ COMMAND="${1:-help}"
 shift || true
 
 case "$COMMAND" in
-    index)   cmd_index   "$@" ;;
-    review)  cmd_review  "$@" ;;
-    sources) cmd_sources "$@" ;;
+    index)        cmd_index         "$@" ;;
+    review)       cmd_review        "$@" ;;
+    sources)      cmd_sources       "$@" ;;
+    query)        cmd_query         "$@" ;;
+    list-queries) cmd_list_queries  "$@" ;;
+    agents)       cmd_agents        "$@" ;;
     help|--help|-h) cmd_help ;;
     *) error "Unknown command '$COMMAND'. Run: $0 help" ;;
 esac

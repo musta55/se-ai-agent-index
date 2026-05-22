@@ -2,6 +2,7 @@
   "Agent_Name": "HubSpot Breeze Studio",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "HubSpot Breeze Studio is a closed-source, CRM-integrated AI agent platform providing sales, marketing, and customer service automation capabilities with various agents built on HubSpot's CRM data, including AI-powered content creation, prospecting assistance, customer insights, and workflow automation for business teams.",
       "evidence": [
         {
@@ -24,6 +25,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "HubSpot's testing practice is to use React Testing Library as its official UI testing framework, emphasizing user-focused tests over implementation details. In the testing migration, they collected runtime usage metrics accross team and then categorize packages into buckets. The team migrated simpler packages first to reduce risk and learn the process, and then postpone complex packages temporarily so they could contain technical debt. The company migrated more than 76,000 tests from Enzyme to React Testing Library and runs frontend tests in the browser rather than JSDOM. ",
           "evidence": [
             {
@@ -45,6 +47,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Migration Story: The hubspot testing team adopts Testing Trophy strategy when embracing React Testing Library. The Testing Trophy is a testing strategy that prioritizes integration tests as the best balance between confidence, and maintenance cost, while still using static, unit, and end-to-end tests appropriately. At first, they documented guides for writing tests with common libraries and developed tools to minimize test fixture. By adopting this philosophy, teams felt empowered to take on the migration. Then while maintaining documentation and planning to migrate tests for quarters, they created separate tickets to track the work. But that was a lot of manual effort, so they built an internal system called Monarch as a centralized hub",
           "evidence": [
             {
@@ -70,6 +73,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "HubSpot uses AI agents like claude code with hooks for testing validation, ensuring agents complete tasks only when builds pass and all changes are committed. AI fluency is now a baseline expectation for all engineering roles.",
           "evidence": [
             {
@@ -87,6 +91,7 @@
           ]
         },
         {
+          "q_id": "q_51",
           "Summary": "HubSpot runs usability tests in one-day sprints of 4–5 back-to-back remote sessions from a pre-screened customer database. Findings are immediately debriefed and posted to an internal wiki within 24 hours.",
           "evidence": [
             {
@@ -108,6 +113,7 @@
           ]
         },
         {
+          "q_id": "q_52",
           "Summary": "HubSpot uses TypeScript type-checks and husky pre-commit hooks locally, then runs Testing Trophy tests (unit, integration, e2e) in CI. Builds passing QA e2e tests are auto-deployed to production via Orion.",
           "evidence": [
             {
@@ -123,6 +129,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_7",
           "Summary": "HubSpot uses React Testing Library for frontend tests, Monarch migration campaign system for large-scale code migrations, Claude Code with hooks for AI agent testing, and Dropwizard JAX-RS for API testing. Enzyme is deprecated in favor of browser-based testing.",
           "evidence": [
             {
@@ -136,6 +143,7 @@
           ]
         },
         {
+          "q_id": "q_8",
           "Summary": "Testing toolchain includes remote usability testing platforms, TypeScript (compile-time type safety), husky pre-commit hooks, and Orion for automated e2e test runs and deployments.",
           "evidence": [
             {
@@ -147,6 +155,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_9",
           "Summary": "Testing infrastructure is managed by a dedicated small team including Francesco Signoretti, Romulo Ferreira, Eleanor Reich, Kevin Bon, Matt McCherry, and Charley Pugmire, working with hundreds of product teams across the organization.",
           "evidence": [
             {
@@ -158,6 +167,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_10",
           "Summary": "The testing migration spanned 2.5 years with 76,000 tests migrated, peaking at 4,000+ tests per month. Migration was completed in February 2025 using runtime metrics instrumentation rather than static analysis.",
           "evidence": [
             {
@@ -167,6 +177,7 @@
           ]
         },
         {
+          "q_id": "q_11",
           "Summary": "CD adoption required ~9 months and ~20 new test suites across 4 repositories. HubSpot deploys up to 100 times per day.",
           "evidence": [
             {
@@ -180,6 +191,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_53",
           "Summary": "HubSpot operates a massive Kubernetes-based CI/CD system running over 1 million builds per day across 3,000 EC2 instances hosting tens of thousands of microservices. For cloud coding agents, they use Kubernetes Jobs with 1:1 correspondence to agent executions, with custom Docker images containing Claude Code and developer tooling preinstalled.",
           "evidence": [
             {
@@ -197,6 +209,7 @@
           ]
         },
         {
+          "q_id": "q_54",
           "Summary": "The team reduced slow Java build times by running build agents on dedicated Kubernetes node pool and reusing a host-mounted build cache, which cuts build times from 10–15 minutes to 2–3 minutes.",
           "evidence": [
             {
@@ -214,6 +227,7 @@
           ]
         },
         {
+          "q_id": "q_55",
           "Summary": "Orion auto-promotes QA-passing builds to production. Teams use feature flags for gradual rollouts and monitor SLA and business metrics with automated alerts. Deploy frequency moved from weekly to daily.",
           "evidence": [
             {
@@ -229,6 +243,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_56",
           "Summary": "HubSpot's deployment infrastructure includes Kubernetes on 3,000 EC2 instances, Kubernetes Jobs, Docker, Crucible platform for cloud agent execution, Cloudflare Workers for routing, and build cache optimization running 1M+ builds daily.",
           "evidence": [
             {
@@ -238,6 +253,7 @@
           ]
         },
         {
+          "q_id": "q_57",
           "Summary": "Frontend CI/CD toolchain: TypeScript, husky pre-commit hooks, Orion (in-house deploy system), and feature flags for gradual rollouts.",
           "evidence": [
             {
@@ -249,6 +265,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_58",
           "Summary": "Infrastructure teams, platform engineering teams, and Developer Experience AI team manage the deployment platform, used by all HubSpot engineers. Stephan Lensky authored detailed blog posts on cloud coding agents infrastructure.",
           "evidence": [
             {
@@ -260,6 +277,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_59",
           "Summary": "The platform processes 1 million+ builds per day, deploys tens of thousands of microservices across 3,000 EC2 instances, with build cache optimization achieving 5-7x speed improvements through reduction from 10-15 minutes to 2-3 minutes.",
           "evidence": [
             {
@@ -269,6 +287,7 @@
           ]
         },
         {
+          "q_id": "q_60",
           "Summary": "HubSpot runs 50,000+ frontend deploys/day across 3 data centers. CD adoption took ~9 months and ~20 new test suites per team.",
           "evidence": [
             {
@@ -282,6 +301,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_61",
           "Summary": "HubSpot uses Sidekick AI code reviewer with Judge Agent quality gate to reduce time to first feedback by 90%, peaking at 99.76% reduction. The Judge Agent evaluates reviews for succinctness, accuracy, and actionability before posting to GitHub, maintaining high signal-to-noise ratio.",
           "evidence": [
             {
@@ -311,6 +331,7 @@
           ]
         },
         {
+          "q_id": "q_62",
           "Summary": "Sidekick uses emoji reaction feedback (👍/👎) and thread replies for continuous improvement, achieving over 80% thumbs up approval rate. The system was rewritten using Aviator, HubSpot's internal Java-based agent framework.",
           "evidence": [
             {
@@ -330,6 +351,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_63",
           "Summary": "HubSpot's code review stack includes Sidekick (AI code review bot), Judge Agent for quality filtering, Aviator (internal Java-based agent framework that replaced Crucible), multiple AI models (Claude, GPT, Gemini), GitHub CLI, and emoji-based feedback mechanisms.",
           "evidence": [
             {
@@ -345,6 +367,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_64",
           "Summary": "Code review infrastructure is managed by Developer Experience AI team including Emily Adams, Michael Goodnow, Aswath Ilangovan, Stephan Lensky, Francesco Signoretti, and Brian LaMattina, serving all HubSpot engineers.",
           "evidence": [
             {
@@ -356,6 +379,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_65",
           "Summary": "Sidekick has reviewed 50,000+ pull requests with 90% time-to-feedback reduction and 80%+ approval rate. The Judge Agent filters reviews based on succinctness, accuracy, and actionability criteria before posting.",
           "evidence": [
             {
@@ -373,6 +397,7 @@
     "Bug_Solving_and_Issue_Tracking": {
       "Practices": [
         {
+          "q_id": "q_66",
           "Summary": "HubSpot's bug solving process relies on rapid tracing and automated rollbacks when standard monitoring fails. During the Feb 2026 incident, standard health checks failed to detect a permissions error because endpoints returned successful HTTP 200 responses with incorrect data. The incident was declared 16 minutes after full rollout due to customer support surges, and engineers resolved it via a full automated rollback within 37 minutes total.",
           "evidence": [
             {
@@ -390,6 +415,7 @@
           ]
         },
         {
+          "q_id": "q_67",
           "Summary": "HubSpot uses per-tool dashboards to debug AI agents, tracking token usage, API costs, and failure counts to identify optimization opportunities. Agent hooks prevent premature task completion by blocking stops until builds pass and changes are committed.",
           "evidence": [
             {
@@ -405,6 +431,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_68",
           "Summary": "Debugging stack: per-tool dashboards (token/API cost/failure tracking), automated rollback systems, pre-deployment validation checks, canary window test correlation with active deployments, and Claude Code hooks for agent task enforcement.",
           "evidence": [
             {
@@ -420,6 +447,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_69",
           "Summary": "On-call engineers triage and respond to incidents. Incident reports are authored by reliability engineers (Shilpa Varma, Kartik Vishwanath). DevEx AI team owns agent debugging infrastructure.",
           "evidence": [
             {
@@ -431,6 +459,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_70",
           "Summary": "HubSpot Breeze is closed-source with no public issue tracker. The Feb 2026 incident revealed that HTTP 200 responses with incorrect data bypassed standard error-rate monitoring — prompting a shift to response-correctness metrics.",
           "evidence": [
             {
@@ -444,6 +473,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_71",
           "Summary": "HubSpot builds with small teams of 3-4 people where technical leaders are engineers first, managers second, staying hands-on with impactful work. Teams prioritize shipping quickly (hours to days) over perfect planning, with calculated risk-taking and low bureaucracy tolerance.",
           "evidence": [
             {
@@ -473,6 +503,7 @@
           ]
         },
         {
+          "q_id": "q_72",
           "Summary": "Decision-making philosophy values throughput over predictability, doesn't require 100% consensus or data, and relies heavily on intuition and ownership. HubSpot's mature engineering organization enables extremely easy microservice creation, including Kubernetes-level infrastructure.",
           "evidence": [
             {
@@ -494,6 +525,7 @@
           ]
         },
         {
+          "q_id": "q_73",
           "Summary": "They use Crucible Agent to track the execution of history, input, output token, and API server, and Kubernetes jobs, mainly for tracking their agentic products and deployment purposes for scalability and flexibility.",
           "evidence": [
             {
@@ -507,6 +539,7 @@
           ]
         },
         {
+          "q_id": "q_74",
           "Summary": "HubSpot emphasizes rapid deployment cycles, moving from ideation to product in hours or days rather than weeks with pragmatic documentation practices.",
           "evidence": [
             {
@@ -518,6 +551,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_75",
           "Summary": "HubSpot uses small teams (3-4 people), hands-on technical leadership, microservices architecture on Kubernetes, Monarch migration campaign system, and iterative agile development with risk-based decision making.",
           "evidence": [
             {
@@ -529,6 +563,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_76",
           "Summary": "Engineering methodology is led by Whitney Sorenson and engineering leadership team, including Tech Leads, Engineering Leads, Staff+ engineers, and product teams across the organization.",
           "evidence": [
             {
@@ -540,6 +575,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_77",
           "Summary": "Key characteristics include 3-4 person teams, hours-to-days shipping cycles, intuition-valued decision making prioritizing throughput over predictability, low bureaucracy, and requirement for technical leaders to remain hands-on.",
           "evidence": [
             {
@@ -557,6 +593,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_36",
           "Summary": "HubSpot uses emoji reactions (👍/👎) and thread replies for feedback on code reviews, creating continuous actionable data stream. Sidekick AI assistant was extended to work via @-mentions on GitHub or Slack, meeting users where they are rather than directing to new platforms.",
           "evidence": [
             {
@@ -578,6 +615,7 @@
           ]
         },
         {
+          "q_id": "q_37",
           "Summary": "Team culture emphasizes psychological safety, mutual support, continuous feedback. Permission models ensure users connecting via ChatGPT maintain same access controls as native HubSpot UI.",
           "evidence": [
             {
@@ -593,6 +631,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_38",
           "Summary": "Communication infrastructure includes GitHub (code review, issues, PRs),Discord,  Slack (@-mentions, integrations), Sidekick AI assistant, emoji reactions (👍👎), thread replies, internal RPC framework CHIRP, and permission-aware ChatGPT integration.",
           "evidence": [
             {
@@ -612,6 +651,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_78",
           "Summary": "All HubSpot engineers participate in team communication, supported by Developer Experience AI team, product teams, and engineering leadership fostering psychologically safe environment.",
           "evidence": [
             {
@@ -623,6 +663,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_79",
           "Summary": "Communication philosophy prioritizes reducing friction by meeting users in their existing tools (GitHub, Slack) rather than requiring new platforms. Feedback culture is continuous with emphasis on psychological safety and constant improvement.",
           "evidence": [
             {
@@ -640,6 +681,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_39",
           "Summary": "HubSpot offers two distinct MCP servers (one for CRM access, one for Developer Platform) with comprehensive documentation at developers.hubspot.com/mcp. Documentation philosophy is pragmatic to support fast shipping (hours to days), with clear examples that help AI models generate correct queries.",
           "evidence": [
             {
@@ -661,6 +703,7 @@
           ]
         },
         {
+          "q_id": "q_40",
           "Summary": "HubSpot created testing guides for common libraries and developed tooling to minimize test fixture and mock payload toil. The testing team presents at EPIC Week annual internal conference to share knowledge on testing strategy.",
           "evidence": [
             {
@@ -676,6 +719,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_41",
           "Summary": "Documentation infrastructure includes HubSpot Developer Platform, developers.hubspot.com documentation site, MCP server docs, NPM package documentation (@hubspot/mcp-server), GitHub README files, API documentation (Dropwizard/JAX-RS), internal guides, EPIC Week presentations, Query DSL examples, and tool description templates.",
           "evidence": [
             {
@@ -687,6 +731,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_42",
           "Summary": "Documentation is managed by Developer Platform team, Documentation team, Testing infrastructure team, MCP server authors (Rishav Paul, William Hou, Chris Connors, Sejal Parikh), serving external developers, internal engineers, and EPIC Week presenters.",
           "evidence": [
             {
@@ -698,6 +743,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_43",
           "Summary": "Documentation strategy includes two MCP servers (remote CRM access + local Developer Platform), comprehensive NPM package documentation, testing guides for common libraries, EPIC Week annual conference for knowledge sharing, and example-driven documentation optimized for AI model integration.",
           "evidence": [
             {
@@ -711,6 +757,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_44",
           "Summary": "HubSpot is all-in on AI from developer tooling to product features, having merged 7,000+ fully AI-generated pull requests and code reviewed 50,000+ human-authored PRs. AI fluency is now a baseline expectation for all engineering roles.",
           "evidence": [
             {
@@ -728,6 +775,7 @@
           ]
         },
         {
+          "q_id": "q_45",
           "Summary": "HubSpot developed specialized agents for design system modernization, PR feedback iteration, and flaky test pattern analysis. The MCP server is built with Java MCP SDK for long-term maintainability within their standard technical stack.",
           "evidence": [
             {
@@ -741,6 +789,7 @@
           ]
         },
         {
+          "q_id": "q_46",
           "Summary": "HubSpot built an MCP Gateway service that automatically discovers and registers MCP tools across entire infrastructure using @ChirpTool annotations. The server periodically polls for new services and converts each RPC to MCP spec-compliant tools.",
           "evidence": [
             {
@@ -754,6 +803,7 @@
           ]
         },
         {
+          "q_id": "q_47",
           "Summary": "HubSpot plans to enhance their developer platform to respect user permissioning and mature their OAuth stack to OAuth 2.1 standards based on learnings from MCP server and ChatGPT connector.",
           "evidence": [
             {
@@ -765,6 +815,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_48",
           "Summary": "HubSpot's AI stack includes Claude Code, GitHub Copilot, Cursor, MCP (Model Context Protocol), Java MCP SDK, Dropwizard microservices, CHIRP (Cool Hubspot Inter-process Remote Procedures), @ChirpTool annotation, MCP Gateway service, ChatGPT Deep Research Connector, OAuth 2.0/2.1, Crucible cloud agent platform, and Aviator internal Java agent framework.",
           "evidence": [
             {
@@ -780,6 +831,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_49",
           "Summary": "LLM integration is led by Developer Experience AI team including Rishav Paul, William Hou, Chris Connors, and Sejal Parikh, with infrastructure teams supporting all HubSpot engineers and serving 250,000+ business customers.",
           "evidence": [
             {
@@ -791,6 +843,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_50",
           "Summary": "Key metrics include 7,000+ AI-generated PRs merged, 50,000+ PRs reviewed by AI, AI fluency as baseline requirement for all engineers, @ChirpTool annotation for automatic tool registration, dynamic tool discovery across infrastructure, OAuth 2.1 implementation planned, and 250,000+ businesses using Deep Research Connector.",
           "evidence": [
             {

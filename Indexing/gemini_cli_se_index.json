@@ -1,5 +1,5 @@
 {
-  "Agent_Name": "Google Gemini CLI",
+  "Agent_Name": "Gemini CLI",
   "Description": {
     "value": "Google Gemini CLI is an open-source, terminal-based AI coding agent developed by Google that brings Gemini model capabilities directly to the developer's command-line environment, supporting multi-turn conversations, file editing, code generation, and agentic web search in a REPL-style interface.",
     "evidence": [
@@ -69,6 +69,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_1",
           "Summary": "Gemini CLI engineers run a layered test suite with Vitest for unit tests and a custom integration test runner for end-to-end validation; all contributors must run 'npm run preflight' before PRs, which builds the repository, runs all tests, checks for type errors, and lints the code.",
           "evidence": [
             {
@@ -82,6 +83,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Integration tests are designed to validate the end-to-end functionality of Gemini CLI — they execute the built binary in a controlled environment and verify that it behaves as expected when interacting with the file system. They are kept separate from unit tests and must be run explicitly.",
           "evidence": [
             {
@@ -95,6 +97,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Before adding a new integration test, developers must run it at least 5 times with the deflake script or workflow to confirm it is not flaky; this reliability standard prevents brittle tests from entering the CI pipeline.",
           "evidence": [
             {
@@ -104,6 +107,7 @@
           ]
         },
         {
+          "q_id": "q_56",
           "Summary": "Memory regression tests detect heap growth and leaks by comparing against committed baselines with a 10% tolerance; performance regression tests measure wall-clock time, CPU usage, and event loop delay with a 15% tolerance. Both suites run nightly in CI but are excluded from the default preflight check.",
           "evidence": [
             {
@@ -117,6 +121,7 @@
           ]
         },
         {
+          "q_id": "q_57",
           "Summary": "When testing code that depends on environment variables, developers use vi.stubEnv() in beforeEach and vi.unstubAllEnvs() in afterEach to avoid modifying process.env directly, which can lead to test leakage and is less reliable.",
           "evidence": [
             {
@@ -128,6 +133,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_6",
           "Summary": "Vitest as the unit-test runner; a custom integration test harness with Docker/Podman sandbox matrix; deflake script for flakiness detection; ESLint and Prettier enforced by preflight; TypeScript type-checking via tsc.",
           "evidence": [
             {
@@ -143,6 +149,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_7",
           "Summary": "Core Gemini CLI maintainers at Google plus the broader open-source contributor community who submit PRs that must pass all checks before human review begins.",
           "evidence": [
             {
@@ -154,6 +161,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_58",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -162,6 +170,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_59",
           "Summary": "Releases are automated by an in-repo GitHub Actions pipeline driven by the gemini-cli-robot bot, which cuts preview, nightly, and patch releases and publishes packages to npm. A daily schedule handles nightly releases; official patch/minor releases are triggered manually.",
           "evidence": [
             {
@@ -171,6 +180,7 @@
           ]
         },
         {
+          "q_id": "q_60",
           "Summary": "The CI workflow runs on every push to a pull request and performs linting, the full suite of automated tests across macOS, Windows, and Linux on multiple Node.js versions, and posts a code coverage comment on each PR after tests pass.",
           "evidence": [
             {
@@ -180,6 +190,7 @@
           ]
         },
         {
+          "q_id": "q_61",
           "Summary": "A GitHub Actions workflow defined in .github/workflows/chained_e2e.yml automatically runs integration tests for pull requests against the main branch, or when a PR is added to a merge queue, across no-sandbox, Docker, and Podman environments.",
           "evidence": [
             {
@@ -191,6 +202,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_62",
           "Summary": "GitHub Actions workflows under .github/workflows; gemini-cli-robot service account for tagging and npm publishing; bundled zip asset distribution from GitHub Releases; PR label sync workflow running every 15 minutes.",
           "evidence": [
             {
@@ -202,6 +214,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_63",
           "Summary": "Release engineers at Google operating the gemini-cli-robot account; maintainers approving cherry-picks into release branches; contributors whose merged PRs are automatically included in the next nightly build.",
           "evidence": [
             {
@@ -213,6 +226,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_64",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -221,6 +235,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_65",
           "Summary": "All submissions, including submissions by project members, require review via GitHub pull requests; contributors are encouraged to keep PRs small and focused, since large changes should be broken down into a series of smaller, logical PRs that can be reviewed and merged independently.",
           "evidence": [
             {
@@ -234,6 +249,7 @@
           ]
         },
         {
+          "q_id": "q_66",
           "Summary": "An automated review tool powered by Gemini itself helps detect common anti-patterns, testing issues, and other best practices that are easy to miss; authors are strongly encouraged to run this script on their own PRs immediately after creation so they can catch and fix simple issues locally before a maintainer performs a full review.",
           "evidence": [
             {
@@ -247,6 +263,7 @@
           ]
         },
         {
+          "q_id": "q_67",
           "Summary": "The automated review tool can be invoked from within an active Gemini CLI session using the /review-frontend slash command, or via the helper shell script scripts/review.sh which checks out the PR into a separate worktree, installs dependencies, builds the project, and launches the review tool.",
           "evidence": [
             {
@@ -260,6 +277,7 @@
           ]
         },
         {
+          "q_id": "q_68",
           "Summary": "Google's code review standard — adopted by the Gemini CLI team — emphasizes progressive improvement: reviewers should approve a change once it is in a state where it definitely improves the overall code health of the system being worked on, even if the change is not perfect.",
           "evidence": [
             {
@@ -269,6 +287,7 @@
           ]
         },
         {
+          "q_id": "q_69",
           "Summary": "Reviewers use a 'Nit:' prefix for non-blocking polish suggestions, which lets authors distinguish required changes from optional improvements and prevents review threads from blocking merges over minor style points.",
           "evidence": [
             {
@@ -278,6 +297,7 @@
           ]
         },
         {
+          "q_id": "q_70",
           "Summary": "Google engineering practices — followed by the Gemini CLI team — specify that a reviewer should respond quickly with their review comments and that the maximum time it should take to respond to a code review is one business day.",
           "evidence": [
             {
@@ -289,6 +309,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_71",
           "Summary": "scripts/review.sh (AI-assisted review using Gemini); /review-frontend slash command from within the CLI; GitHub PR review UI with required checks; branch protection on main; code coverage bot that posts test coverage summaries on each PR.",
           "evidence": [
             {
@@ -300,6 +321,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_72",
           "Summary": "Google-gemini maintainers as code owners; external contributors as PR authors; gemini-cli-robot for automated checks; the Gemini-code-assist bot for coverage and change summaries.",
           "evidence": [
             {
@@ -311,6 +333,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_73",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -371,6 +394,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_74",
           "Summary": "Issues are triaged automatically upon creation using a Gemini model that analyzes the issue's title and body against a detailed set of guidelines and applies area/*, kind/*, and priority/* labels (P0–P3). Issues lacking critical details such as logs or reproduction steps are flagged with status/need-information.",
           "evidence": [
             {
@@ -380,6 +404,7 @@
           ]
         },
         {
+          "q_id": "q_75",
           "Summary": "Contributors self-assign issues by commenting /assign and release them by commenting /unassign; they can have a maximum of 3 issues assigned at any given time and may only self-assign issues labelled 'help wanted'.",
           "evidence": [
             {
@@ -393,6 +418,7 @@
           ]
         },
         {
+          "q_id": "q_76",
           "Summary": "External contributors who are assigned a 'help wanted' issue but have not opened a linked pull request within 7 days are automatically unassigned; draft PRs do not count toward the requirement, and maintainers are exempt from auto-unassignment.",
           "evidence": [
             {
@@ -402,6 +428,7 @@
           ]
         },
         {
+          "q_id": "q_77",
           "Summary": "From the 10 recent issues analyzed, common engineering pitfalls include: (1) platform-specific regressions (Windows/WSL MCP connection, Windows quote stripping), (2) model fallback and quota handling failures, (3) parsing vulnerabilities with edge-case inputs (large text paste, code logs, hyphenated names), (4) background process lifecycle management, and (5) automation timing bugs in bot workflows.",
           "evidence": [
             {
@@ -411,6 +438,7 @@
           ]
         },
         {
+          "q_id": "q_78",
           "Summary": "Issues are organized to provide key information at a glance: Target Quarter, Feature Area, Issue Type,_Workstream_ => _Epics_ => _Features_ => _Tasks Bugs",
           "evidence": [
             {
@@ -422,6 +450,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_79",
           "Summary": "GitHub Issues with Gemini-powered automated triage bot; /assign and /unassign comment-trigger bot; help-wanted and good-first-issue labels; scheduled hourly triage fallback workflow; PR auditing workflow running every 15 minutes to enforce issue linkage.",
           "evidence": [
             {
@@ -433,6 +462,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_80",
           "Summary": "Issue triagers from the google-gemini team; community contributors who self-assign help-wanted issues; the gemini-cli-robot bot and the Gemini-powered automated triage workflow.",
           "evidence": [
             {
@@ -444,6 +474,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_81",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -452,6 +483,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_82",
           "Summary": "Trunk-based development on a single main branch with no long-lived dev branches; Google's Software Engineering book identifies trunk-based development as a particularly scalable policy approach and notes that DORA research shows a predictive relationship between trunk-based development and high-performing software organizations. ",
           "evidence": [
             {
@@ -465,6 +497,7 @@
           ]
         },
         {
+          "q_id": "q_83",
           "Summary": "Small, atomic pull requests are the norm; every PR must be linked to an existing issue so that every change has been discussed and is aligned with the project's goals before any code is written. PRs that lack a linked issue are automatically flagged with the status/need-issue label.",
           "evidence": [
             {
@@ -478,6 +511,7 @@
           ]
         },
         {
+          "q_id": "q_84",
           "Summary": "Conventional Commits standard is followed for all commit messages, providing semantic versioning signal (fix, feat, chore) that the release automation uses to determine version bumps and generate changelogs.",
           "evidence": [
             {
@@ -487,6 +521,7 @@
           ]
         },
         {
+          "q_id": "q_85",
           "Summary": "The project uses a monorepo structure via npm workspaces with distinct packages for the CLI, core backend, MCP server, test utilities, SDK, devtools, and VS Code extension — enabling independent versioning and cross-package import restriction enforcement via ESLint.",
           "evidence": [
             {
@@ -496,6 +531,7 @@
           ]
         },
         {
+          "q_id": "q_86",
           "Summary": "Four guiding principles published in ROADMAP.md serve as the explicit engineering compass: Power and Simplicity (state-of-the-art model access via a lightweight CLI), Extensibility (adaptable agent deployable anywhere), Intelligent (ranked among the best agentic tools by SWE Bench, Terminal Bench, and CSAT), and Free and Open Source (no cost barrier for personal use, PRs and issues resolved quickly).",
           "evidence": [
             {
@@ -509,6 +545,7 @@
           ]
         },
         {
+          "q_id": "q_87",
           "Summary": "Contributors are encouraged to install a Git pre-commit hook immediately after cloning that runs the full npm run preflight check before every commit, aborting the commit if any build, lint, type, or test step fails — enforcing quality gates locally before code ever enters CI.",
           "evidence": [
             {
@@ -520,6 +557,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_88",
           "Summary": "npm workspaces monorepo; semantic versioning with preview tags; conventional commit prefixes (fix, feat, chore); ESLint-enforced cross-package import restrictions; Apache-2.0 license header enforcement by ESLint.",
           "evidence": [
             {
@@ -531,6 +569,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_89",
           "Summary": "Google's Gemini CLI engineering team plus open-source contributors; the GEMINI.md and CONTRIBUTING.md documents serve as the primary normative contract between maintainers and all contributors.",
           "evidence": [
             {
@@ -542,10 +581,11 @@
       ],
       "Others": [
         {
+          "q_id": "q_90",
           "Summary": "Gemini CLI was created by Google on April 17, 2025 as an Apache 2.0 open-source project and reached 104,000+ GitHub stars, 662 contributors, and 488 published releases within approximately one year; its rapid growth and a Google-partnered DeepLearning.AI short course (taught by Jack Wotherspoon, Senior Developer Advocate at Google) reflect a developer-first philosophy where the tool is used to build itself and the open-source community is treated as a core stakeholder.",
           "evidence": [
             {
-              "quote": "Built with \u2764\ufe0f by Google and the open source community",
+              "quote": "Built with ❤️ by Google and the open source community",
               "citation": "[1]"
             },
             {
@@ -559,6 +599,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_37",
           "Summary": "Contributors self-assign issues by commenting /assign and release them with /unassign, with a cap of 3 concurrent assignments per contributor; only issues labelled 'help wanted' are eligible for self-assignment, and all contributions require signing the Contributor License Agreement before merging.",
           "evidence": [
             {
@@ -576,6 +617,7 @@
           ]
         },
         {
+          "q_id": "q_38",
           "Summary": "Code review happens through GitHub PR threads; the project uses draft PRs as a signal that a change is not yet ready for formal review but is open for discussion and initial feedback.",
           "evidence": [
             {
@@ -585,6 +627,7 @@
           ]
         },
         {
+          "q_id": "q_39",
           "Summary": "The project uses GitHub Discussions as the public Q&A forum, where contributors can search existing answers or start new threads; maintainers direct unanswered questions to the Gemini CLI Q&A discussions category on GitHub.",
           "evidence": [
             {
@@ -594,6 +637,7 @@
           ]
         },
         {
+          "q_id": "q_40",
           "Summary": "The public GitHub Projects board at github.com/orgs/google-gemini/projects/11 serves as the canonical roadmap communication artifact — all planned features are visible to any contributor with area/*, priority/*, and effort/* labels, and the team explicitly states that contributions aligned with the active roadmap will be easiest to integrate and will receive first priority for review.",
           "evidence": [
             {
@@ -603,6 +647,7 @@
           ]
         },
         {
+          "q_id": "q_41",
           "Summary": "No Slack workspace or Discord server has been established for Gemini CLI contributor communication; all public collaboration occurs exclusively through GitHub's native platform — Issues, Pull Requests, Discussions, and the Projects roadmap board — and all participants are bound by Google's Open Source Community Guidelines as the project's code of conduct.",
           "evidence": [
             {
@@ -618,6 +663,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_42",
           "Summary": "GitHub Issues (Gemini-powered automated triage, /assign and /unassign bot, help-wanted and good-first-issue labels); GitHub Discussions (Q&A category for community support); GitHub Pull Requests (code review threads, draft PRs for early feedback); GitHub Projects board (public quarterly roadmap at github.com/orgs/google-gemini/projects/11); GitHub Actions bots for automated triage, label sync, and release orchestration. No Slack or Discord community channel is documented — all contributor communication is conducted entirely through GitHub's built-in collaboration tools.",
           "evidence": [
             {
@@ -633,6 +679,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_91",
           "Summary": "Core Google team, external maintainers, community contributors, and automated bots (gemini-cli-robot, triage bot, PR audit bot).",
           "evidence": [
             {
@@ -644,6 +691,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_92",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -652,6 +700,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_44",
           "Summary": "Every user-facing code change requires a corresponding documentation update; contributors must also update the relevant documentation in the /docs directory when a PR introduces a new command, modified flag, or change in behavior.",
           "evidence": [
             {
@@ -661,6 +710,7 @@
           ]
         },
         {
+          "q_id": "q_93",
           "Summary": "Documentation follows the Google Developer Documentation Style Guide, favouring sentence case for headings, second-person address, present tense, short focused paragraphs, and practical code examples.",
           "evidence": [
             {
@@ -670,6 +720,7 @@
           ]
         },
         {
+          "q_id": "q_94",
           "Summary": "The official documentation site at geminicli.com covers the full project surface — installation, authentication, feature guides, API reference, configuration, integration testing, issue/PR automation, local development, sandboxing, and release notes — and is kept in sync with source via sidebar.json as the table of contents.",
           "evidence": [
             {
@@ -679,6 +730,7 @@
           ]
         },
         {
+          "q_id": "q_95",
           "Summary": "GEMINI.md in the project root is specifically designated for AI-assisted development conventions and instructs contributors and AI agents on React patterns, import rules, license header requirements, and Git usage — making project context machine-readable for agentic tooling.",
           "evidence": [
             {
@@ -690,6 +742,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_47",
           "Summary": "Markdown docs in-repo under /docs; official documentation site at geminicli.com; GEMINI.md for AI-agent context; release notes auto-generated and attached to each GitHub Release tag; Prettier for markdown formatting enforced by preflight.",
           "evidence": [
             {
@@ -701,6 +754,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_48",
           "Summary": "Google DevRel and the Gemini CLI engineering team, plus community PR authors who must update docs alongside any code changes they submit.",
           "evidence": [
             {
@@ -712,6 +766,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_96",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -720,6 +775,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_49",
           "Summary": "Gemini CLI integrates with Gemini models via the Gemini API and Vertex AI; the core backend in packages/core handles Gemini API orchestration, prompt construction, and tool execution as distinct responsibilities, keeping prompt logic separate from CLI UI code.",
           "evidence": [
             {
@@ -729,6 +785,7 @@
           ]
         },
         {
+          "q_id": "q_50",
           "Summary": "Tool-use is wired through MCP (Model Context Protocol) servers configured in settings.json; MCP enables the agent to call external tools as structured JSON-RPC calls, and the connection lifecycle, reconnection, and health of MCP servers are tracked in the project's issue tracker as first-class engineering concerns.",
           "evidence": [
             {
@@ -738,6 +795,7 @@
           ]
         },
         {
+          "q_id": "q_51",
           "Summary": "Gemini CLI uses OpenTelemetry (OTel) to record traces that instrument key events like model calls, tool scheduler operations, and tool calls; traces are captured automatically when telemetry is enabled and can be viewed via the Genkit Developer UI, Jaeger, or forwarded to Google Cloud Trace.",
           "evidence": [
             {
@@ -747,6 +805,7 @@
           ]
         },
         {
+          "q_id": "q_52",
           "Summary": "The GEMINI.md file defines how AI agents working on the codebase should themselves behave: keeping PRs small and focused, always activating the pr-creator skill for PR generation, and following Conventional Commits — making AI development practices explicit and machine-readable.",
           "evidence": [
             {
@@ -756,6 +815,7 @@
           ]
         },
         {
+          "q_id": "q_53",
           "Summary": "Sandboxing isolates potentially dangerous operations (such as shell commands or file modifications) from the host system, providing a security barrier between AI operations and the user's environment; this safety layer is built directly into the CLI so that AI-driven tool execution cannot accidentally cause system damage or data loss.",
           "evidence": [
             {
@@ -767,6 +827,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_54",
           "Summary": "Gemini API and Vertex AI for model access; MCP servers for structured tool-use; OpenTelemetry for agent trace instrumentation; Genkit Developer UI and Jaeger for local trace visualization; runInDevTraceSpan utility for custom trace spans; Docker/Podman/macOS Seatbelt for AI execution sandboxing.",
           "evidence": [
             {
@@ -778,6 +839,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_55",
           "Summary": "Gemini CLI core engineers building and maintaining the packages/core orchestration layer; contributors writing custom MCP tool integrations; enterprise users configuring MCP servers for internal tooling.",
           "evidence": [
             {
@@ -789,6 +851,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_97",
           "Summary": "Not Available",
           "evidence": []
         }

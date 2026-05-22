@@ -77,6 +77,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_1",
           "Summary": "An automated end-to-end evaluation pipeline runs 100 web agent tasks in parallel in under 5 minutes on every PR, using Blacksmith runners on GitHub Actions. Evaluation tasks are drawn from millions of real LLM-labeled user spans rather than synthetic environments, ensuring coverage of real-world page complexity.",
           "evidence": [
             {
@@ -98,6 +99,7 @@
           ]
         },
         {
+          "q_id": "q_2",
           "Summary": "Statistical rigor is applied to evaluation: each task is run multiple times and results are aggregated with statistical bootstrapping, because single-run deterministic tests are unsuitable for non-deterministic web agents.",
           "evidence": [
             {
@@ -111,6 +113,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Unit and integration tests are defined under tests/ci/ and executed in a matrix build, where each test file becomes an independent GitHub Actions job. This enables parallel execution and isolated failure reporting for the core test suite.",
           "evidence": [
             {
@@ -120,6 +123,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "ClickHouse via Laminar stores every token, prompt, timing metric, and cost from evaluation runs, providing a queryable dataset of agent behavior. Browser session frames are also recorded and saved to Laminar.",
           "evidence": [
             {
@@ -135,6 +139,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_5",
           "Summary": "gemini-2.5-flash is used as the LLM judge in the evaluation pipeline. It is forced to output a structured True/False JSON verdict with a reasoning field, achieving 87% alignment with human labels across 200 hand-labeled traces.",
           "evidence": [
             {
@@ -148,6 +153,7 @@
           ]
         },
         {
+          "q_id": "q_6",
           "Summary": "pytest (v9.0.2) with pytest-asyncio (v1.3.0) and pytest-xdist (v3.8.0) powers the automated test suite, supporting async test execution and parallel distributed runs.",
           "evidence": [
             {
@@ -157,6 +163,7 @@
           ]
         },
         {
+          "q_id": "q_7",
           "Summary": "ClickHouse via Laminar stores every token, prompt, timing metric, and cost from evaluation runs, providing a queryable dataset of agent behavior. Browser session frames are also recorded and saved to Laminar.",
           "evidence": [
             {
@@ -172,6 +179,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_8",
           "Summary": "The engineering team runs the evaluation pipeline daily, sampling failure-reason strings extracted by Claude Code to identify and prioritize high-impact bug categories.",
           "evidence": [
             {
@@ -181,6 +189,7 @@
           ]
         },
         {
+          "q_id": "q_9",
           "Summary": "The open-source community benefits from the evaluation results directly: the judge prompt and configuration are open-sourced in the browser-use repository, and a public benchmark is available at github.com/browser-use/benchmark.",
           "evidence": [
             {
@@ -192,6 +201,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_10",
           "Summary": "Evaluation failure clustering via embeddings was abandoned after proving ineffective. The team pivoted to having Claude Code read raw failure_reason strings, propose concrete categories, and iteratively subcategorize them into actionable buckets.",
           "evidence": [
             {
@@ -209,6 +219,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_71",
           "Summary": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: lint.yml (syntax, style, types on every push), test.yaml (matrix unit tests plus per-PR agent evaluation), and publish.yml (PyPI release triggered on a new GitHub release tag).",
           "evidence": [
             {
@@ -222,6 +233,7 @@
           ]
         },
         {
+          "q_id": "q_72",
           "Summary": "The cloud production architecture uses an SQS-to-Lambda pattern: a FastAPI service (ECS Fargate) accepts task requests, writes a database row, drops an SQS message, and returns HTTP 202 in under 50 ms. A Lambda worker pulls each message and runs the agent to completion.",
           "evidence": [
             {
@@ -235,6 +247,7 @@
           ]
         },
         {
+          "q_id": "q_73",
           "Summary": "Lambda's 15-minute hard limit is handled by a continuation mechanism: 2 minutes before the deadline, the agent checkpoints its state to S3, sends a new SQS message with an incremented counter, and a fresh Lambda invocation restores and resumes the session. Continuations are capped at 12 (~3 hours wall-clock).",
           "evidence": [
             {
@@ -244,6 +257,7 @@
           ]
         },
         {
+          "q_id": "q_74",
           "Summary": "The same container image runs across local development, evaluation pipelines, and production. A single config switch (sandbox_mode: 'docker' | 'ukc') determines whether the image runs as a Docker container or a Unikraft micro-VM.",
           "evidence": [
             {
@@ -259,6 +273,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_75",
           "Summary": "GitHub Actions orchestrates all CI/CD stages: code quality gates (ruff, pyright, pre-commit), matrix test execution, per-PR agent evaluation via Blacksmith runners, and PyPI publishing on release.",
           "evidence": [
             {
@@ -268,6 +283,7 @@
           ]
         },
         {
+          "q_id": "q_76",
           "Summary": "AWS SQS, Lambda, ECS Fargate, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; the DLQ serves as a failure incident tracker.",
           "evidence": [
             {
@@ -277,6 +293,7 @@
           ]
         },
         {
+          "q_id": "q_77",
           "Summary": "Unikraft micro-VMs provision agent sandboxes in production, booting in under a second on dedicated bare metal in AWS. Each sandbox receives only SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID — no infrastructure credentials.",
           "evidence": [
             {
@@ -286,6 +303,7 @@
           ]
         },
         {
+          "q_id": "q_78",
           "Summary": "uv (package manager), ruff (linter/formatter), and pyright (type checker) gate every commit via pre-commit hooks and GitHub Actions, ensuring code quality before merge.",
           "evidence": [
             {
@@ -301,6 +319,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_79",
           "Summary": "The cloud infrastructure team manages the SQS-Lambda-Fargate production stack and responds to DLQ incidents. Engineers investigate manually; there is no automatic re-drive.",
           "evidence": [
             {
@@ -310,6 +329,7 @@
           ]
         },
         {
+          "q_id": "q_80",
           "Summary": "Python developers and open-source contributors install the library via PyPI and benefit from the automated publish pipeline triggered on each GitHub release.",
           "evidence": [
             {
@@ -321,6 +341,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_81",
           "Summary": "Not Applicable",
           "evidence": [
             {
@@ -334,6 +355,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_82",
           "Summary": "All contributors must run pre-commit before submitting a PR. The pre-commit pipeline enforces ruff-check (with auto-fix), ruff-format, pyright type checking, codespell spell-check, pyupgrade Python 3.11+ syntax, and a suite of file integrity checks (check-ast, check-toml, check-yaml, mixed-line-ending, detect-private-key).",
           "evidence": [
             {
@@ -347,6 +369,7 @@
           ]
         },
         {
+          "q_id": "q_83",
           "Summary": "AGENTS.md provides authoritative coding standards for both human and AI contributors: use uv (not pip), apply Pydantic v2 models for all schemas, use descriptive names and docstrings, prefer structured ActionResult returns, and never create random example files.",
           "evidence": [
             {
@@ -360,6 +383,7 @@
           ]
         },
         {
+          "q_id": "q_84",
           "Summary": "Pull requests automatically trigger the evaluate-tasks GitHub Actions job, which runs a set of real web tasks and posts the evaluation score as a PR comment, enabling data-driven assessment of whether a change improves or regresses agent performance.",
           "evidence": [
             {
@@ -371,6 +395,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_85",
           "Summary": "ruff (v0.12.10 in pre-commit) handles both linting and formatting, replacing flake8 and black. It is configured with auto-fix enabled and further parameterized via pyproject.toml.",
           "evidence": [
             {
@@ -380,6 +405,7 @@
           ]
         },
         {
+          "q_id": "q_86",
           "Summary": "The detect-private-key pre-commit hook acts as a security gate to prevent credentials from being committed to the repository.",
           "evidence": [
             {
@@ -391,6 +417,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_87",
           "Summary": "Pull request authors are required to pass all pre-commit and CI checks before code can be merged, ensuring a consistent quality bar across all contributions.",
           "evidence": [
             {
@@ -400,6 +427,7 @@
           ]
         },
         {
+          "q_id": "q_88",
           "Summary": "AI coding agents (e.g., Claude Code, Cursor) are explicitly supported as contributors via AGENTS.md, which provides embedded documentation and coding rules they must follow when generating code for this repository.",
           "evidence": [
             {
@@ -411,6 +439,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_89",
           "Summary": "check-added-large-files hook (maxkb=600) prevents oversized assets from being committed. pyupgrade enforces Python 3.11+ syntax constructs uniformly across the codebase.",
           "evidence": [
             {
@@ -473,10 +502,10 @@
           "Citation": "[13]"
         },
         {
-          "Issue_Title": "Bug: Pagination classifier mislabels first/last controls as prev/next when using shared symbols (\u00ab, \u00bb)",
+          "Issue_Title": "Bug: Pagination classifier mislabels first/last controls as prev/next when using shared symbols («, »)",
           "Issue_Number": 4620,
           "Status": "Closed",
-          "Description": "The pagination-detection heuristic confused \u00ab/\u00bb glyphs (used as both first/last and previous/next in different designs) causing incorrect navigation. Exposes fragile symbol-based UI classification in the DOM-parsing layer.",
+          "Description": "The pagination-detection heuristic confused «/» glyphs (used as both first/last and previous/next in different designs) causing incorrect navigation. Exposes fragile symbol-based UI classification in the DOM-parsing layer.",
           "Citation": "[13]"
         },
         {
@@ -531,6 +560,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_90",
           "Summary": "GitHub Issues is the primary bug tracker with a dedicated 'bug' label. As of May 2026, 863 bug-labeled issues have been closed and 24 remain open, reflecting an active triage and resolution process.",
           "evidence": [
             {
@@ -540,6 +570,7 @@
           ]
         },
         {
+          "q_id": "q_91",
           "Summary": "The engineering blog serves as a public post-mortem record. A chronological account of 4,000 commits identifies recurring bug patterns: race conditions in distributed state, async event loop misuse, memory leaks from non-singleton HTTP clients, and cascading config failures.",
           "evidence": [
             {
@@ -549,6 +580,7 @@
           ]
         },
         {
+          "q_id": "q_92",
           "Summary": "Root-cause patterns are addressed systematically after recurring across multiple incidents: a datetime timezone mismatch appeared three separate times before triggering a 62-file refactor; a DB connection-holding-during-HTTP-call bug recurred in a different endpoint months after the first fix.",
           "evidence": [
             {
@@ -564,6 +596,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_93",
           "Summary": "GitHub Issues with labels (bug, cli) provides structured tracking, milestone grouping, and community-sourced bug reports. Examples include #4609 (sensitive_data redaction partial leak) and #4778 (asyncio.gather missing return_exceptions=True causing DOM extraction failure).",
           "evidence": [
             {
@@ -577,6 +610,7 @@
           ]
         },
         {
+          "q_id": "q_94",
           "Summary": "The AWS SQS Dead Letter Queue (DLQ) acts as a production incident alarm. Messages landing in the DLQ signal regressions or systemic failures, prompting immediate engineer investigation.",
           "evidence": [
             {
@@ -586,6 +620,7 @@
           ]
         },
         {
+          "q_id": "q_95",
           "Summary": "ClickHouse via Laminar provides trace-level observability for production agent runs, enabling engineers to query token usage, timing metrics, and step-by-step agent behavior to diagnose failures.",
           "evidence": [
             {
@@ -597,6 +632,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_96",
           "Summary": "The engineering team investigates DLQ alarms and production incidents directly, reviewing agent traces in ClickHouse and correlating with APM signals to find root causes.",
           "evidence": [
             {
@@ -606,6 +642,7 @@
           ]
         },
         {
+          "q_id": "q_97",
           "Summary": "The open-source community (20k+ Discord members, GitHub contributors) reports bugs through Issues and Discussion threads, surfacing edge cases that production telemetry may not capture.",
           "evidence": [
             {
@@ -617,6 +654,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_98",
           "Summary": "A concurrent credits billing race condition was fixed by replacing asyncio.Lock (process-scoped, ineffective across pods) with SELECT ... FOR UPDATE (database-level row locking). An earlier clever fix had already caused a different problem at scale by locking the same user row exclusively under high load.",
           "evidence": [
             {
@@ -626,6 +664,7 @@
           ]
         },
         {
+          "q_id": "q_99",
           "Summary": "Memory leak from non-singleton HTTP clients required seven commits in one day to fully resolve. ssl.create_default_context() was found to take ~1.8s of CPU per call, blocking the event loop under load.",
           "evidence": [
             {
@@ -639,6 +678,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_100",
           "Summary": "Browser Use adopts a minimal-agent philosophy: 'An agent is just a for-loop of messages. Give the LLM as much freedom as possible, then vibe-restrict based on evals' The original first agent was discarded and rebuilt from scratch after the team reverse-engineered Claude Code and Gemini CLI. They discovered that fewer abstractions produce more reliable agents, because LLM can learn from mistakes by reasoning.",
           "evidence": [
             {
@@ -652,6 +692,7 @@
           ]
         },
         {
+          "q_id": "q_101",
           "Summary": "An 'inversion' principle guides feature design: start from maximal capability (expose raw CDP to the model), then restrict based on evaluation data rather than pre-defining a fixed action space. This allows the system to scale with improved models instead of fighting them.",
           "evidence": [
             {
@@ -665,6 +706,7 @@
           ]
         },
         {
+          "q_id": "q_102",
           "Summary": "The team moved from Playwright to raw CDP (Chrome DevTools Protocol) to eliminate a second network hop (Node.js relay server) and gain direct control over tab crash handling, cross-origin iframe routing, and browser events. A new event-driven watchdog architecture was introduced to respond to CDP events asynchronously.",
           "evidence": [
             {
@@ -678,6 +720,7 @@
           ]
         },
         {
+          "q_id": "q_103",
           "Summary": "Fast iteration with systematic learning: the cloud infrastructure was built through 4,000+ commits in one year. Mistakes were shipped, analyzed, and fixed forward. The gap between a working demo and production reliability defined the team's engineering maturity curve.",
           "evidence": [
             {
@@ -693,6 +736,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_104",
           "Summary": "The cdp-use library provides type-safe Python bindings auto-generated from official CDP protocol specifications, giving direct low-latency access to browser APIs without an intermediate relay layer.",
           "evidence": [
             {
@@ -702,6 +746,7 @@
           ]
         },
         {
+          "q_id": "q_105",
           "Summary": "agent-sdk is open-sourced as a minimal reference implementation of the for-loop agent pattern, demonstrating the core primitives: a complete action space, a for-loop, an explicit done tool, and context management.",
           "evidence": [
             {
@@ -713,6 +758,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_106",
           "Summary": "The product and engineering leadership makes architectural decisions informed by evaluation data, deciding when to remove abstractions (Playwright), redesign subsystems (sandbox Pattern 1 → Pattern 2), or deprecate unused features (GIF generator, standalone billing service).",
           "evidence": [
             {
@@ -722,6 +768,7 @@
           ]
         },
         {
+          "q_id": "q_107",
           "Summary": "The open-source community provides feedback that shapes methodology decisions, including choosing which CDP/browser libraries to recommend and what API surface to expose.",
           "evidence": [
             {
@@ -733,6 +780,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_108",
           "Summary": "The Bitter Lesson from ML research (general computation beats hand-crafted knowledge) is applied directly to agent design: abstractions that encode developer assumptions about how the model should behave are treated as liabilities, not assets.",
           "evidence": [
             {
@@ -746,6 +794,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_48",
           "Summary": "Slack is the operational control center for the evaluation pipeline. Engineers trigger eval runs by pinging Claude in Slack; Claude Code automatically runs Python scripts, queries ClickHouse trace data, performs statistical A/B analysis, and posts findings back in the same thread.",
           "evidence": [
             {
@@ -759,6 +808,7 @@
           ]
         },
         {
+          "q_id": "q_49",
           "Summary": "GitHub Issues and Pull Requests serve as the primary asynchronous engineering forum: feature proposals, bug reports, and architectural discussions are tracked publicly with labels and milestone groupings.",
           "evidence": [
             {
@@ -768,6 +818,7 @@
           ]
         },
         {
+          "q_id": "q_50",
           "Summary": "The engineering blog (browser-use.com/posts) functions as a long-form knowledge-sharing and incident retrospective channel, publishing detailed post-mortems and architecture deep-dives accessible to the broader community.",
           "evidence": [
             {
@@ -779,6 +830,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_51",
           "Summary": "Slack integrated with a custom MCP server enables Claude Code to directly trigger Blacksmith runners and receive results without leaving the communication channel.",
           "evidence": [
             {
@@ -788,6 +840,7 @@
           ]
         },
         {
+          "q_id": "q_52",
           "Summary": "Discord (20k+ members), Twitter/X, and LinkedIn serve as community communication channels for the open-source user base, bug discussions, and product announcements.",
           "evidence": [
             {
@@ -797,6 +850,7 @@
           ]
         },
         {
+          "q_id": "q_53",
           "Summary": "Convex is used for real-time dashboard synchronization during evaluation runs, keeping team members in sync with active run status and live results.",
           "evidence": [
             {
@@ -808,6 +862,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_109",
           "Summary": "The engineering team uses Slack as its internal communication layer for evaluation-driven decision-making — deciding model upgrades, prompt changes, and code fixes based on Claude-generated analysis.",
           "evidence": [
             {
@@ -817,6 +872,7 @@
           ]
         },
         {
+          "q_id": "q_110",
           "Summary": "Enterprise users can reach dedicated support at support@browser-use.com, while the general open-source community self-supports via Discord and GitHub Issues.",
           "evidence": [
             {
@@ -828,6 +884,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_111",
           "Summary": "A public status page at status.browser-use.com provides real-time incident transparency for all users of the cloud service.",
           "evidence": [
             {
@@ -841,6 +898,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_54",
           "Summary": "docs.browser-use.com provides structured developer documentation covering quickstart, agent configuration (all parameters), browser configuration, tool customization, production deployment, and API references. It serves both local developers and cloud API consumers.",
           "evidence": [
             {
@@ -854,6 +912,7 @@
           ]
         },
         {
+          "q_id": "q_112",
           "Summary": "AGENTS.md in the repository root is a self-contained prompt document for AI coding agents. It embeds browser_use_docs inline, including development rules, code conventions, and concise API documentation, so AI tools have full context without external lookups.",
           "evidence": [
             {
@@ -867,6 +926,7 @@
           ]
         },
         {
+          "q_id": "q_113",
           "Summary": "The agent includes built-in mechanisms for conversation audit trails (save_conversation_path parameter), browser session recording (record_video_dir, record_har_path, traces_dir), and cost tracking (calculate_cost), supporting post-hoc debugging and compliance.",
           "evidence": [
             {
@@ -882,6 +942,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_57",
           "Summary": "PostHog collects anonymous usage telemetry to help the team understand library adoption patterns and prioritize bug fixes. Users can opt out via the ANONYMIZED_TELEMETRY=false environment variable.",
           "evidence": [
             {
@@ -895,6 +956,7 @@
           ]
         },
         {
+          "q_id": "q_58",
           "Summary": "Helper shell scripts (setup.sh, lint.sh, test.sh) in the repository provide onboarding shortcuts for contributors, covering environment setup, pre-commit execution, and test suite execution in a single command.",
           "evidence": [
             {
@@ -906,6 +968,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_59",
           "Summary": "The documentation team maintains docs.browser-use.com and the engineering blog, ensuring end users, integrators, and contributors have up-to-date references and architectural context.",
           "evidence": [
             {
@@ -915,6 +978,7 @@
           ]
         },
         {
+          "q_id": "q_60",
           "Summary": "End users and developers are primary documentation consumers: quickstart guides enable a working agent in under 5 minutes, while parameter references support advanced customization without source-code reading.",
           "evidence": [
             {
@@ -926,6 +990,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_61",
           "Summary": "The MIT license and transparent telemetry opt-out policy together reflect an open-source trust stance: the library is free, the data collection is disclosed, and the telemetry code is publicly available for inspection.",
           "evidence": [
             {
@@ -939,6 +1004,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_62",
           "Summary": "Browser Use supports multiple LLM providers through a unified invoke interface: ChatBrowserUse (custom, recommended), ChatAnthropic, ChatOpenAI, and ChatGoogle natively cover 95% of use cases. Additional providers (Groq, Azure OpenAI, OpenRouter, OCI) are supported through the broader ecosystem.",
           "evidence": [
             {
@@ -952,6 +1018,7 @@
           ]
         },
         {
+          "q_id": "q_63",
           "Summary": "Ephemeral message management prevents context window overflow from large browser state payloads. Browser state tool outputs (DOM snapshots, screenshots, up to 50KB+ each) are automatically dropped after N invocations, keeping the LLM's context focused on recent state.",
           "evidence": [
             {
@@ -965,6 +1032,7 @@
           ]
         },
         {
+          "q_id": "q_114",
           "Summary": "A stateless LLM proxy architecture separates the sandbox from LLM credentials: the sandbox sends only new messages per step, and the control plane reconstructs the full conversation history on each call before forwarding to the provider.",
           "evidence": [
             {
@@ -976,6 +1044,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_65",
           "Summary": "ChatBrowserUse is a custom LLM API optimized for browser automation tasks, offering the highest accuracy, fastest speed, and lowest token cost of available providers. AGENTS.md instructs contributors to always default to and recommend it.",
           "evidence": [
             {
@@ -985,6 +1054,7 @@
           ]
         },
         {
+          "q_id": "q_66",
           "Summary": "Pydantic v2 models validate all LLM input and output schemas at system boundaries, ensuring robust parsing of LLM-generated tool calls and preventing malformed actions from propagating through the agent loop.",
           "evidence": [
             {
@@ -994,6 +1064,7 @@
           ]
         },
         {
+          "q_id": "q_67",
           "Summary": "override_system_message and extend_system_message agent parameters allow prompt customization without modifying source code. The agent prompting guide recommends being specific about action names and providing error recovery instructions in the task string.",
           "evidence": [
             {
@@ -1005,6 +1076,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_68",
           "Summary": "End users select and configure LLM providers via environment variables and agent constructor parameters, with no required changes to library source code for provider switching.",
           "evidence": [
             {
@@ -1014,6 +1086,7 @@
           ]
         },
         {
+          "q_id": "q_69",
           "Summary": "The engineering team maintains LLM client abstractions and the ephemeral message logic, and uses gemini-2.5-flash as the evaluation judge to measure model performance changes across releases.",
           "evidence": [
             {
@@ -1025,6 +1098,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_70",
           "Summary": "A third-party agent SDK caused a major production incident by making synchronous HTTP calls internally, freezing the async event loop and producing 262 gateway timeouts in 4 minutes. The fix (offloading sync calls to a thread pool) had already been applied to 1 of 21 call sites but never applied uniformly.",
           "evidence": [
             {

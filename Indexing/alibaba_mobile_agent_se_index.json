@@ -2,6 +2,7 @@
   "Agent_Name": "Alibaba Mobile Agent",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL — wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training.",
       "evidence": [
         {
@@ -28,6 +29,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "There is no conventional unit or integration test suite in the public repository. The repository contains no test discovery configuration. Quality assurance is done entirely through live agent runs against public benchmark environments.",
           "evidence": [
             {
@@ -37,6 +39,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Agent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments using shell scripts. These scripts launch live agent sessions against real or emulated devices and measure end-to-end task success rate. This is the closest equivalent to an integration test in the project.",
           "evidence": [
             {
@@ -46,6 +49,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Community users act as de facto integration testers. With 185 open and 96 closed GitHub Issues, the majority of bug discovery happens through external researchers running the agent on their own devices and setups. The team relies on issue reports to surface runtime failures that would otherwise require live device testing.",
           "evidence": [
             {
@@ -57,6 +61,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_5",
           "Summary": "Testing tools are limited to: (1) shell scripts that drive evaluation runs; (2) AndroidWorld and OSWorld as live benchmark environments (installed separately); (3) the GUI-Critic-R1/test.py evaluation script using transformers, dashscope, and modelscope for inference",
           "evidence": [
             {
@@ -68,6 +73,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_6",
           "Summary": "Testing is performed by the Tongyi Lab core team (who run benchmark evaluations internally before release) and by the open-source community (who report failures via GitHub Issues). There are no dedicated QA engineers or red teamers mentioned in any public communication.",
           "evidence": [
             {
@@ -79,6 +85,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_7",
           "Summary": "The runtime code includes error-handling patterns: a 5-attempt retry loop for screenshot capture, try/except around JSON parsing with ast.literal_eval as fallback for Python-style dict outputs (introduced after PR #272), and RuntimeError raises for failed LLM API calls. These are guards against runtime failures, not test assertions.",
           "evidence": [
             {
@@ -92,6 +99,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_42",
           "Summary": "The only automated GitHub Actions workflow is pages-build-deployment, which rebuilds the project's GitHub Pages static website on every push to main. As of May 2026 there have been 258 runs of this workflow. There are no CI workflows for running tests, linting code, building packages, or checking pull requests — all code integration is manual.",
           "evidence": [
             {
@@ -103,6 +111,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_43",
           "Summary": "GitHub Actions (pages-build-deployment only) is the sole CI tool — used for website hosting, not code CI. Model artifacts are distributed via HuggingFace and ModelScope. The production API is served on Alibaba Cloud Bailian. The agent runtime uses ADB (Android Debug Bridge) for Android device control and pyautogui for desktop control. The Alibaba Cloud sandbox API (create_sandbox / kill_sandbox) isolates each cloud-based agent session.",
           "evidence": [
             {
@@ -114,6 +123,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_44",
           "Summary": "The Tongyi Lab core team (approximately 22 GitHub contributors) manually manages releases and deployment. No dedicated DevOps or SRE role is publicly visible. Alibaba Cloud provides the compute platform for the Bailian API.",
           "evidence": [
             {
@@ -125,6 +135,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_45",
           "Summary": "The absence of a CI pipeline means that community pull requests are not automatically validated before review. Merged PRs (#247, #255, #272) were reviewed and merged by core maintainers manually, with no automated check on code correctness, style, or compatibility. Users have filed issues requesting better version control of remotely downloaded resources, reflecting the gap left by the manual release process.",
           "evidence": [
             {
@@ -138,6 +149,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_46",
           "Summary": "The repository has only 2 active pull requests, which suggests most code changes are committed directly by the core team rather than going through a formal PR review workflow. There is no public CONTRIBUTING.md or documented code review policy.",
           "evidence": [
             {
@@ -147,6 +159,7 @@
           ]
         },
         {
+          "q_id": "q_47",
           "Summary": "The project uses explicit version separation — v1, v2, Mobile-Agent-E, and v3 each have their own subdirectory and paper. New capabilities are added in new directories rather than overwriting prior versions, which preserves reproducibility for earlier results.",
           "evidence": [
             {
@@ -158,6 +171,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_48",
           "Summary": "GitHub Pull Requests is the code review surface. The repository uses a MIT license with .gitignore and .gitattributes for baseline source control hygiene. No automated linters or static analysis tools are configured in the public repository.",
           "evidence": [
             {
@@ -169,6 +183,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_49",
           "Summary": "22 contributors are listed on GitHub. The core team is from Tongyi Lab, Alibaba Group. Community members primarily interact through GitHub Issues rather than through pull requests.",
           "evidence": [
             {
@@ -180,6 +195,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_50",
           "Summary": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal; the team responds to selected issues but rarely merges community patches.",
           "evidence": [
             {
@@ -237,6 +253,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_51",
           "Summary": "The core team (primarily maintainer junyangwang0410) responds to issues on a best-effort basis with no formal SLA. For critical code bugs — where a community member provides a precise code-level diagnosis — the maintainer pushes a direct fix commit referencing the issue and closes it, often within one to two days. Issue #265 (smart_resize factor mismatch) followed this exact path: diagnosis in issue thread, commit pushed with 'Fix the bug in #265' message, issue closed the same day.",
           "evidence": [
             {
@@ -246,6 +263,7 @@
           ]
         },
         {
+          "q_id": "q_52",
           "Summary": "For benchmark reproducibility issues — the second most common category — the resolution pattern is different. The maintainer responds with internal evaluation logs and trajectory files to help the user compare outputs. If the root cause turns out to be an outdated inference dependency (vLLM version), no code fix is applied; the reporter closes the issue themselves after upgrading their environment. Issues #203 and #238 both followed this path.",
           "evidence": [
             {
@@ -255,6 +273,7 @@
           ]
         },
         {
+          "q_id": "q_53",
           "Summary": "Issues are not triaged with labels, milestones, or assignees. There is no visible prioritisation system: all issues sit in a single unlabelled queue. The 183 open vs. 67 closed ratio (73% open) reflects selective triage — issues get closed when either a code fix is committed or a reporter self-resolves. Architectural and recurring concerns (coordinate precision in #182, #278; context overflow in #266) remain open indefinitely because they have no single-commit fix.",
           "evidence": [
             {
@@ -264,6 +283,7 @@
           ]
         },
         {
+          "q_id": "q_54",
           "Summary": "Active community members provide first-line support for common setup and configuration questions, reducing the maintainer's response burden. In issue #238, community member BUPTyj posted a correct vLLM API parameter workaround before the core team responded. This peer-to-peer support in issue threads is the project's de facto help desk, filling the gap left by the absence of a documentation site or Discord channel.",
           "evidence": [
             {
@@ -275,6 +295,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_55",
           "Summary": "GitHub Issues is the only public bug tracker. There is no visible integration with Jira, Linear, or any external triage system. Issues lack labels, milestones, or type tags, making it impossible to filter by bug category or severity from the public interface.",
           "evidence": [
             {
@@ -286,6 +307,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_56",
           "Summary": "Bug reports come almost entirely from the open-source community — researchers and developers attempting to reproduce benchmark results or deploy the agent on their own devices. Core maintainer junyangwang0410 handles technical responses; other community contributors provide informal support for common environment issues.",
           "evidence": [
             {
@@ -297,6 +319,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_57",
           "Summary": "The most persistent class of unresolved bugs is coordinate precision across all versions: #182 (19 comments, still open), #278 (coordinate offset in thinking model), and the historic #265 (smart_resize mismatch, now fixed). Each arises from the same root cause — the gap between the model's training resolution and the user's device resolution at runtime — but each version introduces a new variant. The --coor_type CLI flag introduced in v3 is the engineering mitigation, but issues continue to surface.",
           "evidence": [
             {
@@ -310,6 +333,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_58",
           "Summary": "The team follows a research-gated, version-per-subdirectory development model. Each major iteration (v1 to v2 to Mobile-Agent-E to v3) is developed as a self-contained module in its own directory and released alongside an academic paper. Each release is triggered by a research milestone (paper acceptance or arXiv submission) rather than a sprint cycle or feature roadmap. Older version directories are kept intact to preserve reproducibility.",
           "evidence": [
             {
@@ -319,6 +343,7 @@
           ]
         },
         {
+          "q_id": "q_59",
           "Summary": "The team uses a TODO list inside the README to communicate planned upcoming releases to the community. Items like 'Open source evaluation code for GUI-Owl and Mobile-Agent-v3 on AndroidWorld' are listed and checked off as they are completed, serving as a lightweight public roadmap. This README-based TODO list is the only visible form of work tracking.",
           "evidence": [
             {
@@ -330,6 +355,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_60",
           "Summary": "Version control is managed via Git on GitHub (X-PLUG organization). Python is the primary language. The only project-management surface visible publicly is GitHub Issues and GitHub Pull Requests — no Jira, Linear, Notion, or similar tool is referenced anywhere in the repository.",
           "evidence": [
             {
@@ -341,6 +367,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_61",
           "Summary": "The project is developed by approximately 22 GitHub contributors, all affiliated with Tongyi Lab at Alibaba Group. The team operates as a research group rather than a product engineering team — no engineering managers, tech leads, or scrum masters are publicly identified. Academic peer review (NeurIPS 2024, ICLR 2024 Workshop, CCL 2024 and 2025 best demo) serves as an external quality gate.",
           "evidence": [
             {
@@ -352,6 +379,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_62",
           "Summary": "The codebase supports both Android (via ADB) and HarmonyOS (via HDC) device backends through a runtime flag (--adb_path vs --hdc_path). HarmonyOS support was added in the last known commit (b763787, 7 months before May 2026), indicating the team extends platform support incrementally after the initial release rather than bundling all platforms at launch.",
           "evidence": [
             {
@@ -365,6 +393,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_28",
           "Summary": "Research findings are published before formal conference submission, giving the community early access. Each release is announced via GitHub README updates, with dated news entries for every version milestone.",
           "evidence": [
             {
@@ -374,6 +403,7 @@
           ]
         },
         {
+          "q_id": "q_29",
           "Summary": "The README is maintained in both English and Simplified Chinese, reflecting the team's audience across Chinese research institutions and the broader international community.",
           "evidence": [
             {
@@ -385,6 +415,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_30",
           "Summary": "GitHub Issues is the main external communication channel for bug reports and usage questions. arXiv is used for pre-publication sharing. ModelScope Studio and Alibaba Cloud Bailian provide interactive demos that serve as public-facing product communication.",
           "evidence": [
             {
@@ -396,6 +427,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_63",
           "Summary": "The Tongyi Lab core team communicates with the academic community through conference presentations and arXiv papers. External users reach the team via GitHub Issues.",
           "evidence": [
             {
@@ -407,6 +439,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_64",
           "Summary": "Demo videos for each supported platform (phone, PC, and web) are embedded in the GitHub README, giving external collaborators a practical visual reference for the agent's capabilities.",
           "evidence": [
             {
@@ -420,6 +453,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_31",
           "Summary": "Each version of Mobile-Agent is documented through its own subdirectory README and a corresponding paper. The main README acts as a navigation hub, linking to sub-version guides, model weights, online demos, and the API reference.",
           "evidence": [
             {
@@ -429,6 +463,7 @@
           ]
         },
         {
+          "q_id": "q_32",
           "Summary": "The technical paper (arXiv:2508.15144) serves as the primary system-design document. It covers the full training pipeline, agent architecture, action space definition, benchmark results, and ablation studies in a format accessible to researchers who do not have access to internal code.",
           "evidence": [
             {
@@ -440,6 +475,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_33",
           "Summary": "Documentation is hosted on GitHub (README files), arXiv (technical papers), Alibaba Cloud Aliyun (API docs), and ModelScope (model cards and demo). BibTeX citation blocks for each version are included in the main README.",
           "evidence": [
             {
@@ -451,6 +487,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_34",
           "Summary": "Documentation is written and maintained by the Tongyi Lab team. Alibaba Cloud maintains the API reference documentation separately on the Aliyun platform.",
           "evidence": [
             {
@@ -462,6 +499,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_35",
           "Summary": "The action space for mobile and desktop are each formally documented in a dedicated table inside the technical paper (Tables 9 and 10), specifying every allowed action (key, click, long_press, swipe, type, open, terminate, etc.) with plain-language descriptions.",
           "evidence": [
             {
@@ -475,6 +513,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_36",
           "Summary": "GUI-Owl uses Qwen2.5-VL as its base model in Qwen function-calling format. System messages define the available action space. User messages carry the task instruction, compressed interaction history, and the current screenshot. The model outputs a reasoning trace first, then an action.",
           "evidence": [
             {
@@ -484,6 +523,7 @@
           ]
         },
         {
+          "q_id": "q_37",
           "Summary": "To prevent context from growing unbounded across multi-turn interactions, only a short 'conclusion' summary is stored at each step rather than the full reasoning trace. Only the most recent 1 to 3 screenshots are kept in the active context window.",
           "evidence": [
             {
@@ -493,6 +533,7 @@
           ]
         },
         {
+          "q_id": "q_65",
           "Summary": "Each of the four agents in Mobile-Agent-v3 (Manager, Worker, Reflector, Notetaker) is a distinct instantiation of GUI-Owl with role-specific prompt instructions. One base model supports four different prompt personas within the same workflow.",
           "evidence": [
             {
@@ -504,6 +545,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_39",
           "Summary": "Qwen2.5-VL (7B and 32B variants) is the base LLM for GUI-Owl. Qwen-VL-Max and Qwen2.5-Max serve as auxiliary MLLMs for data annotation tasks. The RAG module issues search engine queries to retrieve external knowledge at task start.",
           "evidence": [
             {
@@ -515,6 +557,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_40",
           "Summary": "Prompt design and LLM training are done by the Tongyi Lab research team. The Qwen team at Alibaba provides the foundation models. Bailian serves as the API delivery platform for production users.",
           "evidence": [
             {
@@ -526,6 +569,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_41",
           "Summary": "The OSWorld-MCP benchmark, released in October 2025, extends Mobile-Agent's scope to evaluate Model Context Protocol (MCP) tool invocation in real-world scenarios, showing the team's interest in standardised agentic communication interfaces.",
           "evidence": [
             {

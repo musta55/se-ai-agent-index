@@ -1,0 +1,1203 @@
+{
+  "Agent_Name": "Glean Agents",
+  "Description": [
+    {
+      "q_id": "q_1",
+      "Summary": "Glean Agents is an enterprise AI agent platform that automates workplace tasks by building, deploying, orchestrating, and governing AI agents across workflows. It functions as a horizontal environment for creating autonomous agents that handle multi-step workflows using natural language, enterprise context, and a library of actions. The platform is deployed as an enterprise SaaS product integrated into web applications, Slack, Microsoft Teams, and developer tools, supporting agents for engineering, sales, HR, and other business functions.",
+      "evidence": [
+        {
+          "quote": "Glean Agents automate your work simply using natural language.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Glean Agents are AI-powered tools that automate tasks from simple to complex workflows, by handling actions like gathering information, summarizing data, and making decisions based on previous steps.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Glean is the Work AI platform connected to your enterprise's data, providing capabilities for search, assistants, and AI agents.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "Glean Agents is the horizontal environment for building, deploying, orchestrating, and governing AI agents in the enterprise.",
+          "citation": "[3]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "q_id": "q_33",
+        "Summary": "Not Available - Multiple smaller repositories exist with varied codebases; primary agent platform is closed-source SaaS product",
+        "evidence": []
+      }
+    ],
+    "Stars": [
+      {
+        "q_id": "q_34",
+        "Summary": "The glean-agent-toolkit repository has 41 stars, and the glean-agent-examples repository has 5 stars on GitHub as of recent observation",
+        "evidence": [
+          {
+            "quote": "The glean-agent-toolkit repository has 41 stars and 9 forks.",
+            "citation": "[4]"
+          },
+          {
+            "quote": "The glean-agent-examples repository has 5 stars and 3 forks.",
+            "citation": "[5]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "q_id": "q_35",
+        "Summary": "Not Available - Specific contributor counts not disclosed in public GitHub repositories",
+        "evidence": []
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "q_id": "q_36",
+        "Summary": "The glean-agent-toolkit has regular releases with version 0.5.0 released on April 8, 2026 and version 0.4.0 on March 5, 2026, indicating active monthly development and release cycles",
+        "evidence": [
+          {
+            "quote": "The latest version (0.5.0) was released on April 8, 2026",
+            "citation": "[6]"
+          },
+          {
+            "quote": "Version 0.4.0 was released on March 5, 2026",
+            "citation": "[6]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "q_id": "q_37",
+        "Summary": "Glean Technologies maintains API client repositories in multiple languages including Python (api-client-python), TypeScript (api-client-typescript), Java (api-client-java), and Go (api-client-go)",
+        "evidence": [
+          {
+            "quote": "Glean provides search, chat, and agent APIs with client libraries for Python, TypeScript, Java, and Go.",
+            "citation": "[7]"
+          },
+          {
+            "quote": "Glean Technologies Inc has API client repositories for both Python (api-client-python) and TypeScript (api-client-typescript).",
+            "citation": "[8]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "q_id": "q_2",
+          "Summary": "Glean heavily tests all layers of their search stack with each release qualification going through a battery of end-to-end search tests on fully loaded deployments. They have invested in quickly bootstrapping an in-memory multi-node search engine within unit tests to verify changes rapidly. The team runs test queries on any new search engine before proceeding with switchover and runs the same verification procedure on the active search engine before deleting the old one for rollback safety.",
+          "evidence": [
+            {
+              "quote": "Glean heavily tests all layers of their search stack, with each release qualification going through a bevy of end-to-end search tests on fully loaded deployments.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "They've invested heavily in being able to quickly bootstrap an in-memory multi-node search engine within unit tests, which enables them to very quickly verify any changes.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "They run test queries on any new search engine before proceeding with switchover, and run the same verification procedure on the active search engine before deleting the old one in case rollback is needed.",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_3",
+          "Summary": "Glean continuously runs platform-level evaluations tracking metrics like accuracy, relevance, and instruction following to ensure agents stay reliable at scale. They break down platform quality into distinct metrics graded by LLMs aligned to user feedback and human subject matter experts. The company stores anonymized actions in BigQuery to compute user satisfaction metrics.",
+          "evidence": [
+            {
+              "quote": "Glean continuously runs platform-level evaluations tracking metrics like accuracy, relevance, and instruction following to ensure agents stay reliable at scale.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Glean breaks down platform quality into distinct metrics, most of which are graded by LLMs aligned to user feedback such as upvotes and downvotes, as well as human subject matter experts.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Glean stores anonymized actions taken in the product in BigQuery and uses BigQuery queries to compute user satisfaction metrics.",
+              "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_4",
+          "Summary": "Automated testing frameworks facilitate thorough assessments by simulating a wide range of operational conditions, supporting a continuous integration/continuous deployment (CI/CD) strategy to ensure AI systems are always up-to-date and reliable.",
+          "evidence": [
+            {
+              "quote": "Automated testing frameworks provide a robust solution for verifying AI workflows, facilitating thorough assessments by simulating a wide range of operational conditions.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_5",
+          "Summary": "Glean uses in-memory multi-node search engine for unit testing, BigQuery for storing test metrics, Looker Studio for visualization, and LLM-based evaluators for grading agent quality. They employ end-to-end test suites and automated test frameworks for CI/CD verification.",
+          "evidence": [
+            {
+              "quote": "They've invested heavily in being able to quickly bootstrap an in-memory multi-node search engine within unit tests.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Glean stores anonymized actions taken in the product in BigQuery ... which are then visualized by building a product dashboard over the BigQuery data using Looker Studio.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Automating grading using LLMs is a great way to scale evaluations as the userbase grows.",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_6",
+          "Summary": "QA engineers, core maintainers, and human subject matter experts are involved in testing and evaluation processes. The engineering team maintains comprehensive test coverage requirements.",
+          "evidence": [
+            {
+              "quote": "Glean breaks down platform quality into distinct metrics, most of which are graded by LLMs aligned to user feedback such as upvotes and downvotes, as well as human subject matter experts.",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_7",
+          "Summary": "Glean emphasizes test coverage and quality gates with the philosophy that catching bugs during unit tests rather than in production is critical. They practice continuous delivery with multiple releases per day, making software deployment super low stress.",
+          "evidence": [
+            {
+              "quote": "They've added a battery of unit tests for every deployment operation, noting that catching a bug while running on a customer is not somewhere they want to find themselves.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "At Genio, they care deeply about making sure code is well tested, which unlocks benefits like practicing continuous delivery ... releasing their software is super low stress and happens multiple times a day.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "q_id": "q_9",
+          "Summary": "Glean utilizes Infrastructure as Code (IaC) with all build systems automated for consistency, reliability, and security. After initial setup, Glean's systems automatically build and deploy required compute, workflows, and software into customer AWS or GCP accounts. They practice continuous deployment with releases happening multiple times per day following automated testing.",
+          "evidence": [
+            {
+              "quote": "Glean utilizes Infrastructure as Code (IaC) and as such, all of their build systems are automated, ensuring consistency, reliability, and security in deployments.",
+              "citation": "[14]"
+            },
+            {
+              "quote": "After the initial setup, Glean's systems will automatically build and deploy the required compute, workflows, and software into your AWS account",
+              "citation": "[15]"
+            },
+            {
+              "quote": "releasing their software is super low stress and happens multiple times a day.",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_38",
+          "Summary": "Glean implemented dynamic code loading with version tags to avoid server restarts during ranking code updates. They remap build artifacts with release tags and upload to the cloud in seconds, enabling nightly internal deployments and weekly customer rollouts. The team can roll back problematic releases instantly with an online configuration change.",
+          "evidence": [
+            {
+              "quote": "They created a tool to rewrite class names and put the release tag in the name ... allowing them to load multiple versions of code in the same server.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Since server restarts were no longer normally needed, they started rolling out ranking changes more frequently—nightly for internal deployment, and weekly for customers.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Rolling back problematic releases instantly with an online configuration change",
+              "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_39",
+          "Summary": "Glean has revamped deployment operations to ensure faster, safer, and more reliable updates, including fast rollback operations for safety. They added important verification procedures for sensitive steps such as cluster switchover.",
+          "evidence": [
+            {
+              "quote": "They recently invested in an overhaul of all deploy operations, reviewing every operation to make every step faster, safer, and more easily testable.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "They've added important verification procedures for sensitive steps such as cluster switchover.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_40",
+          "Summary": "Glean uses Google Kubernetes Engine for hosting search indexes, Google Cloud Dataflow for data processing pipelines, Amazon Elastic Container Registry (ECR) for distributing container images, and fully-managed auto-scalable components like App Engine, Kubernetes, and Cloud Tasks for infrastructure. They leverage BigQuery for data analytics and IAM roles for deployment automation.",
+          "evidence": [
+            {
+              "quote": "Glean uses fully-managed and auto-scalable Google Cloud components like App Engine, Kubernetes and Cloud Tasks to ensure high reliability and low operational overhead.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "The search index is hosted in the project's Google Kubernetes Engine.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Glean uses Google Cloud Dataflow to extract relevant pieces from content indexed from different sources.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Glean distributes container images via Amazon Elastic Container Registry (ECR) for all Glean services deployed in your environment.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "For AWS deployments specifically, Glean uses IAM role assumption for deployment automation and support access, with CI/CD roles involved in the process.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_12",
+          "Summary": "DevOps engineers and platform teams manage infrastructure deployments. Glean automatically creates a maintenance service account used by their systems to manage, update, and patch customer environments.",
+          "evidence": [
+            {
+              "quote": "As part of the build, Glean automatically creates a maintenance service account that is used by their systems to automatically manage, update, and patch your environment.",
+              "citation": "[14]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_10",
+          "Summary": "Each sandbox is containerized and uses Kubernetes pod limits monitored to prevent overuse of system resources. Glean's architecture is described as a fully integrated system spanning different private networks, storage, databases, compute resources, and other integrated services with single-tenant infrastructure isolating each customer's data.",
+          "evidence": [
+            {
+              "quote": "Each sandbox is containerized and uses Kubernetes pod limits monitored to prevent overuse of system resources.",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Glean's architecture is described as a fully integrated system spanning different private networks, storage, databases, compute resources, and other integrated services, with single-tenant infrastructure that isolates each customer's data.",
+              "citation": "[19]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "q_id": "q_13",
+          "Summary": "Glean uses an AI-powered pull request review agent that automates the end-to-end PR review process, detecting style guide violations, enhancing PR descriptions with relevant context, and flagging documentation that may need updates. The agent utilizes multi-step retrieval to isolate individual steps with their own retrieval and reasoning. The engineering team follows a principle of making frequent small changes to applications with releases into production as soon as pull requests are merged for easier code review and troubleshooting.",
+          "evidence": [
+            {
+              "quote": "The pull request review agent automates the end-to-end PR review process, ensuring code quality, consistency, and up-to-date documentation.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "It detects style guide violations, enhances PR descriptions with relevant context, and flags documentation that may need updates.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "Glean reviewer is an advanced prompt that utilizes multi-step retrieval, which isolates individual steps each with their own retrieval and reasoning.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "making frequent small changes to applications with releases into production as soon as pull requests are merged for easier code review and troubleshooting.",
+              "citation": "[21]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_41",
+          "Summary": "The agent searches the codebase and related systems to gather helpful context, summarizes changes in a single paragraph, and updates PR descriptions automatically. It drafts clear, actionable feedback to improve pull requests and adds comments directly to PRs using the GitHub API.",
+          "evidence": [
+            {
+              "quote": "The agent searches the codebase and related systems to gather helpful context. It summarizes the changes in a single paragraph and updates the PR description automatically.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "It drafts clear, actionable feedback to help improve the pull request. Using the GitHub API, the agent adds comments directly to the PR.",
+              "citation": "[20]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_14",
+          "Summary": "GitHub API for pull request management and automated commenting, Glean's AI-powered PR review agent with multi-step retrieval capabilities, and style guide enforcement tools integrated into the review workflow.",
+          "evidence": [
+            {
+              "quote": "Using the GitHub API, the agent adds comments directly to the PR.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "GitHub actions can review pull requests and access repository contents, enabling automated code review summaries and documentation updates in the same workflow.",
+              "citation": "[22]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_15",
+          "Summary": "Code reviewers assess alignment with design intent and ensure consistency with existing standards. Pull request reviews involve checking code changes in context. The AI review agent supports faster, more consistent reviews by scanning code changes and suggesting improvements.",
+          "evidence": [
+            {
+              "quote": "Reviewers need to understand code changes in context, assess alignment with design intent, and ensure consistency with existing standards.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "The pull request review agent scans code changes, suggests improvements, and flags areas that may need closer attention to support faster, more consistent reviews.",
+              "citation": "[20]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_42",
+          "Summary": "Pull request reviews are identified as one of the most common sources of delay. As teams scale, review quality becomes uneven and feedback cycles lengthen. The automated agent helps reduce iteration times and improve code quality by gathering context from various sources and providing actionable insights.",
+          "evidence": [
+            {
+              "quote": "Pull request reviews remain one of the most common sources of delay.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "As teams scale, review quality becomes uneven and feedback cycles lengthen.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "Glean's advanced prompts, such as the Glean reviewer prompt, automate much of the code review process by gathering context from various sources and providing actionable insights, thereby reducing iteration times and improving code quality.",
+              "citation": "[20]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "Open Issue #10 in glean-agent-toolkit",
+          "Issue_Number": 10,
+          "Status": "Open",
+          "Description": "Issue opened by ArchishmanSengupta on August 19, 2025 in the glean-agent-toolkit repository. Specific details require direct repository access.",
+          "Citation": "[23]"
+        },
+        {
+          "Issue_Title": "OAuth discovery error surfacing",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Closed",
+          "Description": "Fixed issue to surface actual error when OAuth discovery fails in glean-cli, improving error reporting and debugging capabilities for authentication failures.",
+          "Citation": "[24]"
+        },
+        {
+          "Issue_Title": "OAuth header missing in token requests",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Closed",
+          "Description": "Fixed missing X-Glean-Auth-Type: OAUTH header when using OAuth tokens in glean-cli, resolving authentication header issues.",
+          "Citation": "[24]"
+        },
+        {
+          "Issue_Title": "Execution state persistence on MCP server restart",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Known Limitation",
+          "Description": "Execution state is in-memory and active execution history is lost when the MCP server restarts, requiring re-run of in-progress executions. Architectural limitation affecting long-running workflows.",
+          "Citation": "[25]"
+        },
+        {
+          "Issue_Title": "Missing uv installation dependency",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Known Issue",
+          "Description": "MCP server requires uv to be installed and on PATH to scaffold connector projects and run Python worker, causing setup failures when dependency is missing.",
+          "Citation": "[25]"
+        },
+        {
+          "Issue_Title": "Broken links in documentation build",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Monitoring",
+          "Description": "The glean-developer-site catches broken links, missing imports, or other build-time errors during documentation generation, preventing deployment of broken documentation.",
+          "Citation": "[26]"
+        },
+        {
+          "Issue_Title": "GleanError HTTP error responses",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Handled",
+          "Description": "Java API client uses GleanError as the base class for all HTTP error responses, requiring proper error handling in client applications.",
+          "Citation": "[27]"
+        },
+        {
+          "Issue_Title": "APIError handling in Go client",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Handled",
+          "Description": "Go API client handles errors with apierrors.APIError by default, requiring specific error type checking in Go applications.",
+          "Citation": "[27]"
+        },
+        {
+          "Issue_Title": "OpenAPI specification synchronization",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Active Maintenance",
+          "Description": "Multiple API clients (Go 0.11.22, Python, TypeScript, Java) need regular updates based on OpenAPI Doc 0.9.0 changes, requiring coordinated releases across language clients.",
+          "Citation": "[7]"
+        },
+        {
+          "Issue_Title": "15+ minute server preload times affecting deployment",
+          "Issue_Number": "Not Disclosed",
+          "Status": "Resolved",
+          "Description": "Index Servers needed to preload significant amounts of index data into memory when restarting, taking 15+ minutes and constraining deployment frequency. Resolved through dynamic class loading.",
+          "Citation": "[16]"
+        }
+      ],
+      "Practices": [
+        {
+          "q_id": "q_16",
+          "Summary": "Glean tracks issues across multiple GitHub repositories with a focus on authentication, state management, dependency handling, and API synchronization problems. The team emphasizes surfacing actual errors rather than generic failures. Common issue patterns include: (1) OAuth/authentication configuration issues, (2) state persistence limitations in distributed systems, (3) dependency management and build tooling, (4) API client synchronization across multiple languages.",
+          "evidence": [
+            {
+              "quote": "surface actual error when OAuth discovery fails",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Execution state is in-memory, and active execution history is lost when the MCP server restarts.",
+              "citation": "[25]"
+            },
+            {
+              "quote": "The glean-developer-site catches broken links, missing imports, or other build-time errors",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_18",
+          "Summary": "GitHub Issues for public bug tracking, diagnostic tool (glean-mcp doctor) for common problems, and error classification systems across API clients. The team uses build-time error detection for documentation and automated link checking.",
+          "evidence": [
+            {
+              "quote": "glean-mcp doctor — diagnose common problems",
+              "citation": "[25]"
+            },
+            {
+              "quote": "The glean-developer-site catches broken links, missing imports, or other build-time errors",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_19",
+          "Summary": "For bugs or feature requests related to Glean products, users are directed to contact Glean support through their organization's support channel rather than filing public GitHub issues, indicating a private issue management system for enterprise customers.",
+          "evidence": [
+            {
+              "quote": "For bugs or feature requests related to the Glean MCP Server, please contact Glean support through your organization's support channel",
+              "citation": "[25]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_43",
+          "Summary": "Most Glean repositories don't have public issue tracking enabled on GitHub, with support directed through organizational channels. The company maintains a mix of open-source tooling (agent toolkit, MCP servers) with public issues and closed-source enterprise platform with private support channels.",
+          "evidence": [
+            {
+              "quote": "most don't appear to have public issue tracking enabled on GitHub, with support being directed through organizational channels instead.",
+              "citation": "[27]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "q_id": "q_20",
+          "Summary": "Glean introduced a structured Agent Development Lifecycle (ADLC) mirroring software engineering standards with seven distinct stages—Opportunity, Design, Performance, Context, Develop, Launch, and Monitor & Improve. Agents should be well-designed, tested, rolled out carefully, monitored in production, and improved over time in the same way that engineering teams deliver other types of enterprise-grade software. As the startup grew, they introduced more processes to execute engineering with stability after acquiring paying customers, and the engineering team naturally split from one unified team into specialized teams.",
+          "evidence": [
+            {
+              "quote": "Glean has introduced a structured Agent Development Lifecycle (ADLC) that mirrors software engineering standards, providing a repeatable blueprint across seven distinct stages—Opportunity, Design, Performance, Context, Develop, Launch, and Monitor & Improve.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Agents should be well-designed, tested, rolled out carefully, monitored in production, and improved over time in the same way that engineering teams deliver other types of enterprise-grade software.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "As the startup grew, they introduced more processes to continue executing on engineering with stability after acquiring paying customers.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "As the startup grew, what was previously one unified engineering team naturally split into specialized teams",
+              "citation": "[29]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_44",
+          "Summary": "The engineering approach emphasizes speed of execution with seemingly impossible targets met every year. The team values a culture of incorporating tools that help increase engineer productivity, demonstrating curiosity and proactivity around internal optimizations. They practice continuous delivery with releases happening multiple times daily.",
+          "evidence": [
+            {
+              "quote": "Every year started with a seemingly impossible target which they always met",
+              "citation": "[29]"
+            },
+            {
+              "quote": "Glean's central value is giving employees maximum time to perform their functions at the highest level, with a culture of incorporating tools that help increase engineer productivity.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "practicing continuous delivery, limiting the need for out-of-hours production support, and moving fast without breaking things ... releasing their software is super low stress and happens multiple times a day.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_45",
+          "Summary": "Glean integrates development tools including GitHub for code management, Jira for issue tracking, and internal rapid prototyping systems. The engineering team connects code, tickets, logs, docs, and discussions into a single trusted context layer with deep in-workflow integrations.",
+          "evidence": [
+            {
+              "quote": "They connect code, tickets, logs, docs, and discussions into a single, trusted context layer with deep, in-workflow integrations across GitHub, Jira, Slack, the IDE, and AI forward tools",
+              "citation": "[29]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_21",
+          "Summary": "By 2021, Glean grew to almost a team of three figures strong (close to 100 employees) with an engineering team composed of top students from universities like Stanford, MIT, Berkeley, IIT and Princeton, PhD graduates, olympiad winners, competitive programmers, and experienced professionals from Google, Facebook, and Uber. Leadership includes CEO Arvind Jain (Google distinguished engineer and Rubrik founder), Vish with over 20 years as Principal Engineer at Microsoft and Facebook, and leaders from Chrome Speed and Google Search Ranking teams.",
+          "evidence": [
+            {
+              "quote": "In nearly three years (by 2021), after dozens of referrals and hundreds of interviews, Glean grew to almost a team of three figures strong spread across the world",
+              "citation": "[30]"
+            },
+            {
+              "quote": "The engineering team is a mix of top students from the best universities in the US and the world like Stanford, MIT, Berkeley, IIT and Princeton, PhD graduates, and everything from olympiad winners, competitive programmers.",
+              "citation": "[30]"
+            },
+            {
+              "quote": "Arvind Jain, the CEO, was one of Google's first distinguished engineers and also a founder of Rubrik; Vish comes with over 20 years of experience as a Principal Engineer at both Microsoft and Facebook.",
+              "citation": "[30]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_22",
+          "Summary": "The ADLC Launch stage treats rollout as a change-management exercise, deciding who will see the agent first, how it will show up in their workflow, what training and communication they need, and which guardrails, SLOs, and kill switches must be in place. The Monitor & Improve stage operates agents like any other critical system using dashboards, alerts, and runbooks.",
+          "evidence": [
+            {
+              "quote": "Launch: Treating rollout as a change-management exercise, deciding who will see the agent first, how it will show up in their workflow, what training and communication they need, and which guardrails, SLOs, and kill switches must be in place.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Monitor & Improve: Operating the agent like any other critical system using dashboards, alerts, and runbooks to track impact and quality over time.",
+              "citation": "[28]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "q_id": "q_23",
+          "Summary": "Glean employs a collaborative editing model for team pages where all team members can edit all aspects of their team page, encouraging democratic participation. Team pages provide a centralized place for important team details, Slack channels with direct links, and enhance cross-functional collaboration. The engineering team proactively collaborates with product to be the voice of the customer and help improve the product experience.",
+          "evidence": [
+            {
+              "quote": "Glean employs a collaborative editing model for team pages where all team members can edit all aspects of their team page, a democratic approach that encourages team participation.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "Slack channels: Direct links to the team's primary communication channels.",
+              "citation": "[32]"
+            },
+            {
+              "quote": "The team proactively collaborates with product and engineering to be the voice of the customer and help improve the product experience.",
+              "citation": "[29]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_24",
+          "Summary": "Glean integrates with Slack and Microsoft Teams to enable searching across messages, files, public channels, private channels, and DMs. When teammates ask questions in Slack channels, Glean can respond either automatically when a question is detected or when mentioned. The company partnered with Fellow for AI note-taking to capture meeting decisions, status updates, and action items that often get lost.",
+          "evidence": [
+            {
+              "quote": "Connecting Slack to Glean lets you search across all your messages and files — public channels, private channels, and DMs you're part of.",
+              "citation": "[32]"
+            },
+            {
+              "quote": "When a teammate asks a question in a Slack channel, Glean can jump in with a helpful answer. It can respond either automatically when a question is detected, or when someone mentions @Glean in a message.",
+              "citation": "[32]"
+            },
+            {
+              "quote": "Glean partnered with Fellow, an AI note-taker built with privacy and security controls, to make meetings a key driver of AI transformation at work.",
+              "citation": "[31]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_46",
+          "Summary": "Engineers use Glean's MCP server to trace through PRs, design docs, and Slack discussions to understand why code was written a certain way. The platform enables finding RFCs and comparing approved design sections to current implementations.",
+          "evidence": [
+            {
+              "quote": "Debug errors, review code, and understand your codebase with Glean's MCP server Find out why code was written a certain way by tracing through PRs, design docs, and Slack discussions.",
+              "citation": "[32]"
+            },
+            {
+              "quote": "Find the RFC for 'Hosted MCP Server' in Glean and compare the approved design sections on URL schemes and authentication to our current implementation.",
+              "citation": "[32]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_25",
+          "Summary": "Slack for team communication and channel-based discussions, Microsoft Teams integration, Glean in-platform search for finding RFCs and design docs, Fellow for AI-powered meeting note-taking, and collaborative team pages within Glean platform.",
+          "evidence": [
+            {
+              "quote": "Connecting Slack to Glean lets you search across all your messages and files",
+              "citation": "[32]"
+            },
+            {
+              "quote": "Glean partnered with Fellow, an AI note-taker built with privacy and security controls",
+              "citation": "[31]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_47",
+          "Summary": "All team members participate in collaborative editing of team pages. Engineering teams, product teams, and customer success teams communicate cross-functionally. Meeting participants use AI note-taking tools to capture decisions and action items.",
+          "evidence": [
+            {
+              "quote": "Glean employs a collaborative editing model for team pages where all team members can edit all aspects of their team page",
+              "citation": "[31]"
+            },
+            {
+              "quote": "The team proactively collaborates with product and engineering to be the voice of the customer",
+              "citation": "[29]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_48",
+          "Summary": "Meetings often take up over 50% of the work week, and key decisions, priorities, and action items often get trapped in meetings or lost entirely. Team pages reduce time spent searching for basic organizational information and provide consistent organizational context. There is a culture of transparency and continuous learning throughout the organization.",
+          "evidence": [
+            {
+              "quote": "Meetings often take up over 50% of the work week, and they're where the most up-to-date information about teams and projects is shared, yet key decisions, priorities, and action items often get trapped in the meeting or lost entirely.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "Team pages enhance cross-functional collaboration and reduce time spent searching for basic organizational information.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "There is a culture of transparency and continuous learning throughout the organization.",
+              "citation": "[29]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "q_id": "q_26",
+          "Summary": "Glean maintains comprehensive developer documentation that automatically generates API documentation from OpenAPI specifications located in the openapi/ directory. The launch documentation agent helps product, engineering, and marketing teams by pulling completed JIRA tickets from defined sprint windows, generating concise summaries for each feature, and publishing formatted drafts via pull request. Engineering teams use AI-powered tools to automatically generate release notes from commit messages and issue tracking systems, create comprehensive test documentation from automated test results, and maintain synchronization between code repositories and technical specifications.",
+          "evidence": [
+            {
+              "quote": "The site automatically generates API documentation from OpenAPI specifications located in the openapi/ directory.",
+              "citation": "[33]"
+            },
+            {
+              "quote": "The launch documentation agent helps product, engineering, and marketing teams save time by automating the most tedious parts of release note creation. It pulls completed JIRA tickets from a defined sprint window, generates concise summaries for each feature, and publishes a formatted draft to your documentation hub via pull request.",
+              "citation": "[34]"
+            },
+            {
+              "quote": "Engineering teams use AI-powered tools to automatically generate release notes from commit messages and issue tracking systems, create comprehensive test documentation from automated test results, and maintain synchronization between code repositories and technical specifications.",
+              "citation": "[34]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_49",
+          "Summary": "Glean tracks documentation freshness with metadata update practices. Content typically appears in search within a few minutes of indexing. Crawl Rate and Change Rate metrics update approximately every 5–10 minutes, with Change Rate indicating ongoing freshness based on user-driven changes synced in the past 24 hours. The platform allows attaching structured metadata to documents from any datasource and offers a Custom Metadata API for tagging and classifying documents without re-indexing.",
+          "evidence": [
+            {
+              "quote": "Content typically appears in search within a few minutes of indexing.",
+              "citation": "[35]"
+            },
+            {
+              "quote": "Crawl Rate and Change Rate metrics update approximately every 5–10 minutes. Change Rate is the number of user‑driven changes synced in the past 24 hours after the initial crawl completes and indicates ongoing freshness.",
+              "citation": "[35]"
+            },
+            {
+              "quote": "Glean allows attaching structured metadata to documents from any datasource ... The platform offers a Custom Metadata API that enables tagging and classifying documents already indexed in Glean without re-indexing the source document.",
+              "citation": "[35]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_27",
+          "Summary": "OpenAPI specifications for automated API documentation generation, docs.glean.com and developers.glean.com for hosting documentation, launch documentation agent integrated with JIRA, Custom Metadata API for document classification, and automated freshness tracking systems.",
+          "evidence": [
+            {
+              "quote": "The site automatically generates API documentation from OpenAPI specifications located in the openapi/ directory.",
+              "citation": "[33]"
+            },
+            {
+              "quote": "The documentation is available at docs.glean.com and developers.glean.com.",
+              "citation": "[33]"
+            },
+            {
+              "quote": "The platform offers a Custom Metadata API that enables tagging and classifying documents already indexed in Glean without re-indexing the source document.",
+              "citation": "[35]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_28",
+          "Summary": "Product, engineering, and marketing teams collaborate on documentation creation. Technical documentation is maintained across developer documentation sites with regular changelog updates. For questions about documentation or to report issues, users can access the glean-developer-site repository.",
+          "evidence": [
+            {
+              "quote": "The launch documentation agent helps product, engineering, and marketing teams save time by automating the most tedious parts of release note creation.",
+              "citation": "[34]"
+            },
+            {
+              "quote": "For questions about the documentation or to report issues, users can access the glean-developer-site repository.",
+              "citation": "[33]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_50",
+          "Summary": "Glean maintains separate documentation platforms for end-users (docs.glean.com) and developers (developers.glean.com). Documentation freshness windows match the pace of each source, with different connectors supporting various update mechanisms including webhooks for real-time updates and scheduled crawls for batch processing. The platform emphasizes that freshness is not just coverage but predictable freshness.",
+          "evidence": [
+            {
+              "quote": "The documentation is available at docs.glean.com and developers.glean.com.",
+              "citation": "[33]"
+            },
+            {
+              "quote": "The documentation emphasizes that freshness windows should match the pace of each source, with different connectors supporting various update mechanisms including webhooks for real-time updates and scheduled crawls for batch processing.",
+              "citation": "[35]"
+            },
+            {
+              "quote": "The goal is not just coverage — it is predictable freshness.",
+              "citation": "[35]"
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "q_id": "q_29",
+          "Summary": "Glean uses the Model Hub to securely configure and manage access to commercial and open-source LLMs for Glean Assistant and Agents, supporting models from OpenAI, Google, Anthropic, Amazon, and Meta. Glean Assistant now supports LLM choice so users can pick the best-suited model for each task. Models are preconfigured and managed by Glean, with deprecated models automatically replaced with newer versions. The platform is LLM-agnostic with the agentic reasoning engine enabling agents to reason through tasks and plan next steps.",
+          "evidence": [
+            {
+              "quote": "Glean uses the Model Hub to securely configure and manage access to commercial and open-source LLMs for Glean Assistant and Agents.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "The Model Hub offers models from providers like OpenAI, Google, Anthropic, Amazon, and Meta, and supports bringing your own keys or using Glean's Universal Model Key to access pre-procured models with guardrails.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "Glean Assistant now supports LLM choice so users can pick the best-suited model for each task.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "Models are preconfigured and managed by Glean, with deprecated models automatically replaced with newer versions.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "Glean's LLM-agnostic agentic reasoning engine enables agents to go beyond retrieval and generation tasks, powering sophisticated automation and decision-making.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_51",
+          "Summary": "Context engineering is the practice of designing and managing the information (data, memory, tools, rules) that an AI model receives so it can complete tasks accurately and reliably. Well-engineered context improves AI performance by increasing accuracy, reducing hallucinations and costs, enabling reliable agent workflows. Glean's Enterprise Context combines memory, connectors, indexes, both personal and enterprise graphs, and governance into a single architecture, with enterprise memory that learns as agents complete tasks.",
+          "evidence": [
+            {
+              "quote": "Context engineering is the practice of designing and managing the information (data, memory, tools, rules) that an AI model receives so it can complete tasks accurately and reliably.",
+              "citation": "[37]"
+            },
+            {
+              "quote": "Well-engineered context improves AI performance by increasing accuracy, reducing hallucinations and costs, enabling reliable agent workflows, and ensuring models receive only relevant, structured information.",
+              "citation": "[37]"
+            },
+            {
+              "quote": "Glean's Enterprise Context combines memory, connectors, indexes, both personal and enterprise graphs, and governance into a single architecture, with enterprise memory that learns as agents complete tasks.",
+              "citation": "[38]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_52",
+          "Summary": "Glean's agent builder features unified creation combining graph-based and conversational approaches, allowing users to seamlessly switch between natural language and step-by-step agent development. Agent builders can choose between Fast or Thinking modes to control how much effort an agent puts towards the task, optimizing for speed versus depth.",
+          "evidence": [
+            {
+              "quote": "Glean Agents now feature a unified agent builder that combines graph-based and conversational creation, allowing users to seamlessly switch between natural language and step-by-step agent development.",
+              "citation": "[39]"
+            },
+            {
+              "quote": "Agent builders can choose between Fast or Thinking to control how much 'effort' an agent puts towards the task—enabling builders to optimize for speed versus depth.",
+              "citation": "[39]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_30",
+          "Summary": "Model Hub for LLM management supporting 15+ LLMs, Model Context Protocol (MCP) for universal interface connections, Glean's agentic reasoning engine for multi-step planning, Enterprise Knowledge Graph for permission-aware context, and agent sandboxes with CLI, code interpreter, filesystem, and tool index.",
+          "evidence": [
+            {
+              "quote": "The Model Hub offers models from providers like OpenAI, Google, Anthropic, Amazon, and Meta",
+              "citation": "[36]"
+            },
+            {
+              "quote": "The Model Context Protocol (MCP) is an emerging open-source standard designed to act as a universal interface, enabling AI assistants to securely connect with external data and tools.",
+              "citation": "[40]"
+            },
+            {
+              "quote": "Glean is introducing agent sandboxes, secure, lightweight virtual environments equipped with a CLI, code interpreter, filesystem, and tool index.",
+              "citation": "[41]"
+            },
+            {
+              "quote": "Glean's integration is built on its permission-aware Knowledge Graph, enforcing strict user-level access control.",
+              "citation": "[40]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_31",
+          "Summary": "AI/ML engineers and prompt engineers manage LLM integration and context engineering. The Work AI Institute with researchers from Stanford, Harvard, UC Berkeley, and other institutions provides research and best practices for AI integration.",
+          "evidence": [
+            {
+              "quote": "The Work AI Institute brings together leading researchers from Stanford, Harvard, UC Berkeley, Notre Dame, University College London, Emory, and UNC Charlotte.",
+              "citation": "[42]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_32",
+          "Summary": "Glean implements MCP in two ways: as an MCP Server providing AI assistants with secure access to enterprise knowledge, and as an MCP Host enabling connection of remote MCP servers for third-party tools. The platform supports OAuth 2.1 Authorization Code flow with PKCE for authentication. All queries enforce user permissions via Glean's Knowledge Graph. The company emphasizes retrieval-first architecture where they first retrieve knowledge through a separate search system, then give it to the LLM to ground its reasoning and synthesis.",
+          "evidence": [
+            {
+              "quote": "Glean has implemented MCP in two key ways: Glean as an MCP Server ... and Glean as an MCP Host",
+              "citation": "[40]"
+            },
+            {
+              "quote": "Glean MCP server prefer using the Glean OAuth Authorization Server with the OAuth 2.1 Authorization Code flow and PKCE.",
+              "citation": "[40]"
+            },
+            {
+              "quote": "All queries enforce user permissions via Glean's Knowledge Graph.",
+              "citation": "[40]"
+            },
+            {
+              "quote": "The system can be designed as a pipeline. We first retrieve knowledge through a separate search system, and then give it to the LLM to read in order to ground its reasoning and synthesis.",
+              "citation": "[43]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "Official Product Page",
+      "Link": "https://www.glean.com/product/ai-agents",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[2]": {
+      "Website_Type": "Official Website",
+      "Link": "https://www.glean.com/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[3]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/agents-product-blog",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[4]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/glean-agent-toolkit",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[5]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/glean-agent-examples",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[6]": {
+      "Website_Type": "Developer Changelog",
+      "Link": "https://developers.glean.com/changelog/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[7]": {
+      "Website_Type": "Developer Documentation",
+      "Link": "https://developers.glean.com/api-info/client/getting-started/overview",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[8]": {
+      "Website_Type": "Web Search Result",
+      "Link": "https://github.com/gleanwork",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[9]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/testing-and-deploying-our-search-engine-cluster",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[10]": {
+      "Website_Type": "Perspectives Article",
+      "Link": "https://www.glean.com/perspectives/how-to-effectively-test-ai-automation-workflows-before-deployment",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[11]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/enterprise-agent-evaluation-guide",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[12]": {
+      "Website_Type": "Google Cloud Blog",
+      "Link": "https://cloud.google.com/blog/products/data-analytics/glean-uses-bigquery-and-google-ai-to-enhance-enterprise-search",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[13]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://glean.co/blog/engineering-principles-at-glean",
+      "Date_Created": "2023-04-18",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[14]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://www.glean.com/perspectives/how-to-effectively-test-ai-automation-workflows-before-deployment",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[15]": {
+      "Website_Type": "AWS Deployment Guide",
+      "Link": "https://docs.glean.com/get-started/build/aws/deploy-aws",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[16]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/incrementally-deploying-ranking-code-at-glean",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[17]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://docs.glean.com/get-started/build/aws/deploy-aws",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[18]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://docs.glean.com/administration/assistant/data-analysis/file-security",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[19]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://docs.glean.com/get-started/build/about-self-hosted",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[20]": {
+      "Website_Type": "Product Feature Page",
+      "Link": "https://www.glean.com/agent-library/pull-request-review",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[21]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://glean.co/blog/engineering-principles-at-glean",
+      "Date_Created": "2023-04-18",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[22]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/incrementally-deploying-ranking-code-at-glean",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[23]": {
+      "Website_Type": "GitHub Issues",
+      "Link": "https://github.com/gleanwork/glean-agent-toolkit/issues",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[24]": {
+      "Website_Type": "GitHub Releases",
+      "Link": "https://github.com/gleanwork/glean-cli/releases",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[25]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/remote-mcp-server",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[26]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/glean-developer-site",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[27]": {
+      "Website_Type": "GitHub Organization",
+      "Link": "https://github.com/gleanwork",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[28]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/agent-dev-lifecycle-2026",
+      "Date_Created": "2026-05-12",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[29]": {
+      "Website_Type": "Company Blog",
+      "Link": "https://www.glean.com/blog/growing-our-skills-at-a-growing-company-why-working-for-glean-worked-for-us",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[30]": {
+      "Website_Type": "Company Blog",
+      "Link": "https://www.glean.com/blog/why-you-should-join-glean-part-1-the-team",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[31]": {
+      "Website_Type": "Company Blog",
+      "Link": "https://www.glean.com/blog/fellow-integration",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[32]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://docs.glean.com/user-guide/mcp/usage",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[33]": {
+      "Website_Type": "Developer Platform",
+      "Link": "https://developers.glean.com/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[34]": {
+      "Website_Type": "Product Feature Page",
+      "Link": "https://www.glean.com/agent-library/launch-documentation",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[35]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://developers.glean.com/api-info/indexing/getting-started/overview",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[36]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://docs.glean.com/administration/llms",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[37]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/context-engineering-ai-the-foundation-of-reliable-high-performing-models",
+      "Date_Created": "2026-03",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[38]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/emerging-agent-stack-2026",
+      "Date_Created": "2026-02",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[39]": {
+      "Website_Type": "Product Blog",
+      "Link": "https://www.glean.com/blog/glean-agents-nov-drop-2025",
+      "Date_Created": "2025-11",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[40]": {
+      "Website_Type": "Developer Documentation",
+      "Link": "https://developers.glean.com/guides/mcp/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[41]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/agent-sandbox-2026",
+      "Date_Created": "2026",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[42]": {
+      "Website_Type": "Work AI Institute",
+      "Link": "https://www.glean.com/work-ai-institute",
+      "Date_Created": "2024-12",
+      "Date_Pulled": "2026-05-21"
+    },
+    "[43]": {
+      "Website_Type": "Engineering Blog",
+      "Link": "https://www.glean.com/blog/how-to-build-an-ai-assistant-for-the-enterprise",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-05-21"
+    }
+  }
+}

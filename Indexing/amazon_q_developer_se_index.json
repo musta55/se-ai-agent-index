@@ -2,6 +2,7 @@
   "Agent Name": "Amazon Q Developer",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Amazon Q Developer is an AI-powered software development coding agent by AWS that assists developers with code generation, debugging, code transformation, and answering technical questions through IDE integrations, a CLI, and a conversational chat interface. It automates real-world engineering tasks and is evaluated on standardized coding benchmarks such as SWE-bench.",
       "evidence": [
         {
@@ -18,6 +19,7 @@
   "Repository Statistics": {
     "Lines of Code": [
       {
+        "q_id": "q_45",
         "Summary": "The agent's primary open-source surface is aws/amazon-q-developer-cli, a ~33.6 MB repository whose language breakdown is dominated by Rust (~11.5 MB of source) with smaller amounts of Python, Shell, HTML, and JavaScript — indicating the developers chose Rust as the primary implementation language for the CLI agent.",
         "evidence": [
           {
@@ -33,6 +35,7 @@
     ],
     "Stars": [
       {
+        "q_id": "q_46",
         "Summary": "The aws/amazon-q-developer-cli repository has 1,940 stars at the pull date, indicating a modest but active external developer audience around the agent's open codebase.",
         "evidence": [
           {
@@ -44,6 +47,7 @@
     ],
     "Contributors": [
       {
+        "q_id": "q_47",
         "Summary": "The repo has 424 forks and a contributor base dominated by AWS staff engineers committing directly to main, with external contributors participating through pull requests and GitHub Discussions.",
         "evidence": [
           {
@@ -59,6 +63,7 @@
     ],
     "Update Frequency": [
       {
+        "q_id": "q_48",
         "Summary": "The developers cut roughly 4–5 tagged CLI releases per month: 12 releases were published between v1.16.0 (2025-09-17) and v1.19.7 (2025-11-17), a ~2-month window — a high-velocity release cadence on trunk.",
         "evidence": [
           {
@@ -72,6 +77,7 @@
         ]
       },
       {
+        "q_id": "q_49",
         "Summary": "The backend agent (service-side capability) ships on its own cadence independent of the CLI semver train; capability bumps are surfaced via AWS 'What's New' announcements rather than repo tags.",
         "evidence": [
           {
@@ -86,6 +92,7 @@
     "Testing_and_Reliability": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "Developers evaluate their own agent by running it against public coding benchmarks (SWE-bench Verified, SWT-bench Verified) and publicly publishing the agent's full step-by-step trajectories so reviewers can audit failures — treating transparent trajectory publication as a core reliability practice.",
           "evidence": [
             {
@@ -99,6 +106,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "The team built an internal text-IDE harness called 'textcode' as a deterministic evaluation surface: during offline testing the agent interacts only through text-based tool calls (open/close file, find/replace, revert) so runs are reproducible across evaluation cycles.",
           "evidence": [
             {
@@ -108,6 +116,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Internal dogfooding is called out as a deliberate reliability practice: the team measures adoption and effort saved inside Amazon's own engineering org, using real internal usage as a continuous integration test for agent quality.",
           "evidence": [
             {
@@ -121,6 +130,7 @@
           ]
         },
         {
+          "q_id": "q_5",
           "Summary": "For the CLI codebase, every PR is gated by standard Rust test hygiene — clippy with warnings treated as errors, cargo test with llvm-cov coverage, nightly rustfmt — executed across an Ubuntu + macOS matrix.",
           "evidence": [
             {
@@ -136,6 +146,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_6",
           "Summary": "Observed developer-side testing tools: SWE-bench and SWT-bench for agent evaluation, a Terminal-Bench GitHub Actions workflow targeting terminal-bench-core, the internal 'textcode' harness, cargo test + cargo-llvm-cov for Rust unit/coverage, cargo-deny for supply-chain checks, clippy, and typos-cli.",
           "evidence": [
             {
@@ -155,6 +166,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_7",
           "Summary": "AWS applied scientists design and run the agent evaluations; AWS platform/CLI engineers maintain the repository-level test and benchmark workflows; internal Amazon developers act as dogfooders whose real usage feeds back into reliability signals.",
           "evidence": [
             {
@@ -170,6 +182,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_8",
           "Summary": "A documented applied-science reliability mechanism for the SageMaker Canvas variant is a dependency-graph memory block: during evaluation the agent infers missing variables from prior steps instead of re-prompting, which the team uses to reduce stuck/failure paths.",
           "evidence": [
             {
@@ -183,6 +196,7 @@
     "Integration_and_Infrastructure_CICD": {
       "Practices": [
         {
+          "q_id": "q_9",
           "Summary": "The developers run CI exclusively on GitHub Actions against the OSS CLI repo, with separate workflows for Rust lint/test/coverage (rust.yml), agent benchmark runs (terminal-bench.yaml), docs deploy (mdbook.yml), typo checks, and merge-conflict detection — so each concern is an isolated pipeline rather than one monolithic job.",
           "evidence": [
             {
@@ -200,6 +214,7 @@
           ]
         },
         {
+          "q_id": "q_10",
           "Summary": "For benchmark CI that needs AWS resources, the developers use GitHub→AWS OIDC federation so workflows assume a short-lived IAM role and upload artifacts to S3 — no long-lived access keys live in repo secrets.",
           "evidence": [
             {
@@ -209,6 +224,7 @@
           ]
         },
         {
+          "q_id": "q_11",
           "Summary": "Service-side agent deployments are decoupled from the CLI release train: capability upgrades ship through AWS's backend and are announced via 'What's New' posts, while the CLI independently ships tagged semver releases.",
           "evidence": [
             {
@@ -224,6 +240,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_12",
           "Summary": "CI/CD tooling observed in the developers' pipelines: GitHub Actions, Rust 1.84.0 toolchain, cargo, cargo-llvm-cov, cargo-deny, typos-cli, mdBook with GitHub Pages for docs, AWS OIDC federation, and Amazon S3 for benchmark artifacts.",
           "evidence": [
             {
@@ -239,6 +256,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_14",
           "Summary": "Release and infrastructure ownership sits with AWS platform engineers on the Q Developer CLI team; external open-source contributors interact with CI indirectly through required status checks on their pull requests.",
           "evidence": [
             {
@@ -250,6 +268,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_13",
           "Summary": "An auto-updater channel (feed.json) is bumped on each tagged release so already-installed CLIs pull new versions — making release cut-over a deployment step, not a user-action step.",
           "evidence": [
             {
@@ -263,6 +282,7 @@
     "Code_Review_Process": {
       "Practices": [
         {
+          "q_id": "q_15",
           "Summary": "External code review on the CLI uses the standard GitHub pull-request workflow against main, with CONTRIBUTING.md asking contributors to file an issue first for non-trivial changes so design is discussed before code — a lightweight RFC-style gate in front of review.",
           "evidence": [
             {
@@ -276,6 +296,7 @@
           ]
         },
         {
+          "q_id": "q_16",
           "Summary": "Internally, the developers dogfood Amazon Q Developer as a first-line reviewer of their own code and describe the practice under a 'Permission to Play' cultural framing that rejects narrow output metrics (LOC, story points) in favor of flow and completion signals.",
           "evidence": [
             {
@@ -291,6 +312,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_17",
           "Summary": "Code-review tooling observed: GitHub pull-request review with required CI status checks on the OSS repo; Amazon Q Developer itself used as an AI reviewer during internal development.",
           "evidence": [
             {
@@ -302,6 +324,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_18",
           "Summary": "Pull requests on the OSS repo are reviewed by AWS staff maintainers on the Q Developer CLI team; external open-source contributors are the authors under review.",
           "evidence": [
             {
@@ -313,6 +336,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_50",
           "Summary": "Not Disclosed",
           "evidence": []
         }
@@ -407,6 +431,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_19",
           "Summary": "The developers structure bug intake through a `q doctor` diagnostic template and ship hotfix point releases within days for auth/critical paths; security-class bugs bypass the public tracker entirely and go through AWS's coordinated disclosure process.",
           "evidence": [
             {
@@ -416,6 +441,7 @@
           ]
         },
         {
+          "q_id": "q_51",
           "Summary": "Published SWE-bench trajectories are used by the team as a post-mortem corpus: every step of a failed agent run is inspectable, which shortens the loop between a regression report and an engineering fix.",
           "evidence": [
             {
@@ -427,6 +453,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_21",
           "Summary": "Developer-side bug tracking tools: GitHub Issues and GitHub Discussions on the OSS repo for functional bugs, and the AWS Security Vulnerability Reporting portal for security-class reports. Internal Amazon ticketing systems are not publicly disclosed.",
           "evidence": [
             {
@@ -442,6 +469,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_23",
           "Summary": "Bug-resolution stakeholders include AWS staff maintainers who triage and fix issues, the AWS Security team for CVE-class reports, external open-source reporters who file issues, and AWS applied scientists who ingest agent-trajectory failures back into evaluation.",
           "evidence": [
             {
@@ -453,6 +481,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_22",
           "Summary": "Not Disclosed",
           "evidence": []
         }
@@ -461,6 +490,7 @@
     "Software_Engineering_Methodology": {
       "Practices": [
         {
+          "q_id": "q_24",
           "Summary": "The team follows a trunk-based, high-frequency release methodology (weekly-plus tagged releases) and publicly states it rejects industrial-age output metrics (lines of code, story points) in favor of knowledge-work metrics like developer wait-time and flow interruption.",
           "evidence": [
             {
@@ -474,6 +504,7 @@
           ]
         },
         {
+          "q_id": "q_25",
           "Summary": "Large-scale internal dogfooding is treated as a methodology, not a feature rollout: Amazon engineers are the first users of each agent version, and anecdotes from that internal usage (e.g., a developer shipping a non-trivial Rust feature in 2 days without prior Rust experience) feed back into product and research decisions.",
           "evidence": [
             {
@@ -487,6 +518,7 @@
           ]
         },
         {
+          "q_id": "q_26",
           "Summary": "Applied scientists and platform engineers co-author the public architecture posts, which reflects a research-plus-engineering pairing during development rather than a research-to-engineering handoff.",
           "evidence": [
             {
@@ -498,6 +530,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_27",
           "Summary": "Process tools named publicly: GitHub for source control and review, an internal Amazon Q Business instance that indexes millions of internal documents so engineers can query institutional knowledge inside the dev loop, and AWS 'What's New' for externally coordinated release announcements. Specific Scrum/Kanban tools are not disclosed.",
           "evidence": [
             {
@@ -509,6 +542,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_28",
           "Summary": "Development lifecycle stakeholders: an internal Amazon developer-experience team (ASBX) that drives adoption, applied-science leads for agent research, platform/CLI engineers for implementation, and product managers coordinating external communications.",
           "evidence": [
             {
@@ -520,6 +554,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_29",
           "Summary": "'Permission to Play' is called out as an explicit cultural directive to the engineering team: developers are encouraged to experiment across unfamiliar stacks using the agent, and this experimentation is framed as a first-class methodology rather than personal time.",
           "evidence": [
             {
@@ -533,6 +568,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_30",
           "Summary": "Publicly observable developer communication happens on GitHub (issues, pull-request review threads, Discussions) and through long-form engineering write-ups on AWS DevOps and Amazon Science blogs; team alignment also surfaces externally through re:Invent conference sessions.",
           "evidence": [
             {
@@ -546,6 +582,7 @@
           ]
         },
         {
+          "q_id": "q_31",
           "Summary": "An internal Amazon Q Business instance indexes the company's internal knowledge repositories so engineers can ask questions of institutional documents directly — reducing synchronous ping-a-human communication during development.",
           "evidence": [
             {
@@ -557,6 +594,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_32",
           "Summary": "Publicly observable communication tools: GitHub (issues, Discussions, PR review threads), AWS blog platform, AWS re:Post, YouTube (AWS Events channel) for re:Invent sessions, builder.aws.com for engineering narratives, and an internal Amazon Q Business instance for knowledge search. Internal chat/ticketing tools (Slack/Chime/etc.) are Not Disclosed.",
           "evidence": [
             {
@@ -568,6 +606,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_52",
           "Summary": "Communication stakeholders include AWS platform/CLI engineers, AWS applied scientists, AWS product managers coordinating external messaging, AWS developer-advocacy presenters, and external open-source contributors participating in GitHub discussions.",
           "evidence": [
             {
@@ -579,6 +618,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_53",
           "Summary": "Internal day-to-day chat, paging, and standup tooling is not disclosed in any public source.",
           "evidence": []
         }
@@ -587,6 +627,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_33",
           "Summary": "The developers maintain three tiers of developer-facing documentation for their own codebase: in-repo project docs (README, CONTRIBUTING, SECURITY, /docs), an mdBook site that is automatically built and deployed to GitHub Pages via the mdbook.yml workflow on every push to main, and long-form architecture narratives published as engineering blog posts.",
           "evidence": [
             {
@@ -600,6 +641,7 @@
           ]
         },
         {
+          "q_id": "q_34",
           "Summary": "Architectural decisions and agent-design rationale are treated as publishable documentation: design choices (the textcode framework, the memory-block dependency graph, multi-candidate generate-and-select) are written up in engineering blog posts that double as internal-to-external design records.",
           "evidence": [
             {
@@ -613,6 +655,7 @@
           ]
         },
         {
+          "q_id": "q_35",
           "Summary": "Contribution and security processes are documented inline in the repo (CONTRIBUTING.md, SECURITY.md) so external contributors have an authoritative, version-controlled reference rather than ad-hoc wiki pages.",
           "evidence": [
             {
@@ -624,6 +667,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_36",
           "Summary": "Documentation tools used by the developers: Markdown in the repo, mdBook as the static-site generator, GitHub Pages for hosting, GitHub Actions (mdbook.yml) to automate deploys, and the AWS blog and Amazon Science platforms for long-form engineering posts.",
           "evidence": [
             {
@@ -635,6 +679,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_37",
           "Summary": "Documentation is co-authored by AWS platform/CLI engineers (in-repo docs and mdBook site), AWS applied scientists (architecture posts), and AWS technical writers for the customer-facing docs portal.",
           "evidence": [
             {
@@ -646,6 +691,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_38",
           "Summary": "Not Disclosed",
           "evidence": []
         }
@@ -654,6 +700,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_39",
           "Summary": "The developers treat the agent's prompt/tool scaffolding as versioned code: the tool-use loop, problem-statement prompt, and anti-stuck logic are described as design artifacts of the system they built, and changes to this scaffolding are tied to public capability refreshes.",
           "evidence": [
             {
@@ -667,6 +714,7 @@
           ]
         },
         {
+          "q_id": "q_40",
           "Summary": "The developers use MCP (Model Context Protocol) as the standard extension boundary: the CLI embeds a Rust MCP client with OAuth support, so tool-integration contracts live behind a versioned protocol rather than ad-hoc glue code.",
           "evidence": [
             {
@@ -676,6 +724,7 @@
           ]
         },
         {
+          "q_id": "q_41",
           "Summary": "Prompt/behavior governance during development is exposed through a first-class 'Rules' system on the CLI so the team and its users can version shareable prompt and policy constraints alongside source code.",
           "evidence": [
             {
@@ -687,6 +736,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_42",
           "Summary": "Developer-side LLM/prompt tools observed: Amazon Bedrock foundation models accessed through an internal routing layer, MCP via the rmcp Rust client, a Rules file system for prompt/policy versioning, preToolUse/postToolUse hooks in the agent loop, and the internal 'textcode' text-IDE abstraction used to shape agent context during evaluation.",
           "evidence": [
             {
@@ -702,6 +752,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_43",
           "Summary": "LLM/prompt integration work is owned jointly by AWS applied scientists (agent architecture and evaluation), AWS platform engineers (MCP client and tool-loop implementation), and AWS product management (defining the public Rules/prompt surface).",
           "evidence": [
             {
@@ -713,6 +764,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_44",
           "Summary": "Customer-authored case studies (e.g., Audible's unit-test automation workflow) are published by AWS as reference material for prompt and workflow patterns, which the team uses as external design references when iterating.",
           "evidence": [
             {
@@ -851,5 +903,6 @@
       "Date Created": "2025-09-22",
       "Date Pulled": "2026-04-22"
     }
-  }
+  },
+  "Agent_Name": "Amazon Q Developer"
 }

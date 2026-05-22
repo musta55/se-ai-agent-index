@@ -2,6 +2,7 @@
   "Agent_Name": "Anthropic Claude Code",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Claude Code is an agentic coding CLI tool built by Anthropic that lives in the terminal, understands a full codebase, and autonomously executes tasks including reading files, running commands, making multi-file edits, and managing git workflows via natural language. It was created by Boris Cherny in September 2024 as a solo prototype and grew to a full product team by 2025, reaching GA with version 1.0.0 in May 2025. It is distributed as an npm package and through native installers, and also integrates with VS Code, JetBrains, a Desktop app, a web browser, and GitHub Actions.",
       "evidence": [
         {
@@ -22,6 +23,7 @@
   "Repository_Statistics": {
     "Lines_of_Code": [
       {
+        "q_id": "q_57",
         "Summary": "The codebase spans approximately 512,000 lines of TypeScript across roughly 1,906 files, as revealed by a source map leak in March 2026. The bundled cli.js file weighs 10.5 MB and incorporates vendored platform-specific binaries (ripgrep), Tree-sitter WASM modules, and a React/Ink terminal UI.",
         "evidence": [
           {
@@ -37,6 +39,7 @@
     ],
     "Stars": [
       {
+        "q_id": "q_58",
         "Summary": "The official anthropics/claude-code GitHub repository has accumulated over 124,000 stars as of May 2026, up from approximately 78-82K stars noted in earlier articles, reflecting rapid developer adoption.",
         "evidence": [
           {
@@ -48,6 +51,7 @@
     ],
     "Contributors": [
       {
+        "q_id": "q_59",
         "Summary": "The repository shows 51 listed contributors on GitHub. The team began as a solo project (Boris Cherny), grew to two engineers by November 2024 (Sid Bidasaria joined as engineer #2), and expanded to approximately 10 engineers by mid-2025 before becoming a full product team. Anthropic uses the uniform title 'Member of Technical Staff' across engineering roles.",
         "evidence": [
           {
@@ -63,6 +67,7 @@
     ],
     "Update_Frequency": [
       {
+        "q_id": "q_60",
         "Summary": "Claude Code ships approximately one external release per day, with roughly 60-100 internal (npm) releases pushed daily. Engineers on the team averaged five pull requests per day during the summer of 2025. The changelog shows minor version bumps (2.1.x) published multiple times per week.",
         "evidence": [
           {
@@ -74,6 +79,7 @@
     ],
     "Primary_Language": [
       {
+        "q_id": "q_61",
         "Summary": "TypeScript is the dominant application language (17.7% of files by GitHub language stats), with Shell at 47.1% (installers/scripts), Python at 29.2% (tooling), and PowerShell at 4.1% (Windows support). The build system is Bun, the terminal UI uses React with Ink, and layout is handled by Yoga.",
         "evidence": [
           {
@@ -93,6 +99,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "Anthropic uses a multi-layered eval strategy for Claude Code combining automated unit/end-to-end tests, model-based classifiers, dogfooding ('antfooding'), and A/B testing in production. The April 2026 postmortem revealed that all three quality-degrading bugs passed through 'multiple human and automated code reviews, unit tests, end-to-end tests, automated verification, and dogfooding,' which leads to commitments to broaden eval suites.",
           "evidence": [
             {
@@ -106,6 +113,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "The team employs evals focused on both narrow behaviors (concision, file edits) and complex behaviors (over-engineering, context retention). Claude Code's auto mode classifier was evaluated on three datasets: 10,000 real traffic samples, 52 real overeager cases, and 1,000 synthetic exfiltration scenarios. Anthropic also uses SWE-bench Verified as an external deterministic grading benchmark for coding agents.",
           "evidence": [
             {
@@ -119,6 +127,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Anthropic's internal 'antfooding' practice—where Anthropic engineers ('ants') use Claude Code in daily work—serves as a continuous dogfooding loop. The Claude Code team observes hundreds of engineers using the product and receives a message in their feedback channel every five minutes. Internal dogfooding achieved 20% engineering adoption on day one and 50% by day five when Claude Code was first shared internally in November 2024.",
           "evidence": [
             {
@@ -132,6 +141,7 @@
           ]
         },
         {
+          "q_id": "q_62",
           "Summary": "For long-running agentic evaluations, Anthropic recommends starting with approximately 20 representative tasks from real failures, using an eight-step roadmap, and reading transcripts regularly. Infrastructure noise (container OOM, API latency variation) can swing benchmark scores by up to 6 percentage points, so Anthropic recommends treating leaderboard differences below 3 percentage points with skepticism.",
           "evidence": [
             {
@@ -147,6 +157,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_6",
           "Summary": "Primary testing frameworks and tools include: automated evals using code-based graders (fast, cheap, objective) and model-based graders (flexible, captures nuance). External eval frameworks cited include Harbor (containerized environments), Braintrust (offline and production monitoring), LangSmith, Langfuse, and Arize/Phoenix for tracing. For the C compiler project, GCC was used as a 'known-good compiler oracle' for comparison.",
           "evidence": [
             {
@@ -156,6 +167,7 @@
           ]
         },
         {
+          "q_id": "q_7",
           "Summary": "The Claude Code GitHub Actions integration (anthropics/claude-code-action@v1) enables CI-level automated code review, test generation, and issue triage. The action runs the full Claude Code runtime inside a GitHub Actions runner and can be triggered by @claude mentions in PRs and issues.",
           "evidence": [
             {
@@ -167,6 +179,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_8",
           "Summary": "Core stakeholders in testing include: Boris Cherny (Head of Claude Code), Anthropic's product engineering team, data science team, and security engineering team. Human graders are used as the gold standard for complex eval tasks. The broader Anthropic engineering organization participates in antfooding.",
           "evidence": [
             {
@@ -178,6 +191,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_9",
           "Summary": "A quality regression in April 2026 was diagnosed using Claude's own Code Review tool with Opus 4.7 reviewing the buggy pull requests—'the Code Review tool with Opus 4.7 found the bug, while Opus 4.6 didn't.' This demonstrates using newer model versions to catch issues in code changes.",
           "evidence": [
             {
@@ -191,6 +205,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_63",
           "Summary": "Claude Code ships approximately one public release per day, with 60-100 internal npm package releases daily (one per code change). This extremely high release frequency is enabled by the team's heavy use of Claude Code itself for development. The changelog shows versioning as 2.1.x with sequential minor increments.",
           "evidence": [
             {
@@ -200,15 +215,17 @@
           ]
         },
         {
+          "q_id": "q_64",
           "Summary": "Claude Code is distributed through multiple channels: native curl/PowerShell installers (which auto-update in the background), Homebrew (stable channel and latest channel), WinGet, and Linux package managers (apt, dnf, apk). The Homebrew stable channel 'typically about a week behind and skips releases with major regressions.'",
           "evidence": [
             {
               "quote": "Native installations automatically update in the background to keep you on the latest version. Homebrew installations do not auto-update.",
-            "citation": "[2]"
+              "citation": "[2]"
             }
           ]
         },
         {
+          "q_id": "q_65",
           "Summary": "The build uses Bun as the bundler, producing a single self-contained cli.js file with zero external dependencies (vendored ripgrep binaries, Tree-sitter WASM, Ink UI). A critical packaging incident in March 2026 occurred when a .npmignore omission shipped cli.js.map with 512,000 lines of source code; the same mistake had occurred once before, 13 months earlier.",
           "evidence": [
             {
@@ -218,6 +235,7 @@
           ]
         },
         {
+          "q_id": "q_66",
           "Summary": "For intelligence-affecting production changes, Anthropic adopted soak periods, broader eval suites, and gradual rollouts following the April 2026 postmortem. The multi-agent research system uses 'rainbow deployments'—gradually shifting traffic between versions while keeping both running to avoid disrupting active agents.",
           "evidence": [
             {
@@ -233,6 +251,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_67",
           "Summary": "CI/CD tools used include: GitHub Actions (anthropics/claude-code-action@v1 for automated PR review and implementation), GitLab CI/CD integration, Bun as the build system, and npm for package distribution. Enterprise deployments support Amazon Bedrock and Google Vertex AI via OIDC authentication in Actions workflows.",
           "evidence": [
             {
@@ -242,6 +261,7 @@
           ]
         },
         {
+          "q_id": "q_68",
           "Summary": "The Claude Code GitHub Action supports Amazon Bedrock (via AWS OIDC) and Google Vertex AI (via Workload Identity Federation), enabling enterprise deployment on private cloud infrastructure.",
           "evidence": [
             {
@@ -253,6 +273,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_69",
           "Summary": "Deployment stakeholders include: Anthropic's product engineering team (release pipeline), infrastructure/DevOps for enterprise managed settings, and package ecosystem maintainers (Homebrew, WinGet). Cat Wu serves as founding product manager overseeing release coordination.",
           "evidence": [
             {
@@ -264,6 +285,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_70",
           "Summary": "The 32 build-time feature flags and 26 hidden slash commands in the codebase enable staged rollouts and controlled exposure of experimental features. Environment variables such as DISABLE_COMMAND_INJECTION_CHECK (labeled DANGEROUS) and CLAUDE_CODE_ABLATION_BASELINE (disables all safety features) provide engineering escape hatches for testing.",
           "evidence": [
             {
@@ -277,6 +299,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_71",
           "Summary": "Boris Cherny systematized code review feedback early in his career: he tracked recurring review comments in a spreadsheet and converted patterns reaching 3-4 occurrences into automated lint rules. This practice of automating repeatable review criteria is now applied to Claude Code's own development.",
           "evidence": [
             {
@@ -286,6 +309,7 @@
           ]
         },
         {
+          "q_id": "q_72",
           "Summary": "At Anthropic, Claude Code performs initial pull request reviews via a /code-review slash command. Humans approve final merges. Boris Cherny runs multiple specialized subagents in parallel during review: one checks style guidelines, another examines project history, another flags obvious bugs. This Writer/Reviewer parallel-agent pattern is also documented in official best practices.",
           "evidence": [
             {
@@ -299,6 +323,7 @@
           ]
         },
         {
+          "q_id": "q_73",
           "Summary": "The official best practices document recommends a Writer/Reviewer multi-session pattern: Session A implements a feature (e.g., 'Implement a rate limiter for our API endpoints'), and Session B independently reviews it with fresh context ('Review the rate limiter implementation in @src/middleware/rateLimiter.ts. Look for edge cases, race conditions, and consistency with our existing middleware patterns.').",
           "evidence": [
             {
@@ -310,6 +335,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_74",
           "Summary": "Code review tooling includes: GitHub's code review interface, the /code-review slash command within Claude Code, the claude-code-action GitHub Action for automated PR reviews, and the internal Code Review tool (built on Claude Opus 4.7) used for diagnostic code review of regressions.",
           "evidence": [
             {
@@ -321,6 +347,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_75",
           "Summary": "Code review stakeholders include engineers submitting PRs, Claude Code (automated first-pass review), and human approvers for final merge decisions. Product managers and designers participate in design reviews on UI prototypes using screenshot comparison workflows.",
           "evidence": [
             {
@@ -332,6 +359,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_76",
           "Summary": "The team ships PRDs by prototype, not document: 'PRDs are dead on the Claude Code team: prototypes replaced them.' Boris builds 5-10+ functional prototypes daily using parallel Claude agents, iterating rapidly based on feedback rather than writing specifications first.",
           "evidence": [
             {
@@ -431,6 +459,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_77",
           "Summary": "Anthropic uses GitHub Issues as the primary bug tracker for Claude Code, with a stale-issue-manager automation that closes issues inactive for 60 days. Community feedback identified a bug in the stale-bot logic itself: it checks only whether the last bot comment is older than 30 days, ignoring recent human comments, causing legitimate active issues to be auto-closed.",
           "evidence": [
             {
@@ -440,6 +469,7 @@
           ]
         },
         {
+          "q_id": "q_78",
           "Summary": "Security Engineering at Anthropic uses Claude Code to accelerate debugging: feeding stack traces and documentation enables 3x faster control-flow tracing. During the April 2026 quality regression, the team used Claude's Code Review tool with Opus 4.7 to diagnose which pull requests introduced regressions.",
           "evidence": [
             {
@@ -451,6 +481,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_79",
           "Summary": "Bug tracking and resolution tools include: GitHub Issues (public tracker), the /bug slash command within Claude Code for direct in-product bug reporting, internal feedback channels receiving messages every five minutes from dogfooding engineers, and Claude Developers Discord for community-level triage.",
           "evidence": [
             {
@@ -462,6 +493,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_80",
           "Summary": "Bug resolution stakeholders include the Claude Code product engineering team, Anthropic's security engineering team, the data infrastructure team (for infrastructure incidents), and the broader developer community filing issues on GitHub. Enterprise customers escalate critical issues through official support channels.",
           "evidence": [
             {
@@ -473,6 +505,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_81",
           "Summary": "An April 2026 postmortem publicly documented three overlapping quality regressions (reasoning effort default change, thinking cache bug, verbosity prompt) that degraded output quality. Anthropic committed to ensuring 'a larger share of internal staff use the exact public build of Claude Code' to prevent configuration drift between internal and public versions masking bugs.",
           "evidence": [
             {
@@ -486,6 +519,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_82",
           "Summary": "The Claude Code team uses prototype-driven development rather than traditional PRDs. Boris Cherny builds 5-10+ functional prototypes per day using parallel Claude agents, iterating based on direct feedback. The tool itself was validated by giving engineers access to the filesystem and observing rapid organic adoption (20% day one, 50% by day five) as the product specification.",
           "evidence": [
             {
@@ -499,6 +533,7 @@
           ]
         },
         {
+          "q_id": "q_83",
           "Summary": "Anthropic uses a flat organizational structure with the uniform title 'Member of Technical Staff' (MTS) for all engineers. This eliminates role-based hierarchies and establishes the expectation that everyone contributes across product, design, infrastructure, and research domains.",
           "evidence": [
             {
@@ -508,6 +543,7 @@
           ]
         },
         {
+          "q_id": "q_84",
           "Summary": "The team deliberately minimizes business logic around the model. Boris Cherny stated: 'Every time there's a new model release, we delete a bunch of code.' With Claude 4.0 models, they removed approximately half the system prompt, reflecting a methodology of incremental code reduction as model capabilities improve.",
           "evidence": [
             {
@@ -517,6 +553,7 @@
           ]
         },
         {
+          "q_id": "q_85",
           "Summary": "An 'underfunding' resource allocation philosophy is practiced: giving one great engineer a large problem and unlimited tokens forces maximal AI leverage and ships faster than large teams. When Anthropic doubled its engineering headcount, they saw a 67% increase in PR throughput—unusual since team growth typically reduces per-engineer output.",
           "evidence": [
             {
@@ -528,6 +565,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_86",
           "Summary": "Development tools: Bun (build), TypeScript (language), React+Ink (terminal UI), Yoga (layout), git (version control), npm (distribution), GitHub (repository/issue tracking), VS Code, and Claude Code itself for ~90% of code written on the project.",
           "evidence": [
             {
@@ -537,6 +575,7 @@
           ]
         },
         {
+          "q_id": "q_87",
           "Summary": "Claude Code's 'agentic search' replaces complex RAG pipelines: 'Claude Code's agentic search is really just glob and grep, and it outperformed RAG.' This design simplicity reflects the team's philosophy of choosing simple, reliable tools over complex architectures.",
           "evidence": [
             {
@@ -548,6 +587,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_88",
           "Summary": "Key stakeholders in methodology include Boris Cherny (Head of Claude Code), Cat Wu (founding PM), Sid Bidasaria (early engineer), and the broader Anthropic engineering leadership. The methodology is shaped by Anthropic's safety-focused culture and Constitutional AI principles.",
           "evidence": [
             {
@@ -559,6 +599,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_89",
           "Summary": "Migration discipline is a core engineering principle: 'always make sure that when you start a migration, you finish the migration.' Partial migrations confuse both humans and AI models, leading to inconsistent code states. Engineers spend over $1,000 monthly on AI-assisted code migrations, using parallel subagents to execute large-scale refactors.",
           "evidence": [
             {
@@ -572,6 +613,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_36",
           "Summary": "Anthropic engineers use Claude Code as their primary communication channel for technical questions that previously went to colleagues. One team member observed: 'More junior people don't come to me with questions as often.' Claude Code has become 'the first stop for any programming task' and is used for onboarding new team members to codebases.",
           "evidence": [
             {
@@ -581,6 +623,7 @@
           ]
         },
         {
+          "q_id": "q_37",
           "Summary": "The internal feedback channel for Claude Code receives new messages every five minutes from antfooding engineers, creating a high-frequency signal loop between product usage and development. The team physically walks the Anthropic office to observe engineers using the product.",
           "evidence": [
             {
@@ -590,6 +633,7 @@
           ]
         },
         {
+          "q_id": "q_38",
           "Summary": "External community communication is managed through Claude Developers Discord and GitHub Issues. The Claude Code GitHub page has over 5,000 open issues. GitHub Issues serve as the primary channel for user bug reports, with the /bug command providing an in-product shortcut.",
           "evidence": [
             {
@@ -601,6 +645,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_39",
           "Summary": "Communication tools include: Slack (internal, inferred from feedback channel references), GitHub Issues (external bug tracker), Claude Developers Discord (community support), and the /bug in-product command for direct issue reporting. GitHub Actions serves as the automated PR communication layer for Claude-generated code.",
           "evidence": [
             {
@@ -612,6 +657,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_90",
           "Summary": "Communication stakeholders include: the core Claude Code team (10+ engineers), the broader Anthropic engineering organization (antfooding users), external developer community on Discord and GitHub, enterprise customers, and partner integrators (VS Code marketplace, JetBrains Marketplace).",
           "evidence": [
             {
@@ -623,6 +669,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_91",
           "Summary": "Parallel agent architecture changes how engineers communicate work: Boris Cherny runs 5 instances of Claude Code simultaneously in terminal tabs with separate git checkouts, using system notifications to know when any Claude needs input. This shifts the communication model from deep serial focus to rapid context-switching across multiple parallel workstreams.",
           "evidence": [
             {
@@ -636,6 +683,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_40",
           "Summary": "Claude Code uses CLAUDE.md as its primary persistent documentation layer. Project CLAUDE.md files are checked into git so teams share them. The /init command auto-generates starter CLAUDE.md files by analyzing codebase structure, build systems, test frameworks, and code patterns. Anthropic recommends keeping CLAUDE.md under 200 lines and treating it 'like code: review it when things go wrong, prune it regularly, and test changes by observing whether Claude's behavior actually shifts.'",
           "evidence": [
             {
@@ -645,6 +693,7 @@
           ]
         },
         {
+          "q_id": "q_41",
           "Summary": "Auto memory allows Claude to accumulate project knowledge autonomously across sessions without manual effort. Claude writes learnings—build commands, debugging insights, architecture notes—to ~/.claude/projects/<project>/memory/MEMORY.md. The first 200 lines or 25KB are loaded at every session start. Topic files (debugging.md, api-conventions.md) are created for detailed notes and loaded on demand.",
           "evidence": [
             {
@@ -654,6 +703,7 @@
           ]
         },
         {
+          "q_id": "q_42",
           "Summary": "Documentation is organized in a layered hierarchy: Managed policy CLAUDE.md (organization-wide, system-level), User CLAUDE.md (~/.claude/CLAUDE.md, all projects), Project CLAUDE.md (./CLAUDE.md, team-shared via git), Local CLAUDE.md (./CLAUDE.local.md, gitignored personal notes), and child-directory CLAUDE.md files loaded on demand when Claude accesses those directories.",
           "evidence": [
             {
@@ -663,6 +713,7 @@
           ]
         },
         {
+          "q_id": "q_43",
           "Summary": "Anthropic teams use Claude Code to ingest multiple documentation sources and create consolidated markdown runbooks and troubleshooting guides. The Inference team reduced documentation research time by 80% (from ~1 hour to 10-20 minutes) by using Claude to explain model-specific functions from internal documentation.",
           "evidence": [
             {
@@ -674,6 +725,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_44",
           "Summary": "Documentation tools include: CLAUDE.md files (persistent instruction layer), auto memory (autonomous note-taking), .claude/rules/ (modular path-scoped rules), /init command (auto-generation), /memory command (browse and edit), SKILL.md files (workflow documentation), and SPEC.md files (AI-generated specification documents via interview workflow).",
           "evidence": [
             {
@@ -685,6 +737,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_45",
           "Summary": "Documentation stakeholders include individual engineers (CLAUDE.local.md personal notes), project teams (shared CLAUDE.md), IT/DevOps administrators (managed policy CLAUDE.md), and Anthropic's technical writing team (official docs at code.claude.com). External documentation is maintained at code.claude.com/docs.",
           "evidence": [
             {
@@ -696,6 +749,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_46",
           "Summary": "Block-level HTML comments in CLAUDE.md files are stripped before injection into context, enabling maintainer notes that consume no context tokens. LLM-oriented code comments are written throughout the codebase 'for AI agents working on the codebase rather than human readers,' representing a shift in documentation audience.",
           "evidence": [
             {
@@ -709,6 +763,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_47",
           "Summary": "Claude Code uses a split prompt architecture with SYSTEM_PROMPT_DYNAMIC_BOUNDARY separating static (cacheable) portions from dynamic (per-turn) portions. Sections labeled DANGEROUS_uncachedSystemPromptSection explicitly signal cache-breaking costs to engineers. The team removed approximately half the system prompt when upgrading to Claude 4.0 models, reflecting a practice of prompt reduction as model capability grows.",
           "evidence": [
             {
@@ -722,6 +777,7 @@
           ]
         },
         {
+          "q_id": "q_92",
           "Summary": "Prompt governance was strengthened after the April 2026 postmortem: Anthropic now runs a 'broad suite of per-model evals for every system prompt change,' performs ablations before shipping prompt modifications, adds audit tooling for prompt changes, and gates model-specific changes to the specific model they target.",
           "evidence": [
             {
@@ -731,6 +787,7 @@
           ]
         },
         {
+          "q_id": "q_93",
           "Summary": "Claude Code's auto mode implements a two-stage classifier pipeline: a fast single-token filter (8.5% false positive rate at Stage 1) followed by chain-of-thought reasoning only for flagged actions (0.4% final false positive rate). The classifier intentionally strips assistant reasoning from its input to prevent the agent from 'talking the classifier into making a bad call.'",
           "evidence": [
             {
@@ -740,6 +797,7 @@
           ]
         },
         {
+          "q_id": "q_94",
           "Summary": "The multi-agent system uses forked subagents that inherit parent context as byte-identical copies, enabling cost-efficient parallel spawning via prompt cache reuse. A three-layer memory index (always-loaded index, on-demand topic files, grep-only transcripts) manages context budget. The write discipline enforces: 'write to topic file first, then update the index. Never dump content into the index.'",
           "evidence": [
             {
@@ -749,6 +807,7 @@
           ]
         },
         {
+          "q_id": "q_95",
           "Summary": "The team selects 'on distribution' technologies (TypeScript, React, Node.js) that Claude already understands well, enabling ~90% of the codebase to be written by Claude Code itself. Context management is the central engineering constraint: 'Most best practices are based on one constraint: Claude's context window fills up fast, and performance degrades as it fills. '",
           "evidence": [
             {
@@ -758,6 +817,7 @@
           ]
         },
         {
+          "q_id": "q_96",
           "Summary": "The team uses five distinct compaction strategies for context overflow, with /compact, /clear, and checkpoint-based /rewind commands for manual context management. Customized compaction instructions in CLAUDE.md (e.g., 'When compacting, always preserve the full list of modified files') ensure critical context survives automatic summarization.",
           "evidence": [
             {
@@ -769,6 +829,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_53",
           "Summary": "LLM integration tooling includes: Anthropic Claude API (direct), Amazon Bedrock, Google Vertex AI, Model Context Protocol (MCP) for external data sources, Tool Search Tool for dynamic tool discovery, and the Claude Agent SDK for programmatic orchestration. Models available: Claude Haiku, Claude Sonnet (default for GitHub Actions), Claude Opus (for complex review tasks).",
           "evidence": [
             {
@@ -778,6 +839,7 @@
           ]
         },
         {
+          "q_id": "q_54",
           "Summary": "MCP (Model Context Protocol) is used to connect Claude Code to external services: Notion, Figma, Jira, databases, Slack, and custom tooling. MCP servers are configured via .mcp.json and support OAuth-based authentication with concurrent refresh locking to prevent token race conditions.",
           "evidence": [
             {
@@ -789,6 +851,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_55",
           "Summary": "LLM integration stakeholders include: Anthropic's model team (model upgrades, prompt ablations), the Claude Code product team (prompt governance, context management), enterprise customers using Bedrock/Vertex AI deployment, and MCP ecosystem providers building server integrations.",
           "evidence": [
             {
@@ -800,6 +863,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_56",
           "Summary": "An anti-distillation defense injects decoy tool definitions (anti_distillation: ['fake_tools']) to poison competitor training data. Binary-level attestation uses Bun's native Zig-layer HTTP stack to overwrite placeholder values with computed hashes before API transmission, proving genuine client origin and preventing JavaScript-level patching.",
           "evidence": [
             {

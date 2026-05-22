@@ -2,6 +2,7 @@
   "Agent_Name": "Perplexity Comet",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Perplexity Comet is a closed-source, Chromium-based AI browser that unifies traditional web browsing with agentic task execution. It contains two distinct AI layers: the Comet Assistant, a sidebar companion for reading, summarizing, and answering questions; and the Comet Agent, which autonomously executes multi-step tasks such as booking appointments, drafting emails, and managing workflows. Perplexity's search engine powers Comet by default, and the product targets both individual users and enterprise teams seeking intelligent workflow automation.",
       "evidence": [
         {
@@ -28,6 +29,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "Perplexity developed BrowseSafe-Bench, a public evaluation suite of 14,719 real-world-style HTML examples for benchmarking AI browser agent security. The benchmark decomposes prompt injection attacks along three orthogonal axes: attack type (what the attacker wants), injection strategy (where the payload is hidden in the page), and linguistic style (how the instruction is phrased). This three-axis taxonomy helps the security team target training data gaps and systematically harden detection models.",
           "evidence": [
             {
@@ -37,6 +39,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Comet's security team collaborates continuously with external AI security researchers and red teams to grow their library of classifiers. Detection findings from real-world events and the bug bounty program feed directly into retraining cycles.",
           "evidence": [
             {
@@ -46,6 +49,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "BrowseSafe-Bench evaluation results revealed that visible text attacks (footer sections, table cells) are significantly harder to detect than injections hidden in HTML comments or metadata attributes — a counterintuitive finding that reshaped training data composition. The team also found that adding just three benign distractor elements caused detection accuracy to drop from above 90% to roughly 81%, exposing model brittleness to authentic correlations.",
           "evidence": [
             {
@@ -57,6 +61,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_5",
           "Summary": "The security evaluation stack includes BrowseSafe-Bench (14,719 HTML examples on Hugging Face), the open-weight BrowseSafe detection model (Qwen-30B-A3B-Instruct-2507 fine-tune on Hugging Face), a synthetic data pipeline for generating hard negatives, and external red team exercises. The benchmark and model are fully open-sourced for community use.",
           "evidence": [
             {
@@ -68,6 +73,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_6",
           "Summary": "The Perplexity Security Team authors and maintains the detection models and evaluation benchmarks. External security researchers participate via the Vulnerability Disclosure Program and private bug bounty program, contributing new attack patterns to the retraining pipeline.",
           "evidence": [
             {
@@ -79,6 +85,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_7",
           "Summary": "BrowseSafe-Bench includes 11 attack types, 9 injection strategies ranging from hidden fields to visible paragraphs and footers, and 3 linguistic styles from explicit commands to indirect hypothetical framing. Multilanguage attacks dropped average balanced accuracy to 76.0% across models, the lowest of any style tested.",
           "evidence": [
             {
@@ -92,6 +99,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_40",
           "Summary": "Perplexity follows a gated, phased release strategy for Comet. New versions ship first to a small invite-only cohort of Max subscribers, then expand to broader Pro subscriber tiers, and finally to Enterprise Pro customers. This controlled rollout limits blast radius from regressions or security gaps at each stage before a full public release.",
           "evidence": [
             {
@@ -101,6 +109,7 @@
           ]
         },
         {
+          "q_id": "q_41",
           "Summary": "Comet ships on a weekly release, with each release documented publicly in a rolling changelog. The team publishes a 'What We Shipped' entry every week, covering both individual and enterprise capabilities. This frequency implies a continuous integration pipeline capable of building, validating, and delivering browser-level changes at least weekly.",
           "evidence": [
             {
@@ -116,6 +125,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_42",
           "Summary": "Internal CI/CD tooling (build systems, pipeline runners, infrastructure providers) is not publicly disclosed. Comet is built on the Chromium open-source project, which uses the GN meta-build system and Ninja build tool. This base imposes a well-established build and packaging infrastructure that the Perplexity engineering team extends for their agent-specific layers.",
           "evidence": [
             {
@@ -127,6 +137,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_43",
           "Summary": "The Perplexity engineering team owns the release pipeline and publishes the weekly changelog. The security team has a parallel ownership stake in the BrowseSafe model deployment cycle, coordinating classifier updates independently of the browser release schedule.",
           "evidence": [
             {
@@ -138,6 +149,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_44",
           "Summary": "Comet expanded from a desktop-only (macOS, Windows) product to iOS within nine months of launch.",
           "evidence": [
             {
@@ -151,6 +163,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_45",
           "Summary": "Perplexity's internal pull request workflows, code review practices are not publicly documented.",
           "evidence": [
             {
@@ -162,6 +175,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_46",
           "Summary": "No public information is available on the specific code review tools used (e.g., GitHub Pull Requests, Gerrit, Phabricator) or automated review tooling such as linters or static analysis configurations.",
           "evidence": [
             {
@@ -173,6 +187,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_47",
           "Summary": "No public information is available on who performs code reviews, who holds merge permissions, or how the review process is structured across the Perplexity engineering organization.",
           "evidence": [
             {
@@ -184,6 +199,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_48",
           "Summary": "The only indirect signal is the weekly shipping cadence visible in the public changelog. Consistent weekly releases across desktop, enterprise, and iOS targets suggest a development workflow with short integration cycles, though the underlying review and merge process is not disclosed.",
           "evidence": [
             {
@@ -269,6 +285,7 @@
       ],
       "Practices": [
         {
+          "q_id": "q_49",
           "Summary": "Perplexity uses a Vulnerability Disclosure Program (VDP) covering all public-facing endpoints and user-facing clients. Researchers submit findings through a formal submission form. Valid disclosures earn acknowledgment and, depending on severity, rewards and invitations to a private bug bounty program. AI-specific issues such as hallucinations and model safety are explicitly out of scope.",
           "evidence": [
             {
@@ -278,6 +295,7 @@
           ]
         },
         {
+          "q_id": "q_50",
           "Summary": "Security issues feed into a continuous classifier retraining loop: flagged boundary cases from production, red team exercises, and the bug bounty program generate synthetic training samples. This data allows the security team to proactively retrain BrowseSafe on emerging attack patterns before they become widespread.",
           "evidence": [
             {
@@ -287,6 +305,7 @@
           ]
         },
         {
+          "q_id": "q_51",
           "Summary": "When the BrowseSafe classifier detects a potential prompt injection, Comet blocks the action and delivers a transparent notification to the user that identifies what was blocked, why content was flagged, and what specific instructions were detected. This transparency serves dual purposes: user education and security signal collection.",
           "evidence": [
             {
@@ -298,6 +317,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_52",
           "Summary": "Bug tracking tools are not publicly disclosed. External security disclosures are received through the VDP submission form. Internal production signals from the BrowseSafe classifier feed the retraining pipeline. Audit logs (available for organizations with 50+ Enterprise Pro seats) provide usage and activity tracking for enterprise incident investigation.",
           "evidence": [
             {
@@ -309,6 +329,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_53",
           "Summary": "The Perplexity Security Team manages the VDP and coordinates with external researchers. Enterprise organization admins use audit logs and telemetry dashboards for security monitoring. Help center articles authored by enterprise support staff document known compatibility issues and installation problems.",
           "evidence": [
             {
@@ -320,6 +341,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_54",
           "Summary": "Comet is closed-source with no public issue tracker. Security incidents and compatibility issues surface through external security research reports, help center FAQ updates, and changelog entries rather than through a public GitHub issue list.",
           "evidence": [
             {
@@ -333,6 +355,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_55",
           "Summary": "Security-first development is a stated lifecycle philosophy. The team explicitly rejects post-launch security additions; layered protections are treated as release criteria rather than optional features. This approach determines team composition, feature prioritization, and what counts as a shippable product.",
           "evidence": [
             {
@@ -344,6 +367,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_56",
           "Summary": "Agile, Scrum, Kanban, sprint structure, and internal project management tooling are not publicly disclosed. The weekly 'What We Shipped' changelog format is indirect evidence of a continuous delivery process. Chromium as base platform reduces engineering scope by providing a mature browser foundation, allowing the team to direct velocity toward the AI layer rather than low-level browser infrastructure.",
           "evidence": [
             {
@@ -355,6 +379,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_57",
           "Summary": "All blog posts and changelog entries are attributed collectively as 'Perplexity Team' or 'Perplexity Security Team'.",
           "evidence": [
             {
@@ -366,6 +391,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_58",
           "Summary": "Perplexity piloted Comet under an invite-only model before broad release. New users received a limited number of invites to share, creating a controlled rollout mechanism that limits blast radius from bugs or security issues at initial launch.",
           "evidence": [
             {
@@ -379,6 +405,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_26",
           "Summary": "Perplexity communicates product updates through a public weekly changelog, an engineering and product blog at perplexity.ai/hub/blog, and the Comet Resources hub at perplexity.ai/comet/resources. Enterprise teams have dedicated support contacts at comet@perplexity.ai and enterprise@perplexity.ai.",
           "evidence": [
             {
@@ -388,6 +415,7 @@
           ]
         },
         {
+          "q_id": "q_59",
           "Summary": "User feedback flows through a public typeform at perplexity.typeform.com/feedbackpplx and through community channels including Discord and social media (X/Twitter, LinkedIn, Instagram, Threads, YouTube). The security team has a separate structured disclosure channel through the VDP submission form.",
           "evidence": [
             {
@@ -399,6 +427,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_28",
           "Summary": "Communication channels include the public changelog (weekly), Perplexity Hub blog, Comet Resources article hub, Discord community server, X (Twitter), LinkedIn, YouTube, a feedback typeform, and enterprise-specific email addresses for support. Security researchers use the VDP submission form.",
           "evidence": [
             {
@@ -410,6 +439,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_60",
           "Summary": "End users receive product news via changelog and blog posts. Enterprise administrators interact through the admin dashboard and dedicated support email. External security researchers engage through the VDP. The broader developer community engages through Discord and the public API documentation.",
           "evidence": [
             {
@@ -421,6 +451,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_61",
           "Summary": "Internal team communication practices are not publicly disclosed. Comet's launch blog post and enterprise announcement blog post are authored collectively as 'Perplexity Team', with no individual author attribution, reflecting a team-first public communication style.",
           "evidence": [
             {
@@ -434,6 +465,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_29",
           "Summary": "Perplexity maintains a dedicated Comet Resources hub at perplexity.ai/comet/resources as the primary user-facing documentation source. Articles cover the Assistant vs. Agent distinction, data privacy and security FAQs, and enterprise setup guides. The help center at perplexity.ai/help-center extends this with step-by-step installation guides for macOS and Windows enterprise deployments.",
           "evidence": [
             {
@@ -443,6 +475,7 @@
           ]
         },
         {
+          "q_id": "q_30",
           "Summary": "Security documentation receives dedicated treatment. The prompt injection defense architecture is publicly documented across two blog posts (the blog post on mitigating prompt injection and the BrowseSafe research post) and a peer-reviewed research paper (arxiv.org/abs/2511.20597). This separates the practitioner-facing explanation from the technical research paper, serving different audiences.",
           "evidence": [
             {
@@ -452,6 +485,7 @@
           ]
         },
         {
+          "q_id": "q_31",
           "Summary": "The Comet Data Privacy and Security FAQ documents data handling at a level of granularity suitable for enterprise procurement reviews: it specifies what data is stored locally vs. server-side, what triggers data transmission to Perplexity, how integration permissions are scoped, and how users can delete all stored data.",
           "evidence": [
             {
@@ -463,6 +497,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_32",
           "Summary": "Documentation tooling includes the Comet Resources article hub, Perplexity Help Center (intercom-based), the public Hub engineering blog, Perplexity Trust Center at trust.perplexity.ai, and Security Documentation at perplexity.ai/hub/security. Compliance certifications (SOC 2 Type II, GDPR, PCI) are documented in the Trust Center.",
           "evidence": [
             {
@@ -474,6 +509,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_33",
           "Summary": "Help center articles are authored by Perplexity support staff .Security documentation is published by the Perplexity Security Team. Research papers and technical blog posts are attributed to the Perplexity Team or Perplexity Research.",
           "evidence": [
             {
@@ -485,6 +521,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_34",
           "Summary": "There is no public developer API or SDK documentation for Comet specifically. The Perplexity API documentation at docs.perplexity.ai covers the search API, not the browser agent. Comet's enterprise integration relies on Chromium policy documentation rather than a Comet-specific developer reference.",
           "evidence": [
             {
@@ -498,6 +535,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_35",
           "Summary": "Comet's LLM integration follows a layered prompt architecture: user instructions are treated as trusted input while all external web content is explicitly marked as untrusted in the model's prompt context. Tool-level system prompts include guardrail language at each step, and the original user query is continuously referenced by the routing system to prevent intent drift across multi-step tasks.",
           "evidence": [
             {
@@ -507,6 +545,7 @@
           ]
         },
         {
+          "q_id": "q_62",
           "Summary": "Perplexity's memory system synthesizes user preferences and conversation history into a persistent personalization layer available across all supported models. Unlike history-as-training-data approaches, Perplexity retrieves relevant context from a memory store and injects it directly into responses. Users carry this memory context across model switches — from reasoning models for complex analysis, to fast models for quick queries — without losing continuity.",
           "evidence": [
             {
@@ -522,6 +561,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_37",
           "Summary": "LLM integration tools include the BrowseSafe fine-tuned Qwen-30B-A3B-Instruct-2507 detector (open-sourced on Hugging Face), frontier LLMs (model unspecified) as reasoning backstops, Perplexity's search engine as the default knowledge retrieval layer, a cross-model memory store for personalization, and MCP (Model Context Protocol) for enterprise tool integrations.",
           "evidence": [
             {
@@ -537,6 +577,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_38",
           "Summary": "The Perplexity Research team develops and publishes the BrowseSafe model and benchmark. Product teams define the memory personalization architecture. Enterprise customers configure MCP integrations and control which AI capabilities are available to users via agent permission policies.",
           "evidence": [
             {
@@ -548,6 +589,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_39",
           "Summary": "Memory is automatically disabled in incognito mode and can be fully turned off by users at any time. All stored memory data is encrypted, and users can opt out of contributing to model improvement via AI Data Retention settings. Context portability across models is positioned as a user right, not a platform lock-in.",
           "evidence": [
             {

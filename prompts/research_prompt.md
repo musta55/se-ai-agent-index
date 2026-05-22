@@ -551,12 +551,15 @@ An array of objects, each containing:
 
 ### Structure
 
-Each field is filled with an **array of objects** containing Summary and Evidence.
+Each field is filled with an **array of objects** containing a query ID (q_id), Summary, and Evidence.
+
+**IMPORTANT:** Every summary object MUST include a unique `q_id` field at the top level (as a sibling to "Summary" and "evidence"). The q_id should follow the format `q_N` where N is an incrementing number starting from 1 for each agent.
 
 **Example:**
 
 ```json
 "Tools": [{
+  "q_id": "q_7",
   "Summary": "The team uses Vitest for unit testing and Playwright for end-to-end evaluation of the agent's browser interactions.",
   "evidence": [
     {
@@ -570,6 +573,13 @@ Each field is filled with an **array of objects** containing Summary and Evidenc
   ]
 }]
 ```
+
+**Q-ID Assignment Rules:**
+1. Start with `q_1` for the Description field
+2. Increment sequentially across all SE_Practices categories and fields
+3. Each summary object gets exactly one q_id
+4. Q-IDs must be unique within each agent's JSON file
+5. The q_id field should be placed as the **first field** in each summary object (before "Summary" and "evidence")
 
 ## References Section
 
@@ -620,6 +630,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
   "Agent_Name": "{agent_name}",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Brief 2-3 sentence description of what the system does: its category (coding agent, chatbot, computer-use agent, CRM/sales agent, enterprise workflow platform, etc.), primary capabilities, and deployment surface (CLI, web app, IDE plugin, API, SaaS).",
       "evidence": [
         {
@@ -690,6 +701,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Testing_and_Reliability": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "Team uses Playwright for end-to-end testing with minimum 80% coverage requirement. All PRs must include tests before merge.",
           "evidence": [
             {
@@ -705,6 +717,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
       ],
       "Tools": [
         {
+          "q_id": "q_3",
           "Summary": "Playwright for e2e testing, Pytest for unit tests, GitHub Actions for CI automation",
           "evidence": [
             {
@@ -720,6 +733,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
       ],
       "Stakeholders": [
         {
+          "q_id": "q_4",
           "Summary": "QA engineers and core maintainers review test coverage before merge. Red team conducts adversarial testing quarterly.",
           "evidence": [
             {
@@ -731,6 +745,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
       ],
       "Others": [
         {
+          "q_id": "q_5",
           "Summary": "Not Available",
           "evidence": []
         }
@@ -739,6 +754,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Integration_and_Infrastructure_CICD": {
       "Practices": [
         {
+          "q_id": "q_6",
           "Summary": "...",
           "evidence": [
             {
@@ -750,18 +766,21 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
       ],
       "Tools": [
         {
+          "q_id": "q_7",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_8",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_9",
           "Summary": "...",
           "evidence": []
         }
@@ -770,24 +789,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Code_Review_Process": {
       "Practices": [
         {
+          "q_id": "q_10",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_11",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_12",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_13",
           "Summary": "...",
           "evidence": []
         }
@@ -814,24 +837,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
       ],
       "Practices": [
         {
+          "q_id": "q_14",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_15",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_16",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_17",
           "Summary": "...",
           "evidence": []
         }
@@ -840,24 +867,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Software_Engineering_Methodology": {
       "Practices": [
         {
+          "q_id": "q_18",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_19",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_20",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_21",
           "Summary": "...",
           "evidence": []
         }
@@ -866,24 +897,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_22",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_23",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_24",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_25",
           "Summary": "...",
           "evidence": []
         }
@@ -892,24 +927,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_26",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_27",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_28",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_29",
           "Summary": "...",
           "evidence": []
         }
@@ -918,24 +957,28 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_30",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Tools": [
         {
+          "q_id": "q_31",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Stakeholders": [
         {
+          "q_id": "q_32",
           "Summary": "...",
           "evidence": []
         }
       ],
       "Others": [
         {
+          "q_id": "q_33",
           "Summary": "...",
           "evidence": []
         }
@@ -982,6 +1025,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 6. **Complete References:** Every citation [1], [2], etc. must have a References entry
 7. **Verbatim Quotes:** All quotes must be exact text from sources
 8. **Real URLs:** All Links must be real, accessible URLs (no made-up paths)
+9. **Q-ID Required:** Every summary object (Description and all SE_Practices fields) must include a `q_id` field in format `q_N` (starting from q_1), placed as the first field before "Summary" and "evidence"
 
 ## Common Pitfalls to Avoid
 
@@ -1000,6 +1044,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 
 ```json
 {
+  "q_id": "q_15",
   "Summary": "Amazon Q team uses automated testing with 80% coverage requirement",
   "evidence": [{"quote": "All pull requests must maintain at least 80% test coverage before merge", "citation": "[1]"}]
 }
@@ -1129,6 +1174,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
   "Agent_Name": "Example Agent",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Example Agent is an open-source coding agent that assists developers with code generation, refactoring, and debugging through an IDE plugin and CLI interface.",
       "evidence": [
         {
@@ -1140,10 +1186,10 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
   ],
   "SE_Practices": {
     "Testing_and_Reliability": {
-      "Practices": [{"Summary": "...", "evidence": []}],
-      "Tools": [{"Summary": "...", "evidence": []}],
-      "Stakeholders": [{"Summary": "...", "evidence": []}],
-      "Others": [{"Summary": "Not Available", "evidence": []}]
+      "Practices": [{"q_id": "q_2", "Summary": "...", "evidence": []}],
+      "Tools": [{"q_id": "q_3", "Summary": "...", "evidence": []}],
+      "Stakeholders": [{"q_id": "q_4", "Summary": "...", "evidence": []}],
+      "Others": [{"q_id": "q_5", "Summary": "Not Available", "evidence": []}]
     }
   }
 }

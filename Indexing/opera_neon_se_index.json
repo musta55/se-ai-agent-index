@@ -2,6 +2,7 @@
   "Agent_Name": "Opera Neon",
   "Description": [
     {
+      "q_id": "q_1",
       "Summary": "Opera Neon is a premium, subscription-based AI agentic browser by Opera Software (Nasdaq: OPRA, Oslo, Norway), released in Early Access on September 30, 2025. Built on Chromium, it combines local in-browser automation (Neon Do), conversational AI (Neon Chat), and cloud-based creation (Neon Make) — letting users browse, act on the web, and build digital outputs directly from their browser. Its model-agnostic AI engine selects from OpenAI, Google, and specialized models depending on task type.",
       "evidence": [
         {
@@ -28,6 +29,7 @@
     "Testing_and_Evaluation": {
       "Practices": [
         {
+          "q_id": "q_2",
           "Summary": "The Opera security team conducted hundreds of internal pen-tests on Opera Neon before and during Early Access. This pre-launch hardening cycle was designed to surface and address key vulnerabilities in the AI agentic components before wider user exposure.",
           "evidence": [
             {
@@ -37,6 +39,7 @@
           ]
         },
         {
+          "q_id": "q_3",
           "Summary": "Opera launched Opera Neon in an Early Access phase specifically to gather real-world usage insights from a limited user pool and to invite the broader security community to help identify gaps — treating external usage as an extended testing layer.",
           "evidence": [
             {
@@ -50,6 +53,7 @@
           ]
         },
         {
+          "q_id": "q_4",
           "Summary": "Opera runs a public bug bounty program via BugCrowd as a structural complement to internal testing. It allows independent security researchers to report vulnerabilities ethically and to the mutual benefit of all parties.",
           "evidence": [
             {
@@ -59,6 +63,7 @@
           ]
         },
         {
+          "q_id": "q_53",
           "Summary": "Security testing of AI agentic features faces fundamental limits: because LLMs are non-deterministic, the known prompt injection proof-of-concept only succeeded 10% of the time, meaning consistent pass/fail validation is not achievable with standard testing methods.",
           "evidence": [
             {
@@ -74,6 +79,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_6",
           "Summary": "Internal security testing relies on pen-testing by the security team. External testing is structured through the BugCrowd public bug bounty platform. Opera also inherits Chromium's own security testing and upstream security team as a baseline.",
           "evidence": [
             {
@@ -85,6 +91,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_7",
           "Summary": "Testing involves Opera's internal security team working alongside product teams. External security researchers participate via the BugCrowd bug bounty program. Early Access subscribers form a real-world testing cohort.",
           "evidence": [
             {
@@ -96,6 +103,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_8",
           "Summary": "Testing is ongoing and expected to expand: the security team explicitly states that securing AI systems is tricky and unpredictable, calling for wider and more extended testing as the product matures.",
           "evidence": [
             {
@@ -109,6 +117,7 @@
     "CICD_and_Deployment": {
       "Practices": [
         {
+          "q_id": "q_54",
           "Summary": "Opera deploys security fixes rapidly. When the prompt injection vulnerability was acknowledged on October 20, 2025, a preliminary fix was developed within hours and deployed to production by the same day — under 11 hours from acknowledgment to live fix.",
           "evidence": [
             {
@@ -118,6 +127,7 @@
           ]
         },
         {
+          "q_id": "q_55",
           "Summary": "Opera Neon uses a phased rollout approach: the Early Access launch released to a limited number of invited users first, with more invitations following. This limits exposure surface during the validation period before wider availability.",
           "evidence": [
             {
@@ -131,6 +141,7 @@
           ]
         },
         {
+          "q_id": "q_56",
           "Summary": "Neon Make executes creation tasks on cloud virtual machines hosted on European servers, which keeps creation workloads separate from the user's local browser state. Neon Do, by contrast, operates fully locally in the user's running browser session.",
           "evidence": [
             {
@@ -146,6 +157,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_57",
           "Summary": "Opera Neon's deployment infrastructure includes the Chromium build and update pipeline for the browser base, European cloud VM infrastructure for Neon Make task execution, and local browser runtime for Neon Do agentic actions.",
           "evidence": [
             {
@@ -157,6 +169,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_58",
           "Summary": "Deployment is handled by Opera's engineering team and infrastructure team, with the security team owning same-day hotfix releases. Product team is notified and involved during security incidents requiring urgent fixes.",
           "evidence": [
             {
@@ -168,6 +181,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_59",
           "Summary": "The prompt injection fix was confirmed functional by external researchers on October 21, 2025 — one day after deployment — demonstrating a full fix-verify loop within a 24-hour window.",
           "evidence": [
             {
@@ -181,6 +195,7 @@
     "Code_Review": {
       "Practices": [
         {
+          "q_id": "q_60",
           "Summary": "Opera's security team actively reviews AI component design for injection safeguards, collaborating with product teams throughout development. Security review includes analysis of how prompts are constructed and how user context is separated from web content.",
           "evidence": [
             {
@@ -194,6 +209,7 @@
           ]
         },
         {
+          "q_id": "q_61",
           "Summary": "Cross-team review during security incidents brings security, product, and engineering teams together. During the October 2025 incident, all relevant internal teams were brought in to review the vulnerability and the proposed fix before it was deployed.",
           "evidence": [
             {
@@ -205,6 +221,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_62",
           "Summary": "Internal code review tooling is not publicly disclosed. Code review is supplemented by: pen-testing as a validation layer, BugCrowd for external security review, and the Chromium project's upstream review process for inherited browser components.",
           "evidence": [
             {
@@ -216,6 +233,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_63",
           "Summary": "Security team and product team collaborate on code reviews for AI-facing features. External security researchers contribute through responsible disclosure, functioning as an extended review process for the AI components.",
           "evidence": [
             {
@@ -227,6 +245,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_64",
           "Summary": "Opera Neon is fully closed-source. No public code review is visible. The only externally observable code quality signals come from incident post-mortems, security blog posts, and the external bug bounty program.",
           "evidence": [
             {
@@ -240,6 +259,7 @@
     "Bug_Solving_and_Issue_Tracking": {
       "Practices": [
         {
+          "q_id": "q_65",
           "Summary": "Opera uses BugCrowd as its public bug tracking channel for external vulnerability reports. The team performs routine manual reviews of auto-rejected tickets — this is how the prompt injection report was recovered after being auto-dismissed.",
           "evidence": [
             {
@@ -253,6 +273,7 @@
           ]
         },
         {
+          "q_id": "q_66",
           "Summary": "On confirmation of a valid vulnerability, Opera follows a rapid response process: immediate acknowledgment, internal investigation, PoC reproduction, fix development, and same-day deployment — followed by external verification before public disclosure.",
           "evidence": [
             {
@@ -266,6 +287,7 @@
           ]
         },
         {
+          "q_id": "q_67",
           "Summary": "Opera holds CNA (CVE Numbering Authority) membership under MITRE since December 2019, enabling the team to evaluate submitted vulnerabilities and formally assign CVEs where criteria are met.",
           "evidence": [
             {
@@ -275,6 +297,7 @@
           ]
         },
         {
+          "q_id": "q_68",
           "Summary": "Out-of-scope bugs, including those inherited from Chromium, are handled separately: either via a direct submission form or redirected to the Chromium Project. This keeps the Opera-specific bug tracker focused on product-level issues.",
           "evidence": [
             {
@@ -291,7 +314,11 @@
           "status": "closed",
           "url": "https://bugcrowd.com/engagements/opera",
           "description": "Malicious instructions embedded in zero-opacity HTML span elements were invisible to users but fully processed by the AI. The AI followed the hidden instructions as if they were user commands.",
-          "labels": ["security", "prompt-injection", "AI"],
+          "labels": [
+            "security",
+            "prompt-injection",
+            "AI"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-21"
         },
@@ -301,7 +328,11 @@
           "status": "closed",
           "url": "https://brave.com/blog/prompt-injection-flaw-opera-neon/",
           "description": "The injected instructions directed the AI to navigate to the user's Opera account page, extract their email address, and send it to an attacker-controlled endpoint — demonstrating a full cross-origin data leak.",
-          "labels": ["security", "data-leakage", "cross-origin"],
+          "labels": [
+            "security",
+            "data-leakage",
+            "cross-origin"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-21"
         },
@@ -311,7 +342,11 @@
           "status": "closed",
           "url": "https://blogs.opera.com/security/2025/10/prompt-injection-in-opera-neon-rapid-response-through-responsible-disclosure/",
           "description": "The BugCrowd submission was automatically classified as a placeholder and rejected because it lacked written reproduction steps, delaying Opera's awareness by six days until a manual routine check surfaced it.",
-          "labels": ["process", "triage", "bug-bounty"],
+          "labels": [
+            "process",
+            "triage",
+            "bug-bounty"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-20"
         },
@@ -321,7 +356,11 @@
           "status": "closed",
           "url": "https://brave.com/blog/prompt-injection-flaw-opera-neon/",
           "description": "The AI assistant did not distinguish between trusted user instructions and untrusted third-party web page content when building the LLM prompt, creating an indirect prompt injection surface for any page the user visits.",
-          "labels": ["security", "LLM", "design-gap"],
+          "labels": [
+            "security",
+            "LLM",
+            "design-gap"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-20"
         },
@@ -331,7 +370,11 @@
           "status": "closed",
           "url": "https://blogs.opera.com/security/2025/10/prompt-injection-in-opera-neon-rapid-response-through-responsible-disclosure/",
           "description": "The LLM context window did not enforce a clear boundary between the user's original command and the web page content being analyzed, allowing injected web content to override intended user instructions.",
-          "labels": ["security", "prompt-management", "architecture"],
+          "labels": [
+            "security",
+            "prompt-management",
+            "architecture"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-20"
         },
@@ -341,7 +384,11 @@
           "status": "closed",
           "url": "https://brave.com/blog/prompt-injection-flaw-opera-neon/",
           "description": "Elements styled with opacity: 0 were hidden from the user visually but included in the full HTML structure the AI processed. This meant malicious instructions were silently accessible to the AI while remaining invisible to the user.",
-          "labels": ["security", "HTML-processing", "prompt-injection"],
+          "labels": [
+            "security",
+            "HTML-processing",
+            "prompt-injection"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-21"
         },
@@ -351,7 +398,11 @@
           "status": "closed",
           "url": "https://brave.com/blog/prompt-injection-flaw-opera-neon/",
           "description": "Because Neon Do operates inside the user's live browser session with all active logins, injected instructions could direct the AI to make authenticated requests to other sites the user was already logged into.",
-          "labels": ["security", "cross-site", "session-management"],
+          "labels": [
+            "security",
+            "cross-site",
+            "session-management"
+          ],
           "reported": "2025-10-14",
           "closed": "2025-10-21"
         },
@@ -361,7 +412,11 @@
           "status": "open",
           "url": "https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/",
           "description": "Banking, financial, and other high-stakes sites visited while Neon Do is active carry elevated risk because the AI operates with the user's live authenticated session. Opera has introduced blacklisting for certain high-risk pages as a mitigation, but complete coverage is an ongoing challenge.",
-          "labels": ["security", "risk-management", "AI-safety"],
+          "labels": [
+            "security",
+            "risk-management",
+            "AI-safety"
+          ],
           "reported": "2025-09-30",
           "closed": null
         },
@@ -371,7 +426,11 @@
           "status": "open",
           "url": "https://blogs.opera.com/security/2025/10/prompt-injection-in-opera-neon-rapid-response-through-responsible-disclosure/",
           "description": "LLM non-determinism means security exploits do not reliably reproduce. The prompt injection proof-of-concept only succeeded in 10% of test attempts, making it structurally difficult to guarantee comprehensive security validation across all model outputs.",
-          "labels": ["testing", "AI", "security"],
+          "labels": [
+            "testing",
+            "AI",
+            "security"
+          ],
           "reported": "2025-10-01",
           "closed": null
         },
@@ -381,7 +440,11 @@
           "status": "open",
           "url": "https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/",
           "description": "As a Chromium-based browser, Opera Neon inherits any Chromium-level vulnerabilities. These require continuous monitoring and timely upstream patch integration. Opera directs Chromium-inherited bugs to the Chromium Project separately.",
-          "labels": ["dependency", "chromium", "maintenance"],
+          "labels": [
+            "dependency",
+            "chromium",
+            "maintenance"
+          ],
           "reported": "2025-09-30",
           "closed": null
         },
@@ -391,7 +454,11 @@
           "status": "open",
           "url": "https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/",
           "description": "Neon Do browses with the user's existing session tokens, cookies, and logins — removing credential sharing requirements, but also meaning any compromise of the AI agent grants it full access to all authenticated sites in the browser.",
-          "labels": ["security", "design", "session-management"],
+          "labels": [
+            "security",
+            "design",
+            "session-management"
+          ],
           "reported": "2025-09-30",
           "closed": null
         },
@@ -401,7 +468,11 @@
           "status": "closed",
           "url": "https://blogs.opera.com/news/2025/09/opera-neon-agentic-ai-browser-release/",
           "description": "The early Browser Operator interface was identified as needing greater clarity in how actions were communicated to users. The interface was redesigned before the Opera Neon Early Access release to improve safety, speed, and precision.",
-          "labels": ["UX", "design", "safety"],
+          "labels": [
+            "UX",
+            "design",
+            "safety"
+          ],
           "reported": "2025-03-01",
           "closed": "2025-09-30"
         },
@@ -411,7 +482,11 @@
           "status": "open",
           "url": "https://blogs.opera.com/news/2025/05/opera-neon-first-ai-agentic-browser/",
           "description": "When building complex outputs, Neon Make may autonomously install Python libraries or JavaScript frameworks to complete a task. Dependencies installed by the AI agent in the cloud VM are not user-reviewed and could introduce security or compatibility risks.",
-          "labels": ["AI-safety", "dependencies", "cloud-VM"],
+          "labels": [
+            "AI-safety",
+            "dependencies",
+            "cloud-VM"
+          ],
           "reported": "2025-05-28",
           "closed": null
         },
@@ -421,7 +496,11 @@
           "status": "open",
           "url": "https://www.operaneon.com/faq",
           "description": "Opera Neon routes user queries and web page content to external model providers (primarily OpenAI and Google). This creates a data pathway outside Opera's direct control, requiring reliance on the data handling practices of third-party providers.",
-          "labels": ["privacy", "third-party", "LLM"],
+          "labels": [
+            "privacy",
+            "third-party",
+            "LLM"
+          ],
           "reported": "2025-09-30",
           "closed": null
         },
@@ -431,13 +510,18 @@
           "status": "open",
           "url": "https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/",
           "description": "With a limited number of Early Access subscribers, Opera Neon cannot yet surface the full range of real-world edge cases and attack patterns. Opera explicitly cites this as motivation for the bug bounty program and community security collaboration.",
-          "labels": ["testing", "coverage", "early-access"],
+          "labels": [
+            "testing",
+            "coverage",
+            "early-access"
+          ],
           "reported": "2025-09-30",
           "closed": null
         }
       ],
       "Tools": [
         {
+          "q_id": "q_69",
           "Summary": "Bug tracking uses BugCrowd as the public-facing platform for all external vulnerability submissions. The MITRE CVE program (CNA membership) handles formal CVE assignment. Out-of-scope issues go through a direct security submission form at security.opera.com. Chromium-level bugs are redirected to the Chromium Project.",
           "evidence": [
             {
@@ -453,6 +537,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_70",
           "Summary": "The security team owns vulnerability triage, PoC reproduction, and fix validation. The product team is notified and involved in implementing fixes during active incidents. External security researchers contribute via BugCrowd. The MITRE CNA program provides formal vulnerability classification.",
           "evidence": [
             {
@@ -464,6 +549,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_71",
           "Summary": "Opera Neon is closed-source with no public issue tracker. All known issues are managed privately through BugCrowd or internal systems. The only publicly visible issue record comes from the October 2025 prompt injection incident disclosure.",
           "evidence": [
             {
@@ -477,6 +563,7 @@
     "SE_Methodology": {
       "Practices": [
         {
+          "q_id": "q_72",
           "Summary": "Opera Neon was developed iteratively over two years. It began as internal agentic AI research, debuted publicly as 'Browser Operator' in March 2025, launched as Opera Neon waitlist in May 2025, and shipped in Early Access September 2025 — with interface and safety mechanics improved between each stage.",
           "evidence": [
             {
@@ -490,6 +577,7 @@
           ]
         },
         {
+          "q_id": "q_73",
           "Summary": "Human-in-the-loop is a core design principle: Neon Do pauses and requests user confirmation before executing sensitive actions such as financial transactions or file downloads, keeping the user in control at all times.",
           "evidence": [
             {
@@ -503,6 +591,7 @@
           ]
         },
         {
+          "q_id": "q_74",
           "Summary": "Task isolation is a core architectural pattern: each Task in Opera Neon is a self-contained workspace, preventing the AI from accessing data or tabs outside the active Task. This limits blast radius for any potential misuse or error.",
           "evidence": [
             {
@@ -512,6 +601,7 @@
           ]
         },
         {
+          "q_id": "q_75",
           "Summary": "Opera Neon's security is designed with layered defenses: input sanitization, output filtering, HITL gating, blacklisting of high-risk pages, and restriction of AI actions to a safe subset of browser capabilities — rather than relying on any single protection.",
           "evidence": [
             {
@@ -521,6 +611,7 @@
           ]
         },
         {
+          "q_id": "q_76",
           "Summary": "Privacy-by-design for Neon Do: browsing data such as history, logins, and cookies stay local on the user's machine. Unlike cloud-based AI agents, no credentials are shared with remote services.",
           "evidence": [
             {
@@ -532,6 +623,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_77",
           "Summary": "The core methodological tools are: Chromium as the browser base, European cloud VMs for Neon Make, DOM tree parsing for web interaction, the Cards system for user-defined prompt customization, and human-in-the-loop gating for sensitive actions.",
           "evidence": [
             {
@@ -543,6 +635,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_78",
           "Summary": "The engineering team, security team, and product team collaborate on iterative feature development. Opera's 30-year browser heritage provides the organizational foundation on which agentic features are built.",
           "evidence": [
             {
@@ -554,6 +647,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_79",
           "Summary": "Neon Make uses a multi-agent orchestration model: one agent acts as a conductor, decomposes tasks into smaller steps, and coordinates specialist agents to execute each step. When the cloud agent encounters errors, it attempts to self-correct autonomously.",
           "evidence": [
             {
@@ -567,6 +661,7 @@
     "Team_Communication": {
       "Practices": [
         {
+          "q_id": "q_34",
           "Summary": "Opera follows responsible disclosure with external researchers: after receiving a report, they coordinate directly with the researcher, ask for a temporary hold on public disclosure while investigating, and confirm fixes before the researcher goes public.",
           "evidence": [
             {
@@ -580,6 +675,7 @@
           ]
         },
         {
+          "q_id": "q_35",
           "Summary": "Opera publishes incident post-mortems publicly on its security blog, and summarize the vulnerability, the discovery process, the fix, and lessons learned — communicating openly with users and the security community.",
           "evidence": [
             {
@@ -589,6 +685,7 @@
           ]
         },
         {
+          "q_id": "q_36",
           "Summary": "During the October 2025 incident, internal communication was cross-functional: the security team, product team, and other relevant internal teams were all mobilized and kept in sync from the moment the vulnerability was acknowledged.",
           "evidence": [
             {
@@ -600,6 +697,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_37",
           "Summary": "External communication uses BugCrowd for vulnerability submissions and a dedicated security inquiry portal (opera.atlassian.net) for questions about the bug bounty program. The Opera security blog (blogs.opera.com/security) serves as the public-facing incident communication channel.",
           "evidence": [
             {
@@ -611,6 +709,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_80",
           "Summary": "Internal communication flows between the security team, product team, and engineering team during incidents. External communication is with security researchers (via BugCrowd and direct contact) and the broader user community (via security blog).",
           "evidence": [
             {
@@ -622,6 +721,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_81",
           "Summary": "The October 2025 disclosure timeline shows the full communication cycle: Oct 14 (report submitted) → Oct 17 (auto-rejected) → Oct 20 (Opera reopens and contacts researcher, requests hold) → Oct 21 (fix confirmed by researcher) → Oct 23 (Opera publishes public blog).",
           "evidence": [
             {
@@ -635,6 +735,7 @@
     "Holistic_Documentation": {
       "Practices": [
         {
+          "q_id": "q_38",
           "Summary": "Opera maintains a dedicated security blog series tagged 'Agentic Browser Security', which covers the security model of Opera Neon in detail: safeguard mechanisms, incident reports, and forward-looking recommendations. This is proactive public documentation rather than reactive disclosure.",
           "evidence": [
             {
@@ -644,6 +745,7 @@
           ]
         },
         {
+          "q_id": "q_39",
           "Summary": "Opera Neon's FAQ at operaneon.com documents model usage (model-agnostic engine, primary providers), the differences between Neon Do/Chat/Make, and answers to common user questions about how the AI operates.",
           "evidence": [
             {
@@ -653,6 +755,7 @@
           ]
         },
         {
+          "q_id": "q_82",
           "Summary": "Opera's security.opera.com hosts formal documentation covering: vulnerability policy, bug bounty scope and process, CNA membership details, security advisories, and a transparency report — forming a comprehensive security governance reference.",
           "evidence": [
             {
@@ -664,6 +767,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_41",
           "Summary": "Documentation is spread across: blogs.opera.com/security (security blog), blogs.opera.com/news (feature and release blog), operaneon.com/faq (product FAQ), security.opera.com (formal vulnerability and policy documentation), and press.opera.com (press releases).",
           "evidence": [
             {
@@ -675,6 +779,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_42",
           "Summary": "Documentation is produced by the security team (security blogs and incident reports), product and marketing teams (news blogs, FAQs, press releases), and the broader Opera engineering organization.",
           "evidence": [
             {
@@ -686,6 +791,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_43",
           "Summary": "Opera publishes incident post-mortems within days of resolution. The October 2025 prompt injection blog was published October 23, 2025 — two days after the fix was confirmed. No public API documentation exists as Opera Neon is a closed commercial product.",
           "evidence": [
             {
@@ -699,6 +805,7 @@
     "LLM_Integration_and_Prompt_Management": {
       "Practices": [
         {
+          "q_id": "q_44",
           "Summary": "Opera Neon uses a model-agnostic AI engine that selects the most appropriate model per task type. OpenAI and Google models are the primary general-purpose providers; specialized models handle image generation, speech-to-text, and text-to-speech separately.",
           "evidence": [
             {
@@ -708,6 +815,7 @@
           ]
         },
         {
+          "q_id": "q_48",
           "Summary": "Opera Neon analyzes incoming prompts for signs of injection attacks as part of input sanitization, providing a first-pass defense before content is passed to the LLM.",
           "evidence": [
             {
@@ -717,6 +825,7 @@
           ]
         },
         {
+          "q_id": "q_49",
           "Summary": "Following the October 2025 incident, the mitigation strategy explicitly focuses on separating the trusted user command from untrusted web page content within the LLM context window — preventing web content from being interpreted as instructions.",
           "evidence": [
             {
@@ -726,6 +835,7 @@
           ]
         },
         {
+          "q_id": "q_83",
           "Summary": "The Cards system allows users to define reusable prompt instructions that are automatically incorporated into every Neon response within a Task. Users can build custom Cards or use community Cards from a Cards store.",
           "evidence": [
             {
@@ -735,6 +845,7 @@
           ]
         },
         {
+          "q_id": "q_84",
           "Summary": "Neon Make uses a multi-agent orchestration design: the AI engine acts as a conductor that interprets the user's goal, breaks it down into sub-tasks, and coordinates specialized AI agents to execute each part — including self-correction when errors occur.",
           "evidence": [
             {
@@ -748,6 +859,7 @@
           ]
         },
         {
+          "q_id": "q_85",
           "Summary": "Human-in-the-loop gating is applied at the prompt execution level: for actions classified as sensitive (transactions, downloads), Neon Do pauses and waits for explicit user approval before proceeding, limiting autonomous AI action scope.",
           "evidence": [
             {
@@ -759,6 +871,7 @@
       ],
       "Tools": [
         {
+          "q_id": "q_50",
           "Summary": "The LLM stack includes OpenAI models and Google models for general tasks, plus specialized third-party models for image generation, speech-to-text, and text-to-speech. The Cards system provides structured prompt extension. DOM tree parsing is the web observation interface.",
           "evidence": [
             {
@@ -770,6 +883,7 @@
       ],
       "Stakeholders": [
         {
+          "q_id": "q_51",
           "Summary": "The AI/ML engineering team builds and maintains the model-agnostic AI engine and the prompt management layer. Third-party model providers (OpenAI, Google) supply the underlying model capabilities. Product team shapes user-facing prompt features such as Cards.",
           "evidence": [
             {
@@ -781,6 +895,7 @@
       ],
       "Others": [
         {
+          "q_id": "q_52",
           "Summary": "Non-deterministic LLM behavior has security implications: the known prompt injection exploit only succeeded 10% of the time, meaning the same attack is not reliably reproducible — which complicates both testing and severity assessment of AI-specific vulnerabilities.",
           "evidence": [
             {
