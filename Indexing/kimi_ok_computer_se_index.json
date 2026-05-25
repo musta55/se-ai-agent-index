@@ -1,6 +1,7 @@
 {
   "Agent_Name": "Kimi OK Computer",
   "Description": {
+    "q_id": "q_49",
     "value": "Kimi Ok Computer is a proprietary closed-source computer-use AI agent developed by Moonshot AI, accessible at kimi.com/agent, that autonomously operates a cloud computing environment to complete complex multi-step tasks including web browsing, code execution, file manipulation, and visual reasoning. It is powered by the Kimi K2.x model family with Agent Swarm parallel orchestration.",
     "evidence": [
       {

@@ -1,6 +1,7 @@
 {
   "Agent_Name": "Browser Use",
   "Description": {
+    "q_id": "q_18",
     "value": "Browser Use is an open-source Python library (MIT) that makes websites accessible to AI agents. It connects large language models to a Chromium browser via CDP, extracting the DOM and screenshots on each step, then executing LLM-decided actions until the task is complete. Available as a pip package, a CLI tool, and a managed cloud API.",
     "evidence": [
       {

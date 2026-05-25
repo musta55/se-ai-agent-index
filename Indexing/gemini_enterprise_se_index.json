@@ -1,6 +1,7 @@
 {
   "Agent_Name": "Gemini Enterprise",
   "Description": {
+    "q_id": "q_18",
     "value": "Google Gemini Enterprise (also marketed as Google Agentspace) is a closed-source enterprise AI agent platform built on Google Cloud that enables organizations to deploy and orchestrate intelligent AI agents for workplace knowledge retrieval, multi-step workflow automation, and enterprise productivity at scale.",
     "evidence": [
       {
