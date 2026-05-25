@@ -163,15 +163,27 @@ def is_real_summary(summary):
 
 def build_agent_index(data):
     """
-    Assign q-ids to every JSON array item with real (non-NA) summary content.
+    Build q-id index from JSON items.  Q-ids are taken directly from the
+    'q_id' field embedded in each JSON item (e.g. "q_60" → "q-60"), so the
+    spreadsheet and JSON share the same identifiers.  Items that lack a q_id
+    field (e.g. old-format Description objects) fall back to a counter that
+    avoids collisions with existing ids.
+
     Returns:
       query_entries : dict  q-id → {column_label, array_index, summary, evidence}
       col_item_qids : dict  col_num → {array_index → q-id}
     """
     references = normalize_references(data.get("References", {}))
-    counter = [1]
+    fallback_counter = [1]
     query_entries = {}
     col_item_qids = {}
+
+    def _next_fallback():
+        while f"q-{fallback_counter[0]}" in query_entries:
+            fallback_counter[0] += 1
+        qid = f"q-{fallback_counter[0]}"
+        fallback_counter[0] += 1
+        return qid
 
     for col in ORDERED_COLS:
         label, accessor = COLUMN_MAP[col]
@@ -187,8 +199,12 @@ def build_agent_index(data):
             if not is_real_summary(summary):
                 continue
 
-            q_id = f"q-{counter[0]}"
-            counter[0] += 1
+            # Use the q_id embedded in the JSON (q_60 → q-60); fall back to counter.
+            raw = item.get("q_id", "").strip()
+            if raw:
+                q_id = raw.replace("_", "-")
+            else:
+                q_id = _next_fallback()
 
             query_entries[q_id] = {
                 "column_label": label,

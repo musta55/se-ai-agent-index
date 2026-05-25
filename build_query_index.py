@@ -34,8 +34,9 @@ from se_index_core import (
 # Paths
 # ---------------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PAPER_DIR = os.path.join(BASE_DIR, "SE Indexing for AI Agents")
 EXCEL_BACKUP = os.path.join(BASE_DIR, "Analysis of SE AI Agent Index.backup.xlsx")
-EXCEL_OUTPUT = os.path.join(BASE_DIR, "Analysis of SE AI Agent Index.xlsx")
+EXCEL_OUTPUT = os.path.join(PAPER_DIR, "Analysis of SE AI Agent Index.xlsx")
 QUERY_INDEX_PATH = os.path.join(BASE_DIR, "query_index.json")
 
 # Matches {Summary 1}, {Summary 2, Tools}, {Summary 4, Stakeholders}, etc.
@@ -149,7 +150,9 @@ def main():
             label, accessor = COLUMN_MAP[col]
             items = accessor(data)
             original = ws_src.cell(row=row, column=col).value
-            new_text = annotate_cell(original, col, col_item_qids, items)
+            # Strip any stale [q-N] tags left by a previous run before re-annotating.
+            cleaned = re.sub(r'\s*\[q-\d+\]', '', str(original)).strip() if original else original
+            new_text = annotate_cell(cleaned, col, col_item_qids, items)
             ws_out.cell(row=row, column=col).value = new_text
 
             n_ids = len(col_item_qids.get(col, {}))

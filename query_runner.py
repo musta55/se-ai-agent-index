@@ -37,9 +37,10 @@ def main():
         sys.exit(1)
 
     agent_input = sys.argv[1].strip()
-    query_id = sys.argv[2].strip().lower()
-    if not query_id.startswith("q-"):
-        query_id = f"q-{query_id}"
+    # Normalise q_60, q-60, or bare 60 → q-60
+    raw_qid = sys.argv[2].strip().lower()
+    import re as _re
+    query_id = "q-" + _re.sub(r"^q[_-]?", "", raw_qid)
 
     matched_key, json_file = fuzzy_match_agent(agent_input)
     if not matched_key:
