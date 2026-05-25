@@ -1,135 +1,69 @@
 # Quality Review: Alibaba Mobile Agent
 
-**Review Date:** 2026-05-18  
-**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
-**Source File:** `Indexing/alibaba_mobile_agent_se_index.json`
+Review Date: 2026-05-23
+Reviewer: LLM-as-Judge (claude-sonnet-4-6)
+Source File: Indexing/alibaba_mobile_agent_se_index.json
 
 ---
 
 ## Summary
 
-| | Count |
-|---|---|
-| ✅ Pass | 10 |
-| ⚠️ Warning | 3 |
-| ❌ Fail | 1 |
-| 🤖 LLM Score | GOOD |
+Programmatic checks: 10 pass, 3 warn, 1 fail
+LLM unit evaluation: 43 units checked, 0 FAIL, 7 WARN
+Overall LLM score: EXCELLENT
 
 ---
 
 ## Completeness
 
-✅ Description field populated with agent category/capabilities/deployment surface
-✅ Repository_Statistics has all 5 required fields
-✅ All 8 SE_Practices areas present
-✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
-❌ Bug_Solving_Approaches has 6 issues (only 6 — minimum 10 required)
-⚠️ References count: 12 (⚠ below 15) — target 15–20
-✅ External (non-GitHub) sources: 9 (≥5 ✓) — target 5–10
+PASS  Description field populated with agent category/capabilities/deployment surface
+PASS  Repository_Statistics has all 5 required fields
+PASS  All 8 SE_Practices areas present
+PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+FAIL  Bug_Solving_Approaches has 6 issues (only 6 — minimum 10 required)
+WARN  References count: 12 (below 15) — target 15-20
+PASS  External (non-GitHub) sources: 9 (>=5)
 
 ## Source Quality
 
-✅ All citations have References entries (6 citations verified)
-⚠️ Unused References (no citation points to them): [4], [5], [6], [7], [8], [9]
-✅ All Date_Pulled in YYYY-MM-DD format
+PASS  All citations have References entries
+WARN  Unused References (no citation points to them): [4], [5], [6], [7], [8], [9]
+PASS  All Date_Pulled in YYYY-MM-DD format
 
 ## Evidence Quality
 
-✅ No URL-as-quote violations
-✅ No filename-as-quote violations
-⚠️ No short quotes (<5 words) — 11 found
-  - `Open (185) Closed (96).` (4 words)
-  - `Contributors 22.` (2 words)
-  - `Contributors 22.` (2 words)
-✅ No overlong quotes (>50 words — should use '...')
-
-## LLM-as-Judge Assessment
-
-### ✅ Content Focus (dev practices vs. product features): `PASS`
-
-### ⚠️ Quote Verbatim Fidelity: `WARN`
-
-- 'No releases published. No packages published.' is a GitHub sidebar label, not a substantive sentence
-- 'Open (185) Closed (96).' is a GitHub UI count label
-- Run command block 'cd MobileAgent/Mobile-Agent-v3/os_world_v3 sh run_guiowl.sh' contains CLI commands — this is code, not a verbatim quote from a prose source
-- 11 short quotes flagged by automated check
-
-### ✅ Anti-Hallucination: `PASS`
-
-### ⚠️ Evidence Supports Summary: `WARN`
-
-- 5 SE areas missing from index — should appear with Not Available markers
-- 0 Bug_Solving_Approaches issues vs. 10 required minimum
-- 6 uncited references ([4]-[9]) despite being in References
-
-### ⚠️ Not-Available Usage Appropriate: `WARN`
-
-- 5 of 8 SE areas absent entirely instead of present with Not Available markers
-- 12 references below 15-20 target
-
-### Overall: **✅ GOOD**
-
-Good research for an academic/research repository with limited public SE documentation. Strengths: accurate Not Available usage for most areas, valid evaluation methodology description (AndroidWorld, OSWorld benchmarks). Issues: 5 SE areas absent instead of using Not Available markers, GitHub UI labels used as quotes, CLI commands used as evidence quotes, and 6 unused references.
-
+PASS  No URL-as-quote violations
+PASS  No filename-as-quote violations
+WARN  No short quotes (<5 words) — 11 found
+PASS  No overlong quotes (>50 words)
 
 ---
 
-## Issues to Address
+## LLM-as-Judge Findings
 
-### Programmatic Checks
+Overall assessment: The Alibaba Mobile Agent index is well-focused on engineering and research practices, with summaries grounded in observable repository evidence. The main weakness is over-reliance on scraped GitHub UI labels (issue counts, contributor counts) as sole evidence for several units, and a few summaries that assert claims broader than what the quoted fragment demonstrates. No hallucinated statistics were detected; claims are either verifiable in the quoted text or are conservatively qualified.
 
-❌ Bug_Solving_Approaches has 6 issues (only 6 — minimum 10 required)
-⚠️ References count: 12 (⚠ below 15) — target 15–20
-⚠️ Unused References (no citation points to them): [4], [5], [6], [7], [8], [9]
-⚠️ No short quotes (<5 words) — 11 found
+### WARN
 
----
-
-## Full Quality Checklist
-
-*(Automated = checked programmatically; Manual = requires human review)*
-
-### Source Quality
-- [x] All citations map to References entries *(automated)*
-- [x] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
-- [ ] Website_Type accurately describes each source *(manual)*
-
-### Content Focus
-- [ ] Focus on development practices, not product features *(manual)*
-- [ ] No user-facing features substituted *(manual)*
-- [ ] 'Not Available' used only when info genuinely absent *(manual)*
-
-### Completeness
-- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
-- [x] Repository_Statistics has all 5 required fields *(automated)*
-- [x] All 8 SE_Practices areas present *(automated)*
-- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
-- [ ] Bug_Solving_Approaches has 6 issues (only 6 — minimum 10 required) *(automated)*
-- [ ] References count: 12 (⚠ below 15) — target 15–20 *(automated)*
-- [x] External (non-GitHub) sources: 9 (≥5 ✓) — target 5–10 *(automated)*
-
-### JSON Validity
-- [x] JSON is valid (file loaded successfully) *(automated)*
-- [x] JSON is complete (all top-level keys present) *(automated)*
-- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
-- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
-
-### Evidence Quality
-- [x] No URL-as-quote violations *(automated)*
-- [x] No filename-as-quote violations *(automated)*
-- [ ] No short quotes (<5 words) — 11 found *(automated)*
-- [x] No overlong quotes (>50 words — should use '...') *(automated)*
-- [ ] Quotes directly support their corresponding summaries *(manual)*
-
-### Anti-Hallucination
-- [ ] No invented statistics or fabricated data *(manual)*
-- [ ] All URLs in References verified accessible *(manual)*
-- [ ] No guessed file paths or made-up links *(manual)*
-
-### Research Efficiency
-- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
-- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+| q_id | Attribute                  | Issue                                                                                                                                                                                                                                                                                                |
+| ---- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| q_2  | quote_correctness          | "No releases published. No packages published." is a GitHub UI sidebar label, not a prose statement, and does not evidence the absence of test suites claimed in the Summary.                                                                                                                        |
+| q_4  | quote_correctness          | "Open (185) Closed (96)." is a scraped GitHub UI counter; using it as evidence for a behavioural claim about community testing patterns is a quote_correctness concern.                                                                                                                              |
+| q_6  | evidence_summary_alignment | Summary claims testing is performed by a "Tongyi Lab core team" running benchmark evaluations internally, but the quoted evidence ("Contributors 22.") only shows a contributor count and does not support the internal evaluation claim.                                                            |
+| q_44 | evidence_summary_alignment | Summary claims no dedicated DevOps or SRE role is publicly visible and that Alibaba Cloud provides compute, but the quoted evidence ("Contributors 22.") does not demonstrate either claim.                                                                                                          |
+| q_45 | quote_correctness          | Evidence quote is an empty string ("") — no quoted evidence is provided for the Summary about the gap left by the manual release process.                                                                                                                                                           |
+| q_59 | evidence_summary_alignment | Summary claims the README TODO list is "the only visible form of work tracking," which is a broader organizational claim than what the quoted README snippet alone can demonstrate.                                                                                                                  |
+| q_65 | evidence_summary_alignment | Summary states GUI-Owl is instantiated as four distinct specialized agents with role-specific prompts, but the quoted evidence ("GUI-Owl can be instantiated as different specialized agents within Mobile-Agent-v3.") is a paraphrase-level restatement that does not cite the specific four roles. |
 
 ---
 
-*Generated by `quality_review_agent.py` on 2026-05-18*
+## Programmatic Issues to Address
+
+FAIL  Bug_Solving_Approaches has 6 issues (only 6 — minimum 10 required)
+WARN  References count: 12 (below 15) — target 15-20
+WARN  Unused References (no citation points to them): [4], [5], [6], [7], [8], [9]
+WARN  No short quotes (<5 words) — 11 found
+
+---
+
+*Generated by quality_review_agent.py on 2026-05-23*

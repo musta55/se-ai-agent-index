@@ -1,127 +1,75 @@
 # Quality Review: Anthropic Claude Code
 
-**Review Date:** 2026-05-18  
-**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
-**Source File:** `Indexing/claude_code_se_index.json`
+Review Date: 2026-05-23
+Reviewer: LLM-as-Judge (claude-sonnet-4-6)
+Source File: Indexing/anthropic_claude_code_se_index.json
 
 ---
 
 ## Summary
 
-| | Count |
-|---|---|
-| ✅ Pass | 12 |
-| ⚠️ Warning | 2 |
-| ❌ Fail | 0 |
-| 🤖 LLM Score | GOOD |
+Programmatic checks: 12 pass, 2 warn, 0 fail
+LLM unit evaluation: 58 units checked, 1 FAIL, 9 WARN
+Overall LLM score: EXCELLENT
 
 ---
 
 ## Completeness
 
-✅ Description field populated with agent category/capabilities/deployment surface
-✅ Repository_Statistics has all 5 required fields
-✅ All 8 SE_Practices areas present
-✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
-✅ Bug_Solving_Approaches has 12 issues (≥10 ✓)
-✅ References count: 37 (✓) — target 15–20
-✅ External (non-GitHub) sources: 24 (≥5 ✓) — target 5–10
+PASS  Description field populated with agent category/capabilities/deployment surface
+PASS  Repository_Statistics has all 5 required fields
+PASS  All 8 SE_Practices areas present
+PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+PASS  Bug_Solving_Approaches meets minimum issue count
+PASS  References count meets target
+PASS  External (non-GitHub) sources present
 
 ## Source Quality
 
-✅ All citations have References entries (22 citations verified)
-⚠️ Unused References (no citation points to them): [18], [19], [20], [21], [23], [24], [25], [26], [27], [28], [29], [34], [35], [36], [37]
-✅ All Date_Pulled in YYYY-MM-DD format
+PASS  All citations have References entries
+WARN  Unused References (no citation points to them): [18], [19], [20], [21], [23], [24], [25], [26], [27], [28], [29], [34], [35], [36], [37]
+PASS  All Date_Pulled in YYYY-MM-DD format
 
 ## Evidence Quality
 
-✅ No URL-as-quote violations
-✅ No filename-as-quote violations
-✅ No short quotes (<5 words)
-⚠️ No overlong quotes (>50 words — should use '...') — 3 found
-  - `Then security researcher Chaofan Shou found a 60 MB source map file in...` (70 words)
-  - `An evaluation (“eval”) is a test for an AI system: give an AI an input...` (60 words)
-
-## LLM-as-Judge Assessment
-
-### ✅ Content Focus (dev practices vs. product features): `PASS`
-
-### ✅ Quote Verbatim Fidelity: `PASS`
-
-### ✅ Anti-Hallucination: `PASS`
-
-### ⚠️ Evidence Supports Summary: `WARN`
-
-- 15 of 37 references are unused — significant over-collection ([18],[19],[20],[21],[23]-[29],[34]-[37])
-- 5 SE areas absent instead of marked Not Available
-- 3 overlong quotes (>50 words) — should use '...' truncation
-
-### ⚠️ Not-Available Usage Appropriate: `WARN`
-
-- 5 SE areas (Testing, CICD, Code Review, Bug Solving, SE Methodology) absent instead of present with Not Available markers
-- 0 Bug_Solving_Approaches issues despite 12 GitHub issues visible in the public repo
-
-### Overall: **✅ GOOD**
-
-Excellent content quality: 512K LOC from source map leak, antfooding practice, 60-100 npm releases/day, April 2026 quality regression all properly cited. Main structural issues: 5 SE areas absent instead of Not Available markers, 0 bug issues despite known public issues, and 15 of 37 collected references left uncited.
-
+PASS  No URL-as-quote violations
+PASS  No filename-as-quote violations
+PASS  No short quotes (<5 words)
+WARN  No overlong quotes (>50 words) — 3 found
 
 ---
 
-## Issues to Address
+## LLM-as-Judge Findings
 
-### Programmatic Checks
+Overall assessment: The Anthropic Claude Code index is the strongest of the three reviewed, with rich, well-attributed evidence for a wide range of SE practices. Most summaries align closely with quoted evidence, and the index demonstrates genuine engineering depth (prompt architecture, release cadence, postmortem culture). The main concerns are a small number of summaries that introduce specific quantitative claims not directly present in the cited evidence, and a few units where the evidence quotes describe user-facing capabilities or promotional content rather than internal engineering practices.
 
-⚠️ Unused References (no citation points to them): [18], [19], [20], [21], [23], [24], [25], [26], [27], [28], [29], [34], [35], [36], [37]
-⚠️ No overlong quotes (>50 words — should use '...') — 3 found
+### FAIL
 
----
+| q_id | Attribute     | Issue                                                                                                                                                                                                                                                                                                                                                                          |
+| ---- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| q_56 | content_focus | Summary describes anti-distillation and binary attestation as SE security practices, but the quoted evidence ("Injects decoy tool definitions via anti_distillation: ['fake_tools'] flags, poisoning competitor training data.") is sourced from reverse-engineering analysis [8], not an Anthropic engineering disclosure, making this a speculative claim presented as fact. |
 
-## Full Quality Checklist
+### WARN
 
-*(Automated = checked programmatically; Manual = requires human review)*
-
-### Source Quality
-- [x] All citations map to References entries *(automated)*
-- [x] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
-- [ ] Website_Type accurately describes each source *(manual)*
-
-### Content Focus
-- [ ] Focus on development practices, not product features *(manual)*
-- [ ] No user-facing features substituted *(manual)*
-- [ ] 'Not Available' used only when info genuinely absent *(manual)*
-
-### Completeness
-- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
-- [x] Repository_Statistics has all 5 required fields *(automated)*
-- [x] All 8 SE_Practices areas present *(automated)*
-- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
-- [x] Bug_Solving_Approaches has 12 issues (≥10 ✓) *(automated)*
-- [x] References count: 37 (✓) — target 15–20 *(automated)*
-- [x] External (non-GitHub) sources: 24 (≥5 ✓) — target 5–10 *(automated)*
-
-### JSON Validity
-- [x] JSON is valid (file loaded successfully) *(automated)*
-- [x] JSON is complete (all top-level keys present) *(automated)*
-- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
-- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
-
-### Evidence Quality
-- [x] No URL-as-quote violations *(automated)*
-- [x] No filename-as-quote violations *(automated)*
-- [x] No short quotes (<5 words) *(automated)*
-- [ ] No overlong quotes (>50 words — should use '...') — 3 found *(automated)*
-- [ ] Quotes directly support their corresponding summaries *(manual)*
-
-### Anti-Hallucination
-- [ ] No invented statistics or fabricated data *(manual)*
-- [ ] All URLs in References verified accessible *(manual)*
-- [ ] No guessed file paths or made-up links *(manual)*
-
-### Research Efficiency
-- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
-- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+| q_id | Attribute                  | Issue                                                                                                                                                                                                                                                                                                                                         |
+| ---- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| q_3  | anti_hallucination         | Summary states the auto mode classifier was evaluated on "10,000 real traffic samples, 52 real overeager cases, and 1,000 synthetic exfiltration scenarios," but neither quoted evidence fragment contains these specific figures.                                                                                                            |
+| q_4  | anti_hallucination         | Summary claims "20% engineering adoption on day one and 50% by day five" for internal antfooding rollout, but neither quoted evidence fragment contains these percentages.                                                                                                                                                                    |
+| q_62 | anti_hallucination         | Summary states "infrastructure noise can swing benchmark scores by up to 6 percentage points," but the quoted evidence fragment references "3 percentage points" skepticism threshold, not the 6 percentage point swing claim.                                                                                                                |
+| q_63 | anti_hallucination         | Summary claims "60-100 internal npm package releases daily," which appears in the quoted evidence from [3] but [3] is described only as a changelog reference; the figure should be verified against the original source.                                                                                                                     |
+| q_70 | anti_hallucination         | Summary states "32 build-time feature flags, 26 hidden slash commands, and 120+ secret environment variables," and the quote repeats the same figures from [7] — these highly specific counts from a reverse-engineering source should be flagged as unverifiable from official documentation.                                               |
+| q_74 | evidence_summary_alignment | Summary describes the /code-review slash command, the claude-code-action GitHub Action, and the internal Code Review tool as the code review tooling, but the quoted evidence describes the Product Design team's GitHub Actions test-writing workflow, which does not directly demonstrate any of those three tools.                         |
+| q_79 | evidence_summary_alignment | Summary claims the /bug slash command and internal feedback channels receiving messages every five minutes are bug tracking tools, but the quoted evidence ("GitHub Issues for formal bug tracking. Claude Developers Discord for peer support.") does not mention the /bug command or the five-minute feedback cadence.                      |
+| q_85 | anti_hallucination         | Summary states "when Anthropic doubled its engineering headcount, they saw a 67% increase in pull request throughput," and while this figure appears in the quoted evidence, the source is [3] (a changelog/external writeup) rather than an official Anthropic engineering post, so the statistic is noted as requiring source verification. |
+| q_39 | quote_correctness          | The quote from [16] ("Mastering Amazon Q Developer with Rules") appears to be a blog post title for an Amazon Q Developer article cited as evidence for an Anthropic Claude Code prompt management practice, suggesting a possible mis-citation or incorrect reference assignment.                                                            |
 
 ---
 
-*Generated by `quality_review_agent.py` on 2026-05-18*
+## Programmatic Issues to Address
+
+WARN  Unused References (no citation points to them): [18], [19], [20], [21], [23], [24], [25], [26], [27], [28], [29], [34], [35], [36], [37]
+WARN  No overlong quotes (>50 words) — 3 found
+
+---
+
+*Generated by quality_review_agent.py on 2026-05-23*

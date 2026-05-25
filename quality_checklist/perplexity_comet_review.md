@@ -1,127 +1,76 @@
 # Quality Review: Perplexity Comet
 
-**Review Date:** 2026-05-18  
-**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
-**Source File:** `Indexing/perplexity_comet_se_index.json`
+Review Date: 2026-05-23
+Reviewer: LLM-as-Judge (claude-sonnet-4-6)
+Source File: Indexing/perplexity_comet_se_index.json
 
 ---
 
 ## Summary
 
-| | Count |
-|---|---|
-| ✅ Pass | 12 |
-| ⚠️ Warning | 2 |
-| ❌ Fail | 0 |
-| 🤖 LLM Score | EXCELLENT |
+Programmatic checks: 12 pass, 2 warn, 0 fail
+LLM unit evaluation: 41 units checked, 0 FAIL, 16 WARN
+Overall LLM score: GOOD
 
 ---
 
 ## Completeness
 
-✅ Description field populated with agent category/capabilities/deployment surface
-✅ Repository_Statistics has all 5 required fields
-✅ All 8 SE_Practices areas present
-✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
-✅ Bug_Solving_Approaches has 10 issues (≥10 ✓)
-✅ References count: 18 (✓) — target 15–20
-✅ External (non-GitHub) sources: 18 (≥5 ✓) — target 5–10
+PASS  Description field populated with agent category/capabilities/deployment surface
+PASS  Repository_Statistics has all 5 required fields
+PASS  All 8 SE_Practices areas present
+PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+PASS  Bug_Solving_Approaches has 10 issues (>=10)
+PASS  References count: 17 (above 15 target)
+PASS  External (non-GitHub) sources: 14 (>=5)
 
 ## Source Quality
 
-✅ All citations have References entries (10 citations verified)
-⚠️ Unused References (no citation points to them): [10], [12], [14], [15], [17], [18], [19], [2]
-✅ All Date_Pulled in YYYY-MM-DD format
+PASS  All citations map to References entries
+WARN  Unused References (no citation points to them): [10], [12], [14], [15], [17], [18], [19], [2]
+PASS  Date_Pulled in YYYY-MM-DD format for all references
 
 ## Evidence Quality
 
-✅ No URL-as-quote violations
-✅ No filename-as-quote violations
-⚠️ No short quotes (<5 words) — 4 found
-  - `Written by Perplexity Team` (4 words)
-  - `Give Feedback — perplexity.typeform.com/feedbackpplx` (4 words)
-  - `Discord — discord.gg/perplexity-ai` (3 words)
-✅ No overlong quotes (>50 words — should use '...')
-
-## LLM-as-Judge Assessment
-
-### ✅ Content Focus (dev practices vs. product features): `PASS`
-
-### ✅ Quote Verbatim Fidelity: `PASS`
-
-### ✅ Anti-Hallucination: `PASS`
-
-### ⚠️ Evidence Supports Summary: `WARN`
-
-- 8 of 18 references uncited — over half the references have no citations pointing to them
-- 5 SE areas absent (should be marked Not Available)
-
-### ⚠️ Not-Available Usage Appropriate: `WARN`
-
-- 5 SE areas missing entirely rather than present with Not Available markers
-- Bug_Solving_Approaches has 0 issues despite having a bug bounty program with public disclosures
-
-### Overall: **🌟 EXCELLENT**
-
-Exceptional content quality for a closed-source browser product: BrowseSafe-Bench (14,719 examples), prompt injection taxonomy, red team integration, and detailed security model. Quotes are precise and well-attributed. Main gap: 5 SE areas absent that should be marked Not Available, 0 bug issues despite public security disclosures, and 8 unused references.
-
+PASS  No URL-as-quote violations
+PASS  No filename-as-quote violations
+WARN  No short quotes (<5 words) — 4 found
+PASS  No overlong quotes (>50 words)
 
 ---
 
-## Issues to Address
+## LLM-as-Judge Findings
 
-### Programmatic Checks
+Overall assessment: Perplexity Comet is a closed-source product, and this constraint is generally handled well — Code_Review and CI/CD sections correctly use "Not Available" with clear justification. The security-focused Testing and Bug sections are among the strongest, backed by technical arXiv-linked research. The main weakness is in the Team_Communication and Holistic_Documentation areas, where scraped UI navigation text is used as quotes, and in LLM_Integration_and_Prompt_Management, where several entries describe user-facing product features (memory controls, reasoning mode selection, permission controls) rather than engineering practices for building the integration layer.
 
-⚠️ Unused References (no citation points to them): [10], [12], [14], [15], [17], [18], [19], [2]
-⚠️ No short quotes (<5 words) — 4 found
+### WARN
 
----
-
-## Full Quality Checklist
-
-*(Automated = checked programmatically; Manual = requires human review)*
-
-### Source Quality
-- [x] All citations map to References entries *(automated)*
-- [x] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
-- [ ] Website_Type accurately describes each source *(manual)*
-
-### Content Focus
-- [ ] Focus on development practices, not product features *(manual)*
-- [ ] No user-facing features substituted *(manual)*
-- [ ] 'Not Available' used only when info genuinely absent *(manual)*
-
-### Completeness
-- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
-- [x] Repository_Statistics has all 5 required fields *(automated)*
-- [x] All 8 SE_Practices areas present *(automated)*
-- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
-- [x] Bug_Solving_Approaches has 10 issues (≥10 ✓) *(automated)*
-- [x] References count: 18 (✓) — target 15–20 *(automated)*
-- [x] External (non-GitHub) sources: 18 (≥5 ✓) — target 5–10 *(automated)*
-
-### JSON Validity
-- [x] JSON is valid (file loaded successfully) *(automated)*
-- [x] JSON is complete (all top-level keys present) *(automated)*
-- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
-- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
-
-### Evidence Quality
-- [x] No URL-as-quote violations *(automated)*
-- [x] No filename-as-quote violations *(automated)*
-- [ ] No short quotes (<5 words) — 4 found *(automated)*
-- [x] No overlong quotes (>50 words — should use '...') *(automated)*
-- [ ] Quotes directly support their corresponding summaries *(manual)*
-
-### Anti-Hallucination
-- [ ] No invented statistics or fabricated data *(manual)*
-- [ ] All URLs in References verified accessible *(manual)*
-- [ ] No guessed file paths or made-up links *(manual)*
-
-### Research Efficiency
-- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
-- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+| q_id | Attribute | Issue |
+|------|-----------|-------|
+| q_43 | Evidence-Summary Alignment | The Summary claims the engineering team "owns the release pipeline and publishes the weekly changelog," but the quote ("Written by Perplexity Team") is a generic authorship tag that does not support pipeline ownership. |
+| q_48 | Evidence-Summary Alignment | The Summary claims the weekly shipping cadence is an indirect signal of code review practices, but the quote is a changelog entry about shipping Comet Enterprise and does not demonstrate any code review process. |
+| q_52 | Evidence-Summary Alignment | The Summary is about undisclosed bug tracking tools and external VDP disclosures, but the quote about organization admins reviewing Comet telemetry data is about enterprise usage monitoring and is unrelated to bug tracking. |
+| q_54 | Evidence-Summary Alignment | The Summary claims issues surface through community blog posts and security channels, but the quote is about working with security researchers around the clock, not about how issues are surfaced through blogs. |
+| q_56 | Evidence-Summary Alignment | The Summary states internal methodology tools (Agile, Scrum, Kanban) are not publicly disclosed, but the quote is a changelog entry about shipping Comet iOS, which does not confirm or deny the use of any methodology tools. |
+| q_26 | Evidence-Summary Alignment | The Summary claims multiple communication channels (weekly changelog, engineering blog, email), but the quote provides only an email address and does not support the broader channel claims. |
+| q_59 | Quote Correctness | "Give Feedback — perplexity.typeform.com/feedbackpplx" is scraped UI navigation text from the product page, not a verbatim prose quote from documentation. |
+| q_28 | Quote Correctness | "Discord — discord.gg/perplexity-ai" is scraped navigation link text, not a verbatim prose quote from documentation. |
+| q_60 | Evidence-Summary Alignment | The Summary describes communication channels for end users and enterprise admins, but the quote is about the VDP scope for security disclosures — a different topic entirely. |
+| q_29 | Quote Correctness | The quote ("Closest available documentations appears to be the resource hub at perplexity.ai...") reads like a researcher observation or paraphrase rather than verbatim text from the source being cited. |
+| q_30 | Evidence-Summary Alignment | The Summary claims security documentation receives dedicated treatment with specific publications, but the quote is a call-to-action link to an arXiv paper and does not demonstrate a broader documentation practice. |
+| q_31 | Evidence-Summary Alignment | The Summary is about the Comet Data Privacy FAQ documenting data handling in granular detail, but the quote ("Comet's approach sets a new standard for AI browsers: agentic, powerful, and fundamentally private") is a product marketing tagline unrelated to documentation content. |
+| q_62 | Content Focus | The Summary describes a user memory system and reasoning mode switching — both are end-user product features rather than engineering practices for building the LLM integration layer. |
+| q_37 | Quote Correctness | "MCP support — Comet for Enterprise" is scraped UI or section-header text, not a verbatim prose quote from documentation. |
+| q_38 | Quote Correctness | "Agent Permission Controls - Control AI capabilities including website restrictions" reads as scraped UI header text rather than a verbatim prose quote from a source document. |
+| q_39 | Content Focus | Memory disabled in incognito mode and user memory-control settings are end-user privacy product features, not LLM integration engineering practices. |
 
 ---
 
-*Generated by `quality_review_agent.py` on 2026-05-18*
+## Programmatic Issues to Address
+
+WARN  Unused References (no citation points to them): [10], [12], [14], [15], [17], [18], [19], [2]
+WARN  No short quotes (<5 words) — 4 found
+
+---
+
+*Generated by quality_review_agent.py on 2026-05-23*

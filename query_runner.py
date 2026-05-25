@@ -1,8 +1,11 @@
 """
 query_runner.py
 
-Looks up a query ID for a given agent in query_index.json and prints
-the result as formatted JSON.
+Looks up a query ID for a given agent by reading the source JSON directly
+from the Indexing/ directory — no query_index.json cache required.
+
+For Description queries (q-1 on most agents), Repository_Statistics is
+automatically included in the output since it has no q-id of its own.
 
 Usage:
     python3 query_runner.py "Agent Name" "q-5"
@@ -12,33 +15,20 @@ Called by se_index.sh:
 """
 
 import json
-import os
 import sys
 
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-QUERY_INDEX_PATH = os.path.join(BASE_DIR, "query_index.json")
-
-
-def load_index():
-    if not os.path.exists(QUERY_INDEX_PATH):
-        print(f"Error: query_index.json not found at {QUERY_INDEX_PATH}", file=sys.stderr)
-        print("Run 'python3 build_query_index.py' first to generate it.", file=sys.stderr)
-        sys.exit(1)
-    with open(QUERY_INDEX_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+from se_index_core import (
+    AGENT_JSON_MAP,
+    build_agent_index,
+    fuzzy_match_agent,
+    load_json,
+)
 
 
-def fuzzy_match_agent(index, name):
-    """Case-insensitive exact match, then prefix match."""
-    lower = name.lower()
-    for key in index:
-        if key.lower() == lower:
-            return key
-    for key in index:
-        if key.lower().startswith(lower) or lower.startswith(key.lower()):
-            return key
-    return None
+def get_repo_stats(data):
+    """Return the raw Repository_Statistics dict, or None if absent/empty."""
+    rs = data.get("Repository_Statistics", data.get("Repository Statistics", {}))
+    return rs if rs and isinstance(rs, dict) else None
 
 
 def main():
@@ -51,34 +41,41 @@ def main():
     if not query_id.startswith("q-"):
         query_id = f"q-{query_id}"
 
-    index = load_index()
-
-    # Find agent
-    matched_agent = fuzzy_match_agent(index, agent_input)
-    if not matched_agent:
-        available = ", ".join(f'"{a}"' for a in sorted(index.keys()))
+    matched_key, json_file = fuzzy_match_agent(agent_input)
+    if not matched_key:
+        available = ", ".join(f'"{a}"' for a in sorted(AGENT_JSON_MAP.keys()))
         print(f"Error: Agent '{agent_input}' not found.", file=sys.stderr)
         print(f"Available agents: {available}", file=sys.stderr)
         sys.exit(1)
 
-    agent_data = index[matched_agent]
+    data = load_json(json_file)
+    agent_display = data.get("Agent_Name", data.get("Agent Name", matched_key))
 
-    # Find query entry
-    if query_id not in agent_data:
-        available = ", ".join(sorted(agent_data.keys(), key=lambda x: int(x.split("-")[1])))
-        print(f"Error: Query ID '{query_id}' not found for agent '{matched_agent}'.", file=sys.stderr)
+    query_entries, _ = build_agent_index(data)
+
+    if query_id not in query_entries:
+        available = ", ".join(
+            sorted(query_entries.keys(), key=lambda x: int(x.split("-")[1]))
+        )
+        print(f"Error: Query ID '{query_id}' not found for agent '{agent_display}'.", file=sys.stderr)
         print(f"Available IDs: {available}", file=sys.stderr)
         sys.exit(1)
 
-    entry = agent_data[query_id]
+    entry = query_entries[query_id]
 
     result = {
-        "agent": matched_agent,
+        "agent": agent_display,
         "query_id": query_id,
         "column": entry.get("column_label", ""),
         "summary": entry.get("summary"),
         "evidence": entry.get("evidence", []),
     }
+
+    # Description queries include Repository_Statistics (it has no q-id of its own)
+    if entry.get("column_label") == "Description":
+        rs = get_repo_stats(data)
+        if rs:
+            result["repository_statistics"] = rs
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
 

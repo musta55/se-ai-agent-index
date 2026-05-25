@@ -1,141 +1,78 @@
 # Quality Review: Amazon Q Developer
 
-**Review Date:** 2026-05-18  
-**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
-**Source File:** `Indexing/AmazonQseindex.json`
+Review Date: 2026-05-23
+Reviewer: LLM-as-Judge (claude-sonnet-4-6)
+Source File: Indexing/amazon_q_developer_se_index.json
 
 ---
 
 ## Summary
 
-| | Count |
-|---|---|
-| ✅ Pass | 7 |
-| ⚠️ Warning | 5 |
-| ❌ Fail | 2 |
-| 🤖 LLM Score | NEEDS_IMPROVEMENT |
+Programmatic checks: 7 pass, 5 warn, 2 fail
+LLM unit evaluation: 46 units checked, 2 FAIL, 8 WARN
+Overall LLM score: GOOD
 
 ---
 
 ## Completeness
 
-✅ Description field populated with agent category/capabilities/deployment surface
-⚠️ Repository_Statistics missing: Primary_Language
-✅ All 8 SE_Practices areas present
-✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
-✅ Bug_Solving_Approaches has 12 issues (≥10 ✓)
-✅ References count: 21 (✓) — target 15–20
-✅ External (non-GitHub) sources: 10 (≥5 ✓) — target 5–10
+PASS  Description field populated with agent category/capabilities/deployment surface
+PASS  All 8 SE_Practices areas present
+PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+WARN  Repository_Statistics missing: Primary_Language
 
 ## Source Quality
 
-✅ All citations have References entries (19 citations verified)
-⚠️ Unused References (no citation points to them): [14], [18]
-⚠️ All Date_Pulled in YYYY-MM-DD format — bad/missing in: [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19], [20], [21]
+PASS  All citations have References entries
+WARN  Unused References (no citation points to them): [14], [18]
+WARN  All Date_Pulled in YYYY-MM-DD format — bad/missing in: [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19], [20], [21]
+PASS  External (non-GitHub) sources present
 
 ## Evidence Quality
 
-❌ No URL-as-quote violations — 1 found
-  - `https://github.com/aws/amazon-q-developer-cli/issues`
-❌ No filename-as-quote violations — 8 found
-  - `rust.yml`
-  - `terminal-bench.yaml`
-  - `mdbook.yml`
-⚠️ No short quotes (<5 words) — 13 found
-  - `size: 33640` (2 words)
-  - `language: "Rust"` (2 words)
-  - `"stargazers_count": 1940` (2 words)
-⚠️ No overlong quotes (>50 words — should use '...') — 1 found
-  - `the SWE-bench submission process has begun to require the publication ...` (52 words)
-
-## LLM-as-Judge Assessment
-
-### ✅ Content Focus (dev practices vs. product features): `PASS`
-
-### ❌ Quote Verbatim Fidelity: `FAIL`
-
-- 8 filename-as-quote violations: 'size: 33640', 'language: "Rust"', '"stargazers_count": 1940', '"forks_count": 424', '"open_issues_count": 46' etc. are JSON API response fields used as quotes — these are not human-readable sentences from a document
-- JSON key-value pairs from GitHub API responses used as evidence violates the verbatim quote requirement (quotes must be complete statements from prose sources)
-
-### ⚠️ Anti-Hallucination: `WARN`
-
-- Date_Pulled missing from all 21 references — data collection date cannot be verified for any source
-- URL-as-quote violation found (1)
-
-### ⚠️ Evidence Supports Summary: `WARN`
-
-- Missing Primary_Language field in Repository_Statistics
-- 2 unused references ([14],[18])
-- 13 short quotes, 1 overlong quote
-
-### ✅ Not-Available Usage Appropriate: `PASS`
-
-### Overall: **⚠️ NEEDS_IMPROVEMENT**
-
-Good SE practices coverage (SWE-bench evaluation, Rust CLI architecture, 'textcode' harness, 'Permission to Play' methodology) but with critical evidence quality issues: JSON API response fields used as quotes violate the verbatim prose quote requirement, Date_Pulled missing from all 21 references, and 1 URL-as-quote violation. Requires revision to replace JSON field values with prose quotes.
-
+FAIL  No URL-as-quote violations — 1 found
+FAIL  No filename-as-quote violations — 8 found
+WARN  No short quotes (<5 words) — 13 found
+WARN  No overlong quotes (>50 words) — 1 found
 
 ---
 
-## Issues to Address
+## LLM-as-Judge Findings
 
-### Programmatic Checks
+Overall assessment: The Amazon Q Developer index is strong on engineering practices with well-sourced evidence for CI configuration, testing frameworks, and agent architecture. However, several units use raw YAML workflow filenames ("rust.yml", "terminal-bench.yaml") as evidence quotes, which is a systematic quote_correctness problem across the CI/CD section. Two units make marketing-adjacent claims about internal productivity figures drawn from a product announcement post, raising content_focus concerns.
 
-⚠️ Repository_Statistics missing: Primary_Language
-⚠️ Unused References (no citation points to them): [14], [18]
-⚠️ All Date_Pulled in YYYY-MM-DD format — bad/missing in: [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19], [20], [21]
-❌ No URL-as-quote violations — 1 found
-❌ No filename-as-quote violations — 8 found
-⚠️ No short quotes (<5 words) — 13 found
-⚠️ No overlong quotes (>50 words — should use '...') — 1 found
+### FAIL
 
----
+| q_id | Attribute | Issue |
+|------|-----------|-------|
+| q_4 | content_focus | Summary frames Amazon-internal productivity figures ("save 4,500 developer years of effort", "450k hours saved") from a product announcement post as engineering reliability evidence rather than an observable SE practice. |
+| q_25 | content_focus | Summary presents anecdotal productivity claims ("saved 4,500 developer years of effort," "developer shipped Rust feature in 2 days") from an Amazon promotional post as methodology evidence rather than verifiable SE practice data. |
 
-## Full Quality Checklist
+### WARN
 
-*(Automated = checked programmatically; Manual = requires human review)*
-
-### Source Quality
-- [x] All citations map to References entries *(automated)*
-- [ ] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
-- [ ] Website_Type accurately describes each source *(manual)*
-
-### Content Focus
-- [ ] Focus on development practices, not product features *(manual)*
-- [ ] No user-facing features substituted *(manual)*
-- [ ] 'Not Available' used only when info genuinely absent *(manual)*
-
-### Completeness
-- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
-- [ ] Repository_Statistics missing: Primary_Language *(automated)*
-- [x] All 8 SE_Practices areas present *(automated)*
-- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
-- [x] Bug_Solving_Approaches has 12 issues (≥10 ✓) *(automated)*
-- [x] References count: 21 (✓) — target 15–20 *(automated)*
-- [x] External (non-GitHub) sources: 10 (≥5 ✓) — target 5–10 *(automated)*
-
-### JSON Validity
-- [x] JSON is valid (file loaded successfully) *(automated)*
-- [x] JSON is complete (all top-level keys present) *(automated)*
-- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
-- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
-
-### Evidence Quality
-- [ ] No URL-as-quote violations — 1 found *(automated)*
-- [ ] No filename-as-quote violations — 8 found *(automated)*
-- [ ] No short quotes (<5 words) — 13 found *(automated)*
-- [ ] No overlong quotes (>50 words — should use '...') — 1 found *(automated)*
-- [ ] Quotes directly support their corresponding summaries *(manual)*
-
-### Anti-Hallucination
-- [ ] No invented statistics or fabricated data *(manual)*
-- [ ] All URLs in References verified accessible *(manual)*
-- [ ] No guessed file paths or made-up links *(manual)*
-
-### Research Efficiency
-- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
-- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+| q_id | Attribute | Issue |
+|------|-----------|-------|
+| q_9 | quote_correctness | Quotes use bare YAML filenames ("rust.yml", "terminal-bench.yaml", "mdbook.yml") rather than prose from those files; bare filenames are the filename-as-quote violations flagged programmatically. |
+| q_10 | quote_correctness | Evidence is a single bare filename quote ("terminal-bench.yaml") with no prose content, insufficient to demonstrate the OIDC federation and S3 artifact claims in the Summary. |
+| q_12 | quote_correctness | Quotes consist entirely of bare filenames ("rust.yml", "terminal-bench.yaml"), which are the programmatic filename-as-quote violations flagged for this unit. |
+| q_21 | quote_correctness | "https://github.com/aws/amazon-q-developer-cli/issues" is a URL used as a quote, triggering the URL-as-quote violation flagged programmatically. |
+| q_24 | anti_hallucination | Summary asserts "trunk-based, high-frequency release methodology (weekly-plus tagged releases)" but the quoted evidence ("v1.19.7") is only a version tag with no release frequency data cited. |
+| q_40 | evidence_summary_alignment | Summary claims the CLI embeds a Rust MCP client with OAuth support, but the quoted evidence is a blog post title ("Behind the Code! How We Built Amazon Q Developer CLI in Rust") that does not demonstrate the OAuth claim. |
+| q_44 | content_focus | Summary frames a customer case study (Audible's unit-test automation) as a design reference used by the team, which is a user-facing product success story rather than an internal SE practice. |
+| q_51 | evidence_summary_alignment | Summary claims published SWE-bench trajectories are used as a "post-mortem corpus" that shortens the regression-to-fix loop, but the quoted evidence only confirms trajectory sharing and does not demonstrate the post-mortem use pattern. |
 
 ---
 
-*Generated by `quality_review_agent.py` on 2026-05-18*
+## Programmatic Issues to Address
+
+FAIL  No URL-as-quote violations — 1 found (q_21: URL used as evidence quote)
+FAIL  No filename-as-quote violations — 8 found (q_9, q_10, q_12 and related units)
+WARN  Repository_Statistics missing: Primary_Language
+WARN  Unused References (no citation points to them): [14], [18]
+WARN  All Date_Pulled in YYYY-MM-DD format — bad/missing in all 21 references
+WARN  No short quotes (<5 words) — 13 found
+WARN  No overlong quotes (>50 words) — 1 found
+
+---
+
+*Generated by quality_review_agent.py on 2026-05-23*

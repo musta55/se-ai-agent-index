@@ -5,91 +5,129 @@
 
 ---
 
-## Input Context Passed to the Model
+## Unit Definition
 
-| Field           | Source                                                 | Limit           |
-| --------------- | ------------------------------------------------------ | --------------- |
-| `agent_name`  | `Agent_Name` key in index JSON                       | —              |
-| `description` | `Description[0].Summary` or `.value`               | first 600 chars |
-| `sample`      | Up to 2 quotes per subsection, first 4 SE areas        | 5,000 chars     |
-| `issues`      | First 5 entries from `Bug_Solving_Approaches.Issues` | 2,000 chars     |
+A "unit" is any entry with a `q_id` field in the SE Index JSON. Each unit contains:
 
----
-
-## Prompt Sent to the Model
-
-```
-You are an expert SE research quality reviewer. Evaluate this SE Index JSON excerpt
-against the Quality Review Checklist criteria.
-
-Agent: {agent_name}
-
-DESCRIPTION SUMMARY:
-{description}
-
-SAMPLE EVIDENCE (up to 2 quotes per subsection, from the first 4 SE areas):
-{sample}
-
-SAMPLE ISSUES (first 5 from Bug_Solving_Approaches):
-{issues}
-
-Respond with ONLY valid JSON — no markdown fences, no extra text:
-{
-  "content_focus":             { "score": "PASS|WARN|FAIL", "issues": [] },
-  "quote_verbatim":            { "score": "PASS|WARN|FAIL", "issues": [] },
-  "anti_hallucination":        { "score": "PASS|WARN|FAIL", "issues": [] },
-  "evidence_supports_summary": { "score": "PASS|WARN|FAIL", "issues": [] },
-  "not_available_usage":       { "score": "PASS|WARN|FAIL", "issues": [] },
-  "overall_quality":           { "score": "EXCELLENT|GOOD|NEEDS_IMPROVEMENT|POOR",
-                                 "summary": "2-3 sentences" }
-}
-```
+| Field       | Description                                      |
+|-------------|--------------------------------------------------|
+| `q_id`      | Unique identifier (e.g. `q_1`, `q_42`)          |
+| `area`      | The SE area (e.g. `Testing_and_Reliability`)     |
+| `subsection`| One of: Practices, Tools, Stakeholders, Others  |
+| `Summary`   | 1–3 sentence description of the practice         |
+| `evidence`  | List of `{quote, citation}` pairs                |
 
 ---
 
-## Scoring Criteria
+## How the LLM Judge Runs
+
+All units are extracted from `SE_Practices` and sent to the LLM in batches of 20.
+Each batch returns a JSON object with:
+
+- `findings` — per-unit WARN/FAIL entries only (PASS is not listed)
+- `overall_quality` — score and 2–3 sentence narrative for that batch
+
+Findings from all batches are merged. The overall score is the worst score across batches.
+
+---
+
+## Prompt Inputs
+
+| Placeholder    | Content                                      |
+|----------------|----------------------------------------------|
+| `{units_json}` | JSON array of up to 20 unit objects          |
+
+---
+
+## Five Quality Attributes
 
 ### 1. content_focus
 
-- **FAIL** — Any summary or quote describes what the agent does *for users* (product
-  feature) rather than how engineers built it (dev practice).
-- **WARN** — Borderline cases where it is unclear whether the entry describes a
-  development practice or a product capability.
+- **FAIL** — The Summary or quote describes what the agent does *for end users* (product
+  feature, user-facing capability) rather than how engineers *built or operate* it
+  (development practice, tooling, process decision).
+- **WARN** — Borderline: partially describes a dev practice but bleeds into product-feature
+  language.
 
-### 2. quote_verbatim
+### 2. quote_correctness
 
-- **WARN** — A quote reads like a paraphrase rather than copy-pasted text.
-- **FAIL** — A quote is clearly reworded or reconstructed from memory.
+- **WARN** — The quote reads like a paraphrase or lightly edited rewrite rather than
+  verbatim source text.
+- **FAIL** — The quote is clearly reconstructed from memory, reworded, or merged from
+  multiple sentences without ellipsis markers.
 
 ### 3. anti_hallucination
 
-- **FAIL** — Specific statistics or claims appear fabricated or lack citations.
-- **WARN** — Suspicious figures or statements that are unconfirmed but not
-  definitively invented.
+- **FAIL** — A specific statistic, metric, or factual claim in the Summary or quote
+  appears fabricated or has no citation.
+- **WARN** — A figure or assertion is suspicious or unverifiable but not definitively
+  invented.
 
-### 4. evidence_supports_summary
+### 4. evidence_summary_alignment
 
-- **WARN** — A summary claims X but the quoted text does not clearly demonstrate X.
-- **FAIL** — The quote contradicts or is entirely unrelated to its summary.
+- **WARN** — The Summary claims X but the quoted evidence does not clearly demonstrate X;
+  the link is weak or requires a large inferential leap.
+- **FAIL** — The quote contradicts the Summary, or is entirely unrelated to it.
 
-### 5. not_available_usage
+### 5. unavailability_check
 
-- **WARN** — `"Not Available"` appears in a major SE area where public engineering
-  information almost certainly exists (e.g., a well-documented open-source project
-  marking Testing as Not Available).
+- **WARN** — The Summary or evidence contains "Not Available" in an area where public
+  engineering information almost certainly exists for this agent (e.g., a well-documented
+  open-source project marking CI/CD practices as Not Available).
+- Only flagged when "Not Available" explicitly appears in the unit text.
 
-### Overall Quality
+---
 
-| Score                 | Meaning                                                               |
-| --------------------- | --------------------------------------------------------------------- |
-| `EXCELLENT`         | All dimensions PASS; entry is publication-ready                       |
-| `GOOD`              | Minor WARNs only; acceptable with light review                        |
-| `NEEDS_IMPROVEMENT` | One or more WARNs or a single FAIL; requires researcher revision      |
-| `POOR`              | Multiple FAILs; entry must be re-collected or substantially rewritten |
+## Output Format (per batch)
+
+```json
+{
+  "findings": [
+    {
+      "q_id": "q_N",
+      "attribute": "content_focus|quote_correctness|anti_hallucination|evidence_summary_alignment|unavailability_check",
+      "score": "WARN|FAIL",
+      "issue": "one sentence describing the specific problem"
+    }
+  ],
+  "overall_quality": {
+    "score": "EXCELLENT|GOOD|NEEDS_IMPROVEMENT|POOR",
+    "summary": "2-3 sentences on overall quality of this batch"
+  }
+}
+```
+
+PASS cases are not included in `findings`. If no issues are found, `findings` is an empty array.
+
+---
+
+## Overall Quality Scale
+
+| Score               | Meaning                                                                |
+|---------------------|------------------------------------------------------------------------|
+| `EXCELLENT`         | No WARN or FAIL across all units                                       |
+| `GOOD`              | Minor WARNs only; acceptable with light review                         |
+| `NEEDS_IMPROVEMENT` | One or more WARNs or a single FAIL; requires researcher revision       |
+| `POOR`              | Multiple FAILs; entry must be re-collected or substantially rewritten  |
+
+---
+
+## Report Structure
+
+The generated report lists:
+
+1. Summary table (programmatic pass/warn/fail counts + LLM score)
+2. Programmatic checks (Completeness, Source Quality, Evidence Quality)
+3. LLM-as-Judge section:
+   - Overall assessment sentence
+   - FAIL table: q_id | attribute | issue
+   - WARN table: q_id | attribute | issue
+   - PASS units are not listed
+4. Programmatic issues to address
 
 ---
 
 ## Model Used
 
 `claude-sonnet-4-6` — configured in `quality_review_agent.py` at the
-`client.messages.create(model=...)` call (line ~356).
+`client.messages.create(model=...)` call inside `_call_llm_batch`.

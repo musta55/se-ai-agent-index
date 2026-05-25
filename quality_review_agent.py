@@ -271,41 +271,37 @@ def check_evidence(data):
 
 # ── LLM-as-judge ──────────────────────────────────────────────────────────────
 
-def run_llm_judge(data, client):
-    sample = {}
-    for area in list(data.get("SE_Practices", {}).keys())[:4]:
-        sample[area] = {}
+BATCH_SIZE = 20
+SCORE_ORDER = ["EXCELLENT", "GOOD", "NEEDS_IMPROVEMENT", "POOR"]
+
+
+def extract_units(data):
+    """Return all entries with a q_id from SE_Practices, with area/subsection context."""
+    units = []
+    se = data.get("SE_Practices", {})
+    for area, area_data in se.items():
+        if not isinstance(area_data, dict):
+            continue
+        canonical_area = SE_AREA_ALIASES.get(area, area)
         for sub in REQUIRED_SUBSECTIONS:
-            entries = data["SE_Practices"][area].get(sub, [])
-            quotes = []
-            for entry in entries[:2]:
-                for ev in entry.get("evidence", [])[:2]:
-                    q = ev.get("quote", "")
-                    if q:
-                        quotes.append(q)
-            if quotes:
-                sample[area][sub] = quotes
+            for entry in area_data.get(sub, []):
+                if isinstance(entry, dict) and "q_id" in entry:
+                    units.append({
+                        "q_id": entry["q_id"],
+                        "area": canonical_area,
+                        "subsection": sub,
+                        "Summary": entry.get("Summary", ""),
+                        "evidence": entry.get("evidence", []),
+                    })
+    return units
 
-    issues_sample = (
-        data.get("SE_Practices", {})
-        .get("Bug_Solving_Approaches", {})
-        .get("Issues", [])[:5]
-    )
-    desc = _description_summary(data) or "N/A"
 
-    template = LLM_PROMPT_FILE.read_text(encoding="utf-8")
-    prompt = (
-        template
-        .replace("{agent_name}", data.get("Agent_Name", "Unknown"))
-        .replace("{description}", desc[:600])
-        .replace("{sample}", json.dumps(sample, indent=2)[:5000])
-        .replace("{issues}", json.dumps(issues_sample, indent=2)[:2000])
-    )
-
+def _call_llm_batch(batch, client, template):
+    prompt = template.replace("{units_json}", json.dumps(batch, indent=2))
     try:
         resp = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=2000,
+            max_tokens=3000,
             messages=[{"role": "user", "content": prompt}],
         )
         text = resp.content[0].text.strip()
@@ -313,9 +309,72 @@ def run_llm_judge(data, client):
         text = re.sub(r"\s*```$", "", text)
         return json.loads(text)
     except json.JSONDecodeError as e:
-        return {"error": f"LLM returned non-JSON: {e}"}
+        return {"findings": [], "overall_quality": {"score": "POOR",
+                "summary": f"LLM returned non-JSON: {e}"}, "error": str(e)}
     except Exception as e:
-        return {"error": str(e)}
+        return {"findings": [], "overall_quality": {"score": "POOR",
+                "summary": str(e)}, "error": str(e)}
+
+
+def run_llm_judge_units(data, client):
+    """Evaluate every unit with a q_id in batches.
+
+    Returns a dict:
+      {
+        "findings": [...],          # all WARN/FAIL entries across batches
+        "overall_quality": {...},   # aggregated score + summary
+        "total_units": int,
+        "errors": [...],            # any batch-level errors
+      }
+    """
+    units = extract_units(data)
+    if not units:
+        return {
+            "findings": [],
+            "overall_quality": {"score": "N/A", "summary": "No units with q_id found."},
+            "total_units": 0,
+            "errors": [],
+        }
+
+    template = LLM_PROMPT_FILE.read_text(encoding="utf-8")
+    all_findings = []
+    batch_scores = []
+    errors = []
+
+    for i in range(0, len(units), BATCH_SIZE):
+        batch = units[i:i + BATCH_SIZE]
+        result = _call_llm_batch(batch, client, template)
+        all_findings.extend(result.get("findings", []))
+        ov = result.get("overall_quality", {})
+        score = ov.get("score", "GOOD")
+        if score in SCORE_ORDER:
+            batch_scores.append((score, ov.get("summary", "")))
+        if "error" in result:
+            errors.append(result["error"])
+
+    # Worst score across all batches
+    worst_idx = max((SCORE_ORDER.index(s) for s, _ in batch_scores), default=1)
+    overall_score = SCORE_ORDER[worst_idx]
+
+    fail_count = sum(1 for f in all_findings if f.get("score") == "FAIL")
+    warn_count = sum(1 for f in all_findings if f.get("score") == "WARN")
+    overall_summary = (
+        f"Evaluated {len(units)} units across all SE areas. "
+        f"Found {fail_count} FAIL and {warn_count} WARN issues. "
+    )
+    # Append the narrative from the worst batch for context
+    worst_narrative = next(
+        (s for sc, s in batch_scores if sc == overall_score and s), ""
+    )
+    if worst_narrative:
+        overall_summary += worst_narrative
+
+    return {
+        "findings": all_findings,
+        "overall_quality": {"score": overall_score, "summary": overall_summary},
+        "total_units": len(units),
+        "errors": errors,
+    }
 
 
 # ── Report generation ─────────────────────────────────────────────────────────
@@ -323,39 +382,43 @@ def run_llm_judge(data, client):
 def generate_report(agent_name, filename, all_checks, llm):
     today = date.today().isoformat()
 
-    passes = sum(1 for i, *_ in all_checks if i == "✅")
-    warns  = sum(1 for i, *_ in all_checks if i == "⚠️")
-    fails  = sum(1 for i, *_ in all_checks if i == "❌")
+    prog_passes = sum(1 for i, *_ in all_checks if i == "✅")
+    prog_warns  = sum(1 for i, *_ in all_checks if i == "⚠️")
+    prog_fails  = sum(1 for i, *_ in all_checks if i == "❌")
 
-    llm_ok = isinstance(llm, dict) and "error" not in llm
-    llm_score = llm.get("overall_quality", {}).get("score", "N/A") if llm_ok else "ERROR"
+    llm_ok = isinstance(llm, dict) and "findings" in llm
+    total_units  = llm.get("total_units", 0) if llm_ok else 0
+    findings     = llm.get("findings", []) if llm_ok else []
+    llm_fails    = sum(1 for f in findings if f.get("score") == "FAIL")
+    llm_warns    = sum(1 for f in findings if f.get("score") == "WARN")
+    ov           = llm.get("overall_quality", {}) if llm_ok else {}
+    llm_score    = ov.get("score", "ERROR")
 
     lines = [
         f"# Quality Review: {agent_name}",
         f"",
-        f"**Review Date:** {today}  ",
-        f"**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  ",
-        f"**Source File:** `Indexing/{filename}`",
+        f"Review Date: {today}",
+        f"Reviewer: LLM-as-Judge (claude-sonnet-4-6)",
+        f"Source File: Indexing/{filename}",
         f"",
         f"---",
         f"",
         f"## Summary",
         f"",
-        f"| | Count |",
-        f"|---|---|",
-        f"| ✅ Pass | {passes} |",
-        f"| ⚠️ Warning | {warns} |",
-        f"| ❌ Fail | {fails} |",
-        f"| 🤖 LLM Score | {llm_score} |",
+        f"Programmatic checks: {prog_passes} pass, {prog_warns} warn, {prog_fails} fail",
+        f"LLM unit evaluation: {total_units} units checked, {llm_fails} FAIL, {llm_warns} WARN",
+        f"Overall LLM score: {llm_score}",
         f"",
         f"---",
         f"",
     ]
 
-    # Group programmatic checks by category
+    # Programmatic checks grouped by category
     categories: dict[str, list] = {}
     for icon, cat, msg in all_checks:
         categories.setdefault(cat, []).append((icon, msg))
+
+    icon_label = {"✅": "PASS", "⚠️": "WARN", "❌": "FAIL", "  →": "    "}
 
     for cat in ["Completeness", "Source Quality", "Evidence Quality"]:
         if cat not in categories:
@@ -363,158 +426,79 @@ def generate_report(agent_name, filename, all_checks, llm):
         lines.append(f"## {cat}")
         lines.append("")
         for icon, msg in categories[cat]:
-            if icon == "  →":
-                lines.append(f"  - {msg}")
+            prefix = icon_label.get(icon, icon)
+            if prefix == "    ":
+                lines.append(f"    {msg}")
             else:
-                lines.append(f"{icon} {msg}")
+                lines.append(f"{prefix}  {msg}")
         lines.append("")
 
     # LLM-as-judge section
-    lines += ["## LLM-as-Judge Assessment", ""]
+    lines += ["---", "", "## LLM-as-Judge Findings", ""]
 
     if llm_ok:
-        check_labels = {
-            "content_focus":           "Content Focus (dev practices vs. product features)",
-            "quote_verbatim":          "Quote Verbatim Fidelity",
-            "anti_hallucination":      "Anti-Hallucination",
-            "evidence_supports_summary": "Evidence Supports Summary",
-            "not_available_usage":     "Not-Available Usage Appropriate",
-        }
-        for key, label in check_labels.items():
-            if key not in llm:
-                continue
-            score = llm[key].get("score", "N/A")
-            icon = {"PASS": "✅", "WARN": "⚠️", "FAIL": "❌"}.get(score, "❓")
-            lines.append(f"### {icon} {label}: `{score}`")
-            issues = llm[key].get("issues", [])
-            if issues:
+        lines += [
+            f"Overall assessment: {ov.get('summary', '')}",
+            "",
+        ]
+
+        if findings:
+            # Group by score level: FAIL first, then WARN
+            fail_entries = [f for f in findings if f.get("score") == "FAIL"]
+            warn_entries = [f for f in findings if f.get("score") == "WARN"]
+
+            attr_label = {
+                "content_focus":             "Content Focus",
+                "quote_correctness":         "Quote Correctness",
+                "anti_hallucination":        "Anti-Hallucination",
+                "evidence_summary_alignment": "Evidence-Summary Alignment",
+                "unavailability_check":      "Unavailability Check",
+            }
+
+            if fail_entries:
+                lines.append("### FAIL")
                 lines.append("")
-                for iss in issues:
-                    lines.append(f"- {iss}")
-            lines.append("")
+                lines.append("| q_id | Attribute | Issue |")
+                lines.append("|------|-----------|-------|")
+                for f in fail_entries:
+                    attr = attr_label.get(f.get("attribute", ""), f.get("attribute", ""))
+                    lines.append(f"| {f.get('q_id', '')} | {attr} | {f.get('issue', '')} |")
+                lines.append("")
 
-        if "overall_quality" in llm:
-            ov = llm["overall_quality"]
-            lines += [
-                f"### Overall: **{ov.get('score', 'N/A')}**",
-                f"",
-                ov.get("summary", ""),
-                f"",
-            ]
+            if warn_entries:
+                lines.append("### WARN")
+                lines.append("")
+                lines.append("| q_id | Attribute | Issue |")
+                lines.append("|------|-----------|-------|")
+                for f in warn_entries:
+                    attr = attr_label.get(f.get("attribute", ""), f.get("attribute", ""))
+                    lines.append(f"| {f.get('q_id', '')} | {attr} | {f.get('issue', '')} |")
+                lines.append("")
+        else:
+            lines += ["No issues found across all units.", ""]
+
+        if llm.get("errors"):
+            lines += ["### Batch Errors", ""]
+            for err in llm["errors"]:
+                lines.append(f"- {err}")
+            lines.append("")
     else:
-        err = llm.get("error", "Unknown") if isinstance(llm, dict) else str(llm)
-        lines += [f"⚠️ LLM checks could not complete: `{err}`", ""]
+        err_msg = llm.get("error", "Unknown error") if isinstance(llm, dict) else str(llm)
+        lines += [f"LLM checks could not complete: {err_msg}", ""]
 
-    # Issues summary (if any failures/warnings)
-    problem_items = [(i, m) for i, c, m in all_checks if i in ("❌", "⚠️") and i != "  →"]
-    llm_issues = []
-    if llm_ok:
-        for key in ("content_focus", "quote_verbatim", "anti_hallucination",
-                    "evidence_supports_summary", "not_available_usage"):
-            if key in llm and llm[key].get("issues"):
-                for iss in llm[key]["issues"]:
-                    llm_issues.append((llm[key].get("score", "?"), key.replace("_", " ").title(), iss))
-
-    if problem_items or llm_issues:
-        lines += ["---", "", "## Issues to Address", ""]
-        if problem_items:
-            lines.append("### Programmatic Checks")
-            lines.append("")
-            for icon, msg in problem_items:
-                lines.append(f"{icon} {msg}")
-            lines.append("")
-        if llm_issues:
-            lines.append("### LLM-Identified Issues")
-            lines.append("")
-            for score, category, iss in llm_issues:
-                icon = "❌" if score == "FAIL" else "⚠️"
-                lines.append(f"{icon} **{category}:** {iss}")
-            lines.append("")
-
-    # Full checklist
-    def get_icon(checks_list, keyword):
-        for i, m in checks_list:
-            if keyword.lower() in m.lower():
-                return i
-        return "?"
-
-    completeness_checks = [(i, m) for i, c, m in all_checks if c == "Completeness"]
-    source_checks = [(i, m) for i, c, m in all_checks if c == "Source Quality"]
-    evidence_check_list = [(i, m) for i, c, m in all_checks if c == "Evidence Quality" and i != "  →"]
-
-    def chk(icon):
-        return "x" if icon == "✅" else " "
+    # Programmatic issues to address
+    prog_problems = [(i, m) for i, c, m in all_checks if i in ("❌", "⚠️")]
+    if prog_problems:
+        lines += ["---", "", "## Programmatic Issues to Address", ""]
+        for icon, msg in prog_problems:
+            prefix = icon_label.get(icon, icon)
+            lines.append(f"{prefix}  {msg}")
+        lines.append("")
 
     lines += [
         "---",
         "",
-        "## Full Quality Checklist",
-        "",
-        "*(Automated = checked programmatically; Manual = requires human review)*",
-        "",
-        "### Source Quality",
-        f"- [{chk(get_icon(source_checks, 'All citations have'))}] All citations map to References entries *(automated)*",
-        f"- [{chk(get_icon(source_checks, 'Date_Pulled'))}] Date_Pulled in YYYY-MM-DD format for all references *(automated)*",
-        f"- [ ] Website_Type accurately describes each source *(manual)*",
-        "",
-        "### Content Focus",
-    ]
-    if llm_ok and "content_focus" in llm:
-        cf_pass = llm["content_focus"].get("score") == "PASS"
-        lines += [
-            f"- [{'x' if cf_pass else ' '}] Focus on development practices, not product features *(LLM: {llm['content_focus'].get('score')})*",
-            f"- [{'x' if cf_pass else ' '}] No user-facing features substituted for development practices *(LLM)*",
-        ]
-    else:
-        lines += [
-            "- [ ] Focus on development practices, not product features *(manual)*",
-            "- [ ] No user-facing features substituted *(manual)*",
-        ]
-    lines += [
-        "- [ ] 'Not Available' used only when info genuinely absent *(manual)*",
-        "",
-        "### Completeness",
-    ]
-    for icon, msg in completeness_checks:
-        if icon != "  →":
-            lines.append(f"- [{chk(icon)}] {msg} *(automated)*")
-
-    lines += [
-        "",
-        "### JSON Validity",
-        "- [x] JSON is valid (file loaded successfully) *(automated)*",
-        "- [x] JSON is complete (all top-level keys present) *(automated)*",
-        "- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*",
-        "- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*",
-        "",
-        "### Evidence Quality",
-    ]
-    for icon, msg in evidence_check_list:
-        lines.append(f"- [{chk(icon)}] {msg} *(automated)*")
-
-    lines += [
-        "- [ ] Quotes directly support their corresponding summaries *(manual)*",
-        "",
-        "### Anti-Hallucination",
-    ]
-    if llm_ok and "anti_hallucination" in llm:
-        ah_pass = llm["anti_hallucination"].get("score") == "PASS"
-        lines += [
-            f"- [{'x' if ah_pass else ' '}] No invented statistics or fabricated data *(LLM: {llm['anti_hallucination'].get('score')})*",
-        ]
-    else:
-        lines += ["- [ ] No invented statistics or fabricated data *(manual)*"]
-    lines += [
-        "- [ ] All URLs in References verified accessible *(manual)*",
-        "- [ ] No guessed file paths or made-up links *(manual)*",
-        "",
-        "### Research Efficiency",
-        "- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*",
-        "- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*",
-        "",
-        "---",
-        "",
-        f"*Generated by `quality_review_agent.py` on {today}*",
+        f"*Generated by quality_review_agent.py on {today}*",
     ]
 
     return "\n".join(lines)
@@ -570,14 +554,16 @@ def main():
         agents = [args.agent_name]
 
     for agent_name in agents:
-        print(f"\n{'='*60}\n📋 Reviewing: {agent_name}\n{'='*60}")
+        print(f"\n{'='*60}")
+        print(f"Reviewing: {agent_name}")
+        print(f"{'='*60}")
 
         filepath, data = find_index_file(agent_name)
         if not filepath:
-            print(f"  ❌ No SE index JSON found for '{agent_name}'")
+            print(f"  ERROR: No SE index JSON found for '{agent_name}'")
             continue
 
-        print(f"  📄 Loaded: {filepath.name}")
+        print(f"  Loaded: {filepath.name}")
 
         all_checks = (
             check_completeness(data)
@@ -587,8 +573,10 @@ def main():
         )
 
         if client:
-            print("  🤖 Running LLM-as-judge checks...")
-            llm_results = run_llm_judge(data, client)
+            units = extract_units(data)
+            print(f"  Running LLM-as-judge on {len(units)} units "
+                  f"({(len(units) + BATCH_SIZE - 1) // BATCH_SIZE} batch(es))...")
+            llm_results = run_llm_judge_units(data, client)
         else:
             llm_results = {"error": "ANTHROPIC_API_KEY not set — LLM checks skipped"}
 
@@ -602,13 +590,15 @@ def main():
         passes = sum(1 for i, *_ in all_checks if i == "✅")
         warns  = sum(1 for i, *_ in all_checks if i == "⚠️")
         fails  = sum(1 for i, *_ in all_checks if i == "❌")
-        llm_ok = isinstance(llm_results, dict) and "error" not in llm_results
+        llm_ok = isinstance(llm_results, dict) and "findings" in llm_results
         llm_score = (llm_results.get("overall_quality", {}).get("score", "N/A")
                      if llm_ok else "ERROR")
+        llm_fails = sum(1 for f in llm_results.get("findings", []) if f.get("score") == "FAIL")
+        llm_warns = sum(1 for f in llm_results.get("findings", []) if f.get("score") == "WARN")
 
-        print(f"  ✅ Pass: {passes}  ⚠️ Warn: {warns}  ❌ Fail: {fails}  🤖 LLM: {llm_score}")
-        print(f"  💾 Saved: {out.relative_to(BASE_DIR)}")
-        print(f"  🔖 Marked reviewed in agents_config.json")
+        print(f"  Programmatic: {passes} pass, {warns} warn, {fails} fail")
+        print(f"  LLM: {llm_score} ({llm_fails} FAIL, {llm_warns} WARN across units)")
+        print(f"  Saved: {out.relative_to(BASE_DIR)}")
 
 
 if __name__ == "__main__":

@@ -1,137 +1,75 @@
-# Quality Review: Kimi Ok Computer
+# Quality Review: Kimi OK Computer
 
-**Review Date:** 2026-05-18  
-**Reviewer:** LLM-as-Judge (`claude-sonnet-4-6`)  
-**Source File:** `Indexing/kimi_okcomputer_se_index.json`
+Review Date: 2026-05-23
+Reviewer: LLM-as-Judge (claude-sonnet-4-6)
+Source File: Indexing/kimi_ok_computer_se_index.json
 
 ---
 
 ## Summary
 
-| | Count |
-|---|---|
-| ✅ Pass | 9 |
-| ⚠️ Warning | 4 |
-| ❌ Fail | 1 |
-| 🤖 LLM Score | NEEDS_IMPROVEMENT |
+Programmatic checks: 9 pass, 4 warn, 1 fail
+LLM unit evaluation: 47 units checked, 0 FAIL, 9 WARN
+Overall LLM score: EXCELLENT
 
 ---
 
 ## Completeness
 
-✅ Description field populated with agent category/capabilities/deployment surface
-✅ Repository_Statistics has all 5 required fields
-✅ All 8 SE_Practices areas present
-✅ All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
-❌ Bug_Solving_Approaches has 4 issues (only 4 — minimum 10 required)
-⚠️ References count: 11 (⚠ below 15) — target 15–20
-⚠️ External (non-GitHub) sources: 3 (⚠ below 5) — target 5–10
+PASS  Description field populated with agent category, capabilities, and deployment surface
+PASS  Repository_Statistics has all 5 required fields
+PASS  All 8 SE_Practices areas present
+PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
+FAIL  Bug_Solving_Approaches has only 4 issues (minimum 10 required)
+WARN  References count: 11 (below target of 15-20)
+PASS  All referenced citations appear to be defined
+WARN  External (non-GitHub) sources: 3 (below target of 5-10)
+WARN  Unused References: [4], [5] are defined but never cited in any unit
+WARN  2 short quotes found (under 5 words)
 
 ## Source Quality
 
-✅ All citations have References entries (9 citations verified)
-⚠️ Unused References (no citation points to them): [4], [5]
-✅ All Date_Pulled in YYYY-MM-DD format
+PASS  Citation style is consistent throughout
+WARN  References [4] and [5] are unused dead references
+WARN  Only 3 non-GitHub external sources — the index relies heavily on one source [8] (Kimi K2.6 release blog) for the majority of claims; source diversity is low
 
 ## Evidence Quality
 
-✅ No URL-as-quote violations
-✅ No filename-as-quote violations
-⚠️ No short quotes (<5 words) — 2 found
-  - `Fork 92` (2 words)
-  - `Fork 224` (2 words)
-✅ No overlong quotes (>50 words — should use '...')
-
-## LLM-as-Judge Assessment
-
-### ⚠️ Content Focus (dev practices vs. product features): `WARN`
-
-- Description evidence ('K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework') describes the product's capability, not a development practice
-- Several sections mix product capabilities (what the agent does) with engineering practices (how it was built)
-
-### ⚠️ Quote Verbatim Fidelity: `WARN`
-
-- Contributors quote 'Kimi K2.5: Visual Agentic Intelligence' is a paper title used as supporting evidence — not a substantive statement
-- Stars quote 'Fork 92' and 'Fork 224' are GitHub UI labels (<5 words)
-
-### ✅ Anti-Hallucination: `PASS`
-
-### ⚠️ Evidence Supports Summary: `WARN`
-
-- Only 4 issues in Bug_Solving_Approaches vs. 10 required minimum
-- Only 3 external sources vs. 5-10 recommended
-- Missing Testing_and_Reliability area entirely
-- 2 unused references ([4],[5])
-
-### ⚠️ Not-Available Usage Appropriate: `WARN`
-
-- Testing_and_Reliability area is completely absent instead of present with Not Available markers
-- Only 11 references with 3 external sources — research appears incomplete
-
-### Overall: **⚠️ NEEDS_IMPROVEMENT**
-
-Interesting coverage of Kimi's RL-based development and agentic deployment practices, but the index is significantly under-researched: 1 SE area missing entirely, only 4 bug issues vs 10 required, only 3 external sources, and 11 total references. Several key evidence quotes are GitHub/paper labels rather than substantive statements.
-
+PASS  Most Practices subsections have multi-sentence verbatim quotes that support summary claims
+WARN  2 short quotes under 5 words provide minimal evidential grounding
+PASS  Evidence is appropriately marked as Not Available for truly closed areas (Code_Review_Process, CI/CD Tools)
+PASS  Not Available entries include explanatory text distinguishing genuine unavailability from gaps in research
 
 ---
 
-## Issues to Address
+## LLM-as-Judge Findings
 
-### Programmatic Checks
+Overall assessment: The Kimi OK Computer index demonstrates careful handling of a closed-source product by clearly documenting what is and is not publicly available, including explicit justifications for Not Available fields. The community reverse-engineering source (kimi-agent-internals) is used appropriately and attributed correctly. The index is weakened by heavy reliance on a single source ([8], the K2.6 release blog) for most factual claims, low source diversity, an underpopulated Bug_Solving_Approaches area, and several summaries that describe user-facing product features or contain specific claims not clearly traceable to the cited quotes.
 
-❌ Bug_Solving_Approaches has 4 issues (only 4 — minimum 10 required)
-⚠️ References count: 11 (⚠ below 15) — target 15–20
-⚠️ External (non-GitHub) sources: 3 (⚠ below 5) — target 5–10
-⚠️ Unused References (no citation points to them): [4], [5]
-⚠️ No short quotes (<5 words) — 2 found
+### WARN
 
----
-
-## Full Quality Checklist
-
-*(Automated = checked programmatically; Manual = requires human review)*
-
-### Source Quality
-- [x] All citations map to References entries *(automated)*
-- [x] Date_Pulled in YYYY-MM-DD format for all references *(automated)*
-- [ ] Website_Type accurately describes each source *(manual)*
-
-### Content Focus
-- [ ] Focus on development practices, not product features *(manual)*
-- [ ] No user-facing features substituted *(manual)*
-- [ ] 'Not Available' used only when info genuinely absent *(manual)*
-
-### Completeness
-- [x] Description field populated with agent category/capabilities/deployment surface *(automated)*
-- [x] Repository_Statistics has all 5 required fields *(automated)*
-- [x] All 8 SE_Practices areas present *(automated)*
-- [x] All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others) *(automated)*
-- [ ] Bug_Solving_Approaches has 4 issues (only 4 — minimum 10 required) *(automated)*
-- [ ] References count: 11 (⚠ below 15) — target 15–20 *(automated)*
-- [ ] External (non-GitHub) sources: 3 (⚠ below 5) — target 5–10 *(automated)*
-
-### JSON Validity
-- [x] JSON is valid (file loaded successfully) *(automated)*
-- [x] JSON is complete (all top-level keys present) *(automated)*
-- [ ] No trailing commas in arrays/objects *(manual / JSON linter)*
-- [ ] All keys use underscores (Agent_Name not AgentName) *(manual)*
-
-### Evidence Quality
-- [x] No URL-as-quote violations *(automated)*
-- [x] No filename-as-quote violations *(automated)*
-- [ ] No short quotes (<5 words) — 2 found *(automated)*
-- [x] No overlong quotes (>50 words — should use '...') *(automated)*
-- [ ] Quotes directly support their corresponding summaries *(manual)*
-
-### Anti-Hallucination
-- [ ] No invented statistics or fabricated data *(manual)*
-- [ ] All URLs in References verified accessible *(manual)*
-- [ ] No guessed file paths or made-up links *(manual)*
-
-### Research Efficiency
-- [ ] No single source attempted 5+ times without success *(manual — not verifiable from JSON output)*
-- [ ] Research covers diverse source types (repo + blogs + papers + forums) *(see References)*
+| q_id | Attribute                  | Issue                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ---- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| q_4  | anti_hallucination         | Summary states "code generation accuracy increased by 12%, long-context stability improved by 18%, and tool invocation success rate reached 96.60%" and attributes these to "third-party enterprise evaluators," but the quoted evidence does not attribute these numbers to an independent evaluator — the source of the evaluation is not clear from the quote alone                                                                                                      |
+| q_19 | evidence_summary_alignment | Summary claims MoonshotAI maintains channels at "discord.gg/FBDhVhVH7M", "forum.moonshot.ai", and "r/kimi", but neither of the two cited quotes mentions any of these URLs or platforms; the quotes are a general statement about the research preview and a philosophical claim about human-AI collaboration — not evidence for the specific community channels listed                                                                                                     |
+| q_20 | evidence_summary_alignment | Summary states MoonshotAI uses "X (@Kimi_Moonshot) and Instagram (@kimiai.official)" for social media outreach, but neither cited quote mentions these handles or platforms; the social media handle claims are not evidenced by the cited passages                                                                                                                                                                                                                          |
+| q_22 | anti_hallucination         | Summary lists specific channel URLs (discord.gg/FBDhVhVH7M, r/kimi, forum.moonshot.ai, platform.kimi.ai, X @Kimi_Moonshot, Instagram @kimiai.official) as communication tools, but the quoted evidence only cites the support email address and a benchmark reproducibility note — none of the social/community URLs appear in the quoted text                                                                                                                              |
+| q_25 | anti_hallucination         | Summary states the kimi-agent-internals repository has "294 stars, 92 forks," but neither of the two quoted evidence passages mentions these repository statistics; the figures appear to be directly observed metadata not captured in any cited quote                                                                                                                                                                                                                      |
+| q_3  | anti_hallucination         | Summary states the agent "ran 4k+ tool calls, over 12 hours of continuous execution" but also claims "averaged over 10 independent checks" for robustness, while the quoted evidence mentions only "Across 4,000+ tool calls, over 12 hours of continuous execution, and 14 iterations" — the "10 independent checks" averaging claim does not appear in the quoted evidence and conflates the benchmark averaging described in q_2 with the operational stress test in q_3 |
+| q_33 | evidence_summary_alignment | Summary claims Agent Swarm is "trained using PARL (Parallel Agentic Reinforcement Learning) across multi-stage training (pre-training, SFT, and joint vision-text RL) on a large-scale Mixture-of-Experts architecture," but neither quoted passage mentions PARL, MoE architecture, or SFT — the training methodology claims are not demonstrated by the cited quotes                                                                                                      |
+| q_7  | quote_correctness          | Evidence quote "BrowseComp (agent swarm)                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| q_15 | content_focus              | Summary describes MoonshotAI's marketing team using "Claw Groups" for "end-to-end content production and launch campaigns, with specialized agents like Demo Makers, Benchmark Makers, Social Media Agents, and Video Makers" — this describes an internal product use case (marketing automation) rather than an engineering development or operations practice, making it borderline content_focus for the Software_Engineering_Methodology area                          |
 
 ---
 
-*Generated by `quality_review_agent.py` on 2026-05-18*
+## Programmatic Issues to Address
+
+FAIL  Bug_Solving_Approaches has only 4 units (minimum 10 required) — expand with additional practices (e.g., how model regressions are detected and triaged, how community-reported issues reach the engineering team), tools, and stakeholder entries with supporting evidence
+WARN  References [4] and [5] are defined but never cited — remove from bibliography or add citations
+WARN  External non-GitHub sources: only 3 (minimum 5 recommended) — add additional non-GitHub sources such as the Kimi tech reports on arxiv, platform.moonshot.ai documentation, or the MoonshotAI blog
+WARN  References count of 11 is below the 15-20 target — add citations for claims currently supported only by the single omnibus source [8]
+WARN  2 short quotes under 5 words — replace with sentence-length contextual quotes
+
+---
+
+*Generated by quality_review_agent.py on 2026-05-23*

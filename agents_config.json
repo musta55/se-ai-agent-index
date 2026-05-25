@@ -76,23 +76,5 @@
     "agent_name": "Amazon Q Developer",
     "indexing_status": "completed",
     "reviewed": true
-  },
-  {
-    "id": 14,
-    "agent_name": "Chatgpt Atlas",
-    "indexing_status": "pending",
-    "reviewed": false
-  },
-  {
-    "id": 15,
-    "agent_name": "OpenAI Codex",
-    "indexing_status": "pending",
-    "reviewed": false
-  },
-  {
-    "id": 16,
-    "agent_name": "AmazonQ Developer",
-    "indexing_status": "pending",
-    "reviewed": false
   }
 ]
