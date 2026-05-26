@@ -38,48 +38,11 @@ EXCEL_OUTPUT = os.path.join(PAPER_DIR, "Analysis of SE AI Agent Index.xlsx")
 QUERY_INDEX_PATH = os.path.join(BASE_DIR, "query_index.json")
 
 # ---------------------------------------------------------------------------
-# Legacy column → current COLUMN_MAP column
-# The legacy Excel had CI/CD Stakeholders/Others swapped, Code Review Others
-# at col 14, Bug Solving Others at col 18 (not 16), Dev Comm Stakeholders/
-# Others at cols 25-26, etc.  Columns not in this map are skipped.
+# Legacy column → output column mapping.
+# The output Excel uses the legacy as its structural template, so the column
+# positions are identical.  Map every data column 1-34 straight through.
 # ---------------------------------------------------------------------------
-LEGACY_TO_CURRENT_COL = {
-    1:  1,   # Agent name
-    2:  2,   # Description
-    3:  3,   # Testing > Practices
-    4:  4,   # Testing > Tools
-    5:  5,   # Testing > Stakeholders
-    6:  6,   # Testing > Others
-    7:  7,   # CI/CD > Practices
-    8:  8,   # CI/CD > Tools
-    9:  10,  # CI/CD Stakeholders (legacy col 9) → current col 10
-    10: 9,   # CI/CD Others (legacy col 10) → current col 9
-    11: 11,  # Code Review > Practices
-    12: 12,  # Code Review > Tools
-    13: 13,  # Code Review > Stakeholders
-    14: 33,  # Code Review Others (legacy col 14) → current col 33
-    15: 14,  # Bug Solving > Practices
-    16: 15,  # Bug Solving > Tools
-    17: 17,  # Bug Solving > Stakeholders
-    18: 16,  # Bug Solving Others (legacy col 18) → current col 16
-    19: 18,  # SE Methodology > Practices
-    20: 19,  # SE Methodology > Tools
-    21: 20,  # SE Methodology > Stakeholders
-    22: 21,  # SE Methodology > Others
-    23: 22,  # Dev Communication > Practices
-    24: 23,  # Dev Communication > Tools
-    25: 34,  # Dev Comm Stakeholders (legacy col 25) → current col 34
-    26: 35,  # Dev Comm Others (legacy col 26) → current col 35
-    27: 24,  # Documentation > Practices
-    28: 25,  # Documentation > Tools
-    29: 26,  # Documentation > Stakeholders
-    30: 27,  # Documentation > Others
-    31: 28,  # LLM Integration > Practices
-    32: 29,  # LLM Integration > Tools
-    33: 30,  # LLM Integration > Stakeholders
-    34: 31,  # LLM Integration > Others
-    # Col 32 (Bug Solving > Issues) has no legacy counterpart — left empty.
-}
+LEGACY_TO_CURRENT_COL = {col: col for col in range(1, 35)}
 
 # ---------------------------------------------------------------------------
 # Build old-sequential q-id index (what build_agent_index used to produce)

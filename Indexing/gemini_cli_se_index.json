@@ -1,6 +1,7 @@
 {
   "Agent_Name": "Gemini CLI",
   "Description": {
+    "q_id": "q_8",
     "value": "Google Gemini CLI is an open-source, terminal-based AI coding agent developed by Google that brings Gemini model capabilities directly to the developer's command-line environment, supporting multi-turn conversations, file editing, code generation, and agentic web search in a REPL-style interface.",
     "evidence": [
       {
