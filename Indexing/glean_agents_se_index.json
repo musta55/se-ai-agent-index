@@ -93,11 +93,15 @@
       "Practices": [
         {
           "q_id": "q_2",
-          "Summary": "Glean heavily tests all layers of their search stack with each release qualification going through a battery of end-to-end search tests on fully loaded deployments. They have invested in quickly bootstrapping an in-memory multi-node search engine within unit tests to verify changes rapidly. The team runs test queries on any new search engine before proceeding with switchover and runs the same verification procedure on the active search engine before deleting the old one for rollback safety.",
+          "Summary": "Glean heavily tests all layers of their search stack with each release qualification going through a battery of end-to-end search tests on fully loaded deployments. They have invested in quickly bootstrapping an in-memory multi-node search engine within unit tests to verify changes rapidly. The team runs test queries on any new search engine before proceeding with switchover and runs the same verification procedure on the active search engine before deleting the old one for rollback safety. The most impactful improvements to AI agents come from a structured feedback loop: refining instructions, structuring context, tuning model parameters, and selecting the right language models.",
           "evidence": [
             {
               "quote": "Glean heavily tests all layers of their search stack, with each release qualification going through a bevy of end-to-end search tests on fully loaded deployments.",
               "citation": "[9]"
+            },
+            {
+              "quote": "Start with a single north star metric, the most important measure of the agent’s quality or usefulness that everyone can align on. The most impactful improvements to AI agents come from a structured feedback loop: refining instructions, structuring context, tuning model parameters, and selecting the right language models.",
+              "citation": "[11]"
             },
             {
               "quote": "They've invested heavily in being able to quickly bootstrap an in-memory multi-node search engine within unit tests, which enables them to very quickly verify any changes.",
