@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python quality_review_agent.py \"Glean Agents\")",
       "Bash(python quality_review_agent.py --all)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -)",
+      "Bash(./se_index.sh query *)"
     ]
   }
 }
