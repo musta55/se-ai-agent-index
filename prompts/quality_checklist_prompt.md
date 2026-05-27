@@ -43,14 +43,17 @@ Findings from all batches are merged. The overall score is the worst score acros
 
 ### 1. content_focus
 
-- **FAIL** — The Summary or quote describes what the agent does *for end users* (product
-  feature, user-facing capability) rather than how engineers *built or operate* it
-  (development practice, tooling, process decision).
+- **PASS** — The Summary and quotes exclusively describe internal engineering practices,
+  tooling choices, or process decisions made by the team building or operating the system.
 - **WARN** — Borderline: partially describes a dev practice but bleeds into product-feature
   language.
+- **FAIL** — The Summary or quote describes what the agent does *for end users* (product
+  feature, user-facing capability) rather than how engineers *built or operate* it.
 
 ### 2. quote_correctness
 
+- **PASS** — The quote is copied verbatim from the cited source, preserving original
+  wording and punctuation; ellipsis markers (`...`) are used wherever text is omitted.
 - **WARN** — The quote reads like a paraphrase or lightly edited rewrite rather than
   verbatim source text.
 - **FAIL** — The quote is clearly reconstructed from memory, reworded, or merged from
@@ -58,19 +61,25 @@ Findings from all batches are merged. The overall score is the worst score acros
 
 ### 3. anti_hallucination
 
-- **FAIL** — A specific statistic, metric, or factual claim in the Summary or quote
-  appears fabricated or has no citation.
+- **PASS** — All statistics, metrics, and factual claims in the Summary are directly
+  present in the cited evidence or are unambiguously attributable to the linked source.
 - **WARN** — A figure or assertion is suspicious or unverifiable but not definitively
   invented.
+- **FAIL** — A specific statistic, metric, or factual claim in the Summary or quote
+  appears fabricated, has no citation, or the cited source link is broken.
 
 ### 4. evidence_summary_alignment
 
+- **PASS** — The quoted evidence directly and unambiguously supports the Summary with no
+  inferential leap required.
 - **WARN** — The Summary claims X but the quoted evidence does not clearly demonstrate X;
   the link is weak or requires a large inferential leap.
 - **FAIL** — The quote contradicts the Summary, or is entirely unrelated to it.
 
 ### 5. unavailability_check
 
+- **PASS** — Either "Not Available" does not appear in the unit, or its use is appropriate
+  given the genuine absence of publicly accessible information.
 - **WARN** — The Summary or evidence contains "Not Available" in an area where public
   engineering information almost certainly exists for this agent (e.g., a well-documented
   open-source project marking CI/CD practices as Not Available).

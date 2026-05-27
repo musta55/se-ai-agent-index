@@ -95,7 +95,7 @@ In this task, you must conduct deep AI-mode searching to scrape publicly availab
 
 - If you discover comprehensive engineering handbooks or books (e.g., Google SWE Book, Amazon Builders' Library):
   - Check the **table of contents** for relevant chapters across different SE practice areas
-  - Explore **multiple chapters** that align with the 8 research areas:
+  - Explore **multiple chapters** that align with the 7 research areas:
     - Testing/CI chapters → Testing_and_Reliability, Integration_and_Infrastructure
     - Code review chapters → Code_Review_Process
     - Documentation chapters → Holistic_Documentation
@@ -143,11 +143,11 @@ In this task, you must conduct deep AI-mode searching to scrape publicly availab
 
 **Output:** Populate the `Issues` array in `Bug_Solving_Approaches`. In the `Practices` sub-section, synthesize the issues into recurring problem categories — this is more valuable than a raw issue count.
 
-### Step 4: Deep Analysis Across 8 SE Practice Areas
+### Step 4: Deep Analysis Across 7 SE Practice Areas
 
 **Objective:** Extract detailed SE practices across all categories by analyzing all collected sources.
 
-**For Each of the 8 Areas Below:**
+**For Each of the 7 Areas Below:**
 
 Extract information in this structure:
 
@@ -163,7 +163,7 @@ Extract information in this structure:
   - **quote:** EXACT verbatim text from source (5-50 words). It must be a complete statement or sentence from the text that supports the summary. It must not be a file name, URL, or webpage title.
   - **citation:** Reference number [1], [2], etc.
 
-## 8 Critical Research Areas
+## 7 Critical Research Areas
 
 ### 1. Testing & Reliability
 
@@ -361,30 +361,6 @@ The comprehensive documentation culture, systems, and practices. How is document
 - **Stakeholders:** Who writes, reviews, and maintains documentation? What roles are involved? (e.g., technical writers, document owners, engineers, reviewers)
 - **Others:** Any other descriptions of documentation workflows, comprehensive documentation systems, quality processes, or cultural practices around documentation
 
-### 8. LLM Integration & Prompt Management
-
-**What This Area Covers:**
-How do the engineers manage the agent's interaction with underlying models?
-
-**What to Look For:**
-
-- Prompt versioning practices and systems
-- LLM context management and optimization
-- Model selection/switching processes (GPT-4, Claude, Gemini, etc.)
-- Prompt engineering workflows and best practices
-- Tools for prompt management (LangSmith, Model Context Protocol - MCP, PromptLayer, etc.)
-- Evaluation frameworks for LLM outputs (accuracy, relevance, safety)
-- Fine-tuning or model customization practices
-- Token usage optimization and cost management
-- Fallback strategies for LLM failures
-
-**Questions to Answer:**
-
-- **Practices:** What practices are used for prompt versioning, managing LLM context, and environment feedback loops? How are prompts tested and evaluated?
-- **Tools:** What tools or protocols are used? (e.g., Model Context Protocol - MCP, LangSmith, PromptLayer, custom frameworks)
-- **Stakeholders:** Who manages prompts and LLM integration? (e.g., AI/ML engineers, prompt engineers, core developers)
-- **Others:** Any other descriptions of LLM integration workflows, optimization strategies, or quality controls
-
 ## Anti-Hallucination Rules & Output Instructions
 
 ### Rule 1: Strict Source Fidelity
@@ -469,7 +445,7 @@ How do the engineers manage the agent's interaction with underlying models?
 - Ensure the entire JSON is complete - do **not** truncate
 - Double-check JSON syntax: proper commas, balanced braces, valid structure
 - All citations [1], [2], etc. must have corresponding entries in References section
-- All 8 SE_Practices areas must be present with all 4 subsections each
+- All 7 SE_Practices areas must be present with all 4 subsections each
 - Repository_Statistics must have all required fields
 - Bug_Solving_Approaches must include an Issues array with 10–15 issues selected to reveal recurring engineering patterns
 
@@ -575,6 +551,7 @@ Each field is filled with an **array of objects** containing a query ID (q_id), 
 ```
 
 **Q-ID Assignment Rules:**
+
 1. Start with `q_1` for the Description field
 2. Increment sequentially across all SE_Practices categories and fields
 3. Each summary object gets exactly one q_id
@@ -1021,7 +998,7 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 2. **Valid JSON:** Must be parsable JSON with proper syntax (commas, braces, quotes)
 3. **No Truncation:** Do not cut off the JSON - include all sections fully
 4. **Minimum 10 Issues:** Bug_Solving_Approaches must have at least 10 issues
-5. **All 8 Areas:** All SE_Practices areas must be populated with all 4 subsections each
+5. **All 7 Areas:** All SE_Practices areas must be populated with all 4 subsections each
 6. **Complete References:** Every citation [1], [2], etc. must have a References entry
 7. **Verbatim Quotes:** All quotes must be exact text from sources
 8. **Real URLs:** All Links must be real, accessible URLs (no made-up paths)
@@ -1206,7 +1183,7 @@ The JSON must include:
 - Agent_Name
 - Description (agent category, capabilities, and deployment surface)
 - Repository_Statistics (with complete evidence arrays for ALL metrics)
-- SE_Practices (ALL 8 areas populated with Practices, Tools, Stakeholders, Others subsections)
+- SE_Practices (ALL 7 areas populated with Practices, Tools, Stakeholders, Others subsections)
 - Bug_Solving_Approaches.Issues (MINIMUM 10 issues, each with title, description, citation)
 - References (every citation [1], [2], etc. must have an entry)
 

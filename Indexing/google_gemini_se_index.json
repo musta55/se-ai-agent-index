@@ -620,51 +620,6 @@
           "evidence": []
         }
       ]
-    },
-    "LLM_Integration_and_Prompt_Management": {
-      "Practices": [
-        {
-          "q_id": "q_30",
-          "Summary": "Gemini IS the LLM, but Google's prompt-management practice (as documented in Vertex AI 'Prompt Optimizer', the Gemini cookbook, and the 'Vibe Checks to Continuous Evaluation' post) emphasizes: structured system instructions, tool/function-calling schemas, JSON-mode constrained output, and continuous evaluation against golden sets with LLM-as-judge.",
-          "evidence": [
-            {
-              "quote": "LLM as a judge",
-              "citation": "[3]"
-            }
-          ]
-        }
-      ],
-      "Tools": [
-        {
-          "q_id": "q_31",
-          "Summary": "Vertex AI Prompt Optimizer, Gemini cookbook (github.com/google-gemini/cookbook), function-calling schema specs, system-instruction parameter, controlled generation / JSON mode.",
-          "evidence": [
-            {
-              "quote": "github.com/google-gemini/cookbook",
-              "citation": "[7]"
-            }
-          ]
-        }
-      ],
-      "Stakeholders": [
-        {
-          "q_id": "q_32",
-          "Summary": "Gemini model team, Vertex AI prompt-tools team, Google AI Studio team, DevRel.",
-          "evidence": [
-            {
-              "quote": "Google AI Studio",
-              "citation": "[3]"
-            }
-          ]
-        }
-      ],
-      "Others": [
-        {
-          "q_id": "q_60",
-          "Summary": "Not Available",
-          "evidence": []
-        }
-      ]
     }
   },
   "References": {
