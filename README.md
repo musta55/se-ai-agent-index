@@ -2,6 +2,24 @@
 
 A structured dataset and toolchain for analyzing **Software Engineering practices** of AI coding agents. Each agent is researched using open-coding methodology and stored as a validated JSON index — covering testing, CI/CD, code review, bug solving, methodology, team communication, documentation, and LLM integration.
 
+---
+
+## Dataset
+
+> **Primary dataset:** [`dataset/SE AI Agent Index.xlsx`](dataset/SE AI Agent Index.xlsx)
+
+This is the **manually curated and human-verified master dataset** — the authoritative source of truth for the entire project. It is stored in the `dataset/` folder at the root of the repository and is tracked in version control.
+
+| File | Purpose |
+| ---- | ------- |
+| `dataset/SE AI Agent Index.xlsx` | Master dataset: all agents, all SE practice areas, all q-ids, manually verified by researchers |
+
+The Excel file is built from the raw JSON indexes in `Indexing/` through a human-in-the-loop curation process. Researchers review each AI-generated summary, cross-check it against downloaded web sources in `web_sources/`, and include only claims that pass semantic validation. The `build_query_index.py` script reads this file to produce `query_index.json` for fast CLI lookup.
+
+**If you are here to access the research data, start here: [`dataset/SE AI Agent Index.xlsx`](dataset/SE AI Agent Index.xlsx)**
+
+---
+
 ## Prerequisites
 
 ```bash
@@ -34,7 +52,7 @@ pip install anthropic
 ./se_index.sh sources --all
 
 # Manual curation — create Excel spreadsheet from JSON (with q-ids)
-# → Analysis of SE AI Agent Index.xlsx (manually verified dataset)
+# → dataset/SE AI Agent Index.xlsx  ★ primary dataset (manually verified)
 
 # Build query index from curated Excel spreadsheet
 python3 build_query_index.py
@@ -91,7 +109,8 @@ SE Indexing Tool/
 │   │   └── ...
 │   └── ...
 │
-├── "Analysis of SE AI Agent Index.xlsx"   Manually curated + verified dataset (with q-ids)
+├── dataset/
+│   └── SE AI Agent Index.xlsx          ★ PRIMARY DATASET — manually curated + verified (with q-ids)
 └── venv/                           Python virtual environment
 ```
 
@@ -187,7 +206,7 @@ Builds `query_index.json` from the **manually curated Excel spreadsheet** (`Anal
 4. Builds `query_index.json` — a lookup table mapping `(agent name, q-id)` → full JSON summary + evidence
 
 **What it does:**
-- Reads `Analysis of SE AI Agent Index.xlsx` (primary dataset)
+- Reads `dataset/SE AI Agent Index.xlsx` (primary dataset)
 - Extracts all q-ids and their corresponding summaries
 - Matches q-ids back to JSON files in `Indexing/`
 - Creates `query_index.json` for fast lookup via `./se_index.sh query`
@@ -315,7 +334,7 @@ Open `quality_checklist/new_agent_name_review.md` and address any `⚠️` or `�
 
 1. Open generated JSON: `Indexing/new_agent_name_se_index.json`
 2. Review each summary with its embedded q-id (e.g., `q_1`, `q_2`, ...)
-3. Create/update Excel spreadsheet: `Analysis of SE AI Agent Index.xlsx`
+3. Create/update the master dataset: `dataset/SE AI Agent Index.xlsx`
 4. Include q-ids in spreadsheet for traceability
 5. Filter out information that fails semantic validation
 6. Verify sources using downloaded web pages in `web_sources/New_Agent_Name/`
