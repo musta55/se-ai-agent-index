@@ -18,7 +18,7 @@ Overall LLM score: EXCELLENT
 
 PASS  Description field populated with agent category/capabilities/deployment surface
 PASS  Repository_Statistics has all 5 required fields
-PASS  All 8 SE_Practices areas present
+PASS  All 7 SE_Practices areas present
 PASS  All SE areas have 4 subsections (Practices, Tools, Stakeholders, Others)
 PASS  Bug_Solving_Approaches meets minimum issue count
 PASS  References count meets target

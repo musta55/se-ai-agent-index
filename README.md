@@ -77,8 +77,7 @@ SE Indexing Tool/
 ├── fill_missing_qids.py            Utility: Fill missing q-ids if JSONs edited manually
 ├── reorder_qid_fields.py           Utility: Ensure q-id is first field
 ├── prompts/
-│   ├── research_prompt.md          Research methodology & JSON schema spec
-│   └── quality_checklist_prompt.md Manual review checklist template
+│   └── index_prompt.md          Research methodology & JSON schema spec
 ├── agents_config.json              Agent registry (id, name, status, reviewed)
 ├── quality_review_agent.py         LLM-as-judge quality review script
 │
@@ -120,7 +119,7 @@ SE Indexing Tool/
 
 ### `./se_index.sh index "Agent Name"`
 
-Registers the agent in `agents_config.json`, then **runs Claude Code autonomously** to research and produce the SE index JSON with embedded q-ids. After successful index creation, **automatically downloads all reference web sources** locally for offline verification. Claude uses WebSearch and WebFetch to browse the web following the methodology in `prompts/research_prompt.md`.
+Registers the agent in `agents_config.json`, then **runs Claude Code autonomously** to research and produce the SE index JSON with embedded q-ids. After successful index creation, **automatically downloads all reference web sources** locally for offline verification. Claude uses WebSearch and WebFetch to browse the web following the methodology in `prompts/index_prompt.md`.
 
 ```bash
 ./se_index.sh index "OpenAI Codex"
@@ -131,7 +130,7 @@ Registers the agent in `agents_config.json`, then **runs Claude Code autonomousl
 **What happens:**
 
 1. Agent is registered in `agents_config.json` (`indexing_status: pending`)
-2. `prompts/research_prompt.md` is substituted with the agent name and piped to `claude -p`
+2. `prompts/index_prompt.md` is substituted with the agent name and piped to `claude -p`
 3. Claude browses GitHub, blogs, docs, and papers (3–10 min)
 4. The JSON response is extracted and saved to `Indexing/openai_codex_se_index.json` **with embedded q-ids**
 5. **All reference web sources are automatically downloaded** to `web_sources/openai_codex/`
@@ -302,8 +301,8 @@ Available agents:
 This single command:
 
 1. Adds the agent to `agents_config.json` (`indexing_status: pending`)
-2. Substitutes `"New Agent Name"` into `prompts/research_prompt.md`
-3. Runs `claude -p < prompts/research_prompt.md` non-interactively
+2. Substitutes `"New Agent Name"` into `prompts/index_prompt.md`
+3. Runs `claude -p < prompts/index_prompt.md` non-interactively
 4. Claude browses GitHub repos, engineering blogs, documentation, and issue trackers
 5. Saves the JSON output to `Indexing/new_agent_name_se_index.json` **with embedded q-ids**
 6. **Automatically downloads all reference web sources** to `web_sources/New_Agent_Name/`

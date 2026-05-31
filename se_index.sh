@@ -3,8 +3,6 @@
 #
 # Usage:
 #   ./se_index.sh index   "Agent Name"      Register + research a new agent (runs Claude Code)
-#   ./se_index.sh review  "Agent Name"      LLM quality review for one agent
-#   ./se_index.sh review  --all             LLM quality review for all agents
 #   ./se_index.sh sources "Agent Name"      Download reference web sources for one agent
 #   ./se_index.sh sources --all             Download reference web sources for all agents
 
@@ -12,9 +10,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AGENTS_CONFIG="$SCRIPT_DIR/agents_config.json"
-QUALITY_REVIEW="$SCRIPT_DIR/quality_review_agent.py"
 PULL_SOURCES="$SCRIPT_DIR/Indexing/pull_sources.py"
-RESEARCH_PROMPT="$SCRIPT_DIR/prompts/research_prompt.md"
+RESEARCH_PROMPT="$SCRIPT_DIR/prompts/index_prompt.md"
 ENV_FILE="$SCRIPT_DIR/.env"
 ENV_EXAMPLE="$SCRIPT_DIR/.env.example"
 
@@ -316,9 +313,6 @@ PYEOF
                 warn "Some sources failed to download (check web_sources/ for details)"
             fi
 
-            echo ""
-            info "Run quality review next:"
-            echo "   $0 review \"$agent_name\""
         else
             warn "File saved but failed JSON validation."
             warn "Inspect: $output_file"
@@ -331,34 +325,6 @@ PYEOF
     fi
 
     divider
-}
-
-# ── Command: review ───────────────────────────────────────────────────────────
-
-cmd_review() {
-    local arg="${1:-}"
-    [[ -z "$arg" ]] && error "Usage: $0 review \"Agent Name\"\n       $0 review --all"
-
-    check_python
-    activate_venv
-    ensure_env   # quality_review_agent.py reads ANTHROPIC_API_KEY from env
-
-    divider
-    if [[ "$arg" == "--all" ]]; then
-        info "Quality review — ALL agents"
-    else
-        info "Quality review — $arg"
-    fi
-    divider
-
-    if [[ "$arg" == "--all" ]]; then
-        python3 "$QUALITY_REVIEW" --all
-    else
-        python3 "$QUALITY_REVIEW" "$arg"
-    fi
-
-    divider
-    success "Review complete — reports in quality_checklist/"
 }
 
 # ── Command: sources ──────────────────────────────────────────────────────────
@@ -403,8 +369,6 @@ ${BOLD}SETUP (first time)${RESET}
 ${BOLD}COMMANDS${RESET}
 
   ${CYAN}index${RESET}        "Agent Name"       Register agent + run research (auto-downloads sources)
-  ${CYAN}review${RESET}       "Agent Name"       Run LLM-as-judge quality review for one agent
-  ${CYAN}review${RESET}       --all              Run quality review for all agents
   ${CYAN}sources${RESET}      "Agent Name"       Re-download reference URLs for one agent (manual)
   ${CYAN}sources${RESET}      --all              Re-download reference URLs for all agents (manual)
 
@@ -421,7 +385,6 @@ ${BOLD}FULL WORKFLOW${RESET}
   ./se_index.sh index   "New Agent"   # research + auto-download sources
                                       # → Indexing/<name>_se_index.json
                                       # → web_sources/<name>/
-  ./se_index.sh review  "New Agent"   # quality check → quality_checklist/<name>_review.md
 
   # Manually curate Excel spreadsheet from JSON with q-ids
   # → Analysis of SE AI Agent Index.xlsx (manual curation + verification)
@@ -439,9 +402,8 @@ ${BOLD}FILES${RESET}
   .env                        API key (gitignored)
   .env.example                Template — copy to .env
   agents_config.json          Registry: id, name, indexing_status, reviewed
-  prompts/research_prompt.md          Research methodology + JSON schema (8 SE areas)
+  prompts/index_prompt.md          Research methodology + JSON schema (8 SE areas)
   Indexing/<name>_se_index.json        SE index output per agent
-  quality_checklist/<name>_review.md   LLM review report per agent
   web_sources/<name>/[N].html|md       Cached reference files (gitignored)
 
 ${BOLD}NOTES${RESET}
@@ -451,7 +413,7 @@ ${BOLD}NOTES${RESET}
   • ANTHROPIC_API_KEY is read from .env for both 'index' and 'review'
   • Sources are downloaded automatically after successful index creation
   • 'sources' command available for manual re-download (no API key needed)
-  • All q-ids are embedded in JSON during generation (see prompts/research_prompt.md)
+  • All q-ids are embedded in JSON during generation (see prompts/index_prompt.md)
 
 EOF
 }
@@ -463,7 +425,6 @@ shift || true
 
 case "$COMMAND" in
     index)        cmd_index         "$@" ;;
-    review)       cmd_review        "$@" ;;
     sources)      cmd_sources       "$@" ;;
     query)        cmd_query         "$@" ;;
     list-queries) cmd_list_queries  "$@" ;;

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 LLM-as-Judge Quality Review Agent for SE Index JSON files.
-Evaluates each agent's SE index against the Quality Review Checklist in prompts/research_prompt.md.
+Evaluates each agent's SE index against the Quality Review Checklist in prompts/index_prompt.md.
 
 Usage:
     python quality_review_agent.py "Glean Agents"
