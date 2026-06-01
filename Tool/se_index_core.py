@@ -11,7 +11,7 @@ import json
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-INDEXING_DIR = os.path.join(BASE_DIR, "..", "Indexing")
+INDEXING_DIR = os.path.join(BASE_DIR, "..", "data", "Indexing")
 
 # Agent name (lowercase) → JSON filename in Indexing/
 AGENT_JSON_MAP = {

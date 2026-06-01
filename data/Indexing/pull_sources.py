@@ -10,8 +10,8 @@ Saved into: web_sources/{agent_name}/{[N]}.{ext}
   - Everything else        → downloaded as HTML            → [N].html
 
 Usage:
-    python Indexing/pull_sources.py "Glean Agents"
-    python Indexing/pull_sources.py --all
+    python data/Indexing/pull_sources.py "Glean Agents"
+    python data/Indexing/pull_sources.py --all
 """
 
 import argparse
@@ -24,10 +24,11 @@ from urllib.parse import urlparse
 import urllib.request
 import urllib.error
 
-INDEXING_DIR = Path(__file__).parent
-BASE_DIR     = INDEXING_DIR.parent
-WEB_SOURCES  = BASE_DIR / "web_sources"
-AGENTS_CFG   = BASE_DIR / "Tool" / "agents_config.json"
+INDEXING_DIR = Path(__file__).parent          # data/Indexing/
+DATA_DIR     = INDEXING_DIR.parent            # data/
+ROOT_DIR     = DATA_DIR.parent                # project root
+WEB_SOURCES  = DATA_DIR / "web_sources"
+AGENTS_CFG   = ROOT_DIR / "Tool" / "agents_config.json"
 
 HEADERS = {
     "User-Agent": (
@@ -228,8 +229,8 @@ def pull_agent(data: dict, agent_name: str | None = None):
 # ── .gitignore ────────────────────────────────────────────────────────────────
 
 def ensure_gitignore():
-    gi = BASE_DIR / ".gitignore"
-    entry = "web_sources/"
+    gi = ROOT_DIR / ".gitignore"
+    entry = "data/web_sources/"
     if gi.exists():
         if entry in gi.read_text(encoding="utf-8"):
             return

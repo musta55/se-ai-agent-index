@@ -10,7 +10,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AGENTS_CONFIG="$SCRIPT_DIR/agents_config.json"
-PULL_SOURCES="$SCRIPT_DIR/../Indexing/pull_sources.py"
+PULL_SOURCES="$SCRIPT_DIR/../data/Indexing/pull_sources.py"
 RESEARCH_PROMPT="$SCRIPT_DIR/../index_prompt.md"
 ENV_FILE="$SCRIPT_DIR/../.env"
 ENV_EXAMPLE="$SCRIPT_DIR/../.env.example"
@@ -200,13 +200,13 @@ cmd_index() {
     # Resolve output path
     local safe_name output_file
     safe_name=$(safe_filename "$agent_name")
-    output_file="$SCRIPT_DIR/../Indexing/${safe_name}_se_index.json"
+    output_file="$SCRIPT_DIR/../data/Indexing/${safe_name}_se_index.json"
 
     # Skip research if a valid JSON index already exists for this agent.
     # Checks both the canonical safe-name path AND any existing file in Indexing/
     # whose name fuzzy-matches the agent name (handles legacy naming like GleanAgents_).
     local existing_file
-    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/../Indexing" <<'PYEOF'
+    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/../data/Indexing" <<'PYEOF'
 import json, os, sys, re
 
 name = sys.argv[1].lower()
@@ -236,15 +236,15 @@ PYEOF
     )
 
     if [[ -n "$existing_file" ]]; then
-        success "Index already exists: Indexing/$existing_file"
+        success "Index already exists: data/Indexing/$existing_file"
         info "To re-index, delete the file first:"
-        echo "   rm \"$SCRIPT_DIR/../Indexing/$existing_file\""
+        echo "   rm \"$SCRIPT_DIR/../data/Indexing/$existing_file\""
         divider
         return 0
     fi
 
     echo ""
-    info "Output file : Indexing/${safe_name}_se_index.json"
+    info "Output file : data/Indexing/${safe_name}_se_index.json"
     info "Research    : $(wc -l < "$RESEARCH_PROMPT" | tr -d ' ') line prompt → claude -p"
     echo ""
     warn "Starting research — this takes 3–10 minutes (Claude is browsing the web)..."
@@ -299,7 +299,7 @@ PYEOF
 
         # Confirm the saved file is valid JSON
         if python3 -c "import json; json.load(open('$output_file'))" 2>/dev/null; then
-            success "SE index saved → Indexing/${safe_name}_se_index.json"
+            success "SE index saved → data/Indexing/${safe_name}_se_index.json"
             update_indexing_status "$agent_name" "completed"
             success "Status updated → completed"
             echo ""
@@ -308,7 +308,7 @@ PYEOF
             info "Downloading reference web sources..."
             divider
             if python3 "$PULL_SOURCES" "$agent_name" 2>&1; then
-                success "Web sources cached → web_sources/${safe_name}/"
+                success "Web sources cached → data/web_sources/${safe_name}/"
             else
                 warn "Some sources failed to download (check web_sources/ for details)"
             fi
@@ -382,8 +382,8 @@ ${BOLD}FULL WORKFLOW${RESET}
 
   # For each new agent:
   ./Tool/se_index.sh index   "New Agent"   # research + auto-download sources
-                                           # → Indexing/<name>_se_index.json
-                                           # → web_sources/<name>/
+                                           # → data/Indexing/<name>_se_index.json
+                                           # → data/web_sources/<name>/
 
   # Manually curate Excel spreadsheet from JSON with q-ids
   # → dataset/Index.xlsx (manual curation + verification)
@@ -398,13 +398,14 @@ ${BOLD}FULL WORKFLOW${RESET}
 
 ${BOLD}FILES${RESET}
 
-  .env                              API key (gitignored)
-  .env.example                      Template — copy to .env
-  index_prompt.md                   Research methodology + JSON schema (8 SE areas)
-  Tool/agents_config.json           Registry: id, name, indexing_status, reviewed
-  Tool/query_index.json             Generated: (agent, q-id) → summary + evidence
-  Indexing/<name>_se_index.json     SE index output per agent
-  web_sources/<name>/[N].html|md    Cached reference files (gitignored)
+  .env                                   API key (gitignored)
+  .env.example                           Template — copy to .env
+  index_prompt.md                        Research methodology + JSON schema (8 SE areas)
+  Tool/agents_config.json                Registry: id, name, indexing_status, reviewed
+  Tool/query_index.json                  Generated: (agent, q-id) → summary + evidence
+  data/Indexing/<name>_se_index.json     SE index output per agent
+  data/web_sources/<name>/[N].html|md    Cached reference files (gitignored)
+  data/dataset/Index.xlsx                Master dataset (manually curated)
 
 ${BOLD}NOTES${RESET}
 

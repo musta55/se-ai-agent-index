@@ -4,9 +4,9 @@ A research dataset and toolchain for analyzing **Software Engineering (SE) pract
 
 ## Dataset
 
-Primary dataset: [`dataset/Index.xlsx`](dataset/Index.xlsx) — manually curated and human-verified.
+Primary dataset: [`data/dataset/Index.xlsx`](data/dataset/Index.xlsx) — manually curated and human-verified.
 
-Raw JSON indexes live in `Indexing/` (one per agent, with embedded q-ids).
+Raw JSON indexes live in `data/Indexing/` (one per agent, with embedded q-ids).
 
 ## Example Used In the Paper
 
@@ -29,17 +29,20 @@ Raw JSON indexes live in `Indexing/` (one per agent, with embedded q-ids).
 
 ```
 SE Indexing Tool/
-├── index_prompt.md          Research methodology & JSON schema
-├── dataset/                 Master dataset (Index.xlsx, Index.pdf)
-├── Indexing/                Raw SE index JSON files (one per agent)
-│   └── pull_sources.py      Downloads reference URLs into web_sources/
+├── index_prompt.md              Research methodology & JSON schema
+├── data/
+│   ├── dataset/                 Master dataset (Index.xlsx, Index.pdf)
+│   ├── Indexing/                Raw SE index JSON files (one per agent)
+│   │   └── pull_sources.py      Downloads reference URLs into data/web_sources/
+│   └── web_sources/             Cached reference files — gitignored, auto-populated
+│       └── <Agent_Name>/        One folder per agent ([N].html / [N].md / [N].yml)
 └── Tool/
-    ├── se_index.sh          Main CLI
-    ├── se_index_core.py     Shared q-id logic
-    ├── agents_config.json   Agent registry (id, name, status, reviewed)
-    ├── build_query_index.py Builds query_index.json from curated Excel
-    ├── query_index.json     Generated: (agent, q-id) → summary + evidence
-    └── query_runner.py      Query backend (called by se_index.sh)
+    ├── se_index.sh              Main CLI
+    ├── se_index_core.py         Shared q-id logic
+    ├── agents_config.json       Agent registry (id, name, status, reviewed)
+    ├── build_query_index.py     Builds query_index.json from curated Excel
+    ├── query_index.json         Generated: (agent, q-id) → summary + evidence
+    └── query_runner.py          Query backend (called by se_index.sh)
 ```
 
 ---
@@ -78,8 +81,8 @@ python3 Tool/build_query_index.py
 
 ## Workflow: Adding a New Agent
 
-1. **Index** — `./Tool/se_index.sh index "New Agent"` researches the agent and writes `Indexing/new_agent_se_index.json` with embedded q-ids, then downloads all reference sources to `web_sources/New_Agent/`.
-2. **Curate** — Manually transfer data into `dataset/Index.xlsx`, verifying each claim against downloaded sources in `web_sources/`.
+1. **Index** — `./Tool/se_index.sh index "New Agent"` researches the agent and writes `data/Indexing/new_agent_se_index.json` with embedded q-ids, then automatically downloads all reference sources to `data/web_sources/New_Agent/`.
+2. **Curate** — Manually transfer data into `data/dataset/Index.xlsx`, verifying each claim against downloaded sources in `data/web_sources/`.
 3. **Build index** — `python3 Tool/build_query_index.py` rebuilds `Tool/query_index.json`.
 4. **Verify** — `./Tool/se_index.sh query "New Agent" "q-1"`.
 
@@ -87,7 +90,7 @@ python3 Tool/build_query_index.py
 
 ## JSON Schema
 
-Each file in `Indexing/` follows this structure:
+Each file in `data/Indexing/` follows this structure:
 
 ```jsonc
 {
