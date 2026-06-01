@@ -1,8 +1,8 @@
-# Software Engineering Research Task
+# SE AI Agent Index Creation Prompt
 
 ## Role and Objective
 
-You are an expert Software Engineering (SE) Research Agent. Your goal is to investigate and build a standardized "Software Engineering (SE) Index" for the following agentic AI system:
+You are an expert Software Engineering (SE) Research Agent. Your goal is to investigate and build a standardized "Software Engineering (SE) AI Agent Index" for the following agentic AI system:
 
 **Target Agent: {agent_name}**
 
@@ -165,7 +165,7 @@ Extract information in this structure:
 
 ## 7 Critical Research Areas
 
-### 1. Testing & Reliability
+### 1. Testing
 
 **What This Area Covers:**
 How do developers evaluate "agentic" behavior internally? Look for testing frameworks, self-testing loops, or human-in-the-loop (HITL) evaluation.
@@ -200,7 +200,7 @@ How do developers evaluate "agentic" behavior internally? Look for testing frame
 }]
 ```
 
-### 2. Integration & Infrastructure (CI/CD)
+### 2. CI/CD
 
 **What This Area Covers:**
 How do they manage deployments, CI/CD pipelines, and infrastructure? What are the Continuous Integration and Continuous Deployment practices?
@@ -222,7 +222,7 @@ How do they manage deployments, CI/CD pipelines, and infrastructure? What are th
 - **Stakeholders:** Who manages the infrastructure? (e.g., DevOps engineers, SRE team, platform engineers)
 - **Others:** Any other relevant deployment details, infrastructure configuration, or operational practices
 
-### 3. Code Review Process
+### 3. Code Review
 
 **What This Area Covers:**
 What is the internal code review process of the human engineers/ developers building the agent?
@@ -244,7 +244,7 @@ What is the internal code review process of the human engineers/ developers buil
 - **Stakeholders:** Who performs code reviews? Who has merge permissions? (e.g., core maintainers, senior engineers, designated reviewers)
 - **Others:** Any other process descriptions, review timelines, or quality standards
 
-### 4. Bug-Solving Approaches
+### 4. Issue Resolution
 
 **What This Area Covers:**
 How do the developers track, triage, and resolve bugs in the agent's own codebase? The goal is to identify **recurring engineering pitfalls and architectural limitations**, not just list individual tickets.
@@ -308,7 +308,7 @@ What methodologies do teams use to manage the development lifecycle?
 - **Stakeholders:** Who creates infrastructure or leads the engineering lifecycle? (e.g., engineering managers, tech leads, scrum masters)
 - **Others:** Any other relevant software development details, team organization, or process descriptions
 
-### 6. Team Communication
+### 6. Communication
 
 **What This Area Covers:**
 How developers communicate and collaborate with each other during development. Focus on interpersonal communication channels, decision-making processes, and knowledge sharing. Also include automation/bots that facilitate communication workflows if available.
@@ -335,7 +335,7 @@ How developers communicate and collaborate with each other during development. F
 - **Stakeholders:** Who is involved in these communications? (e.g., core team, community contributors, maintainers, technical leads)
 - **Others:** Any other descriptions of communication workflows, meeting cadences, collaboration practices, or communication-facilitating automation
 
-### 7. Holistic Documentation
+### 7. Documentation
 
 **What This Area Covers:**
 The comprehensive documentation culture, systems, and practices. How is documentation treated as a first-class engineering artifact? Not just "what tools host docs" but "how do engineers approach documentation throughout the development lifecycle."
@@ -460,7 +460,7 @@ The comprehensive documentation culture, systems, and practices. How is document
     - **Continue with other sources** (documentation, blogs, papers, forums)
     - Use the `done` action with the completed JSON (all sections must be present)
 
-### Rule 7: External Sources are MANDATORY
+### Rule 7: External Sources are mandatory
 
 - Do **NOT** rely only on the GitHub repository
 - You **MUST** search for and extract from external sources:
@@ -493,7 +493,7 @@ You are researching the **internal development process of the human engineers**,
 - "GitHub Copilot fixes bugs for developers"
 - "The agent uses MCP to communicate" (feature, not development practice)
 
-**CORRECT Examples (Development Practices - EXTRACT THESE):**
+**CORRECT Examples (Development Practices - extract these):**
 
 - "Anthropic engineers use Playwright for end-to-end testing of Claude Code"
 - "Amazon Q team follows Agile methodology with 2-week sprints"
@@ -1172,19 +1172,19 @@ Return a **complete, valid JSON object** with this exact structure. Do NOT trunc
 }
 ```
 
-### OUTPUT FORMAT REQUIREMENT:
+### Output Format Requirement:
 
-Your final output MUST be **ONLY the JSON structure**, starting with `{` and ending with `}`.
+Your final output must be **ONLY the JSON structure**, starting with `{` and ending with `}`.
 
-**NO markdown code blocks, NO explanatory text before or after the JSON.**
+**No markdown code blocks, No explanatory text before or after the JSON.**
 
 The JSON must include:
 
 - Agent_Name
 - Description (agent category, capabilities, and deployment surface)
-- Repository_Statistics (with complete evidence arrays for ALL metrics)
-- SE_Practices (ALL 7 areas populated with Practices, Tools, Stakeholders, Others subsections)
-- Bug_Solving_Approaches.Issues (MINIMUM 10 issues, each with title, description, citation)
+- Repository_Statistics (with complete evidence arrays for All metrics)
+- SE_Practices (All 7 areas populated with Practices, Tools, Stakeholders, Others subsections)
+- Bug_Solving_Approaches.Issues (minimum 10 issues, each with title, description, citation)
 - References (every citation [1], [2], etc. must have an entry)
 
 If you cannot find information for a section, mark it as "Not Available" but the structure MUST be complete.

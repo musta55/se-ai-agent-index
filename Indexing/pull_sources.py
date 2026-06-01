@@ -27,7 +27,7 @@ import urllib.error
 INDEXING_DIR = Path(__file__).parent
 BASE_DIR     = INDEXING_DIR.parent
 WEB_SOURCES  = BASE_DIR / "web_sources"
-AGENTS_CFG   = BASE_DIR / "agents_config.json"
+AGENTS_CFG   = BASE_DIR / "Tool" / "agents_config.json"
 
 HEADERS = {
     "User-Agent": (

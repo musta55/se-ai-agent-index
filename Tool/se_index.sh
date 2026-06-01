@@ -10,10 +10,10 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AGENTS_CONFIG="$SCRIPT_DIR/agents_config.json"
-PULL_SOURCES="$SCRIPT_DIR/Indexing/pull_sources.py"
-RESEARCH_PROMPT="$SCRIPT_DIR/prompts/index_prompt.md"
-ENV_FILE="$SCRIPT_DIR/.env"
-ENV_EXAMPLE="$SCRIPT_DIR/.env.example"
+PULL_SOURCES="$SCRIPT_DIR/../Indexing/pull_sources.py"
+RESEARCH_PROMPT="$SCRIPT_DIR/../index_prompt.md"
+ENV_FILE="$SCRIPT_DIR/../.env"
+ENV_EXAMPLE="$SCRIPT_DIR/../.env.example"
 
 # ── Colours ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
@@ -57,7 +57,7 @@ check_claude_cli() {
 }
 
 activate_venv() {
-    [[ -f "$SCRIPT_DIR/venv/bin/activate" ]] && source "$SCRIPT_DIR/venv/bin/activate"
+    [[ -f "$SCRIPT_DIR/../venv/bin/activate" ]] && source "$SCRIPT_DIR/../venv/bin/activate"
 }
 
 # Convert "Agent Name" → "agent_name" for filenames
@@ -123,7 +123,7 @@ cmd_list_queries() {
     check_python
     local index_path="$SCRIPT_DIR/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 build_query_index.py"
+        error "query_index.json not found. Run: python3 Tool/build_query_index.py"
     fi
 
     python3 - "$agent_name" "$index_path" <<'PYEOF'
@@ -151,7 +151,7 @@ cmd_agents() {
     check_python
     local index_path="$SCRIPT_DIR/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 build_query_index.py"
+        error "query_index.json not found. Run: python3 Tool/build_query_index.py"
     fi
 
     python3 - "$index_path" <<'PYEOF'
@@ -200,13 +200,13 @@ cmd_index() {
     # Resolve output path
     local safe_name output_file
     safe_name=$(safe_filename "$agent_name")
-    output_file="$SCRIPT_DIR/Indexing/${safe_name}_se_index.json"
+    output_file="$SCRIPT_DIR/../Indexing/${safe_name}_se_index.json"
 
     # Skip research if a valid JSON index already exists for this agent.
     # Checks both the canonical safe-name path AND any existing file in Indexing/
     # whose name fuzzy-matches the agent name (handles legacy naming like GleanAgents_).
     local existing_file
-    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/Indexing" <<'PYEOF'
+    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/../Indexing" <<'PYEOF'
 import json, os, sys, re
 
 name = sys.argv[1].lower()
@@ -238,7 +238,7 @@ PYEOF
     if [[ -n "$existing_file" ]]; then
         success "Index already exists: Indexing/$existing_file"
         info "To re-index, delete the file first:"
-        echo "   rm \"$SCRIPT_DIR/Indexing/$existing_file\""
+        echo "   rm \"$SCRIPT_DIR/../Indexing/$existing_file\""
         divider
         return 0
     fi
@@ -363,8 +363,7 @@ ${BOLD}se_index.sh${RESET} — SE Agent Index toolkit
 
 ${BOLD}SETUP (first time)${RESET}
 
-  cp .env.example .env
-  # Paste your Anthropic API key into .env
+  cp .env.example .env      # paste your Anthropic API key
 
 ${BOLD}COMMANDS${RESET}
 
@@ -382,29 +381,30 @@ ${BOLD}FULL WORKFLOW${RESET}
   cp .env.example .env && nano .env   # paste API key
 
   # For each new agent:
-  ./se_index.sh index   "New Agent"   # research + auto-download sources
-                                      # → Indexing/<name>_se_index.json
-                                      # → web_sources/<name>/
+  ./Tool/se_index.sh index   "New Agent"   # research + auto-download sources
+                                           # → Indexing/<name>_se_index.json
+                                           # → web_sources/<name>/
 
   # Manually curate Excel spreadsheet from JSON with q-ids
-  # → Analysis of SE AI Agent Index.xlsx (manual curation + verification)
+  # → dataset/Index.xlsx (manual curation + verification)
 
   # Build query index from curated spreadsheet:
-  python3 build_query_index.py        # builds query_index.json from Excel
+  python3 Tool/build_query_index.py   # builds Tool/query_index.json from Excel
 
   # Query the index for verification:
-  ./se_index.sh query        "HubSpot Breeze Studio" "q-3"
-  ./se_index.sh list-queries "Anthropic Claude Code"
-  ./se_index.sh agents
+  ./Tool/se_index.sh query        "HubSpot Breeze Studio" "q-3"
+  ./Tool/se_index.sh list-queries "Anthropic Claude Code"
+  ./Tool/se_index.sh agents
 
 ${BOLD}FILES${RESET}
 
-  .env                        API key (gitignored)
-  .env.example                Template — copy to .env
-  agents_config.json          Registry: id, name, indexing_status, reviewed
-  prompts/index_prompt.md          Research methodology + JSON schema (8 SE areas)
-  Indexing/<name>_se_index.json        SE index output per agent
-  web_sources/<name>/[N].html|md       Cached reference files (gitignored)
+  .env                              API key (gitignored)
+  .env.example                      Template — copy to .env
+  index_prompt.md                   Research methodology + JSON schema (8 SE areas)
+  Tool/agents_config.json           Registry: id, name, indexing_status, reviewed
+  Tool/query_index.json             Generated: (agent, q-id) → summary + evidence
+  Indexing/<name>_se_index.json     SE index output per agent
+  web_sources/<name>/[N].html|md    Cached reference files (gitignored)
 
 ${BOLD}NOTES${RESET}
 

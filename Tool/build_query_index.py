@@ -32,8 +32,9 @@ from se_index_core import (
 # Paths
 # ---------------------------------------------------------------------------
 BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
-PAPER_DIR  = os.path.join(BASE_DIR, "SE Indexing for AI Agents")
-EXCEL_LEGACY = os.path.join(BASE_DIR, "SE AI Agent Index Legacy 2.xlsx")
+ROOT_DIR   = os.path.join(BASE_DIR, "..")
+PAPER_DIR  = os.path.join(ROOT_DIR, "SE Indexing for AI Agents")
+EXCEL_LEGACY = os.path.join(ROOT_DIR, "SE AI Agent Index Legacy 2.xlsx")
 EXCEL_OUTPUT = os.path.join(PAPER_DIR, "Analysis of SE AI Agent Index.xlsx")
 QUERY_INDEX_PATH = os.path.join(BASE_DIR, "query_index.json")
 
@@ -145,7 +146,7 @@ def main():
 
     # Use the backup as the structural template for the output workbook
     # (headers, formatting, etc.) then overwrite data rows.
-    backup_path = os.path.join(BASE_DIR, "Analysis of SE AI Agent Index.backup.xlsx")
+    backup_path = os.path.join(ROOT_DIR, "Analysis of SE AI Agent Index.backup.xlsx")
     if os.path.exists(backup_path):
         wb_out = openpyxl.load_workbook(backup_path)
     else:
