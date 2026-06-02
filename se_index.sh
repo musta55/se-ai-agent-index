@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 # se_index.sh — SE Agent Index toolkit
 #
-# Usage:
+# Usage (run from project root):
 #   ./se_index.sh index   "Agent Name"      Register + research a new agent (runs Claude Code)
 #   ./se_index.sh sources "Agent Name"      Download reference web sources for one agent
 #   ./se_index.sh sources --all             Download reference web sources for all agents
+#   ./se_index.sh query   "Agent Name" "q-{id}"   Fetch summary + evidence for a query ID
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENTS_CONFIG="$SCRIPT_DIR/agents_config.json"
-PULL_SOURCES="$SCRIPT_DIR/../data/Indexing/pull_sources.py"
-RESEARCH_PROMPT="$SCRIPT_DIR/../index_prompt.md"
-ENV_FILE="$SCRIPT_DIR/../.env"
-ENV_EXAMPLE="$SCRIPT_DIR/../.env.example"
+AGENTS_CONFIG="$SCRIPT_DIR/Tool/agents_config.json"
+PULL_SOURCES="$SCRIPT_DIR/data/Indexing/pull_sources.py"
+RESEARCH_PROMPT="$SCRIPT_DIR/index_prompt.md"
+ENV_FILE="$SCRIPT_DIR/.env"
+ENV_EXAMPLE="$SCRIPT_DIR/.env.example"
 
 # ── Colours ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
@@ -57,7 +58,7 @@ check_claude_cli() {
 }
 
 activate_venv() {
-    [[ -f "$SCRIPT_DIR/../venv/bin/activate" ]] && source "$SCRIPT_DIR/../venv/bin/activate"
+    [[ -f "$SCRIPT_DIR/venv/bin/activate" ]] && source "$SCRIPT_DIR/venv/bin/activate"
 }
 
 # Convert "Agent Name" → "agent_name" for filenames
@@ -110,7 +111,7 @@ cmd_query() {
         error "Usage: $0 query \"Agent Name\" \"q-{id}\"\nExample: $0 query \"HubSpot Breeze Studio\" \"q-3\""
 
     check_python
-    python3 "$SCRIPT_DIR/query_runner.py" "$agent_name" "$query_id"
+    python3 "$SCRIPT_DIR/Tool/query_runner.py" "$agent_name" "$query_id"
 }
 
 # ── Command: list queries for an agent ────────────────────────────────────────
@@ -121,9 +122,9 @@ cmd_list_queries() {
         error "Usage: $0 list-queries \"Agent Name\""
 
     check_python
-    local index_path="$SCRIPT_DIR/query_index.json"
+    local index_path="$SCRIPT_DIR/Tool/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 Tool/build_query_index.py"
+        error "query_index.json not found. Run: python3 Tool/build_query_index.py from the project root"
     fi
 
     python3 - "$agent_name" "$index_path" <<'PYEOF'
@@ -149,9 +150,9 @@ PYEOF
 
 cmd_agents() {
     check_python
-    local index_path="$SCRIPT_DIR/query_index.json"
+    local index_path="$SCRIPT_DIR/Tool/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 Tool/build_query_index.py"
+        error "query_index.json not found. Run: python3 Tool/build_query_index.py from the project root"
     fi
 
     python3 - "$index_path" <<'PYEOF'
@@ -200,13 +201,13 @@ cmd_index() {
     # Resolve output path
     local safe_name output_file
     safe_name=$(safe_filename "$agent_name")
-    output_file="$SCRIPT_DIR/../data/Indexing/${safe_name}_se_index.json"
+    output_file="$SCRIPT_DIR/data/Indexing/${safe_name}_se_index.json"
 
     # Skip research if a valid JSON index already exists for this agent.
     # Checks both the canonical safe-name path AND any existing file in Indexing/
     # whose name fuzzy-matches the agent name (handles legacy naming like GleanAgents_).
     local existing_file
-    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/../data/Indexing" <<'PYEOF'
+    existing_file=$(python3 - "$agent_name" "$SCRIPT_DIR/data/Indexing" <<'PYEOF'
 import json, os, sys, re
 
 name = sys.argv[1].lower()
@@ -238,7 +239,7 @@ PYEOF
     if [[ -n "$existing_file" ]]; then
         success "Index already exists: data/Indexing/$existing_file"
         info "To re-index, delete the file first:"
-        echo "   rm \"$SCRIPT_DIR/../data/Indexing/$existing_file\""
+        echo "   rm \"$SCRIPT_DIR/data/Indexing/$existing_file\""
         divider
         return 0
     fi
@@ -351,7 +352,7 @@ cmd_sources() {
     fi
 
     divider
-    success "Sources saved → web_sources/"
+    success "Sources saved → data/web_sources/"
 }
 
 # ── Help ──────────────────────────────────────────────────────────────────────
@@ -381,20 +382,20 @@ ${BOLD}FULL WORKFLOW${RESET}
   cp .env.example .env && nano .env   # paste API key
 
   # For each new agent:
-  ./Tool/se_index.sh index   "New Agent"   # research + auto-download sources
-                                           # → data/Indexing/<name>_se_index.json
-                                           # → data/web_sources/<name>/
+  ./se_index.sh index   "New Agent"   # research + auto-download sources
+                                      # → data/Indexing/<name>_se_index.json
+                                      # → data/web_sources/<name>/
 
   # Manually curate Excel spreadsheet from JSON with q-ids
-  # → dataset/Index.xlsx (manual curation + verification)
+  # → data/dataset/Index.xlsx (manual curation + verification)
 
   # Build query index from curated spreadsheet:
   python3 Tool/build_query_index.py   # builds Tool/query_index.json from Excel
 
   # Query the index for verification:
-  ./Tool/se_index.sh query        "HubSpot Breeze Studio" "q-3"
-  ./Tool/se_index.sh list-queries "Anthropic Claude Code"
-  ./Tool/se_index.sh agents
+  ./se_index.sh query        "HubSpot Breeze Studio" "q-3"
+  ./se_index.sh list-queries "Anthropic Claude Code"
+  ./se_index.sh agents
 
 ${BOLD}FILES${RESET}
 
