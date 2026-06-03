@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon" type="image/x-icon" href="https://security.opera.com/wp-content/themes/opera-2018/static/img/favicon.94e3b24366e3faaceae2583c84668c09.ico">
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" hreflang="en" href="https://security.opera.com/en/bug-bounty/" />
+<link rel="alternate" hreflang="x-default" href="https://security.opera.com/en/bug-bounty/" />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v27.2 (Yoast SEO v27.2) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>Bug Bounty - Opera Security Team</title>
+	<meta name="description" content="Opera run public and private bug bounty programs hosted at BugCrowd. We invite researchers and ethical hackers from across the world to participate and contribute to the improvement of Opera products." />
+	<link rel="canonical" href="https://security.opera.com/en/bug-bounty/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Bug Bounty" />
+	<meta property="og:description" content="Opera run public and private bug bounty programs hosted at BugCrowd. We invite researchers and ethical hackers from across the world to participate and contribute to the improvement of Opera products." />
+	<meta property="og:url" content="https://security.opera.com/en/bug-bounty/" />
+	<meta property="og:site_name" content="Opera Security Team" />
+	<meta property="article:modified_time" content="2022-10-24T13:59:34+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://security.opera.com/en/bug-bounty/","url":"https://security.opera.com/en/bug-bounty/","name":"Bug Bounty - Opera Security Team","isPartOf":{"@id":"https://security.opera.com/en/#website"},"datePublished":"2020-08-21T14:22:00+00:00","dateModified":"2022-10-24T13:59:34+00:00","description":"Opera run public and private bug bounty programs hosted at BugCrowd. We invite researchers and ethical hackers from across the world to participate and contribute to the improvement of Opera products.","breadcrumb":{"@id":"https://security.opera.com/en/bug-bounty/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://security.opera.com/en/bug-bounty/"]}]},{"@type":"BreadcrumbList","@id":"https://security.opera.com/en/bug-bounty/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://security.opera.com/en/"},{"@type":"ListItem","position":2,"name":"Bug Bounty"}]},{"@type":"WebSite","@id":"https://security.opera.com/en/#website","url":"https://security.opera.com/en/","name":"Opera Security Team","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://security.opera.com/en/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel="alternate" type="application/rss+xml" title="Opera Security Team &raquo; Feed" href="https://security.opera.com/en/feed/" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www-static-sites.operacdn.com/wp-includes/css/dist/block-library/style.min.css?ver=6.9.4' type='text/css' media='all' />
+
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=//www-static-sites.operacdn.com/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='opera-2018-css' href='https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/css/opera-2018.35707f03986300178f00c373e9d5fe98.css' type='text/css' media='all' />
+<script type="text/javascript" id="wpml-cookie-js-extra">
+/* <![CDATA[ */
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"/"}};
+//# sourceURL=wpml-cookie-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www-static-sites.operacdn.com/wp-content/plugins/sitepress-multilingual-cms/res/js/cookies/language-cookie.js?ver=491900" id="wpml-cookie-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://www-static-sites.operacdn.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://www-static-sites.operacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://security.opera.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel='shortlink' href='https://security.opera.com/en/?p=3538' />
+<meta name="generator" content="WPML ver:4.9.2 stt:5,1,3,25,17,40,45,2,52,53;" />
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TGMM5CW');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body class="wp-singular page-template-default page page-id-3538 wp-theme-opera-2018">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGMM5CW"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header id="header" class="page-header hf__header" role="banner">
+      <section id="branding" class="page-holder">
+        <div id="site-title" class="page-header-site-title">
+          <a class="o-logo" href="https://security.opera.com/en/"
+             title="Opera Security Team"
+             rel="home">
+            <picture>
+              <source
+                srcset="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/logo-negative@2x.26081e42aa65653accb46cf13eb880fe.png"
+                media="(prefers-color-scheme: dark)"/>
+              <source
+                srcset="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/logo@2x.5a8d5bfd19fb0c5cc0a05ba22b08182d.png"
+                media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+              <img
+                src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/logo@2x.5a8d5bfd19fb0c5cc0a05ba22b08182d.png"
+                class="o-logo-image"
+                title="Opera Security Team">
+            </picture>
+            <span class="o-logo-txt o-logo-txt-service">
+                  security              </span>
+          </a>
+        </div>
+        <nav id="menu" class="page-header-main-nav" role="navigation">
+          <div class="page-header-main-menu">
+            <div class="menu-security-main-menu-container"><ul id="menu-security-main-menu" class="page-header-main-menu-list"><li id="menu-item-3665" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3538 current_page_item menu-item-3665"><a href="https://security.opera.com/en/bug-bounty/" aria-current="page">Bug Bounty</a></li>
+<li id="menu-item-4232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4232"><a href="https://security.opera.com/en/privacy-inquiry/">Privacy Inquiry</a></li>
+<li id="menu-item-4231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4231"><a href="https://security.opera.com/en/report-security-issue/">Report an Issue</a></li>
+<li id="menu-item-1141" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1141"><a href="https://blogs.opera.com/security/">Security Blog</a></li>
+</ul></div>          </div>
+
+          
+        </nav>
+      </section>
+    </header>
+
+<main id="container">
+  <div class="page-holder page-layout">
+  <section id="content" role="main">
+          <article id="post-3538" class="post-3538 page type-page status-publish hentry">
+        <header class="header">
+          <h1 class="entry-title">Bug Bounty</h1>         </header>
+        <section class="entry-content">
+                    <p>Welcome to the Opera Bug Bounty information page. We are passionate about the security and privacy of our users. Therefore, we work hard to improve and uphold the security of our products and services. In particular, we are happy to work and collaborate with you on security issues. Essentially, we know that knowledge comes from many different sources, and your help is invaluable to our security approach.</p>
+<h3>Section overview</h3>
+<p>If you already know what you are looking for, you can go directly there by following the links. Otherwise, feel free to read our introduction for an overview.</p>
+<ul>
+<li><a href="https://bugcrowd.com/opera">Visit our public bug bounty program</a></li>
+<li><a href="#out-of-scope">Report out-of-scope issues directly</a></li>
+<li><a href="#mobile">Opera apps in the Google Play Security Rewards Program</a></li>
+</ul>
+<h2>Introduction</h2>
+<p>We invite you to participate in our Bug Bounty Program on BugCrowd, where you can contribute to our security process ethically and to the mutual benefit of all parties. We currently run only a <a href="https://bugcrowd.com/opera">public program</a>.</p>
+<p>If you want to report a bug without participating in our Bug Bounty Programs, or if your bug is out of scope, read the next section on submitting <b>other security reports.</b></p>
+<h3>CVE Numbering Authorities (CNA) membership</h3>
+<p>Since December 2019, we have been a part of the MITRE CVE program as a member of the CNA. As such, we are able to evaluate submitted vulnerabilities against a range of criteria and assign CVEs where appropriate.</p>
+<p>Read our blog post on <span style="text-decoration: underline"><ins><a href="https://blogs.opera.com/security/2019/12/opera-becomes-part-of-the-cna-program/">becoming a part of the CNA program</a></ins></span> to learn more about our CNA membership.<a name="join"></a></p>
+<p><a name="out-of-scope"></a></p>
+<h2>Other security reports (Out-of-Scope reports)</h2>
+<p>If you find a bug or vulnerability that is out of scope for our bug bounty program, you can still submit your report directly to us.</p>
+<p>To submit an Out-of-Scope report, fill in <ins><a href="https://security.opera.com/report-security-issue"><span style="text-decoration: underline">this form</span></a></ins> with the appropriate details. Please note that we don&#8217;t pay bounties for such submissions.</p>
+<p>Keep in mind that bugs inherited from Chromium should be reported to the <ins><a href="https://www.chromium.org/for-testers/bug-reporting-guidelines"><span style="text-decoration: underline">Chromium Project</span></a></ins>.</p>
+<p>We also do not accept bugs in versions of Opera that are no longer supported.</p>
+<p><a name="mobile"></a></p>
+<h2>Our Android apps</h2>
+<p>Our Android applications are listed in the <span style="text-decoration: underline"><ins><a href="https://www.google.com/about/appsecurity/play-rewards">Google Play Security Rewards Program</a></ins></span> (GPSRP), and are eligible for bounty by Google. As such, submissions related to one or more of our Android applications may also meet GPSRP criteria.</p>
+<p>Please report any vulnerabilities to us first through the <a href="https://tracker.bugcrowd.com/opera">public bug bounty program</a> if the respective app is in scope, or using <ins><a href="https://security.opera.com/report-security-issue">this form</a></ins> if it&#8217;s not.</p>
+<p>If you think the vulnerability is eligible for Google’s reward program, you can submit a report to Google once the vulnerability has been confirmed and fixed. Please see the rules listed on the GPSRP website for more information about Google’s reward program.</p>
+<p>Please note that bounties from the GPSRP are at Google&#8217;s discretion, and are not handled by us.</p>
+<h2>Contact us!</h2>
+<p>If you have any questions about our Bug Bounty program, submitting Out-of-Scope issues or any other security related inquiry, please contact us through our designated <a href="https://opera.atlassian.net/servicedesk/customer/portal/7/group/9/create/10045">inquiry portal</a>. We look forward to hearing from you!</p>
+          <div class="entry-links"></div>
+        </section>
+      </article>
+            </section>
+<aside id="sidebar" class="aside" role="complementary">
+	      <div id="primary" class="widget-area">
+        <ul class="xoxo">
+			<li id="nav_menu-2" class="widget-container widget_nav_menu"><div class="menu-security-aside-menu-container"><ul id="menu-security-aside-menu" class="menu"><li id="menu-item-1031" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1031"><a href="https://security.opera.com/en/desktop-and-web-services-faq/">Desktop, AI Benchmarking tool and Services FAQ</a></li>
+<li id="menu-item-1032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1032"><a href="https://security.opera.com/en/mobile-browsers-faq/">Mobile Browsers FAQ</a></li>
+<li id="menu-item-1194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1194"><a href="https://security.opera.com/en/policy/">Vulnerability Policy</a></li>
+<li id="menu-item-12011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12011"><a href="https://security.opera.com/en/webpki-trust-anchors/">WebPKI &amp; Trust Anchors</a></li>
+<li id="menu-item-2315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2315"><a href="https://security.opera.com/en/advisories/">Security Advisories</a></li>
+<li id="menu-item-16519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16519"><a href="https://security.opera.com/en/opera-transparency-report/">Transparency Report</a></li>
+</ul></div></li>        </ul>
+      </div>
+  </aside>
+</div>
+</main>
+
+<footer class="hf hf__footer">
+  <div class="menu-common-footer-container"><ul id="menu-common-footer" class="hf-wrapper hf__columns"><li id="menu-item-38" class="hf__heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-38"><a>Download Opera</a>
+<ul class="sub-menu">
+	<li id="menu-item-40" class="hf__sub-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-40"><a href="//www.opera.com/computer">Computer browsers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-182" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-182"><a href="//www.opera.com/download?os=windows">Opera for Windows</a></li>
+		<li id="menu-item-183" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183"><a href="//www.opera.com/download?os=mac">Opera for Mac</a></li>
+		<li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a href="//www.opera.com/download?os=linux">Opera for Linux</a></li>
+		<li id="menu-item-47" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47"><a href="//www.opera.com/beta">Opera beta version</a></li>
+		<li id="menu-item-185" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185"><a href="//www.opera.com/computer/portable">Opera USB</a></li>
+	</ul>
+</li>
+	<li id="menu-item-41" class="hf__sub-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-41"><a href="//www.opera.com/mobile">Mobile browsers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-186" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186"><a href="//www.opera.com/mobile/operabrowser">Opera for Android</a></li>
+		<li id="menu-item-187" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-187"><a href="//www.opera.com/mobile/mini/android">Opera Mini</a></li>
+		<li id="menu-item-188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a href="https://www.opera.com/browsers/opera/ios">Opera for iOS</a></li>
+		<li id="menu-item-189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189"><a href="//www.opera.com/mobile/basic-phones">Opera for basic phones</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-45" class="hf__heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-45"><a>Services</a>
+<ul class="sub-menu">
+	<li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49"><a href="//addons.opera.com">Add-ons</a></li>
+	<li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50"><a href="//auth.opera.com/account/login">Opera account</a></li>
+	<li id="menu-item-190" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190"><a href="//addons.opera.com/wallpapers">Wallpapers</a></li>
+	<li id="menu-item-299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-299"><a href="//www.opera.com/ads">Opera Ads</a></li>
+</ul>
+</li>
+<li id="menu-item-51" class="hf__heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-51"><a>Help</a>
+<ul class="sub-menu">
+	<li id="menu-item-43" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43"><a href="//www.opera.com/help">Help &#038; support</a></li>
+	<li id="menu-item-44" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-44"><a href="//blogs.opera.com">Opera blogs</a></li>
+	<li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42"><a href="//forums.opera.com">Opera forums</a></li>
+	<li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="//dev.opera.com">Dev.opera</a></li>
+</ul>
+</li>
+<li id="menu-item-191" class="hf__heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-191"><a>Legal</a>
+<ul class="sub-menu">
+	<li id="menu-item-192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-192"><a href="//security.opera.com/">Security</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a href="//www.opera.com/privacy">Privacy</a></li>
+	<li id="menu-item-195" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-195"><a href="https://www.opera.com/privacy/cookies">Cookies Policy</a></li>
+	<li id="menu-item-252" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-252"><a href="//www.opera.com/eula">EULA</a></li>
+	<li id="menu-item-194" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-194"><a href="https://www.opera.com/terms">Terms of Service</a></li>
+</ul>
+</li>
+<li id="menu-item-53" class="hf__heading menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-53"><a>Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="//www.opera.com/about">About Opera</a></li>
+	<li id="menu-item-56" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56"><a href="//www.opera.com/newsroom">Press info</a></li>
+	<li id="menu-item-55" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55"><a href="//jobs.opera.com">Jobs</a></li>
+	<li id="menu-item-68" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68"><a href="https://investor.opera.com">Investors</a></li>
+	<li id="menu-item-52" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52"><a href="//www.opera.com/b2b">Become a partner</a></li>
+	<li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57"><a href="//www.opera.com/contact">Contact us</a></li>
+</ul>
+</li>
+</ul></div>
+  <div class="hf-wrapper hf__bottom">
+    <div class="hf__social-box">
+      <h2 class="hf__headline hf-hide">Follow Opera</h2>
+      <ul class="hf__social-icons">
+        <li>
+          <a href="https://www.facebook.com/Opera/" rel="noopener nofollow" target="_blank" title="Opera - Facebook">
+            <img
+              src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/social-icons/fb.310680177b35f9dec2dbbd9d9fae7d71.svg"
+              alt="Opera - Facebook">
+          </a>
+        </li>
+                  <li>
+            <a href="https://twitter.com/opera" rel="noopener nofollow" target="_blank" title="Opera - Twitter">
+              <img
+                src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/social-icons/twitter.e61b36b125f758c258d05bb40ad9e7c3.svg"
+                alt="Opera - Twitter">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/opera" rel="noopener nofollow" target="_blank" title="Opera - Youtube">
+              <img
+                src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/social-icons/youtube.dd4d134273363333b101294e9045d878.svg"
+                alt="Opera - Youtube">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/opera-software" rel="noopener nofollow" target="_blank" title="Opera - LinkedIn">
+              <img
+                src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/social-icons/linkedin.ebb872de9c6ca0a8591f7a7ec78b3cff.svg"
+                alt="Opera - LinkedIn">
+            </a>
+          </li>
+                <li>
+          <a href="https://www.instagram.com/opera/" rel="noopener nofollow" target="_blank" title="Opera - Instagram">
+            <img
+              src="https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/img/social-icons/instagram.9758b732f8ab5fc6c8b02d84fb758fdf.svg"
+              alt="Opera - Instagram">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="hf__company-box ">
+      <p>&copy; Opera Software 1995-<span id="current-year"></span></p>
+    </div>
+      <div class="hf__lang-box">
+    <span class="hf-hide">Select your language:</span>
+    <select id="hf__lang-selector" class="hf__lang-selector" onchange="location=this.options[this.selectedIndex].value;">
+      <option data-name="en" value="https://security.opera.com/en/bug-bounty/" selected>English</option>    </select>
+  </div>
+    </div>
+</footer>
+
+<script type='text/javascript'
+        src='https://www-static-sites.operacdn.com/wp-content/themes/opera-2018/static/js/scripts.93f5cad61f8fb5f0215e89746669dfee.js'></script>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/en/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/sites/3/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/opera-2018/*","/en/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+</body>
+</html>

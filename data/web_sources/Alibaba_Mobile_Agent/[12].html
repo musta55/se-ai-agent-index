@@ -1,0 +1,792 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="transparent alicloud back-to-top new_default">
+<link rel="stylesheet" href="//g.alicdn.com/aliyun-help/help-portal-fe/0.12.39/css/index.css" />
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="spm-id" content="a2c63">
+<meta name="data-spm" content="a2c63" />
+<meta name="aplus-core" content="aplus.js">
+<meta name="aplus-ajax" content="chksum">
+<meta name="aplus-waiting" content="MAN">
+<meta name="aplus-pvhash" content="1">
+ <meta name="kloud:supported-langs" content="en,zh,tc,ja,id"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="aplus-rhost-v" content="sg.mmstat.com">
+<meta name="aplus-rhost-g" content="sg.mmstat.com">
+<title>
+ Android MCP Tools & APIs for AgentBay Mobile Automation - AgentBay - Alibaba Cloud
+
+</title>
+ <meta name="keywords" content="AgentBay Android sandbox, create_sandbox API, get_clickable_ui_elements, shell command execution, MCP runtime URL, sandbox instance lifecycle, UI element inspection">
+ <meta name="description" content="AgentBay Android sandbox exposes MCP-compliant tools that give AI agents structured control over mobile UI, app lifecycle, and shell execution — eliminating the need for physical devices.">
+ <script>
+window.globalData = {
+website: "intl",
+language: "en",
+nodeId:"2975387",
+channel: "",
+notfound: "",
+statusCode: "",
+errorType: ""
+};
+// UT的全局配置变量，在CDN加载前配置
+window.$ACE_TRACKER_CONFIG = {
+enableHistory: true,
+enableHash: false
+};
+</script>
+<!-- <base href="https://www.alibabacloud.com">-->
+<link rel="canonical" href="https://www.alibabacloud.com/help/en/agentbay/developer-reference/mobile-use-andriod-14"/>
+ <meta property="og:title" content="Mobile Use - Alibaba Cloud" />
+ <meta property="og:type" content="website" />
+ <meta property="og:url" content="https://www.alibabacloud.com/help/en/agentbay/developer-reference/mobile-use-andriod-14" />
+ <meta property="og:image" content="https://img.alicdn.com/tfs/TB1xpNqnmslXu8jSZFuXXXg7FXa-1200-630.png_.webp" />
+ <meta property="og:description" content="AgentBay Android sandbox exposes MCP-compliant tools that give AI agents structured control over mobile UI, app lifecycle, and shell execution — eliminating the need for physical devices." />
+ <link rel="shortcut icon" href="//img.alicdn.com/tfs/TB1ugg7M9zqK1RjSZPxXXc4tVXa-32-32.png"/>
+<link rel="stylesheet" href="https://o.alicdn.com/fund/alicloud-pure-layout/css/index.min.css" />
+ <link
+rel="icon"
+href="https://img.alicdn.com/imgextra/i2/O1CN01TFs5Qw27uYvfA6gib_!!6000000007857-55-tps-32-32.svg"
+type="image/x-icon"
+/>
+</head>
+<body data-spm="" class="HAS_ALPS_RESOURCE"><script  type="text/javascript">
+(function  (d)  {
+var  t=d.createElement("script");t.type="text/javascript";t.async=true;t.id="tb-beacon-aplus";
+t.setAttribute("exparams","category=&userid=&aplus&yunid=&yunpk=&channel=&cps=");
+t.src="//g.alicdn.com/alilog/mlog/aplus_v2.js";
+d.getElementsByTagName("head")[0].appendChild(t);
+})(document);
+</script><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=0a3c5c7717791526880286328e9ac9&asid=AQAAAAAwtwtq/tvQAQAAAAArqIDJWnWS0A==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+ <script async src="https://o.alicdn.com/fund/alicloud-pure-layout/index.js"></script>
+
+<div id="app">
+<div class="aliyun-app-layout">
+
+<!-- docId:2975387 -->
+<input type="hidden" id="website" value="intl">
+<div class="products-wrapper$tip" data-spm="879954">
+<section id="products" class="intl-product container">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" id="navDocument">
+<div class="doc-nav">
+<a class="doc-center" href="/help/en">
+<i class="icon-docs icon-docs-back"></i>
+Document Center
+</a>
+</div>
+<div class="placeholder-ele">&nbsp;</div>
+</div>
+<div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 doc-content">
+<div class="all-products action" id="J_AllProducts">
+<div class="all-products-head">
+<div class="all-products-title">All Products</div>
+<div class="all-products-search-wrapper">
+<div class="all-products-search focus">
+<input autocomplete="off" class="all-products-search-box-input" id="J_AllProductsSearch" placeholder="Search Product" data-spm-anchor-id="a2c4g.11186623.6.i0.1f753945H9RVzu">
+<i class="icon-search icon-docs icon-docs-search"></i>
+<ul class="all-products-search-result" style="display: none;">
+</ul>
+</div>
+</div>
+</div>
+<div class="all-products-body" id="J_AllProductsBody"></div>
+</div>
+<div class="search-product-modal">
+Search
+</div>
+<div class="breadcrumbs-top" data-spm="a1">
+<div class="row nav-breadcrumb">
+ <div class="col-md-12 hidden-sm hidden-xs">
+<ul class="breadcrumb text-sm">
+<li><a class="active" title="Document Center" href="/help/en">Document Center</a></li>
+ <li><a class="active" title="AgentBay" href="/help/en/agentbay/">AgentBay</a></li>
+ <li><a class="active" title="Developer Reference" href="/help/en/agentbay/developer-reference/">Developer Reference</a></li>
+ <li><a class="active" title="MCP" href="/help/en/agentbay/developer-reference/mcp/">MCP</a></li>
+ <li><a class="active" title="Mobile Use" href="/help/en/agentbay/developer-reference/mobile-use-andriod-14">Mobile Use</a></li>
+ </ul>
+</div>
+ <div class="col-md-4 col-sm-12">
+<button type="button" class="navbar-toggle bc mr0" data-toggle="collapse"
+data-target="#sideMenu-mobile">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+all-products-head <span class="icon-bar"></span>
+</button>
+</div>
+</div>
+<form class="search-bar clearfix" method="GET" action="/s/en">
+<input type="hidden" name="type" value="doc"/>
+<div class="select">
+<p class="select-text">
+<span class="placeholder">This Product</span>
+<i class="icon-docs icon-docs-selected"></i>
+</p>
+<ul class="select-options" style="display:none;">
+<li class="option selected" data-value="h_pid_$productId">This Product</li>
+<li class="option" data-value="">All Products</li>
+</ul>
+<input type="hidden" name="rangeinfo" value="h_pid_2975065"/>
+</div>
+<input autocomplete="off" class="search-key" type="text" placeholder="Search by keyword" name="k"/>
+<ul class="help-top-search-result" style="display: block;"></ul>
+<button class="search-submit" type="submit">
+<i class="icon-docs icon-docs-search"></i>
+</button>
+<div class="collapse-menus select">
+<p class="select-text">
+<span class="placeholder">AgentBay:Mobile Use</span>
+<i class="icon-docs icon-docs-more"></i>
+</p>
+</div>
+</form>
+</div>
+<header id="header-faq" class="clearfix">
+<a class="doc-center" href="/help/en">
+<i class="icon-docs icon-docs-back"></i>
+Document Center
+</a>
+<div class="download-links">
+ </div>
+<h1 class="page-title">AgentBay:Mobile Use</h1>
+<div class="doc-status">
+Last Updated:Feb 12, 2026
+</div>
+</header>
+<article class="product-description markdown-body">
+<div lang="en" class="icms-help-docs-content">
+<main id="main-2996460"><div data-tag="body" class="body"><section id="930809bfa31o9" class="section"><h2 id="e526b9d0b00lw"><b>Overview of supported open capabilities</b></h2><table id="be5abed210psz" tablewidth="99.99" tablecolswidth="33.33 33.33 33.33" autofit="true" class="table"><colgroup colwidth="1.01*" style="width:33.33%"></colgroup><colgroup colwidth="1.01*" style="width:33.33%"></colgroup><colgroup colwidth="1.01*" style="width:33.33%"></colgroup><tbody class="tbody"><tr id="ad05a1d41bgg9"><td id="aee39a6bef2jk" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="center" id="3b9968db44acf" style="text-align:center"><b>Tool</b></p></td><td id="970cda7144e2w" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="center" id="978d593393ixi" style="text-align:center"><b>Name</b></p></td><td id="8faa03e0bdv5a" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="center" id="a378667a965cc" style="text-align:center"><b>Description</b></p></td></tr><tr id="6fc990e84ebzd"><td id="b33c2225073j3" rowspan="5" style="vertical-align:middle" colspan="1"><p id="547f47e0e0hqf"><a href="#ab0192eb49s7s" id="3884977a94pzf" title="" class="xref">System</a></p></td><td id="0abfbcb17c4zu" rowspan="1" style="vertical-align:middle" colspan="1"><p id="a81134654cizd"><code data-tag="code" id="fe9115e556jsz" class="code">create_sandbox</code></p></td><td id="9a322fcf521nr" rowspan="1" style="vertical-align:middle" colspan="1"><p id="dff2012e58umy">Creates a new AgentBay sandbox and returns its ID.</p></td></tr><tr id="9092295859qc7"><td id="fdf6e4ed641r0" rowspan="1" style="vertical-align:middle" colspan="1"><p jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2035.369e5fb4t1GLG6" id="2b8535f57etbq" style="text-align:left"><code data-tag="code" id="9271309fb8c7i" class="code">get_sandbox_url</code></p></td><td id="84cb466ceap4k" rowspan="1" style="vertical-align:middle" colspan="1"><p id="e38f281c24bsk">Retrieves a one-time-use URL for accessing the Alibaba Cloud Workspace MCP runtime. The URL is valid for a single access attempt and expires immediately after use.</p></td></tr><tr id="ae7e199836y59"><td id="4b3f2cbecfv35" rowspan="1" style="vertical-align:middle" colspan="1"><p jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2039.369e5fb4t1GLG6" id="bdc5840b61rj8" style="text-align:left"><code data-tag="code" id="6a9d5a6e17sff" class="code">system_screenshot</code></p></td><td id="5f2897c6a45k7" rowspan="1" style="vertical-align:middle" colspan="1"><p id="527ea751da7zx">Captures a full-screen screenshot of the current display and returns a shareable URL. The screenshot is automatically processed and stored securely. For security purposes, the generated URL expires after 64 minutes.</p></td></tr><tr id="5154895a279w8"><td id="266cf465b9j6i" rowspan="1" style="vertical-align:middle" colspan="1"><p jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2042.369e5fb4t1GLG6" id="6a137fa1ac5po" style="text-align:left"><code data-tag="code" id="54fce8e2a9e5y" class="code">kill_sandbox</code></p></td><td id="5af5b6f27a10v" rowspan="1" style="vertical-align:middle" colspan="1"><p id="787855008aa31">Releases resources upon task completion.</p></td></tr><tr id="f22608e0cagom"><td id="9c61475e76aq4" rowspan="1" style="vertical-align:middle" colspan="1"><p jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2045.369e5fb4t1GLG6" id="4277c872926jq" style="text-align:left"><code data-tag="code" id="ad8ed2b021oup" class="code">shell</code></p></td><td id="161412b7e9bd1" rowspan="1" style="vertical-align:middle" colspan="1"><p id="3075f2dda98e5">Executes a shell command on the Android platform with a configurable timeout. Upon completion, it returns the command's output or any resulting error.</p></td></tr><tr id="c10b403821hcv"><td id="91057e3d0exvh" rowspan="6" colspan="1"><p id="9d4aa1245etvb"><a href="#16a3db7f5ecv8" id="8afc89e78bh71" title="" class="xref">UI</a></p></td><td id="8b2601025blud" rowspan="1" style="vertical-align:middle" colspan="1"><p id="b43f0ad676bgo"><code data-tag="code" id="c879979149h3m" class="code">click</code></p></td><td id="dc97fa34e6oyg" rowspan="1" style="vertical-align:middle" colspan="1"><p id="4726bcae20e5u">Clicks a specific coordinate on the screen.</p></td></tr><tr id="e18c7b3f51tcd"><td id="1702c819b9vr8" rowspan="1" style="vertical-align:middle" colspan="1"><p id="2a6e46cf94a30"><code data-tag="code" id="5d0cbf0916y7w" class="code">input_text</code></p></td><td id="9e8c1ad120bxf" rowspan="1" style="vertical-align:middle" colspan="1"><p id="02119579e96yj">Inputs text.</p></td></tr><tr id="7aeb86965ay27"><td id="839185be83o5q" rowspan="1" style="vertical-align:middle" colspan="1"><p id="330e1ff177ixl"><code data-tag="code" id="6b2c32b0ealku" class="code">send_key</code></p></td><td id="ff09c52a0d9t6" rowspan="1" style="vertical-align:middle" colspan="1"><p id="75cf0acdbdk9n">Sends a key. Supported keys on the Android platform:</p><ul id="3c39210556auc"><li id="50a7501a24xcp"><p id="490ea0bbdeex5">3:HOME</p></li><li id="8dbe956ff93an"><p id="2a6d045caamk8">4:BACK</p></li><li id="9066e40c67ohh"><p id="e8cc69861ex4n">24:VOLUME_UP</p></li><li id="4cd799dd3aglr"><p id="8374f83706cj4">25:VOLUME_DOWN</p></li><li id="e58e33cf6fetr"><p id="b2152611c41g7">26:POWER</p></li><li id="f454dbffd5e55"><p id="7d78eb8014pp7">82:MENU</p></li></ul></td></tr><tr id="8aea7b266fpha"><td id="9e35bc7ee04wv" rowspan="1" style="vertical-align:middle" colspan="1"><p id="c017963062fb6"><code data-tag="code" id="f661db4c9cty4" class="code">swipe</code></p></td><td id="3ae97b5168h73" rowspan="1" style="vertical-align:middle" colspan="1"><p id="6be87cdadbefg">Performs a swipe gesture on the screen.</p></td></tr><tr id="0de2f895c4hvh"><td id="60e02d73cddhz" rowspan="1" style="vertical-align:middle" colspan="1"><p id="c08b5c2283vfd"><code data-tag="code" id="16a4cda4bcc0k" class="code">get_all_ui_elements</code></p></td><td id="887771a40f4tb" rowspan="1" style="vertical-align:middle" colspan="1"><p id="b66ee8d3b8bs4">Gets all UI elements on the device before the timeout, including non-interactive elements.</p></td></tr><tr id="62542cfb81mlj"><td id="bd2266a2654lc" rowspan="1" style="vertical-align:middle" colspan="1"><p id="48ab84b3cda91"><code data-tag="code" id="2c5bda9733sp4" class="code">get_clickable_ui_elements</code></p></td><td id="faa10c8505uk8" rowspan="1" style="vertical-align:middle" colspan="1"><p id="b01c5d6a5arme">Gets all clickable UI elements before the timeout.</p></td></tr><tr id="851c833b1b2a9"><td id="f849c3746ako5" rowspan="3" colspan="1"><p id="e2ae029826x4r"><a href="#1431cdcf74qzv" id="1bfc04d9fcbvj" title="" class="xref">App</a></p></td><td id="a9b0bf870bxa5" rowspan="1" style="vertical-align:middle" colspan="1"><p id="6242950470iyd"><code data-tag="code" id="4fd0a0d00bx8j" class="code">get_installed_apps</code></p></td><td id="8d75682614vid" rowspan="1" style="vertical-align:middle" colspan="1"><p id="9b0ed97ec37zd">Retrieves a list of applications installed on the system. Supports filtering by Start menu entries and desktop shortcuts, and you can choose to exclude system applications. Returns application details, including the name, start command, optional stop command, and working directory.</p></td></tr><tr id="3ff8d5fc8fwbh"><td id="3d40550801beg" rowspan="1" style="vertical-align:middle" colspan="1"><p id="7073475b8djb7"><code data-tag="code" id="6c94e36120na4" class="code">start_app</code></p></td><td id="50ce08970f3j7" rowspan="1" style="vertical-align:middle" colspan="1"><p id="813cbdd7dag1m">Starts a specified application using the provided command and optional working directory. Returns a list of processes associated with the launched application, including the process name, PID, and start command.</p></td></tr><tr id="87231444e25xk"><td id="13916d2f57l5w" rowspan="1" style="vertical-align:middle" colspan="1"><p id="0eb68f6845sxy"><code data-tag="code" id="608fe942adj7t" class="code">stop_app_by_cmd</code></p></td><td id="ae4e55670cfx6" rowspan="1" style="vertical-align:middle" colspan="1"><p id="2de99e05f2zit">Stops an application using the provided stop command. Use this with caution because it forcefully terminates the specified process.</p></td></tr><tr id="2fcd70e929wcy"><td id="949f14509dtnx" rowspan="1" colspan="1"><p id="5e21cc03da3ul"><a href="#135cf26bf1f58" id="6c72461de8qq1" title="" class="xref">Shell</a></p></td><td id="5d0db0fae3otg" rowspan="1" style="vertical-align:middle" colspan="1"><p id="71ce4d77a8xxw"><code data-tag="code" id="e9f9ca0300hnm" class="code">shell</code></p></td><td id="e25d6f0d61sra" rowspan="1" style="vertical-align:middle" colspan="1"><p id="e5a7949b62o48">Executes a shell command on the Android platform and returns the output or an error.</p></td></tr></tbody></table></section><section id="516ddc9e91v4w" class="section"><h2 id="ab0192eb49s7s"><b>System</b></h2><table id="a40d32e52fgxq" tablewidth="100" tablecolswidth="20.45 20.13 59.42" autofit="true" class="table"><colgroup colwidth="0.62*" style="width:20.45%"></colgroup><colgroup colwidth="0.61*" style="width:20.13%"></colgroup><colgroup colwidth="1.8*" style="width:59.42%"></colgroup><tbody class="tbody"><tr id="504d760ccdnsv"><td id="60b47ca91d5is" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="left" id="2008af34b8laz" style="text-align:left"><b> Name</b></p></td><td id="20e1cbbbcb95v" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="e9fed4f3822my"><b>Description</b></p></td><td id="041f1a0b2eb4a" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="6ec9e6c496a7v"><b>Parameters</b></p></td></tr><tr id="dc21bf3e1f9sz"><td id="8a72ed7af9e5h" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="b56736caed0vs"><code data-tag="code" id="5c121087b118i" class="code"><b>create_sandbox</b></code></h3></td><td id="5829677c7ctci" rowspan="1" style="vertical-align:middle" colspan="1"><p id="73c19bd779a4f">Creates a new AgentBay sandbox and returns its ID.</p></td><td id="4e358d87991g9" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" id="a894b4564emgo" index="0" data-tag="codeblock" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "type": "object",
+  "properties": {},
+  "required": []
+}</code></pre></td></tr><tr id="980c8c326fuof"><td id="223266e5494k5" rowspan="1" colspan="1"><h3 jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2035.369e5fb4t1GLG6" id="3eb7741aa2cn1" style="text-align:left"><code data-tag="code" id="90cbd7cfa51l6" class="code"><b>get_sandbox_url</b></code></h3></td><td id="d2c4f2d3646h6" rowspan="1" colspan="1"><p id="96d7fa2522qqc">Retrieves a one-time-use URL for accessing the Alibaba Cloud Workspace MCP runtime. The URL is valid for a single access attempt and expires immediately after use.</p></td><td id="c81d28d22689q" rowspan="1" colspan="1"><pre code-type="xCode" id="7035ac68b964n" index="0" data-tag="codeblock" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "type": "object",
+  "properties": {
+    "sandbox_id": {
+      "type": "string",
+      "title": "Sandbox Id",
+      "description": "The sandbox ID is the identifier for the tool execution environment. This sandbox_id comes from the create_sandbox tool."
+    }
+  },
+  "required": [
+    "sandbox_id"
+  ]
+}</code></pre></td></tr><tr id="5219a47ab7arn"><td id="64c4491effht0" rowspan="1" colspan="1"><h3 jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2039.369e5fb4t1GLG6" id="c79edbe392jqe" style="text-align:left"><code data-tag="code" id="2dfe6524f34rs" class="code"><b>system_screenshot</b></code></h3></td><td id="5fe8d0dad4k85" rowspan="1" colspan="1"><p id="90c07367f8m9y">Captures a full-screen screenshot of the current display and returns a shareable URL. The screenshot is automatically processed and stored securely. For security purposes, the generated URL expires after 64 minutes.</p></td><td id="abd4128fa7n7f" rowspan="1" colspan="1"><pre code-type="xCode" id="d6712ee2341uh" index="0" data-tag="codeblock" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "type": "object",
+  "properties": {
+    "sandbox_id": {
+      "type": "string",
+      "title": "Sandbox Id",
+      "description": "The sandbox ID is the identifier for the tool execution environment. This sandbox_id comes from the create_sandbox tool."
+    }
+  },
+  "required": [
+    "sandbox_id"
+  ]
+}</code></pre></td></tr><tr id="656ac102dftw2"><td id="0a2338d0106z2" rowspan="1" colspan="1"><h3 jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2042.369e5fb4t1GLG6" id="6fcfbf4d01j3c" style="text-align:left"><code data-tag="code" id="f3fb5e858crzo" class="code"><b>kill_sandbox</b></code></h3></td><td id="64d07e9bfdelz" rowspan="1" colspan="1"><p id="ced24e72491mj">Releases resources upon task completion.</p></td><td id="0d76b2b2d6uek" rowspan="1" colspan="1"><pre code-type="xCode" id="51ccf4c245lbe" index="0" data-tag="codeblock" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "type": "object",
+  "properties": {
+    "sandbox_id": {
+      "type": "string",
+      "title": "Sandbox Id",
+      "description": "The sandbox ID is the identifier for the tool execution environment. This sandbox_id comes from the create_sandbox tool."
+    }
+  },
+  "required": [
+    "sandbox_id"
+  ]
+}</code></pre></td></tr><tr id="83de9b1b86qck"><td id="0bef52b3c40ab" rowspan="1" colspan="1"><h3 jc="left" data-spm-anchor-id="idealab.4d3ad9aa.0.i2045.369e5fb4t1GLG6" id="7215a68c68x65" style="text-align:left"><code data-tag="code" id="da377220d4le5" class="code"><b>shell</b></code></h3></td><td id="d78bb07d0f6m7" rowspan="1" colspan="1"><p id="6f4c4ec3b9swd">Executes a shell command on the Android platform with a configurable timeout. Upon completion, it returns the command's output or any resulting error.</p></td><td id="f3261ffd3bdcl" rowspan="1" colspan="1"><pre code-type="xCode" id="7ba711881dh3s" index="0" data-tag="codeblock" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "type": "object",
+  "required": [
+    "sandbox_id",
+    "command",
+    "timeout_ms"
+  ],
+  "properties": {
+    "sandbox_id": {
+      "type": "string",
+      "title": "Sandbox Id",
+      "description": "The sandbox ID is the identifier for the tool execution environment. This sandbox_id comes from the create_sandbox tool."
+    },
+    "timeout_ms": {
+      "default": 1000,
+      "description": "Command execution timeout (unit: milliseconds). If not specified, the default value (such as 1000 milliseconds) is used",
+      "type": "integer"
+    },
+    "command": {
+      "description": "client input command",
+      "type": "string"
+    }
+  }
+}</code></pre></td></tr></tbody></table></section><section id="16a3db7f5ecv8" class="section"><h2 id="be1ba7d2c5n37">UI</h2><table id="1ac92d8f05gd3" tablewidth="100" tablecolswidth="20.45 20.13 59.42" autofit="true" class="table"><colgroup colwidth="0.62*" style="width:20.45%"></colgroup><colgroup colwidth="0.61*" style="width:20.13%"></colgroup><colgroup colwidth="1.8*" style="width:59.42%"></colgroup><tbody class="tbody"><tr id="d2e5008340935"><td id="0369f69704219" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="left" id="31dcd2fad7kqa" style="text-align:left"><b> Name</b></p></td><td id="a527189de18mu" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="aa6a136b52whp"><b>Description</b></p></td><td id="fa885ee8c008h" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="9e58ef42f6nqu"><b>Parameters</b></p></td></tr><tr id="7b1d5e43fdqr8"><td id="a650e711d7a7l" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="21af8545e042u"><code data-tag="code" id="1a64d746374qt" data-init-id="c879979149h3m" class="code">click</code></h3></td><td id="93258d7e37erv" rowspan="1" style="vertical-align:middle" colspan="1"><p id="9758896e437i9">Clicks a specific coordinate on the screen.</p></td><td id="dd79947453nca" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="d4d0aa1913n5u" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "button": {
+        "description": "The button type. Valid values: left, middle, and right. Default value: left.",
+        "type": "string"
+      },
+      "x": {
+        "description": "The X coordinate.",
+        "type": "integer"
+      },
+      "y": {
+        "description": "The Y coordinate.",
+        "type": "integer"
+      }
+    },
+    "required": ["x", "y", "button"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="3b9b95ea47gnm"><td id="4df1305cfagv3" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="e8a3ffb2b22tu"><code data-tag="code" id="efd39440f1zgk" data-init-id="5d0cbf0916y7w" class="code">input_text</code></h3></td><td id="bf548cba0b84l" rowspan="1" style="vertical-align:middle" colspan="1"><p id="a670845716bgn">Inputs text.</p></td><td id="3e0fc6e80a6lg" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="4538d507f7q0b" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "text": {
+        "description": "The text entered by the client.",
+        "type": "string"
+      }
+    },
+    "required": ["text"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="e04a5222b2pqs"><td id="bd015e1450l7c" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="213b0e2d0cuuc"><code data-tag="code" id="b3863a6c87koq" data-init-id="6b2c32b0ealku" class="code">send_key</code></h3></td><td id="a796c0a8d3qix" rowspan="1" style="vertical-align:middle" colspan="1"><p id="e8238ed9e7szt">Sends a key. Supported keys on the Android platform:</p><ul id="2972daf588917"><li id="1c532bbe2cx59"><p id="5bec5c662dy0v">3:HOME</p></li><li id="a133654001j7g"><p id="cd448cd301z3c">4:BACK</p></li><li id="49eac63c9ax8a"><p id="8b8ce5709didt">24:VOLUME_UP</p></li><li id="568d12596dij7"><p id="618744b982dnc">25:VOLUME_DOWN</p></li><li id="071ae12381762"><p id="baaf2c2f93ngo">26:POWER</p></li><li id="f4e0593ed2mtr"><p id="1b78145b74a6y">82:MENU</p></li></ul></td><td id="69d59f4c82ro4" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="65e3bcb7b4uer" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "key": {
+        "description": "The key sent by the client.",
+        "type": "integer"
+      }
+    },
+    "required": ["key"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="5c5222c275kj9"><td id="5e7c753b58jy8" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="2861e709b0dr8"><code data-tag="code" id="7032efb91el79" data-init-id="f661db4c9cty4" class="code">swipe</code></h3></td><td id="f6784c85d44t3" rowspan="1" style="vertical-align:middle" colspan="1"><p id="32f97068b9z8v">Performs a swipe gesture on the screen.</p></td><td id="142db087dd787" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="57ccabfdf9xgg" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "duration_ms": {
+        "default": 300,
+        "description": "The swipe duration in milliseconds. Default value: 300.",
+        "type": "integer"
+      },
+      "end_x": {
+        "description": "The ending X coordinate.",
+        "type": "integer"
+      },
+      "end_y": {
+        "description": "The ending Y coordinate.",
+        "type": "integer"
+      },
+      "start_x": {
+        "description": "The starting X coordinate.",
+        "type": "integer"
+      },
+      "start_y": {
+        "description": "The starting Y coordinate.",
+        "type": "integer"
+      }
+    },
+    "required": ["start_x", "start_y", "end_x", "end_y", "duration_ms"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="491388f6a6642"><td id="02fc2a7d2690p" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="3169c3c322mkl"><code data-tag="code" id="a16e39009b8ox" data-init-id="16a4cda4bcc0k" class="code">get_all_ui_elements</code></h3></td><td id="1e776aa499jrw" rowspan="1" style="vertical-align:middle" colspan="1"><p id="64baa5d934elf">Gets all UI elements on the device before the timeout, including non-interactive elements.</p></td><td id="7e41a6d4fet8l" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="2f8ab13cd9lwj" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "timeout_ms": {
+        "default": 1000,
+        "description": "The command execution timeout in milliseconds. If not specified, a default value, such as 1000, is used.",
+        "type": "integer"
+      }
+    },
+    "required": ["timeout_ms"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="d9e133d5ff0u8"><td id="bef4e5386bdud" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="e3c249e17agnr"><code data-tag="code" id="fb6c37fee7g9t" data-init-id="2c5bda9733sp4" class="code">get_clickable_ui_elements</code></h3></td><td id="ae1550e5ae06i" rowspan="1" style="vertical-align:middle" colspan="1"><p id="e341b6ad49gj2">Gets all clickable UI elements before the timeout.</p></td><td id="9a686a284foj8" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="581b66adb088y" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "timeout_ms": {
+        "default": 1000,
+        "description": "The command execution timeout in milliseconds. If not specified, a default value, such as 1000, is used.",
+        "type": "integer"
+      }
+    },
+    "required": ["timeout_ms"],
+    "type": "object"
+  }
+}</code></pre></td></tr></tbody></table></section><section id="1431cdcf74qzv" class="section"><h2 id="a0773d0a260ho">App</h2><table id="6557301ab7n52" tablewidth="100" tablecolswidth="20.45 20.13 59.42" autofit="true" class="table"><colgroup colwidth="0.62*" style="width:20.45%"></colgroup><colgroup colwidth="0.61*" style="width:20.13%"></colgroup><colgroup colwidth="1.8*" style="width:59.42%"></colgroup><tbody class="tbody"><tr id="dc39a67af0d9u"><td id="3c3f99c432s6z" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="left" id="6fd90a24bftgv" style="text-align:left"><b> Name</b></p></td><td id="2ce8145e3a6sp" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="709e4c0884fkz"><b>Description</b></p></td><td id="21f4b7b7c60r7" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="ef688d1a84j2s"><b>Parameters</b></p></td></tr><tr id="4b28ffaa70zqt"><td id="cf871c02ae3kq" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="b32a8a58aatkf"><code data-tag="code" id="2cf89d0de2vlp" data-init-id="4fd0a0d00bx8j" class="code">get_installed_apps</code></h3></td><td id="4d3db233ecs33" rowspan="1" style="vertical-align:middle" colspan="1"><p id="db1ab382e5pat">Retrieves a list of applications installed on the system. Supports filtering by Start menu entries and desktop shortcuts, and you can choose to exclude system applications. Returns application details, including the name, start command, optional stop command, and working directory.</p></td><td id="90deb64b3cxdj" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="151d1630178hv" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "desktop": {
+        "default": false,
+        "description": "Includes desktop shortcuts. Default value: false.",
+        "type": "boolean"
+      },
+      "ignore_system_app": {
+        "default": true,
+        "description": "Excludes system applications. Default value: true.",
+        "type": "boolean"
+      },
+      "start_menu": {
+        "default": true,
+        "description": "Includes Start menu applications. Default value: true.",
+        "type": "boolean"
+      }
+    },
+    "required": [],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="f7638e98d0475"><td id="b25eaf3be5hdp" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="f61c3e7fdfz1l"><code data-tag="code" id="fc146976c0m5m" data-init-id="6c94e36120na4" class="code">start_app</code></h3></td><td id="2ba1e9b00fau6" rowspan="1" style="vertical-align:middle" colspan="1"><p id="c34773777c59o">Starts a specified application using the provided command and optional working directory. Returns a list of processes associated with the launched application, including the process name, PID, and start command.</p></td><td id="84ebed3a6dafu" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="5fffc5f885ejr" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "activity": {
+        "description": "The activity name on Android, for example, .xxActivity or com.xx/.xxActivity.",
+        "type": "string"
+      },
+      "start_cmd": {
+        "description": "The command to start the application. On Android, use the 'monkey -p ' syntax, for example, 'monkey -p &lt;package_name&gt; -c android.intent.category.LAUNCHER 1'.",
+        "type": "string"
+      },
+      "work_directory": {
+        "default": "",
+        "description": "The working directory from which to start the application. If omitted, the default directory is used.",
+        "type": "string"
+      }
+    },
+    "required": ["start_cmd"],
+    "type": "object"
+  }
+}</code></pre></td></tr><tr id="9624790e258y9"><td id="4498c0f0d1y6s" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="fdb35406ddw0p"><code data-tag="code" id="b2a8e13558xnz" data-init-id="608fe942adj7t" class="code">stop_app_by_cmd</code></h3></td><td id="e7da64a63bv1e" rowspan="1" style="vertical-align:middle" colspan="1"><p id="f42639c749rz9">Stops an application using the provided stop command. Use this with caution because it forcefully terminates the specified process.</p></td><td id="531b7f0cb0p4f" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="eb0111c8d6v5v" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "stop_cmd": {
+        "description": "The command used to stop the application.",
+        "type": "string"
+      }
+    },
+    "required": ["stop_cmd"],
+    "type": "object"
+  }
+}</code></pre></td></tr></tbody></table></section><section id="135cf26bf1f58" class="section"><h2 id="ea169a056ato4">Shell</h2><table id="59085850983t9" tablewidth="100" tablecolswidth="20.45 20.13 59.42" autofit="true" class="table"><colgroup colwidth="0.62*" style="width:20.45%"></colgroup><colgroup colwidth="0.61*" style="width:20.13%"></colgroup><colgroup colwidth="1.8*" style="width:59.42%"></colgroup><tbody class="tbody"><tr id="4ca4c8642eym7"><td id="5c03de08931c7" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p jc="left" id="1a5df9ad7eyui" style="text-align:left"><b> Name</b></p></td><td id="074a782f859cc" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="848ae6e5bd2n6"><b>Description</b></p></td><td id="bd58487394tmy" rowspan="1" style="background-color:#e5e5e5;vertical-align:middle" colspan="1"><p id="682f965823l7a"><b>Parameters</b></p></td></tr><tr id="40b09eced9try"><td id="75f4d6b7d913s" rowspan="1" style="vertical-align:middle" colspan="1"><h3 id="45fe59738brn9"><code data-tag="code" id="b4c3937e4cc2s" data-init-id="e9f9ca0300hnm" class="code">shell</code></h3></td><td id="bceffa28bf2mq" rowspan="1" style="vertical-align:middle" colspan="1"><p id="dbc35138f8lss">Executes a shell command on the Android platform and returns the output or an error.</p></td><td id="6a205138d3qlm" rowspan="1" style="vertical-align:middle" colspan="1"><pre code-type="xCode" data-tag="codeblock" id="bcba7f8dc4iv2" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "inputSchema": {
+    "properties": {
+      "command": {
+        "description": "The command entered by the client.",
+        "type": "string"
+      },
+      "timeout_ms": {
+        "default": 1000,
+        "description": "The command execution timeout in milliseconds. If not specified, a default value, such as 1000, is used.",
+        "type": "integer"
+      }
+    },
+    "required": ["command", "timeout_ms"],
+    "type": "object"
+  }
+}</code></pre></td></tr></tbody></table></section><section id="8f72e8d1ef7uu" class="section"><h2 id="09dc637a58cn2">MCP Tool List</h2><pre code-type="xCode" data-tag="codeblock" id="3e2f507f03q7v" index="0" outputclass="language-json" class="pre codeblock language-json"><code>{
+  "wuying_oss": {
+    "tools": [
+      {
+        "name": "oss_env_init",
+        "description": "Create and initialize OSS environment variables with the specified endpoint, access key ID, access key secret, security token, and region. The temporary security credentials obtained from the STS (Security Token Service). For more information, see: https://www.alibabacloud.com/help/zh/oss/developer-reference/use-temporary-access-credentials-provided-by-sts-to-access-oss?spm=a2c4g.11186623.help-menu-search-31815.d_1#9ab17afd7cs4t .",
+        "inputSchema": {
+          "properties": {
+            "access_key_id": {
+              "description": "The Access Key ID for OSS authentication",
+              "type": "string"
+            },
+            "access_key_secret": {
+              "description": "The Access Key Secret for OSS authentication",
+              "type": "string"
+            },
+            "endpoint": {
+              "description": "The OSS service endpoint, e.g.,  If not specified, the default is https://oss-cn-hangzhou.aliyuncs.com",
+              "type": "string"
+            },
+            "region": {
+              "description": "The OSS region, e.g., cn-hangzhou. If not specified, the default is cn-hangzhou",
+              "type": "string"
+            },
+            "security_token": {
+              "description": "The Security Token for OSS authentication",
+              "type": "string"
+            }
+          },
+          "required": [
+            "access_key_id",
+            "access_key_secret",
+            "security_token"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "oss_upload",
+        "description": "Upload a local file or directory to the specified OSS bucket. If a directory is specified, it will be compressed into a ZIP file before uploading. The object name in OSS can be specified; if not, the file or ZIP name will be used by default. Note: You must call the oss_env_init tool to initialize OSS environment variables before using this tool.",
+        "inputSchema": {
+          "properties": {
+            "bucket": {
+              "description": "OSS bucket name",
+              "type": "string"
+            },
+            "object": {
+              "description": "Object path in OSS bucket, e.g., test/test.txt",
+              "type": "string"
+            },
+            "path": {
+              "description": "Local file or not empty directory full path to upload, e.g., /tmp/test.txt /tmp on Linux or C:/tmp/test.txt C:/tmp on Windows",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "bucket",
+                        "object",
+                        "path"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "oss_download",
+                "description": "Download an object from the specified OSS bucket to the given local path. If the parent directory does not exist, it will be created automatically. If the target file already exists, it will be overwritten. Note: You must call the oss_env_init tool to initialize OSS environment variables before using this tool.",
+                "inputSchema": {
+                    "properties": {
+                        "bucket": {
+                            "description": "OSS bucket name",
+                            "type": "string"
+                        },
+                        "object": {
+                            "description": "Object path in OSS bucket, e.g., test/test.txt",
+                            "type": "string"
+                        },
+                        "path": {
+                            "description": "Local full path to save the downloaded file, e.g., /tmp/test.txt on Linux or C:/tmp/test.txt on Windows",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "bucket",
+                        "object",
+                        "path"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "oss_upload_annon",
+                "description": "Upload a local file or directory to the specified URL using HTTP PUT. If a directory is specified, it will be compressed into a ZIP file before uploading. If the upload target already exists, it will be overwritten.",
+                "inputSchema": {
+                    "properties": {
+                        "path": {
+                            "description": "Local file or not empty directory full path to upload, e.g., /tmp/test.txt /tmp on Linux or C:/tmp/test.txt  C:/tmp on Windows",
+                            "type": "string"
+                        },
+                        "url": {
+                            "description": "The HTTP/HTTPS URL to upload the file to",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "url",
+                        "path"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "oss_download_annon",
+                "description": "Download a file from the specified URL to the given local path. If the parent directory does not exist, it will be created automatically. If the target file already exists, it will be overwritten.",
+                "inputSchema": {
+                    "properties": {
+                        "path": {
+                            "description": "The full local file path to save the downloaded file, e.g., /tmp/test.txt on Linux or C:/tmp/test.txt on Windows",
+                            "type": "string"
+                        },
+                        "url": {
+                            "description": "The HTTP/HTTPS URL to download the file from",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "url",
+                        "path"
+                    ],
+                    "type": "object"
+                }
+            }
+        ]
+    },
+    "wuying_ui": {
+        "tools": [
+            {
+                "name": "click",
+                "description": "Click on the screen at specific coordinates.",
+                "inputSchema": {
+                    "properties": {
+                        "button": {
+                            "description": "button type,Available values:left,middle,right,default:left",
+                            "type": "string"
+                        },
+                        "x": {
+                            "description": "X coordinate",
+                            "type": "integer"
+                        },
+                        "y": {
+                            "description": "Y coordinate",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "x",
+                        "y",
+                        "button"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "input_text",
+                "description": "Input text",
+                "inputSchema": {
+                    "properties": {
+                        "text": {
+                            "description": "client input text",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "text"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "send_key",
+                "description": "Send a key.Supported Keys on Android Platform: 3:HOME,4:BACK,24:VOLUME_UP,25:VOLUME_DOWN,26:POWER,82:MENU",
+                "inputSchema": {
+                    "properties": {
+                        "key": {
+                            "description": "client send key",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "key"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "swipe",
+                "description": "Perform a swipe gesture on the screen.",
+                "inputSchema": {
+                    "properties": {
+                        "duration_ms": {
+                            "default": 300,
+                            "description": "Duration of swipe in milliseconds,default:300",
+                            "type": "integer"
+                        },
+                        "end_x": {
+                            "description": "Ending X coordinate",
+                            "type": "integer"
+                        },
+                        "end_y": {
+                            "description": "Ending Y coordinate",
+                            "type": "integer"
+                        },
+                        "start_x": {
+                            "description": "Starting X coordinate",
+                            "type": "integer"
+                        },
+                        "start_y": {
+                            "description": "Starting Y coordinate",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "start_x",
+                        "start_y",
+                        "end_x",
+                        "end_y",
+                        "duration_ms"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "get_all_ui_elements",
+                "description": "Get all UI elements from the device with timeout, including non-interactive elements.",
+                "inputSchema": {
+                    "properties": {
+                        "timeout_ms": {
+                            "default": 1000,
+                            "description": "Command execution timeout (unit: milliseconds). If not specified, the default value (such as 1000 milliseconds) is used",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "timeout_ms"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "get_clickable_ui_elements",
+                "description": "Get all clickable UI elements within timeout.",
+                "inputSchema": {
+                    "properties": {
+                        "timeout_ms": {
+                            "default": 1000,
+                            "description": "Command execution timeout (unit: milliseconds). If not specified, the default value (such as 1000 milliseconds) is used",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "timeout_ms"
+                    ],
+                    "type": "object"
+                }
+            }
+        ]
+    },
+    "wuying_app": {
+        "tools": [
+            {
+                "name": "get_installed_apps",
+                "description": "Retrieve a list of installed applications on the system. Supports filtering by Start Menu entries and Desktop shortcuts, with an option to exclude system applications. Returns application details including name, start command, optional stop command, and working directory.",
+                "inputSchema": {
+                    "properties": {
+                        "desktop": {
+                            "default": false,
+                            "description": "Include Desktop shortcuts (default: false)",
+                            "type": "boolean"
+                        },
+                        "ignore_system_app": {
+                            "default": true,
+                            "description": "Exclude system applications (default: true)",
+                            "type": "boolean"
+                        },
+                        "start_menu": {
+                            "default": true,
+                            "description": "Include Start Menu applications (default: true)",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "start_app",
+                "description": "Start a specified application using the provided command and optional working directory. Returns a list of processes associated with the launched application, including their process names, PIDs, and startup commands.\n\n",
+                "inputSchema": {
+                    "properties": {
+                        "activity": {
+                            "description": "The activity name on android,like .xxActivity or com.xx/.xxActivity.",
+                            "type": "string"
+                        },
+                        "start_cmd": {
+                            "description": "The command to start the application. On Android, use the 'monkey -p ' syntax (e.g., 'monkey -p &lt;package_name&gt; -c android.intent.category.LAUNCHER 1').",
+                            "type": "string"
+                        },
+                        "work_directory": {
+                            "default": "",
+                            "description": "The directory from which the application should be launched. If omitted, the default directory is used.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "start_cmd"
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "name": "stop_app_by_cmd",
+                "description": "Terminate an application using the provided stop command. Use with caution as this will forcefully terminate the specified process.",
+                "inputSchema": {
+                    "properties": {
+                        "stop_cmd": {
+                            "description": "The command used to terminate the application.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "stop_cmd"
+                    ],
+                    "type": "object"
+                }
+            }
+        ]
+    },
+    "wuying_shell": {
+        "tools": [
+            {
+                "name": "shell",
+                "description": "Executes an shell command with timeout and returns the output or an error on android platform.",
+                "inputSchema": {
+                    "properties": {
+                        "command": {
+                            "description": "client input command",
+                            "type": "string"
+                        },
+                        "timeout_ms": {
+                            "default": 1000,
+                            "description": "Command execution timeout (unit: milliseconds). If not specified, the default value (such as 1000 milliseconds) is used",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "command",
+                        "timeout_ms"
+                    ],
+                    "type": "object"
+                }
+            }
+        ]
+    }
+}</code></pre></section></div></main>
+
+</div>
+</article>
+<script type="text/javascript">
+window.storeDocs = {
+language: '$lang',
+docGithubLink: '$!githubInfo.url'
+}
+</script>
+<div class="nav-footer">
+ </div>
+<div class="alicloud-document-ask clearfix"></div>
+<div class="feedback-message" style="display:none;">
+<span class="hasfeedback acon acon-done-16"></span>
+Thank you! We've received your  feedback.
+</div>
+</div>
+<div class="col-log-2 col-md-2 col-sm-0 col-xs-0 nav-catalog">
+<div class="article-catalog" id="articleCatalog"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<script
+crossorigin
+src="https://g.alicdn.com/code/lib/??react/16.8.6/umd/react.production.min.js,react-dom/16.8.6/umd/react-dom.production.min.js"
+></script>
+<script
+src="https://g.alicdn.com/code/lib/lodash.js/4.17.21/lodash.min.js"
+crossorigin="anonymous"
+></script>
+<script src="//g.alicdn.com/aliyun-help/help-portal-fe/0.12.39/js/vendor.js"></script>
+<script src="//g.alicdn.com/aliyun-help/help-portal-fe/0.12.39/js/index.js"></script>
+<script defer src="https://cloud-assets.alicdn.com/alicdn/dawn/user-tracker/latest/js/index.js"></script>
+</body>
+</html>

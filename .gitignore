@@ -33,7 +33,7 @@ logs/
 .DS_Store
 
 # Downloaded reference sources (local cache — not tracked)
-data/web_sources/
+# data/web_sources/
 
 # Temporary files
 *.tmp

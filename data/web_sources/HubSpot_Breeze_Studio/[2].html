@@ -1,0 +1,714 @@
+<!doctype html><html lang="en-us"><head>
+    <meta charset="utf-8">
+    <title>Moving Mountains: How We Migrated from Enzyme to React Testing Library</title><link rel="shortcut icon" href="//www.hubspot.com/Portals/53/favicon.ico"><meta name="description" content="How we migrated 76,000 tests from Enzyme to React Testing Library, modernizing our stack and allowing teams to ship changes with more confidence.">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<script nonce="67/jXTWpl82NtEyA6tnSew==">hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="How we migrated 76,000 tests from Enzyme to React Testing Library, modernizing our stack and allowing teams to ship changes with more confidence.">
+    <meta property="og:title" content="Moving Mountains: How We Migrated from Enzyme to React Testing Library">
+    <meta name="twitter:description" content="How we migrated 76,000 tests from Enzyme to React Testing Library, modernizing our stack and allowing teams to ship changes with more confidence.">
+    <meta name="twitter:title" content="Moving Mountains: How We Migrated from Enzyme to React Testing Library">
+
+    
+
+    
+  <script id="hs-search-input__valid-content-types" type="application/json" nonce="67/jXTWpl82NtEyA6tnSew==">
+    [
+      
+        "SITE_PAGE",
+      
+        "LANDING_PAGE",
+      
+        "BLOG_POST",
+      
+        "LISTING_PAGE",
+      
+        "KNOWLEDGE_ARTICLE",
+      
+        "HS_CASE_STUDY"
+      
+    ]
+  </script>
+
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039601/1743583078269/template_main.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.css">
+<style>
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/regular.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/700.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/700.woff") format("woff");
+  }
+</style>
+
+    
+
+    
+
+
+
+
+
+<meta name="google-site-verification" content="6_pSYSrNEFvWTLvVpFU3N33SPEZ4yI0kMQdQ2lRgmVk">
+<link rel="amphtml" href="https://product.hubspot.com/blog/migrated-from-enzyme-to-react-testing-library?hs_amp=true">
+
+<meta property="og:image" content="https://product.hubspot.com/hubfs/How%20We%20Migrated%20from%20Enzyme%20to%20React%20Testing%20Library.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="How We Migrated from Enzyme to React Testing Library">
+<meta name="twitter:image" content="https://product.hubspot.com/hubfs/How%20We%20Migrated%20from%20Enzyme%20to%20React%20Testing%20Library.png">
+<meta name="twitter:image:alt" content="How We Migrated from Enzyme to React Testing Library">
+
+<meta property="og:url" content="https://product.hubspot.com/blog/migrated-from-enzyme-to-react-testing-library">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://product.hubspot.com/blog/migrated-from-enzyme-to-react-testing-library">
+<!-- Hotjar Tracking Code for https://product.hubspot.com/blog -->
+<script nonce="67/jXTWpl82NtEyA6tnSew==">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1781516,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<meta name="verify-v1" content="xbeB21cGkorGZrhb+m9jZ1A5EzqvmTulCKArOHsreUA=">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hubspotdev">
+<meta name="twitter:domain" content="http://dev.hubspot.com/">
+<meta name="twitter:app:name:iphone" content="HubSpot">
+
+<style>
+.blog-subscription .hs-form-required {display:none;}
+
+/* COMMENT OUT ON LAUNCH DAY  .body-container-wrapper {
+  padding-top: 45px !important;
+}*/
+#hs_form_target_module_140598461636723416 .hs-button {
+  margin-top: 10px;
+}
+</style>
+<!-- Added  by Margo - 03/13
+<style>
+body {padding-left:0px!important;padding-right:0px!important;}
+
+.blog-column-wrapper {
+  max-width: 890px!important;
+  padding-top:0px!important;}
+
+.post-header h2, .post-header h1 {
+  font-size: 2em!important;
+  padding-right:none!important;
+  line-height: 1.2em!important;
+  margin-top:15px!important;}
+
+.post-header h3 {
+  margin: 1em 0 1em 0!important;}
+
+.author-info {display:inline-block;}
+
+.author-avatar {
+  position: initial!important;}
+
+.author-avatar img {
+  max-width: 60px;
+  margin-right: 15px;}
+
+.post-item {
+  margin-bottom: 3em!important;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 3em;}
+
+@media (min-width: 768px) {
+.blog-column-wrapper .post-body p {
+  font-family:"proxima-nova", sans-serif!important;
+  font-size: 20px!important;
+  line-height:1.5!important;}
+}
+
+@media (max-width:670px){
+.post-header h2, .post-header h1 {padding-right:0px!important;}
+.post-body img {width:100%!important; margin:10px 0 10px 0!important;float:none!important;}
+.author-avatar {float:left;}
+.author-info {text-align:right;display:block;}
+.author-link {display:block;}
+}
+
+</style> -->
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://product.hubspot.com/blog/rss.xml">
+<meta name="twitter:domain" content="product.hubspot.com">
+<meta name="twitter:site" content="@HubSpotDev">
+<script src="//platform.linkedin.com/in.js" type="text/javascript" nonce="67/jXTWpl82NtEyA6tnSew==">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en-us">
+
+
+
+
+
+
+  <meta name="generator" content="HubSpot"></head>
+  <body>
+    <div class="body-wrapper   hs-content-id-199421162331 hs-blog-post hs-content-path-blog-migrated-from-enzyme-to-react-testing-library hs-content-name-moving-mountains-how-we-migrated-from-enzyme-to-re hs-blog-name-hubspot-product-blog-live hs-blog-id-6496795"><div data-global-resource-path="IL-HSBlog2/templates/partials/header.html"><header class="header">
+  <div class="header__container content-wrapper">
+
+    <div class="header__logo header__logo--main"><div id="hs_cos_wrapper_site_logo" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <span id="hs_cos_wrapper_site_logo_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="https://product.hubspot.com/blog" id="hs-link-site_logo_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg" class="hs-image-widget " height="50" style="height: auto;width:142px;border-width:0px;border:0px;" width="142" alt="HubSpot-logo-color" title="HubSpot-logo-color" srcset="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=71&amp;height=25&amp;name=HubSpot-logo-color.jpg 71w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg 142w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=213&amp;height=75&amp;name=HubSpot-logo-color.jpg 213w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=284&amp;height=100&amp;name=HubSpot-logo-color.jpg 284w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=355&amp;height=125&amp;name=HubSpot-logo-color.jpg 355w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=426&amp;height=150&amp;name=HubSpot-logo-color.jpg 426w" sizes="(max-width: 142px) 100vw, 142px"></a></span>
+</div></div>
+    <ul class="header__tags"><li class="header__tags__item header__tags__item--active"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/ux">UX</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product">Product</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product-management">Product Management</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/culture">Culture</a></li></ul>
+    <div class="header__search header--element"><div id="hs_cos_wrapper_site_search" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="hs-search-field">
+
+    <div class="hs-search-field__bar">
+      <form data-hs-do-not-collect="true" action="/hs-search-results">
+        
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search...">
+
+        
+          
+            <input type="hidden" name="type" value="SITE_PAGE">
+          
+        
+          
+        
+          
+            <input type="hidden" name="type" value="BLOG_POST">
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+      </form>
+    </div>
+    <ul class="hs-search-field__suggestions"></ul>
+</div></div></div>
+    <button class="header__navigation--toggle"></button>
+  </div>
+</header></div><main class="body-container-wrapper">
+  <div class="body-container body-container--blog-post">
+
+    
+    <div class="content-wrapper">
+      <div class="blog-post__meta">
+        <div class="blog-post__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/How%20We%20Migrated%20from%20Enzyme%20to%20React%20Testing%20Library.png?width=815&amp;name=How%20We%20Migrated%20from%20Enzyme%20to%20React%20Testing%20Library.png');"></div>
+        <div class="blog-post__post-info"><a href="https://product.hubspot.com/blog/topic/engineering" class="post-tag">Engineering</a><h1><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Moving Mountains: How We Migrated from Enzyme to React Testing Library</span></h1>
+          <div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/charley-pugmire" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Image%2010-11-2025%20at%2012.00.jpeg?width=40&amp;height=40&amp;name=Image%2010-11-2025%20at%2012.00.jpeg');"></span>
+        Charley Pugmire
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Nov 13, 2025</span>
+    </span>
+  </div>
+        </div>
+      </div>
+      <article class="blog-post">
+        <div class="blog-post__body">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=1471&amp;height=703&amp;name=Enzyme1.png" width="1471" height="703" loading="lazy" alt="Enzyme1" style="height: auto; max-width: 100%; width: 1471px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=736&amp;height=352&amp;name=Enzyme1.png 736w, https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=1471&amp;height=703&amp;name=Enzyme1.png 1471w, https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=2207&amp;height=1055&amp;name=Enzyme1.png 2207w, https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=2942&amp;height=1406&amp;name=Enzyme1.png 2942w, https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=3678&amp;height=1758&amp;name=Enzyme1.png 3678w, https://product.hubspot.com/hs-fs/hubfs/Enzyme1.png?width=4413&amp;height=2109&amp;name=Enzyme1.png 4413w" sizes="(max-width: 1471px) 100vw, 1471px"></p>
+<p>For years, Enzyme was the de facto standard for testing React applications. Originally built by Airbnb in 2015, Enzyme makes it easy to assert, manipulate, and traverse the output of React components. The last official release of Enzyme came after React 16 was launched in 2017, but even then did not fully support all React 16 features. Ongoing support for Enzyme shifted to the open source community with React 17. However, the creator of the community-maintained Enzyme adapter announced that he would not be offering an updated version for React 18. This effectively marked the end of the Enzyme project, as it would prevent users from leveraging new features like React 18’s concurrent mode.</p>
+<!--more-->
+<p>Around the same time, a project called React Testing Library (RTL) had gained traction in the open source community. Released in 2018, RTL represented a paradigm shift in how to think about testing applications - rather than making assertions about the internals of your components (e.g., props updating, callbacks being invoked, etc.), it promoted writing tests that represent the way users interact with your software. RTL’s <a href="https://testing-library.com/docs/guiding-principles" rel="noopener" target="_blank"><span>guiding principle</span></a> is “The more your tests resemble the way your software is used, the more confidence they can give you”.</p>
+<p>We knew that Enzyme would eventually become a blocker to modernizing our React usage; in August of 2022, we announced Testing Library as our official UI testing framework and began our migration. Over the next two and a half years, we migrated more than 76,000 tests from Enzyme to React Testing Library with virtually no automation. At our peak, we were migrating more than 4,000 tests per month across hundreds of repositories while continuing to deliver new features to our customers.</p>
+<p>I’ll discuss how we planned and executed this migration, and how we might approach this work differently in the age of AI.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Planning</span></strong></h2>
+<p>We knew we needed a plan, but we didn’t want to prevent teams from getting a head start. For the first few months, we allowed the migration to progress organically – letting teams move away from Enzyme voluntarily while we developed a strategy.</p>
+<p>First, we needed to understand the scale of the work we were undertaking. Early in this process we decided that simple static analysis of Enzyme usage would not be sufficient. It is common for tests to be generated programmatically, or for Enzyme methods to be invoked via test utilities or lifecycle hooks like <span style="color: #188038;">beforeEach</span>/<span style="color: #188038;">beforeAll</span> in a way that would underrepresent the effort needed for migration. Knowing that we wouldn’t want tests migrated from Enzyme to Testing Library 1:1, we erred on the side of overestimating the migration effort. We instrumented Enzyme’s render methods to collect runtime usage metrics and started to build a picture of Enzyme usage across teams. We were then able to divide packages into buckets:</p>
+<table style="border-collapse: collapse; table-layout: fixed; margin-left: auto; margin-right: auto; border: 1px solid #99acc2; width: 100%;">
+<tbody>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Category</strong></span></p>
+</td>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;"><strong>Definition</strong></span></p>
+</td>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;"><strong># of Packages</strong></span></p>
+</td>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;"><strong>% of total</strong></span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>No tests</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">No specs and no Testing Library or Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">572</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">40.4</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Pure tests only</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">Has specs but no Testing Library or Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">207</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">14.6</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Testing Library tests only</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">Has specs but no Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">130</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">9.2</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Low</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">1-50 Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">300</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">21.2</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Medium</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">51 - 100 Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">80</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">5.6</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>High</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">101 to 500 Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">98</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">6.9</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Very High</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">501 to 1000 Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">19</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">1.3</span></p>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f3f3f3; border: 1pt solid #000000; width: 22.9901%;">
+<p><span style="font-size: 16px;"><strong>Massive</strong></span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 42.3131%;">
+<p><span style="font-size: 16px;">1001+ Enzyme calls</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.6366%;">
+<p><span style="font-size: 16px;">11</span></p>
+</td>
+<td style="border: 1pt solid #000000; width: 17.0601%;">
+<p><span style="font-size: 16px;">0.8</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Setting aside the scary number of packages with no tests (that’s a blog post for another day), this gave us a way to prioritize the more than 500 packages that would need to be migrated. (If we started this migration today, that number would be more than 1,500.)</p>
+<p>We decided to start with packages with fewer tests first, and work our way up to packages with more tests. There was some risk in deferring the largest and most complex migrations, but this allowed us to concentrate our tech debt across the smallest number of packages. Knowing that this work was required to unblock other modernization efforts, we set the ambitious goal of completing this migration by the end of 2024.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=1589&amp;height=836&amp;name=Enzyme2.png" width="1589" height="836" loading="lazy" alt="Enzyme2" style="height: auto; max-width: 100%; width: 1589px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=795&amp;height=418&amp;name=Enzyme2.png 795w, https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=1589&amp;height=836&amp;name=Enzyme2.png 1589w, https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=2384&amp;height=1254&amp;name=Enzyme2.png 2384w, https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=3178&amp;height=1672&amp;name=Enzyme2.png 3178w, https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=3973&amp;height=2090&amp;name=Enzyme2.png 3973w, https://product.hubspot.com/hs-fs/hubfs/Enzyme2.png?width=4767&amp;height=2508&amp;name=Enzyme2.png 4767w" sizes="(max-width: 1589px) 100vw, 1589px"></p>
+<p>By the time we shared our plan with engineers in December 2022, nearly 15% of all UI tests were already using React Testing Library - teams were eager to embrace a more modern testing framework and philosophy.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Education</span></strong></h2>
+<p>Testing Library uses a fundamentally different philosophy about testing from Enzyme. It encourages you to write your tests from a user’s perspective rather than an engineer’s perspective. Viewing tests through this lens means that we had accumulated tens of thousands of tests over the years that were not applicable in this new paradigm. We knew that documentation and knowledge sharing would be vital to the success of this project, so we leaned heavily into creating informative content early on.</p>
+<p>HubSpot hosts an annual internal conference called EPIC Week, where we are invited to give a talk on any subject (work-related or otherwise). The testing teams used this opportunity to give a talk called “How to Rethink your Testing strategy” to help teams better understand how to embrace the new paradigm and write more effective tests. This talk covered concepts like user-focused testing, the <a href="https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications" rel="noopener" target="_blank"><span>testing trophy</span></a>, and how to select the right type of test for different scenarios. We created guides for how to write tests that used the most common libraries in our stack, and developed tooling to minimize the toil of creating test fixtures and mock network payloads. This helped teams to feel empowered to take on the migration without the pressure of an imminent deadline.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Execution</span></strong></h2>
+<p>The first phase of the migration was to slow the addition of new Enzyme tests. We did this by first restricting net-new dependencies on Enzyme, and automatically commenting on any pull requests that added new Enzyme tests. We call these “invasions”, and we use this workflow for things like reporting bundle size changes, providing branch previews, and calling attention to risky code changes.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=1600&amp;height=519&amp;name=Enzyme3.png" width="1600" height="519" loading="lazy" alt="Enzyme3" style="height: auto; max-width: 100%; width: 1600px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=800&amp;height=260&amp;name=Enzyme3.png 800w, https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=1600&amp;height=519&amp;name=Enzyme3.png 1600w, https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=2400&amp;height=779&amp;name=Enzyme3.png 2400w, https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=3200&amp;height=1038&amp;name=Enzyme3.png 3200w, https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=4000&amp;height=1298&amp;name=Enzyme3.png 4000w, https://product.hubspot.com/hs-fs/hubfs/Enzyme3.png?width=4800&amp;height=1557&amp;name=Enzyme3.png 4800w" sizes="(max-width: 1600px) 100vw, 1600px"></p>
+<p style="font-size: 18px;"><span style="color: #000000;">We also commented on pull requests that removed Enzyme tests, including a note when all Enzyme invocations were removed.</span></p>
+<p style="font-size: 18px;"><span style="color: #000000;"><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=1600&amp;height=481&amp;name=Enzyme4.png" width="1600" height="481" loading="lazy" alt="Enzyme4" style="height: auto; max-width: 100%; width: 1600px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=800&amp;height=241&amp;name=Enzyme4.png 800w, https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=1600&amp;height=481&amp;name=Enzyme4.png 1600w, https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=2400&amp;height=722&amp;name=Enzyme4.png 2400w, https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=3200&amp;height=962&amp;name=Enzyme4.png 3200w, https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=4000&amp;height=1203&amp;name=Enzyme4.png 4000w, https://product.hubspot.com/hs-fs/hubfs/Enzyme4.png?width=4800&amp;height=1443&amp;name=Enzyme4.png 4800w" sizes="(max-width: 1600px) 100vw, 1600px"></span></p>
+<p style="font-size: 18px;"><span style="color: #000000;">And to keep teams in the loop with our overall progress, we shared quarterly updates with engineers.</span></p>
+<p style="font-size: 18px;"><span style="color: #000000;"><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=720&amp;height=720&amp;name=Enzyme5.png" width="720" height="720" loading="lazy" alt="Enzyme5" style="height: auto; max-width: 100%; width: 720px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=360&amp;height=360&amp;name=Enzyme5.png 360w, https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=720&amp;height=720&amp;name=Enzyme5.png 720w, https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=1080&amp;height=1080&amp;name=Enzyme5.png 1080w, https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=1440&amp;height=1440&amp;name=Enzyme5.png 1440w, https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=1800&amp;height=1800&amp;name=Enzyme5.png 1800w, https://product.hubspot.com/hs-fs/hubfs/Enzyme5.png?width=2160&amp;height=2160&amp;name=Enzyme5.png 2160w" sizes="(max-width: 720px) 100vw, 720px"></span></p>
+<p>Our frontend test setup is unique compared to much of the open source ecosystem in that we exclusively run our frontend tests in the browser. We find that running tests in the same environment that our code runs gives us far more confidence than running them in an emulated environment like JSDOM. So we also surfaced migration progress within our test reporter to give engineers real-time progress reports.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=958&amp;height=89&amp;name=Enzyme7.png" width="958" height="89" loading="lazy" alt="Enzyme7" style="height: auto; max-width: 100%; width: 958px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=479&amp;height=45&amp;name=Enzyme7.png 479w, https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=958&amp;height=89&amp;name=Enzyme7.png 958w, https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=1437&amp;height=134&amp;name=Enzyme7.png 1437w, https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=1916&amp;height=178&amp;name=Enzyme7.png 1916w, https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=2395&amp;height=223&amp;name=Enzyme7.png 2395w, https://product.hubspot.com/hs-fs/hubfs/Enzyme7.png?width=2874&amp;height=267&amp;name=Enzyme7.png 2874w" sizes="(max-width: 958px) 100vw, 958px"></p>
+<p>It was important for us to keep the migration effort top of mind, but we never wanted our engineers to feel like it was blocking their work or preventing them from shipping updates to our customers. We allow-listed packages for continued Enzyme usage as needed, and never resorted to blocking builds or deployments due to increased Enzyme usage. As an infrastructure team, even our high priority projects take a back seat to other engineers being able to deliver for our customers.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Migrations At Scale</span></strong></h2>
+<p>It’s not uncommon for infrastructure teams to ask product teams to undertake migrations as part of evolving our tech stack, but we need to be thoughtful about how we balance this work against other priorities. When we started the migration, this process was full of toil. For a given team, we took all Enzyme tests across all of their repositories, divided them into equal chunks across the remaining quarters we had allocated to this effort, and created separate tickets per quarter to track the work. This was incredibly inefficient, required lots of manual updates as we moved from quarter to quarter, and didn’t give us a good way to track our overall progress.&nbsp;</p>
+<p>Fortunately, in early 2024 we launched an internal system called Monarch that serves as a centralized hub for planning and sequencing migration efforts across teams. Monarch campaigns are governed by a small team of engineering leaders and staff+ engineers who ensure that teams aren’t overburdened by infrastructure initiatives and are given sufficient time to incorporate migration work into their planning process. It also gives campaign creators an aggregated view of progress across all teams. This system has become a critical piece of how we coordinate engineering efforts across teams.</p>
+<p>We often cite our small, highly-focused teams as critical to how we’re able to move quickly, and this was no exception. Having a team dedicated to frontend testing allowed us to provide tooling and direct support throughout the migration process.&nbsp;</p>
+<p>We also used cross-team embeds to provide white-glove migration service for our largest consumers of Enzyme, or for teams that were concerned about meeting their deadline. In practice, this meant one or two members of the testing team partnering with one or two members of a host team to align on an app-specific testing strategy and dedicating 1-2 weeks to focus exclusively on migrating tests.&nbsp;</p>
+<p>These embeds were incredibly successful and often resulted in migrating a quarter’s worth of tests in a matter of weeks. You can provide teams with an endless supply of tooling and guidelines, but sometimes it just takes a little extra horsepower to get across the finish line.</p>
+<p>Through a combination of education, planning, and persistence, we removed our last Enzyme tests in February 2025.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=1600&amp;height=1069&amp;name=Enzyme8.png" width="1600" height="1069" loading="lazy" alt="Enzyme8" style="height: auto; max-width: 100%; width: 1600px;" srcset="https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=800&amp;height=535&amp;name=Enzyme8.png 800w, https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=1600&amp;height=1069&amp;name=Enzyme8.png 1600w, https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=2400&amp;height=1604&amp;name=Enzyme8.png 2400w, https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=3200&amp;height=2138&amp;name=Enzyme8.png 3200w, https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=4000&amp;height=2673&amp;name=Enzyme8.png 4000w, https://product.hubspot.com/hs-fs/hubfs/Enzyme8.png?width=4800&amp;height=3207&amp;name=Enzyme8.png 4800w" sizes="(max-width: 1600px) 100vw, 1600px"></p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">What About AI?</span></strong></h2>
+<p>It may seem unusual to publish a blog in 2025 that doesn’t involve generative AI, but agentic development and AI-assisted coding tools like Copilot and Cursor were still in their infancy when we began this project. By the time these tools became widely available, our migration had achieved significant momentum, and we decided not to disrupt our progress by pivoting our migration strategy.&nbsp;</p>
+<p>We knew it was important to use this opportunity to rethink our testing strategy holistically across our frontend ecosystem, and we didn’t think that an AI-assisted migration would push us in the right direction. It almost certainly would have accelerated our progress, but we weren’t confident that we would be as happy with the output.&nbsp;</p>
+<p>We have invested heavily in this area for subsequent migration efforts, and have generally found migrations to be a great use case for AI. <a href="/blog/context-is-key-how-hubspot-scaled-ai-adoption" rel="noopener" target="_blank"><span>All HubSpot engineers leverage modern AI tools</span></a>, and AI fluency is now a baseline expectation for all engineering roles. We’ve developed agents to help with things like our design system modernization efforts, iterating on pull request feedback, and analyzing packages for patterns that could lead to flaky tests.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Lessons Learned</span></strong></h2>
+<p>If we were to start this migration today, there are several lessons we would apply. First, administering work at this scale is time consuming. Any investment you can make in automating task management and progress reporting is time well spent.</p>
+<p>Secondly, a combination of AST transformations and AI agents could have greatly accelerated the migration for simple use cases like component unit tests. We’re not convinced it would have been the right solution for more complex integration tests (which is our preferred style of testing), but the improvements we’ve seen in AI tooling in recent years are making it increasingly feasible to automate these kinds of tasks.</p>
+<p>Finally, small teams win. This is something we absolutely wouldn’t do differently - there’s a reason it’s part of our <a href="/blog/hubspots-engineering-values" rel="noopener" target="_blank"><span>engineering values</span></a>. Having a small team dedicated to this effort allowed us to focus on tasks that reduced migration friction and to reinforce testing best practices. It also allowed us to be force multipliers when teams needed additional resources to complete their migrations.</p>
+<h2 style="font-size: 18px;"><strong><span style="color: #f7761f;">Wrapping It Up</span></strong></h2>
+<p>We couldn’t be happier with the results of the migration. Our product teams are shipping more confidently, and we have been able to continue our modernization efforts. We’ve started experiments with modern features like <a href="https://react.dev/reference/react/Suspense" rel="noopener" target="_blank"><span>Suspense</span></a> and the <a href="https://react.dev/learn/react-compiler" rel="noopener" target="_blank"><span>React Compiler</span></a>, and we’re excited to apply those learnings across our frontend stack. A huge thank you to all of the teams involved in this massive undertaking, and a special thank you to <a href="https://www.linkedin.com/in/signorettif/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Francesco Signoretti&quot;,&quot;per_e&quot;:&quot;fsignoretti@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Francesco Signoretti</span></a>, <a href="https://www.linkedin.com/in/romulonf/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Romulo Ferreira&quot;,&quot;per_e&quot;:&quot;rferreira@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Romulo Ferreira</span></a>, <a href="https://www.linkedin.com/in/eleanor-reich-9a8480122/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Eleanor Reich&quot;,&quot;per_e&quot;:&quot;ereich@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Eleanor Reich</span></a>, <a href="https://www.linkedin.com/in/bon-kevin/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Kevin Bon&quot;,&quot;per_e&quot;:&quot;kbon@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Kevin Bon</span></a>, and <a href="https://www.linkedin.com/in/mattmccherry/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Matt McCherry&quot;,&quot;per_e&quot;:&quot;mmccherry@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Matt McCherry</span></a> for shepherding this work to completion.</p></span>
+        </div><div id="hs_cos_wrapper_share_post" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="share-post__container">
+  <div class="share-post"><a class="share-post__link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fmigrated-from-enzyme-to-react-testing-library" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter1" role="img"><title id="twitter1">Share on Twitter</title><g id="twitter1_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="share-post__link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fmigrated-from-enzyme-to-react-testing-library" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 264 512" aria-labelledby="facebook-f2" role="img"><title id="facebook-f2">Share on Facebook</title><g id="facebook-f2_layer"><path d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229" /></g></svg></span></a><a class="share-post__link" href="mailto:info@example.com?&amp;subject=&amp;body=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fmigrated-from-enzyme-to-react-testing-library" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="envelope3" role="img"><title id="envelope3">Share via email</title><g id="envelope3_layer"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></g></svg></span></a><a class="share-post__link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fmigrated-from-enzyme-to-react-testing-library" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__4" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="linkedin-in4" role="img"><title id="linkedin-in4">Share on LinkedIn</title><g id="linkedin-in4_layer"><path d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z" /></g></svg></span></a></div>
+</div></div></article>
+    </div><div class="blog-recent-posts">
+      <div class="content-wrapper">
+        <h2 class="blog-recent-posts__heading">Recommended Articles</h2>
+        <div class="blog-recent-posts__list">
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Multi-Armed_Bandits.png?width=805&amp;name=Multi-Armed_Bandits.png');" href="https://product.hubspot.com/blog/deep-contextual-multi-armed-bandits-deep-learning-for-smarter-a/b-testing-on-autopilot"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/deep-contextual-multi-armed-bandits-deep-learning-for-smarter-a/b-testing-on-autopilot">Deep contextual multi-armed bandits: Deep learning for smarter A/B testing on autopilot</a></h2><div class="blog-index__post-summary">
+          The machine learning team at HubSpot recently published a paper which we presented at the Uncertainty in Deep Learning Workshop at the Uncertainty in ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/mark-collier" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/T024G0P55-U5S7LLYG5-960f8e9804d5-1024.jpeg?width=40&amp;height=40&amp;name=T024G0P55-U5S7LLYG5-960f8e9804d5-1024.jpeg');"></span>
+        Mark Collier
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Nov 26, 2018</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/slack-logo-team-management-338f29f5f51e3cd2-512x512.png?width=805&amp;name=slack-logo-team-management-338f29f5f51e3cd2-512x512.png');" href="https://product.hubspot.com/blog/slacking-hard-or-hardly-slacking-automating-infrastructure-at-scale"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/slacking-hard-or-hardly-slacking-automating-infrastructure-at-scale">Slacking hard, or hardly Slacking: Automating infrastructure at scale</a></h2><div class="blog-index__post-summary">
+          Here at HubSpot, automation is king. If you’ve got a bug, all you have to do is fix it once and it’s gone. But if you try to ignore a human error? ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/elias-szabo-wexler" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/image-2.png?width=40&amp;height=40&amp;name=image-2.png');"></span>
+        Elias Szabo-Wexler (He/Him)
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Apr 26, 2018</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Upgrading%20Vitess%20%281%29.png?width=805&amp;name=Upgrading%20Vitess%20%281%29.png');" href="https://product.hubspot.com/blog/hubspot-upgrades-mysql"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/hubspot-upgrades-mysql">How HubSpot Upgraded a Thousand MySQL Clusters at Once</a></h2><div class="blog-index__post-summary">
+          Written by Olga Shestopalova, Data Infra Engineer @ HubSpot. HubSpot runs over a thousand MySQL clusters in each environment, and we were faced with ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/olga-shestopalova" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Screen%20Shot%202015-06-12%20at%201.52.22%20PM.png?width=40&amp;height=40&amp;name=Screen%20Shot%202015-06-12%20at%201.52.22%20PM.png');"></span>
+        Olga Shestopalova
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Sep 19, 2023</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+    
+    <div class="content-wrapper"><div data-global-resource-path="IL-HSBlog2/templates/partials/promotion.html"><section class="blog-section promotion-section"><span id="hs_cos_wrapper_promotion_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Join our subscribers</h2>
+<p>Sign up here and we'll keep you updated on the latest in product, UX, and engineering from HubSpot.</p></span><a href="#subscription-popup" class="button popup--trigger"><div id="hs_cos_wrapper_promotion_button_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_promotion_button_text_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Subscribe to the newsletter</span></div></a>
+</section>
+
+<div class="popup" id="subscription-popup">
+  <div class="popup__backdrop popup__close"></div>
+    <div class="popup__scroller popup__close">
+    <div class="popup__box">
+      <a href="#" class="prev-step">Back</a>
+      <div class="step1"><span id="hs_cos_wrapper_popup_intro" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Get Connected</h2>
+<p>The latest engineering, UX, and product news from the HubSpot Product Blog, straight to your inbox.</p></span></div><div id="hs_cos_wrapper_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+<span id="hs_cos_wrapper_blog_subscribe_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_subscribe">
+<div id="hs_form_target_blog_subscribe_blog_subscribe_3932"></div>
+
+
+
+</span></div><button class="next-step step1">Next</button>
+      <button class="popup__close subscription-popup__close">
+        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99889 8.01872L1.01876 13.9988L-0.000976562 12.9791L5.97915 6.99899L-0.000101273 1.01974L1.01963 0L6.99889 5.97925L12.9781 0L13.9979 1.01974L8.01862 6.99899L13.9987 12.9791L12.979 13.9988L6.99889 8.01872Z" fill="#33475B" />
+        </svg>
+      </button>
+      <p class="popup__bottom-promo">
+        <svg width="22" height="23" viewbox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0" mask-type="alpha" maskunits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+          <path d="M0 0H21.8794V22.8287H0V0Z" fill="white" />
+          </mask>
+          <g mask="url(#mask0)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8944 16.4506C14.1997 16.4506 12.8256 15.0828 12.8256 13.3954C12.8256 11.708 14.1997 10.34 15.8944 10.34C17.5889 10.34 18.9629 11.708 18.9629 13.3954C18.9629 15.0828 17.5889 16.4506 15.8944 16.4506ZM16.813 7.51334V4.79561C17.5255 4.46048 18.0247 3.74279 18.0247 2.90985V2.84706C18.0247 1.69769 17.08 0.757181 15.9258 0.757181H15.8627C14.7083 0.757181 13.7636 1.69769 13.7636 2.84706V2.90985C13.7636 3.74279 14.263 4.46048 14.9754 4.79561V7.51347C13.9147 7.67657 12.9454 8.1123 12.1455 8.7534L4.65097 2.94849C4.7003 2.75958 4.73491 2.56481 4.73519 2.36041C4.73687 1.05841 3.67821 0.00167624 2.37054 1.99171e-06C1.06301 -0.00167226 0.0015434 1.05241 2.00037e-06 2.35441C-0.00167953 3.65628 1.05698 4.71301 2.36465 4.71469C2.79078 4.71525 3.1851 4.5947 3.53093 4.39895L10.9033 10.1093C10.2762 11.0516 9.90911 12.1803 9.90911 13.3954C9.90911 14.6675 10.3127 15.8441 10.9948 16.812L8.75278 19.0443C8.57552 18.9914 8.39153 18.9543 8.19675 18.9543C7.1224 18.9543 6.25123 19.8217 6.25123 20.8916C6.25123 21.9614 7.1224 22.8287 8.19675 22.8287C9.27139 22.8287 10.1424 21.9614 10.1424 20.8916C10.1424 20.6978 10.1053 20.5144 10.052 20.3381L12.2698 18.1299C13.2765 18.8952 14.5301 19.3546 15.8944 19.3546C19.1998 19.3546 21.8795 16.6865 21.8795 13.3954C21.8795 10.4159 19.6812 7.9545 16.813 7.51334Z" fill="#F3785B" />
+          </g>
+        </svg>
+        <span>Not using <a href="https://www.hubspot.com/">HubSpot</a> yet?</span>
+      </p>
+    </div>
+  </div>
+</div></div></div>
+  </div>
+</main><div data-global-resource-path="IL-HSBlog2/templates/partials/footer.html"><footer class="footer">
+  <div class="footer__container content-wrapper"><div id="hs_cos_wrapper_general_links" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_general_links_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_general_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/jobs/departments/product-and-engineering" role="menuitem" target="_blank" rel="noopener">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/internet-marketing-company" role="menuitem" target="_blank" rel="noopener">Our Story</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://designers.hubspot.com/blog" role="menuitem" target="_blank" rel="noopener">Developer Blog</a></li>
+ </ul>
+</div></span></div><div id="hs_cos_wrapper_footer_social" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="social-links"><a class="social-links__link" href="https://www.youtube.com/channel/UCScgU9OgnrPg7eNCQ6ia80g" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512" aria-labelledby="youtube5" role="img"><title id="youtube5">Follow us on YouTube</title><g id="youtube5_layer"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" /></g></svg></span></a><a class="social-links__link" href="https://twitter.com/HubSpotDev" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter6" role="img"><title id="twitter6">Follow us on Twitter</title><g id="twitter6_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="social-links__link" href="https://www.instagram.com/hubspotlife" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="instagram7" role="img"><title id="instagram7">Follow us on Instagram</title><g id="instagram7_layer"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" /></g></svg></span></a></div></div><!--LEGAL LINKS --><div id="hs_cos_wrapper_legal_menu" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div id="hs_menu_wrapper_legal_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+   <ul role="menu">
+     <li><a href="https://www.hubspot.com/legal-stuff">Legal Stuff</a></li>
+     <li><a href="https://www.hubspot.com/privacy-policy">Privacy Policy</a></li>
+     <li class="hs-footer-cookie-settings" hidden>
+       <a href=""></a>
+     </li>
+   </ul>
+</div></div><div class="footer__copyright"><div id="hs_cos_wrapper_footer_copyright" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_copyright_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><a href="https://www.hubspot.com/" target="_blank" rel="noopener"><img src="https://www.hubspot.com/hubfs/HubSpot_Logos/HSLogo_gray.svg" alt="HubSpot Logo"></a>
+<p>Copyright © 2024 HubSpot, Inc.</p></span></div></div>
+  </div>
+</footer></div></div><div data-global-resource-path="IL-HSBlog2/templates/partials/search.html"><div class="popup" id="search-popup" data-blog-id="6496795">
+  <div class="popup__backdrop popup__close"></div>
+  <div class="search-popup__topbar">
+    <div class="content-wrapper search-popup__wrapper">
+      <p class="search-popup__term-line">Search Term: <span class="search-popup__term"></span></p>
+      <div class="search-popup__scope">
+        <label>
+          <input type="radio" class="search-popup__scope__choice" name="search-scope" value="SITE">
+          <i></i>
+          Search HubSpot.com
+        </label>
+        <label>
+          <input type="radio" class="search-popup__scope__choice search-popup__scope__choice--default" name="search-scope" value="BLOG" checked>
+          <i></i>
+          Search the blog
+        </label>
+      </div>
+      <button class="popup__close search-popup__close">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70718 11.7073L18 20.0002L19.4142 18.5859L11.1214 10.2931L19.4144 2.00015L18.0002 0.585938L9.70718 8.87891L1.41421 0.585938L0 2.00015L8.29297 10.2931L0.000150454 18.5859L1.41436 20.0002L9.70718 11.7073Z" fill="white" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="popup__scroller popup__close">
+    <ul class="search-popup__result"></ul>
+    <button class="search-popup__load-more">Load more</button>
+    <div class="lds-ring search-popup__spinner"><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+<template id="search-popup__result-template">
+  <li>
+    <h2><a class="search-popup__result-link"></a></h2>
+    <p class="search-popup__result-description"></p>
+  </li>
+</template></div><script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+    <script nonce="67/jXTWpl82NtEyA6tnSew==">hsjQuery = window['jQuery'];</script>
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<script src="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039149/1743583082755/template_main.min.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<script nonce="67/jXTWpl82NtEyA6tnSew==">
+var hsVars = hsVars || {}; hsVars['language'] = 'en-us';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+
+  <script data-hs-allowed="true" nonce="67/jXTWpl82NtEyA6tnSew==">
+      hbspt.forms.create({
+          portalId: '51294',
+          formId: 'd59f9bdf-8db8-41d7-82bb-d15dd985a4f3',
+          formInstanceId: '3932',
+          pageId: '199421162331',
+          region: 'na1',
+          
+          pageName: 'Moving Mountains: How We Migrated from Enzyme to React Testing Library',
+          
+          contentType: 'blog-post',
+          
+          formsBaseUrl: '/_hcms/forms/',
+          
+          
+          inlineMessage: "Thanks for subscribing!",
+          
+          css: '',
+          target: '#hs_form_target_blog_subscribe_blog_subscribe_3932',
+          
+          formData: {
+            cssClass: 'hs-form stacked'
+          }
+      });
+  </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript" nonce="67/jXTWpl82NtEyA6tnSew==">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/product.hubspot.com\/blog\/migrated-from-enzyme-to-react-testing-library"]);
+_hsq.push(["setPageId", "199421162331"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 199421162331,
+    "legacyPageId": "199421162331",
+    "contentFolderId": null,
+    "contentGroupId": 6496795,
+    "abTestId": null,
+    "languageVariantId": 199421162331,
+    "languageCode": "en-us",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/51294.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript" nonce="67/jXTWpl82NtEyA6tnSew==">
+var hsVars = {
+    render_id: "45494512-e6aa-42ab-9814-368d3265ac71",
+    ticks: 1778120900415,
+    page_id: 199421162331,
+    
+    content_group_id: 6496795,
+    portal_id: 51294,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en-us",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "199421162331",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+
+
+
+<script data-gtm-id="GTM-T7FPMN" src="https://www.hubspot.com/wt-assets/static-files/compliance/index.js" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=vxukm97zn1wq1yjoeioklg" async="true" nonce="67/jXTWpl82NtEyA6tnSew=="></script>
+<div id="fb-root"></div>
+  <script nonce="67/jXTWpl82NtEyA6tnSew==">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script nonce="67/jXTWpl82NtEyA6tnSew==">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

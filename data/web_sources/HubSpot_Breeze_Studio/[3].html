@@ -1,0 +1,611 @@
+<!doctype html><html lang="en-us"><head>
+    <meta charset="utf-8">
+    <title>Cloud Coding Agents at HubSpot</title><link rel="shortcut icon" href="//www.hubspot.com/Portals/53/favicon.ico"><meta name="description" content="Discover how HubSpot engineers use cloud coding agents like Claude Code to transform software development with AI, from planning to implementation to code review.">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<script nonce="oTAPv8SUSoyjkEtypSeS2A==">hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="Discover how HubSpot engineers use cloud coding agents like Claude Code to transform software development with AI, from planning to implementation to code review.">
+    <meta property="og:title" content="Cloud Coding Agents at HubSpot">
+    <meta name="twitter:description" content="Discover how HubSpot engineers use cloud coding agents like Claude Code to transform software development with AI, from planning to implementation to code review.">
+    <meta name="twitter:title" content="Cloud Coding Agents at HubSpot">
+
+    
+
+    
+  <script id="hs-search-input__valid-content-types" type="application/json" nonce="oTAPv8SUSoyjkEtypSeS2A==">
+    [
+      
+        "SITE_PAGE",
+      
+        "LANDING_PAGE",
+      
+        "BLOG_POST",
+      
+        "LISTING_PAGE",
+      
+        "KNOWLEDGE_ARTICLE",
+      
+        "HS_CASE_STUDY"
+      
+    ]
+  </script>
+
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039601/1743583078269/template_main.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.css">
+<style>
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/regular.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/700.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/700.woff") format("woff");
+  }
+</style>
+
+    
+
+    
+
+
+
+
+
+<meta name="google-site-verification" content="6_pSYSrNEFvWTLvVpFU3N33SPEZ4yI0kMQdQ2lRgmVk">
+<link rel="amphtml" href="https://product.hubspot.com/blog/cloud-coding-agents-at-hubspot?hs_amp=true">
+
+<meta property="og:image" content="https://product.hubspot.com/hubfs/Gemini_Generated_Image_qkn5oiqkn5oiqkn5%20(5).png">
+<meta property="og:image:width" content="3200">
+<meta property="og:image:height" content="1750">
+<meta property="og:image:alt" content="&quot;Crucible&quot; title text and logo">
+<meta name="twitter:image" content="https://product.hubspot.com/hubfs/Gemini_Generated_Image_qkn5oiqkn5oiqkn5%20(5).png">
+<meta name="twitter:image:alt" content="&quot;Crucible&quot; title text and logo">
+
+<meta property="og:url" content="https://product.hubspot.com/blog/cloud-coding-agents-at-hubspot">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://product.hubspot.com/blog/cloud-coding-agents-at-hubspot">
+<!-- Hotjar Tracking Code for https://product.hubspot.com/blog -->
+<script nonce="oTAPv8SUSoyjkEtypSeS2A==">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1781516,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<meta name="verify-v1" content="xbeB21cGkorGZrhb+m9jZ1A5EzqvmTulCKArOHsreUA=">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hubspotdev">
+<meta name="twitter:domain" content="http://dev.hubspot.com/">
+<meta name="twitter:app:name:iphone" content="HubSpot">
+
+<style>
+.blog-subscription .hs-form-required {display:none;}
+
+/* COMMENT OUT ON LAUNCH DAY  .body-container-wrapper {
+  padding-top: 45px !important;
+}*/
+#hs_form_target_module_140598461636723416 .hs-button {
+  margin-top: 10px;
+}
+</style>
+<!-- Added  by Margo - 03/13
+<style>
+body {padding-left:0px!important;padding-right:0px!important;}
+
+.blog-column-wrapper {
+  max-width: 890px!important;
+  padding-top:0px!important;}
+
+.post-header h2, .post-header h1 {
+  font-size: 2em!important;
+  padding-right:none!important;
+  line-height: 1.2em!important;
+  margin-top:15px!important;}
+
+.post-header h3 {
+  margin: 1em 0 1em 0!important;}
+
+.author-info {display:inline-block;}
+
+.author-avatar {
+  position: initial!important;}
+
+.author-avatar img {
+  max-width: 60px;
+  margin-right: 15px;}
+
+.post-item {
+  margin-bottom: 3em!important;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 3em;}
+
+@media (min-width: 768px) {
+.blog-column-wrapper .post-body p {
+  font-family:"proxima-nova", sans-serif!important;
+  font-size: 20px!important;
+  line-height:1.5!important;}
+}
+
+@media (max-width:670px){
+.post-header h2, .post-header h1 {padding-right:0px!important;}
+.post-body img {width:100%!important; margin:10px 0 10px 0!important;float:none!important;}
+.author-avatar {float:left;}
+.author-info {text-align:right;display:block;}
+.author-link {display:block;}
+}
+
+</style> -->
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://product.hubspot.com/blog/rss.xml">
+<meta name="twitter:domain" content="product.hubspot.com">
+<meta name="twitter:site" content="@HubSpotDev">
+<script src="//platform.linkedin.com/in.js" type="text/javascript" nonce="oTAPv8SUSoyjkEtypSeS2A==">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en-us">
+
+
+
+
+
+
+  <meta name="generator" content="HubSpot"></head>
+  <body>
+    <div class="body-wrapper   hs-content-id-205592946514 hs-blog-post hs-content-path-blog-cloud-coding-agents-at-hubspot hs-content-name-cloud-coding-agents-at-hubspot hs-blog-name-hubspot-product-blog-live hs-blog-id-6496795"><div data-global-resource-path="IL-HSBlog2/templates/partials/header.html"><header class="header">
+  <div class="header__container content-wrapper">
+
+    <div class="header__logo header__logo--main"><div id="hs_cos_wrapper_site_logo" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <span id="hs_cos_wrapper_site_logo_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="https://product.hubspot.com/blog" id="hs-link-site_logo_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg" class="hs-image-widget " height="50" style="height: auto;width:142px;border-width:0px;border:0px;" width="142" alt="HubSpot-logo-color" title="HubSpot-logo-color" srcset="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=71&amp;height=25&amp;name=HubSpot-logo-color.jpg 71w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg 142w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=213&amp;height=75&amp;name=HubSpot-logo-color.jpg 213w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=284&amp;height=100&amp;name=HubSpot-logo-color.jpg 284w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=355&amp;height=125&amp;name=HubSpot-logo-color.jpg 355w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=426&amp;height=150&amp;name=HubSpot-logo-color.jpg 426w" sizes="(max-width: 142px) 100vw, 142px"></a></span>
+</div></div>
+    <ul class="header__tags"><li class="header__tags__item header__tags__item--active"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/ux">UX</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product">Product</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product-management">Product Management</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/culture">Culture</a></li></ul>
+    <div class="header__search header--element"><div id="hs_cos_wrapper_site_search" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="hs-search-field">
+
+    <div class="hs-search-field__bar">
+      <form data-hs-do-not-collect="true" action="/hs-search-results">
+        
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search...">
+
+        
+          
+            <input type="hidden" name="type" value="SITE_PAGE">
+          
+        
+          
+        
+          
+            <input type="hidden" name="type" value="BLOG_POST">
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+      </form>
+    </div>
+    <ul class="hs-search-field__suggestions"></ul>
+</div></div></div>
+    <button class="header__navigation--toggle"></button>
+  </div>
+</header></div><main class="body-container-wrapper">
+  <div class="body-container body-container--blog-post">
+
+    
+    <div class="content-wrapper">
+      <div class="blog-post__meta">
+        <div class="blog-post__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Gemini_Generated_Image_qkn5oiqkn5oiqkn5%20%285%29.png?width=815&amp;name=Gemini_Generated_Image_qkn5oiqkn5oiqkn5%20%285%29.png');"></div>
+        <div class="blog-post__post-info"><a href="https://product.hubspot.com/blog/topic/engineering" class="post-tag">Engineering</a><h1><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Cloud Coding Agents at HubSpot</span></h1>
+          <div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/stephan-lensky" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/20240905_163216~5.jpg?width=40&amp;height=40&amp;name=20240905_163216~5.jpg');"></span>
+        Stephan Lensky
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Jan 23, 2026</span>
+    </span>
+  </div>
+        </div>
+      </div>
+      <article class="blog-post">
+        <div class="blog-post__body">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p><em><span style="color: #33475b;">This post is the second in a series about empowering product, UX, and engineering teams with AI, especially in the context of writing code. Read the first post about scaling AI adoption </span></em><a href="https://product.hubspot.com/blog/context-is-key-how-hubspot-scaled-ai-adoption"><em><span>here</span></em></a><em>!</em></p>
+<!--more-->
+<p>In our last post, we shared a small part of our journey towards universal AI adoption in our engineering organization and claimed that <a href="https://product.hubspot.com/blog/context-is-key-how-hubspot-scaled-ai-adoption#:~:text=AI%20has%20fundamentally%20transformed%20how%20we%20build%20software%20at%20HubSpot"><span>AI has fundamentally transformed how we build software at HubSpot</span></a>. That’s a pretty bold statement!</p>
+<p>We have had a lot of success rolling out local AI coding agents to our engineering teams, but the transformative nature of AI-enabled software development became most apparent to us when we began to deeply integrate it at all points in the software development process.</p>
+<p>One example of this integration is our recent rollout of cloud coding agents for engineers, which have been live for planning, implementation, and code review at HubSpot for the past six months. To date, we have merged over 7,000 fully AI-generated pull requests and code reviewed over 50,000 pull requests authored by humans. We run all of the agents on our own infrastructure and tightly integrate them with GitHub, allowing HubSpot engineers to ship changes quickly and with more confidence than ever before.</p>
+<p>In this blog post, we will explore the technical architecture of this system, discuss how we went from zero to MVP quickly with a small team, and share what we learned about getting good results from fully autonomous coding agents.</p>
+<p style="text-align: center;"><img src="https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=650&amp;height=518&amp;name=total-executions-to-date%20(1).png" width="650" height="518" loading="lazy" alt="Graph showing total cloud agent executions to date from 2025-07-01 to present" style="height: auto; max-width: 100%; width: 650px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=325&amp;height=259&amp;name=total-executions-to-date%20(1).png 325w, https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=650&amp;height=518&amp;name=total-executions-to-date%20(1).png 650w, https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=975&amp;height=777&amp;name=total-executions-to-date%20(1).png 975w, https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=1300&amp;height=1036&amp;name=total-executions-to-date%20(1).png 1300w, https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=1625&amp;height=1295&amp;name=total-executions-to-date%20(1).png 1625w, https://product.hubspot.com/hs-fs/hubfs/total-executions-to-date%20(1).png?width=1950&amp;height=1554&amp;name=total-executions-to-date%20(1).png 1950w" sizes="(max-width: 650px) 100vw, 650px"></p>
+<p style="text-align: center;"><em>Total cloud agent executions to date [sanitized data]</em></p>
+<h1><span style="font-size: 20px; color: #000000;">Self-hosting a cloud execution platform for Claude Code</span></h1>
+<p>From our past experience deploying local coding agents, we knew that giving them a tight feedback loop would be key to their success. At HubSpot, this meant giving them access to our existing developer tooling and infrastructure in order to read build logs, run integration tests, and call internal services. We have an extremely consistent and opinionated internal stack, which gave us a clear vision for the capabilities our platform would need to provide to the coding agent. On the other hand, our heavy usage of internal tools and libraries would have also made replicating our developer environment with an external provider quite challenging. For this reason, we decided that building an internal platform for executing cloud coding agents would be the quickest way to begin showing results.</p>
+<p>Luckily, HubSpot already has a strong culture of building internal infrastructure platforms from scratch – we already have an <a href="https://product.hubspot.com/blog/continuous-delivery"><span>internal build and deploy system</span></a> built on top of Kubernetes which runs over one million builds per day and hosts tens of thousands of microservices across approximately 3,000 EC2 instances. It was an easy choice for us to build our agent execution platform on top of Kubernetes as well.</p>
+<p>Our platform, dubbed Crucible, consists of several components:</p>
+<ul>
+<li><strong>Frontend</strong> - A simple internal site for displaying historical executions and viewing transcripts/logs.</li>
+<li><strong>API server</strong> - Handles incoming requests to start new agent executions and retrieve the status and results of existing executions (generally a <span style="font-family: terminal, monospace;">git diff</span> of files changed by the agent).</li>
+<li><strong>Kubernetes Jobs</strong> - Agent executions correspond 1:1 with a <a href="http://kubernetes.io/docs/concepts/workloads/controllers/job/"><span>Job resource</span></a> in Kubernetes. The API server manages creating Jobs on-demand and monitors them for completion.</li>
+<li><strong>Docker images</strong> - We created custom Docker images with Claude Code and all of our other local developer tooling preinstalled. The image entrypoint handles cloning the Git repository targeted by the current execution and running Claude with the execution prompt.</li>
+</ul>
+<p>This approach has several advantages: it guarantees that every agent is sandboxed, it’s extremely easy to scale, and it’s flexible enough to handle many different kinds of requests (for example, agents don’t have to make code changes – they could also be instructed to examine a branch and leave a pull request review using <span style="font-family: terminal, monospace;">gh</span>).</p>
+<p>It was not without its challenges though. Here are just a few of the problems we had to solve:</p>
+<ul>
+<li>Replicating the HubSpot local development environment inside of a container was difficult. Our tools were generally built to run on laptops, not Kubernetes, so many tools required patches from us to work properly in a containerized environment.</li>
+<li>Builds (especially Java builds) were extremely slow! To solve this, we used learnings from our internal build infrastructure and began running agents on a dedicated Kubernetes node pool with a build cache mounted from the host. This reduced first build times for most repositories from 10-15 minutes to around 2-3 minutes.</li>
+<li>Not all code repositories are created equally. Hardware resources (especially memory) need to be tuned to appropriate values depending on the repository being worked on. This problem was made much simpler by our use of Kubernetes, which makes vertical scaling extremely easy.</li>
+</ul>
+<p style="text-align: center;"><img src="https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=650&amp;height=482&amp;name=pod-metrics.png" width="650" height="482" loading="lazy" alt="Graph of memory and CPU usage for Crucible pods" style="height: auto; max-width: 100%; width: 650px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=325&amp;height=241&amp;name=pod-metrics.png 325w, https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=650&amp;height=482&amp;name=pod-metrics.png 650w, https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=975&amp;height=723&amp;name=pod-metrics.png 975w, https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=1300&amp;height=964&amp;name=pod-metrics.png 1300w, https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=1625&amp;height=1205&amp;name=pod-metrics.png 1625w, https://product.hubspot.com/hs-fs/hubfs/pod-metrics.png?width=1950&amp;height=1446&amp;name=pod-metrics.png 1950w" sizes="(max-width: 650px) 100vw, 650px"></p>
+<p style="text-align: center;"><em>Variance in repository size leads to unpredictable resource usage between pods</em></p>
+<h1><span style="font-size: 20px; color: #000000;">Triggering cloud agents from GitHub and Slack</span></h1>
+<p>With a solid foundation, we could begin working on integrations for GitHub and Slack. We wanted to reduce friction for using our tools as much as possible, which meant meeting users where they are instead of directing them to a new internal platform.</p>
+<p>Sidekick is an AI assistant we had previously created to help engineers in navigating our internal documentation. We decided to extend its functionality using several new Crucible-based tools via @-mention on GitHub or Slack:</p>
+<ul>
+<li><strong>Issue planning</strong> - Just like when working with local coding agents, cloud agents benefit immensely from a detailed implementation plan with specific references to files which need to be modified. Users can easily trigger a planning step on a GitHub issue by directly mentioning our internal bot ("<span>@SidekickAI create a plan"</span>). The plan will then be posted as a comment on the issue, where it can be edited by the user before moving on to the implementation step.</li>
+<li><strong>Autonomous implementation</strong> - Assigning Sidekick to an issue will trigger a cloud agent to autonomously implement the issue and create a pull request. The complete prompt is generated from a template and includes the issue details, guidance about committing and pushing changes, and instructions for communicating with the user (by either posting follow-up comments or editing the pull request body).</li>
+<li><strong>Pull request review</strong> - AI pull request reviews are triggered automatically when pull requests are created, marked ready for review, or when Sidekick is manually requested as a reviewer. There is a lot to say about pull request reviews, so stay tuned for a future blog post on this topic!</li>
+</ul>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=650&amp;height=519&amp;name=sidekick-github-framed.png" width="650" height="519" loading="lazy" alt="Screenshot of a GitHub issue where Sidekick is assigned and responds that it has started working on the issue" style="height: auto; max-width: 100%; width: 650px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=325&amp;height=260&amp;name=sidekick-github-framed.png 325w, https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=650&amp;height=519&amp;name=sidekick-github-framed.png 650w, https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=975&amp;height=779&amp;name=sidekick-github-framed.png 975w, https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=1300&amp;height=1038&amp;name=sidekick-github-framed.png 1300w, https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=1625&amp;height=1298&amp;name=sidekick-github-framed.png 1625w, https://product.hubspot.com/hs-fs/hubfs/sidekick-github-framed.png?width=1950&amp;height=1557&amp;name=sidekick-github-framed.png 1950w" sizes="(max-width: 650px) 100vw, 650px"></p>
+<p style="text-align: center;"><em>Assigning Sidekick to work on an issue</em></p>
+<h1><span style="font-size: 20px; color: #000000;">Autonomous coding agents</span></h1>
+<p>Of the above workflows, one which was especially challenging to get right was autonomous issue implementation. Agents would often decide they were finished despite a failing build, not communicate adequately with users, or even entirely forget that they were supposed to create a pull request!</p>
+<p>Here’s what we learned along the way to making these agents produce reliable and consistent results:</p>
+<ol>
+<li aria-level="1"><strong>Non-deterministic code transformations go hand-in-hand with deterministic logic.</strong> When thinking about the process of implementing a feature request, we asked ourselves: what are the steps that we can map to deterministic business logic? Where do we need LLM’s creativity? Over time, we shifted more and more logic to deterministic code paths. For example, when starting work on an issue, the first step will always be to create a new branch and a draft pull request. Rather than ask the agent to do this, we do it deterministically and then template the resulting branch and pull request number into the agent prompt.</li>
+<li aria-level="1"><strong>Agents can be tamed.</strong> Claude Code (and other tools such as <a href="https://opencode.ai/"><span>OpenCode</span></a>) have support for hooks, which can be used to inject behavior at various points in the tool call lifecycle or before the agent stops. Use these features gratuitously to build a harness which enforces the behaviors you want. As an example, here are just a few of the hooks we use in our system:
+<ol style="list-style-type: lower-alpha;">
+<li aria-level="2"><em>Enforce clear and concise communication</em> - automatically block commit messages if they are too long</li>
+<li aria-level="2"><em>Ensure the agent follows our coding style</em> - automatically block edits if they appear to be doing something unconventional (for example, using fully qualified class names in Java). In case it is actually required for what the agent is doing, allow the same edit to succeed on the second try.</li>
+<li aria-level="2"><em>Ensure the agent completes its task</em> - block stopping until the build passes and all changes are committed and pushed to GitHub.</li>
+</ol>
+</li>
+<li aria-level="1"><strong>UX is hard.</strong> In our initial version of this workflow, we automatically marked the pull request as “ready for review” when it was completed, which as it turns out many teams did not like! We also had to solve a few other UX challenges, including how to select the correct Git repository to make changes in (solution: run a tiny agent to find the correct repository) and how to keep track of pull requests created by Sidekick on your behalf (solution: embed the engineer’s username in the pull request body and branch name).</li>
+</ol>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=650&amp;height=488&amp;name=crucible-ui-framed.png" width="650" height="488" loading="lazy" alt="Screenshot of the Crucible frontend showing tabs for transcript, logs, prompt, diff, and container details" style="height: auto; max-width: 100%; width: 650px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=325&amp;height=244&amp;name=crucible-ui-framed.png 325w, https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=650&amp;height=488&amp;name=crucible-ui-framed.png 650w, https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=975&amp;height=732&amp;name=crucible-ui-framed.png 975w, https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=1300&amp;height=976&amp;name=crucible-ui-framed.png 1300w, https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=1625&amp;height=1220&amp;name=crucible-ui-framed.png 1625w, https://product.hubspot.com/hs-fs/hubfs/crucible-ui-framed.png?width=1950&amp;height=1464&amp;name=crucible-ui-framed.png 1950w" sizes="(max-width: 650px) 100vw, 650px"></p>
+<p style="text-align: center;"><em>The Crucible frontend</em></p>
+<h1><span style="font-size: 20px; color: #000000;">How to ship good AI coding tools quickly</span></h1>
+<p>Our Engineering team at HubSpot loves working with Crucible and Sidekick. Most HubSpot engineers use them every day to accelerate their work. We believe our success comes down to a few factors:</p>
+<ul>
+<li><strong>Standing on the shoulders of giants</strong> - When we began this project, we did not have the internal expertise to build a competitive coding agent from scratch. Instead, we used an existing platform, Claude Code, which we already knew worked well for our engineers. Throughout the project’s lifecycle, Claude’s coding performance continued to improve, a benefit we reaped for free while allowing us to keep focusing our attention on the surrounding infrastructure.</li>
+<li><strong>Building our own system</strong> - HubSpot has a mature engineering organization where creating new microservices is extremely easy, including microservices which interact directly with low-level infrastructure like Kubernetes. This made building our own agent execution platform simpler than expected, and it allowed us to much more easily recreate our local development environment and sidestep authentication/network access concerns which would come with adopting an external product.</li>
+<li><strong>Flexibility</strong> - Since launch, our internal customers have repurposed Crucible for all sorts of things, from mass code migrations to automatic AI fixes for failing builds. We are constantly experimenting with new use-cases and agents (we support more than just Claude Code!), which is all enabled by the general purpose nature of the system we designed.</li>
+</ul>
+<h1><span style="font-size: 20px; color: #000000;">Looking ahead</span></h1>
+<p>We have lots planned for the future! Crucible has also served as the foundation for an internal evaluation framework for coding agents, and we are continuing to iterate on the UX for our existing workflows. <a href="https://github.blog/ai-and-ml/github-copilot/assigning-and-completing-issues-with-coding-agent-in-github-copilot/"><span>GitHub Copilot</span></a> offers similar features and gets a lot right with its UX, especially with the way it is able to include small indications of progress in the timeline.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=800&amp;height=251&amp;name=github-copilot-example.png" width="800" height="251" loading="lazy" alt="Screenshot of GitHub Copilot, showing inline timeline indications of progress" style="height: auto; max-width: 100%; width: 800px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=400&amp;height=126&amp;name=github-copilot-example.png 400w, https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=800&amp;height=251&amp;name=github-copilot-example.png 800w, https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=1200&amp;height=377&amp;name=github-copilot-example.png 1200w, https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=1600&amp;height=502&amp;name=github-copilot-example.png 1600w, https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=2000&amp;height=628&amp;name=github-copilot-example.png 2000w, https://product.hubspot.com/hs-fs/hubfs/github-copilot-example.png?width=2400&amp;height=753&amp;name=github-copilot-example.png 2400w" sizes="(max-width: 800px) 100vw, 800px"></p>
+<p style="text-align: center;"><em>Timeline indicators for bot actions have a cleaner UX than comments</em></p>
+<p>One of the things we’re most excited for though is to experiment more with other coding agents besides Claude Code. Most recently, <a href="https://opencode.ai/"><span>OpenCode</span></a> has been very interesting due to its <a href="https://opencode.ai/docs/plugins/"><span>robust plugin architecture</span></a>, but we also want to test a new kind of coding agent built entirely in-house using our internal agent framework. We’re hoping that this will offer us easier control over complex workflows like pull request review and autonomous implementation.</p>
+<p>We look forward to sharing more about all of these things in future posts, but that just about wraps it up for today!</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=700&amp;height=153&amp;name=sidekick-post-the-blog-fixed.png" width="700" height="153" loading="lazy" alt="Screenshot of blog author asking the Sidekick bot on Slack to post the blog. Unfortunately, Sidekick does not know how to do this yet." style="height: auto; max-width: 100%; width: 700px; margin-left: auto; margin-right: auto; display: block;" srcset="https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=350&amp;height=77&amp;name=sidekick-post-the-blog-fixed.png 350w, https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=700&amp;height=153&amp;name=sidekick-post-the-blog-fixed.png 700w, https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=1050&amp;height=230&amp;name=sidekick-post-the-blog-fixed.png 1050w, https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=1400&amp;height=306&amp;name=sidekick-post-the-blog-fixed.png 1400w, https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=1750&amp;height=383&amp;name=sidekick-post-the-blog-fixed.png 1750w, https://product.hubspot.com/hs-fs/hubfs/sidekick-post-the-blog-fixed.png?width=2100&amp;height=459&amp;name=sidekick-post-the-blog-fixed.png 2100w" sizes="(max-width: 700px) 100vw, 700px"></p>
+<p>Thanks for reading, and a special thank you to <a href="https://www.linkedin.com/in/ze-ev-klapow-19a81a3b/"><span>Ze’ev Klapow</span></a>, <a href="https://www.linkedin.com/in/signorettif/"><span>Francesco Signoretti</span></a>, <a href="https://www.linkedin.com/in/brian-l-577bb6114/"><span>Brian LaMattina</span></a>, <a href="https://www.linkedin.com/in/davidcamprubi/"><span>David Camprubí</span></a>, <a href="https://www.linkedin.com/in/emily-n-adamss/"><span>Emily Adams</span></a>, and everyone else at HubSpot who helped with this project.</p>
+<hr>
+<p><em>Next: How we raised our quality bar for AI code reviews</em></p>
+<p>&nbsp;</p></span>
+        </div><div id="hs_cos_wrapper_share_post" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="share-post__container">
+  <div class="share-post"><a class="share-post__link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fcloud-coding-agents-at-hubspot" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter1" role="img"><title id="twitter1">Share on Twitter</title><g id="twitter1_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="share-post__link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fcloud-coding-agents-at-hubspot" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 264 512" aria-labelledby="facebook-f2" role="img"><title id="facebook-f2">Share on Facebook</title><g id="facebook-f2_layer"><path d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229" /></g></svg></span></a><a class="share-post__link" href="mailto:info@example.com?&amp;subject=&amp;body=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fcloud-coding-agents-at-hubspot" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="envelope3" role="img"><title id="envelope3">Share via email</title><g id="envelope3_layer"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></g></svg></span></a><a class="share-post__link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fcloud-coding-agents-at-hubspot" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__4" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="linkedin-in4" role="img"><title id="linkedin-in4">Share on LinkedIn</title><g id="linkedin-in4_layer"><path d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z" /></g></svg></span></a></div>
+</div></div></article>
+    </div><div class="blog-recent-posts">
+      <div class="content-wrapper">
+        <h2 class="blog-recent-posts__heading">Recommended Articles</h2>
+        <div class="blog-recent-posts__list">
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Screenshot%202026-02-26%20at%203.44.38%20PM.png?width=805&amp;name=Screenshot%202026-02-26%20at%203.44.38%20PM.png');" href="https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution">Automated Code Review: The 6-Month Evolution</a></h2><div class="blog-index__post-summary">
+          As HubSpot engineers have increasingly started writing more and more of their code with both local and cloud coding agents, we've noticed that now ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/emily-adams" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/profile.png?width=40&amp;height=40&amp;name=profile.png');"></span>
+        Emily Adams
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 2, 2026</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hub/51294/file-2616970499.jpg/typing-384765-edited.jpg.jpg?width=805&amp;name=typing-384765-edited.jpg');" href="https://product.hubspot.com/blog/git-after-it-why-github-won-when-so-many-other-big-companies-failed"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/git-after-it-why-github-won-when-so-many-other-big-companies-failed">Git After It: Why GitHub Won When So Many Other Big Companies Failed</a></h2><div class="blog-index__post-summary">
+          Yesterday, Google announced they would officially be pulling the plug on open source project hosting service, Google Code. What launched ten years ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/hannah-fleishman" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hub/51294/file-2532677913.jpg/3c6fac5.jpg.jpg?width=40&amp;height=40&amp;name=3c6fac5.jpg');"></span>
+        Hannah Fleishman (she/her)
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 13, 2015</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hub/51294/file-2506572454.jpg/thinksmall-053781-edited.jpg.jpg?width=805&amp;name=thinksmall-053781-edited.jpg');" href="https://product.hubspot.com/blog/how-our-product-team-thinks-small-to-solve-big-problems"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/product">Product</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/how-our-product-team-thinks-small-to-solve-big-problems">How We Solve Big Problems By Thinking Small</a></h2><div class="blog-index__post-summary">
+          Over the past few years, HubSpot has grown our team, product, and business to a global level. We have over 13,500 customers in over 90 countries, ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/jeff-boulter" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://app.hubspot.com/settings/avatar/f5ebe703a7f8035ec8cb71791b382070');"></span>
+        Jeff Boulter
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 5, 2015</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+    
+    <div class="content-wrapper"><div data-global-resource-path="IL-HSBlog2/templates/partials/promotion.html"><section class="blog-section promotion-section"><span id="hs_cos_wrapper_promotion_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Join our subscribers</h2>
+<p>Sign up here and we'll keep you updated on the latest in product, UX, and engineering from HubSpot.</p></span><a href="#subscription-popup" class="button popup--trigger"><div id="hs_cos_wrapper_promotion_button_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_promotion_button_text_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Subscribe to the newsletter</span></div></a>
+</section>
+
+<div class="popup" id="subscription-popup">
+  <div class="popup__backdrop popup__close"></div>
+    <div class="popup__scroller popup__close">
+    <div class="popup__box">
+      <a href="#" class="prev-step">Back</a>
+      <div class="step1"><span id="hs_cos_wrapper_popup_intro" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Get Connected</h2>
+<p>The latest engineering, UX, and product news from the HubSpot Product Blog, straight to your inbox.</p></span></div><div id="hs_cos_wrapper_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+<span id="hs_cos_wrapper_blog_subscribe_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_subscribe">
+<div id="hs_form_target_blog_subscribe_blog_subscribe_5604"></div>
+
+
+
+</span></div><button class="next-step step1">Next</button>
+      <button class="popup__close subscription-popup__close">
+        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99889 8.01872L1.01876 13.9988L-0.000976562 12.9791L5.97915 6.99899L-0.000101273 1.01974L1.01963 0L6.99889 5.97925L12.9781 0L13.9979 1.01974L8.01862 6.99899L13.9987 12.9791L12.979 13.9988L6.99889 8.01872Z" fill="#33475B" />
+        </svg>
+      </button>
+      <p class="popup__bottom-promo">
+        <svg width="22" height="23" viewbox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0" mask-type="alpha" maskunits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+          <path d="M0 0H21.8794V22.8287H0V0Z" fill="white" />
+          </mask>
+          <g mask="url(#mask0)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8944 16.4506C14.1997 16.4506 12.8256 15.0828 12.8256 13.3954C12.8256 11.708 14.1997 10.34 15.8944 10.34C17.5889 10.34 18.9629 11.708 18.9629 13.3954C18.9629 15.0828 17.5889 16.4506 15.8944 16.4506ZM16.813 7.51334V4.79561C17.5255 4.46048 18.0247 3.74279 18.0247 2.90985V2.84706C18.0247 1.69769 17.08 0.757181 15.9258 0.757181H15.8627C14.7083 0.757181 13.7636 1.69769 13.7636 2.84706V2.90985C13.7636 3.74279 14.263 4.46048 14.9754 4.79561V7.51347C13.9147 7.67657 12.9454 8.1123 12.1455 8.7534L4.65097 2.94849C4.7003 2.75958 4.73491 2.56481 4.73519 2.36041C4.73687 1.05841 3.67821 0.00167624 2.37054 1.99171e-06C1.06301 -0.00167226 0.0015434 1.05241 2.00037e-06 2.35441C-0.00167953 3.65628 1.05698 4.71301 2.36465 4.71469C2.79078 4.71525 3.1851 4.5947 3.53093 4.39895L10.9033 10.1093C10.2762 11.0516 9.90911 12.1803 9.90911 13.3954C9.90911 14.6675 10.3127 15.8441 10.9948 16.812L8.75278 19.0443C8.57552 18.9914 8.39153 18.9543 8.19675 18.9543C7.1224 18.9543 6.25123 19.8217 6.25123 20.8916C6.25123 21.9614 7.1224 22.8287 8.19675 22.8287C9.27139 22.8287 10.1424 21.9614 10.1424 20.8916C10.1424 20.6978 10.1053 20.5144 10.052 20.3381L12.2698 18.1299C13.2765 18.8952 14.5301 19.3546 15.8944 19.3546C19.1998 19.3546 21.8795 16.6865 21.8795 13.3954C21.8795 10.4159 19.6812 7.9545 16.813 7.51334Z" fill="#F3785B" />
+          </g>
+        </svg>
+        <span>Not using <a href="https://www.hubspot.com/">HubSpot</a> yet?</span>
+      </p>
+    </div>
+  </div>
+</div></div></div>
+  </div>
+</main><div data-global-resource-path="IL-HSBlog2/templates/partials/footer.html"><footer class="footer">
+  <div class="footer__container content-wrapper"><div id="hs_cos_wrapper_general_links" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_general_links_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_general_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/jobs/departments/product-and-engineering" role="menuitem" target="_blank" rel="noopener">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/internet-marketing-company" role="menuitem" target="_blank" rel="noopener">Our Story</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://designers.hubspot.com/blog" role="menuitem" target="_blank" rel="noopener">Developer Blog</a></li>
+ </ul>
+</div></span></div><div id="hs_cos_wrapper_footer_social" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="social-links"><a class="social-links__link" href="https://www.youtube.com/channel/UCScgU9OgnrPg7eNCQ6ia80g" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512" aria-labelledby="youtube5" role="img"><title id="youtube5">Follow us on YouTube</title><g id="youtube5_layer"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" /></g></svg></span></a><a class="social-links__link" href="https://twitter.com/HubSpotDev" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter6" role="img"><title id="twitter6">Follow us on Twitter</title><g id="twitter6_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="social-links__link" href="https://www.instagram.com/hubspotlife" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="instagram7" role="img"><title id="instagram7">Follow us on Instagram</title><g id="instagram7_layer"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" /></g></svg></span></a></div></div><!--LEGAL LINKS --><div id="hs_cos_wrapper_legal_menu" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div id="hs_menu_wrapper_legal_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+   <ul role="menu">
+     <li><a href="https://www.hubspot.com/legal-stuff">Legal Stuff</a></li>
+     <li><a href="https://www.hubspot.com/privacy-policy">Privacy Policy</a></li>
+     <li class="hs-footer-cookie-settings" hidden>
+       <a href=""></a>
+     </li>
+   </ul>
+</div></div><div class="footer__copyright"><div id="hs_cos_wrapper_footer_copyright" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_copyright_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><a href="https://www.hubspot.com/" target="_blank" rel="noopener"><img src="https://www.hubspot.com/hubfs/HubSpot_Logos/HSLogo_gray.svg" alt="HubSpot Logo"></a>
+<p>Copyright © 2024 HubSpot, Inc.</p></span></div></div>
+  </div>
+</footer></div></div><div data-global-resource-path="IL-HSBlog2/templates/partials/search.html"><div class="popup" id="search-popup" data-blog-id="6496795">
+  <div class="popup__backdrop popup__close"></div>
+  <div class="search-popup__topbar">
+    <div class="content-wrapper search-popup__wrapper">
+      <p class="search-popup__term-line">Search Term: <span class="search-popup__term"></span></p>
+      <div class="search-popup__scope">
+        <label>
+          <input type="radio" class="search-popup__scope__choice" name="search-scope" value="SITE">
+          <i></i>
+          Search HubSpot.com
+        </label>
+        <label>
+          <input type="radio" class="search-popup__scope__choice search-popup__scope__choice--default" name="search-scope" value="BLOG" checked>
+          <i></i>
+          Search the blog
+        </label>
+      </div>
+      <button class="popup__close search-popup__close">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70718 11.7073L18 20.0002L19.4142 18.5859L11.1214 10.2931L19.4144 2.00015L18.0002 0.585938L9.70718 8.87891L1.41421 0.585938L0 2.00015L8.29297 10.2931L0.000150454 18.5859L1.41436 20.0002L9.70718 11.7073Z" fill="white" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="popup__scroller popup__close">
+    <ul class="search-popup__result"></ul>
+    <button class="search-popup__load-more">Load more</button>
+    <div class="lds-ring search-popup__spinner"><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+<template id="search-popup__result-template">
+  <li>
+    <h2><a class="search-popup__result-link"></a></h2>
+    <p class="search-popup__result-description"></p>
+  </li>
+</template></div><script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+    <script nonce="oTAPv8SUSoyjkEtypSeS2A==">hsjQuery = window['jQuery'];</script>
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<script src="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039149/1743583082755/template_main.min.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<script nonce="oTAPv8SUSoyjkEtypSeS2A==">
+var hsVars = hsVars || {}; hsVars['language'] = 'en-us';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+
+  <script data-hs-allowed="true" nonce="oTAPv8SUSoyjkEtypSeS2A==">
+      hbspt.forms.create({
+          portalId: '51294',
+          formId: 'd59f9bdf-8db8-41d7-82bb-d15dd985a4f3',
+          formInstanceId: '5604',
+          pageId: '205592946514',
+          region: 'na1',
+          
+          pageName: 'Cloud Coding Agents at HubSpot',
+          
+          contentType: 'blog-post',
+          
+          formsBaseUrl: '/_hcms/forms/',
+          
+          
+          inlineMessage: "Thanks for subscribing!",
+          
+          css: '',
+          target: '#hs_form_target_blog_subscribe_blog_subscribe_5604',
+          
+          formData: {
+            cssClass: 'hs-form stacked'
+          }
+      });
+  </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript" nonce="oTAPv8SUSoyjkEtypSeS2A==">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/product.hubspot.com\/blog\/cloud-coding-agents-at-hubspot"]);
+_hsq.push(["setPageId", "205592946514"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 205592946514,
+    "legacyPageId": "205592946514",
+    "contentFolderId": null,
+    "contentGroupId": 6496795,
+    "abTestId": null,
+    "languageVariantId": 205592946514,
+    "languageCode": "en-us",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/51294.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript" nonce="oTAPv8SUSoyjkEtypSeS2A==">
+var hsVars = {
+    render_id: "d5561ab4-d90f-40b0-8347-e557fcb52323",
+    ticks: 1778120805818,
+    page_id: 205592946514,
+    
+    content_group_id: 6496795,
+    portal_id: 51294,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en-us",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "205592946514",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+
+
+
+<script data-gtm-id="GTM-T7FPMN" src="https://www.hubspot.com/wt-assets/static-files/compliance/index.js" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=vxukm97zn1wq1yjoeioklg" async="true" nonce="oTAPv8SUSoyjkEtypSeS2A=="></script>
+<div id="fb-root"></div>
+  <script nonce="oTAPv8SUSoyjkEtypSeS2A==">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script nonce="oTAPv8SUSoyjkEtypSeS2A==">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

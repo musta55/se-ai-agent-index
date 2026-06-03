@@ -1,0 +1,787 @@
+<!doctype html><html lang="en-us"><head>
+    <meta charset="utf-8">
+    <title>Unlocking Deep Research for 250,000+ Businesses: How HubSpot Used MCP to Engineer the First Third-Party CRM Connector for ChatGPT</title><link rel="shortcut icon" href="//www.hubspot.com/Portals/53/favicon.ico"><meta name="description" content="Discover how HubSpot built a remote MCP server to integrate ChatGPT, enhancing AI capabilities without local setup complexities.">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="Discover how HubSpot built a remote MCP server to integrate ChatGPT, enhancing AI capabilities without local setup complexities.">
+    <meta property="og:title" content="Unlocking Deep Research for 250,000+ Businesses: How HubSpot Used MCP to Engineer the First Third-Party CRM Connector for ChatGPT">
+    <meta name="twitter:description" content="Discover how HubSpot built a remote MCP server to integrate ChatGPT, enhancing AI capabilities without local setup complexities.">
+    <meta name="twitter:title" content="Unlocking Deep Research for 250,000+ Businesses: How HubSpot Used MCP to Engineer the First Third-Party CRM Connector for ChatGPT">
+
+    
+
+    
+  <script id="hs-search-input__valid-content-types" type="application/json" nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+    [
+      
+        "SITE_PAGE",
+      
+        "LANDING_PAGE",
+      
+        "BLOG_POST",
+      
+        "LISTING_PAGE",
+      
+        "KNOWLEDGE_ARTICLE",
+      
+        "HS_CASE_STUDY"
+      
+    ]
+  </script>
+
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039601/1743583078269/template_main.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.css">
+<style>
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/regular.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/700.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/700.woff") format("woff");
+  }
+</style>
+
+    
+
+    
+
+
+
+
+
+<meta name="google-site-verification" content="6_pSYSrNEFvWTLvVpFU3N33SPEZ4yI0kMQdQ2lRgmVk">
+<link rel="amphtml" href="https://product.hubspot.com/blog/unlocking-deep-research-crm-connector-for-chatgpt?hs_amp=true">
+
+<meta property="og:image" content="https://product.hubspot.com/hubfs/OpenAIxHubSpot_Frame10.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+
+<meta name="twitter:image" content="https://product.hubspot.com/hubfs/OpenAIxHubSpot_Frame10.png">
+
+
+<meta property="og:url" content="https://product.hubspot.com/blog/unlocking-deep-research-crm-connector-for-chatgpt">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://product.hubspot.com/blog/unlocking-deep-research-crm-connector-for-chatgpt">
+<!-- Hotjar Tracking Code for https://product.hubspot.com/blog -->
+<script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1781516,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<meta name="verify-v1" content="xbeB21cGkorGZrhb+m9jZ1A5EzqvmTulCKArOHsreUA=">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hubspotdev">
+<meta name="twitter:domain" content="http://dev.hubspot.com/">
+<meta name="twitter:app:name:iphone" content="HubSpot">
+
+<style>
+.blog-subscription .hs-form-required {display:none;}
+
+/* COMMENT OUT ON LAUNCH DAY  .body-container-wrapper {
+  padding-top: 45px !important;
+}*/
+#hs_form_target_module_140598461636723416 .hs-button {
+  margin-top: 10px;
+}
+</style>
+<!-- Added  by Margo - 03/13
+<style>
+body {padding-left:0px!important;padding-right:0px!important;}
+
+.blog-column-wrapper {
+  max-width: 890px!important;
+  padding-top:0px!important;}
+
+.post-header h2, .post-header h1 {
+  font-size: 2em!important;
+  padding-right:none!important;
+  line-height: 1.2em!important;
+  margin-top:15px!important;}
+
+.post-header h3 {
+  margin: 1em 0 1em 0!important;}
+
+.author-info {display:inline-block;}
+
+.author-avatar {
+  position: initial!important;}
+
+.author-avatar img {
+  max-width: 60px;
+  margin-right: 15px;}
+
+.post-item {
+  margin-bottom: 3em!important;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 3em;}
+
+@media (min-width: 768px) {
+.blog-column-wrapper .post-body p {
+  font-family:"proxima-nova", sans-serif!important;
+  font-size: 20px!important;
+  line-height:1.5!important;}
+}
+
+@media (max-width:670px){
+.post-header h2, .post-header h1 {padding-right:0px!important;}
+.post-body img {width:100%!important; margin:10px 0 10px 0!important;float:none!important;}
+.author-avatar {float:left;}
+.author-info {text-align:right;display:block;}
+.author-link {display:block;}
+}
+
+</style> -->
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://product.hubspot.com/blog/rss.xml">
+<meta name="twitter:domain" content="product.hubspot.com">
+<meta name="twitter:site" content="@HubSpotDev">
+<script src="//platform.linkedin.com/in.js" type="text/javascript" nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en-us">
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-java.min.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css">
+<style>
+  pre.language-java {
+    overflow-x: scroll;
+}
+
+pre.language-java::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  height: 7px;
+}
+
+pre.language-java::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+  
+  .blog-post__meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-post__meta .blog-post__post-image {
+    padding:10rem;
+    
+    @media (max-width: 1023px) {
+        padding:8rem;
+    }
+
+    @media (max-width: 640px) {
+        padding:5rem;
+    }
+}
+
+
+
+</style>
+  <meta name="generator" content="HubSpot"></head>
+  <body>
+    <div class="body-wrapper   hs-content-id-191505924137 hs-blog-post hs-content-path-blog-unlocking-deep-research-crm-connector-for-cha hs-content-name-unlocking-deep-research-for-250000-businesses-how- hs-blog-name-hubspot-product-blog-live hs-blog-id-6496795"><div data-global-resource-path="IL-HSBlog2/templates/partials/header.html"><header class="header">
+  <div class="header__container content-wrapper">
+
+    <div class="header__logo header__logo--main"><div id="hs_cos_wrapper_site_logo" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <span id="hs_cos_wrapper_site_logo_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="https://product.hubspot.com/blog" id="hs-link-site_logo_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg" class="hs-image-widget " height="50" style="height: auto;width:142px;border-width:0px;border:0px;" width="142" alt="HubSpot-logo-color" title="HubSpot-logo-color" srcset="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=71&amp;height=25&amp;name=HubSpot-logo-color.jpg 71w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg 142w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=213&amp;height=75&amp;name=HubSpot-logo-color.jpg 213w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=284&amp;height=100&amp;name=HubSpot-logo-color.jpg 284w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=355&amp;height=125&amp;name=HubSpot-logo-color.jpg 355w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=426&amp;height=150&amp;name=HubSpot-logo-color.jpg 426w" sizes="(max-width: 142px) 100vw, 142px"></a></span>
+</div></div>
+    <ul class="header__tags"><li class="header__tags__item header__tags__item--active"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/ux">UX</a></li><li class="header__tags__item header__tags__item--active"><a href="https://product.hubspot.com/blog/topic/product">Product</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product-management">Product Management</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/culture">Culture</a></li></ul>
+    <div class="header__search header--element"><div id="hs_cos_wrapper_site_search" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="hs-search-field">
+
+    <div class="hs-search-field__bar">
+      <form data-hs-do-not-collect="true" action="/hs-search-results">
+        
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search...">
+
+        
+          
+            <input type="hidden" name="type" value="SITE_PAGE">
+          
+        
+          
+        
+          
+            <input type="hidden" name="type" value="BLOG_POST">
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+      </form>
+    </div>
+    <ul class="hs-search-field__suggestions"></ul>
+</div></div></div>
+    <button class="header__navigation--toggle"></button>
+  </div>
+</header></div><main class="body-container-wrapper">
+  <div class="body-container body-container--blog-post">
+
+    
+    <div class="content-wrapper">
+      <div class="blog-post__meta">
+        <div class="blog-post__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/OpenAIxHubSpot_Frame10.png?width=815&amp;name=OpenAIxHubSpot_Frame10.png');"></div>
+        <div class="blog-post__post-info"><a href="https://product.hubspot.com/blog/topic/engineering" class="post-tag">Engineering</a><a href="https://product.hubspot.com/blog/topic/product" class="post-tag">Product</a><h1><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Unlocking Deep Research for 250,000+ Businesses: How HubSpot Used MCP to Engineer the First Third-Party CRM Connector for ChatGPT</span></h1>
+          <div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/rishav-paul" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/1573337591141.jpeg?width=40&amp;height=40&amp;name=1573337591141.jpeg');"></span>
+        Rishav Paul
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Jun 18, 2025</span>
+    </span>
+  </div>
+        </div>
+      </div>
+      <article class="blog-post">
+        <div class="blog-post__body">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p style="text-align: center;"><span data-rich-links="{&quot;per_n&quot;:&quot;Rishav Paul&quot;,&quot;per_e&quot;:&quot;rpaul@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}"> Authors: <a href="https://www.linkedin.com/in/rishavpaul/" rel="noopener" target="_blank">Rishav Paul</a> , </span> <span data-rich-links="{&quot;per_n&quot;:&quot;William Hou&quot;,&quot;per_e&quot;:&quot;whou@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}"> <a href="https://www.linkedin.com/in/thouwi/" rel="noopener" target="_blank">William Hou</a> , </span> <a href="https://www.linkedin.com/in/cconnors83/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Chris Connors&quot;,&quot;per_e&quot;:&quot;cconnors@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Chris Connors</span></a> , and <a href="https://www.linkedin.com/in/sejalparikh/" rel="noopener" target="_blank"><span data-rich-links="{&quot;per_n&quot;:&quot;Sejal Parikh&quot;,&quot;per_e&quot;:&quot;sparikh@hubspot.com&quot;,&quot;type&quot;:&quot;person&quot;}">Sejal Parikh.</span></a> <br>----------</p>
+<!--more-->
+<p>HubSpot has become the first CRM to launch a Deep Research Connector with ChatGPT— and the first third-party <a href="https://platform.openai.com/docs/mcp" rel="noopener" target="_blank"><span>MCP connector available in the ChatGPT Registry</span></a> built with a remote <a href="https://modelcontextprotocol.io/introduction" rel="noopener" target="_blank"><span>Model Context Protocol</span></a> (MCP) server. This connector extends ChatGPT’s capabilities while eliminating the need for users to install or configure anything locally.</p>
+<h2 style="font-weight: bold; font-size: 20px;"><span style="color: #000000;">Reimagining our MCP Server Infrastructure</span></h2>
+<p>Prior to this launch, we had released a <a href="https://developers.hubspot.com/mcp" rel="noopener" target="_blank"><span>local MCP Server</span></a> on <a href="https://www.npmjs.com/package/@hubspot/mcp-server" rel="noopener" target="_blank"><span>NPM</span></a> . While useful for early testing and feedback, that approach required users to manually create Private App Access Tokens and configure their MCP clients, which introduced technical complexity and limited adoption to tech-savvy developers.</p>
+<p>Our new remote MCP server changes everything. It represents a major leap forward from local servers by eliminating the need for users to install or run anything on their machines. Instead, they can access capabilities through their browser using trusted and reliable authentication flows like <a href="https://developers.hubspot.com/docs/guides/apps/authentication/working-with-oauth" rel="noopener" target="_blank"><span>OAuth</span></a> . It democratizes access to AI for more than 250,000 businesses, while maintaining enterprise-grade security and respecting user-level permissions.</p>
+<p>In this blog, we will explore how HubSpot built a completely homegrown MCP Server infrastructure <strong>in a matter of weeks</strong> and the rationale behind building it in-house.</p>
+<h2 style="font-size: 20px; font-weight: bold;"><span style="color: #000000;">Building an MCP Server: Buy vs. Build</span></h2>
+<p>When it came time to build our remote MCP server, we faced the classic engineering dilemma with two clear paths:</p>
+<ol>
+<li aria-level="1"><strong>(Buy):</strong> Use a third-party solution, e.g., <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/" rel="noopener" target="_blank"><span>Cloudflare's turnkey MCP solution</span></a></li>
+<li aria-level="1"><strong>(Build):</strong> Develop it in-house using HubSpot’s infrastructure</li>
+</ol>
+<p style="text-align: left;">Option 1 was tempting. Third-party solutions had already solved the OAuth 2.1 complexities like PKCE (Proof Key for Code Exchange) and Dynamic Client Registration. Their pathway offered a fast time to market, and already resolved the trickier aspects of MCP's authorization spec. For many companies, this would've been the obvious choice.</p>
+<p>However, our infrastructure team had already been prototyping an MCP server by extending the <a href="https://github.com/modelcontextprotocol/java-sdk/tree/main/mcp" rel="noopener" target="_blank"><span>MCP Java SDK</span></a> inside a Dropwizard microservice. In parallel, our earlier local MCP server launch provided valuable lessons and feedback, helping us better understand the protocol’s nuances and lay the necessary groundwork.</p>
+<p>So, the decision to build in-house became clear once we considered what hosting our own infrastructure could enable. By building on HubSpot’s platform, we could leverage enterprise-grade CI/CD, auto-scaling, observability, and even <a href="/blog/routing-api-traffic" rel="noopener" target="_blank"><span>region-aware API call routing</span></a> built on Cloudflare Workers - all production ready features directly available to us without any additional setup. It also gave us direct control over how MCP interacts with our existing scopes model for OAuth, allowing us to ensure user-level permissions were respected throughout any interactions with our MCP tools.</p>
+<p>This wasn't just about checking boxes. It was about building something that could evolve with our platform and unlock experiences in the future that third-party solutions simply couldn't match.</p>
+<h2 style="font-size: 20px; font-weight: bold;"><span style="color: #000000;">Laying the Foundation: Streamable HTTP MCP Server</span></h2>
+<p>Our MCP server is built with the <a href="https://github.com/modelcontextprotocol/java-sdk" rel="noopener" target="_blank"><span>Java MCP SDK</span></a> . We chose Java for long-term maintainability and development within our standard technical stack. HubSpot’s backend libraries and infrastructure tooling are already centered around Java microservices, so we focused our efforts on implementing MCP in a standard Dropwizard service.</p>
+<p>The Java MCP SDK has worked well for us, and we’re grateful to the community that contributes to it! For our initial release, we introduced a few adaptations to better align the SDK with our Dropwizard backend. These changes demonstrate the SDK’s flexibility, even in an enterprise setting. Although these modifications are designed to fit HubSpot’s stack, we hope you’ll still find them helpful, or at least interesting.</p>
+<h2 style="font-size: 20px; font-weight: bold;"><span style="color: #000000;">Implementing Streamable HTTP for MCP</span></h2>
+<p>A remote MCP is essentially an HTTP API spec that allows an LLM to discover and invoke endpoints automatically. Currently, <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http" rel="noopener" target="_blank"><span>Streamable HTTP</span></a> defines two standard methods for responding to a remote MCP HTTP request.</p>
+<ol>
+<li aria-level="1">Return a JSON response, similar to a traditional REST call.</li>
+<li aria-level="1">Open <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" rel="noopener" target="_blank"><span>Server-sent events (SSE)</span></a> connection with a unique session ID, then return the initial JSON response as an event in the stream. Subsequent requests for that session ID must return responses as events over the same SSE connection.</li>
+</ol>
+<p>Before the standardization of <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http" rel="noopener" target="_blank"><span>Streamable HTTP</span></a> , this was the only remote MCP support defined in the spec. Streamable HTTP now provides a formalized structure for both streaming and non-streaming use cases, making it more flexible for different workloads.</p>
+<h2 style="font-size: 18px;">For various reasons, we wanted to avoid supporting the SSE transport protocol. First, we didn’t immediately need the server-to-client notification support provided by SSE connections, our use case focused only on tool calls. Second, SSE requires long-lived connections. which can be challenging for load balancers to handle reliably, especially in environments like ours where servers are frequently scaled up or down. Third, managing stateless HTTP requests is far simpler than managing sessions.</h2>
+<p>When we began prototyping, we discovered that the Java SDK did not support the newly standardized <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http" rel="noopener" target="_blank"><span>Streamable HTTP</span></a> transport protocol. At the time of writing, there are a few open draft pull requests, but no official solution has been implemented yet. Fortunately, the SDK was written to support custom transport protocols, which allowed us to implement <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http" rel="noopener" target="_blank"><span>Streamable HTTP</span></a> directly. That said, this is a potent reminder of the value of contributing back to open source - something we plan to pursue to ensure that the MCP Java SDK remains current with the latest MCP Specification.</p>
+<h4 style="font-size: 20px;"><span style="color: #000000;">The SDK</span></h4>
+<p>Below is a highly simplified summary of the relevant interfaces/methods in the</p>
+<p>Java MCP SDK:</p>
+<pre><code class="language-java match-braces">
+// MCP Request =&gt; MCP Session
+// Unlisted methods for session/notification management
+public interface McpServerTransportProvider {
+    void setSessionFactory(McpServerSession.Factory sessionFactory);
+}
+
+// MCP Request =&gt; MCP Response
+// Unlisted methods for session/notification management
+public class McpServerSession {
+    Mono&lt;Void&gt; handle(McpSchema.JSONRPCMessage message);
+
+    // Custom MCP Transport =&gt; MCP Session
+    public interface Factory {
+        McpServerSession create(McpServerTransport sessionTransport);
+    }
+}
+
+public interface McpTransport {
+
+    Mono&lt;Void&gt; closeGracefully();
+
+    // MCP Response =&gt; Client
+    Mono&lt;Void&gt; sendMessage(JSONRPCMessage message);
+
+    // HTTP Body =&gt; MCP Request
+    &lt;T&gt; T unmarshalFrom(Object data, TypeReference&lt;T&gt; typeRef);
+}
+</code></pre>
+<p style="line-height: 1.5;"><span style="color: #1b1c1d;">These interfaces separate session management from transport implementation, allowing us to inject custom response transport while still leveraging the SDK's logic to process, route, and respond to MCP requests.</span></p>
+<h2 style="font-size: 20px; font-weight: bold;"><span style="color: #000000;">The Streamable HTTP Transport Implementation</span></h2>
+<p>HubSpot Java HTTP APIs are built using Dropwizard, so we implemented a custom transport provider to bridge Dropwizard's JAX-RS async processing with the MCP SDK. Every HTTP call corresponds to a single ephemeral session:</p>
+<pre><code class="language-java match-braces">public class StreamableMcpServerTransportProvider implements McpServerTransportProvider {
+    private volatile McpServerSession.Factory sessionFactory;
+    @Override
+    public void setSessionFactory(McpServerSession.Factory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    public CompletableFuture&lt;Void&gt; handleMessage(JSONRPCMessage message, AsyncResponse asyncResponse) {
+        // Create custom transport bound to HTTP response
+        DropwizardAsyncResponseServerTransport transport =
+                new DropwizardAsyncResponseServerTransport(asyncResponse);
+        // Create new session for this HTTP request
+        McpServerSession session = sessionFactory.create(transport);
+        return initSession(session).then(session.handle(message)).toFuture();
+
+    }
+
+    private static Mono&lt;Void&gt; initSession(McpServerSession session) {
+        session.init(
+          McpSchema.ClientCapabilities.builder().build(),
+          new McpSchema.Implementation("standard client name/version header", "please")
+        );
+        McpSchema.JSONRPCNotification notification =
+          new McpSchema.JSONRPCNotification(
+            McpSchema.JSONRPC_VERSION,
+            McpSchema.METHOD_NOTIFICATION_INITIALIZED,
+            Map.of()
+        );
+        return session.handle(notification);
+    }
+}</code></pre>
+<p style="font-size: 18px; line-height: 1.75;"><span style="background-color: transparent; color: #1b1c1d;">Our custom transport then implements</span> <a href="https://github.com/modelcontextprotocol/java-sdk/blob/07e7b8fd6bac47be4527f97451f8cdd95ed31a38/mcp/src/main/java/io/modelcontextprotocol/spec/McpServerTransport.java" rel="noopener" target="_blank" style="font-size: inherit;">McpServerTransport</a> <span style="background-color: transparent; color: #1b1c1d;">to send MCP responses via HTTP response bodies.</span> <span style="background-color: transparent; color: #1b1c1d;"></span></p>
+<pre><code class="language-java match-braces">class DropwizardAsyncResponseServerTransport implements McpServerTransport {
+
+    private final AsyncResponse asyncResponse;
+
+    // simplified implementation
+    @Override
+    public Mono sendMessage(McpSchema.JSONRPCMessage message) {
+      return Mono.fromCallable(() -&gt; {
+        asyncResponse.resume(
+          Response
+            .ok()
+            .type(MediaType.APPLICATION_JSON_TYPE)
+            .entity(OBJECT_MAPPER.writeValueAsString(message))
+            .build()
+        );
+        return null;
+      });
+    }
+ }
+</code></pre>
+<p><span style="color: #1b1c1d;">The result? Full MCP protocol compliance within a stateless HTTP environment.</span></p>
+<h3 style="font-size: 20px;"><span style="color: #000000;">Service Discovery - scaling our internal RPC framework for MCP</span></h3>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">CHIRP: HubSpot's Service Communication Framework</span></h2>
+<p>At HubSpot, we've built many of our microservices using CHIRP (backronym for Cool Hubspot Inter-process Remote Procedures 😀) - our internal RPC framework. CHIRP takes a contract-first approach where developers define microservices as Java interfaces with strongly-typed immutable request/response models, and the framework automatically generates both client and server code.</p>
+<p>But CHIRP is more than just code generation, it standardizes much of the complexity that comes with large engineering teams: authentication, authorization, model definitions, service discovery, error handling, and more.</p>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">Dynamic MCP Tool Discovery and Registration</span></h2>
+<p>We built an MCP Gateway service that automatically discovers and registers MCP tools across our entire infrastructure with the MCP Server decided by the tool owner. The magic happens through a simple annotation—services can mark their RPC methods with <code><span style="color: #188038;">@ChirpTool</span></code> to indicate they should be exposed as MCP tools.</p>
+<pre><code class="language-java match-braces">
+@ChirpTool(
+
+   gateways = { ChirpMcpGatewayType.DEEP_RESEARCH_CONNECTOR },
+
+   description = "Search for resources in the HubSpot CRM"
+
+)
+
+MCPSearchResponse search(MCPSearchRequest request) { ... }
+</code></pre>
+<p>Behind the scenes, our MCP server periodically polls for new or updated services deployed with these annotations. The system then fetches their specifications and automatically converts each RPC to a MCP spec-compliant tool. Finally, these wrapped RPCs are registered with the MCP SDK, ready to be called by any new clients.</p>
+<p>The beauty of this approach? Teams just deploy and update their services, and their MCP tools become immediately available to AI agents – no manual configuration, no gateway redeployments, no coordination needed. It just works.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=1600&amp;height=1193&amp;name=OpenAIBlog2.png" width="1600" height="1193" loading="lazy" alt="OpenAIBlog2" style="height: auto; max-width: 100%; width: 1600px;" srcset="https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=800&amp;height=597&amp;name=OpenAIBlog2.png 800w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=1600&amp;height=1193&amp;name=OpenAIBlog2.png 1600w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=2400&amp;height=1790&amp;name=OpenAIBlog2.png 2400w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=3200&amp;height=2386&amp;name=OpenAIBlog2.png 3200w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=4000&amp;height=2983&amp;name=OpenAIBlog2.png 4000w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog2.png?width=4800&amp;height=3579&amp;name=OpenAIBlog2.png 4800w" sizes="(max-width: 1600px) 100vw, 1600px"></p>
+<p>We've democratized MCP integrations across HubSpot - now, hundreds of teams can now make their products AI-ready just by adding <span style="color: #188038;">@ChirpTool</span> to their existing RPC methods. No new frameworks or protocols to learn.</p>
+<p>While this distributed approach lets every team own their AI story and innovate independently, we will be implementing governance and guardrails to ensure customers always experience a cohesive, unified interface rather than a fragmented reflection of our org chart. It's the best of both worlds: rapid innovation at the edges with strategic coordination at the center.</p>
+<h3 style="font-size: 20px;"><span style="color: #000000;">Security: OAuth with User-Level Access Tokens</span></h3>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">HubSpot Apps: A brief history</span></h2>
+<p>Historically, HubSpot apps (like the HubSpot deep research connector) have been account-wide integrations installed by an admin to sync data between HubSpot and the 3rd party. However, our OAuth 2.0 system has always supported user-specific access tokens. No one wants an integration to stop working if the original installer’s permissions changed.</p>
+<p>That's why we've always required a user to have proper permissions requested by the app in order to install, but don’t use that user’s more granular permissions post-install. The API token is <strong><span style="text-decoration: underline;">not</span></strong> the user. There are also various integration touchpoints within HubSpot that may ultimately trigger calls to 3rd parties and calls back to HubSpot, and we don't want the original installer to be conflated with another user that triggered some action.</p>
+<p>That's also the reason why most of our public APIs do not enforce user-level permissions, whereas our native UI does. We intentionally avoid tying user identities to access tokens for background data syncs or automated workflows which don’t expect user-level context during execution.</p>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">Leaning into MCP and user level access</span></h2>
+<p>Fast forward to today — features like UI Extensions ( <a href="https://developers.hubspot.com/build-app-cards" rel="noopener" target="_blank"><span>App Cards</span></a> ) and AI agents have changed the landscape. As a result, there are now far more real-world use cases where respecting user-level permissions is essential.</p>
+<p>For example, when a user connects to HubSpot from within ChatGPT, they must not be able to query data they don’t have access to. The actions taken via ChatGPT should reflect the same permissions and access controls the user would experience in HubSpot’s native UI.</p>
+<p>The <a href="https://modelcontextprotocol.io/specification/2025-03-26" rel="noopener" target="_blank"><span>MCP spec</span></a> makes some clear recommendations and requirements, but the one that stood out to us the most is that users must consent and control data access. While the spec also includes features like dynamic client registration and OAuth 2.1 improvements including PKCE/DPoP, our primary focus was on access permissions and how we adapted our current OAuth stack and permissioning system to build the Deep Research Connector with OpenAI.</p>
+<p>Because our public APIs were not originally designed to enforce user-level permissioning, we didn't want to overhaul our entire public API infrastructure all at once. HubSpot has thousands of public APIs that hundreds of teams at HubSpot contribute to, all of which depend on a shared middleware library for authentication and permission checks. Modifying that system to enforce user-specific access across the board would be an enormous undertaking — and a potentially breaking change for many of our existing applications. For example, the original app installer may no longer be with the company, and enforcing their permissions retroactively would create significant friction.</p>
+<p>We are addressing this through a phased rollout, with the goal of empowering all of HubSpot’s public APIs to respect user permissions without breaking existing installs. But for now, we took a pragmatic approach: we spun up a dedicated gateway API at mcp.hubspot.com to handle CRM search, associations, and property fetching — fully instrumented to respect user permissions in the context of MCP.</p>
+<p>An OAuth access token contains four important pieces of information:</p>
+<ul>
+<li aria-level="1"><code><span style="color: #188038;">client_id</span></code> : app/client info</li>
+<li aria-level="1"><code><span style="color: #188038;">hub_id</span></code> : (aka portalId/accountId)</li>
+<li aria-level="1"><code><span style="color: #188038;">user_id</span></code> : who installed it</li>
+<li aria-level="1"><code><span style="color: #188038;">scopes</span></code> : permissions the user granted the developer</li>
+</ul>
+<p>Our OAuth system already requires that a user has all necessary scopes in order to install on a HubSpot account. We also support user-level apps and installs for HubSpot-built integrations like Gmail, Outlook, and Google Calendar. All we had to do was set one of these apps up for OpenAI, make it user-level, and plug in OAuth as opposed to our internal-auth we used for HubSpot-built integrations. Easy!</p>
+<p>The last part involved ensuring compatibility with our existing public APIs. All our public APIs use Dropwizard's REST (JAX-RS) library, which makes it very easy to stand up new services.</p>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">Permissions enforcement and scope forwarding inside MCP</span></h2>
+<p>As mentioned earlier, our remote MCP server binds JAX-RS endpoints on a per-session basis. Adding some basic code in the middle allowed us to:</p>
+<ul>
+<li aria-level="1">Extract the relevant scopes of the <span style="color: #188038;">access_token</span></li>
+<li aria-level="1">Fetch user-specific scopes for the user</li>
+<li aria-level="1">Replay those permissions to internal APIs where user permissions are respected for data within the CRM</li>
+</ul>
+<p>Scopes that we use within apps and access tokens only hold a limited amount of information. In contrast, HubSpot’s internal user permission model is much more granular. For example, users may have access to:</p>
+<ul>
+<li aria-level="1">only their records</li>
+<li aria-level="1">their teams records</li>
+<li aria-level="1">unassigned records</li>
+<li aria-level="1">and even specific properties due to <a href="https://knowledge.hubspot.com/properties/restrict-view-edit-access-for-properties" rel="noopener" target="_blank"><span>field-level permissions</span></a></li>
+</ul>
+<p>Given the complexity, we can't reasonably store all this in an access token; which is why we need to intersect the app's permissions with the user's permissions, and send that info to the internal service to respect the permissions of the user. If we were to send the entire user, then we'd be opening up the app to have more permissions than the user who granted the app.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=1347&amp;height=657&amp;name=OpenAIBlog-1.png" width="1347" height="657" loading="lazy" alt="OpenAIBlog-1" style="height: auto; max-width: 100%; width: 1347px;" srcset="https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=674&amp;height=329&amp;name=OpenAIBlog-1.png 674w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=1347&amp;height=657&amp;name=OpenAIBlog-1.png 1347w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=2021&amp;height=986&amp;name=OpenAIBlog-1.png 2021w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=2694&amp;height=1314&amp;name=OpenAIBlog-1.png 2694w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=3368&amp;height=1643&amp;name=OpenAIBlog-1.png 3368w, https://product.hubspot.com/hs-fs/hubfs/OpenAIBlog-1.png?width=4041&amp;height=1971&amp;name=OpenAIBlog-1.png 4041w" sizes="(max-width: 1347px) 100vw, 1347px"></p>
+<h2 style="font-size: 18px; font-weight: bold;"><span style="color: #000000;">Granular permissions == more access!</span></h2>
+<p>You'll notice that we support contacts, companies, tickets, and deals in our Deep Research Connector. We use the following scopes on apps for reading CRM record data:</p>
+<ul>
+<li style="color: #188038;" aria-level="1"><code><span style="color: #188038;">crm.objects.contacts.read</span></code></li>
+<li style="color: #188038;" aria-level="1"><code><span style="color: #188038;">crm.objects.companies.read</span></code></li>
+<li style="color: #188038;" aria-level="1"><code><span style="color: #188038;">crm.objects.deals.read</span></code></li>
+<li style="color: #188038;" aria-level="1"><code><span style="color: #188038;">crm.objects.tickets.read</span></code></li>
+</ul>
+<p>We intentionally omitted scopes for write access or access to sensitive properties, as they aren’t required for Deep Research use cases.</p>
+<p>Having granular scopes allows a user to only grant access to what the integration is using, rather than having one monolithic "scope" that gives broad access to pieces of functionality and could keep growing and granting more access under the hood. However, today we have seen very few (if any) scopes returned by the <span style="color: #188038;">.well-known/oauth-authorization-server</span> endpoint in remote MCP servers we have examined. We believe more granular scopes and access permissions are beneficial for developers and users, as they build trust that an app only has access to very specific functionality.</p>
+<h2 style="font-size: 20px; font-weight: bold;"><span style="color: #000000;">User permissions in the future</span></h2>
+<p>AI agent connectors are just one way that user permissions should be respected in our product. We have several UI Extension touchpoints with App Cards, as well as various other use cases where 3rd party developers want to know and respect the user who performed an action.</p>
+<p>Earlier, we discussed what we needed to do to replay the intersection of the apps + user scopes/advanced-permissions from our remote MCP server to our internal APIs that deal with CRM records. In the future, we see a clearer and more scalable model emerging — one based on service accounts (system users) backed by every single API call. When tokens are generated, we can easily and efficiently find the intersection between the app, account, and user's permissions, and create a token that points to a service account with that access.</p>
+<p>Because our access tokens are short-lived, we can safely assume that a token will only have the access that it should have. This can also be expanded to account-wide integrations, as we assign a service account to that token instead of the installing user. In this way, tokens still have users, but they are now backed by service accounts.</p>
+<p>Since our service accounts are the same as users in our backend permissioning model, we can do much more granular access restrictions for any integration at HubSpot. The main reason we didn't do this for the initial Deep Research Connector is that this rollout takes time. We need to build the infrastructure to support this, and coordinate and roll out with hundreds of teams that own public APIs.</p>
+<p>When you're moving at the speed of AI, you need to make some short-lived compromises. Currently, our public APIs on our MCP server can be a few dozen milliseconds slower due to computing user and account permissions at runtime. This is a tradeoff we were willing to make in order to ensure user-level permissions were precisely enforced since the APIs and datasets being queried by the deep research agent is nondeterministic.</p>
+<p>Longer term, we intend to take our learnings on our MCP server and ChatGPT connector and enhance our entire developer platform to not only respect user permissioning, but also mature our OAuth stack to the latest standards in OAuth 2.1 and beyond.</p>
+<h3 style="font-size: 20px;"><span style="color: #000000;">Designing a Query DSL for Deep Research</span></h3>
+<p>The Deep Research Connector integration search semantics required that we expose a search MCP tool that consumes a <a href="https://platform.openai.com/docs/mcp#search-semantics" rel="noopener" target="_blank"><span>single query field</span></a> . If you're familiar with <a href="https://developers.hubspot.com/docs/guides/api/crm/search" rel="noopener" target="_blank"><span>HubSpot's Public Search API</span></a> , you know it's a sophisticated system that allows clients to express complex requirements through rich data structures. Compressing that down to a single query string that AI models can reliably generate based on user input was an interesting challenge.</p>
+<p>We designed a token-based DSL that balances power with simplicity (also cited in <a href="https://platform.openai.com/docs/mcp#teach-the-model-how-to-form-valid-queries" rel="noopener" target="_blank"><span>OpenAI documentation</span></a> ). Each search query consists of space-separated tokens following a <code><span style="color: #188038;">key[:operator]:value</span></code> pattern. The syntax supports everything from basic object searches ( <code><span style="color: #188038;">object_type:contacts</span></code> ) to complex filters with operators like <code>
+    <span style="color: #188038;">contains_token</span>
+    ,
+    <span style="color: #188038;">has_property</span>
+  </code> , and <code><span style="color: #188038;">in/not_in</span></code> for multi-value comparisons. We can handle associated object searches ( <code><span style="color: #188038;">associated_companies:12345</span></code> ), pagination ( <code><span style="color: #188038;">limit:100 offset:20</span></code> ), and sorting ( <code><span style="color: #188038;">sort:lastmodifieddate:desc</span></code> ).</p>
+<p>What makes this work well with AI models is its predictable structure and clear examples. When implementing similar tools, we've found that providing comprehensive examples in your tool descriptions dramatically improves the model's ability to generate correct queries. For instance, showing that:</p>
+<p>“Find contacts in companies acme &amp; hubspot" translates to <code>
+    <span style="color: #188038;">object_type:contacts associated_companies:in:acme,hubspot</span>
+    
+  </code></p>
+<p>teaches the model to understand the pattern. We intentionally kept certain features simple—no boolean OR logic, no nested expressions, no relative date syntax like "last week"—because these constraints actually make the model more reliable at generating valid queries. The key insight is that AI models excel at pattern matching, so a consistent, example-rich DSL will outperform a more flexible but ambiguous query language every time.</p>
+<p>The model can still make mistakes. Ensure you return helpful errors to help the model correct itself.</p>
+<h2 style="font-weight: bold; font-size: 20px;"><span style="color: #000000;">Iterating at AI speed in HubSpot</span></h2>
+<p>Through thoughtful engineering decisions made at the rapid pace of AI development, we successfully implemented a complex protocol as a secure, customer-ready feature in a matter of weeks. This showcases how our team tackles challenging problems at the cutting edge of AI technology while delivering real customer value.</p>
+<p>With our remote MCP Server now established, we are ready to solve for our customers continuously. If you’re a HubSpot customer, learn more about the Deep Research Connector and share your feedback at <a href="https://www.hubspot.com/ai-tools/openai-connector" rel="noopener" target="_blank"><span>https://www.hubspot.com/ai-tools/openai-connector</span></a> .</p></span>
+        </div><div id="hs_cos_wrapper_share_post" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="share-post__container">
+  <div class="share-post"><a class="share-post__link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Funlocking-deep-research-crm-connector-for-chatgpt" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter1" role="img"><title id="twitter1">Share on Twitter</title><g id="twitter1_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="share-post__link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Funlocking-deep-research-crm-connector-for-chatgpt" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 264 512" aria-labelledby="facebook-f2" role="img"><title id="facebook-f2">Share on Facebook</title><g id="facebook-f2_layer"><path d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229" /></g></svg></span></a><a class="share-post__link" href="mailto:info@example.com?&amp;subject=&amp;body=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Funlocking-deep-research-crm-connector-for-chatgpt" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="envelope3" role="img"><title id="envelope3">Share via email</title><g id="envelope3_layer"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></g></svg></span></a><a class="share-post__link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Funlocking-deep-research-crm-connector-for-chatgpt" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__4" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="linkedin-in4" role="img"><title id="linkedin-in4">Share on LinkedIn</title><g id="linkedin-in4_layer"><path d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z" /></g></svg></span></a></div>
+</div></div></article>
+    </div><div class="blog-recent-posts">
+      <div class="content-wrapper">
+        <h2 class="blog-recent-posts__heading">Recommended Articles</h2>
+        <div class="blog-recent-posts__list">
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Critsit-1.png?width=805&amp;name=Critsit-1.png');" href="https://product.hubspot.com/blog/hubspot-incident-sept25"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/hubspot-incident-sept25">HubSpot Incident Report for September 25, 2024</a></h2><div class="blog-index__post-summary">
+          Written by Kartik Vishwanath, VP of Engineering at HubSpot. _______
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/kartik-vishwanath" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg?width=40&amp;height=40&amp;name=E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg');"></span>
+        Kartik Vishwanath
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Oct 11, 2024</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Su_Cropped.jpg?width=805&amp;name=Su_Cropped.jpg');" href="https://product.hubspot.com/blog/hubspot-customer-spotlight-su-sanni-president-allegiance-fundraising-group"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/culture">Culture</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/hubspot-customer-spotlight-su-sanni-president-allegiance-fundraising-group">HubSpot Customer Spotlight: Su Sanni, President, Technology Solutions, Allegiance Fundraising Group</a></h2><div class="blog-index__post-summary">
+          Some of the best perspectives on HubSpot's product come from those who use it every day. In this interview series, we profile HubSpot partners, ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/francesca-mccaffrey" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/HSHeadshots78-TheDangerBooth-17%20%281%29.jpg?width=40&amp;height=40&amp;name=HSHeadshots78-TheDangerBooth-17%20%281%29.jpg');"></span>
+        Francesca McCaffrey (She/Her)
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 4, 2021</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Code_Yellow-Oct-04-2020-06-29-47-19-PM.png?width=805&amp;name=Code_Yellow-Oct-04-2020-06-29-47-19-PM.png');" href="https://product.hubspot.com/blog/customer-empathy-sessions-a-tool-for-better-understanding-your-users"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/ux">UX</a></span><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/product">Product</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/customer-empathy-sessions-a-tool-for-better-understanding-your-users">Customer Empathy Sessions: A tool for better understanding your users</a></h2><div class="blog-index__post-summary">
+          If you’re a designer, engineer, or product manager building software today, you likely interact with users a lot. You probably run interviews with ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/gráinne-smith" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/0.jpg?width=40&amp;height=40&amp;name=0.jpg');"></span>
+        Gráinne Smith (She/Her)
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Jan 29, 2019</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+    
+    <div class="content-wrapper"><div data-global-resource-path="IL-HSBlog2/templates/partials/promotion.html"><section class="blog-section promotion-section"><span id="hs_cos_wrapper_promotion_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Join our subscribers</h2>
+<p>Sign up here and we'll keep you updated on the latest in product, UX, and engineering from HubSpot.</p></span><a href="#subscription-popup" class="button popup--trigger"><div id="hs_cos_wrapper_promotion_button_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_promotion_button_text_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Subscribe to the newsletter</span></div></a>
+</section>
+
+<div class="popup" id="subscription-popup">
+  <div class="popup__backdrop popup__close"></div>
+    <div class="popup__scroller popup__close">
+    <div class="popup__box">
+      <a href="#" class="prev-step">Back</a>
+      <div class="step1"><span id="hs_cos_wrapper_popup_intro" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Get Connected</h2>
+<p>The latest engineering, UX, and product news from the HubSpot Product Blog, straight to your inbox.</p></span></div><div id="hs_cos_wrapper_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+<span id="hs_cos_wrapper_blog_subscribe_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_subscribe">
+<div id="hs_form_target_blog_subscribe_blog_subscribe_5441"></div>
+
+
+
+</span></div><button class="next-step step1">Next</button>
+      <button class="popup__close subscription-popup__close">
+        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99889 8.01872L1.01876 13.9988L-0.000976562 12.9791L5.97915 6.99899L-0.000101273 1.01974L1.01963 0L6.99889 5.97925L12.9781 0L13.9979 1.01974L8.01862 6.99899L13.9987 12.9791L12.979 13.9988L6.99889 8.01872Z" fill="#33475B" />
+        </svg>
+      </button>
+      <p class="popup__bottom-promo">
+        <svg width="22" height="23" viewbox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0" mask-type="alpha" maskunits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+          <path d="M0 0H21.8794V22.8287H0V0Z" fill="white" />
+          </mask>
+          <g mask="url(#mask0)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8944 16.4506C14.1997 16.4506 12.8256 15.0828 12.8256 13.3954C12.8256 11.708 14.1997 10.34 15.8944 10.34C17.5889 10.34 18.9629 11.708 18.9629 13.3954C18.9629 15.0828 17.5889 16.4506 15.8944 16.4506ZM16.813 7.51334V4.79561C17.5255 4.46048 18.0247 3.74279 18.0247 2.90985V2.84706C18.0247 1.69769 17.08 0.757181 15.9258 0.757181H15.8627C14.7083 0.757181 13.7636 1.69769 13.7636 2.84706V2.90985C13.7636 3.74279 14.263 4.46048 14.9754 4.79561V7.51347C13.9147 7.67657 12.9454 8.1123 12.1455 8.7534L4.65097 2.94849C4.7003 2.75958 4.73491 2.56481 4.73519 2.36041C4.73687 1.05841 3.67821 0.00167624 2.37054 1.99171e-06C1.06301 -0.00167226 0.0015434 1.05241 2.00037e-06 2.35441C-0.00167953 3.65628 1.05698 4.71301 2.36465 4.71469C2.79078 4.71525 3.1851 4.5947 3.53093 4.39895L10.9033 10.1093C10.2762 11.0516 9.90911 12.1803 9.90911 13.3954C9.90911 14.6675 10.3127 15.8441 10.9948 16.812L8.75278 19.0443C8.57552 18.9914 8.39153 18.9543 8.19675 18.9543C7.1224 18.9543 6.25123 19.8217 6.25123 20.8916C6.25123 21.9614 7.1224 22.8287 8.19675 22.8287C9.27139 22.8287 10.1424 21.9614 10.1424 20.8916C10.1424 20.6978 10.1053 20.5144 10.052 20.3381L12.2698 18.1299C13.2765 18.8952 14.5301 19.3546 15.8944 19.3546C19.1998 19.3546 21.8795 16.6865 21.8795 13.3954C21.8795 10.4159 19.6812 7.9545 16.813 7.51334Z" fill="#F3785B" />
+          </g>
+        </svg>
+        <span>Not using <a href="https://www.hubspot.com/">HubSpot</a> yet?</span>
+      </p>
+    </div>
+  </div>
+</div></div></div>
+  </div>
+</main><div data-global-resource-path="IL-HSBlog2/templates/partials/footer.html"><footer class="footer">
+  <div class="footer__container content-wrapper"><div id="hs_cos_wrapper_general_links" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_general_links_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_general_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/jobs/departments/product-and-engineering" role="menuitem" target="_blank" rel="noopener">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/internet-marketing-company" role="menuitem" target="_blank" rel="noopener">Our Story</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://designers.hubspot.com/blog" role="menuitem" target="_blank" rel="noopener">Developer Blog</a></li>
+ </ul>
+</div></span></div><div id="hs_cos_wrapper_footer_social" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="social-links"><a class="social-links__link" href="https://www.youtube.com/channel/UCScgU9OgnrPg7eNCQ6ia80g" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512" aria-labelledby="youtube5" role="img"><title id="youtube5">Follow us on YouTube</title><g id="youtube5_layer"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" /></g></svg></span></a><a class="social-links__link" href="https://twitter.com/HubSpotDev" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter6" role="img"><title id="twitter6">Follow us on Twitter</title><g id="twitter6_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="social-links__link" href="https://www.instagram.com/hubspotlife" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="instagram7" role="img"><title id="instagram7">Follow us on Instagram</title><g id="instagram7_layer"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" /></g></svg></span></a></div></div><!--LEGAL LINKS --><div id="hs_cos_wrapper_legal_menu" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div id="hs_menu_wrapper_legal_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+   <ul role="menu">
+     <li><a href="https://www.hubspot.com/legal-stuff">Legal Stuff</a></li>
+     <li><a href="https://www.hubspot.com/privacy-policy">Privacy Policy</a></li>
+     <li class="hs-footer-cookie-settings" hidden>
+       <a href=""></a>
+     </li>
+   </ul>
+</div></div><div class="footer__copyright"><div id="hs_cos_wrapper_footer_copyright" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_copyright_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><a href="https://www.hubspot.com/" target="_blank" rel="noopener"><img src="https://www.hubspot.com/hubfs/HubSpot_Logos/HSLogo_gray.svg" alt="HubSpot Logo"></a>
+<p>Copyright © 2024 HubSpot, Inc.</p></span></div></div>
+  </div>
+</footer></div></div><div data-global-resource-path="IL-HSBlog2/templates/partials/search.html"><div class="popup" id="search-popup" data-blog-id="6496795">
+  <div class="popup__backdrop popup__close"></div>
+  <div class="search-popup__topbar">
+    <div class="content-wrapper search-popup__wrapper">
+      <p class="search-popup__term-line">Search Term: <span class="search-popup__term"></span></p>
+      <div class="search-popup__scope">
+        <label>
+          <input type="radio" class="search-popup__scope__choice" name="search-scope" value="SITE">
+          <i></i>
+          Search HubSpot.com
+        </label>
+        <label>
+          <input type="radio" class="search-popup__scope__choice search-popup__scope__choice--default" name="search-scope" value="BLOG" checked>
+          <i></i>
+          Search the blog
+        </label>
+      </div>
+      <button class="popup__close search-popup__close">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70718 11.7073L18 20.0002L19.4142 18.5859L11.1214 10.2931L19.4144 2.00015L18.0002 0.585938L9.70718 8.87891L1.41421 0.585938L0 2.00015L8.29297 10.2931L0.000150454 18.5859L1.41436 20.0002L9.70718 11.7073Z" fill="white" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="popup__scroller popup__close">
+    <ul class="search-popup__result"></ul>
+    <button class="search-popup__load-more">Load more</button>
+    <div class="lds-ring search-popup__spinner"><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+<template id="search-popup__result-template">
+  <li>
+    <h2><a class="search-popup__result-link"></a></h2>
+    <p class="search-popup__result-description"></p>
+  </li>
+</template></div><script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+    <script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">hsjQuery = window['jQuery'];</script>
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<script src="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039149/1743583082755/template_main.min.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+var hsVars = hsVars || {}; hsVars['language'] = 'en-us';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+
+  <script data-hs-allowed="true" nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+      hbspt.forms.create({
+          portalId: '51294',
+          formId: 'd59f9bdf-8db8-41d7-82bb-d15dd985a4f3',
+          formInstanceId: '5441',
+          pageId: '191505924137',
+          region: 'na1',
+          
+          pageName: 'Unlocking Deep Research for 250,000+ Businesses: How HubSpot Used MCP to Engineer the First Third-Party CRM Connector for ChatGPT',
+          
+          contentType: 'blog-post',
+          
+          formsBaseUrl: '/_hcms/forms/',
+          
+          
+          inlineMessage: "Thanks for subscribing!",
+          
+          css: '',
+          target: '#hs_form_target_blog_subscribe_blog_subscribe_5441',
+          
+          formData: {
+            cssClass: 'hs-form stacked'
+          }
+      });
+  </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript" nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/product.hubspot.com\/blog\/unlocking-deep-research-crm-connector-for-chatgpt"]);
+_hsq.push(["setPageId", "191505924137"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 191505924137,
+    "legacyPageId": "191505924137",
+    "contentFolderId": null,
+    "contentGroupId": 6496795,
+    "abTestId": null,
+    "languageVariantId": 191505924137,
+    "languageCode": "en-us",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/51294.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript" nonce="ZAixLLm8A6rwBkHIJgBJRQ==">
+var hsVars = {
+    render_id: "90d679bf-6031-458e-90cf-491844013088",
+    ticks: 1778120926131,
+    page_id: 191505924137,
+    
+    content_group_id: 6496795,
+    portal_id: 51294,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en-us",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "191505924137",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+
+
+
+<script data-gtm-id="GTM-T7FPMN" src="https://www.hubspot.com/wt-assets/static-files/compliance/index.js" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=vxukm97zn1wq1yjoeioklg" async="true" nonce="ZAixLLm8A6rwBkHIJgBJRQ=="></script>
+<div id="fb-root"></div>
+  <script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script nonce="ZAixLLm8A6rwBkHIJgBJRQ==">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

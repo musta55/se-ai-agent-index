@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N57PTZ9');</script>
+<!-- End Google Tag Manager -->
+
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge,chrome=1">
+
+    
+    <link rel="icon"
+          type="image/x-icon"
+          href="https://blogs.opera.com/security/wp-content/themes/opera-2022/static/img/opera.ced696a02c2c07e24ea24dbbed94d229.ico"/>
+
+    <meta name="description"
+          content="">
+    <meta name="author"
+          content="">
+
+    <meta name="viewport"
+          content="width=device-width">
+    <link rel="stylesheet"
+          type="text/css"
+          media="all"
+          href="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/css/main.f6960fb730bb7c813e438ce06e02dac0.css"/>
+
+    <link rel="pingback"
+          href="https://blogs.opera.com/security/xmlrpc.php"/>
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v27.2 (Yoast SEO v27.2) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>Protected with Opera Neon: Understanding agentic browser security | Opera Security</title>
+	<meta name="description" content="Opera Neon opens up new possibilities online but agentic browsers also face new threats. Here&#039;s a primer on agentic browser security." />
+	<link rel="canonical" href="https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Protected with Opera Neon: Understanding agentic browser security" />
+	<meta property="og:description" content="Opera Neon opens up new possibilities online but agentic browsers also face new threats. Here&#039;s a primer on agentic browser security." />
+	<meta property="og:url" content="https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/" />
+	<meta property="og:site_name" content="Opera Security" />
+	<meta property="article:published_time" content="2025-10-21T13:54:36+00:00" />
+	<meta property="article:modified_time" content="2025-10-28T17:45:54+00:00" />
+	<meta property="og:image" content="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png" />
+	<meta property="og:image:width" content="1920" />
+	<meta property="og:image:height" content="1080" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Michael Tegos" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Michael Tegos" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="5 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#article","isPartOf":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/"},"author":{"name":"Michael Tegos","@id":"https://blogs.opera.com/security/#/schema/person/e4d220f7da64931f0544285b001574e4"},"headline":"Protected with Opera Neon: Understanding agentic browser security","datePublished":"2025-10-21T13:54:36+00:00","dateModified":"2025-10-28T17:45:54+00:00","mainEntityOfPage":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/"},"wordCount":959,"commentCount":0,"image":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#primaryimage"},"thumbnailUrl":"https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png","keywords":["Agentic Browser Security"],"articleSection":["Front page","Security"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#respond"]}]},{"@type":"WebPage","@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/","url":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/","name":"Protected with Opera Neon: Understanding agentic browser security | Opera Security","isPartOf":{"@id":"https://blogs.opera.com/security/#website"},"primaryImageOfPage":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#primaryimage"},"image":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#primaryimage"},"thumbnailUrl":"https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png","datePublished":"2025-10-21T13:54:36+00:00","dateModified":"2025-10-28T17:45:54+00:00","author":{"@id":"https://blogs.opera.com/security/#/schema/person/e4d220f7da64931f0544285b001574e4"},"description":"Opera Neon opens up new possibilities online but agentic browsers also face new threats. Here's a primer on agentic browser security.","breadcrumb":{"@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#primaryimage","url":"https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png","contentUrl":"https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png","width":1920,"height":1080,"caption":"Protected with Opera Neon: Understanding agentic browser security"},{"@type":"BreadcrumbList","@id":"https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://blogs.opera.com/security/"},{"@type":"ListItem","position":2,"name":"Protected with Opera Neon: Understanding agentic browser security"}]},{"@type":"WebSite","@id":"https://blogs.opera.com/security/#website","url":"https://blogs.opera.com/security/","name":"Opera Security","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://blogs.opera.com/security/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Person","@id":"https://blogs.opera.com/security/#/schema/person/e4d220f7da64931f0544285b001574e4","name":"Michael Tegos","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=96&d=mm&r=g","url":"https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=96&d=mm&r=g","caption":"Michael Tegos"},"description":"Product Privacy &amp; Security Advocate at Opera","url":"https://blogs.opera.com/security/author/mtegos/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel="alternate" type="application/rss+xml" title="Opera Security &raquo; Protected with Opera Neon: Understanding agentic browser security Comments Feed" href="https://blogs.opera.com/security/2025/10/opera-neon-understanding-agentic-browser-security/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://blogs.opera.com/security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblogs.opera.com%2Fsecurity%2F2025%2F10%2Fopera-neon-understanding-agentic-browser-security%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://blogs.opera.com/security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblogs.opera.com%2Fsecurity%2F2025%2F10%2Fopera-neon-understanding-agentic-browser-security%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-block-library-inline-css' type='text/css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*wp_block_styles_on_demand_placeholder:6a0bb716984e2*/
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=//www-static-blogs.operacdn.com/wp-includes/css/classic-themes.min.css */
+</style>
+<link rel='stylesheet' id='related-posts-by-taxonomy-css' href='https://www-static-blogs.operacdn.com/security/wp-content/plugins/related-posts-by-taxonomy/includes/assets/css/styles.css?ver=6.9.4' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://blogs.opera.com/security/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://blogs.opera.com/security/wp-json/wp/v2/posts/637" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.opera.com/security/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel='shortlink' href='https://blogs.opera.com/security/?p=637' />
+
+</head>
+<body class="wp-singular post-template-default single single-post postid-637 single-format-standard wp-theme-opera-2022">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N57PTZ9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+    <a href="http://opera.com/">Upgrade your browser today</a>
+</p>
+<![endif]-->
+<div class="header button-theme"
+     role="navigation">
+    <div class="header__wrapper container-fluid wrapper">
+        <a class="header__brand"
+           href="https://blogs.opera.com/security/">
+            <img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/logo.64d9b43037de76c75fa0a1a04d91f14e.svg"
+                 alt="Opera"/>
+        </a>
+        <div class="search">
+            <div class="searchBar">
+                <form role="search" method="get" id="searchform" action="https://blogs.opera.com/security/" >
+            <input id="searchQueryInput" class="search-form search-field" type="text" name="s" placeholder="Search Blogs" value=""/>
+            <button id="searchsubmit" type="submit" id="searchsubmit" />
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.37909 0.666748L10.6667 6.00008M10.6667 6.00008L5.37909 11.3334M10.6667 6.00008L0 6.00008" stroke="#666666" stroke-width="1.46667"/>
+                </svg>
+            </button>
+            <button id="searchQueryIcon" name="searchQueryIcon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3368 7.40174C11.3368 9.57502 9.57502 11.3368 7.40174 11.3368C5.22846 11.3368 3.46667 9.57502 3.46667 7.40174C3.46667 5.22846 5.22846 3.46667 7.40174 3.46667C9.57502 3.46667 11.3368 5.22846 11.3368 7.40174ZM10.6676 11.7047C9.76062 12.3942 8.62897 12.8035 7.40174 12.8035C4.41844 12.8035 2 10.385 2 7.40174C2 4.41844 4.41844 2 7.40174 2C10.385 2 12.8035 4.41844 12.8035 7.40174C12.8035 8.62897 12.3942 9.76062 11.7047 10.6676L13.9972 12.9601L12.9601 13.9972L10.6676 11.7047Z" fill="#999999"/>
+                </svg>
+            </button>
+
+            </form>            </div>
+        </div>
+        <div class="header__menu">
+            <ul id="menu-top-menu" class="menu"><li id="menu-item-466" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-466"><a href="https://blogs.opera.com/news/">News</a></li>
+<li id="menu-item-467" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-467"><a href="https://blogs.opera.com/desktop/">Desktop</a></li>
+<li id="menu-item-468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468"><a href="https://blogs.opera.com/mobile/">Mobile</a></li>
+<li id="menu-item-470" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-470"><a href="https://blogs.opera.com/security/">Security</a></li>
+<li id="menu-item-575" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-575"><a href="https://blogs.opera.com/news/category/gaming/">Gaming</a></li>
+<li id="menu-item-622" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-622"><a href="https://blogs.opera.com/news/category/mindfulness/">Mindfulness</a></li>
+<li id="menu-item-574" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-574"><a href="https://blogs.opera.com/news/category/ai/">AI</a></li>
+<li id="menu-item-471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-471"><a href="#">Other</a>
+<ul class="sub-menu">
+	<li id="menu-item-472" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-472"><a href="https://blogs.opera.com/tips-and-tricks/">Tips &amp; Tricks</a></li>
+	<li id="menu-item-469" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-469"><a href="https://blogs.opera.com/crypto/">Crypto</a></li>
+	<li id="menu-item-473" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-473"><a href="https://blogs.opera.com/russia/">Russia &amp; CIS</a></li>
+	<li id="menu-item-474" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-474"><a href="https://blogs.opera.com/africa/">Africa</a></li>
+	<li id="menu-item-475" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-475"><a href="https://blogs.opera.com/india/">India</a></li>
+	<li id="menu-item-476" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-476"><a href="https://blogs.opera.com/indonesia/">Indonesia</a></li>
+	<li id="menu-item-477" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-477"><a href="https://blogs.opera.com/germany/">Germany</a></li>
+</ul>
+</li>
+<li id="menu-item-478" class="main-nav-separator menu-item menu-item-type-custom menu-item-object-custom menu-item-478"><a href="https://www.opera.com/download">Downloads</a></li>
+</ul>            <div class="right">
+                <div class="dark-theme-switch @mobile-hidden">
+                </div>
+                <div class="header__download">
+                    <span class="download-button--wrapper download-button--desktop download-button--full ">
+                        <a href="https://www.opera.com/download"
+                           target="_blank"
+                           class="button"
+                           rel="nofollow noopener"
+                           data-alternative="None">
+                             <span class="cta"><span class="platform-icon">Download now</span></span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <input id="header__switcher"
+               class="hidden--clip header__switcher"
+               type="checkbox">
+        <label class="header__menu-switcher"
+               for="header__switcher"
+               style="background-image: url(https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/hamburger-icon.f6b521ba8d57ffa897052aa010122589.svg)"></label>
+        <nav class="header__menu-nav container-fluid"><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-466"><input id="hf-browsers-switcher466" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher466"><a class="hf__link hover-line" href=https://blogs.opera.com/news/">News</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-467"><input id="hf-browsers-switcher467" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher467"><a class="hf__link hover-line" href=https://blogs.opera.com/desktop/">Desktop</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468"><input id="hf-browsers-switcher468" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher468"><a class="hf__link hover-line" href=https://blogs.opera.com/mobile/">Mobile</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-470"><input id="hf-browsers-switcher470" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher470"><a class="hf__link hover-line" href=https://blogs.opera.com/security/">Security</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-575"><input id="hf-browsers-switcher575" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher575"><a class="hf__link hover-line" href=https://blogs.opera.com/news/category/gaming/">Gaming</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-622"><input id="hf-browsers-switcher622" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher622"><a class="hf__link hover-line" href=https://blogs.opera.com/news/category/mindfulness/">Mindfulness</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-574"><input id="hf-browsers-switcher574" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher574"><a class="hf__link hover-line" href=https://blogs.opera.com/news/category/ai/">AI</a></label></h4></div><div class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-471"><input id="hf-browsers-switcher471" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher471"><a class="hf__link hover-line" href=#">Other</a></label></h4><div class="hf__dd-content header__dd-content">
+<ul class="dropdown-menu depth_0">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-472"><a class="hf__link hover-line" href="https://blogs.opera.com/tips-and-tricks/"><span class="hover-line__element">Tips &amp; Tricks</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-469"><a class="hf__link hover-line" href="https://blogs.opera.com/crypto/"><span class="hover-line__element">Crypto</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-473"><a class="hf__link hover-line" href="https://blogs.opera.com/russia/"><span class="hover-line__element">Russia &amp; CIS</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-474"><a class="hf__link hover-line" href="https://blogs.opera.com/africa/"><span class="hover-line__element">Africa</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-475"><a class="hf__link hover-line" href="https://blogs.opera.com/india/"><span class="hover-line__element">India</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-476"><a class="hf__link hover-line" href="https://blogs.opera.com/indonesia/"><span class="hover-line__element">Indonesia</span></a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-477"><a class="hf__link hover-line" href="https://blogs.opera.com/germany/"><span class="hover-line__element">Germany</span></a></li></ul></div></div><div class="main-nav-separator menu-item menu-item-type-custom menu-item-object-custom menu-item-478"><input id="hf-browsers-switcher478" class="hf__dd-switcher hf-hide" type="checkbox"><h4 class="hf__heading"><label class="hf__label" for="hf-browsers-switcher478"><a class="hf__link hover-line" href=https://www.opera.com/download">Downloads</a></label></h4></div></nav>    </div>
+</div>
+
+<div id="opera"
+     class="container-fluid wrapper">
+
+    
+        <article class="post post-637 type-post status-publish format-standard has-post-thumbnail hentry category-front-page category-security tag-agentic-browser-security" id="post-637">
+            <header>
+                <p class="category"><a href="https://blogs.opera.com/security/category/security/">Security</a></p>
+                <h1 class="title">Protected with Opera Neon: Understanding agentic browser security</a></h1>
+                <span class="share-icons">
+            <p>Share</p>
+                <ul><li><a class="col-1 sbtn s-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblogs.opera.com%2Fsecurity%2F2025%2F10%2Fopera-neon-understanding-agentic-browser-security%2F" target="_blank" rel="nofollow"><img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/share-article_facebook.da73949178f1431aa6845a440149477e.svg"></a></li><li><a class="col-1 sbtn s-twitter" href="https://twitter.com/intent/tweet?text=Protected%20with%20Opera%20Neon:%20Understanding%20agentic%20browser%20security&amp;url=https%3A%2F%2Fblogs.opera.com%2Fsecurity%2F2025%2F10%2Fopera-neon-understanding-agentic-browser-security%2F&amp;via=wpvkp" target="_blank" rel="nofollow"><img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/share-article_twitter.2d56c3ce28cf4b8b0c903daaa279cdec.svg"></a></li><li><a class="col-2 sbtn s-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fblogs.opera.com%2Fsecurity%2F2025%2F10%2Fopera-neon-understanding-agentic-browser-security%2F&amp;title=Protected%20with%20Opera%20Neon:%20Understanding%20agentic%20browser%20security" target="_blank" rel="nofollow"><img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/share-article_linkedin.6432d0e754bc197e2aeb64c38fcf2e23.svg"></a></li><li class="to-clipboard"><img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/share-article_copy-link.c83a9d420f922d3fde784398f6d5b79c.png"></li></ul>        </span>
+                <span class="header-image">
+            <img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Protected with Opera Neon: Understanding agentic browser security" decoding="async" fetchpriority="high" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-1536x864.png 1536w" sizes="(max-width: 1920px) 100vw, 1920px" />        </span>
+                <div class="time-wrapper">
+                    <time datetime="2025-10-21">October 21st, 2025</time>
+                </div>
+            </header>
+            <div class="content-wrapper">
+                <div class="content">
+                    
+<p>Hi Opera users,</p>
+
+
+
+<p>If you were hanging out around these parts in the past few weeks, you might have noticed that <a href="https://press.opera.com/2025/09/30/opera-neon-ai-agentic-browser-release" target="_blank" rel="noreferrer noopener">we launched Opera Neon</a> &#8211; an AI agentic browser that can browse with you or for you, take action, and help you get things done.</p>
+
+
+
+<p>Opera Neon is currently being tested in an Early Access phase, with a limited number of users subscribed to our program. You can find more information about Opera Neon and how you can sign up for a chance to try it out in <a href="https://blogs.opera.com/news/2025/05/opera-neon-first-ai-agentic-browser" target="_blank" rel="noreferrer noopener">our News blog</a>. </p>
+
+
+
+<p>Today, we want to address the important topic of agentic browser security. Our Security team has worked closely together with Opera Neon’s development team to ensure that our agentic browser can protect you from the new kinds of threats and attacks that are unique to agentic browsers. Following numerous pen-tests and addressing a number of attack vectors, the result is a safer and stronger product. Most importantly, this work is ongoing and as new issues are discovered, our teams are able to move faster and address them rapidly and effectively.</p>
+
+
+
+<p>When using any browser, you want to be confident that it can protect you from common threats and attacks. Opera’s browsers benefit from the robust security efforts of the Chromium open-source project, which they are based on, providing protections such as multi-process design and features including isolated processes and sandboxing. The constant work and improvements made by our own developers plus our ongoing work with external researchers and bug bounty hunters provide additional layers of protection and support.</p>
+
+
+
+<p>As Opera Neon is built on top of this groundwork, it also benefits from it, ensuring that any regular threats are addressed and prevented. However, just as agentic browsers open up new possibilities in browsing and completing tasks online, so can they be susceptible to new kinds of attacks that exploit vulnerabilities found in AI agents.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="h-common-threats-to-agentic-browsers">Common threats to agentic browsers</h2>
+
+
+
+<p>The area of browser security for agentic browsers is brand new and presents several new types of challenges for a browser. Some of the new threats that have been identified with regard to agentic browsers include:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Prompt injection and hijacking: This is when an attacker injects hidden or malicious instructions into web content, which can trick the AI agent into following unauthorized commands, such as leaking data or performing actions on websites unseen by the user.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Perception and interface manipulation: This involves altering the visual or structural elements of a webpage to mislead the agent, causing it to fall for phishing sites or click on malicious links.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Data and context leakage: The agent&#8217;s memory and continuous handling of context could be exploited to expose sensitive data like credentials, session tokens, or personal information.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="alignleft size-large"><img decoding="async" width="700" height="394" src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features-700x394.png" alt="Protected with Opera Neon: Understanding agentic browser security" class="wp-image-639" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features-1536x864.png 1536w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2025/10/Opera-Neon-Security-features.png 1920w" sizes="(max-width: 700px) 100vw, 700px" /></figure>
+</div>
+
+
+<h2 class="wp-block-heading">How Opera Neon mitigates threats</h2>
+
+
+
+<p>Many of these attacks are the inevitable result of new technologies changing the way we interact with the web. The agentic internet is one of the most fundamental changes we’ve yet to experience, so it’s only natural that with it come new threats and new risks.</p>
+
+
+
+<p>As we aim for Opera Neon to be the gateway into the agentic internet, we have designed it so as to mitigate those threats and effectively reduce the risk to users as much as possible. The work is ongoing, especially since Opera Neon continues to be developed during the Early Access testing phase. These are some of the things we have done so far:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Tasks: These are self-contained workspaces in Opera Neon that allow you to work on a specific project using multiple sources of reference. You can open multiple tabs, perform multiple requests, and draw from multiple sources within one “mini-browser”, without affecting or accessing other open Tasks or any other information elsewhere in Opera Neon.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Prompt processing: Prompts are processed differently depending on the model that is chosen for the task at hand. This makes it harder for a specific attack to be replicated reliably.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Prompt analysis: Opera Neon incorporates safeguards against prompt injection by analyzing prompts for potentially malicious characteristics. However, it is important to acknowledge that due to the non-deterministic nature of AI models, the risk of a successful prompt injection attack cannot be entirely reduced to zero.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Human-in-the-loop: Opera Neon is designed with a &#8220;human-in-the-loop&#8221; approach, meaning it will generally pause and request user interaction when actions such as completing a transaction or downloading a file require confirmation.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Blacklisting: Opera has already implemented blacklisting of high-risk pages (such as banking sites) to prevent AI agents from accessing or acting on them. This reduces the impact of a potentially successful attack.</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Layered Defenses: Inspired by industry best practices, Opera is exploring layered defense mechanisms, including:
+<ul class="wp-block-list">
+<li>Further improvements to input sanitization and output filtering for AI prompts.</li>
+
+
+
+<li>Restricting AI actions to a safe subset of browser capabilities.</li>
+
+
+
+<li>Considering third-party solutions for enhanced protection.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Heading into the agentic future with security in mind</h2>
+
+
+
+<p>As with any technology, progress and innovation mean stepping into uncharted waters, where unknown dangers might lurk. That’s why Opera Neon has been developed with security and privacy in mind, ensuring that threats can either be mitigated or prevented successfully as much as possible.</p>
+
+
+
+<p>At the same time, we continue working with security researchers on bug reporting and responsible disclosure, moving quickly to address security vulnerabilities when they are discovered, just like we do with our regular browsers.</p>
+
+
+
+<p>If you’d like to report a security issue, you can do so through our public and private <a href="https://security.opera.com/bug-bounty/" target="_blank" rel="noreferrer noopener">Bug Bounty</a> programs. Out-of-scope security issues can be <a href="https://security.opera.com/report-security-issue/" target="_blank" rel="noreferrer noopener">submitted directly to us</a> and are subject to our <a href="https://security.opera.com/policy/" target="_blank" rel="noreferrer noopener">Vulnerability Policy</a>.To report malicious or suspicious activity related to Opera products and services, please use the <a href="https://security.opera.com/report-fraud/" target="_blank" rel="noreferrer noopener">Report Fraud</a> page.</p>
+                    
+<div class="entry-author ">
+            <a href="https://blogs.opera.com/security/author/mtegos/">
+            <img class="avatar small"
+             src="https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=120&d=mm&r=g"
+             srcset="https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=120&d=mm&r=g 1x, https://secure.gravatar.com/avatar/6dda5a92d7fbf58e9f4c55fa5dddafec8e2bfdca420c2349d4d2c89d368bd465?s=240&d=mm&r=g 2x"
+             alt="">
+        <h1 class="job-position">Michael Tegos</h1>
+            </a>
+                            <a href="https://blogs.opera.com/security/author/mtegos/">
+                <p class="desc">Product Privacy &amp; Security Advocate at Opera</p>
+                    </a>
+            </div>
+                    <span class="tags"><a href="https://blogs.opera.com/security/tag/agentic-browser-security/" rel="tag">Agentic Browser Security</a></span>                    <hr>
+                    <div>
+                        
+<section id="feedback-container">
+    <header>
+        <h3>User comments</h3>
+    </header>
+
+    <div id="nodebb-comments"
+         data-url="https://forums.opera.com"
+         data-site="blogs"
+         data-page="security+637"
+    ></div>
+    <noscript><p class="js-disabled">Please enable JavaScript to view comments</p></noscript>
+</section>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="floating-section">
+                        
+<div class="download-section button-theme ">
+    <img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/image-sidebar.829f600e58c0e4206501da0863c92aa1.png" alt="You deserve a&lt;/br&gt;better browser">
+    <h3>You deserve a</br>better browser</h3>
+    <p>Faster, safer and smarter than default browsers. Fully-featured for privacy, security, and so much more.</p>
+    
+    <span class="download-button--wrapper download-button--full">
+        <a href="https://www.opera.com/download"
+            target="_blank"
+            class="button"
+            rel="nofollow noopener"
+            data-alternative="None"
+            data-product="opera"
+        >
+            <span class="cta">
+                <span class="platform-icon">Download now</span>
+            </span>
+        </a>
+    </span>
+</div>
+                    </div>
+                </div>
+            </div>
+                        <hr>
+            
+<div class="related-articles">
+    <div class="carousel">
+
+        <div class="posts-wrapper myslides fade row posts-a">                    <article id="post-677" class="post-677 post type-post status-publish format-standard has-post-thumbnail hentry category-front-page category-security">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/05/meet-opera-head-of-security/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Inside the role of Opera&#039;s Head of Security" decoding="async" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/05/Opera-Head-of-Security-1536x864.png 1536w" sizes="(max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/security/">Security</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/05/meet-opera-head-of-security/"
+           rel="bookmark"
+           title="Permanent Link to How we keep Opera users and products safe: Inside the role of Head of Security">How we keep Opera users and products safe: Inside the role of Head of Security</a>
+    </h2>
+    <time datetime="2026-05-08">May 8th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                                    <article id="post-673" class="post-673 post type-post status-publish format-standard has-post-thumbnail hentry category-front-page category-security">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/04/opera-security-responsible-disclosure-osslsigncode-quill/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Opera Security team helps make the web safer through responsible disclosure" decoding="async" loading="lazy" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/04/Opera-Security-responsible-disclosure-1536x864.png 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/security/">Security</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/04/opera-security-responsible-disclosure-osslsigncode-quill/"
+           rel="bookmark"
+           title="Permanent Link to How Opera’s Security team helps make the web safer through responsible disclosure">How Opera’s Security team helps make the web safer through responsible disclosure</a>
+    </h2>
+    <time datetime="2026-04-17">April 17th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                </div><div class="posts-wrapper myslides fade row posts-a">                    <article id="post-668" class="post-668 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-security tag-chromium tag-security tag-updates">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/03/update-your-browser-security-fix-for-chrome-zero-day-cve-2026-3910/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-1536x864.png 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/news/">News, </a><a href="https://blogs.opera.com/security/category/security/">Security</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/03/update-your-browser-security-fix-for-chrome-zero-day-cve-2026-3910/"
+           rel="bookmark"
+           title="Permanent Link to Update your browser: Security fix for Chrome zero-days CVE 2026-3909 &amp; CVE-2026-3910">Update your browser: Security fix for Chrome zero-days CVE 2026-3909 &amp; CVE-2026-3910</a>
+    </h2>
+    <time datetime="2026-03-14">March 14th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                                    <article id="post-666" class="post-666 post type-post status-publish format-standard has-post-thumbnail hentry category-front-page category-privacy tag-vpn">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/03/busting-vpn-myths/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Busting VPN myths" decoding="async" loading="lazy" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/03/Busting-VPN-Myths-1536x864.png 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/privacy/">Privacy</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/03/busting-vpn-myths/"
+           rel="bookmark"
+           title="Permanent Link to Busting VPN myths: What a VPN can do for your privacy and what it can’t">Busting VPN myths: What a VPN can do for your privacy and what it can’t</a>
+    </h2>
+    <time datetime="2026-03-06">March 6th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                </div><div class="posts-wrapper myslides fade row posts-a">                    <article id="post-662" class="post-662 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-security tag-chromium tag-security tag-updates">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/02/update-your-browser-security-fix-for-chrome-zero-day-cve-2026-2441/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2023/06/Opera-Security-Updates-Green-1536x864.png 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/news/">News, </a><a href="https://blogs.opera.com/security/category/security/">Security</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/02/update-your-browser-security-fix-for-chrome-zero-day-cve-2026-2441/"
+           rel="bookmark"
+           title="Permanent Link to Update your browser: Security fix for Chrome zero-day CVE-2026-2441">Update your browser: Security fix for Chrome zero-day CVE-2026-2441</a>
+    </h2>
+    <time datetime="2026-02-16">February 16th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                                    <article id="post-656" class="post-656 post type-post status-publish format-standard has-post-thumbnail hentry category-front-page category-privacy tag-data-privacy-day tag-data-protection tag-privacy">
+                        
+<header>
+    <a href="https://blogs.opera.com/security/2026/01/data-privacy-day-opera-data-protection-officer-q-a/"><img src="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Inside the role of Data Protection Officer at Opera" decoding="async" loading="lazy" srcset="https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera.png 1920w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera-300x169.png 300w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera-700x394.png 700w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera-768x432.png 768w, https://www-static-blogs.operacdn.com/security/wp-content/uploads/sites/6/2026/01/Data-Privacy-Day-Data-Protection-Officer-at-Opera-1536x864.png 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></a></header>
+<div class="post-body">
+    <p class="post-category"><a href="https://blogs.opera.com/security/category/privacy/">Privacy</a></p>
+    <h2 class="post-title">
+        <a href="https://blogs.opera.com/security/2026/01/data-privacy-day-opera-data-protection-officer-q-a/"
+           rel="bookmark"
+           title="Permanent Link to Data Privacy Day: Inside the role of Data Protection Officer at Opera">Data Privacy Day: Inside the role of Data Protection Officer at Opera</a>
+    </h2>
+    <time datetime="2026-01-28">January 28th, 2026</time>
+</div>
+<footer>
+    </footer>
+                    </article>
+                </div>        <div class="controls">
+            <div class="dots">
+            </div>
+            <div>
+                <a class="prev minus-slide">
+                    <img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/arrow-left.171ab59fa709a3915488a44fbe586dba.svg"
+                         alt="control"/>
+                </a>
+                <a class="next plus-slide">
+                    <img src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/arrow-right.22d48607ea14d7ce2603010ffc20d31d.svg"
+                         alt="control"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+            <hr>
+            
+<!-- Begin Brevo Form -->
+<!-- START - We recommend to place the below code in head tag of your website html  -->
+<style>
+  @font-face {
+    font-display: block;
+    font-family: Roboto;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 600;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 700;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+  }
+
+  #sib-container input:-ms-input-placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container input::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container a {
+    text-decoration: underline;
+  }
+</style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!--  END - We recommend to place the above code in head tag of your website html -->
+
+<!-- START - We recommend to place the below code where you want the form in your website html  -->
+<div class="sib-form newsletter-widget" style="text-align: center;
+         background-color: transparent;                                 ">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Your subscription could not be saved. Please try again.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Your subscription has been successful.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="sib-container" class="sib-container sib-container--large sib-container--vertical">
+      <form id="sib-form" method="POST" action="https://c9ba74d7.sibforms.com/serve/MUIFABLE65RsY6SozilAt8tV61PwBr2Mr2xYCrYWoucg8E5gPEov7bhzRQpocUuMRYLn7t8MnhDJJ9mfOxxd7ozSQcsACsv5-lIWCByMUxC2jjcSEb_7vREIMLswD5R19KKapZRHzkhD85VYcZAKEwog_HZT_twAUJ0LIiJ2h7n90fQw-TtftYJqz2nZ0zGArgzJ9vD_rpabna8W" data-type="subscription">
+        <div class="sib-container__title">
+            <div class="sib-container__title--heading">
+              <div class="sib-form-block">
+                <p>Sign up for our Newsletter and get the latest news from Opera</p>
+              </div>
+            </div>
+            <div class="sib-container__title--subheading">
+              <div class="sib-form-block">
+                <div class="sib-text-form-block">
+                  <p>Join the mailing list for regular updates on AI and Opera</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="sib-container__form">
+            <div>
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row ">
+                    <label class="entry__label" for="FIRSTNAME" data-required="*">Your name</label>
+
+                    <div class="entry__field">
+                      <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="Enter your name" data-required="true" required />
+                    </div>
+                  </div>
+
+                  <label class="entry__error entry__error--primary">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row ">
+                    <label class="entry__label" for="EMAIL" data-required="*">Your email</label>
+
+                    <div class="entry__field">
+                      <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Enter your email address" data-required="true" required />
+                    </div>
+                  </div>
+
+                  <label class="entry__error entry__error--primary">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="sib-optin sib-form-block" data-required="true">
+                <div class="form__entry entry_mcq">
+                  <div class="form__label-row ">
+                    <div class="entry__choice" style="">
+                      <label>
+                        <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                        <span class="checkbox checkbox_tick_positive"></span><span><p>I agree to receive regular updates about Opera via electronic means (including email).</p><span data-required="*" style="display: inline;" class="entry__label entry__label_optin"></span></span> </label>
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="sib-container__form__submit-row">
+              <div class="sib-captcha sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row ">
+                    <script>
+                      function handleCaptchaResponse() {
+                        var event = new Event('captchaChange');
+                        document.getElementById('sib-captcha').dispatchEvent(event);
+                      }
+                    </script>
+                    <div class="g-recaptcha sib-visible-recaptcha" id="sib-captcha" data-sitekey="6LeZlqwpAAAAAIGFJM8ip0dpMSup34t8iuFaz_qR" data-callback="handleCaptchaResponse" style="direction:ltr"></div>
+                  </div>
+                  <label class="entry__error entry__error--primary">
+                  </label>
+                </div>
+              </div>
+              <div class="sib-form-block" style="text-align: center">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                  </svg>
+                  Sign up
+                </button>
+              </div>
+            </div>
+            <div class="sib-container__form__required-fields">
+                <p>*Required fields</p>
+                <a href="https://legal.opera.com/privacy/" target="_blank">Please check our Privacy Policy to see how we process data.</a>
+            </div>
+        </div>
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="en">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END - We recommend to place the above code where you want the form in your website html  -->
+
+<!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+
+  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+
+
+
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected'
+    }
+  };
+
+  var AUTOHIDE = Boolean(1);
+</script>
+
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+
+<!-- END - We recommend to place the above code in footer or bottom of your website html  -->
+<!-- End Brevo Form -->            
+<div class="row bottom-widget button-theme">
+    <div class="img-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-8"
+         style="background-image: url('https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/image-bottom.e9cef5d4f125326a4170222365bca4b7.png');"></div>
+    <div class="info col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <a class="hf--brand"
+           href="https://www.opera.com/">
+
+            <img alt="Opera"
+                 style="width: 13.2rem; background-position: center;"
+                 class="widget-image"
+                 src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/logo.e807fcd39b532b698412c37cd8017781.png"
+                 srcset="">
+        </a>
+        <h1>You deserve a better browser</h1>
+        <p>Opera's free VPN, Ad blocker, and Flow file sharing. Just a few of the must-have features built
+            into Opera for faster, smoother and distraction-free browsing designed to improve your online
+            experience.</p>
+        <span class="download-button--wrapper download-button--desktop download-button--full ">
+            <a href="https://www.opera.com/download"
+               target="_blank"
+               class="button"
+               rel="nofollow noopener"
+               data-alternative="None">
+                <span class="cta"><span class="platform-icon">Download now</span>
+            </a>
+        </span>
+    </div>
+</div>
+
+        </article>
+
+    
+</div>
+
+
+
+<footer class="container-fluid footer">
+    <div class="breadcrumbs container-fluid wrapper">
+        <div class="breadcrumbs__container">
+            <div class="breadcrumbs__crumb breadcrumbs__logo breadcrumbs__sep">
+                <a href="https://blogs.opera.com/">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="16"
+                         height="16"
+                         viewBox="0 0 16 16">
+                        <path fill="#B3B3B3"
+                              fill-rule="evenodd"
+                              d="M8.03 0a7.97 7.97 0 0 1 5.302 2.036 5.773 5.773 0 0 0-3.206-.98c-1.905 0-3.612.945-4.76 2.436-.884 1.044-1.457 2.587-1.496 4.32v.377c.04 1.732.612 3.275 1.497 4.32 1.147 1.49 2.854 2.435 4.759 2.435 1.17 0 2.265-.357 3.203-.978-2.049.997-3.962.297-4.594-.14 2.015-.441 3.538-2.878 3.538-5.826 0-2.948-1.523-5.385-3.538-5.827.632-.436 2.545-1.136 4.597-.136a7.979 7.979 0 0 1 2.662 5.655L16 8c0 2.37-1.03 4.499-2.668 5.963l-.002.001-.226.196a7.967 7.967 0 0 1-5.485 1.83A8 8 0 0 1 8 0h.03z"></path>
+                    </svg>
+                </a>
+            </div>
+            <ol itemscope=""
+                itemtype="https://schema.org/BreadcrumbList">
+
+                <!-- start breadcrumbs -->
+                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumbs__sep"><div class="breadcrumbs__crumb"><a itemprop="item" href="https://blogs.opera.com/security/" class="hover-line"><span itemprop="name" class="hover-line__element">Opera Security</span></a><meta itemprop="position" content="1"></div></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumbs__sep"><div class="breadcrumbs__crumb"><span itemprop="name" class="hover-line__element"><a href="https://blogs.opera.com/security/category/security/">Security</a></span><meta itemprop="position" content="1"></div></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumbs__sep"><div class="breadcrumbs__crumb"><span itemprop="name" class="hover-line__element">Protected with Opera Neon: Understanding agentic browser security</span><meta itemprop="position" content="1"></div></li>                <!-- end breadcrumbs -->
+
+            </ol>
+        </div>
+    </div>
+    <div class="wrapper container-fluid">
+        <div class="footer__content">
+            <div class="row">
+                <div class="col-xs-12 col-lg-2">
+                    <input id="hf-services-switcher"
+                           class="hf__dd-switcher hf-hide"
+                           type="checkbox">
+                    <h4 class="hf__heading">
+                        <label class="hf__label footer__label"
+                               for="hf-services-switcher">Services</label>
+                    </h4>
+                    <div class="hf__dd-content">
+                        <ul class="hf__links list-style--none">
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://addons.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Addons</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://auth.opera.com/"
+                                   target="_blank"
+                                   rel="nofollow noopener">
+                                    <span class="hover-line__element">Opera account</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://addons.opera.com/wallpapers"
+                                   target="_blank">
+                                    <span class="hover-line__element">Wallpapers</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/ads"
+                                   target="_blank">
+                                    <span class="hover-line__element">Opera Ads</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-2">
+                    <input id="hf-help-switcher"
+                           class="hf__dd-switcher hf-hide"
+                           type="checkbox">
+                    <h4 class="hf__heading">
+                        <label class="hf__label footer__label"
+                               for="hf-help-switcher">Help</label>
+                    </h4>
+                    <div class="hf__dd-content">
+                        <ul class="hf__links list-style--none">
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/help">
+                                    <span class="hover-line__element">Help &amp; support</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://blogs.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Opera blogs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://forums.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Opera forums</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://dev.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Dev.Opera</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://help.opera.com/en/faq/"
+                                   target="_blank">
+                                    <span class="hover-line__element">FAQ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-2">
+                    <input id="hf-legal-switcher"
+                           class="hf__dd-switcher hf-hide"
+                           type="checkbox">
+                    <h4 class="hf__heading">
+                        <label class="hf__label footer__label"
+                               for="hf-legal-switcher">Legal</label>
+                    </h4>
+                    <div class="hf__dd-content">
+                        <ul class="hf__links list-style--none">
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://security.opera.com/"
+                                   target="_blank"
+                                   rel="nofollow">
+                                    <span class="hover-line__element">Security</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/privacy"
+                                   rel="nofollow">
+                                    <span class="hover-line__element">Privacy</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/privacy/cookies"
+                                   rel="nofollow">
+                                    <span class="hover-line__element">Cookies policy</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/eula"
+                                   rel="nofollow">
+                                    <span class="hover-line__element">EULA</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/terms"
+                                   rel="nofollow">
+                                    <span class="hover-line__element">Terms of Service</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-2 mb4">
+                    <input id="hf-company-switcher"
+                           class="hf__dd-switcher hf-hide"
+                           type="checkbox">
+                    <h4 class="hf__heading">
+                        <label class="hf__label footer__label"
+                               for="hf-company-switcher">Company</label>
+                    </h4>
+                    <div class="hf__dd-content">
+                        <ul class="hf__links list-style--none">
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/about">
+                                    <span class="hover-line__element">About Opera</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/newsroom">
+                                    <span class="hover-line__element">Press info</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://jobs.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Jobs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://investor.opera.com/"
+                                   target="_blank">
+                                    <span class="hover-line__element">Investors</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/b2b">
+                                    <span class="hover-line__element">Become a partner</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hf__link hover-line"
+                                   href="https://www.opera.com/contact">
+                                    <span class="hover-line__element">Contact us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-3 col-lg-offset-1 brand-wrapper">
+                    <a class="hf--brand"
+                       href="https://www.opera.com/">
+
+                        <img alt="Opera"
+                             style="width: 13.2rem"
+                             src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/img/logo.e807fcd39b532b698412c37cd8017781.png"
+                             srcset="">
+
+                    </a>
+                    <p class="brand-wrapper__text">
+                        Innovate and inspire, uncover the unexpected, support open standards.
+                    </p>
+
+
+                    <p class="footer__follow-label">Follow Opera</p>
+                    <div class="footer__social-icons">
+
+
+                        <div class="footer__social-box">
+                            <ul class="footer__social-icons ">
+
+
+                                <li>
+                                    <a class="facebook"
+                                       href="https://www.facebook.com/Opera/"
+                                       rel="noopener nofollow"
+                                       target="_blank"
+                                       title="Opera - Facebook">
+                                        <svg width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 15.993 6.92547 19.3027 10.75 19.9028V14.3125H8.71875V12H10.75V10.2375C10.75 8.2325 11.9444 7.125 13.7717 7.125C14.6467 7.125 15.5625 7.28125 15.5625 7.28125V9.25H14.5538C13.56 9.25 13.25 9.86672 13.25 10.5V12H15.4688L15.1141 14.3125H13.25V19.9028C17.0745 19.3027 20 15.993 20 12Z"
+                                                  fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a class="twitter"
+                                       href="https://twitter.com/opera"
+                                       rel="noopener nofollow"
+                                       target="_blank"
+                                       title="Opera - Twitter">
+                                        <svg width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21 6.59819C20.3379 6.86913 19.6257 7.05239 18.8788 7.13423C19.6414 6.71257 20.2267 6.04538 20.5029 5.24908C19.7893 5.63973 18.9986 5.92313 18.1578 6.07588C17.4842 5.41378 16.5244 5 15.4616 5C13.4225 5 11.7687 6.52626 11.7687 8.40811C11.7687 8.67523 11.8014 8.93524 11.8648 9.18483C8.79565 9.04276 6.07436 7.68602 4.25282 5.62347C3.935 6.12672 3.75269 6.71257 3.75269 7.33705C3.75269 8.51918 4.40512 9.56278 5.39548 10.1738C4.79042 10.1563 4.2206 10.003 3.72294 9.74705C3.72267 9.76154 3.72267 9.77602 3.72267 9.79026C3.72267 11.4416 4.99614 12.8189 6.68521 13.1318C6.37565 13.2101 6.04875 13.2515 5.71248 13.2515C5.47397 13.2515 5.24291 13.2304 5.01763 13.1907C5.48747 14.5444 6.85101 15.5298 8.46736 15.5575C7.20325 16.4718 5.61113 17.0164 3.88047 17.0164C3.58303 17.0164 3.28835 17.0004 3 16.9687C4.63343 17.936 6.57505 18.5 8.66042 18.5C15.453 18.5 19.1677 13.3069 19.1677 8.80282C19.1677 8.65515 19.1641 8.50799 19.157 8.3621C19.8791 7.88173 20.5051 7.28164 21 6.59819Z"
+                                                  fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="youtube"
+                                       href="https://www.youtube.com/opera"
+                                       rel="noopener nofollow"
+                                       target="_blank"
+                                       title="Opera - Youtube">
+                                        <svg width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M18.2602 6.33881C18.9455 6.52131 19.4859 7.05553 19.6703 7.73326C20.0131 8.97116 19.9999 11.5515 19.9999 11.5515C19.9999 11.5515 19.9999 14.1187 19.6705 15.3567C19.4859 16.0343 18.9456 16.5687 18.2602 16.751C17.0081 17.0769 12 17.0769 12 17.0769C12 17.0769 7.00487 17.0769 5.73974 16.7381C5.05432 16.5556 4.51404 16.0213 4.32947 15.3437C4 14.1187 4 11.5385 4 11.5385C4 11.5385 4 8.97116 4.32947 7.73326C4.51391 7.05565 5.0675 6.50827 5.73962 6.32589C6.99169 6 11.9998 6 11.9998 6C11.9998 6 17.0081 6 18.2602 6.33881ZM14.57 11.5384L10.4053 13.9102V9.16668L14.57 11.5384Z"
+                                                  fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="linkedin"
+                                       href="https://www.linkedin.com/company/opera-software"
+                                       rel="noopener nofollow"
+                                       target="_blank"
+                                       title="Opera - LinkedIn">
+                                        <svg width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M5 4C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5ZM6.56756 6.90358C6.31045 7.14232 6.18188 7.44535 6.18188 7.81267C6.18188 8.17997 6.30677 8.48485 6.55654 8.72727C6.80631 8.96969 7.13321 9.09091 7.53726 9.09091H7.54828C7.96701 9.09091 8.30494 8.96969 8.56205 8.72727C8.81182 8.49218 8.93671 8.19834 8.93671 7.84573C8.93671 7.45637 8.80814 7.14049 8.55103 6.89807C8.30126 6.66298 7.97436 6.54545 7.57031 6.54545C7.15893 6.54545 6.82467 6.66482 6.56756 6.90358ZM6.32514 10.0937V17.4545H8.77142V10.0937H6.32514ZM12.5731 17.4545H10.1268C10.1415 15.236 10.1488 13.5133 10.1488 12.2865C10.1488 11.0597 10.1415 10.3287 10.1268 10.0937H12.5731V11.1405L12.562 11.1625H12.5731V11.1405C13.102 10.3251 13.8403 9.91735 14.7879 9.91735C15.6328 9.91735 16.3123 10.1983 16.8265 10.7603C17.3407 11.3223 17.5979 12.1469 17.5979 13.2342V17.4545H15.1516V13.5207C15.1516 12.4114 14.7402 11.8567 13.9174 11.8567C13.6015 11.8567 13.3389 11.9431 13.1295 12.1157C12.9202 12.2883 12.7641 12.4995 12.6612 12.7493C12.6025 12.8889 12.5731 13.0872 12.5731 13.3443V17.4545Z"
+                                                  fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a class="instagram"
+                                       href="https://www.instagram.com/opera/"
+                                       rel="noopener nofollow"
+                                       target="_blank"
+                                       title="Opera - Instagram">
+                                        <svg width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M6.76005 4.42003C7.26863 4.22229 7.85024 4.08724 8.70197 4.04847C9.55564 4.00905 9.8277 4 12.001 4C14.1736 4 14.4463 4.00969 15.2993 4.04847C16.1504 4.08659 16.732 4.22229 17.2412 4.42003C17.7666 4.62423 18.2132 4.89822 18.6578 5.34281C19.1024 5.78805 19.3757 6.23393 19.5806 6.75994C19.7783 7.2685 19.9134 7.85008 19.9522 8.70178C19.991 9.55477 20 9.82746 20 12C20 14.1725 19.991 14.4446 19.9522 15.2982C19.9141 16.1499 19.7783 16.7315 19.5806 17.2401C19.3757 17.7661 19.1024 18.2126 18.6578 18.6572C18.2125 19.1018 17.7666 19.3751 17.2406 19.58C16.732 19.7777 16.1504 19.9128 15.2987 19.9515C14.4457 19.991 14.1736 20 12.0003 20C9.8277 20 9.55564 19.9903 8.70197 19.9515C7.85024 19.9128 7.26928 19.7777 6.76005 19.58C6.23337 19.3751 5.78747 19.1018 5.34287 18.6572C4.89761 18.2126 4.62426 17.7661 4.42005 17.2401C4.2223 16.7315 4.08724 16.1499 4.04847 15.2982C4.00905 14.4452 4 14.1725 4 12C4 9.82746 4.00905 9.55477 4.04847 8.70178C4.08724 7.85008 4.2223 7.2685 4.42005 6.75994C4.62426 6.23328 4.89826 5.7874 5.34287 5.34281C5.78812 4.89822 6.23402 4.62423 6.76005 4.42003ZM8.76812 18.5118C7.98812 18.4763 7.56419 18.3464 7.28244 18.2365C6.90892 18.0911 6.64267 17.9179 6.36221 17.6381C6.08239 17.3583 5.90855 17.0921 5.7638 16.7186C5.65394 16.4368 5.52405 16.0129 5.4885 15.233C5.44973 14.3897 5.44198 14.1364 5.44198 12C5.44198 9.86366 5.45038 9.61099 5.4885 8.76705C5.52405 7.98708 5.65459 7.56382 5.7638 7.28143C5.9092 6.90792 6.08239 6.64169 6.36221 6.36123C6.64202 6.08143 6.90827 5.9076 7.28244 5.76285C7.56419 5.65299 7.98812 5.52311 8.76812 5.48757C9.61145 5.44879 9.86477 5.44104 12.0006 5.44104C14.137 5.44104 14.3897 5.44944 15.2336 5.48757C16.0136 5.52311 16.4369 5.65364 16.7193 5.76285C17.0929 5.9076 17.3591 6.08143 17.6396 6.36123C17.9194 6.64104 18.0926 6.90792 18.238 7.28143C18.3478 7.56317 18.4777 7.98708 18.5133 8.76705C18.552 9.61099 18.5598 9.86366 18.5598 12C18.5598 14.1357 18.552 14.389 18.5133 15.233C18.4777 16.0129 18.3472 16.4368 18.238 16.7186C18.0926 17.0921 17.9194 17.3583 17.6396 17.6381C17.3597 17.9179 17.0929 18.0911 16.7193 18.2365C16.4376 18.3464 16.0136 18.4763 15.2336 18.5118C14.3903 18.5506 14.137 18.5583 12.0006 18.5583C9.86477 18.5583 9.61145 18.5506 8.76812 18.5118ZM16.2714 8.68948C15.7409 8.68948 15.3111 8.25911 15.3111 7.72922C15.3111 7.19934 15.7409 6.76961 16.2714 6.76961C16.802 6.76961 17.2317 7.19934 17.2317 7.72922C17.2317 8.25911 16.8013 8.68948 16.2714 8.68948ZM7.89201 12C7.89201 14.2688 9.73118 16.1079 12.0001 16.1079C14.269 16.1079 16.1082 14.2688 16.1082 12C16.1082 9.73119 14.269 7.89209 12.0001 7.89209C9.73118 7.89209 7.89201 9.73119 7.89201 12ZM9.33398 12C9.33398 10.5273 10.5276 9.33313 12.0003 9.33313C13.4731 9.33313 14.6673 10.5273 14.6673 12C14.6673 13.4727 13.4731 14.6669 12.0003 14.6669C10.5276 14.6669 9.33398 13.4727 9.33398 12Z"
+                                                  fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer__bottom">
+            <div class="footer__company-box center-xs start-md color--black-30">
+                <p class="footer__company-box-p">© 1995-2022 Opera Norway </p>
+                <p class="footer__company-box-p">All rights reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/js/carousel.6388ca3c7889892d8c6271de51156fea.js"></script>
+<script src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/js/comments.987d727013f0a1144b838015b222c255.js"></script>
+<script src="https://www-static-blogs.operacdn.com/security/wp-content/themes/opera-2022/static/js/scripts.7363a77b680c1f263b9976b2d019bd89.js"></script>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/security/*"},{"not":{"href_matches":["/security/wp-*.php","/security/wp-admin/*","/security/wp-content/uploads/sites/6/*","/security/wp-content/*","/security/wp-content/plugins/*","/security/wp-content/themes/opera-2022/*","/security/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+</body>
+</html>

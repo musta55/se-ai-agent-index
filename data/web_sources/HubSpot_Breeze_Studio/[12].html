@@ -1,0 +1,576 @@
+<!doctype html><html lang="en-us"><head>
+    <meta charset="utf-8">
+    <title>HubSpot Incident Report: February 25, 2026</title><link rel="shortcut icon" href="//www.hubspot.com/Portals/53/favicon.ico"><meta name="description" content="HubSpot faced a service disruption on February 25, 2026, impacting access to specific workflows. Learn about the incident, its causes, and our commitment to improvement.">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<script nonce="W+fmgV6Gxz1Y/B7ushneCg==">hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="HubSpot faced a service disruption on February 25, 2026, impacting access to specific workflows. Learn about the incident, its causes, and our commitment to improvement.">
+    <meta property="og:title" content="HubSpot Incident Report: February 25, 2026">
+    <meta name="twitter:description" content="HubSpot faced a service disruption on February 25, 2026, impacting access to specific workflows. Learn about the incident, its causes, and our commitment to improvement.">
+    <meta name="twitter:title" content="HubSpot Incident Report: February 25, 2026">
+
+    
+
+    
+  <script id="hs-search-input__valid-content-types" type="application/json" nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+    [
+      
+        "SITE_PAGE",
+      
+        "LANDING_PAGE",
+      
+        "BLOG_POST",
+      
+        "LISTING_PAGE",
+      
+        "KNOWLEDGE_ARTICLE",
+      
+        "HS_CASE_STUDY"
+      
+    ]
+  </script>
+
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039601/1743583078269/template_main.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.css">
+<style>
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/regular.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/_hcms/googlefonts/Rubik/700.woff2") format("woff2"), url("/_hcms/googlefonts/Rubik/700.woff") format("woff");
+  }
+</style>
+
+    
+
+    
+
+
+
+
+
+<meta name="google-site-verification" content="6_pSYSrNEFvWTLvVpFU3N33SPEZ4yI0kMQdQ2lRgmVk">
+<link rel="amphtml" href="https://product.hubspot.com/blog/hubspot-incident-report-february-25-2026?hs_amp=true">
+
+<meta property="og:image" content="https://product.hubspot.com/hubfs/HubSpot%20Incident%20Report%20for%20October%2020%2c%202025%20(1).png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+
+<meta name="twitter:image" content="https://product.hubspot.com/hubfs/HubSpot%20Incident%20Report%20for%20October%2020%2c%202025%20(1).png">
+
+
+<meta property="og:url" content="https://product.hubspot.com/blog/hubspot-incident-report-february-25-2026">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://product.hubspot.com/blog/hubspot-incident-report-february-25-2026">
+<!-- Hotjar Tracking Code for https://product.hubspot.com/blog -->
+<script nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1781516,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<meta name="verify-v1" content="xbeB21cGkorGZrhb+m9jZ1A5EzqvmTulCKArOHsreUA=">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hubspotdev">
+<meta name="twitter:domain" content="http://dev.hubspot.com/">
+<meta name="twitter:app:name:iphone" content="HubSpot">
+
+<style>
+.blog-subscription .hs-form-required {display:none;}
+
+/* COMMENT OUT ON LAUNCH DAY  .body-container-wrapper {
+  padding-top: 45px !important;
+}*/
+#hs_form_target_module_140598461636723416 .hs-button {
+  margin-top: 10px;
+}
+</style>
+<!-- Added  by Margo - 03/13
+<style>
+body {padding-left:0px!important;padding-right:0px!important;}
+
+.blog-column-wrapper {
+  max-width: 890px!important;
+  padding-top:0px!important;}
+
+.post-header h2, .post-header h1 {
+  font-size: 2em!important;
+  padding-right:none!important;
+  line-height: 1.2em!important;
+  margin-top:15px!important;}
+
+.post-header h3 {
+  margin: 1em 0 1em 0!important;}
+
+.author-info {display:inline-block;}
+
+.author-avatar {
+  position: initial!important;}
+
+.author-avatar img {
+  max-width: 60px;
+  margin-right: 15px;}
+
+.post-item {
+  margin-bottom: 3em!important;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 3em;}
+
+@media (min-width: 768px) {
+.blog-column-wrapper .post-body p {
+  font-family:"proxima-nova", sans-serif!important;
+  font-size: 20px!important;
+  line-height:1.5!important;}
+}
+
+@media (max-width:670px){
+.post-header h2, .post-header h1 {padding-right:0px!important;}
+.post-body img {width:100%!important; margin:10px 0 10px 0!important;float:none!important;}
+.author-avatar {float:left;}
+.author-info {text-align:right;display:block;}
+.author-link {display:block;}
+}
+
+</style> -->
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://product.hubspot.com/blog/rss.xml">
+<meta name="twitter:domain" content="product.hubspot.com">
+<meta name="twitter:site" content="@HubSpotDev">
+<script src="//platform.linkedin.com/in.js" type="text/javascript" nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en-us">
+
+
+
+
+
+
+  <meta name="generator" content="HubSpot"></head>
+  <body>
+    <div class="body-wrapper   hs-content-id-209671057486 hs-blog-post hs-content-path-blog-hubspot-incident-report-february-25-2026 hs-content-name-hubspot-incident-report-february-25-2026 hs-blog-name-hubspot-product-blog-live hs-blog-id-6496795"><div data-global-resource-path="IL-HSBlog2/templates/partials/header.html"><header class="header">
+  <div class="header__container content-wrapper">
+
+    <div class="header__logo header__logo--main"><div id="hs_cos_wrapper_site_logo" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <span id="hs_cos_wrapper_site_logo_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="https://product.hubspot.com/blog" id="hs-link-site_logo_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg" class="hs-image-widget " height="50" style="height: auto;width:142px;border-width:0px;border:0px;" width="142" alt="HubSpot-logo-color" title="HubSpot-logo-color" srcset="https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=71&amp;height=25&amp;name=HubSpot-logo-color.jpg 71w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=142&amp;height=50&amp;name=HubSpot-logo-color.jpg 142w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=213&amp;height=75&amp;name=HubSpot-logo-color.jpg 213w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=284&amp;height=100&amp;name=HubSpot-logo-color.jpg 284w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=355&amp;height=125&amp;name=HubSpot-logo-color.jpg 355w, https://product.hubspot.com/hs-fs/hubfs/HubSpot-logo-color.jpg?width=426&amp;height=150&amp;name=HubSpot-logo-color.jpg 426w" sizes="(max-width: 142px) 100vw, 142px"></a></span>
+</div></div>
+    <ul class="header__tags"><li class="header__tags__item header__tags__item--active"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/ux">UX</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product">Product</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/product-management">Product Management</a></li><li class="header__tags__item "><a href="https://product.hubspot.com/blog/topic/culture">Culture</a></li></ul>
+    <div class="header__search header--element"><div id="hs_cos_wrapper_site_search" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="hs-search-field">
+
+    <div class="hs-search-field__bar">
+      <form data-hs-do-not-collect="true" action="/hs-search-results">
+        
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search...">
+
+        
+          
+            <input type="hidden" name="type" value="SITE_PAGE">
+          
+        
+          
+        
+          
+            <input type="hidden" name="type" value="BLOG_POST">
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+      </form>
+    </div>
+    <ul class="hs-search-field__suggestions"></ul>
+</div></div></div>
+    <button class="header__navigation--toggle"></button>
+  </div>
+</header></div><main class="body-container-wrapper">
+  <div class="body-container body-container--blog-post">
+
+    
+    <div class="content-wrapper">
+      <div class="blog-post__meta">
+        <div class="blog-post__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/HubSpot%20Incident%20Report%20for%20October%2020%2c%202025%20%281%29.png?width=815&amp;name=HubSpot%20Incident%20Report%20for%20October%2020,%202025%20%281%29.png');"></div>
+        <div class="blog-post__post-info"><a href="https://product.hubspot.com/blog/topic/engineering" class="post-tag">Engineering</a><h1><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">HubSpot Incident Report: February 25, 2026</span></h1>
+          <div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/shilpa-varma" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/shilpa.png?width=40&amp;height=40&amp;name=shilpa.png');"></span>
+        Shilpa Varma
+      </a><a href="https://product.hubspot.com/blog/author/kartik-vishwanath" class="blog-index__post-author">
+              <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg?width=40&amp;height=40&amp;name=E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg');"></span>
+              Kartik Vishwanath
+            </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 20, 2026</span>
+    </span>
+  </div>
+        </div>
+      </div>
+      <article class="blog-post">
+        <div class="blog-post__body">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p><span>On February 25, 2026, HubSpot experienced a service disruption affecting user access to specific types of workflows within our user interface. All backend workflow automations continued to execute normally without interruption - no automations were delayed, missed, or lost. We have completed a thorough analysis of this incident and are implementing targeted safeguards to prevent this class of failure from recurring.</span></p>
+<!--more--><h3><span style="color: #ff4800;">What Happened</span></h3>
+<p><span>Our engineering team deployed a configuration update to our permissions framework, intended to expand access to contact, company, order, and project-based workflows for certain account tiers. This required creating new, object-type-specific permission scopes to replace a broader shared scope.</span></p>
+<p><span>The new permission scopes were created and validated successfully in our staging environment. However, the corresponding user role assignments for these scopes were not promoted to production before the configuration went live. Without those role assignments, our access-control system could not confirm that users held the required permissions and defaulted to a restrictive access level.</span></p>
+<h3><span style="color: #ff4800;">Technical Impact Details</span></h3>
+<p><span>Because the new scopes were active in production without corresponding role assignments, the access-control system returned a restrictive permission level instead of the expected user-level access.</span></p>
+<ul>
+<li><span style="color: #444444;"><strong>Incorrect Permission Response</strong>: The access endpoint continued returning successful HTTP 200 responses, but with the wrong permission level. This meant standard error-rate monitoring did not flag the issue, and the deployment's automated health checks passed normally.</span></li>
+<li><span style="color: #444444;"><strong>UI Lockout</strong>: The frontend interpreted the restrictive permission level as the user lacking access, and stopped rendering workflow links for the affected object types. Users saw errors when attempting to open contact, company, order, or project workflows.</span></li>
+</ul>
+<h3><span style="color: #ff4800;">Customer Impact</span></h3>
+<p><span>Between approximately 3:43 PM EST and 4:20 PM EST, customers experienced the following disruptions:</span></p>
+<ul>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>Loss of UI Access</strong>: Users were unable to click into, view, edit, or manage contact, company, order, and project-based workflows.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>Unaffected Services</strong>: Deal-based, ticket-based, and data-driven workflows remained fully accessible throughout the incident.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>No Backend Impact</strong>: Workflow execution was entirely unaffected. All automations continued to run and process data as expected. No customer data was lost during this incident.</span></li>
+</ul>
+<h3><span style="color: #ff4800;">Timeline of Events</span></h3>
+<ul>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>3:10 PM EST</strong>:<strong> </strong>Deployment of the permission configuration update begins its initial rollout.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>3:43 PM EST</strong>: Deployment completes full rollout to production. UI access to contact, company, order, and project workflows begins failing across all customers.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>3:59 PM EST</strong>: Internal incident is officially declared after a surge in customer support reports.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>4:16 PM EST</strong>: Engineering teams initiate a full rollback of the configuration deployment.</span></li>
+<li style="color: #c7c7c7;"><span style="color: #444444;"><strong>4:20 PM EST</strong>: Rollback takes effect. UI access to all workflow types restored.</span></li>
+</ul>
+<h3><span style="color: #ff4800;">Our Response During the Incident</span></h3>
+<p><span>Upon identifying the scope of the UI lockout, our engineers traced the issue to the recent permissions configuration deployment. The team initiated a full automated rollback, reverting the system to its previous configuration state and restoring UI access for all affected workflow types.</span></p>
+<h3><span style="color: #ff4800;">What We're Doing to Improve</span></h3>
+<p><span><span style="font-weight: bold;">Pre-deployment scope validation</span>: We are adding automated checks to our deployment pipeline that will block any permission-scope configuration change from going live until the corresponding user role assignments are confirmed active in production. This directly addresses the root cause - the configuration should not have been deployable in its incomplete state.</span></p>
+<p><span><span style="font-weight: bold;">Accelerated automated test alerting</span>: Our automated test suite detected failures during the deployment's canary window, but the alerting threshold was configured to wait 60 minutes before paging engineers. We are reducing this threshold to trigger within minutes of consecutive failures. Additionally, we are correlating test failures with active deployments so that failures during a rollout window are automatically escalated.</span></p>
+<p><span><span style="font-weight: bold;">Real-time permission correctness monitoring</span>: The access endpoint returned successful HTTP 200 responses with incorrect data, which made this invisible to standard error-rate monitoring. We are building new metrics that track the ratio of user-level access grants versus restrictive responses, broken down by workflow object type. If any object type shows a sudden shift toward restricted access, our on-call engineers will be paged within minutes.</span></p>
+<h3><span style="color: #ff4800;">Our Commitment to Reliability</span></h3>
+<p><span>Workflows are central to how our customers run their businesses. Losing the ability to view and manage them - even briefly, and even while execution continues uninterrupted - is disruptive. We are applying the core lesson from this incident - our monitoring must verify correctness of responses, not just availability, across our critical customer-facing systems. </span><span>Thank you for your patience and continued trust in HubSpot.</span></p></span>
+        </div><div id="hs_cos_wrapper_share_post" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="share-post__container">
+  <div class="share-post"><a class="share-post__link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fhubspot-incident-report-february-25-2026" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter1" role="img"><title id="twitter1">Share on Twitter</title><g id="twitter1_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="share-post__link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fhubspot-incident-report-february-25-2026" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 264 512" aria-labelledby="facebook-f2" role="img"><title id="facebook-f2">Share on Facebook</title><g id="facebook-f2_layer"><path d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229" /></g></svg></span></a><a class="share-post__link" href="mailto:info@example.com?&amp;subject=&amp;body=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fhubspot-incident-report-february-25-2026" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="envelope3" role="img"><title id="envelope3">Share via email</title><g id="envelope3_layer"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></g></svg></span></a><a class="share-post__link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fproduct.hubspot.com%2Fblog%2Fhubspot-incident-report-february-25-2026" rel="noopener" target="_blank"><span id="hs_cos_wrapper_share_post__4" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon share-post__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="linkedin-in4" role="img"><title id="linkedin-in4">Share on LinkedIn</title><g id="linkedin-in4_layer"><path d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z" /></g></svg></span></a></div>
+</div></div></article>
+    </div><div class="blog-recent-posts">
+      <div class="content-wrapper">
+        <h2 class="blog-recent-posts__heading">Recommended Articles</h2>
+        <div class="blog-recent-posts__list">
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Critsit%20March%202025.png?width=805&amp;name=Critsit%20March%202025.png');" href="https://product.hubspot.com/blog/hubspot-incident-report-for-march-2-2025"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/hubspot-incident-report-for-march-2-2025">HubSpot Incident Report for March 2, 2025</a></h2><div class="blog-index__post-summary">
+          HubSpot allows users to connect their third-party inboxes (such as Outlook) to sync emails and send 1:1 messages. When a connection error occurs, ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/kartik-vishwanath" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg?width=40&amp;height=40&amp;name=E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg');"></span>
+        Kartik Vishwanath
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Mar 20, 2025</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Critsit%20Aug%2025.png?width=805&amp;name=Critsit%20Aug%2025.png');" href="https://product.hubspot.com/blog/incident-report-august-7th-2025"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/incident-report-august-7th-2025">HubSpot Incident Report: August 7th 2025</a></h2><div class="blog-index__post-summary">
+          On Thursday, August 7, 2025, between approximately 1:45 PM EDT and 2:05 PM EDT, HubSpot customers experienced widespread errors when accessing CRM ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/kartik-vishwanath" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg?width=40&amp;height=40&amp;name=E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg');"></span>
+        Kartik Vishwanath
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Aug 22, 2025</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+  <article class="blog-index__post effect-scale"><a class="blog-index__post-image" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/Critsit%20%281%29-1.png?width=805&amp;name=Critsit%20%281%29-1.png');" href="https://product.hubspot.com/blog/hubspot-incident-report-march-27th-2025"></a><div class="blog-index__post-content">
+      <div><span class="post-tag"><a href="https://product.hubspot.com/blog/topic/engineering">Engineering</a></span></div>
+      <h2><a href="https://product.hubspot.com/blog/hubspot-incident-report-march-27th-2025">HubSpot Incident Report: March 27th 2025</a></h2><div class="blog-index__post-summary">
+          On Thursday, March 27, 2025, between approximately 15:00 UTC and 17:50 UTC, some HubSpot customers experienced delays in sending emails, including ...
+        </div><div class="blog-index__post-meta">
+    <div class="blog-index__post-author-wrapper">
+      <a href="https://product.hubspot.com/blog/author/kartik-vishwanath" class="blog-index__post-author">
+        <span class="blog-index__post-author-avatar with-default-avatar" style="background-image: url('https://product.hubspot.com/hs-fs/hubfs/E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg?width=40&amp;height=40&amp;name=E01L6J4CPS8-U03AUUJCQ3X-0c0b0a2c55a8-512.jpeg');"></span>
+        Kartik Vishwanath
+      </a></div>
+    <span class="blog-index__post-date-container">
+      on
+      <span class="blog-index__post-date">Apr 8, 2025</span>
+    </span>
+  </div>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+    
+    <div class="content-wrapper"><div data-global-resource-path="IL-HSBlog2/templates/partials/promotion.html"><section class="blog-section promotion-section"><span id="hs_cos_wrapper_promotion_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Join our subscribers</h2>
+<p>Sign up here and we'll keep you updated on the latest in product, UX, and engineering from HubSpot.</p></span><a href="#subscription-popup" class="button popup--trigger"><div id="hs_cos_wrapper_promotion_button_text" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_promotion_button_text_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Subscribe to the newsletter</span></div></a>
+</section>
+
+<div class="popup" id="subscription-popup">
+  <div class="popup__backdrop popup__close"></div>
+    <div class="popup__scroller popup__close">
+    <div class="popup__box">
+      <a href="#" class="prev-step">Back</a>
+      <div class="step1"><span id="hs_cos_wrapper_popup_intro" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2>Get Connected</h2>
+<p>The latest engineering, UX, and product news from the HubSpot Product Blog, straight to your inbox.</p></span></div><div id="hs_cos_wrapper_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+<span id="hs_cos_wrapper_blog_subscribe_blog_subscribe" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_subscribe">
+<div id="hs_form_target_blog_subscribe_blog_subscribe_6706"></div>
+
+
+
+</span></div><button class="next-step step1">Next</button>
+      <button class="popup__close subscription-popup__close">
+        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99889 8.01872L1.01876 13.9988L-0.000976562 12.9791L5.97915 6.99899L-0.000101273 1.01974L1.01963 0L6.99889 5.97925L12.9781 0L13.9979 1.01974L8.01862 6.99899L13.9987 12.9791L12.979 13.9988L6.99889 8.01872Z" fill="#33475B" />
+        </svg>
+      </button>
+      <p class="popup__bottom-promo">
+        <svg width="22" height="23" viewbox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0" mask-type="alpha" maskunits="userSpaceOnUse" x="0" y="0" width="22" height="23">
+          <path d="M0 0H21.8794V22.8287H0V0Z" fill="white" />
+          </mask>
+          <g mask="url(#mask0)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8944 16.4506C14.1997 16.4506 12.8256 15.0828 12.8256 13.3954C12.8256 11.708 14.1997 10.34 15.8944 10.34C17.5889 10.34 18.9629 11.708 18.9629 13.3954C18.9629 15.0828 17.5889 16.4506 15.8944 16.4506ZM16.813 7.51334V4.79561C17.5255 4.46048 18.0247 3.74279 18.0247 2.90985V2.84706C18.0247 1.69769 17.08 0.757181 15.9258 0.757181H15.8627C14.7083 0.757181 13.7636 1.69769 13.7636 2.84706V2.90985C13.7636 3.74279 14.263 4.46048 14.9754 4.79561V7.51347C13.9147 7.67657 12.9454 8.1123 12.1455 8.7534L4.65097 2.94849C4.7003 2.75958 4.73491 2.56481 4.73519 2.36041C4.73687 1.05841 3.67821 0.00167624 2.37054 1.99171e-06C1.06301 -0.00167226 0.0015434 1.05241 2.00037e-06 2.35441C-0.00167953 3.65628 1.05698 4.71301 2.36465 4.71469C2.79078 4.71525 3.1851 4.5947 3.53093 4.39895L10.9033 10.1093C10.2762 11.0516 9.90911 12.1803 9.90911 13.3954C9.90911 14.6675 10.3127 15.8441 10.9948 16.812L8.75278 19.0443C8.57552 18.9914 8.39153 18.9543 8.19675 18.9543C7.1224 18.9543 6.25123 19.8217 6.25123 20.8916C6.25123 21.9614 7.1224 22.8287 8.19675 22.8287C9.27139 22.8287 10.1424 21.9614 10.1424 20.8916C10.1424 20.6978 10.1053 20.5144 10.052 20.3381L12.2698 18.1299C13.2765 18.8952 14.5301 19.3546 15.8944 19.3546C19.1998 19.3546 21.8795 16.6865 21.8795 13.3954C21.8795 10.4159 19.6812 7.9545 16.813 7.51334Z" fill="#F3785B" />
+          </g>
+        </svg>
+        <span>Not using <a href="https://www.hubspot.com/">HubSpot</a> yet?</span>
+      </p>
+    </div>
+  </div>
+</div></div></div>
+  </div>
+</main><div data-global-resource-path="IL-HSBlog2/templates/partials/footer.html"><footer class="footer">
+  <div class="footer__container content-wrapper"><div id="hs_cos_wrapper_general_links" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_general_links_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_general_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/jobs/departments/product-and-engineering" role="menuitem" target="_blank" rel="noopener">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hubspot.com/internet-marketing-company" role="menuitem" target="_blank" rel="noopener">Our Story</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://designers.hubspot.com/blog" role="menuitem" target="_blank" rel="noopener">Developer Blog</a></li>
+ </ul>
+</div></span></div><div id="hs_cos_wrapper_footer_social" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="social-links"><a class="social-links__link" href="https://www.youtube.com/channel/UCScgU9OgnrPg7eNCQ6ia80g" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512" aria-labelledby="youtube5" role="img"><title id="youtube5">Follow us on YouTube</title><g id="youtube5_layer"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" /></g></svg></span></a><a class="social-links__link" href="https://twitter.com/HubSpotDev" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__2" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" aria-labelledby="twitter6" role="img"><title id="twitter6">Follow us on Twitter</title><g id="twitter6_layer"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" /></g></svg></span></a><a class="social-links__link" href="https://www.instagram.com/hubspotlife" rel="noopener" target="_blank"><span id="hs_cos_wrapper_footer_social__3" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon social-links__icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" aria-labelledby="instagram7" role="img"><title id="instagram7">Follow us on Instagram</title><g id="instagram7_layer"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" /></g></svg></span></a></div></div><!--LEGAL LINKS --><div id="hs_cos_wrapper_legal_menu" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div id="hs_menu_wrapper_legal_links_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+   <ul role="menu">
+     <li><a href="https://www.hubspot.com/legal-stuff">Legal Stuff</a></li>
+     <li><a href="https://www.hubspot.com/privacy-policy">Privacy Policy</a></li>
+     <li class="hs-footer-cookie-settings" hidden>
+       <a href=""></a>
+     </li>
+   </ul>
+</div></div><div class="footer__copyright"><div id="hs_cos_wrapper_footer_copyright" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_copyright_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><a href="https://www.hubspot.com/" target="_blank" rel="noopener"><img src="https://www.hubspot.com/hubfs/HubSpot_Logos/HSLogo_gray.svg" alt="HubSpot Logo"></a>
+<p>Copyright © 2024 HubSpot, Inc.</p></span></div></div>
+  </div>
+</footer></div></div><div data-global-resource-path="IL-HSBlog2/templates/partials/search.html"><div class="popup" id="search-popup" data-blog-id="6496795">
+  <div class="popup__backdrop popup__close"></div>
+  <div class="search-popup__topbar">
+    <div class="content-wrapper search-popup__wrapper">
+      <p class="search-popup__term-line">Search Term: <span class="search-popup__term"></span></p>
+      <div class="search-popup__scope">
+        <label>
+          <input type="radio" class="search-popup__scope__choice" name="search-scope" value="SITE">
+          <i></i>
+          Search HubSpot.com
+        </label>
+        <label>
+          <input type="radio" class="search-popup__scope__choice search-popup__scope__choice--default" name="search-scope" value="BLOG" checked>
+          <i></i>
+          Search the blog
+        </label>
+      </div>
+      <button class="popup__close search-popup__close">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70718 11.7073L18 20.0002L19.4142 18.5859L11.1214 10.2931L19.4144 2.00015L18.0002 0.585938L9.70718 8.87891L1.41421 0.585938L0 2.00015L8.29297 10.2931L0.000150454 18.5859L1.41436 20.0002L9.70718 11.7073Z" fill="white" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="popup__scroller popup__close">
+    <ul class="search-popup__result"></ul>
+    <button class="search-popup__load-more">Load more</button>
+    <div class="lds-ring search-popup__spinner"><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+<template id="search-popup__result-template">
+  <li>
+    <h2><a class="search-popup__result-link"></a></h2>
+    <p class="search-popup__result-description"></p>
+  </li>
+</template></div><script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+    <script nonce="W+fmgV6Gxz1Y/B7ushneCg==">hsjQuery = window['jQuery'];</script>
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<script src="https://product.hubspot.com/hubfs/hub_generated/template_assets/1/35734039149/1743583082755/template_main.min.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<script nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+var hsVars = hsVars || {}; hsVars['language'] = 'en-us';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-2712622/1778089556270/module_search_input.min.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+
+  <script data-hs-allowed="true" nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+      hbspt.forms.create({
+          portalId: '51294',
+          formId: 'd59f9bdf-8db8-41d7-82bb-d15dd985a4f3',
+          formInstanceId: '6706',
+          pageId: '209671057486',
+          region: 'na1',
+          
+          pageName: 'HubSpot Incident Report: February 25, 2026',
+          
+          contentType: 'blog-post',
+          
+          formsBaseUrl: '/_hcms/forms/',
+          
+          
+          inlineMessage: "Thanks for subscribing!",
+          
+          css: '',
+          target: '#hs_form_target_blog_subscribe_blog_subscribe_6706',
+          
+          formData: {
+            cssClass: 'hs-form stacked'
+          }
+      });
+  </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript" nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/product.hubspot.com\/blog\/hubspot-incident-report-february-25-2026"]);
+_hsq.push(["setPageId", "209671057486"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 209671057486,
+    "legacyPageId": "209671057486",
+    "contentFolderId": null,
+    "contentGroupId": 6496795,
+    "abTestId": null,
+    "languageVariantId": 209671057486,
+    "languageCode": "en-us",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/51294.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript" nonce="W+fmgV6Gxz1Y/B7ushneCg==">
+var hsVars = {
+    render_id: "c87d123b-2a93-4a65-af10-1e15c6053d0e",
+    ticks: 1778120805634,
+    page_id: 209671057486,
+    
+    content_group_id: 6496795,
+    portal_id: 51294,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en-us",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "209671057486",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+
+
+
+<script data-gtm-id="GTM-T7FPMN" src="https://www.hubspot.com/wt-assets/static-files/compliance/index.js" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=vxukm97zn1wq1yjoeioklg" async="true" nonce="W+fmgV6Gxz1Y/B7ushneCg=="></script>
+<div id="fb-root"></div>
+  <script nonce="W+fmgV6Gxz1Y/B7ushneCg==">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script nonce="W+fmgV6Gxz1Y/B7ushneCg==">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

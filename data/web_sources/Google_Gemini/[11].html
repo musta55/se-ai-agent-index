@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction {#intro} | eng-practices</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Introduction {#intro}" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Google’s Engineering Practices documentation" />
+<meta property="og:description" content="Google’s Engineering Practices documentation" />
+<link rel="canonical" href="https://google.github.io/eng-practices/review/" />
+<meta property="og:url" content="https://google.github.io/eng-practices/review/" />
+<meta property="og:site_name" content="eng-practices" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction {#intro}" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Google’s Engineering Practices documentation","headline":"Introduction {#intro}","url":"https://google.github.io/eng-practices/review/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/eng-practices/assets/css/style.css?v=3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/eng-practices/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://google.github.io/eng-practices/">eng-practices</a></h1>
+      
+
+      
+<h2 id="intro">Introduction</h2>
+
+<p>A code review is a process where someone other than the author(s) of a piece of
+code examines that code.</p>
+
+<p>At Google, we use code review to maintain the quality of our code and products.</p>
+
+<p>This documentation is the canonical description of Google’s code review
+processes and policies.</p>
+
+<p>This page is an overview of our code review process. There are two other large
+documents that are a part of this guide:</p>
+
+<ul>
+  <li><strong><a href="/eng-practices/review/reviewer/">How To Do A Code Review</a></strong>: A detailed guide for code
+reviewers.</li>
+  <li><strong><a href="/eng-practices/review/developer/">The CL Author’s Guide</a></strong>: A detailed guide for
+developers whose CLs are going through review.</li>
+</ul>
+
+<h2 id="look_for">What Do Code Reviewers Look For?</h2>
+
+<p>Code reviews should look at:</p>
+
+<ul>
+  <li><strong>Design</strong>: Is the code well-designed and appropriate for your system?</li>
+  <li><strong>Functionality</strong>: Does the code behave as the author likely intended? Is
+the way the code behaves good for its users?</li>
+  <li><strong>Complexity</strong>: Could the code be made simpler? Would another developer be
+able to easily understand and use this code when they come across it in the
+future?</li>
+  <li><strong>Tests</strong>: Does the code have correct and well-designed automated tests?</li>
+  <li><strong>Naming</strong>: Did the developer choose clear names for variables, classes,
+methods, etc.?</li>
+  <li><strong>Comments</strong>: Are the comments clear and useful?</li>
+  <li><strong>Style</strong>: Does the code follow our
+<a href="http://google.github.io/styleguide/">style guides</a>?</li>
+  <li><strong>Documentation</strong>: Did the developer also update relevant documentation?</li>
+</ul>
+
+<p>See <strong><a href="/eng-practices/review/reviewer/">How To Do A Code Review</a></strong> for more information.</p>
+
+<h3 id="best_reviewers">Picking the Best Reviewers</h3>
+
+<p>In general, you want to find the <em>best</em> reviewers you can who are capable of
+responding to your review within a reasonable period of time.</p>
+
+<p>The best reviewer is the person who will be able to give you the most thorough
+and correct review for the piece of code you are writing. This usually means the
+owner(s) of the code, who may or may not be the people in the OWNERS file.
+Sometimes this means asking different people to review different parts of the
+CL.</p>
+
+<p>If you find an ideal reviewer but they are not available, you should at least CC
+them on your change.</p>
+
+<h3 id="in_person">In-Person Reviews (and Pair Programming)</h3>
+
+<p>If you pair-programmed a piece of code with somebody who was qualified to do a
+good code review on it, then that code is considered reviewed.</p>
+
+<p>You can also do in-person code reviews where the reviewer asks questions and the
+developer of the change speaks only when spoken to.</p>
+
+<h2 id="seealso">See Also</h2>
+
+<ul>
+  <li><a href="/eng-practices/review/reviewer/">How To Do A Code Review</a>: A detailed guide for code
+reviewers.</li>
+  <li><a href="/eng-practices/review/developer/">The CL Author’s Guide</a>: A detailed guide for developers
+whose CLs are going through review.</li>
+</ul>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/google/eng-practices/edit/master/review/index.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
