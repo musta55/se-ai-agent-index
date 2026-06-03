@@ -92,6 +92,7 @@ cd se-ai-agent-index
 
 ### Tool Structure
 
+```
 se-ai-agent-index/
 ├── se_index.sh                  Main CLI (run from project root)
 ├── index_prompt.md              Research methodology & JSON schema
@@ -100,7 +101,7 @@ se-ai-agent-index/
 │   ├── Indexing/                Raw SE index JSON files (one per agent)
 │   │   ├── <Agent_Name>_se_index.json   SE index output per agent
 │   │   └── pull_sources.py              Downloads reference URLs into data/web_sources/
-│   └── web_sources/             Cached reference files — auto-populated after Index Creation
+│   └── web_sources/             Cached reference files — auto-populated after index creation
 │       └── <Agent_Name>/        One folder per agent ([N].html / [N].md / [N].yml)
 └── tool/
     ├── se_index_core.py         Shared q-id logic
@@ -108,6 +109,7 @@ se-ai-agent-index/
     ├── build_query_index.py     Builds query_index.json from curated Excel
     ├── query_index.json         Generated: (agent, q-id) → summary + evidence
     └── query_runner.py          Query backend (called by se_index.sh)
+```
 
 ### Setup
 
