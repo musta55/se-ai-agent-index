@@ -8,7 +8,7 @@ A dataset and retrieval tool for analyzing **Software Engineering (SE) practices
 
 ### Final Index (XLSX)
 
-- **Location:** [`data/dataset/Index.xlsx`](data/dataset/Index.xlsx) or 
+- **Location:** [`data/dataset/Index.xlsx`](data/dataset/Index.xlsx) or [`data/dataset/Index.pdf`](data/dataset/Index.pdf)
 - Manually curated and validated final index
 - 13 agents × 7 SE dimensions in a structured table
 - Each cell contains information items (summarized findings with source evidence)
