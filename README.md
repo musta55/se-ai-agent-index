@@ -11,7 +11,7 @@ A dataset and retrieval tool for analyzing **Software Engineering (SE) practices
 - **Location:** [`data/dataset/Index.xlsx`](data/dataset/Index.xlsx)
 - Manually curated and validated final index
 - 13 agents × 7 SE dimensions in a structured table
-- Each cell contains summarized findings with source evidence
+- Each cell contains information items (summarized findings with source evidence)
 
 ### Final JSON
 
@@ -23,12 +23,12 @@ A dataset and retrieval tool for analyzing **Software Engineering (SE) practices
 
 ### How to Use the Final Index
 
-The Final Index is organized as a matrix with agent metadata followed by SE dimension columns:
+The Final Index is organized as a table with agent metadata followed by SE dimension columns:
 
 - **Rows (13):** One row per indexed agent — name, description, and repository metadata
 - **Columns:** Agent description, metadata, then 7 SE dimensions — SE Methodology, Code Review, Testing, CI/CD, Issue Resolution, Communication, and Documentation
 
-13 agents indexed across 7 SE dimensions: SE Methodology, Code Review, Testing, CI/CD, Issue Resolution, Communication, and Documentation. Each dimension contains information about four sub-dimensions: **Practices**, **Tools**, **Stakeholders**, and **Others**.
+13 agents indexed across 7 SE dimensions. Each dimension contains information about four sub-dimensions: **Practices**, **Tools**, **Stakeholders**, and **Others**.
 
 ---
 
@@ -56,18 +56,18 @@ Each file in [`data/Indexing/`](data/Indexing/) follows this structure. Every su
 
 ---
 
-### Examples from the Dataset
+### Examples Used in the Paper
 
 | Agent Name              | Example In the Paper                                                                                                                                                                                                                                                                           | Reference                                                                                                                                                                       |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HubSpot Breeze Studio   | Adopts the[Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications) strategy, prioritizing integration tests as the best balance between confidence and maintenance cost                                                                                       | [kentcdodds.com/blog/the-testing-trophy-and-testing-classifications](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications)                                   |
-| IBM WatsonX Orchestrate | Uses [OpenTelemetry](https://opentelemetry.io/) to trace agent trajectories and monitor hallucinations and token usage                                                                                                                                                                           | [community.ibm.com/.../debug-with-confidence](https://community.ibm.com/community/user/blogs/bruno-fernandes-dos-santos/2026/04/13/debug-with-confidence-the-new-debug-experience) |
+| HubSpot Breeze Studio   | Adopts the [Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications) strategy, prioritizing integration tests as the best balance between confidence and maintenance cost                                                                                       | [kentcdodds.com/blog/the-testing-trophy-and-testing-classifications](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications)                                   |
+| IBM WatsonX Orchestrate | Uses [OpenTelemetry](https://opentelemetry.io/) to trace agent trajectories and monitor hallucinations and token usage                                                                                                                                                                             | [community.ibm.com/.../debug-with-confidence](https://community.ibm.com/community/user/blogs/bruno-fernandes-dos-santos/2026/04/13/debug-with-confidence-the-new-debug-experience) |
 | Browser Use             | Supports two sandboxing strategies: (1) only risky operations run in a sandbox while the agent runs on the backend, or (2) the entire agent runs in a sandbox with a proxy holding all API keys; migrated from (1) to (2) for scalability and security                                         | [browser-use.com/posts/two-ways-to-sandbox-agents](https://browser-use.com/posts/two-ways-to-sandbox-agents)                                                                       |
-| IBM WatsonX Orchestrate | The[Agent Development Kit (ADK)](https://developer.watson-orchestrate.ibm.com/) ships with a built-in red-teaming command that simulates 15+ attack types, including prompt injection and instruction override                                                                                    | [developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability](https://developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability)                                         |
-| HubSpot Breeze Studio   | Migrated its code-review system from[Sidekick](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) to [Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution), a Java-based agent framework; the migration reduced time-to-feedback by 90% | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                               |
-| Browser Use             | Uses[Gemini 2.5 Flash](https://deepmind.google/models/gemini/) as an [LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate whether web agents successfully completed browsing tasks, achieving 87% alignment with human labels                                                                | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system)                                                     |
-| HubSpot Breeze Studio   | Uses[LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate code-review comments produced by the [Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) pipeline                                                                                               | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                               |
-| HubSpot Breeze Studio   | The[Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) pipeline reviewed 50,000+ pull requests; CI/CD restructuring cut build times from 10–15 minutes to 2–3 minutes using caching and a [Kubernetes](https://kubernetes.io/)-backed setup                    | [product.hubspot.com/blog/cloud-coding-agents-at-hubspot](https://product.hubspot.com/blog/cloud-coding-agents-at-hubspot)                                                         |
+| IBM WatsonX Orchestrate | The [Agent Development Kit (ADK)](https://developer.watson-orchestrate.ibm.com/) ships with a built-in red-teaming command that simulates 15+ attack types, including prompt injection and instruction override                                                                                    | [developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability](https://developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability)                                         |
+| HubSpot Breeze Studio   | Migrated its code-review system from [Sidekick](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) to [Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution), a Java-based agent framework; the migration reduced time-to-feedback by 90% | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                               |
+| Browser Use             | Uses [Gemini 2.5 Flash](https://deepmind.google/models/gemini/) as an [LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate whether web agents successfully completed browsing tasks, achieving 87% alignment with human labels                                                                | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system)                                                     |
+| HubSpot Breeze Studio   | Uses [LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate code-review comments produced by the [Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) pipeline                                                                                               | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                               |
+| HubSpot Breeze Studio   | The [Aviator](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) pipeline reviewed 50,000+ pull requests; CI/CD restructuring cut build times from 10–15 minutes to 2–3 minutes using caching and a [Kubernetes](https://kubernetes.io/)-backed setup                    | [product.hubspot.com/blog/cloud-coding-agents-at-hubspot](https://product.hubspot.com/blog/cloud-coding-agents-at-hubspot)                                                         |
 | Glean Agents            | Evaluates agents against curated datasets of real-world examples graded on binary sub-metrics: completeness, tone, and groundedness                                                                                                                                                            | [glean.com/blog/enterprise-agent-evaluation-guide](https://www.glean.com/blog/enterprise-agent-evaluation-guide)                                                                   |
 | Glean Agents            | PR Review agents scan code changes, flag risk areas, and produce prioritized checklists to keep review quality consistent at scale                                                                                                                                                             | [glean.com/agent-library/pull-request-review](https://www.glean.com/agent-library/pull-request-review)                                                                             |
 | Anthropic Claude Code   | Illustrates rapid development and deployment: the team builds functional prototypes daily using parallel agents and iterative feedback and refinement rather than relying on heavy and static mocks/Figma designs and Product Requirement Documents (PRDs)                                     | [newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny)                     |
@@ -103,7 +103,7 @@ se-ai-agent-index/
 │   │   └── pull_sources.py              Downloads reference URLs into data/web_sources/
 │   └── web_sources/             Cached reference files — gitignored, auto-populated
 │       └── <Agent_Name>/        One folder per agent ([N].html / [N].md / [N].yml)
-└── Tool/
+└── tool/
     ├── se_index_core.py         Shared q-id logic
     ├── agents_config.json       Agent registry (id, name, status, reviewed)
     ├── build_query_index.py     Builds query_index.json from curated Excel
@@ -136,7 +136,7 @@ pip install openpyxl
 # → HubSpot Breeze Studio, IBM WatsonX Orchestrate, Anthropic Claude Code, ...
 
 # Rebuild query_index.json from the curated Excel
-python3 Tool/build_query_index.py
+python3 tool/build_query_index.py
 ```
 
 ---
@@ -158,7 +158,7 @@ pip install anthropic openpyxl
 
 1. **Index** — `./se_index.sh index "New Agent"` researches the agent and writes `data/Indexing/new_agent_se_index.json` with embedded q-ids, then automatically downloads all reference sources to `data/web_sources/New_Agent/`.
 2. **Curate** — Manually transfer data into `data/dataset/Index.xlsx`, verifying each claim against downloaded sources in `data/web_sources/`.
-3. **Build index** — `python3 Tool/build_query_index.py` rebuilds `Tool/query_index.json`.
+3. **Build index** — `python3 tool/build_query_index.py` rebuilds `tool/query_index.json`.
 4. **Verify** — `./se_index.sh query "New Agent" "q-1"`.
 
 ```bash

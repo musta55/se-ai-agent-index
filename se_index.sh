@@ -10,7 +10,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENTS_CONFIG="$SCRIPT_DIR/Tool/agents_config.json"
+AGENTS_CONFIG="$SCRIPT_DIR/tool/agents_config.json"
 PULL_SOURCES="$SCRIPT_DIR/data/Indexing/pull_sources.py"
 RESEARCH_PROMPT="$SCRIPT_DIR/index_prompt.md"
 ENV_FILE="$SCRIPT_DIR/.env"
@@ -111,7 +111,7 @@ cmd_query() {
         error "Usage: $0 query \"Agent Name\" \"q-{id}\"\nExample: $0 query \"HubSpot Breeze Studio\" \"q-3\""
 
     check_python
-    python3 "$SCRIPT_DIR/Tool/query_runner.py" "$agent_name" "$query_id"
+    python3 "$SCRIPT_DIR/tool/query_runner.py" "$agent_name" "$query_id"
 }
 
 # ── Command: list queries for an agent ────────────────────────────────────────
@@ -122,9 +122,9 @@ cmd_list_queries() {
         error "Usage: $0 list-queries \"Agent Name\""
 
     check_python
-    local index_path="$SCRIPT_DIR/Tool/query_index.json"
+    local index_path="$SCRIPT_DIR/tool/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 Tool/build_query_index.py from the project root"
+        error "query_index.json not found. Run: python3 tool/build_query_index.py from the project root"
     fi
 
     python3 - "$agent_name" "$index_path" <<'PYEOF'
@@ -150,9 +150,9 @@ PYEOF
 
 cmd_agents() {
     check_python
-    local index_path="$SCRIPT_DIR/Tool/query_index.json"
+    local index_path="$SCRIPT_DIR/tool/query_index.json"
     if [[ ! -f "$index_path" ]]; then
-        error "query_index.json not found. Run: python3 Tool/build_query_index.py from the project root"
+        error "query_index.json not found. Run: python3 tool/build_query_index.py from the project root"
     fi
 
     python3 - "$index_path" <<'PYEOF'
@@ -390,7 +390,7 @@ ${BOLD}FULL WORKFLOW${RESET}
   # → data/dataset/Index.xlsx (manual curation + verification)
 
   # Build query index from curated spreadsheet:
-  python3 Tool/build_query_index.py   # builds Tool/query_index.json from Excel
+  python3 tool/build_query_index.py   # builds tool/query_index.json from Excel
 
   # Query the index for verification:
   ./se_index.sh query        "HubSpot Breeze Studio" "q-3"
@@ -402,8 +402,8 @@ ${BOLD}FILES${RESET}
   .env                                   API key (gitignored)
   .env.example                           Template — copy to .env
   index_prompt.md                        Research methodology + JSON schema (8 SE areas)
-  Tool/agents_config.json                Registry: id, name, indexing_status, reviewed
-  Tool/query_index.json                  Generated: (agent, q-id) → summary + evidence
+  tool/agents_config.json                Registry: id, name, indexing_status, reviewed
+  tool/query_index.json                  Generated: (agent, q-id) → summary + evidence
   data/Indexing/<name>_se_index.json     SE index output per agent
   data/web_sources/<name>/[N].html|md    Cached reference files (gitignored)
   data/dataset/Index.xlsx                Master dataset (manually curated)
