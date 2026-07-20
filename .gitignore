@@ -20,6 +20,7 @@ build/
 *.swp
 *.swo
 *~
+.claude/
 
 # Outputs (optional - comment out if you want to track these)
 outputs/*.json
