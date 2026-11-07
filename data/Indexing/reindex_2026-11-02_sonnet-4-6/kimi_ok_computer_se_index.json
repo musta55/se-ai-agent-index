@@ -1,0 +1,827 @@
+{
+  "Agent_Name": "Kimi OK Computer",
+  "Description": [
+    {
+      "q_id": "q_1",
+      "Summary": "Kimi OK Computer is an agentic AI mode embedded in Moonshot AI's Kimi chatbot platform, launched in alpha on September 26, 2025. It is a computer-use and browser agent capable of autonomously generating multi-page websites, editable slides, and reports from simple natural-language prompts. Built on the Kimi K2 mixture-of-experts model, it operates through a virtualized computer environment with over 20 built-in tools including a file system, web browser, terminal, and code and image generation. It is deployed as a web application feature (closed source) on kimi.com and offers freemium pricing with paid tiers.",
+      "evidence": [
+        {
+          "quote": "Kimi released 'OK Computer' on September 26, 2025, as its first Agent product mode.",
+          "citation": "[8]"
+        },
+        {
+          "quote": "Agent Mode of Moonshot AI's Kimi chat product, powered by the K2 model, categorized as Chat. Alpha release dated 26/09/2025.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "Advertised for multi-step work such as building websites, web apps, and presentations, and visualizing large Excel datasets.",
+          "citation": "[2]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "No publicly disclosed line-of-code count is available for the Kimi OK Computer agent, which is closed source. The closest open-source artifact is MoonshotAI/kimi-code (Kimi Code CLI), which is approximately 98% TypeScript. An exact LOC count is not available from any public source.",
+        "evidence": [
+          {
+            "quote": "The kimi-code repo is a ground-up TypeScript rewrite, about 98% TypeScript.",
+            "citation": "[20]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "The MoonshotAI/kimi-code repository has approximately 8.1k stars on GitHub as of November 2, 2026. The predecessor archived repository kimi-cli has 11.4k stars.",
+        "evidence": [
+          {
+            "quote": "Stars: 8.1k (8,095 in the ranking table)",
+            "citation": "[19]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "The exact number of contributors to MoonshotAI/kimi-code is not publicly disclosed on any accessible page. The repository has 528 open pull requests and 1.2k issues, suggesting an active contributor community. The Kimi K3 model (a separate repository) lists 401 contributors, but this does not apply to kimi-code.",
+        "evidence": [
+          {
+            "quote": "Issues: 1.2k; Pull requests: 528",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "The MoonshotAI/kimi-code repository maintains a very high release cadence. Between October 14 and October 30, 2026, stable releases shipped every 1 to 7 days, with canary builds appearing daily during active development. There were at least 10 stable or pre-release versions in the two-week window observed.",
+        "evidence": [
+          {
+            "quote": "Stable releases came every 1 to 7 days between Oct 14 and Oct 30. The gaps were 7, 2, 2, 1, 2, and 2 days. Canary builds appeared on Oct 29, Oct 30, and Nov 2.",
+            "citation": "[18]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "The primary language of MoonshotAI/kimi-code is TypeScript, comprising approximately 98% of the codebase. The repository's configuration files (tsconfig.json, vitest.config.ts) and Node.js requirement confirm TypeScript/JavaScript as the dominant stack.",
+        "evidence": [
+          {
+            "quote": "MoonshotAI/kimi-code is a TypeScript open source project on GitHub.",
+            "citation": "[17]"
+          },
+          {
+            "quote": "The kimi-code repo is a ground-up TypeScript rewrite, about 98% TypeScript.",
+            "citation": "[20]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "q_id": "q_2",
+          "Summary": "The Kimi Code team uses Vitest as its primary test runner, configured in a multi-project setup covering all workspace packages, the CLI application, and the VS Code extension. The CI pipeline splits the main test suite across a matrix of 5 shards with fail-fast disabled, ensuring reliability across parallel runs. Separate test jobs exist for the pi-tui library, the VS Code extension in legacy mode, and release scripts. Developers are expected to add tests to existing test files for the affected module rather than creating new test files.",
+          "evidence": [
+            {
+              "quote": "test (Ubuntu): Runs the main test suite split across a matrix of 5 shards (pnpm run test --shard=N/5). fail-fast is disabled.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Avoid adding many new test files. Add tests to the existing test file for the relevant component or module.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "The Kimi-Code repository uses Vitest as its test runner with a multi-project configuration.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_3",
+          "Summary": "Vitest is the primary testing framework. pnpm test (which runs vitest run) is the standard CI test command. pnpm test:coverage generates HTML coverage reports. oxlint is used for linting, and tsc --noEmit for type checking. GitHub Actions runs all checks on every PR.",
+          "evidence": [
+            {
+              "quote": "pnpm test runs vitest run as defined in the root package.json scripts.test entry. The command exits with a non-zero code if any test fails, making it suitable for CI pipelines.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "lint (Ubuntu): Runs pnpm run lint and pnpm run sherif. typecheck (Ubuntu): Runs tsc --noEmit against each packages/*/tsconfig.json and apps/kimi-code/tsconfig.json.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_4",
+          "Summary": "Core maintainers at Moonshot AI are responsible for approving test changes and merging PRs that include tests. External contributors are expected to run pnpm lint, pnpm typecheck, and pnpm test locally before submitting PRs. Maintainers review PRs against the diff only, treating pre-existing issues outside the diff as non-blocking notes.",
+          "evidence": [
+            {
+              "quote": "Review PRs against the diff only. Pre-existing issues outside the diff are non-blocking notes.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "CI automatically enforces linting, type-checking, and tests.",
+              "citation": "[11]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_5",
+          "Summary": "The repository also includes a separate test job for the pi-tui TUI library, which uses Node's built-in test runner (node:test) rather than Vitest, and is therefore excluded from the root test command. A disabled Windows test job exists in CI (if: false) with a 30-second test timeout, indicating the team acknowledges Windows platform testing needs but has not fully enabled it.",
+          "evidence": [
+            {
+              "quote": "test-pi-tui (Ubuntu): Runs the @moonshot-ai/pi-tui tests separately, because that suite uses node:test and is not picked up by the root test command.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "test-windows (Windows): Disabled with if: false. When enabled, it runs the full suite with a 30-second test timeout.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "q_id": "q_6",
+          "Summary": "The team uses GitHub Actions for all CI/CD automation with a structured pipeline covering pull requests, pushes to main and release/* branches, and manual workflow_dispatch triggers. Releases are automated through the Changesets workflow, which opens version PRs, publishes to npm via OIDC trusted publishing (no npm token required), and builds native binaries for macOS (arm64 and x64) and Windows. Canary builds are published to npm by default. Documentation is deployed separately via a docs-deploy workflow triggered after native assets are published.",
+          "evidence": [
+            {
+              "quote": "Triggers: Pull requests, pushes to main and release/* branches, and manual runs (workflow_dispatch).",
+              "citation": "[6]"
+            },
+            {
+              "quote": "The release job also has id-token: write for npm trusted publishing.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Releases are created by a github-actions bot. Each tag follows the @moonshot-ai/kimi-code@<version> pattern, and the commits carry GitHub-verified signatures.",
+              "citation": "[18]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_7",
+          "Summary": "GitHub Actions is the primary CI/CD platform. The tool stack includes pnpm (version 10.33.0) for package management, Node.js (version from .nvmrc), the Changesets action for versioning and publishing, the gh CLI for release operations, and multiple reusable workflows. Native binary builds use Apple and Azure signing secrets. The VS Code extension is published to both the VS Code Marketplace and Open VSX.",
+          "evidence": [
+            {
+              "quote": "Tools and dependencies: GitHub Actions: actions/checkout@v6, actions/setup-node@v6, actions/download-artifact@v8, pnpm/action-setup@v6, changesets/action@v1",
+              "citation": "[7]"
+            },
+            {
+              "quote": "vscode: Runs when candidate sets publish to true. It calls the reusable vscode-publish.yml workflow with the VS Code Marketplace and Open VSX tokens.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_8",
+          "Summary": "Infrastructure and CI/CD are managed by Moonshot AI's core engineering team. The github-actions bot handles automated version bumping and changelog generation. Canary builds are triggered automatically on merge, while stable releases require the CI checks on the changeset version commit to pass before the publish job proceeds.",
+          "evidence": [
+            {
+              "quote": "candidate: Runs on push to release branches with read-only permissions and a 60-minute timeout. It runs scripts/release-trigger.mjs, which waits for the merged version commit's CI and sets a publish output that gates the later jobs.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "A bot account syncs release changelogs and version bumps back to the main branch after each release.",
+              "citation": "[18]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_9",
+          "Summary": "The repository uses a pnpm monorepo structure with workspace-level configuration and a Nix flake (flake.nix) for reproducible builds. Concurrency is managed per branch, with in-progress CI runs cancelled on new pushes to feature branches but not on release/* branches, where each SHA gets its own concurrency group. Dependencies are always installed with a frozen lockfile (--frozen-lockfile) to ensure reproducibility.",
+          "evidence": [
+            {
+              "quote": "Concurrency: Runs are grouped per branch or ref. In-progress runs are cancelled except on release/* branches, where each commit SHA gets its own group and runs are not cancelled.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Dependencies are installed with pnpm install --frozen-lockfile.",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "q_id": "q_10",
+          "Summary": "The Kimi Code team follows a structured external contribution process: all external PRs must be preceded by an issue where a maintainer explicitly comments /approve before a PR is submitted. External contributors are limited to approved bug fixes; feature work is reserved for the internal team or invited contributors. All commits and PR titles must follow the Conventional Commits format, enforced automatically by the pr-title-checker GitHub Actions workflow. PRs that affect release artifacts require a changeset file generated by pnpm changeset.",
+          "evidence": [
+            {
+              "quote": "External PRs are accepted only for approved bug fixes. A maintainer must approve the linked issue with an /approve comment. PRs without an approved issue may be closed without review.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "All commits and PR titles must follow the Conventional Commits format. The pr-title-checker workflow enforces this on titles, and a non-conforming title blocks merge.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_11",
+          "Summary": "Code review is facilitated through GitHub Pull Requests with a mandatory PR template. The pr-title-checker workflow (using thehanimo/pr-title-checker@v1.4.3) enforces Conventional Commits format on all PR titles. CI checks (lint, typecheck, test) run automatically on every PR and block merging if they fail. Changesets tracks version impact across the monorepo.",
+          "evidence": [
+            {
+              "quote": "CI checks: CI runs pnpm lint, pnpm typecheck, and pnpm test on every PR.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "It uses thehanimo/pr-title-checker at version v1.4.3.",
+              "citation": "[14]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_12",
+          "Summary": "Core maintainers at Moonshot AI hold merge authority and are the sole reviewers with the ability to /approve issues for external contribution. External contributors can open bug fix PRs only after maintainer approval. The CONTRIBUTING.md notes that features are decided in issues and implemented by the team or by maintainer invitation.",
+          "evidence": [
+            {
+              "quote": "External feature PRs are not accepted. Features are decided in issues and implemented by the team or by maintainer invitation.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Only roadmap-aligned PRs are merged. Refactors without context are unlikely to land.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_13",
+          "Summary": "The AGENTS.md guide specifies that AI-assisted contributors must understand and be able to explain their submissions, including edge-case behavior. AI-generated code and hand-written code are held to the same standard. The project explicitly addresses agent-authored PRs, noting that contributors must understand and be able to explain what they submit, including edge-case behavior and fit with the codebase.",
+          "evidence": [
+            {
+              "quote": "Contributors must understand and be able to explain what they submit, including edge-case behavior and fit with the codebase.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Treat code, not documentation, as the source of truth.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "kimi -p: intermittent 'workspace is not materialized' from file-history endCheckpoint at exit",
+          "Issue_Number": 4620,
+          "Status": "Open",
+          "Description": "In print mode, the file-history checkpointing system intermittently reports the workspace as not materialized at exit, revealing a race condition between workspace teardown and checkpoint finalization in v2.4.0/2.4.1.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "[Bug] kimi-cu-win: orphaned input session lease",
+          "Issue_Number": 4616,
+          "Status": "Open",
+          "Description": "On Windows, a computer-use input session lease is orphaned and the computer_use_busy flag persists across a full runtime restart, blocking further computer-use sessions until manually cleared.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "bug(compaction): pre-compaction token count disagrees with measured usage",
+          "Issue_Number": 4614,
+          "Status": "Open",
+          "Description": "The token count used to trigger context compaction does not match actual measured usage, causing compaction to fire at incorrect times and potentially disrupting long-running agent sessions.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "[Bug] Kimi Web session pagination can exhaust the Node heap",
+          "Issue_Number": 4604,
+          "Status": "Open",
+          "Description": "Loading large session histories in the web UI can exhaust the Node.js heap, revealing a memory management issue where paginated session data is not properly released.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "Duplicate stdio MCP server processes are spawned during one session startup",
+          "Issue_Number": 4602,
+          "Status": "Open",
+          "Description": "Session initialization spawns duplicate stdio MCP server processes, wasting resources and potentially causing race conditions in tool availability during the session startup phase.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "`EnterPlanMode` always fails under an ACP client",
+          "Issue_Number": 4594,
+          "Status": "Open",
+          "Description": "Under ACP (Agent Client Protocol), entering plan mode fatally fails because the agent attempts to read a plan file that has not yet been created, revealing a lifecycle ordering bug in ACP mode.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "[Bug] Session Markdown export corrupts YAML frontmatter",
+          "Issue_Number": 4588,
+          "Status": "Open",
+          "Description": "Markdown export breaks YAML frontmatter when the workspace path contains special characters such as '#' or a colon followed by a space, indicating insufficient sanitization of path data in export logic.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "[Bug] Chat Completions streaming drops tool-call IDs from ID-only deltas",
+          "Issue_Number": 4584,
+          "Status": "Open",
+          "Description": "In streaming mode, tool-call IDs are silently dropped when a delta contains only the ID field and no other content, potentially breaking downstream tools that rely on these IDs for request correlation.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "ACP mode aborts LLM requests at exactly ~10.5s",
+          "Issue_Number": 4572,
+          "Status": "Open",
+          "Description": "In ACP mode, all LLM requests are cut off at approximately 10.5 seconds with an APITimeoutError, leaving non-trivial turns with no response and revealing a hardcoded timeout that is too short for complex agent operations.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "Agent presents a file-generation plan but does not create the artifact",
+          "Issue_Number": 4564,
+          "Status": "Open",
+          "Description": "The agent describes a file-generation plan verbally but never executes the file creation step, exposing a gap between the planning and execution phases of the agent loop.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "Stale db.lock combined with Windows PID reuse permanently locks a query-store shard",
+          "Issue_Number": 4127,
+          "Status": "Closed",
+          "Description": "A stale lock file combined with Windows PID reuse permanently locks a query-store shard, causing the desktop session list to silently drop sessions until the lock is manually cleared.",
+          "Citation": "[22]"
+        },
+        {
+          "Issue_Title": "MCP OAuth doesn't request offline_access, so OIDC providers issue no refresh token",
+          "Issue_Number": 3956,
+          "Status": "Closed",
+          "Description": "The MCP OAuth flow omits the offline_access scope, preventing OIDC-compliant providers from issuing refresh tokens and forcing users to re-authorize on every session restart.",
+          "Citation": "[22]"
+        },
+        {
+          "Issue_Title": "OpenAI-compatible channel drops reasoning content when upstream uses OpenRouter format",
+          "Issue_Number": 3900,
+          "Status": "Closed",
+          "Description": "The OpenAI-compatible protocol drops reasoning content when the upstream provider (OpenRouter) uses its own response format, introduced as a regression between versions 0.41 and 0.42.",
+          "Citation": "[22]"
+        },
+        {
+          "Issue_Title": "When web server and CLI alternately drive a session, turn IDs collide and the message list freezes",
+          "Issue_Number": 3886,
+          "Status": "Closed",
+          "Description": "Using the web server and CLI in alternation on the same session causes turn ID collisions that freeze the message list in the UI, though the underlying data remains intact on disk.",
+          "Citation": "[22]"
+        },
+        {
+          "Issue_Title": "Default compaction trigger sits above the pre-trim budget, invalidating the prefix cache",
+          "Issue_Number": 4402,
+          "Status": "Closed",
+          "Description": "The default compaction threshold is set above the pre-trim token budget, so every compaction invalidates the prefix cache and increases latency for long-running agent sessions.",
+          "Citation": "[22]"
+        }
+      ],
+      "Practices": [
+        {
+          "q_id": "q_14",
+          "Summary": "Issue patterns across the kimi-code tracker reveal four recurring engineering challenge categories: (1) ACP/protocol-layer bugs where the Agent Client Protocol introduces timeouts, lifecycle ordering failures, and streaming issues; (2) cross-platform and OS-specific bugs, especially on Windows, including file locking, PID reuse, and Remote Desktop performance; (3) context and memory management problems including token compaction miscalculation, heap exhaustion, and session ID collision; and (4) OAuth/MCP integration gaps such as missing offline_access scopes. The team uses GitHub Issues as the primary issue tracker with labels for bug classification and a maintainer /approve workflow for external bug fixes.",
+          "evidence": [
+            {
+              "quote": "External PRs are accepted only for approved bug fixes. A maintainer must approve the linked issue with an /approve comment. PRs without an approved issue may be closed without review.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_15",
+          "Summary": "GitHub Issues is the primary bug tracking system. Security vulnerabilities are reported through GitHub Security Advisories (private disclosure) or via email to code@moonshot.ai with a [security] subject prefix. No third-party issue tracking (Jira, Linear) or error monitoring services (Sentry) are publicly mentioned in the repository.",
+          "evidence": [
+            {
+              "quote": "Preferred channel: GitHub Security Advisories, which provide private disclosure tracked with the codebase.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Please do not open a public issue for security vulnerabilities.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_16",
+          "Summary": "Core maintainers at Moonshot AI triage and resolve issues. External community contributors can report bugs through GitHub Issues. The maintainers are responsible for approving external bug-fix PRs and coordinating security disclosure timelines with reporters.",
+          "evidence": [
+            {
+              "quote": "The maintainers commit to acknowledging reports and giving an initial assessment 'as soon as we can,' with no specific timeframe. Public disclosure timing is coordinated with the reporter once a fix is ready.",
+              "citation": "[9]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_17",
+          "Summary": "The issue tracker contains both Chinese and English issues, reflecting the bilingual team and user base. A hiring post for Coding Agent research engineers was opened as a GitHub Issue (#2628), indicating that the team uses the issue tracker for internal organizational announcements as well as technical bugs.",
+          "evidence": [
+            {
+              "quote": "Issue #2628: [招聘 / Hiring] Coding Agent 研发工程师 @ Kimi Code (a hiring post for Coding Agent engineers, opened Aug 5, 2026).",
+              "citation": "[21]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "q_id": "q_18",
+          "Summary": "The Kimi Code team follows a rapid-iteration development model with near-daily releases and a clear canary/stable release channel separation. New features that are not yet ready for public use are placed behind environment-driven experimental flags (KIMI_CODE_EXPERIMENTAL_<NAME>) defaulting to off, allowing incremental rollout. The team uses a monorepo (pnpm workspace) and enforces engine-strict mode so that installations fail on mismatched Node.js or pnpm versions. Roadmap alignment is a hard requirement: only roadmap-aligned PRs are merged, and refactors without context are unlikely to land.",
+          "evidence": [
+            {
+              "quote": "New features that aren't public yet go behind env-driven experimental flags (KIMI_CODE_EXPERIMENTAL_<NAME>), default off.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Only roadmap-aligned PRs are merged. Refactors without context are unlikely to land.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_19",
+          "Summary": "The team uses pnpm workspaces as the monorepo management tool, with Changesets for versioning and release management. The build system uses tsdown for bundling TypeScript packages. Nix flake (flake.nix) is used for reproducible environment setup. Engine-strict mode in pnpm ensures all developers use the exact same Node.js and pnpm versions.",
+          "evidence": [
+            {
+              "quote": "Requirements: Node.js 24.15.0 or later, pnpm 10.33.0, and Git.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "When adding or removing a workspace package, update both pnpm-workspace.yaml and flake.nix by hand, even for leaf or test packages.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_20",
+          "Summary": "Moonshot AI's core engineering team (Beijing Moonshot Technology Co., Ltd.) drives the development lifecycle. The company is described as a venture-backed Beijing AI lab founded in 2023. Team size and internal org structure are not publicly disclosed. The organization has two publicly visible members on GitHub (@ariesdevil and @yzhangcs).",
+          "evidence": [
+            {
+              "quote": "Developer: Moonshot AI (Beijing Moonshot Technology Co., Ltd.), a for-profit company based in Beijing, China.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_21",
+          "Summary": "Kimi Code CLI (kimi-code) was created on May 22, 2026 as a ground-up TypeScript rewrite of the older Python-based kimi-cli. The migration demonstrates a methodological shift toward a native binary distribution model, faster startup, and tighter integration with the agent-core-v2 engine. The older agent-core (v1) is being phased out in favor of the new v2 engine.",
+          "evidence": [
+            {
+              "quote": "agent-core-v2 is the current engine. agent-core (v1) is being phased out, so new work should target v2.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "The repo was created May 22, 2026. The page reports 16 releases and 289 commits in the first three weeks.",
+              "citation": "[20]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "q_id": "q_22",
+          "Summary": "Moonshot AI's developer community communication occurs through GitHub Issues (for bug reports, feature proposals, and roadmap discussions), a Discord server, and a developer forum at forum.moonshot.ai. GitHub Issues serve as the primary channel for discussing and aligning on features before implementation, reflecting a decision-by-issue methodology where proposals must be discussed and approved before any code is written.",
+          "evidence": [
+            {
+              "quote": "Discuss before coding. Kimi Code has set views on CLI/TUI behavior, agent workflow, and public APIs, so changes that shift those direction should be aligned in an issue first.",
+              "citation": "[19]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_23",
+          "Summary": "The official developer communication tools are Discord (discord.com/invite/TYU2fdJykW) for real-time community support and updates, and the Moonshot developer forum at forum.moonshot.ai for asynchronous discussions and knowledge sharing. GitHub Issues and Pull Requests serve as the primary internal alignment tool for engineering decisions.",
+          "evidence": [
+            {
+              "quote": "Chat with the community, get help, and keep up with the latest Kimi updates.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Start discussions, explore community knowledge, and share ideas with other developers.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_24",
+          "Summary": "The Moonshot AI core engineering team, external contributors, and the developer community participate in communication. Maintainers are the decision-makers for roadmap alignment and issue approval. The broader Kimi user community engages through the developer forum and Discord.",
+          "evidence": [
+            {
+              "quote": "The community exists to connect developers, answer questions, collect feedback, and showcase projects built with Kimi.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_25",
+          "Summary": "Moonshot AI maintains bilingual (English and Chinese) documentation, contributing guidelines, and issue discussions, reflecting its dual-market presence. The CONTRIBUTING.md and CONTRIBUTING.zh-CN.md files have identical content in both languages. Release changelogs are also generated bilingually.",
+          "evidence": [
+            {
+              "quote": "Align the Chinese docs: Make sure the Chinese documentation matches the latest code behavior. Synchronize translations: Use the translate-docs skill to keep the English and Chinese versions consistent.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "q_id": "q_26",
+          "Summary": "The team treats documentation as a required part of the development lifecycle. Any PR that changes user-visible behavior must update the corresponding pages in the docs/ directory. The gen-docs skill automates documentation synchronization after commits that modify functionality, checking code changes against user guides and updating the English changelog and Chinese documentation together. Documentation is treated as a first-class artifact alongside code.",
+          "evidence": [
+            {
+              "quote": "Update user-facing docs in docs/ when behavior changes.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "should be run after any commit that modifies functionality or documentation",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_27",
+          "Summary": "Documentation is hosted via a dedicated docs-deploy GitHub Actions workflow triggered after each stable release. The gen-docs skill (installable via npx skillscat) automates the documentation update process by reviewing code changes, updating documentation pages, syncing the English changelog via node docs/scripts/sync-changelog.mjs, and aligning Chinese translations. The docs/ directory is part of the pnpm monorepo.",
+          "evidence": [
+            {
+              "quote": "deploy-docs: Runs after native assets are published. It triggers the existing docs-deploy.yml workflow on main.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Sync the English changelog: Run node docs/scripts/sync-changelog.mjs.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_28",
+          "Summary": "Documentation is the responsibility of engineers who make code changes. The gen-docs skill is recommended for contributors (both human and AI agents) when making functionality changes. The gen-docs skill is listed as a recommended tool for programming agents in the AGENTS.md guide, suggesting automation of documentation as part of the agent-assisted development workflow.",
+          "evidence": [
+            {
+              "quote": "Behavior changes should update user docs under docs/. The gen-docs skill is recommended for programming agents.",
+              "citation": "[19]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_29",
+          "Summary": "The agent-core-v2, kap-server, and transcript packages follow a strict no-comments policy: no line comments, block comments, or JSDoc are permitted. Only lint-suppression directives are allowed. A script (scripts/check-no-comments.mjs) enforces this during pnpm lint. Prompt text files under packages/agent-core-v2/src/**/*.md are treated as behavioral documentation and require the same review care as code.",
+          "evidence": [
+            {
+              "quote": "The agent-core-v2, kap-server, and transcript packages are comment-free: no line comments, block comments, or JSDoc. Only lint-suppression directives are allowed. scripts/check-no-comments.mjs enforces this during pnpm lint.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Treat prompt text under packages/agent-core-v2/src/**/*.md as behavior, and review edits to it accordingly.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "q_id": "q_30",
+          "Summary": "The Kimi Code team manages LLM integration through a dedicated llm module (packages/agent-core-v2) that handles request construction, protocol encoding/decoding, streaming, error classification, and retry policies. Prompt text stored in Markdown files under packages/agent-core-v2/src/**/*.md is treated as behavioral code and reviewed accordingly. New features are placed behind experimental flags by default. Failures are explicit rather than silent: unsupported features and empty responses fail rather than fall back silently. Media files are referenced as kimi-file:// URLs and resolved to uploaded IDs or inline base64 at request time.",
+          "evidence": [
+            {
+              "quote": "Treat prompt text under packages/agent-core-v2/src/**/*.md as behavior, and review edits to it accordingly.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Configuration is used exactly as given",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_31",
+          "Summary": "The llm module supports four built-in LLM protocols: openai, openai-responses, anthropic, and google-genai. A Kimi-specific protocol and file upload mechanism are also included. The agent architecture uses XState state machines (actor-tree model) for managing agent lifecycle, turn flow, and tool invocation. Model configuration is handled through LlmModelSpec and LlmRequest serializable contracts with a ModelCatalog for metadata and default model management.",
+          "evidence": [
+            {
+              "quote": "Built-in protocols: openai, openai-responses, anthropic, and google-genai.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "llm is a standalone library for a single LLM request. It handles the typed request contract, protocol encoding and decoding, streaming, thinking, media, error classification, and retry policies.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_32",
+          "Summary": "The Moonshot AI model team trains the underlying Kimi K2 model using end-to-end reinforcement learning. The Kimi Code engineering team integrates the model into the agent via the llm module. The MIT AI Agent Index notes that Kimi K2 was trained with end-to-end reinforcement learning into a native agent that uses over 20 tools.",
+          "evidence": [
+            {
+              "quote": "The K2 model was trained with end-to-end reinforcement learning into a native agent that uses over 20 tools.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_33",
+          "Summary": "The OK Computer agent (running on Kimi K2) uses an Agent Swarm architecture that can deploy up to 300 parallel sub-agents and execute more than 4,000 tool calls, coordinated by an internal controller that creates and assigns sub-agents at runtime. The agent uses an XState actor-tree model for managing agent lifecycle events. Events are classified as commands (imperative verbs), facts (past participles), or data streams, and must follow dot.case naming conventions.",
+          "evidence": [
+            {
+              "quote": "Agent Swarm uses an internal controller that creates and assigns sub-agents at runtime. It supports up to 300 parallel sub-agents, more than 4,000 tool calls.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Classify by receiver behavior. The guide says to classify an event by 'what the receiver does with it,' not by whether it carries a payload.",
+              "citation": "[16]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/MoonshotAI/kimi-code",
+      "Date_Created": "2026-05-22",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[2]": {
+      "Website_Type": "MIT AI Agent Index",
+      "Link": "https://aiagentindex.mit.edu/2025/kimi-ok-computer",
+      "Date_Created": "2025-09-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[3]": {
+      "Website_Type": "Wikipedia",
+      "Link": "https://en.wikipedia.org/wiki/Kimi_(chatbot)",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[4]": {
+      "Website_Type": "CONTRIBUTING.md",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/CONTRIBUTING.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[5]": {
+      "Website_Type": "AGENTS.md",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/AGENTS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[6]": {
+      "Website_Type": "GitHub Actions Workflow",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/.github/workflows/ci.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[7]": {
+      "Website_Type": "GitHub Actions Workflow",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/.github/workflows/release.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[8]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://www.kimi.com/en-cn/help/agent/agent-overview",
+      "Date_Created": "2025-09-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[9]": {
+      "Website_Type": "SECURITY.md",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/SECURITY.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[10]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://platform.kimi.ai/docs/api/join-the-community.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[11]": {
+      "Website_Type": "Developer Blog (Third-Party)",
+      "Link": "https://instagit.com/MoonshotAI/kimi-code/how-to-contribute-kimi-code-project/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[12]": {
+      "Website_Type": "Developer Blog (Third-Party)",
+      "Link": "https://instagit.com/MoonshotAI/kimi-code/how-to-run-kimi-code-tests/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[13]": {
+      "Website_Type": "Developer Skills Registry",
+      "Link": "https://skills.cat/skills/moonshotai/kimi-cli/gen-docs",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub Actions Workflow",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/.github/workflows/pr-title-checker.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[15]": {
+      "Website_Type": "Internal Developer Documentation",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/packages/agent-core-v2/docs/en/llm.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[16]": {
+      "Website_Type": "Internal Developer Documentation",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/packages/agent-core-v2/docs/en/event-name.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[17]": {
+      "Website_Type": "Repository Analytics",
+      "Link": "https://ossinsight.io/analyze/MoonshotAI/kimi-code",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[18]": {
+      "Website_Type": "GitHub Releases",
+      "Link": "https://github.com/MoonshotAI/kimi-code/releases",
+      "Date_Created": "2026-05-22",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[19]": {
+      "Website_Type": "CONTRIBUTING.zh-CN.md",
+      "Link": "https://github.com/MoonshotAI/kimi-code/blob/main/CONTRIBUTING.zh-CN.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[20]": {
+      "Website_Type": "Developer Blog (Third-Party)",
+      "Link": "https://rywalker.com/research/kimi-code",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[21]": {
+      "Website_Type": "GitHub Issues (Open)",
+      "Link": "https://github.com/MoonshotAI/kimi-code/issues",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Issues (Closed)",
+      "Link": "https://github.com/MoonshotAI/kimi-code/issues?q=is%3Aissue+is%3Aclosed",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    }
+  }
+}

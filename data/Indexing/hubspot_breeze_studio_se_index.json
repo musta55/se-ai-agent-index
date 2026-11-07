@@ -7,7 +7,49 @@
       "evidence": [
         {
           "quote": "We're all in on AI, from developer tooling to the future of our product. We believe it will transform how our customers operate and grow.",
-          "citation": "[4]"
+          "citation": "[5]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_80",
+      "Summary": "HubSpot chose Java for its MCP server, and its backend libraries and infrastructure tooling are centered around Java microservices; its frontend development toolchain uses TypeScript to check for type safety at compile-time.",
+      "evidence": [
+        {
+          "quote": "We chose Java for long-term maintainability and development within our standard technical stack. HubSpot’s backend libraries and infrastructure tooling are already centered around Java microservices, so we focused our efforts on implementing MCP in a standard Dropwizard service.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "we use TypeScript to check for type safety at compile-time. In addition, our toolchain includes husky pre-commit hooks that automatically review code syntax and style.",
+          "citation": "[11]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_88",
+      "Summary": "HubSpot UI extensions are React components written as .jsx (JavaScript) or .tsx (TypeScript) files; TypeScript is supported and recommended.",
+      "evidence": [
+        {
+          "quote": "A React component (.jsx or .tsx) that defines your UI.",
+          "citation": "[13]"
+        },
+        {
+          "quote": "TypeScript is fully supported and recommended for better type safety.",
+          "citation": "[13]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_89",
+      "Summary": "HubSpot's ui-extensions-examples repository contains JavaScript code alongside TypeScript (GitHub languages API, pulled 2026-11-02).",
+      "evidence": [
+        {
+          "quote": "\"JavaScript\":83302",
+          "citation": "[14]"
+        },
+        {
+          "quote": "\"TypeScript\":644085",
+          "citation": "[14]"
         }
       ]
     }
@@ -86,7 +128,7 @@
             },
             {
               "quote": "All HubSpot engineers leverage modern AI tools, and AI fluency is now a baseline expectation for all engineering roles.",
-              "citation": "[5]"
+              "citation": "[2]"
             }
           ]
         },
@@ -151,6 +193,16 @@
               "citation": "[11]"
             }
           ]
+        },
+        {
+          "q_id": "q_81",
+          "Summary": "HubSpot's Crucible platform has served as the foundation for an internal evaluation framework for coding agents.",
+          "evidence": [
+            {
+              "quote": "Ensure the agent completes its task - block stopping until the build passes and all changes are committed and pushed to GitHub. Crucible has served as the foundation for an internal evaluation framework for coding agents",
+              "citation": "[3]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -161,6 +213,16 @@
             {
               "quote": "Having a small team dedicated to this effort allowed us to focus on tasks that reduced migration friction and to reinforce testing best practices.",
               "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_82",
+          "Summary": "Front-end developers, together with product managers and interface designers, take part in HubSpot's usability testing sprints, observing and asking questions.",
+          "evidence": [
+            {
+              "quote": "During our testing sprints, we make sure the product managers, interface designers and front-end developers are in the room observing and asking questions.",
+              "citation": "[10]"
             }
           ]
         }
@@ -183,6 +245,10 @@
             {
               "quote": "It took our team about 9 months and approximately 20 new tests suites across 4 repositories to embrace Continuous Deployment.",
               "citation": "[11]"
+            },
+            {
+              "quote": "Our dev team continuously deploys code, up to 100 times per day, so our product is constantly changing.",
+              "citation": "[10]"
             }
           ]
         }
@@ -222,7 +288,7 @@
             },
             {
               "quote": "By building on HubSpot's platform, we could leverage enterprise-grade CI/CD, auto-scaling, observability, and even region-aware API call routing built on Cloudflare Workers - all production ready features directly available to us without any additional setup.",
-              "citation": "[3]"
+              "citation": "[1]"
             }
           ]
         },
@@ -295,6 +361,16 @@
               "citation": "[11]"
             }
           ]
+        },
+        {
+          "q_id": "q_83",
+          "Summary": "HubSpot decided to build an internal platform for executing cloud coding agents, as the quickest way to begin showing results.",
+          "evidence": [
+            {
+              "quote": "We decided that building an internal platform for executing cloud coding agents would be the quickest way to begin showing results.",
+              "citation": "[3]"
+            }
+          ]
         }
       ]
     },
@@ -326,7 +402,7 @@
             },
             {
               "quote": "AI pull request reviews are triggered automatically when pull requests are created, marked ready for review, or when Sidekick is manually requested as a reviewer",
-              "citation": "[2]"
+              "citation": "[3]"
             }
           ]
         },
@@ -427,6 +503,16 @@
               "citation": "[3]"
             }
           ]
+        },
+        {
+          "q_id": "q_84",
+          "Summary": "Users can trigger a planning step on a GitHub issue by mentioning HubSpot's internal bot (\"@SidekickAI create a plan\"); the plan is posted as a comment on the issue, where the user can edit it before moving on to the implementation step.",
+          "evidence": [
+            {
+              "quote": "Users can easily trigger a planning step on a GitHub issue by directly mentioning our internal bot (\"@SidekickAI create a plan\"). The plan will then be posted as a comment on the issue, where it can be edited by the user before moving on to the implementation step.",
+              "citation": "[3]"
+            }
+          ]
         }
       ],
       "Tools": [
@@ -441,6 +527,28 @@
             {
               "quote": "We are correlating test failures with active deployments so that failures during a rollout window are automatically escalated.",
               "citation": "[12]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_85",
+          "Summary": "HubSpot uses Monarch, an internal system that serves as a centralized hub for planning and sequencing migration efforts and gives campaign creators an aggregated view of progress across teams. It also collects emoji reactions and thread replies on Sidekick's AI review comments as feedback, which it wants to use to keep improving AI reviews.",
+          "evidence": [
+            {
+              "quote": "Fortunately, in early 2024 we launched an internal system called Monarch that serves as a centralized hub for planning and sequencing migration efforts across teams.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "It also gives campaign creators an aggregated view of progress across all teams.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "We implemented the simplest possible interface: emoji reactions on review comments and thread replies. After each review, Sidekick adds a short footer inviting developers to react with 👍 or 👎 or reply directly in the thread.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "In the future, we want to use this data to keep improving on AI reviews.",
+              "citation": "[4]"
             }
           ]
         }
@@ -498,7 +606,7 @@
             },
             {
               "quote": "From our past experience deploying local coding agents, we knew that giving them a tight feedback loop would be key to their success.",
-              "citation": "[2]"
+              "citation": "[3]"
             }
           ]
         },
@@ -520,7 +628,7 @@
             },
             {
               "quote": "One example of this integration is our recent rollout of cloud coding agents for engineers, which have been live for planning, implementation, and code review at HubSpot for the past six months. To date, we have merged over 7,000 fully AI-generated pull requests and code reviewed over 50,000 pull requests authored by humans. We run all of the agents on our own infrastructure and tightly integrate them with GitHub, allowing HubSpot engineers to ship changes quickly and with more confidence than ever before",
-              "citation": "[2]"
+              "citation": "[3]"
             }
           ]
         },
@@ -559,6 +667,20 @@
               "citation": "[5]"
             }
           ]
+        },
+        {
+          "q_id": "q_86",
+          "Summary": "HubSpot uses its own agent execution platform, dubbed Crucible, which sandboxes every agent, is easy to scale, and is flexible enough to handle many different kinds of requests.",
+          "evidence": [
+            {
+              "quote": "Our platform, dubbed Crucible, consists of several components....",
+              "citation": "[3]"
+            },
+            {
+              "quote": "This approach has several advantages: it guarantees that every agent is sandboxed, it’s extremely easy to scale, and it’s flexible enough to handle many different kinds of requests",
+              "citation": "[3]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -584,6 +706,16 @@
             },
             {
               "quote": "We value throughput over predictability. Processes and planning only need to be good enough, and we have a low tolerance for bureaucracy.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_87",
+          "Summary": "HubSpot moves fast and takes calculated risks; decisions don't require 100% consensus or 100% data, and intuition and ownership count for a lot.",
+          "evidence": [
+            {
+              "quote": "We move fast and take calculated risks. Decisions don't require 100% consensus or 100% data. Intuition and ownership count for a lot.",
               "citation": "[5]"
             }
           ]
@@ -632,15 +764,15 @@
       "Tools": [
         {
           "q_id": "q_38",
-          "Summary": "Communication infrastructure includes GitHub (code review, issues, PRs),Discord,  Slack (@-mentions, integrations), Sidekick AI assistant, emoji reactions (👍👎), thread replies, internal RPC framework CHIRP, and permission-aware ChatGPT integration.",
+          "Summary": "Communication infrastructure includes GitHub (code review, issues, PRs), Slack (@-mentions, integrations), Sidekick AI assistant, emoji reactions (👍👎), thread replies, internal RPC framework CHIRP, and permission-aware ChatGPT integration.",
           "evidence": [
             {
               "quote": "We implemented the simplest possible interface: emoji reactions on review comments and thread replies.",
               "citation": "[4]"
             },
             {
-              "quote": "Discord",
-              "citation": "[2]"
+              "quote": "At HubSpot, we've built many of our microservices using CHIRP (backronym for Cool Hubspot Inter-process Remote Procedures 😀) - our internal RPC framework.",
+              "citation": "[1]"
             },
             {
               "quote": "Sidekick is an AI assistant we had previously created to help engineers in navigating our internal documentation. We decided to extend its functionality using several new Crucible-based tools via @-mention on GitHub or Slack.",
@@ -827,6 +959,18 @@
       "Link": "https://product.hubspot.com/blog/hubspot-incident-report-february-25-2026",
       "Date_Created": "2026-03-20",
       "Date_Pulled": "2026-05-08"
+    },
+    "[13]": {
+      "Website_Type": "HubSpot Developer Documentation - UI extensions overview",
+      "Link": "https://developers.hubspot.com/docs/apps/developer-platform/add-features/ui-extensions/overview",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub REST API - HubSpot/ui-extensions-examples languages",
+      "Link": "https://api.github.com/repos/HubSpot/ui-extensions-examples/languages",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
     }
   }
 }

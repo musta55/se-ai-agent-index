@@ -1,0 +1,1524 @@
+{
+  "Agent_Name": "OpenAI Codex",
+  "Description": [
+    {
+      "q_id": "q_1",
+      "Summary": "OpenAI Codex is OpenAI's AI coding agent (category: coding agent) that writes features, fixes bugs, answers codebase questions, reviews code and proposes pull requests. It ships on several platforms: the open-source, Rust-based Codex CLI that runs locally in the terminal (github.com/openai/codex), IDE extensions (VS Code, Cursor, Windsurf), a desktop app, and the cloud-based Codex web agent inside ChatGPT. Only some parts are open source: the CLI, SDK and app-server live in the public repository, while the IDE extension and Codex cloud are closed source.",
+      "evidence": [
+        {
+          "quote": "Codex CLI is a coding agent from OpenAI that runs locally on your computer.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Codex, which OpenAI launched in its modern incarnation as a research preview in May 2025, operates as a cloud-based software engineering agent that can handle tasks like writing features, fixing bugs, and proposing pull requests.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and contribute improvements.",
+          "citation": "[3]"
+        },
+        {
+          "quote": "OpenAI had two teams tackle different segments of the problem space: Codex Web would focus on an async, cloud-based solution, while Codex CLI targeted iterative, local development.",
+          "citation": "[4]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_45",
+      "Summary": "Basic repository information for openai/codex. A Wayback Machine snapshot of the GitHub repository page from 12 October 2026 (the indexing pull date) shows 128.8k stars and 20.2k forks. The ghloc line-counting service reports 2,472,283 lines in the repository (main branch, counted 2 November 2026), of which 2,097,275 are .rs (Rust) lines. The GitHub languages API reports 81,836,113 bytes of Rust, about 97% of the repository's code bytes (2 November 2026). The GitHub contributors panel lists 702 contributors (2 November 2026). The GitHub Releases API lists 16 stable releases between 17 September 2026 (rust-v0.155.0) and 9 October 2026 (rust-v0.162.1), in addition to alpha pre-releases.",
+      "evidence": [
+        {
+          "quote": "128.8k stars",
+          "citation": "[56]"
+        },
+        {
+          "quote": "20.2k forks",
+          "citation": "[56]"
+        },
+        {
+          "quote": "\"loc\":2472283,\"locByLangs\":{\".rs\":2097275",
+          "citation": "[57]"
+        },
+        {
+          "quote": "\"Rust\": 81836113",
+          "citation": "[58]"
+        },
+        {
+          "quote": "Contributors 702",
+          "citation": "[59]"
+        },
+        {
+          "quote": "\"tag_name\": \"rust-v0.162.1\"",
+          "citation": "[60]"
+        },
+        {
+          "quote": "\"published_at\": \"2026-10-09T19:44:51Z\"",
+          "citation": "[60]"
+        },
+        {
+          "quote": "\"tag_name\": \"rust-v0.155.0\"",
+          "citation": "[60]"
+        },
+        {
+          "quote": "\"published_at\": \"2026-09-17T23:14:43Z\"",
+          "citation": "[60]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "About 2.1 million lines of source code, counted in a shallow clone of main (commit 4a93bd2, 2026-10-12): about 2.05M lines of Rust in about 5,260 .rs files, about 62K lines of Python, and smaller amounts of TypeScript (about 12K), shell (about 5K), PowerShell and Bazel/Starlark. The count includes test code and generated protocol/schema files. GitHub's language API reports about 74.5 MB of Rust source. The Rust code is a Cargo workspace of over 100 crates under codex-rs/, also built with Bazel.",
+        "evidence": [
+          {
+            "quote": "\"Rust\": 74532106",
+            "citation": "[5]"
+          },
+          {
+            "quote": "Cargo remains the source of truth for crates and features, while Bazel provides hermetic builds, toolchains, and cross-platform artifacts.",
+            "citation": "[6]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "About 128.8K stars (128,834 by the GitHub API) and about 20.2K forks on 2026-10-12. The repository was created on 2025-04-13.",
+        "evidence": [
+          {
+            "quote": "128.8k stars",
+            "citation": "[1]"
+          },
+          {
+            "quote": "\"stargazers_count\": 128834",
+            "citation": "[7]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "GitHub shows 667 contributors. The contributors API lists 478 non-anonymous accounts and 664 including anonymous contributors. External code contributions are no longer accepted, so recent code changes come from the OpenAI Codex team. The community contributes through issues, analysis and feedback.",
+        "evidence": [
+          {
+            "quote": "Contributors 667",
+            "citation": "[8]"
+          },
+          {
+            "quote": "We do not accept external code contributions or pull requests.",
+            "citation": "[9]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "Very high. In the six months from 2026-04-12 to 2026-10-12, the project published 523 GitHub releases, about 87 per month. Of these, 67 were stable rust-v releases (about 11 per month, rust-v0.121.0 to rust-v0.162.1) and the rest were mostly alpha pre-releases. The team says it ships new internal versions up to three or four times a day and cuts external releases every few days.",
+        "evidence": [
+          {
+            "quote": "\"tag_name\": \"rust-v0.162.1\"",
+            "citation": "[10]"
+          },
+          {
+            "quote": "There are several releases per week. Internally, the team ships a new version of Codex up to three or four times a day.",
+            "citation": "[4]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "Rust is about 97% of repository bytes. Python is about 2.2%, and Starlark, TypeScript, PowerShell, Shell and JavaScript make up the rest. In mid-2025 the CLI was rewritten from TypeScript/React/Node to Rust.",
+        "evidence": [
+          {
+            "quote": "\"language\": \"Rust\"",
+            "citation": "[7]"
+          },
+          {
+            "quote": "Meanwhile, the Codex CLI is written in Rust.",
+            "citation": "[4]"
+          },
+          {
+            "quote": "Codex CLI stack originally features React, TypeScript and Node.",
+            "citation": "[11]"
+          }
+        ]
+      }
+    ],
+    "Last_Updated": [
+      {
+        "Summary": "Actively maintained. The most recent push to main was on 2026-10-12 (the shallow clone used for this index was at commit 4a93bd2 \"Update `quinn-proto` to 0.11.18 (#53485)\", committed 2026-10-12T21:42Z). The latest stable release is 0.162.1 (2026-10-09), with 0.163.0 alphas following.",
+        "evidence": [
+          {
+            "quote": "\"pushed_at\": \"2026-10-12T22:44:21Z\"",
+            "citation": "[7]"
+          },
+          {
+            "quote": "Release list 0.162.1 0.163.0-alpha.5",
+            "citation": "[12]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "q_id": "q_2",
+          "Summary": "The Codex team structures its codebase so that agents can check their own work. It keeps tests in place, clear module boundaries and explicit validation instructions, so a failing test tells the agent to retry. Codex has a dedicated skill for testing itself that runs the tests for all of Codex's own features. Nightly Codex runs look for issues across the codebase and leave suggested fixes for engineers to review in the morning.",
+          "evidence": [
+            {
+              "quote": "The team has deliberately structured their codebase “to make it inevitable for the model to succeed”.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Structuring means having tests in-place, clear module boundaries, and instructions on how the model should run validation (eg: tests, linting, etc).",
+              "citation": "[4]"
+            },
+            {
+              "quote": "In what is an interesting meta-testing capability, Codex can fully test itself, using a specific skill. This skill runs tests for all of Codex’s own features.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The team set up nightly runs of Codex, instructed to look for issues across Codex.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_3",
+          "Summary": "Automated testing is split between pre-merge and post-merge. Required PR checks run against GitHub's synthetic merge commit. Bazel test and clippy are the main pre-merge path. The heavier Cargo nextest matrix (per-platform shards, including Windows ARM64), release-profile builds and Linux remote-env tests run after merge on main. nextest retries a failing test once, so transient failures do not fail full CI.",
+          "evidence": [
+            {
+              "quote": "Required checks run against GitHub's synthetic merge commit, not the pull request head alone.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "`bazel.yml` is the main pre-merge verification path for Rust code.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "It keeps the heavier checks off the PR path while still validating them after merge:",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Retry once so one transient failure does not fail full-CI outright.",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_4",
+          "Summary": "Product-level verification combines human and agent testing. The whole team runs bug-bash sessions: in one hour it logged and triaged more than 100 issues, and most were fixed within 24 hours. Before each launch, Codex is used to hunt for critical issues. The Codex app also runs through its own UI with skills, clicking around and attaching screenshot evidence to PRs, because end-to-end verification is becoming the bottleneck.",
+          "evidence": [
+            {
+              "quote": "During a one-hour bug bash session recently, the whole team was testing the app and logging issues.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "They went through over 100 issues in that single hour, and most were fixed within 24 hours.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "Another favorite moment is that every time we ship something, we have Codex find critical issues in the days leading up to a launch.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "We have gotten the Codex app pretty good at running itself through some skills—clicking around, screenshotting itself for evidence, uploading it to the PR.",
+              "citation": "[17]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_5",
+          "Summary": "Agent and model quality is tracked with a broad set of evals, A/B tests and internal dogfooding. The team is moving from academic benchmarks toward applied evals of real-world impact and toward multi-turn evaluation of whole trajectories (LLM-as-a-judge).",
+          "evidence": [
+            {
+              "quote": "To do that, we track a whole series and variety of evals.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Running evals, A/B testing and internal dogfooding.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "the rise of applied evals that measure real-world impact instead of academic benchmarks,",
+              "citation": "[18]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_6",
+          "Summary": "Rust testing stack: cargo-nextest (run with `just test`), Bazel test with a BuildBuddy remote cache and remote execution, clippy and rustfmt, end-to-end suites such as the linux-sandbox tests/suite, and Bazel-backed end-to-end macrobenchmarks. GitHub Actions runs all of these. The repository also contains about 1,560 insta snapshot (.snap) files, mostly for TUI rendering.",
+          "evidence": [
+            {
+              "quote": "`just test` runs the test suite via nextest:",
+              "citation": "[19]"
+            },
+            {
+              "quote": "Codex uses BuildBuddy for a shared Bazel cache and remoted builds and tests.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "End-to-end coverage lives in `tests/suite/sandbox.rs` and the other suite modules.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "Run Bazel-backed end-to-end macrobenchmarks with optimized binaries.",
+              "citation": "[21]"
+            },
+            {
+              "quote": "the full Cargo `nextest` matrix via per-platform archive-backed shards",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_7",
+          "Summary": "Testing involves Codex engineers, who each run several parallel agents for implementation, code review and security review; the whole team, which takes part in bug bashes; research and product engineers working as one unit; and the Codex agent itself. Codex team members also ask external users to help test platform-specific features such as the Windows sandbox.",
+          "evidence": [
+            {
+              "quote": "Tibo tells me that a typical engineer on the Codex team runs between four and eight parallel agents, which do any one of a number of tasks:",
+              "citation": "[4]"
+            },
+            {
+              "quote": "We have research and product engineers all working together.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "we'd love help with testing and feedback to make it robust.",
+              "citation": "[22]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_8",
+          "Summary": "Reliability is also built into language and code-review choices. Rust was picked partly for correctness (strong typing, memory management) and for a small dependency surface that the team can audit. The repository's review guideline asks for deep-equality assertions in tests and discourages `unsafe`; using `unsafe` std::env::set_var has caused race conditions more than once.",
+          "evidence": [
+            {
+              "quote": "For example, there are cases where it is tempting to use `unsafe` in order to use `std::env::set_var()`, but this indeed `unsafe` and has led to race conditions on multiple occasions.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "We wanted to choose a language that helps eliminate a class of errors with things like strong typing and memory management.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "By going with Rust, the team has very few dependencies and can thoroughly look through the few dependencies there are.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Assert the equality of the entire objects instead of doing \"piecemeal comparisons,\" performing `assert_eq!()` on individual fields.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "q_id": "q_9",
+          "Summary": "One `blocking-ci` workflow is the entrypoint for every merge-blocking check: Bazel, blob-size policy, cargo-deny, codespell, repo-checks, rust-ci and SDK. A single \"CI required\" job gates the merge. A separate `postmerge-ci` runs the full Cargo clippy/nextest matrices and a V8 canary on main. The split keeps PR signal fast while main still gets full cross-platform verification.",
+          "evidence": [
+            {
+              "quote": "This is the single entrypoint for checks that block a PR merge.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "The workflows in this directory are split so that pull requests get fast, review-friendly signal while `main` still gets the full cross-platform verification pass.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Keep `rust-ci.yml` fast enough that it usually does not dominate PR latency.",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_10",
+          "Summary": "Releases are driven by tags. Pushing a rust-vX tag runs rust-release, which checks that the tag matches the Cargo.toml version and builds macOS, Linux (MUSL) and Windows binaries with Cargo; Bazel artifacts are advisory. It then signs and notarizes macOS artifacts and cosigns Linux artifacts. Binaries are distributed through GitHub Releases, npm, Homebrew and releases.openai.com. Internally, versions ship up to 3–4 times a day, and external releases go out every few days.",
+          "evidence": [
+            {
+              "quote": "Release tags must match the version in Cargo.toml.",
+              "citation": "[25]"
+            },
+            {
+              "quote": "Release artifacts intentionally ship MUSL-linked Linux binaries.",
+              "citation": "[25]"
+            },
+            {
+              "quote": "Parallel Bazel artifacts are advisory while Cargo remains the release path.",
+              "citation": "[25]"
+            },
+            {
+              "quote": "Externally, new releases are cut every few days and are distributed via package managers, Homebrew, and npm.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_11",
+          "Summary": "For the closed Codex cloud/web product, the May 2025 launch involved a multi-hour deploy of OpenAI's main backend monolith, followed by turning on feature flags. Features are usually built and shipped internally first, then shipped externally on coordinated launch dates.",
+          "evidence": [
+            {
+              "quote": "The night before launch, five of us stayed up until 4a trying to deploy the main monolith (a multi-hour affair).",
+              "citation": "[26]"
+            },
+            {
+              "quote": "We turned on the flags, and started to see see the traffic pour in.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "We build stuff, ship it internally, then work crazy hard to quickly ship it externally.",
+              "citation": "[27]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_12",
+          "Summary": "Tools found: GitHub Actions; Bazel with BuildBuddy remote cache and remote build execution; Cargo/rustup; cargo-deny, cargo-shear, codespell and a custom argument-comment-lint; Azure Key Vault (PKCS11) for macOS code signing; cosign; Zig/musl for Linux builds; DotSlash for pinned tools; npm and Homebrew for distribution. OpenAI's own services, including Codex cloud, run on Azure (AKS, CosmosDB, Blob storage).",
+          "evidence": [
+            {
+              "quote": "`rust-ci.yml` keeps the Cargo-native PR checks intentionally small:",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Using a DotSlash file makes it possible to make a lightweight commit to source control to ensure all contributors use the same version of an executable, regardless of what platform they use for development.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "OpenAI runs everything on Azure.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "What's funny about this is there are exactly three services that I would consider trustworthy: Azure Kubernetes Service, CosmosDB (Azure's document storage), and BlobStore.",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_13",
+          "Summary": "Through CODEOWNERS, the @openai/codex-core-agent-team owns changes to the release workflow and the macOS signing pipeline. OpenAI employees use the OpenAI BuildBuddy host with remote execution. The Codex backend (auth, usage tracking, request routing to GPUs) is a large distributed system run by engineers with on-call duty.",
+          "evidence": [
+            {
+              "quote": "Keep macOS AKV signing changes reviewed by Codex maintainers.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "OpenAI employees should default to the OpenAI host with remote execution unless they have a reason to choose another configuration.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "It’s a large distributed systems effort, and the team maintaining it is on on-call duty.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_14",
+          "Summary": "The Bazel build is still described as experimental, and Cargo remains the source of truth. The Codex team says early versions of GPT-5.3-Codex helped manage the model's own deployment and diagnose its test and eval results. The base container image for Codex cloud is open-sourced separately as openai/codex-universal.",
+          "evidence": [
+            {
+              "quote": "As of 6/1/2026, this setup is still experimental as we stabilize it.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "The Codex team used early versions to debug its own training, manage its own deployment, and diagnose test results and evaluations",
+              "citation": "[29]"
+            },
+            {
+              "quote": "Universal cloud environment openai/codex-universal Base environment used by Codex cloud",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "q_id": "q_15",
+          "Summary": "The Codex team uses tiered code review. An AI review, from a model trained specifically for code review and tuned for signal over noise, always runs when a PR moves from draft to in-review. Non-critical code can be merged after the AI review alone. Key parts of the codebase, such as the core agent and the open-source components, require careful human review.",
+          "evidence": [
+            {
+              "quote": "The team trained a bespoke model for code review, optimizing it for signal over noise.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "AI reviews are run automatically whenever a pull request moves from “draft” state to “in-review” state, and are automated via a GitHub webhook.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "For key code parts such as the core agent and open source components, the team insists on careful human code reviews.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_16",
+          "Summary": "Across OpenAI, Codex reviews essentially every internal pull request, and many teams do not allow it to be turned off. Engineers describe two rounds of review: one when the agent presents its code, and one for code from peers. The team says review volume has become a bottleneck it is working on.",
+          "evidence": [
+            {
+              "quote": "We have people on the team complaining there’s too much code to review.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "Many teams actually disallow disabling it, because it catches so many flaws and critical issues in people’s code that it’s considered essential.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Inside OpenAI, Huet noted that Codex adoption among technical staff is above 92%, Codex reviews every internal pull request, and engineers using it ship about 70% more merged pull requests, with real bugs caught before production.",
+              "citation": "[30]"
+            },
+            {
+              "quote": "You’re already reviewing the code the first time because the agent presents it to you, and then you have to review code produced by your peers. There are two rounds of review.",
+              "citation": "[17]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_17",
+          "Summary": "A written Rust review guideline is kept in the repository. It says PR bodies must explain the motivation, each PR should do one conceptual thing, duplicated code should be refactored, the `core` crate should stay small, new code belongs in the correct crate, and TUI changes should include screenshots or videos.",
+          "evidence": [
+            {
+              "quote": "Make sure the pull request body explains the motivation behind the change.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "Each PR should ideally do one conceptual thing.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "When possible, try to keep the `core` crate as small as possible.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_18",
+          "Summary": "Review runs on GitHub Pull Requests with required status checks (a single \"CI required\" gate), CODEOWNERS, automated AI code review (Codex) triggered by a GitHub webhook, and lint gates in CI: Bazel/Cargo clippy, cargo fmt --check, cargo-shear, codespell and blob-size policy.",
+          "evidence": [
+            {
+              "quote": "The team set up AI code review and it always runs.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "It runs Bazel `test` and Bazel `clippy` on the supported Bazel targets,",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Keep ownership changes reviewed by the same team.",
+              "citation": "[28]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_19",
+          "Summary": "The @openai/codex-core-agent-team is the code owner of the core crates (core, exec-server, codex-mcp, prompts, arg0, path-uri) and of release and signing files. Only collaborators can open PRs. The Codex team makes all code changes and does not accept external code contributions.",
+          "evidence": [
+            {
+              "quote": "For these reasons, we focus community contributions on issue reports, analysis, and feedback, while the Codex team handles code changes.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Reviewing and iterating on those changes can take more time than implementing a fix directly, diverting attention from higher-priority work.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Only collaborators can create PRs",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_20",
+          "Summary": "The team's view of review is changing. Codex's leadership sees code review as mostly about correctness and information exchange, and thinks discussions about intent should happen before code is written. Team members are exploring verification evidence (screenshots, reproduced click paths) as a partial substitute for reading code.",
+          "evidence": [
+            {
+              "quote": "With AI code review, conversations about what the system should do still matter, and are probably best had before the code is written.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "Maybe that’s the turning point—code review becomes less important when you can verify that part instead.",
+              "citation": "[17]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "bwrap: Approval prompt shown for almost every command",
+          "Issue_Number": 14936,
+          "Status": "Closed",
+          "Description": "After upgrading to CLI 0.115.0, the bubblewrap-based Linux sandbox asked for approval on almost every read-only command and did not save \"don't ask again\" decisions. Maintainers said the migration from Landlock to bubblewrap was complex and had introduced regressions, and fixed it in 0.122.0-alpha.9, a sign that changes to the security boundary are hard to roll out across Linux distributions.",
+          "Citation": "[32]"
+        },
+        {
+          "Issue_Title": "Bug: Linux sandbox fails with mountinfo path is not absolute after ChatGPT update",
+          "Issue_Number": 47345,
+          "Status": "Closed",
+          "Description": "After a desktop update (bundled CLI 0.155.0-alpha.16), the Linux bubblewrap sandbox could not build its command because of an unexpected mountinfo path, so no commands could run. Sandbox setup depends on host-specific kernel and mount details that the test matrix does not fully cover.",
+          "Citation": "[33]"
+        },
+        {
+          "Issue_Title": "Codex reads files outside working directory without my permission",
+          "Issue_Number": 5237,
+          "Status": "Closed",
+          "Description": "A user found that the sandbox restricts writes but not reads outside the working directory. A maintainer explained this is by design (tools need read access) and pointed to a feature request for finer-grained policies. Users' expectations of the security model did not match its default enforcement.",
+          "Citation": "[34]"
+        },
+        {
+          "Issue_Title": "[CRITICAL DATA LOSS][Windows] Codex mass-deleted hundreds of GB outside project scope, including unrelated projects, apps and Windows components",
+          "Issue_Number": 46022,
+          "Status": "Open",
+          "Description": "A destructive filesystem operation on Windows reportedly escaped the project scope and deleted user data, applications and OS components. This is a safety-critical gap in containing destructive tool calls, especially on Windows, where the sandbox has fewer OS primitives.",
+          "Citation": "[35]"
+        },
+        {
+          "Issue_Title": "Windows sandbox provisioning fails with os error 32 when any runtime file is in use (0.162.0-alpha.2 regression)",
+          "Issue_Number": 51634,
+          "Status": "Open",
+          "Description": "A new runtime validation step in the 0.162.0-alpha.2 Windows sandbox helper aborts provisioning whenever a runtime file is open by a running process. As a result, every sandboxed command in the desktop app is rejected, an example of an alpha-channel regression in Windows-specific sandbox code.",
+          "Citation": "[36]"
+        },
+        {
+          "Issue_Title": "Codex SQLite feedback logs can write ~640 TB/year and rapidly consume SSD endurance",
+          "Issue_Number": 28224,
+          "Status": "Closed",
+          "Description": "Codex's local SQLite feedback log database (~/.codex/logs_2.sqlite) logged every Responses WebSocket event, which caused extreme disk writes. A maintainer fixed it in several PRs released in 0.142.0–0.145.0. This was unbounded local telemetry that no performance test caught before release.",
+          "Citation": "[37]"
+        },
+        {
+          "Issue_Title": "MCP server processes leak: per-thread processes never cleaned up (9+ GB RSS)",
+          "Issue_Number": 30408,
+          "Status": "Open",
+          "Description": "The app-server starts a full set of MCP server processes for every thread and never stops them when threads close. In the report, 133 orphaned processes were using about 9.3 GB of RAM, which shows gaps in process lifecycle management in the multi-thread app-server design.",
+          "Citation": "[38]"
+        },
+        {
+          "Issue_Title": "unexpected status 404 Not Found: Unknown error, url: https://chatgpt.com/backend-api/codex/responses, cf-ray: ...",
+          "Issue_Number": 28756,
+          "Status": "Closed",
+          "Description": "Long-running sessions with compaction and sub-agents kept failing with 404s from the Codex backend Responses endpoint after 5 retries. With more than 1,100 comments, it shows how client failures depend on backend and model-routing behavior outside the open-source repository.",
+          "Citation": "[39]"
+        },
+        {
+          "Issue_Title": "WebSocket upgrade succeeds then server closes with 1008 Policy (falls back to HTTPS)",
+          "Issue_Number": 13041,
+          "Status": "Closed",
+          "Description": "The new Responses WebSocket transport was closed right away by server policy, which caused reconnect loops and fallback to HTTPS. Maintainers debugged it with logs and thread IDs uploaded through /feedback, a client/server transport contract issue in a feature-flagged rollout.",
+          "Citation": "[40]"
+        },
+        {
+          "Issue_Title": "Codex Desktop GPT-5.5 remote compaction fails and leaves thread unusable",
+          "Issue_Number": 19558,
+          "Status": "Closed",
+          "Description": "Automatic remote context compaction failed with stream disconnects and left threads stuck. The team fixed it architecturally by moving compaction logic to the client and using the same endpoint as normal turns, replacing a separate server-side endpoint.",
+          "Citation": "[41]"
+        },
+        {
+          "Issue_Title": "Codex App: context compaction fails with invalid_enum_value for `context_compaction`",
+          "Issue_Number": 26493,
+          "Status": "Closed",
+          "Description": "After compaction, the client sent an item type that the Responses API schema rejected (invalid_enum_value). It was closed as a duplicate of related schema-mismatch reports, part of a recurring class of API contract and schema drift between the client and the backend.",
+          "Citation": "[42]"
+        },
+        {
+          "Issue_Title": "codex app-server can pollute subsequent TUI session metadata (wrong cwd/source/originator)",
+          "Issue_Number": 23437,
+          "Status": "Closed",
+          "Description": "Running `codex app-server` caused later TUI sessions to be recorded with the wrong working directory, source and originator in rollout files and the SQLite state DB. It was fixed in 0.133.0. Shared local state between surfaces (CLI, app-server, desktop) is a source of cross-surface bugs.",
+          "Citation": "[43]"
+        },
+        {
+          "Issue_Title": "CLI version 0.124.0 is missing @openai/codex-linux-x64",
+          "Issue_Number": 19177,
+          "Status": "Closed",
+          "Description": "Right after the 0.124.0 release, npm installs failed because the platform-specific optional package was missing; a maintainer said npm uploads may not have finished yet. This is a packaging and publishing race in the multi-package npm distribution.",
+          "Citation": "[44]"
+        },
+        {
+          "Issue_Title": "[BUG] Codex CLI 0.157.0 fails to start on Windows with daemon privilege error (0.156.1 works)",
+          "Issue_Number": 48043,
+          "Status": "Open",
+          "Description": "A new background-daemon privilege check in 0.157.0 made the CLI fail at startup on Windows with an error saying the daemon must be started from a non-elevated terminal. Downgrading to 0.156.1 avoided it. A new architectural component (the shared app-server daemon) caused a platform-specific startup regression.",
+          "Citation": "[45]"
+        },
+        {
+          "Issue_Title": "Linux arm64: bundled codex-linux-arm64 musl binary segfaults with SEGV_ACCERR (exit 139)",
+          "Issue_Number": 14474,
+          "Status": "Open",
+          "Description": "The bundled MUSL-linked arm64 binary crashes with SIGSEGV on Raspberry Pi/aarch64 Linux. Shipping statically linked binaries for every target leaves gaps in coverage of less common architectures.",
+          "Citation": "[46]"
+        }
+      ],
+      "Practices": [
+        {
+          "q_id": "q_21",
+          "Summary": "The selected issues fall into four recurring categories. (1) Sandbox and security-boundary regressions across OS backends: the Linux migration to bubblewrap, Windows sandbox helpers, and read-scope expectations. (2) Unbounded resource growth and leaks: SQLite log writes, orphaned MCP processes, and session-history scans. (3) Client/backend transport and schema contract mismatches: Responses API 404s, WebSocket policy closes, remote-compaction failures, enum/schema drift, and shared app-server state polluting other surfaces. (4) Release and packaging regressions from a very fast release cadence: missing npm optional packages, MUSL arm64 segfaults, and the Windows daemon privilege error. Together they point to a weak spot: one shared harness ships to many surfaces and platforms faster than cross-platform tests can cover. Maintainers usually respond with quick alpha or point-release fixes, and sometimes with architectural changes such as moving compaction to the client.",
+          "evidence": [
+            {
+              "quote": "We have a complex migration underway and it seems like it introduced regressions.",
+              "citation": "[32]"
+            },
+            {
+              "quote": "We recently switched to a more robust approach where the compaction logic is moved locally using the same endpoint as normal turns.",
+              "citation": "[41]"
+            },
+            {
+              "quote": "Our series of fixes for this problem are in the latest shipping desktop app, CLI, and IDE extension.",
+              "citation": "[37]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_22",
+          "Summary": "Triage workflow: users file bugs through structured templates that ask for version, plan, model, platform, a redacted `codex doctor --json` report and reproduction steps. Codex itself, running through GitHub Actions, auto-labels new issues and flags likely duplicates. Maintainers add labels such as `regression`, ask reporters to upload logs and sessions with /feedback, and point them to alpha builds that contain fixes. Community root-cause analysis is explicitly encouraged.",
+          "evidence": [
+            {
+              "quote": "This helps us diagnose install, config, auth, terminal, MCP, network, and local state issues.",
+              "citation": "[47]"
+            },
+            {
+              "quote": "You are an assistant that triages new GitHub issues by identifying potential duplicates.",
+              "citation": "[48]"
+            },
+            {
+              "quote": "can you use /feedback to upload your logs and a sample session, then post the thread ID here?",
+              "citation": "[40]"
+            },
+            {
+              "quote": "Community expertise is most valuable when shared through detailed bug reports, reproduction steps, logs, root-cause analysis, and design discussions in issues.",
+              "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_23",
+          "Summary": "Internally, the team uses Codex to find and fix bugs in Codex. Nightly runs leave suggested fixes for review. Scheduled automations pick random files to find latent bugs, and others check observability platforms to fix bugs shipped the previous day. A Datadog skill reviews alerts and drafts fixes.",
+          "evidence": [
+            {
+              "quote": "Every morning, engineers review issues that Codex identified with the codebase, with fixes waiting for review.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "One automation I have runs multiple times a day. It picks a random file and finds and fixes a subtle bug.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "It checks a few observability platforms and tries to ship a fix before anyone notices you shipped a bug.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "Codex connects to Datadog, reviews alerts and issues, finds problems, and tries to generate a fix for them.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_24",
+          "Summary": "Tools found: GitHub Issues with a detailed label taxonomy (bug, regression, sandbox, windows-os, connectivity, performance, app-server and others); openai/codex-action workflows that label, deduplicate and translate new issues; `codex doctor --json` diagnostics; the /feedback log and session upload; RUST_LOG-based tracing and TUI log files; Datadog; and Linear for filing bugs internally.",
+          "evidence": [
+            {
+              "quote": "You are an assistant that reviews GitHub issues for the repository.",
+              "citation": "[49]"
+            },
+            {
+              "quote": "Codex is written in Rust, so it honors the `RUST_LOG` environment variable to configure its logging behavior.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "filing bugs in Linear and using automation so things get implemented daily.",
+              "citation": "[17]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_25",
+          "Summary": "Codex team members (for example etraut-openai, viyatb-oai and jif-oai on the issues above) triage, label and fix bugs. The team's single PM uses Codex to triage and prioritize feedback in real time. Community members provide reproductions and root-cause analysis. Security vulnerabilities go through OpenAI's Bugcrowd program instead of public issues.",
+          "evidence": [
+            {
+              "quote": "He uses Codex to dig through user feedback, triage issues, and prioritize work in real time.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "Bug reports, root-cause analyses, and feature requests help us understand what matters most and improve Codex.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Our security program is managed through Bugcrowd",
+              "citation": "[50]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_26",
+          "Summary": "Non-determinism makes root-causing hard. When users reported quality degradation, the team published a public retrospective that looked into about 30 candidate root causes across hardware, caching layers and routing. Windows remains a known gap, because it offers fewer OS-level primitives for sandboxing.",
+          "evidence": [
+            {
+              "quote": "One of the challenges is that fundamentally we are dealing with a non-deterministic system. This introduces challenges when it comes to pinpointing the exact root cause of a potential issue.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "We came up with over 30 possible explanations, about 30 different things we needed to investigate as potential root causes as part of that analysis.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "it's taking us some time to get really solid sandboxing working on Windows, where there are fewer OS-level primitives for it.",
+              "citation": "[22]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "q_id": "q_27",
+          "Summary": "Development is agent-first and driven by dogfooding. The team estimates that more than 90% of the Codex app's code is generated by Codex. Engineers work as \"agent managers\" who supervise parallel agents. OpenAI uses the same open-source repository internally and has no separate internal repo for features.",
+          "evidence": [
+            {
+              "quote": "More than ninety percent of the Codex app’s code was generated by Codex itself, the team estimates,",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Codex engineers are now “agent managers” and no longer just write code.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The version of Codex that we use is literally the open source repo. We don’t have a different repo that features go in.",
+              "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_28",
+          "Summary": "The process is lightweight and bottom-up rather than a formal Agile/Scrum framework. Leadership sets an overall strategy, then gives teams autonomy. Small teams of two or three people, or a single engineer, own features end to end. Ideas mostly come from the bottom up, many experiments are tried, and only the best ones ship. Work is plan-first with humans in the loop (\"vibe engineering\").",
+          "evidence": [
+            {
+              "quote": "The most successful projects usually come from very small teams, often just two or three people.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "Most ideas also come bottom-up, driven by people on the team getting excited about trying something new.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "Not everything ships, but people are encouraged and rewarded for exploring new ideas, and they only launch the very best ones.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "Go back and forth, iterate on the plan, and then you’re in the loop with the model and carefully reviewing its code.",
+              "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_29",
+          "Summary": "History: building an autonomous software engineer became a top-line OpenAI goal for 2025. Several prototypes were merged into one team, and Codex cloud was built in a 7-week sprint. In mid-2025 the CLI was rewritten in Rust, and the TypeScript version kept receiving bug fixes until the Rust version reached parity.",
+          "evidence": [
+            {
+              "quote": "That fall, the company declared that building an aSWE (Autonomous Software Engineer) was to be a top-line goal for 2025.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "From start (the first lines of code written) to finish, the whole product was built in just 7 weeks.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "We're planning to continue merging bugfixes in the TypeScript implementation, while we get the Rust implementation to experience and feature parity in the coming weeks.",
+              "citation": "[51]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_30",
+          "Summary": "Tools and methods found: internal dogfooding; more than 100 shared internal Agent Skills (for example a security best-practices skill, a \"Yeet\" skill that drafts PRs, and a Datadog skill); AGENTS.md instructions; scheduled Codex automations; Linear for tickets assigned to Codex as a teammate; and plan-first workflows.",
+          "evidence": [
+            {
+              "quote": "Internally, the Codex team built 100+ Skills to share and choose from.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "takes any code change, writes up the PR title and description based on the original plan, and creates a draft PR in one step.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "OpenAI employees can also submit a ticket to Codex through project management tools like Linear, assigning it tasks the same way they would assign work to a human colleague.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_31",
+          "Summary": "The Codex team has about 40 people, about 30 of them engineers, run as a single unit with research and product engineers. It has one product manager and two designers. Named roles: Thibault Sottiaux (head of Codex), Alexander Embiricos (product lead), Michael Bolin (tech lead of the open-source repo), Gabriel Peal (VS Code extension, desktop app foundations) and Fouad Matin (initial CLI release, safety and security). The original launch team had about 8 engineers, about 4 researchers, 2 designers, 2 GTM staff and a PM.",
+          "evidence": [
+            {
+              "quote": "Behind products like the Codex app, IDE extensions, and the open-source coding agent is a relatively small group of around 40 people operating with an unusually high level of autonomy, speed, and trust.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "The Codex team has 1 Product Manager for the whole team, 2 designers, and others on the team are engineers with various expertise.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "We are about 30 engineers, and we run it as a single unit.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Michael Bolin: tech lead for the Codex open source repository.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "We were a senior team of ~8 engineers, ~4 researchers, 2 designers, 2 GTM and a PM.",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_32",
+          "Summary": "The harness and models are designed together. The harness is kept slightly ahead of the latest model, and \"crutches\" are removed as models improve. Model capabilities and tools are co-designed with research. The CLI core harness, the VS Code extension UI and the desktop app share a lot of code, so improvements reach every surface.",
+          "evidence": [
+            {
+              "quote": "The Codex harness is always slightly ahead of OpenAI’s latest model.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "This requires co-designing model capabilities and training together with the tools.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "we built the app with a ton of code sharing with the CLI (as core agent harness) and the VSCode extension (UI layer), so that as we improve any of those, we polish them all.",
+              "citation": "[52]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "q_id": "q_33",
+          "Summary": "The team works in the open on Slack. At OpenAI almost everything runs on Slack rather than email. The Codex team deliberately uses public channels and open documents with broad permissions, and Codex is connected to Slack, documents and code, so anyone can ask it who is working on what or why a decision was made.",
+          "evidence": [
+            {
+              "quote": "An unusual part of OpenAI is that everything, and I mean everything, runs on Slack.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "The team purposely work in public channels and open documents with broad permissions.",
+              "citation": "[31]"
+            },
+            {
+              "quote": "At OpenAI, it’s plugged into Slack, every document, and all code, by default.",
+              "citation": "[31]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_34",
+          "Summary": "Meetings are few and spontaneous. The team favors in-person collaboration, and leadership is very available. In meetings, engineers often start a Codex thread to answer questions on the spot.",
+          "evidence": [
+            {
+              "quote": "When meetings do happen, they’re usually spontaneous and driven by real needs.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "The office is set up to encourage in-person collaboration, and the leadership team makes itself extremely available so issues can be resolved in minutes or hours at worst.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "The Codex team holds meetings to discuss Codex, during which it’s common for engineers to fire off a thread within Codex to see if it can come back with some information.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_35",
+          "Summary": "Onboarding uses pairing. A new joiner shadows an engineer for the first half of the day, then gets a task to ship to production the same day. Codex also walks new hires through setup and the codebase.",
+          "evidence": [
+            {
+              "quote": "A new joiner is paired with an engineer on the team and shadows them for the first part of the day, observing how they develop with Codex.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "They are then assigned a task in the second half of the day, and are expected to ship it to production on the same day.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Thibault shared that Codex walks new hires through onboarding, sets up their entire computer, and helps them understand the codebase, projects, and existing features.",
+              "citation": "[15]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_36",
+          "Summary": "Tools found: Slack, including the Codex Slack integration for tagging Codex in threads; Linear; GitHub Issues and GitHub Discussions (used for announcements); and automated digests, such as a daily report of contributions merged to the Codex app, grouped by theme.",
+          "evidence": [
+            {
+              "quote": "Bayes said Codex now integrates with project management tools like Linear and communication platforms like Slack, allowing team members to assign coding tasks directly to the AI agent.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "I also have one that every day at 9 AM sends me all the contributions that merged to the Codex app over the last day.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "Use the appropriate GitHub repository for bug reports and feature requests:",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_37",
+          "Summary": "Participants include the core Codex team; designers who now contribute code directly; ChatGPT engineers lent to the team for launches; executives who are active on Slack; and the open-source community through issues and discussions.",
+          "evidence": [
+            {
+              "quote": "Ed Bayes, who leads product design for Codex, said the rise of Codex and coding models had completely changed how he designs products like the app.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "When launching Codex, we needed some help from a few experienced ChatGPT engineers to hit our launch date.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "You'd see gdb, sama, kw, mark, dane, et al chime in regularly on Slack.",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_38",
+          "Summary": "Community norms are written down: the Contributor Covenant, assuming good intent and sharing what you learn. Major technical decisions, such as the Rust rewrite, were announced through GitHub Discussions. Because OpenAI is secretive, internal communication is split across several Slack workspaces with different permissions.",
+          "evidence": [
+            {
+              "quote": "Written communication is hard, so err on the side of generosity.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "We wanted to share an update on a few recurring themes: cross-platform stability, security, performance, and extensibility.",
+              "citation": "[51]"
+            },
+            {
+              "quote": "There's a handful of slack workspaces with various permissions.",
+              "citation": "[26]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "q_id": "q_39",
+          "Summary": "AGENTS.md files are treated as engineering documentation for agents. They tell Codex how to navigate the codebase, which test commands to run and which project standards to follow. Nested AGENTS.md files in the repository require module docs and docstrings to stay in sync with the code.",
+          "evidence": [
+            {
+              "quote": "On the Codex team, these files tell the agent how to navigate the codebase, which commands to run for testing, and how to follow the project’s standards.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "When changing the paste-burst or chat-composer state machines in this folder, keep the docs in sync:",
+              "citation": "[53]"
+            },
+            {
+              "quote": "Keep implementations/docstrings aligned unless a divergence is intentional and documented.",
+              "citation": "[53]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_40",
+          "Summary": "User documentation lives on the official docs site (developers.openai.com/codex, now served from learn.chatgpt.com). Most docs/*.md files in the repository are stubs that link there, while crate READMEs (app-server protocol, linux-sandbox, Bazel) document internals. The docs site offers an llms.txt index and Markdown versions of every page, and documentation issues have their own template.",
+          "evidence": [
+            {
+              "quote": "Markdown versions of documentation pages are available by appending .md to the page URL.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "This repository uses Bazel to build the Rust workspace under `codex-rs`.",
+              "citation": "[6]"
+            },
+            {
+              "quote": "Thank you for submitting a documentation request. It helps make Codex better.",
+              "citation": "[54]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_41",
+          "Summary": "Written artifacts are part of the engineering process. PR bodies must explain the motivation for the change, and unit tests are seen as \"executable documentation\". OpenAI engineers stress producing artifacts that humans enjoy reading because the same artifacts make agents more reliable.",
+          "evidence": [
+            {
+              "quote": "Note that unit tests also function as \"executable documentation.\"",
+              "citation": "[23]"
+            },
+            {
+              "quote": "Ideally, the PR body also contains a small summary of the change.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "a habit of producing artifacts that humans enjoy reading, since those same artifacts make agents more reliable.",
+              "citation": "[30]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_42",
+          "Summary": "Tools found: Markdown docs in the repository (docs/, crate READMEs, AGENTS.md); the official docs site with an llms.txt index, .md page versions and an \"Ask AI\" docs agent; GitHub Releases as the changelog, with release notes generated from the tag commit message; and agent skills that write PR titles and bodies.",
+          "evidence": [
+            {
+              "quote": "For the complete documentation index, see llms.txt",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Generate release notes from tag commit message",
+              "citation": "[25]"
+            },
+            {
+              "quote": "It takes the change, does the commit, does the PR, writes the draft, puts it in draft, and publishes a PR with a title and body.",
+              "citation": "[17]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_43",
+          "Summary": "Engineers write and maintain docs, often with Codex drafting PR descriptions and plans. The community reports missing, incorrect or confusing docs through a dedicated template and an auto-applied `documentation` label. No dedicated technical-writer role was found in public sources.",
+          "evidence": [
+            {
+              "quote": "documentation — Updates or corrections needed in docs/README/config references (broken links, missing examples, outdated keys, clarification requests).",
+              "citation": "[49]"
+            },
+            {
+              "quote": "Tell us if there is missing or incorrect documentation",
+              "citation": "[54]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_44",
+          "Summary": "Module-level AGENTS.md files also act as design and scope documents. They record accepted limitations and a review contract, which steers both human and AI reviewers.",
+          "evidence": [
+            {
+              "quote": "These are accepted limitations of this phase, not requests to duplicate backend implementations. Review against this scope.",
+              "citation": "[55]"
+            },
+            {
+              "quote": "Supported backends are Seatbelt, bubblewrap, and MXC; legacy Windows is out of scope.",
+              "citation": "[55]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/openai/codex",
+      "Date_Created": "2025-04-13",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[2]": {
+      "Website_Type": "Tech News Article (Ars Technica)",
+      "Link": "https://arstechnica.com/ai/2025/12/how-openai-is-using-gpt-5-codex-to-improve-the-ai-tool-itself/",
+      "Date_Created": "2025-12-12",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[3]": {
+      "Website_Type": "Official Documentation",
+      "Link": "https://learn.chatgpt.com/docs/open-source",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[4]": {
+      "Website_Type": "Engineering Newsletter Deep Dive (The Pragmatic Engineer)",
+      "Link": "https://newsletter.pragmaticengineer.com/p/how-codex-is-built",
+      "Date_Created": "2026-02-17",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[5]": {
+      "Website_Type": "GitHub REST API (Repository Languages)",
+      "Link": "https://api.github.com/repos/openai/codex/languages",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[6]": {
+      "Website_Type": "Engineering Documentation (Bazel)",
+      "Link": "https://github.com/openai/codex/blob/main/codex-rs/docs/bazel.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[7]": {
+      "Website_Type": "GitHub REST API (Repository Metadata)",
+      "Link": "https://api.github.com/repos/openai/codex",
+      "Date_Created": "2025-04-13",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[8]": {
+      "Website_Type": "GitHub Repository Contributors List",
+      "Link": "https://github.com/openai/codex/contributors_list?current_repository=codex&deferred=true",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[9]": {
+      "Website_Type": "CONTRIBUTING.md",
+      "Link": "https://github.com/openai/codex/blob/main/docs/contributing.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[10]": {
+      "Website_Type": "GitHub REST API (Releases)",
+      "Link": "https://api.github.com/repos/openai/codex/releases?per_page=100",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[11]": {
+      "Website_Type": "Tech News Article (InfoQ)",
+      "Link": "https://www.infoq.com/news/2025/06/codex-cli-rust-native-rewrite",
+      "Date_Created": "2025-06-04",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[12]": {
+      "Website_Type": "GitHub Releases Page",
+      "Link": "https://github.com/openai/codex/releases",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[13]": {
+      "Website_Type": "CI Workflow Documentation",
+      "Link": "https://github.com/openai/codex/blob/main/.github/workflows/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[14]": {
+      "Website_Type": "Test Configuration File (nextest.toml)",
+      "Link": "https://github.com/openai/codex/blob/main/codex-rs/.config/nextest.toml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[15]": {
+      "Website_Type": "Engineering Newsletter (Engineering Leadership)",
+      "Link": "https://newsletter.eng-leadership.com/p/how-openais-codex-team-works-and",
+      "Date_Created": "2026-02-22",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[16]": {
+      "Website_Type": "Engineer Interview (Cerebral Valley)",
+      "Link": "https://cerebralvalley.beehiiv.com/p/openai-s-codex-lets-one-engineer-ship-like-a-team-of-ten",
+      "Date_Created": "2026-01-13",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[17]": {
+      "Website_Type": "Podcast Transcript (Every - AI & I)",
+      "Link": "https://every.to/podcast/transcript-how-openai-s-codex-team-uses-their-coding-agent",
+      "Date_Created": "2026-02-18",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[18]": {
+      "Website_Type": "Podcast Episode Page (Latent Space)",
+      "Link": "https://www.latent.space/p/gpt5-codex-max-training-agents-with",
+      "Date_Created": "2025-12-26",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[19]": {
+      "Website_Type": "Engineering Documentation (Installing & Building)",
+      "Link": "https://github.com/openai/codex/blob/main/docs/install.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[20]": {
+      "Website_Type": "Engineering Documentation (linux-sandbox README)",
+      "Link": "https://github.com/openai/codex/blob/main/codex-rs/linux-sandbox/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[21]": {
+      "Website_Type": "Build/Task Runner Configuration (justfile)",
+      "Link": "https://github.com/openai/codex/blob/main/justfile",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[22]": {
+      "Website_Type": "Developer Forum (Hacker News comment by Codex team member)",
+      "Link": "https://news.ycombinator.com/item?id=46859693",
+      "Date_Created": "2026-02-02",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[23]": {
+      "Website_Type": "Code Review Guidelines (codex-rust-review.md)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/codex/labels/codex-rust-review.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[24]": {
+      "Website_Type": "GitHub Actions Workflow (blocking-ci.yml)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/workflows/blocking-ci.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[25]": {
+      "Website_Type": "GitHub Actions Workflow (rust-release.yml)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/workflows/rust-release.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[26]": {
+      "Website_Type": "Engineer Blog Post (Calvin French-Owen, former Codex engineer)",
+      "Link": "https://calv.info/openai-reflections",
+      "Date_Created": "2025-07-15",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[27]": {
+      "Website_Type": "Developer Forum (Hacker News comment by Codex team member)",
+      "Link": "https://news.ycombinator.com/item?id=47799046",
+      "Date_Created": "2026-04-16",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[28]": {
+      "Website_Type": "CODEOWNERS File",
+      "Link": "https://github.com/openai/codex/blob/main/.github/CODEOWNERS",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[29]": {
+      "Website_Type": "Tech News Article (NBC News)",
+      "Link": "https://www.nbcnews.com/tech/innovation/openai-says-new-codex-coding-model-helped-build-rcna257521",
+      "Date_Created": "2026-02-05",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[30]": {
+      "Website_Type": "Official Community Forum Article (OpenAI Forum)",
+      "Link": "https://forum.openai.com/home/blogs/how-openai-engineers-use-codex-to-tackle-big-projects-with-rigor-2025-12-04",
+      "Date_Created": "2025-12-04",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[31]": {
+      "Website_Type": "Podcast Episode Page (The Pragmatic Engineer)",
+      "Link": "https://newsletter.pragmaticengineer.com/p/building-codex-with-tibo-sottiaux",
+      "Date_Created": "2026-09-09",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[32]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/14936",
+      "Date_Created": "2026-03-17",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[33]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/47345",
+      "Date_Created": "2026-09-22",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[34]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/5237",
+      "Date_Created": "2025-10-16",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[35]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/46022",
+      "Date_Created": "2026-09-16",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[36]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/51634",
+      "Date_Created": "2026-10-07",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[37]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/28224",
+      "Date_Created": "2026-06-14",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[38]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/30408",
+      "Date_Created": "2026-06-28",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[39]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/28756",
+      "Date_Created": "2026-06-17",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[40]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/13041",
+      "Date_Created": "2026-02-27",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[41]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/19558",
+      "Date_Created": "2026-04-25",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[42]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/26493",
+      "Date_Created": "2026-06-05",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[43]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/23437",
+      "Date_Created": "2026-05-19",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[44]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/19177",
+      "Date_Created": "2026-04-23",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[45]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/48043",
+      "Date_Created": "2026-09-25",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[46]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/openai/codex/issues/14474",
+      "Date_Created": "2026-03-12",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[47]": {
+      "Website_Type": "GitHub Issue Template (CLI Bug)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/ISSUE_TEMPLATE/3-cli.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[48]": {
+      "Website_Type": "GitHub Actions Workflow (issue-deduplicator.yml)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/workflows/issue-deduplicator.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[49]": {
+      "Website_Type": "GitHub Actions Workflow (issue-labeler.yml)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/workflows/issue-labeler.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[50]": {
+      "Website_Type": "Security Policy (SECURITY.md)",
+      "Link": "https://github.com/openai/codex/blob/main/SECURITY.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[51]": {
+      "Website_Type": "GitHub Discussion (Announcement)",
+      "Link": "https://github.com/openai/codex/discussions/1174",
+      "Date_Created": "2025-05-30",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[52]": {
+      "Website_Type": "Developer Forum (Hacker News comment by Codex team member)",
+      "Link": "https://news.ycombinator.com/item?id=46859654",
+      "Date_Created": "2026-02-02",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[53]": {
+      "Website_Type": "AGENTS.md (TUI bottom pane)",
+      "Link": "https://github.com/openai/codex/blob/main/codex-rs/tui/src/bottom_pane/AGENTS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[54]": {
+      "Website_Type": "GitHub Issue Template (Documentation Issue)",
+      "Link": "https://github.com/openai/codex/blob/main/.github/ISSUE_TEMPLATE/6-docs-issue.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[55]": {
+      "Website_Type": "AGENTS.md (sandbox integrity)",
+      "Link": "https://github.com/openai/codex/blob/main/codex-rs/exec-server/src/sandbox_integrity/AGENTS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[56]": {
+      "Website_Type": "GitHub repository page (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20261012205951/https://github.com/openai/codex",
+      "Date_Created": "2026-10-12",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[57]": {
+      "Website_Type": "Lines-of-code service (ghloc JSON API)",
+      "Link": "https://ghloc.ifels.dev/openai/codex/main?pretty=false",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[58]": {
+      "Website_Type": "GitHub REST API (Repository Languages)",
+      "Link": "https://api.github.com/repos/openai/codex/languages",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[59]": {
+      "Website_Type": "GitHub Repository Contributors List",
+      "Link": "https://github.com/openai/codex/contributors_list?current_repository=codex&deferred=true",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[60]": {
+      "Website_Type": "GitHub REST API (releases list, JSON, pages 1-6)",
+      "Link": "https://api.github.com/repos/openai/codex/releases?per_page=30&page=1",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    }
+  }
+}

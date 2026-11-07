@@ -1,19 +1,47 @@
 {
   "Agent_Name": "Browser Use",
-  "Description": {
-    "q_id": "q_18",
-    "value": "Browser Use is an open-source Python library (MIT) that makes websites accessible to AI agents. It connects large language models to a Chromium browser via CDP, extracting the DOM and screenshots on each step, then executing LLM-decided actions until the task is complete. Available as a pip package, a CLI tool, and a managed cloud API.",
-    "evidence": [
-      {
-        "quote": "Make websites accessible for AI agents.",
-        "citation": "[2]"
-      },
-      {
-        "quote": "The Agent class is the unit of work. You pass it a task, an LLM, and a BrowserSession. On each step it takes a screenshot and extracts the DOM in parallel, sends both to the LLM to decide the next action, executes that action, and repeats until the task is done.",
-        "citation": "[9]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_18",
+      "value": "Browser Use is an open-source Python library (MIT) that makes websites accessible to AI agents. It connects large language models to a Chromium browser via CDP, extracting the DOM and screenshots on each step, then executing LLM-decided actions until the task is complete. Available as a pip package, a CLI tool, and a managed cloud API.",
+      "evidence": [
+        {
+          "quote": "Make websites accessible for AI agents.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "The Agent class is the unit of work. You pass it a task, an LLM, and a BrowserSession. On each step it takes a screenshot and extracts the DOM in parallel, sends both to the LLM to decide the next action, executes that action, and repeats until the task is done.",
+          "citation": "[9]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_114",
+      "value": "Browser Use is written primarily in Python (97.9%), has 94.1k GitHub stars and 318 contributors, and has published 123 releases since its initial release (v0.1.0) on Nov 6, 2024, averaging about 7 releases per month.",
+      "evidence": [
+        {
+          "quote": "Languages: Python 97.9%",
+          "citation": "[1]"
+        },
+        {
+          "quote": "94.1k stars",
+          "citation": "[1]"
+        },
+        {
+          "quote": "318 Contributors",
+          "citation": "[1]"
+        },
+        {
+          "quote": "123 releases · Latest: 0.12.6",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Initial release — Nov 6, 2024 · Tag 0.1.0",
+          "citation": "[1]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Lines_of_Code": {
       "value": "Not directly published; repository is 97.9% Python with Shell scripts (1.4%) and minor other languages. 123 releases published to PyPI as of May 2026.",
@@ -176,6 +204,16 @@
               "citation": "[8]"
             }
           ]
+        },
+        {
+          "q_id": "q_115",
+          "Summary": "GitHub Actions with Blacksmith runners executes the evaluation pipeline, running 100 complex web tasks in parallel in under 5 minutes end-to-end.",
+          "evidence": [
+            {
+              "quote": "Using Blacksmith runners on GitHub Actions, we achieve insane scaling, running 100 complex web tasks in parallel in under 5 minutes end-to-end.",
+              "citation": "[8]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -221,7 +259,7 @@
       "Practices": [
         {
           "q_id": "q_71",
-          "Summary": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: lint.yml (syntax, style, types on every push), test.yaml (matrix unit tests plus per-PR agent evaluation), and publish.yml (PyPI release triggered on a new GitHub release tag).",
+          "Summary": "Three core GitHub Actions workflows cover linting, testing and release: lint.yml (syntax, style, types on every push), test.yaml (matrix unit tests plus per-PR agent evaluation), and publish.yml (PyPI release triggered on a new GitHub release tag). At the May 2026 pull, .github/workflows held 11 workflow files in total, also including claude.yml, eval-on-pr.yml, docker.yml, package.yaml, stale-bot.yml, install-script.yml, cloud_evals.yml and a disabled build-base-image workflow.",
           "evidence": [
             {
               "quote": "jobs: syntax-errors / code-style / type-checker",
@@ -230,6 +268,22 @@
             {
               "quote": "on: release: types: [published] ... uv publish --trusted-publishing always",
               "citation": "[5]"
+            },
+            {
+              "quote": "\"name\":\"claude.yml\"",
+              "citation": "[20]"
+            },
+            {
+              "quote": "\"name\":\"eval-on-pr.yml\"",
+              "citation": "[20]"
+            },
+            {
+              "quote": "\"name\":\"docker.yml\"",
+              "citation": "[20]"
+            },
+            {
+              "quote": "\"name\":\"stale-bot.yml\"",
+              "citation": "[20]"
             }
           ]
         },
@@ -259,7 +313,7 @@
         },
         {
           "q_id": "q_74",
-          "Summary": "The same container image runs across local development, evaluation pipelines, and production. A single config switch (sandbox_mode: 'docker' | 'ukc') determines whether the image runs as a Docker container or a Unikraft micro-VM.",
+          "Summary": "As of the May 2026 pull, the same container image ran across local development, evaluation pipelines, and production, with a single config switch (sandbox_mode: 'docker' | 'ukc') choosing between a Docker container and a Unikraft micro-VM. In July 2026 the production sandbox runtime moved to AWS Bedrock AgentCore, while the zero-secret, one-image design was kept (see q_123).",
           "evidence": [
             {
               "quote": "Pattern 1: Single backend with agent loop and isolated terminal use sandbox; Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. The agent becomes disposable. No secrets to steal, no state to preserve, you can kill it, restart it, scale it independently. The control plane holds the truth..",
@@ -268,6 +322,82 @@
             {
               "quote": "The agent becomes disposable. No secrets to steal, no state to preserve, you can kill it, restart it, scale it independently. The control plane holds the truth. A single config switch (sandbox_mode: 'docker' | 'ukc') controls which path the code takes. We went with Pattern 2. The control plane holds all credentials and acts as a proxy for everything: LLM calls, file storage, billing. The sandbox receives three env variables and has no access to anything else. It runs as a Unikraft micro-VM in production and a Docker container in development and evals. Same image everywhere.",
               "citation": "[7]"
+            },
+            {
+              "quote": "Six months ago I wrote up how we sandbox untrusted agents: zero-secret micro-VMs, a control plane holding all credentials, one image running everywhere. The abstraction is still what protects the fleet.",
+              "citation": "[19]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_116",
+          "Summary": "Browser Use started with Pattern 1 (isolate the tool), in which the agent runs on the backend infrastructure and calls a separate, isolated sandbox as a tool via HTTP for dangerous operations such as code execution and terminal access, and then moved to Pattern 2 (isolate the agent).",
+          "evidence": [
+            {
+              "quote": "We built this as an isolated sandbox the agent called as a tool.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Pattern 1: Isolate the tool. The agent runs on your infrastructure. Dangerous operations (code execution, terminal access) run in a separate sandbox.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "The agent calls the sandbox via HTTP.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "We started with Pattern 1 and moved to Pattern 2.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_117",
+          "Summary": "The move from Pattern 1 to Pattern 2 addressed the agent loop sharing the same backend process as the REST API (redeploys killed running agents and memory-hungry agents slowed the API); under Pattern 2 the agent holds no secrets and can be killed, restarted and scaled independently.",
+          "evidence": [
+            {
+              "quote": "But the agent loop still ran on the same backend as our REST API. Redeploy? All running agents die.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Memory-hungry agent? The API slows down. Two fundamentally different workloads sharing the same process.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "The agent becomes disposable. No secrets to steal, no state to preserve, you can kill it, restart it, scale it independently.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_118",
+          "Summary": "The tradeoff of Pattern 2 is an extra network hop through the control plane on every operation and three services to deploy instead of one; in practice the latency is noise compared to LLM response times, and the operational complexity is the kind ops teams already know how to handle.",
+          "evidence": [
+            {
+              "quote": "Every request has to hop through the control plane.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "The tradeoff is an extra network hop on every operation and three services to deploy instead of one. In practice the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle.",
+              "citation": "[7]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_123",
+          "Summary": "In July 2026 Browser Use moved its production agent sandboxes onto AWS Bedrock AgentCore, which provisions and schedules a per-session micro-VM with a durable, session-scoped /mnt/workspace mount and is managed in Terraform (one agent-runtime resource per environment). The zero-secret sandbox and the credential-holding control plane were kept; the control plane runs on ECS Fargate.",
+          "evidence": [
+            {
+              "quote": "What changed underneath is the runtime: AWS Bedrock AgentCore now provisions and schedules the per-session micro-VMs, each with a durable /mnt/workspace mount scoped to the session.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "Terraform-managed. One aws_bedrockagentcore_agent_runtime resource per environment, plus a standard execution role.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "It runs on ECS Fargate in private subnets behind an ALB and auto-scales on CPU.",
+              "citation": "[19]"
             }
           ]
         }
@@ -295,11 +425,15 @@
         },
         {
           "q_id": "q_77",
-          "Summary": "Unikraft micro-VMs provision agent sandboxes in production, booting in under a second on dedicated bare metal in AWS. Each sandbox receives only SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID — no infrastructure credentials.",
+          "Summary": "As of the May 2026 pull, Unikraft micro-VMs provisioned agent sandboxes in production, booting in under a second on dedicated bare metal in AWS. Each sandbox receives only SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID — no infrastructure credentials. Since July 2026, AWS Bedrock AgentCore provisions and schedules these per-session micro-VMs (see q_123).",
           "evidence": [
             {
               "quote": "Each agent gets its own Unikraft micro-VM, booting in under a second. The sandbox receives only three env variables from the outside world: SESSION_TOKEN, CONTROL_PLANE_URL, and SESSION_ID. No AWS keys, no database credentials, no API tokens.",
               "citation": "[7]"
+            },
+            {
+              "quote": "What changed underneath is the runtime: AWS Bedrock AgentCore now provisions and schedules the per-session micro-VMs, each with a durable /mnt/workspace mount scoped to the session.",
+              "citation": "[19]"
             }
           ]
         },
@@ -314,6 +448,20 @@
             {
               "quote": "ruff==0.14.14 ... pyright==1.1.408",
               "citation": "[2]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_124",
+          "Summary": "In June 2026 Browser Use Cloud moved its browser sessions from Unikraft to self-built Firecracker microVMs running on regular (nested) EC2, so each session runs in its own small VM; the team took over this infrastructure layer because native horizontal EC2 autoscaling was not available through its Unikraft setup.",
+          "evidence": [
+            {
+              "quote": "We now do that with Firecracker, a lightweight VM system. Every Browser Use Cloud session runs in its own, tiny VM.",
+              "citation": "[18]"
+            },
+            {
+              "quote": "While Unikraft handled browser lifecycle management well, native horizontal EC2 autoscaling was not available through our setup at the time.",
+              "citation": "[18]"
             }
           ]
         }
@@ -412,6 +560,38 @@
             {
               "quote": "- id: detect-private-key",
               "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_119",
+          "Summary": "GitHub hosts the browser-use repository's pull requests (171 listed), and the GitHub Actions test workflow comments on pull requests with agent evaluation results.",
+          "evidence": [
+            {
+              "quote": "Issues 57 · Pull requests 171",
+              "citation": "[1]"
+            },
+            {
+              "quote": "Comment PR with agent evaluation results",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_120",
+          "Summary": "AGENTS.md provides guidelines for AI agents contributing to browser-use, including embedded documentation they are told to follow and coding rules such as using Pydantic v2 models for all internal action schemas.",
+          "evidence": [
+            {
+              "quote": "AGENTS.md Version 2 — guidelines for AI agents contributing to browser-use",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Follow the documentation in <browser_use_docs/>: some docs have been truncated, if unsure, you can visit or request the information from specific docs pages before proceeding.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Type-safe coding: Use Pydantic v2 models for all internal action schemas, task inputs/outputs, and tools I/O. This ensures robust validation and LLM-call integrity.",
+              "citation": "[12]"
             }
           ]
         }
@@ -789,6 +969,28 @@
               "citation": "[10]"
             }
           ]
+        },
+        {
+          "q_id": "q_121",
+          "Summary": "Agent-design lesson: start from the assumption that the model can do almost anything and give the LLM as much freedom as possible, letting the model reason rather than over-specifying intelligence; give it access to raw browser control surfaces; on each step the LLM decides the next action from the DOM and screenshot; then restrict based on evals.",
+          "evidence": [
+            {
+              "quote": "Instead of defining every possible action up front, start from the opposite assumption: the model can do almost anything. Then restrict. Give the LLM as much freedom as possible, then vibe-restrict based on evals.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "That's what lets the system scale with better models instead of fighting them.  Don't over-specify intelligence - let the model reason",
+              "citation": "[10]"
+            },
+            {
+              "quote": "The Agent class is the unit of work. You pass it a task, an LLM, and a BrowserSession. On each step it takes a screenshot and extracts the DOM in parallel, sends both to the LLM to decide the next action, executes that action, and repeats until the task is done.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Rather than exposing a small set of brittle \"click / type / scroll\" primitives, BU Agent gives the model access to raw browser control surfaces.",
+              "citation": "[10]"
+            }
+          ]
         }
       ]
     },
@@ -857,6 +1059,16 @@
             {
               "quote": "For the real-time UI state and making dashboards, we rely on Convex to keep our engineers in sync with active runs and results.",
               "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_122",
+          "Summary": "The browser-use GitHub repository hosts Issues (57 listed) and Pull requests (171 listed).",
+          "evidence": [
+            {
+              "quote": "Issues 57 · Pull requests 171",
+              "citation": "[1]"
             }
           ]
         }
@@ -1076,18 +1288,33 @@
     },
     {
       "id": "[15]",
-      "url": "https://docs.browser-use.com/development/monitoring/telemetry",
+      "url": "https://docs.browser-use.com/open-source/development/monitoring/telemetry",
       "description": "Docs: Telemetry — PostHog anonymous usage collection, opt-out instructions"
     },
     {
       "id": "[16]",
-      "url": "https://docs.browser-use.com/development/setup/local-setup",
+      "url": "https://docs.browser-use.com/open-source/development/setup/local-setup",
       "description": "Docs: Local Setup — development environment, helper scripts, run examples"
     },
     {
       "id": "[17]",
       "url": "https://github.com/browser-use/browser-use/issues?q=is%3Aissue+is%3Aopen+label%3Abug",
       "description": "GitHub Issues — open bugs (24 as of May 2026)"
+    },
+    {
+      "id": "[18]",
+      "url": "https://browser-use.com/posts/firecracker-browser-infra",
+      "description": "Engineering blog — How We Made Cloud Browsers 3x Cheaper and Faster (June 15, 2026)"
+    },
+    {
+      "id": "[19]",
+      "url": "https://browser-use.com/posts/agentcore-migration",
+      "description": "Engineering blog — How We Built Secure, Scalable Agent Infrastructure with AWS Bedrock AgentCore (July 12, 2026)"
+    },
+    {
+      "id": "[20]",
+      "url": "https://api.github.com/repos/browser-use/browser-use/contents/.github/workflows?ref=933e28c599ddd74c15a48568f159da95547e40dd",
+      "description": "GitHub API listing of .github/workflows at the last commit before the May 2026 pull (933e28c, 2026-05-16)"
     }
   ]
 }

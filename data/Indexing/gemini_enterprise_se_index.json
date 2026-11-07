@@ -1,19 +1,41 @@
 {
   "Agent_Name": "Gemini Enterprise",
-  "Description": {
-    "q_id": "q_18",
-    "value": "Google Gemini Enterprise (also marketed as Google Agentspace) is a closed-source enterprise AI agent platform built on Google Cloud that enables organizations to deploy and orchestrate intelligent AI agents for workplace knowledge retrieval, multi-step workflow automation, and enterprise productivity at scale.",
-    "evidence": [
-      {
-        "quote": "Gemini Enterprise is an intranet search, AI assistant, and agentic platform. Gemini Enterprise includes prebuilt connectors for commonly-used third-party applications like Confluence, Jira, Microsoft SharePoint, and ServiceNow",
-        "citation": "[1]"
-      },
-      {
-        "quote": "The Google Agentspace experience in the Google Cloud console and the default application is referred to as Gemini Enterprise",
-        "citation": "[3]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_18",
+      "value": "Google Gemini Enterprise (also marketed as Google Agentspace) is a closed-source enterprise AI agent platform built on Google Cloud that enables organizations to deploy and orchestrate intelligent AI agents for workplace knowledge retrieval, multi-step workflow automation, and enterprise productivity at scale.",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is an intranet search, AI assistant, and agentic platform. Gemini Enterprise includes prebuilt connectors for commonly-used third-party applications like Confluence, Jira, Microsoft SharePoint, and ServiceNow",
+          "citation": "[1]"
+        },
+        {
+          "quote": "The Google Agentspace experience in the Google Cloud console and the default application is referred to as Gemini Enterprise",
+          "citation": "[3]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_79",
+      "value": "Gemini Enterprise includes Agent Designer, in which users can build custom agents for their specific workflows using drag-and-drop tools without coding.",
+      "evidence": [
+        {
+          "quote": "Easily build custom agents for your specific workflows in Agent Designer using simple, drag-and-drop tools. No coding needed.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_80",
+      "value": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+      "evidence": [
+        {
+          "quote": "Gemini Enterprise is a closed-source Google Cloud product with no public source code repository.",
+          "citation": "[1]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Lines_of_Code": {
       "value": "Not Available - No Public Repository",
@@ -151,6 +173,16 @@
             },
             {
               "quote": "Although engineers can run tests locally, most test executions happen in a distributed build-and-test system called Forge. Forge allows engineers to run their builds and tests in our datacenters, which maximizes parallelism.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_81",
+          "Summary": "Google runs a massive continuous build of its entire codebase called the Test Automation Platform (TAP).",
+          "evidence": [
+            {
+              "quote": "We run a massive continuous build, called the Test Automation Platform (TAP), of our entire codebase.",
               "citation": "[4]"
             }
           ]
@@ -475,6 +507,40 @@
           "evidence": [
             {
               "quote": "This page documents production updates to Gemini Enterprise. Check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_82",
+          "Summary": "Bug incidents documented in the public release notes fall into four recurring categories: security vulnerabilities (Cloud Storage bucket squatting mitigated server-side), connector data quality and configuration (SharePoint incremental-sync duplicates, ServiceNow ACL change), agent orchestration bugs (Agent Designer model configurations cleared, Dialogflow/HTTP agent responses bypassing the assistant), and API naming and UI consistency changes (Outlook events entity renamed to calendar, autocomplete menu removed).",
+          "evidence": [
+            {
+              "quote": "Mitigation for Potential Cloud Storage Namespace Hijacking ('Bucket Squatting')... We have enhanced our systems to ensure the integrity and proper ownership of Cloud Storage resources used by the platform... No action is required from users. The necessary fixes and safeguards have been automatically deployed.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Performing an incremental sync in a SharePoint connector data store can cause duplicate documents for file entity types... As a one-time solution, you can avoid duplication by either running a full sync manually or waiting for the next scheduled full sync. (August 21, 2025 Breaking Change)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "The access-control list (ACL) behavior for ServiceNow incidents has significantly changed, from too permissive to least-privilege behavior. This change drastically reduces the possibility of data leaks. (September 23, 2025 Breaking Change)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Fixed an issue in Agent Designer that caused agent model configurations to be cleared or fail to appear during the transition from Gemini 3 Pro (Preview) to Gemini 3.1 Pro (Preview). (March 4, 2026 Fixed)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "When you interact with a Dialogflow or HTTP agent integrated in an Agentspace assistant, the responses that you receive are always from the Dialogflow or HTTP agent and not from the Agentspace assistant. (June 11, 2025 Known Issue)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "To maintain consistency, the events entity in the Outlook data store for federated search has been renamed to calendar. (July 24, 2025 Change)",
+              "citation": "[3]"
+            },
+            {
+              "quote": "The autocomplete menu no longer appears as a user types in the chat box. Users can still use the mentions feature by typing @ in the chat box. (January 27, 2026 Change)",
               "citation": "[3]"
             }
           ]

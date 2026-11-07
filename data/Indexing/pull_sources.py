@@ -177,7 +177,7 @@ def pull_agent(data: dict, agent_name: str | None = None):
 
     out_dir = WEB_SOURCES / safe_dir(agent_name)
     out_dir.mkdir(parents=True, exist_ok=True)
-    print(f"  📁 {out_dir.relative_to(BASE_DIR)}  ({len(refs)} refs)")
+    print(f"  📁 {out_dir.relative_to(ROOT_DIR)}  ({len(refs)} refs)")
 
     ok = skip = fail = 0
 

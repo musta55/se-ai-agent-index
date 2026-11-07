@@ -1,15 +1,133 @@
 {
   "Agent_Name": "Gemini CLI",
-  "Description": {
-    "q_id": "q_8",
-    "value": "Google Gemini CLI is an open-source, terminal-based AI coding agent developed by Google that brings Gemini model capabilities directly to the developer's command-line environment, supporting multi-turn conversations, file editing, code generation, and agentic web search in a REPL-style interface.",
-    "evidence": [
-      {
-        "quote": "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into the terminal. It is designed to be a terminal-first, extensible, and powerful tool for developers.",
-        "citation": "[5]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_8",
+      "value": "Google Gemini CLI is an open-source, terminal-based AI coding agent developed by Google that brings Gemini model capabilities directly to the developer's command-line environment, supporting multi-turn conversations, file editing, code generation, and agentic web search in a REPL-style interface.",
+      "evidence": [
+        {
+          "quote": "Gemini CLI is an open-source AI agent that brings the power of Gemini directly into the terminal. It is designed to be a terminal-first, extensible, and powerful tool for developers.",
+          "citation": "[5]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_97",
+      "value": "The google-gemini/gemini-cli GitHub repository has 104k stars.",
+      "evidence": [
+        {
+          "quote": "Star 104k",
+          "citation": "[2]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_98",
+      "value": "Gemini CLI is updated frequently: nightly releases are published on a daily schedule, and official patch/minor releases are triggered manually, with the release automation building the project and publishing the packages to npm.",
+      "evidence": [
+        {
+          "quote": "On a daily schedule for 'nightly' releases, and manually for official patch/minor releases. Automatically builds the project, bumps the version numbers, and publishes the packages to npm.",
+          "citation": "[8]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_99",
+      "value": "A Wayback Machine snapshot of the google-gemini/gemini-cli GitHub repository page from 26 April 2026 shows the repository language breakdown as 98.0% TypeScript.",
+      "evidence": [
+        {
+          "quote": "TypeScript 98.0%",
+          "citation": "[26]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_100",
+      "value": "The google-gemini/gemini-cli GitHub repository listed 640 contributors on 27 April 2026 (Wayback Machine snapshot of the repository contributors panel).",
+      "evidence": [
+        {
+          "quote": "Contributors 640",
+          "citation": "[27]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_101",
+      "value": "The ghloc line-counting service reports 1,579,554 lines in the google-gemini/gemini-cli repository (default branch, counted 2 November 2026), including 869,840 lines of .json, 519,850 lines of .ts and 113,298 lines of .tsx files.",
+      "evidence": [
+        {
+          "quote": "\"loc\":1579554,\"locByLangs\":{\".json\":869840,\".ts\":519850,\".tsx\":113298",
+          "citation": "[28]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_102",
+      "value": "The GitHub Releases API for google-gemini/gemini-cli lists 15 releases (stable, preview and nightly) published between 12 and 25 April 2026, from v0.37.2 (13 April) to v0.40.0-preview.4 (25 April).",
+      "evidence": [
+        {
+          "quote": "\"tag_name\":\"v0.37.2\",\"target_commitish\":\"release/v0.37.2\",\"name\":\"Release v0.37.2\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-13T20:12:28Z\",\"updated_at\":\"2026-04-13T20:19:57Z\",\"published_at\":\"2026-04-13T20:19:57Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.0-nightly.20260414.gdaf500623\",\"target_commitish\":\"release/v0.39.0-nightly.20260414.gdaf500623\",\"name\":\"Release v0.39.0-nightly.20260414.gdaf500623\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-14T01:48:30Z\",\"updated_at\":\"2026-04-14T01:55:59Z\",\"published_at\":\"2026-04-14T01:55:59Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.0-preview.0\",\"target_commitish\":\"release/v0.39.0-preview.0\",\"name\":\"Release v0.39.0-preview.0\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-14T23:04:47Z\",\"updated_at\":\"2026-04-14T23:11:43Z\",\"published_at\":\"2026-04-14T23:11:43Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.38.0\",\"target_commitish\":\"release/v0.38.0\",\"name\":\"Release v0.38.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-14T23:14:12Z\",\"updated_at\":\"2026-04-14T23:21:55Z\",\"published_at\":\"2026-04-14T23:21:55Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.40.0-nightly.20260415.g06e7621b2\",\"target_commitish\":\"release/v0.40.0-nightly.20260415.g06e7621b2\",\"name\":\"Release v0.40.0-nightly.20260415.g06e7621b2\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-15T04:14:27Z\",\"updated_at\":\"2026-04-15T04:21:36Z\",\"published_at\":\"2026-04-15T04:21:36Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.38.1\",\"target_commitish\":\"release/v0.38.1\",\"name\":\"Release v0.38.1\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-15T17:46:57Z\",\"updated_at\":\"2026-04-15T17:56:33Z\",\"published_at\":\"2026-04-15T17:56:33Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.38.2\",\"target_commitish\":\"release/v0.38.2\",\"name\":\"Release v0.38.2\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-17T18:30:22Z\",\"updated_at\":\"2026-04-17T18:38:59Z\",\"published_at\":\"2026-04-17T18:38:59Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.0-preview.1\",\"target_commitish\":\"release/v0.39.0-preview.1\",\"name\":\"Release v0.39.0-preview.1\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-21T22:44:53Z\",\"updated_at\":\"2026-04-21T22:52:00Z\",\"published_at\":\"2026-04-21T22:52:00Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.0-preview.2\",\"target_commitish\":\"release/v0.39.0-preview.2\",\"name\":\"Release v0.39.0-preview.2\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-22T00:37:38Z\",\"updated_at\":\"2026-04-22T00:45:12Z\",\"published_at\":\"2026-04-22T00:45:12Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.40.0-preview.2\",\"target_commitish\":\"release/v0.40.0-preview.2\",\"name\":\"Release v0.40.0-preview.2\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-23T04:06:09Z\",\"updated_at\":\"2026-04-23T04:08:29Z\",\"published_at\":\"2026-04-23T04:08:29Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.0\",\"target_commitish\":\"release/v0.39.0\",\"name\":\"Release v0.39.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-23T04:10:28Z\",\"updated_at\":\"2026-04-23T04:12:56Z\",\"published_at\":\"2026-04-23T04:12:56Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.41.0-nightly.20260423.gd1c91f526\",\"target_commitish\":\"release/v0.41.0-nightly.20260423.gd1c91f526\",\"name\":\"Release v0.41.0-nightly.20260423.gd1c91f526\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-23T05:34:49Z\",\"updated_at\":\"2026-04-23T05:41:29Z\",\"published_at\":\"2026-04-23T05:41:29Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.40.0-preview.3\",\"target_commitish\":\"release/v0.40.0-preview.3\",\"name\":\"Release v0.40.0-preview.3\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-24T02:02:54Z\",\"updated_at\":\"2026-04-24T02:10:01Z\",\"published_at\":\"2026-04-24T02:10:01Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.39.1\",\"target_commitish\":\"release/v0.39.1\",\"name\":\"Release v0.39.1\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-24T02:03:53Z\",\"updated_at\":\"2026-04-24T02:11:26Z\",\"published_at\":\"2026-04-24T02:11:26Z\"",
+          "citation": "[29]"
+        },
+        {
+          "quote": "\"tag_name\":\"v0.40.0-preview.4\",\"target_commitish\":\"release/v0.40.0-preview.4\",\"name\":\"Release v0.40.0-preview.4\",\"draft\":false,\"immutable\":false,\"prerelease\":true,\"created_at\":\"2026-04-25T00:27:22Z\",\"updated_at\":\"2026-04-25T00:34:47Z\",\"published_at\":\"2026-04-25T00:34:47Z\"",
+          "citation": "[29]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Lines_of_Code": {
       "value": "250k+, TypeScript-dominant monorepo; packages include cli, core, a2a-server, test-utils, sdk, devtools, and vscode-ide-companion",
@@ -128,6 +246,16 @@
             {
               "quote": "When testing code that depends on environment variables, use vi.stubEnv('NAME', 'value') in beforeEach and vi.unstubAllEnvs() in afterEach. Avoid modifying process.env directly as it can lead to test leakage and is less reliable.",
               "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_103",
+          "Summary": "Integration tests are run across no-sandbox, Docker, and Podman environments.",
+          "evidence": [
+            {
+              "quote": "The all command will run tests for no sandboxing, docker and podman.",
+              "citation": "[7]"
             }
           ]
         }
@@ -303,6 +431,26 @@
           "evidence": [
             {
               "quote": "A reviewer should respond quickly with their review comments. The maximum time it should take to respond to a code review is one business day (the next day).",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_104",
+          "Summary": "Contributions must be accompanied by a Contributor License Agreement (CLA); contributors retain copyright and grant permission to use and redistribute their contributions.",
+          "evidence": [
+            {
+              "quote": "Contributions to this project must be accompanied by a Contributor License Agreement (CLA). You (or your employer) retain the copyright to your contribution; this simply gives us permission to use and redistribute your contributions as part of the project.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_105",
+          "Summary": "Google optimizes code review speed for the velocity of the entire team rather than individual development speed; slow code reviews decrease the velocity of the team as a whole.",
+          "evidence": [
+            {
+              "quote": "At Google, we optimize for the speed at which a team of developers can produce a product together, as opposed to optimizing for the speed at which an individual developer can write code. The speed of individual development is important, it’s just not as important as the velocity of the entire team.",
               "citation": "[10]"
             }
           ]
@@ -924,6 +1072,30 @@
       "Link": "https://learn.deeplearning.ai/courses/gemini-cli-code-and-create-with-an-open-source-agent/information",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-10"
+    },
+    "[26]": {
+      "Website_Type": "GitHub repository page (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260426015628/https://github.com/google-gemini/gemini-cli",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[27]": {
+      "Website_Type": "GitHub repository contributors panel (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260427001547/https://github.com/google-gemini/gemini-cli/contributors_list?current_repository=gemini-cli&deferred=true",
+      "Date_Created": "2026-04-27",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[28]": {
+      "Website_Type": "Lines-of-code service (ghloc JSON API)",
+      "Link": "https://ghloc.ifels.dev/google-gemini/gemini-cli/main?pretty=false",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[29]": {
+      "Website_Type": "GitHub REST API (releases list, JSON)",
+      "Link": "https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=100&page=3",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
     }
   }
 }

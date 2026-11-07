@@ -1,0 +1,4113 @@
+{
+ "round": "r3",
+ "note": "Round-3 layout (2026-11-03): 8 tag columns L-S, memo T, summary V1:W5",
+ "headers": [
+  "annotation_1",
+  "annotation_2",
+  "annotation_3",
+  "annotation_4",
+  "annotation_5",
+  "annotation_6",
+  "annotation_7",
+  "annotation_8",
+  "annotation_memo"
+ ],
+ "items": [
+  {
+   "id": "CLAUDE-TEST-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "layered evaluation",
+    "unit tests",
+    "end-to-end tests",
+    "model-based grading",
+    "internal dogfooding",
+    "a/b testing in production",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-TEST-PRA-02",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "eval definition",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Definition of an eval, not a team practice"
+   ]
+  },
+  {
+   "id": "CLAUDE-TEST-PRA-03",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "single-turn evals",
+    "multi-turn agentic evals",
+    "tests verify agent outcome",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Anthropic-wide eval approach (MCP-server example), not specific to Claude Code"
+   ]
+  },
+  {
+   "id": "CLAUDE-TEST-PRA-04",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "eval suites by capability",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Mostly a definition"
+   ]
+  },
+  {
+   "id": "CLAUDE-TEST-PRA-05",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "internal dogfooding",
+    "continuous internal feedback",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-CICD-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "frequent release cadence",
+    "internal-first release",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-CODEREV-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "review comments mined for patterns",
+    "review rules turned into lint",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Rooted in one engineer's career history; the link to Claude Code is asserted, not shown"
+   ]
+  },
+  {
+   "id": "CLAUDE-CODEREV-PRA-02",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "ai code review",
+    "agent reviews its own project's code",
+    "parallel specialised review agents",
+    "writer/reviewer separation",
+    "human merge approval",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-BUG-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "public issue tracker",
+    "stale-issue automation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-SEMETH-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "prototype-driven development",
+    "agent builds its own product",
+    "parallel agents for development",
+    "rapid iteration on feedback",
+    "internal adoption as validation",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-SEMETH-PRA-02",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "flat roles",
+    "cross-functional contribution",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "CLAUDE-SEMETH-PRA-03",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "frequent release cadence",
+    "rapid prototyping",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-DEVCOM-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "agent as knowledge source",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CLAUDE-DOC-PRA-01",
+   "agent": "Anthropic Claude Code",
+   "values": [
+    "agent context files",
+    "concise agent context",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "tests structured for agent self-checking",
+    "agent context files",
+    "clear module boundaries",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent tests its own product",
+    "agent skill for testing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "nightly scheduled agent runs",
+    "agent finds bugs in its own codebase",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "ci on every pr",
+    "checks on merge commit",
+    "pre-merge vs post-merge split",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "flaky-test handling",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-06",
+   "agent": "OpenAI Codex",
+   "values": [
+    "team bug bashes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-07",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent finds issues before launch",
+    "agent tests its own product",
+    "screenshot evidence on pr",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-TEST-PRA-08",
+   "agent": "OpenAI Codex",
+   "values": [
+    "evals",
+    "a/b testing in production",
+    "internal dogfooding",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CICD-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "single merge-blocking ci gate",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CICD-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "pre-merge vs post-merge split",
+    "fast pr feedback",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CICD-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "tag-driven release",
+    "version consistency check",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CICD-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "frequent release cadence",
+    "package-manager distribution",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CICD-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "internal-first release",
+    "feature flags",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide (Codex cloud launch)"
+   ]
+  },
+  {
+   "id": "CODEX-CODEREV-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "ai code review",
+    "custom-trained review model",
+    "automatic ai review on pr state change",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CODEREV-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "human code review for critical code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CODEREV-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "ai code review on every pr",
+    "mandatory ai review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide (all OpenAI PRs)"
+   ]
+  },
+  {
+   "id": "CODEX-CODEREV-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "two-round review (agent output, then peers)",
+    "review overload",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-CODEREV-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "pr description explains motivation",
+    "small single-purpose changes",
+    "keep core module small",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "bug pattern: sandbox and security regressions",
+    "bug pattern: resource leaks",
+    "bug pattern: client/backend contract mismatch",
+    "bug pattern: release and packaging regressions",
+    "",
+    "",
+    "",
+    "",
+    "Bug categories, not a practice"
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "maintainers acknowledge regressions publicly",
+    "architectural fix for recurring failures",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "structured issue templates",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "ai issue triage",
+    "user uploads logs and sessions",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "community bug reports",
+    "community root-cause analysis",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-06",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent finds bugs in its own codebase",
+    "nightly scheduled agent runs",
+    "humans review agent-proposed fixes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-BUG-PRA-07",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent finds and fixes bugs autonomously",
+    "nightly scheduled agent runs",
+    "observability-driven bug fixing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent-generated code majority",
+    "engineers as agent managers",
+    "agent builds its own product",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "single repo for internal and public versions",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "small autonomous teams",
+    "bottom-up ideas",
+    "experiment-then-launch selection",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "plan-first with agent",
+    "human in the loop on agent code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "rapid build to launch",
+    "organisational goal-setting",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "CODEX-SEMETH-PRA-06",
+   "agent": "OpenAI Codex",
+   "values": [
+    "incremental rewrite with parallel maintenance",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DEVCOM-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "chat-based communication",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "CODEX-DEVCOM-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "open/public channels",
+    "agent connected to team knowledge",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DEVCOM-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "spontaneous meetings",
+    "in-person collaboration",
+    "accessible leadership",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DEVCOM-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent as knowledge source",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DEVCOM-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "pairing onboarding",
+    "ship on first day",
+    "agent-assisted onboarding",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DOC-PRA-01",
+   "agent": "OpenAI Codex",
+   "values": [
+    "agent context files",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DOC-PRA-02",
+   "agent": "OpenAI Codex",
+   "values": [
+    "nested agent context files",
+    "docs kept in sync with code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DOC-PRA-03",
+   "agent": "OpenAI Codex",
+   "values": [
+    "machine-readable docs for agents",
+    "docs issue template",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DOC-PRA-04",
+   "agent": "OpenAI Codex",
+   "values": [
+    "tests as documentation",
+    "pr description summary",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "CODEX-DOC-PRA-05",
+   "agent": "OpenAI Codex",
+   "values": [
+    "artifacts readable by humans and agents",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMCLI-TEST-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "unit tests",
+    "integration tests",
+    "sandboxed test environment",
+    "lint and static checks",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-TEST-PRA-02",
+   "agent": "Gemini CLI",
+   "values": [
+    "flaky-test handling",
+    "memory regression tests",
+    "performance regression tests",
+    "nightly scheduled runs",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-CICD-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "bot-run release pipeline",
+    "ci pipeline",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-CICD-PRA-02",
+   "agent": "Gemini CLI",
+   "values": [
+    "nightly scheduled releases",
+    "manual release trigger",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-CICD-PRA-03",
+   "agent": "Gemini CLI",
+   "values": [
+    "ci on every pr",
+    "test matrix across platforms",
+    "lint and static checks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-CODEREV-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "small single-purpose changes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-CODEREV-PRA-02",
+   "agent": "Gemini CLI",
+   "values": [
+    "ai code review",
+    "agent reviews its own project's code",
+    "contributor license agreement",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Self-review comes from q-67: the tool runs inside a Gemini CLI session (/review-frontend)"
+   ]
+  },
+  {
+   "id": "GEMCLI-CODEREV-PRA-03",
+   "agent": "Gemini CLI",
+   "values": [
+    "code-health approval standard",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide guideline"
+   ]
+  },
+  {
+   "id": "GEMCLI-CODEREV-PRA-04",
+   "agent": "Gemini CLI",
+   "values": [
+    "review response-time target",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide guideline"
+   ]
+  },
+  {
+   "id": "GEMCLI-BUG-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "bug pattern: platform-specific regressions",
+    "bug pattern: model fallback and quota",
+    "bug pattern: edge-case input parsing",
+    "bug pattern: background process lifecycle",
+    "bot-driven issue assignment",
+    "issue assignment limit",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-BUG-PRA-02",
+   "agent": "Gemini CLI",
+   "values": [
+    "stale-assignment automation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-BUG-PRA-03",
+   "agent": "Gemini CLI",
+   "values": [
+    "issue hierarchy as roadmap",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-SEMETH-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "trunk-based development",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide philosophy"
+   ]
+  },
+  {
+   "id": "GEMCLI-SEMETH-PRA-02",
+   "agent": "Gemini CLI",
+   "values": [
+    "monorepo",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-SEMETH-PRA-03",
+   "agent": "Gemini CLI",
+   "values": [
+    "published guiding principles",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Marketing"
+   ]
+  },
+  {
+   "id": "GEMCLI-DEVCOM-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "bot-driven issue assignment",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMCLI-DOC-PRA-01",
+   "agent": "Gemini CLI",
+   "values": [
+    "docs required with code change",
+    "documentation style guide",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMINI-TEST-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "benchmark evaluation",
+    "staged evaluation (pre- and post-training)",
+    "safety evaluation",
+    "red-teaming",
+    "internal dogfooding",
+    "public model cards and tech reports",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMINI-TEST-PRA-02",
+   "agent": "Google Gemini",
+   "values": [
+    "impact assessment by responsibility team",
+    "council review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMINI-CICD-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "staged rollout",
+    "versioned model releases",
+    "documented deprecation lifecycle",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "mandatory pre-submit code review",
+    "readability certification",
+    "code owners",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-02",
+   "agent": "Google Gemini",
+   "values": [
+    "small single-purpose changes",
+    "tests included with change",
+    "separate refactors from features",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-03",
+   "agent": "Google Gemini",
+   "values": [
+    "review response-time target",
+    "approve with minor comments",
+    "multiple review rounds per day",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-04",
+   "agent": "Google Gemini",
+   "values": [
+    "review rubric",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-05",
+   "agent": "Google Gemini",
+   "values": [
+    "code-health approval standard",
+    "non-blocking review comments",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-CODEREV-PRA-06",
+   "agent": "Google Gemini",
+   "values": [
+    "review as knowledge sharing",
+    "non-blocking review comments",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-BUG-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "issue routing by component owner",
+    "cross-team coordination",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMINI-SEMETH-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "structured production meetings",
+    "post-mortem review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-SEMETH-PRA-02",
+   "agent": "Google Gemini",
+   "values": [
+    "defined roles",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-DEVCOM-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "open/public channels",
+    "chat-based communication",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-DEVCOM-PRA-02",
+   "agent": "Google Gemini",
+   "values": [
+    "mailing lists",
+    "async communication",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-DEVCOM-PRA-03",
+   "agent": "Google Gemini",
+   "values": [
+    "design docs before implementation",
+    "stakeholder consensus",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMINI-DEVCOM-PRA-04",
+   "agent": "Google Gemini",
+   "values": [
+    "structured production meetings",
+    "post-mortem review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; overlaps GEMINI-SEMETH-PRA-01"
+   ]
+  },
+  {
+   "id": "GEMINI-DOC-PRA-01",
+   "agent": "Google Gemini",
+   "values": [
+    "public model cards and tech reports",
+    "public release notes",
+    "public safety documentation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-TEST-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "internal benchmarks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-TEST-PRA-02",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "benchmark evaluation",
+    "repeated eval runs",
+    "internal dogfooding",
+    "long-running stress test",
+    "third-party evaluation",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-CICD-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "pre-release production trial by agent",
+    "published operational worklog",
+    "automated issue translation",
+    "bilingual docs",
+    "ai-generated docs",
+    "",
+    "",
+    "",
+    "Mixes three separate practices"
+   ]
+  },
+  {
+   "id": "KIMI-BUG-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "runtime self-recovery of agent",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Describes product behaviour, not a team practice"
+   ]
+  },
+  {
+   "id": "KIMI-SEMETH-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "internal dogfooding",
+    "agent runs team's own operations",
+    "usage data fed back into development",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-DEVCOM-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "public community channels",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-DEVCOM-PRA-02",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "public engineering blog",
+    "social media outreach",
+    "published benchmarks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-DEVCOM-PRA-03",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "published operational worklog",
+    "transparency to community",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "KIMI-DOC-PRA-01",
+   "agent": "Kimi ok Computer",
+   "values": [
+    "public model cards and tech reports",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-TEST-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "security pen-testing",
+    "pre-launch hardening",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-TEST-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "staged rollout",
+    "real-world usage feedback",
+    "community security testing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-TEST-PRA-03",
+   "agent": "Opera Neon",
+   "values": [
+    "bug bounty program",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-CICD-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "staged rollout",
+    "invite-only release",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-CICD-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "isolated execution environments",
+    "local vs cloud execution split",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Describes product architecture"
+   ]
+  },
+  {
+   "id": "OPERA-CODEREV-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "security design review",
+    "prompt-injection safeguards review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-CODEREV-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "cross-team incident review",
+    "public incident report",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-BUG-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "bug bounty program",
+    "manual review of auto-rejected reports",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-BUG-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "rapid vulnerability response",
+    "same-day fix deployment",
+    "external fix verification",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-BUG-PRA-03",
+   "agent": "Opera Neon",
+   "values": [
+    "cve assignment",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-SEMETH-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "iterative development",
+    "staged releases from research to product",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-SEMETH-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "human in the loop for sensitive actions",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Describes product design"
+   ]
+  },
+  {
+   "id": "OPERA-SEMETH-PRA-03",
+   "agent": "Opera Neon",
+   "values": [
+    "isolated task workspaces",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Describes a product feature"
+   ]
+  },
+  {
+   "id": "OPERA-DEVCOM-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "responsible disclosure coordination",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-DOC-PRA-01",
+   "agent": "Opera Neon",
+   "values": [
+    "public security documentation",
+    "public incident report",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "OPERA-DOC-PRA-02",
+   "agent": "Opera Neon",
+   "values": [
+    "public security documentation",
+    "transparency report",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-TEST-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "benchmark evaluation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-TEST-PRA-02",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "end-to-end task success in live environments",
+    "real or emulated device testing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-TEST-PRA-03",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "community bug reports as testing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-TEST-PRA-04",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "unit tests",
+    "tests not run in ci",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-CICD-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "no automated ci for code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-CODEREV-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "no formal pr review",
+    "direct commits by core team",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-BUG-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "best-effort issue response",
+    "community root-cause analysis",
+    "maintainer direct fix commit",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-BUG-PRA-02",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "maintainer shares eval logs for reproduction",
+    "environment issues closed by reporter",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-BUG-PRA-03",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "no issue triage labels",
+    "long-open architectural issues",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-BUG-PRA-04",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "community support in issues",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-SEMETH-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "research-gated releases",
+    "paper-accompanied releases",
+    "version-per-directory",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-DEVCOM-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "early publication of research",
+    "readme release announcements",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-DEVCOM-PRA-02",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "bilingual docs",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "ALIBABA-DOC-PRA-01",
+   "agent": "Alibaba Mobile Agent",
+   "values": [
+    "per-version readme",
+    "paper-accompanied releases",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-TEST-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "adversarial benchmark",
+    "prompt-injection evaluation",
+    "attack taxonomy guides training data",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-TEST-PRA-02",
+   "agent": "Perplexity Comet",
+   "values": [
+    "continuous retraining on new attacks",
+    "bug bounty program",
+    "red-teaming",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-TEST-PRA-03",
+   "agent": "Perplexity Comet",
+   "values": [
+    "benchmark findings change training data",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-TEST-PRA-04",
+   "agent": "Perplexity Comet",
+   "values": [
+    "robustness testing with distractors",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-CICD-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "frequent release cadence",
+    "public changelog",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-BUG-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "vulnerability disclosure program",
+    "bug bounty program",
+    "ai-specific issues out of scope",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "COMET-BUG-PRA-02",
+   "agent": "Perplexity Comet",
+   "values": [
+    "failures turned into training data",
+    "continuous retraining on new attacks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-SEMETH-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "security-first design",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Marketing quote"
+   ]
+  },
+  {
+   "id": "COMET-DEVCOM-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "public changelog",
+    "public engineering blog",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-DOC-PRA-01",
+   "agent": "Perplexity Comet",
+   "values": [
+    "user documentation hub",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-DOC-PRA-02",
+   "agent": "Perplexity Comet",
+   "values": [
+    "public security documentation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "COMET-DOC-PRA-03",
+   "agent": "Perplexity Comet",
+   "values": [
+    "privacy and security faq for enterprise",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-TEST-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "per-pr agent evaluation",
+    "parallel eval runs",
+    "llm-as-judge",
+    "runtime validation layer",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-TEST-PRA-02",
+   "agent": "Browser Use",
+   "values": [
+    "eval tasks from real user data",
+    "llm-labelled eval data",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-TEST-PRA-03",
+   "agent": "Browser Use",
+   "values": [
+    "repeated eval runs",
+    "statistical aggregation of eval results",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-TEST-PRA-04",
+   "agent": "Browser Use",
+   "values": [
+    "unit tests",
+    "integration tests",
+    "parallel test execution",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-TEST-PRA-05",
+   "agent": "Browser Use",
+   "values": [
+    "tracing agent runs",
+    "cost and token observability",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "lint and static checks",
+    "ci on every pr",
+    "per-pr agent evaluation",
+    "tag-driven release",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-02",
+   "agent": "Browser Use",
+   "values": [
+    "sandboxed agent execution",
+    "zero-secret sandbox",
+    "credentials held in control plane",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-03",
+   "agent": "Browser Use",
+   "values": [
+    "architecture change for security and scale",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-04",
+   "agent": "Browser Use",
+   "values": [
+    "architecture trade-off reasoning",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Reasoning about a design choice, not a practice"
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-05",
+   "agent": "Browser Use",
+   "values": [
+    "queue-based task execution",
+    "serverless workers",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CICD-PRA-06",
+   "agent": "Browser Use",
+   "values": [
+    "managed micro-vm sandboxes",
+    "infrastructure as code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CODEREV-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "pre-commit checks",
+    "lint and static checks",
+    "type checking",
+    "spell checking",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-CODEREV-PRA-02",
+   "agent": "Browser Use",
+   "values": [
+    "per-pr agent evaluation",
+    "eval score posted on pr",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-BUG-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "public issue tracker",
+    "bug labels",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-BUG-PRA-02",
+   "agent": "Browser Use",
+   "values": [
+    "public sharing of bug patterns",
+    "bug pattern: race conditions",
+    "bug pattern: async misuse",
+    "bug pattern: resource leaks",
+    "bug pattern: configuration failures",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-SEMETH-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "minimal-agent design",
+    "rebuild from scratch",
+    "learning from other agents",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-SEMETH-PRA-02",
+   "agent": "Browser Use",
+   "values": [
+    "rapid iteration on feedback",
+    "fix forward",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-SEMETH-PRA-03",
+   "agent": "Browser Use",
+   "values": [
+    "design belief: complete action space",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Marketing-style claim"
+   ]
+  },
+  {
+   "id": "BROWSER-SEMETH-PRA-04",
+   "agent": "Browser Use",
+   "values": [
+    "start permissive then restrict",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-SEMETH-PRA-05",
+   "agent": "Browser Use",
+   "values": [
+    "start permissive then restrict",
+    "eval-driven restriction of the agent",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-DEVCOM-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "public engineering blog",
+    "public incident report",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "BROWSER-DOC-PRA-01",
+   "agent": "Browser Use",
+   "values": [
+    "user documentation hub",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-TEST-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "curated eval set of real-world examples",
+    "binary sub-metrics",
+    "north-star metric",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-TEST-PRA-02",
+   "agent": "Glean Agents",
+   "values": [
+    "eval tasks from real user data",
+    "user feedback in eval set",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-TEST-PRA-03",
+   "agent": "Glean Agents",
+   "values": [
+    "structured improvement loop",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-TEST-PRA-04",
+   "agent": "Glean Agents",
+   "values": [
+    "failure pattern review after eval",
+    "ordered fix priority (prompt before model)",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-TEST-PRA-05",
+   "agent": "Glean Agents",
+   "values": [
+    "eval set prioritises complex multi-step tasks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-CICD-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "hot deployment without restart",
+    "nightly internal rollout",
+    "weekly customer rollout",
+    "instant rollback",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-CODEREV-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "ai code review",
+    "agent reviews its own project's code",
+    "ai aggregates review comments",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GLEAN-BUG-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "bug pattern: pii exposure",
+    "bug pattern: dependency leaks",
+    "bug pattern: configuration failures",
+    "bug pattern: missing test sandbox",
+    "bug pattern: schema and doc inconsistencies",
+    "",
+    "",
+    "",
+    "Bug categories, not a practice"
+   ]
+  },
+  {
+   "id": "GLEAN-BUG-PRA-02",
+   "agent": "Glean Agents",
+   "values": [
+    "public issue tracker",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-SEMETH-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "experiment-driven development",
+    "nightly internal rollout",
+    "frequent release cadence",
+    "traces feed product improvement",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GLEAN-DEVCOM-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "internal dogfooding",
+    "agent runs team's own operations",
+    "agent summarises team activity",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GLEAN-DEVCOM-PRA-02",
+   "agent": "Glean Agents",
+   "values": [
+    "public engineering blog",
+    "social media outreach",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GLEAN-DOC-PRA-01",
+   "agent": "Glean Agents",
+   "values": [
+    "public engineering blog",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-TEST-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "staged rollout",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-TEST-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "slo-based quality gates",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-TEST-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "production monitoring and tracing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-TEST-PRA-04",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "large-scale automated testing platform",
+    "hermetic tests",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CICD-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "continuous deployment",
+    "public release notes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-CICD-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "product renaming",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Not a practice"
+   ]
+  },
+  {
+   "id": "GEMENT-CICD-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "release candidates from green head",
+    "one-click rollback",
+    "feature flags",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CICD-PRA-04",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "large-scale automated code changes",
+    "automated review of generated changes",
+    "presubmit checks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CODEREV-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "code-health approval standard",
+    "non-blocking review comments",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CODEREV-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "data over opinion in review",
+    "style guide authority",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CODEREV-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "review response-time target",
+    "small single-purpose changes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-CODEREV-PRA-04",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "code owners",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-BUG-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "bug pattern: sandbox and security regressions",
+    "bug pattern: configuration failures",
+    "bug pattern: agent orchestration",
+    "bug pattern: api and ui consistency",
+    "",
+    "",
+    "",
+    "",
+    "Bug categories, not a practice"
+   ]
+  },
+  {
+   "id": "GEMENT-BUG-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "public release notes",
+    "automatic server-side security fixes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-SEMETH-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "admin-gated preview features",
+    "feature flags",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-SEMETH-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "backward compatibility",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-SEMETH-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "trunk-based development",
+    "one-version rule",
+    "small incremental commits",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-SEMETH-PRA-04",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "large-scale automated code changes",
+    "presubmit checks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; overlaps GEMENT-CICD-PRA-04"
+   ]
+  },
+  {
+   "id": "GEMENT-DEVCOM-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "open bug history for all engineers",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-DEVCOM-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "unified test reporting",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-DEVCOM-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "escalation to synchronous discussion",
+    "decisions recorded on the change",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "GEMENT-DOC-PRA-01",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "public release notes",
+    "machine-readable release notes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-DOC-PRA-02",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "documentation structured by audience",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "GEMENT-DOC-PRA-03",
+   "agent": "Gemini Enterprise",
+   "values": [
+    "docs released with feature",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "HUBSPOT-TEST-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "ui component tests",
+    "user-focused tests",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-TEST-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "test framework migration",
+    "runtime metrics guide migration",
+    "browser-based test execution",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-TEST-PRA-03",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "integration-first testing strategy",
+    "test-writing guides",
+    "migration tracking tool",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-TEST-PRA-04",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "internal eval framework for coding agents",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CICD-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "large-scale ci/cd platform",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; describes scale, not a practice"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CICD-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "containerised cloud coding agents",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CICD-PRA-03",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "build caching",
+    "dedicated build node pool",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CICD-PRA-04",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "auto-scaling infrastructure",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; describes infrastructure, not a practice"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CODEREV-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "ai code review",
+    "ai review gated by a judge agent",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CODEREV-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "ai code review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; marketing"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CODEREV-PRA-03",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "ai review gated by a judge agent",
+    "review quality criteria",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-CODEREV-PRA-04",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "developer reactions as ai review feedback",
+    "continuous improvement of ai reviewer",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-BUG-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "automated rollback",
+    "incident response",
+    "monitoring blind spot",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-BUG-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "ai-generated plan from issue",
+    "human edits agent plan",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-SEMETH-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "rapid execution over planning",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; marketing"
+   ]
+  },
+  {
+   "id": "HUBSPOT-SEMETH-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "small autonomous teams",
+    "hands-on tech leads",
+    "low bureaucracy",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-SEMETH-PRA-03",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "mandatory ai fluency",
+    "ai tools in daily workflow",
+    "ai code review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-SEMETH-PRA-04",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "tracing agent runs",
+    "cost and token observability",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-DEVCOM-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "developer reactions as ai review feedback",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "HUBSPOT-DEVCOM-PRA-02",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "psychological safety",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide; marketing"
+   ]
+  },
+  {
+   "id": "HUBSPOT-DOC-PRA-01",
+   "agent": "Hubspot breeze Studio",
+   "values": [
+    "documented mcp servers",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "WATSONX-TEST-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "local build and test before production",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-TEST-PRA-02",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "simulated user conversations before release",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-TEST-PRA-03",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "step-level trace inspection",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-TEST-PRA-04",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "red-teaming",
+    "built-in adversarial testing",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-TEST-PRA-05",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "trajectory evaluation against reference data",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-CICD-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "frequent release cadence",
+    "containerised developer edition",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-CODEREV-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "code owners",
+    "human merge approval",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-CODEREV-PRA-02",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "structured commit and pr title convention",
+    "release-notes generation",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-BUG-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "bug pattern: environment and connectivity",
+    "bug pattern: configuration failures",
+    "bug pattern: data import and export",
+    "bug pattern: authentication",
+    "bug pattern: api and ui consistency",
+    "",
+    "",
+    "",
+    "Bug categories, not a practice"
+   ]
+  },
+  {
+   "id": "WATSONX-BUG-PRA-02",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "community bug reports",
+    "known issues in release notes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-BUG-PRA-03",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "vendor support channel",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-SEMETH-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "prescribed iterative agent lifecycle",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Introduces WATSONX-SEMETH-PRA-02; split item"
+   ]
+  },
+  {
+   "id": "WATSONX-SEMETH-PRA-02",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "develop-evaluate-analyse-improve loop",
+    "trajectory evaluation against reference data",
+    "failure pattern review after eval",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-SEMETH-PRA-03",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "developer tooling investment",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-DEVCOM-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "async coordination via prs",
+    "code owners",
+    "structured commit and pr title convention",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "WATSONX-DOC-PRA-01",
+   "agent": "WatsonX Orchestrate",
+   "values": [
+    "developer documentation portal",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "regression tests required for bug fixes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "manual testing steps in pr",
+    "author accountability for code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "unit tests",
+    "end-to-end tests",
+    "integration tests",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "mocked llm responses in tests",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-05",
+   "agent": "N8N Agents",
+   "values": [
+    "internal eval harness",
+    "llm-generated mock responses",
+    "eval of agent-built artifacts",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-06",
+   "agent": "N8N Agents",
+   "values": [
+    "eval cost management",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-TEST-PRA-07",
+   "agent": "N8N Agents",
+   "values": [
+    "agent-runnable test commands",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "secret-free ci for forks",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "least-privilege ci permissions",
+    "ci as the full check",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "release via release pr",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "immutable published versions",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-05",
+   "agent": "N8N Agents",
+   "values": [
+    "frequent release cadence",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CICD-PRA-06",
+   "agent": "N8N Agents",
+   "values": [
+    "trunk-based development",
+    "feature flags",
+    "label-driven backports",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "human code review on every pr",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "small single-purpose changes",
+    "stacked prs",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "contributor response deadline",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "ai code review",
+    "prioritised review findings",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-05",
+   "agent": "N8N Agents",
+   "values": [
+    "resolve ai review before human review",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-CODEREV-PRA-06",
+   "agent": "N8N Agents",
+   "values": [
+    "author accountability for code",
+    "ai-use disclosure",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-BUG-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "structured issue templates",
+    "reproduction steps required",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-BUG-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "internal ticket for confirmed issues",
+    "notify reporter on release",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-BUG-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "bug pattern: provider api drift",
+    "bug pattern: agent-loop state handling",
+    "bug pattern: version regressions",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Bug categories, not a practice"
+   ]
+  },
+  {
+   "id": "N8N-SEMETH-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "small autonomous teams",
+    "two-week sprints",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "N8N-SEMETH-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "branch per ticket",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-SEMETH-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "semantic versioning",
+    "planned major releases",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-SEMETH-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "ai tools in daily workflow",
+    "shared agent configuration",
+    "ai-assisted contributions welcome",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DEVCOM-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "distributed team",
+    "async communication",
+    "regular offsites",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "N8N-DEVCOM-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "written culture code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "N8N-DEVCOM-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "architecture decision records",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "N8N-DEVCOM-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "engineer input on technical decisions",
+    "working groups",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Company-wide"
+   ]
+  },
+  {
+   "id": "N8N-DEVCOM-PRA-05",
+   "agent": "N8N Agents",
+   "values": [
+    "discuss feature before building",
+    "link ticket in pr",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DOC-PRA-01",
+   "agent": "N8N Agents",
+   "values": [
+    "docs-as-code",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DOC-PRA-02",
+   "agent": "N8N Agents",
+   "values": [
+    "docs required with code change",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DOC-PRA-03",
+   "agent": "N8N Agents",
+   "values": [
+    "docs required for ci workflows",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DOC-PRA-04",
+   "agent": "N8N Agents",
+   "values": [
+    "generated docs",
+    "diagrams in docs",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "N8N-DOC-PRA-05",
+   "agent": "N8N Agents",
+   "values": [
+    "structured commit and pr title convention",
+    "release-notes generation",
+    "human review of generated release notes",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  }
+ ],
+ "codebook_header": "code (dropdown list)",
+ "summary_col": 22,
+ "summary_labels": [
+  "Agree",
+  "Disagree",
+  "Not yet coded",
+  "% agreement",
+  "Marketing items"
+ ],
+ "summary_formulas": [
+  "=COUNTIF(H2:H563,\"Agree\")",
+  "=COUNTIF(H2:H563,\"Disagree\")",
+  "=COUNTA(D2:D563)-W1-W2",
+  "=IF(W1+W2=0,\"\",W1/(W1+W2))",
+  "=COUNTIF(I2:I563,\"yes\")"
+ ]
+}

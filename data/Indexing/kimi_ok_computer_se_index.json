@@ -1,19 +1,85 @@
 {
   "Agent_Name": "Kimi OK Computer",
-  "Description": {
-    "q_id": "q_49",
-    "value": "Kimi Ok Computer is a proprietary closed-source computer-use AI agent developed by Moonshot AI, accessible at kimi.com/agent, that autonomously operates a cloud computing environment to complete complex multi-step tasks including web browsing, code execution, file manipulation, and visual reasoning. It is powered by the Kimi K2.x model family with Agent Swarm parallel orchestration.",
-    "evidence": [
-      {
-        "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
-        "citation": "[10]"
-      },
-      {
-        "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
-        "citation": "[8]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_49",
+      "value": "Kimi Ok Computer is a proprietary closed-source computer-use AI agent developed by Moonshot AI and released on 26 September 2025 as Kimi's first Agent mode, accessible from kimi.com, that autonomously operates a cloud computing environment to complete complex multi-step tasks including web browsing, code execution, file manipulation, and visual reasoning. At the April 2026 pull it was powered by the Kimi K2.x model family with Agent Swarm parallel orchestration; Kimi K3, released in July 2026, is now available on Kimi.com.",
+      "evidence": [
+        {
+          "quote": "K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently.",
+          "citation": "[10]"
+        },
+        {
+          "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
+          "citation": "[8]"
+        },
+        {
+          "quote": "On September 26, 2025, Kimi released its first Agent product mode: “OK Computer.”",
+          "citation": "[27]"
+        },
+        {
+          "quote": "Kimi K3 is available today on Kimi.com, Kimi Work, Kimi Code, and the Kimi API.",
+          "citation": "[28]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_50",
+      "value": "Kimi K2.6 leverages image and video generation tools to generate visually coherent assets, and Kimi K2.6 Agent Swarm combines broad search layered with deep research, large-scale document analysis, long-form writing, and multi-format content generation executed in parallel.",
+      "evidence": [
+        {
+          "quote": "With strong proficiency in leveraging image and video generation tools, Kimi K2.6 supports the generation of visually coherent assets and contributes to higher-quality, more salient hero sections.",
+          "citation": "[8]"
+        },
+        {
+          "quote": "It seamlessly coordinates heterogeneous agents to combine complementary skills: broad search layered with deep research, large-scale document analysis fused with long-form writing, and multi-format content generation executed in parallel.",
+          "citation": "[8]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_51",
+      "value": "Community reverse-engineering of the Ok Computer runtime shows it is built on Python: kernel_server.py manages the control plane, jupyter_kernel.py runs the IPython kernel, browser_guard.py handles Playwright automation, and compiled binaries extend capabilities beyond what Python alone provides.",
+      "evidence": [
+        {
+          "quote": "`kernel_server.py` manages the control plane. `jupyter_kernel.py` runs the IPython kernel. `browser_guard.py` handles Playwright automation.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "Several compiled binaries extend the agent's capabilities beyond what Python alone provides.",
+          "citation": "[4]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_52",
+      "value": "The Kimi K2.5 technical report (the model powering Ok Computer) is authored by the Kimi Team: Tongtong Bai and 324 other authors, i.e., well over 50 team members.",
+      "evidence": [
+        {
+          "quote": "View a PDF of the paper titled Kimi K2.5: Visual Agentic Intelligence, by Kimi Team: Tongtong Bai and 324 other authors",
+          "citation": "[10]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_53",
+      "value": "MoonshotAI publishes a related public, Apache-2.0-licensed repository, MoonshotAI/kimi-agent-sdk, which provides a programmatic interface to interact with the Kimi CLI.",
+      "evidence": [
+        {
+          "quote": "MoonshotAI/kimi-agent-sdk",
+          "citation": "[13]"
+        },
+        {
+          "quote": "Kimi Agent SDK provides a programmatic interface to interact with the Kimi CLI",
+          "citation": "[13]"
+        },
+        {
+          "quote": "Apache-2.0 license",
+          "citation": "[13]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Lines_of_Code": {
       "value": "Not Available - Kimi Ok Computer is a closed-source cloud service with no public repository. Community reverse-engineering (kimi-agent-internals, CC BY 4.0) extracted core runtime modules: kernel_server.py (~311 lines), jupyter_kernel.py (~485 lines), and browser_guard.py, providing the only publicly available line-count signal for the Ok Computer runtime.",
@@ -220,6 +286,192 @@
               "citation": "[8]"
             }
           ]
+        },
+        {
+          "q_id": "q_54",
+          "Summary": "kimi-cli (Kimi Code CLI) is a Python CLI agent for software engineering workflows, and its release is handled by GitHub Actions after tags are pushed.",
+          "evidence": [
+            {
+              "quote": "Kimi Code CLI is a Python CLI agent for software engineering workflows.",
+              "citation": "[14]"
+            },
+            {
+              "quote": "GitHub Actions handles the release after tags are pushed.",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_55",
+          "Summary": "kimi-agent-sdk is a MoonshotAI repository that provides a programmatic interface to interact with the Kimi CLI.",
+          "evidence": [
+            {
+              "quote": "MoonshotAI/kimi-agent-sdk",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Kimi Agent SDK provides a programmatic interface to interact with the Kimi CLI",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_56",
+          "Summary": "As of the kimi-cli main-branch commit of 2026-04-30, kimi-cli's .github/workflows directory contains separate CI workflow files per component: ci-kimi-cli.yml, ci-kosong.yml, ci-pykaos.yml, ci-kimi-sdk.yml and ci-docs.yml.",
+          "evidence": [
+            {
+              "quote": "\"path\": \".github/workflows/ci-kimi-cli.yml\"",
+              "citation": "[15]"
+            },
+            {
+              "quote": "\"path\": \".github/workflows/ci-kosong.yml\"",
+              "citation": "[15]"
+            },
+            {
+              "quote": "\"path\": \".github/workflows/ci-pykaos.yml\"",
+              "citation": "[15]"
+            },
+            {
+              "quote": "\"path\": \".github/workflows/ci-kimi-sdk.yml\"",
+              "citation": "[15]"
+            },
+            {
+              "quote": "\"path\": \".github/workflows/ci-docs.yml\"",
+              "citation": "[15]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_57",
+          "Summary": "kimi-agent-sdk's .github/workflows directory contains separate workflow files per SDK/component: go.yml, node.yml, python.yml and vscode.yml (plus python-release.yml and kimi-review.yml).",
+          "evidence": [
+            {
+              "quote": "go.yml",
+              "citation": "[16]"
+            },
+            {
+              "quote": "node.yml",
+              "citation": "[16]"
+            },
+            {
+              "quote": "python.yml",
+              "citation": "[16]"
+            },
+            {
+              "quote": "vscode.yml",
+              "citation": "[16]"
+            },
+            {
+              "quote": "python-release.yml",
+              "citation": "[16]"
+            },
+            {
+              "quote": "kimi-review.yml",
+              "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_58",
+          "Summary": "kimi-cli's translator.yml workflow (\"Translator\") runs on issues, issue comments, discussions, discussion comments, pull requests and pull request review comments, using lizheming/github-translate-action with title translation and appended translations enabled.",
+          "evidence": [
+            {
+              "quote": "name: \"Translator\"",
+              "citation": "[17]"
+            },
+            {
+              "quote": "discussion_comment:",
+              "citation": "[17]"
+            },
+            {
+              "quote": "pull_request_target:",
+              "citation": "[17]"
+            },
+            {
+              "quote": "pull_request_review_comment:",
+              "citation": "[17]"
+            },
+            {
+              "quote": "- uses: lizheming/github-translate-action@1.1.2",
+              "citation": "[17]"
+            },
+            {
+              "quote": "IS_MODIFY_TITLE: true",
+              "citation": "[17]"
+            },
+            {
+              "quote": "APPEND_TRANSLATION: true",
+              "citation": "[17]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_59",
+          "Summary": "The github-translate-action used by translator.yml automatically translates non-English GitHub issues and discussions into English; with APPEND_TRANSLATION enabled it appends the translation to the original content.",
+          "evidence": [
+            {
+              "quote": "A GitHub Action to translate non-English GitHub issues and GitHub discussions into English automatically.",
+              "citation": "[18]"
+            },
+            {
+              "quote": "When this item is true, the original content is modified and the translation result is appended, so that no notification is generated and the user is not disturbed.",
+              "citation": "[18]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_60",
+          "Summary": "kimi-cli's documentation is maintained in mirrored English (docs/en/) and Chinese (docs/zh/) locales; the Chinese version is the source of truth for non-changelog pages, and English versions of those pages may be auto-generated by AI agents.",
+          "evidence": [
+            {
+              "quote": "Locales live under `docs/en/` and `docs/zh/` with mirrored paths and filenames.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "The Chinese version (`docs/zh/`) is the source of truth.",
+              "citation": "[19]"
+            },
+            {
+              "quote": "Other translations (e.g., English versions of non-changelog pages) may be auto-generated by AI agents.",
+              "citation": "[19]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_61",
+          "Summary": "kimi-cli's pre-commit configuration installs pre-commit hooks that run make format-kimi-cli and make check-kimi-cli.",
+          "evidence": [
+            {
+              "quote": "default_install_hook_types:",
+              "citation": "[20]"
+            },
+            {
+              "quote": "entry: make format-kimi-cli",
+              "citation": "[20]"
+            },
+            {
+              "quote": "entry: make check-kimi-cli",
+              "citation": "[20]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_62",
+          "Summary": "In kimi-cli's Makefile, format-kimi-cli auto-formats the sources with ruff and check-kimi-cli runs linting and type checks; prek installs the repository's git hooks.",
+          "evidence": [
+            {
+              "quote": "format-kimi-cli: ## Auto-format Kimi Code CLI sources with ruff.",
+              "citation": "[21]"
+            },
+            {
+              "quote": "check-kimi-cli: ## Run linting and type checks for Kimi Code CLI.",
+              "citation": "[21]"
+            },
+            {
+              "quote": "install-prek: ## Install prek and repo git hooks.",
+              "citation": "[21]"
+            }
+          ]
         }
       ],
       "Tools": [
@@ -227,6 +479,30 @@
           "q_id": "q_38",
           "Summary": "Not Available — no public CI/CD toolchain, build scripts, or deployment infrastructure is documented for this closed-source cloud service.",
           "evidence": []
+        },
+        {
+          "q_id": "q_63",
+          "Summary": "kimi-cli uses GitHub Actions, which handles the release after tags are pushed.",
+          "evidence": [
+            {
+              "quote": "GitHub Actions handles the release after tags are pushed.",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_64",
+          "Summary": "kimi-cli uses prek to install the repository's git hooks (installed during make prepare).",
+          "evidence": [
+            {
+              "quote": "install-prek: ## Install prek and repo git hooks.",
+              "citation": "[21]"
+            },
+            {
+              "quote": "prepare: download-deps install-prek ## Sync dependencies for all workspace packages and install prek hooks.",
+              "citation": "[21]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -246,6 +522,24 @@
           "q_id": "q_39",
           "Summary": "Not Available",
           "evidence": []
+        },
+        {
+          "q_id": "q_73",
+          "Summary": "MoonshotAI archived the kimi-cli repository on 21 September 2026; it is read-only, gets no further releases, fixes or security updates, and was replaced by Kimi Code CLI (MoonshotAI/kimi-code). The kimi-cli practices indexed here describe the repository as of its April 2026 commit.",
+          "evidence": [
+            {
+              "quote": "This project has been archived and is no longer maintained.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "This repository is read-only. There will be no further releases, bug fixes, or security updates.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "chore: archive kimi-cli and point users to Kimi Code CLI (#2659)",
+              "citation": "[30]"
+            }
+          ]
         }
       ]
     },
@@ -255,6 +549,50 @@
           "q_id": "q_40",
           "Summary": "Not Available — Kimi Ok Computer is a closed-source product with no public repository, pull request history, or documented internal code review workflow. No concrete evidence of how the development team reviews source code was found in any publicly available source.",
           "evidence": []
+        },
+        {
+          "q_id": "q_65",
+          "Summary": "kimi-agent-sdk has a \"Kimi Code Review\" GitHub Actions workflow (kimi-review.yml) triggered by pull request events and PR comments; it runs xiaoju111a/kimi-actions with a Kimi API key, with auto_review set to 'false'.",
+          "evidence": [
+            {
+              "quote": "name: Kimi Code Review",
+              "citation": "[22]"
+            },
+            {
+              "quote": "types: [opened, synchronize, reopened]",
+              "citation": "[22]"
+            },
+            {
+              "quote": "- uses: xiaoju111a/kimi-actions@main",
+              "citation": "[22]"
+            },
+            {
+              "quote": "kimi_api_key: ${{ secrets.KIMI_API_KEY }}",
+              "citation": "[22]"
+            },
+            {
+              "quote": "auto_review: 'false'",
+              "citation": "[22]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_66",
+          "Summary": "The kimi-actions GitHub Action provides AI-powered code review using Kimi (Moonshot AI); the /review command performs a comprehensive review of all PR changes, and with auto_review 'false' reviews are triggered by the /review command instead of automatically on PR open.",
+          "evidence": [
+            {
+              "quote": "AI-powered code review using [Kimi](https://kimi.moonshot.cn/) (Moonshot AI)",
+              "citation": "[23]"
+            },
+            {
+              "quote": "`/review` - Comprehensive code review of all PR changes",
+              "citation": "[23]"
+            },
+            {
+              "quote": "auto_review: 'false'            # Auto review on PR open (default: false, use /review command instead)",
+              "citation": "[23]"
+            }
+          ]
         }
       ],
       "Tools": [
@@ -262,6 +600,20 @@
           "q_id": "q_41",
           "Summary": "Not Available",
           "evidence": []
+        },
+        {
+          "q_id": "q_67",
+          "Summary": "kimi-agent-sdk's code review tooling is a GitHub Actions workflow, Kimi Code Review (kimi-review.yml), which uses the xiaoju111a/kimi-actions action.",
+          "evidence": [
+            {
+              "quote": "name: Kimi Code Review",
+              "citation": "[22]"
+            },
+            {
+              "quote": "- uses: xiaoju111a/kimi-actions@main",
+              "citation": "[22]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -327,6 +679,42 @@
               "citation": "[8]"
             }
           ]
+        },
+        {
+          "q_id": "q_68",
+          "Summary": "kimi-cli issue #2077, titled \"[Critical] K2.6 model overloaded – unusable under normal load\" and labelled bug, was filed on 2026-04-26.",
+          "evidence": [
+            {
+              "quote": "\"title\": \"[Critical] K2.6 model overloaded – unusable under normal load\"",
+              "citation": "[24]"
+            },
+            {
+              "quote": "\"created_at\": \"2026-04-26T08:56:43Z\"",
+              "citation": "[24]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_69",
+          "Summary": "The first four comments on kimi-cli issue #2077 were all posted on 2026-04-26, the day the issue was filed.",
+          "evidence": [
+            {
+              "quote": "\"created_at\": \"2026-04-26T09:41:53Z\"",
+              "citation": "[25]"
+            },
+            {
+              "quote": "\"created_at\": \"2026-04-26T10:12:04Z\"",
+              "citation": "[25]"
+            },
+            {
+              "quote": "\"created_at\": \"2026-04-26T10:46:05Z\"",
+              "citation": "[25]"
+            },
+            {
+              "quote": "\"created_at\": \"2026-04-26T15:09:14Z\"",
+              "citation": "[25]"
+            }
+          ]
         }
       ],
       "Tools": [
@@ -358,6 +746,34 @@
           "q_id": "q_44",
           "Summary": "Not Available",
           "evidence": []
+        },
+        {
+          "q_id": "q_70",
+          "Summary": "On 2026-04-25 the kimi-agent-sdk repository's Issues tab counter (GitHub's open-issue count) showed 52.",
+          "evidence": [
+            {
+              "quote": "Issues 52",
+              "citation": "[13]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_71",
+          "Summary": "Open issues in the kimi-agent-sdk tracker (May 2026 snapshot) include an SDK deadlock with kimi CLI v1.40.0, a Windows MCP server connection failure due to a Unicode encoding bug in kimi.exe, and a bundled-CLI connection error.",
+          "evidence": [
+            {
+              "quote": "SDK deadlocks with kimi CLI v1.40.0 due to unknown MCPLoadingBegin/MCPLoadingEnd events",
+              "citation": "[26]"
+            },
+            {
+              "quote": "MCP Server Connection Always Fails on Windows Due to Unicode Encoding Bug in kimi.exe (PyInstaller Python 3.14)",
+              "citation": "[26]"
+            },
+            {
+              "quote": "Connection Error: The bundled CLI is unavailable. Please install manually. (It is installed...)",
+              "citation": "[26]"
+            }
+          ]
         }
       ]
     },
@@ -447,6 +863,10 @@
             {
               "quote": "We are moving beyond simply asking AI a question or assigning AI a task, and entering a phase where human and AI collaborate as genuine partners—combining strengths to solve problems collectively.",
               "citation": "[8]"
+            },
+            {
+              "quote": "MoonshotAI kimi-cli Discussions",
+              "citation": "[12]"
             }
           ]
         },
@@ -491,6 +911,28 @@
             {
               "quote": "If you have any questions, please reach out at support@moonshot.cn.",
               "citation": "[11]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_72",
+          "Summary": "MoonshotAI runs GitHub Discussions on the kimi-cli repository, with categories including Announcements, General, Ideas, Kimi for Coding, Polls, Q&A and Show and tell.",
+          "evidence": [
+            {
+              "quote": "MoonshotAI kimi-cli Discussions",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Search all discussions",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Show and tell",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Kimi for Coding",
+              "citation": "[12]"
             }
           ]
         }
@@ -673,6 +1115,120 @@
       "Link": "https://github.com/MoonshotAI/Kimi-K2.5",
       "Date_Created": "2026-02-02",
       "Date_Pulled": "2026-04-28"
+    },
+    "[12]": {
+      "Website_Type": "GitHub Discussions (Wayback Machine snapshot, 2026-05-24)",
+      "Link": "https://web.archive.org/web/20260524180116/https://github.com/MoonshotAI/kimi-cli/discussions",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[13]": {
+      "Website_Type": "GitHub Repository (Wayback Machine snapshot, 2026-04-25)",
+      "Link": "https://web.archive.org/web/20260425171247/https://github.com/MoonshotAI/kimi-agent-sdk",
+      "Date_Created": "2026-01-08",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub Repository File (kimi-cli AGENTS.md at commit of 2026-04-30)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/17938161923c6f7550c9f291ff15ed5b1cacc1a9/AGENTS.md",
+      "Date_Created": "2026-03-31",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[15]": {
+      "Website_Type": "GitHub REST API (repository contents, kimi-cli .github/workflows at commit of 2026-04-30)",
+      "Link": "https://api.github.com/repos/MoonshotAI/kimi-cli/contents/.github/workflows?ref=17938161923c6f7550c9f291ff15ed5b1cacc1a9",
+      "Date_Created": "2026-04-30",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[16]": {
+      "Website_Type": "GitHub Repository Directory (Wayback Machine snapshot, 2026-05-25)",
+      "Link": "https://web.archive.org/web/20260525044040/https://github.com/MoonshotAI/kimi-agent-sdk/tree/main/.github/workflows",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[17]": {
+      "Website_Type": "GitHub Actions Workflow File (kimi-cli translator.yml at commit of 2026-04-30)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/17938161923c6f7550c9f291ff15ed5b1cacc1a9/.github/workflows/translator.yml",
+      "Date_Created": "2025-10-25",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[18]": {
+      "Website_Type": "GitHub Repository README (third-party GitHub Action used by kimi-cli translator.yml)",
+      "Link": "https://github.com/lizheming/github-translate-action/blob/main/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[19]": {
+      "Website_Type": "GitHub Repository File (kimi-cli docs/AGENTS.md at commit of 2026-04-30)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/17938161923c6f7550c9f291ff15ed5b1cacc1a9/docs/AGENTS.md",
+      "Date_Created": "2026-02-02",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[20]": {
+      "Website_Type": "GitHub Repository File (kimi-cli .pre-commit-config.yaml at commit of 2026-04-30)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/17938161923c6f7550c9f291ff15ed5b1cacc1a9/.pre-commit-config.yaml",
+      "Date_Created": "2025-11-24",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[21]": {
+      "Website_Type": "GitHub Repository File (kimi-cli Makefile at commit of 2026-04-30)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/blob/17938161923c6f7550c9f291ff15ed5b1cacc1a9/Makefile",
+      "Date_Created": "2026-04-17",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Actions Workflow File (kimi-agent-sdk kimi-review.yml at commit of 2026-04-21)",
+      "Link": "https://github.com/MoonshotAI/kimi-agent-sdk/blob/b232049415ff912d725abcd22c282cc8deff2791/.github/workflows/kimi-review.yml",
+      "Date_Created": "2026-01-19",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[23]": {
+      "Website_Type": "GitHub Repository README (Kimi Code Review Action used by kimi-agent-sdk kimi-review.yml)",
+      "Link": "https://github.com/xiaoju111a/kimi-actions/blob/main/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[24]": {
+      "Website_Type": "GitHub REST API (kimi-cli issue #2077)",
+      "Link": "https://api.github.com/repos/MoonshotAI/kimi-cli/issues/2077",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[25]": {
+      "Website_Type": "GitHub REST API (kimi-cli issue #2077 comments)",
+      "Link": "https://api.github.com/repos/MoonshotAI/kimi-cli/issues/2077/comments",
+      "Date_Created": "2026-04-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[26]": {
+      "Website_Type": "GitHub Issue Tracker (Wayback Machine snapshot, 2026-05-15)",
+      "Link": "https://web.archive.org/web/20260515011420/https://github.com/MoonshotAI/kimi-agent-sdk/issues",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[27]": {
+      "Website_Type": "Official Help Center (Kimi Agent overview)",
+      "Link": "https://www.kimi.com/en/help/agent/agent-overview",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[28]": {
+      "Website_Type": "Official Blog (Kimi K3 tech blog)",
+      "Link": "https://www.kimi.com/blog/kimi-k3",
+      "Date_Created": "2026-07",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[29]": {
+      "Website_Type": "GitHub Repository README (archived)",
+      "Link": "https://github.com/MoonshotAI/kimi-cli",
+      "Date_Created": "2026-09-21",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[30]": {
+      "Website_Type": "GitHub Commit History",
+      "Link": "https://github.com/MoonshotAI/kimi-cli/commits/main",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
     }
   }
 }

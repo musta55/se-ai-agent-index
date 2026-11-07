@@ -1,15 +1,31 @@
 {
   "Agent_Name": "Google Gemini",
-  "Description": {
-    "q_id": "q_1",
-    "value": "Google Gemini is a family of closed-source multimodal large language models (LLMs) developed by Google DeepMind, powering the Gemini conversational AI chatbot accessible at gemini.google.com. It processes text, images, audio, video, and code, and serves as the foundation model across Google AI products and APIs.",
-    "evidence": [
-      {
-        "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
-        "citation": "[1]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_1",
+      "value": "Google Gemini is a family of closed-source multimodal large language models (LLMs) developed by Google DeepMind, powering the Gemini conversational AI chatbot accessible at gemini.google.com. It processes text, images, audio, video, and code, and serves as the foundation model across Google AI products and APIs.",
+      "evidence": [
+        {
+          "quote": "Gemini is a family of multimodal large language models developed by Google DeepMind ... closed-source",
+          "citation": "[1]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_60",
+      "value": "Gemini models are made available to developers through Google AI Studio, Vertex AI, and the Gemini Developer API.",
+      "evidence": [
+        {
+          "quote": "Gemini Pro was made available to Google Cloud customers on AI Studio and Vertex AI on December 13, while Gemini Nano will be made available to Android developers as well.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "API backend: Gemini Developer API (genai.Client(api_key=...), not Vertex AI)",
+          "citation": "[14]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Lines_of_Code": {
       "value": "Not Available - Gemini (the model + consumer/Bard product) is closed-source; no public code repository exists for the model or chat product. Engineering details are sourced from Google research papers, the Google Cloud / Google AI blog, and DeepMind/Google Research publications.",
@@ -379,6 +395,16 @@
             {
               "quote": "Google Cloud status dashboard",
               "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_61",
+          "Summary": "Google Issue Tracker (issuetracker.google.com, component 1166207) is used to track Gemini API issues.",
+          "evidence": [
+            {
+              "quote": "Google Issue Tracker - Gemini API",
+              "citation": "[5]"
             }
           ]
         }

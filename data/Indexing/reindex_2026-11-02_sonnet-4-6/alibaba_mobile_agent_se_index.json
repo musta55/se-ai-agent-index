@@ -1,0 +1,767 @@
+{
+  "Agent_Name": "Alibaba Mobile Agent",
+  "Description": [
+    {
+      "q_id": "q_1",
+      "Summary": "Mobile-Agent (also known as MobileAgent) is a computer-use / GUI automation agent family developed by Tongyi Lab at Alibaba Group. It autonomously operates mobile devices, desktop computers, and web browsers by perceiving the screen via screenshots and executing actions such as click, swipe, type, and scroll — all without requiring app-specific XML metadata or system APIs. The project spans multiple versions (v1 through v3.5) and is open-sourced under MIT license at github.com/X-PLUG/MobileAgent, with the underlying GUI-Owl model family available on Hugging Face and ModelScope. Deployment surfaces include a Python CLI run from a local machine with ADB (for mobile), pyautogui (for desktop), or Playwright (for browser), plus a cloud API on Alibaba's Bailian / Model Studio platform.",
+      "evidence": [
+        {
+          "quote": "Mobile-Agent: The Powerful GUI Agent Family",
+          "citation": "[1]"
+        },
+        {
+          "quote": "MobileAgent-v3 is a multi-modal and multi-platform GUI agent built upon GUI-Owl series models.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "Mobile-Agent is an autonomous agent for mobile devices built on Multimodal Large Language Models. It uses visual perception tools to find and identify visual and text elements on an app's interface.",
+          "citation": "[3]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "The repository does not publish an explicit lines-of-code count. Based on the repository structure — multiple sub-projects (Mobile-Agent-v1 through v3.5, PC-Agent, UI-S1, GUI-Critic-R1) each containing Python scripts, shell evaluation scripts, notebooks, and README files — the codebase is estimated at tens of thousands of lines. The primary language is Python.",
+        "evidence": [
+          {
+            "quote": "Primary language: Python",
+            "citation": "[5]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "The repository had approximately 9,400 stars as of November 2026, with 940 forks and 97 watchers.",
+        "evidence": [
+          {
+            "quote": "Stars: 9.4k, Forks: 940, Watchers: 97",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "GitHub's contributor graph page was unresponsive during scraping. From commit history, active contributors identified include junyangwang0410, zhangxi1997, xhyandwyy, Lendle-King, octo-patch, M4rque2, lll6gg, vw2x, Kingpython123, and Linxiushen — at least 10 distinct contributors visible in recent commit history.",
+        "evidence": [
+          {
+            "quote": "junyangwang0410: 11 commits (mostly merging pull requests); Lendle-King: 4 commits (Android World and GUI-Owl fixes); vw2x: 2 commits (Android controller and parser fixes)",
+            "citation": "[6]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "The repository has no formal release tags. Commit activity is bursty: an intense period of 13 commits in one week (Oct 26 – Nov 2, 2026) was preceded by several quiet months. The repo has 433 total commits as of November 2026, with the most recent news entry dated May 12, 2026 (ToolCUA release).",
+        "evidence": [
+          {
+            "quote": "The page lists 433 commits, and the most recent news entry is dated 2026.5.12 (ToolCUA release).",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "Python is the primary programming language. Shell scripts are used for evaluation pipelines, and HTML is used for the demo page.",
+        "evidence": [
+          {
+            "quote": "Primary language: Python; License: MIT",
+            "citation": "[5]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "q_id": "q_2",
+          "Summary": "Testing in Mobile-Agent is predominantly benchmark-driven evaluation rather than unit or integration testing. The team evaluates each model version against a suite of GUI agent benchmarks including AndroidWorld, OSWorld-Verified, ScreenSpot-Pro, WebArena, VisualWebArena, WebVoyager, and the team's own Mobile-Eval. Evaluation is run via shell scripts (e.g., run_guiowl15.sh, run_ma35.sh) with parameters set in script files. Some community contributors have proposed adding pure-Python unit tests for specific parsing functions (e.g., parse_action), though none were present in the main branch at the time of research.",
+          "evidence": [
+            {
+              "quote": "Evaluation apps and instructions are listed in English and Chinese, with privacy-sensitive details redacted.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Include pure-Python unit tests for the normal, empty, missing-tag, and bad-JSON cases.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_3",
+          "Summary": "The team uses AndroidWorld, OSWorld, ScreenSpot-Pro, WebArena, VisualWebArena, and WebVoyager as primary evaluation benchmarks. Inference is run via vLLM and Hugging Face Transformers. Android Debug Bridge (ADB) is used to execute actions on real Android devices during evaluation. The team also introduced Mobile-Eval, a custom benchmark covering 10 single-app and 1 multi-app scenario, for the original Mobile-Agent-v1 paper. Playwright is used for browser automation tasks in the browser_use submodule.",
+          "evidence": [
+            {
+              "quote": "Setting: Dynamic evaluation on real devices, with actions executed through Android Debug Bridge (ADB).",
+              "citation": "[8]"
+            },
+            {
+              "quote": "The Mobile-Eval benchmark covers 10 single-app scenarios and 1 multi-app scenario.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Browser and web benchmarks use a requirements.txt, a virtualenv, and playwright install chromium.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_4",
+          "Summary": "Benchmark evaluation is performed by the research authors — primarily Tongyi Lab researchers at Alibaba Group. The community also participates by reproducing benchmarks and reporting discrepancies, as evidenced by issue #254 where an external contributor flagged a 3.9-point gap between the reported and reproducible ScreenSpot-Pro score.",
+          "evidence": [
+            {
+              "quote": "GUI-Owl-1.5-8B-Instruct scores 67.2% on ScreenSpot-Pro versus the reported 71.1%. A reproducibility gap.",
+              "citation": "[13]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_5",
+          "Summary": "The training pipeline for GUI-Owl models includes a Step-Level Critic that labels each action as GOOD, NEUTRAL, or HARMFUL, and a Trajectory-Level Critic with both textual and multimodal channels — a trajectory is only counted as correct when both critics agree. This critic-based filtering acts as a quality gate on training data. The team also uses hint-guided rejection sampling and iterative online rejection sampling during data collection.",
+          "evidence": [
+            {
+              "quote": "A Step-Level Critic labels each action as GOOD, NEUTRAL, or HARMFUL. A Trajectory-Level Critic uses a textual channel and a multimodal channel, and a trajectory counts as correct only when both agree.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "q_id": "q_6",
+          "Summary": "The repository has no formal CI/CD pipeline or automated test runner. There are no .github/workflows YAML files visible. Deployment is handled manually: contributors clone the repository, install dependencies via pip from requirements.txt, configure parameters in shell scripts, and run evaluation jobs manually. The team maintains cloud sandbox environments for training, using Android, Ubuntu, macOS, and Windows cloud phones/computers.",
+          "evidence": [
+            {
+              "quote": "Training environments run on cloud phones and cloud computers across Android, Ubuntu, macOS, and Windows.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_7",
+          "Summary": "Infrastructure tools include vLLM for serving models at inference time, Android Debug Bridge (ADB) for Android device control, pyautogui for desktop automation, Playwright for browser automation, and cloud sandboxes (Alibaba Cloud / Alibaba Mobile Use) for training and demo. Model weights are hosted on Hugging Face and ModelScope.",
+          "evidence": [
+            {
+              "quote": "The recommended deployment is vLLM. The example command uses --max-model-len 32768 ... The script was validated on an A100 with 96 GB of VRAM.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Alibaba Mobile Use docs define a sandbox lifecycle with create_sandbox and kill_sandbox, referenced by sandbox_id.",
+              "citation": "[2]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_8",
+          "Summary": "Not Available — there is no public information about a dedicated DevOps or infrastructure team. The maintainers (primarily junyangwang0410 and zhangxi1997) appear to handle both research and deployment.",
+          "evidence": []
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_9",
+          "Summary": "The training infrastructure for GUI-Owl uses a rollout manager that assigns task IDs and coordinates data flow through a shared data center. Rollout is decoupled from policy updates, enabling fully synchronous or slightly off-policy asynchronous training for speed. The RL framework runs nearly 10,000 concurrent environments during the online RL stage.",
+          "evidence": [
+            {
+              "quote": "A rollout manager assigns task IDs and coordinates data flow through a shared data center.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Rollout is decoupled from policy updates, so training can run fully synchronous or asynchronously, slightly off-policy for speed.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "q_id": "q_10",
+          "Summary": "Code review is conducted via GitHub Pull Requests. The primary maintainer (junyangwang0410) reviews and merges external contributions. From the commit history, PRs are typically merged individually (e.g., 'Merge PR #294', 'Merge PR #300', 'Merge PR #298') rather than batch-merged. There is no CONTRIBUTING.md, no formal review checklist, and no stated minimum number of approvals required.",
+          "evidence": [
+            {
+              "quote": "Merge PR #294 (fix-mobile-agent-e-extract-json-object); Merge PR #300 (fix-parse-action-268); Merge PR #298 (androidworld-indexed-text-focus)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_11",
+          "Summary": "GitHub Pull Requests is the only code review tool identified. The repository had 2 open pull requests at the time of research and shows a pattern of community-submitted PRs reviewed and merged by the core maintainer.",
+          "evidence": [
+            {
+              "quote": "Open issues / PRs: 192 / 2",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_12",
+          "Summary": "The primary reviewer and merger is junyangwang0410 (Junyang Wang, a Tongyi Lab researcher at Alibaba Group). Community contributors such as Lendle-King, octo-patch, M4rque2, vw2x, and Kingpython123 submit pull requests that are reviewed before merging.",
+          "evidence": [
+            {
+              "quote": "junyangwang0410: 11 commits (mostly merging pull requests)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_13",
+          "Summary": "Not Available — no formal code review guidelines, checklists, or approval requirements were found in the repository documentation.",
+          "evidence": []
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "parse_action raises IndexError when model output is empty or lacks <tool_call>",
+          "Issue_Number": 268,
+          "Status": "Closed",
+          "Description": "The parse_action function crashed with an unhandled IndexError when the model returned empty output or output without the expected <tool_call> XML tag, because the code used a bare string split without validating that a second element existed. A community contributor proposed adding regex-based extraction, retry logic with --max_parse_retries, and unit tests.",
+          "Citation": "[12]"
+        },
+        {
+          "Issue_Title": "Mobile-Agent-v3.5 image preprocessing uses factor=28 but GUI-Owl-1.5 (Qwen3-VL) may require factor=32",
+          "Issue_Number": 285,
+          "Status": "Open",
+          "Description": "A contributor identified a possible patch-size mismatch: the smart_resize call uses factor=28 (matching Qwen2.5-VL's 28x28 visual token blocks) but GUI-Owl-1.5 is built on Qwen3-VL which uses 32x32 blocks. Additionally, image encoding and coordinate rescaling use different factor values (28 and 16 respectively), which could cause coordinate drift in predicted click positions.",
+          "Citation": "[14]"
+        },
+        {
+          "Issue_Title": "Image size alignment in computer_use module uses inconsistent factor values (16 vs 28)",
+          "Issue_Number": 265,
+          "Status": "Closed",
+          "Description": "Two smart_resize calls in the computer_use module used different factor values (16 in the runner, 28 in utils.py), introducing an approximately 1% image size error in coordinate scaling. Fixed by maintainer junyangwang0410 via commit 04f5e08.",
+          "Citation": "[15]"
+        },
+        {
+          "Issue_Title": "GUI-Owl-1.5-8B-Instruct reproducibility gap: 67.2% vs reported 71.1% on ScreenSpot-Pro",
+          "Issue_Number": 254,
+          "Status": "Closed",
+          "Description": "A community contributor could not reproduce the 71.1% ScreenSpot-Pro grounding score reported in the technical report; their best result with the same hardware and preprocessing was 67.2%. The gap was traced to prompt template sensitivity — the correct evaluation prompt was not disclosed in the repository.",
+          "Citation": "[13]"
+        },
+        {
+          "Issue_Title": "_call_api function in browser_use/agent.py raises AttributeError accessing .text on message object",
+          "Issue_Number": 273,
+          "Status": "Closed",
+          "Description": "Lines 119 and 121 of agent.py accessed a .text attribute that does not exist on the OpenAI message response object; the correct accessor is response.choices[0].message.content. Fixed by maintainer junyangwang0410 via commit c389195.",
+          "Citation": "[16]"
+        },
+        {
+          "Issue_Title": "ModuleNotFoundError: No module named 'OpenOCR' when running PC-Agent",
+          "Issue_Number": 282,
+          "Status": "Open",
+          "Description": "Users attempting to run PC-Agent fail with ModuleNotFoundError for the OpenOCR module. The setup README does not provide the correct installation method; pip-installing packages named 'openocr' and cloning the OpenOCR GitHub repository both fail. No maintainer response or resolution has been provided.",
+          "Citation": "[17]"
+        },
+        {
+          "Issue_Title": "PC-Agent config.py missing OCR_ACCESS_KEY_ID key causes KeyError at startup",
+          "Issue_Number": 262,
+          "Status": "Closed",
+          "Description": "Running PC-Agent on macOS raised a KeyError for 'OCR_ACCESS_KEY_ID' because the configuration documentation did not list all required keys. Users had no complete reference for the config.py file.",
+          "Citation": "[18]"
+        },
+        {
+          "Issue_Title": "PC-Agent Windows installation fails: ModuleNotFoundError for tools.infer_e2e",
+          "Issue_Number": 236,
+          "Status": "Closed",
+          "Description": "On Windows with Python 3.10, after following setup instructions, running run.py failed with ModuleNotFoundError: No module named 'tools.infer_e2e'. The local OpenOCR folder inside PC-Agent conflicts with the installed openocr-python package, preventing the tools subpackage from resolving.",
+          "Citation": "[19]"
+        },
+        {
+          "Issue_Title": "GUI-Critic-Test image paths don't match evaluation JSONL — correct/incorrect labels reversed",
+          "Issue_Number": 242,
+          "Status": "Closed",
+          "Description": "The evaluation JSONL and the images in the Hugging Face dataset zip archive were mismatched because the 'correct' and 'incorrect' subfolder labels were accidentally reversed during upload. Maintainer confirmed the Hugging Face dataset was updated after the issue was reported.",
+          "Citation": "[20]"
+        },
+        {
+          "Issue_Title": "Upstream version pinning: remotely downloaded resources break without version control",
+          "Issue_Number": 229,
+          "Status": "Closed",
+          "Description": "A contributor reported recurring breakage because Git dependencies and remote model resources are downloaded without pinning to specific commit hashes or versions. Additionally, OS-specific requirements files (requirements_win_v1.txt, requirements_mac.txt) were incomplete and conflicted with the main requirements.txt.",
+          "Citation": "[21]"
+        },
+        {
+          "Issue_Title": "iic/GUI-Owl-1.5-32B-Instruct model produces consistently inaccurate coordinates",
+          "Issue_Number": 287,
+          "Status": "Open",
+          "Description": "A self-hosted deployment of GUI-Owl-1.5-32B-Instruct via vLLM produces coordinates that are off by a large margin, causing all agent actions to fail. The issue suggests the vLLM server configuration (tensor parallelism, tool-calling parser, or visual preprocessing) may interact incorrectly with the model's coordinate output format.",
+          "Citation": "[22]"
+        },
+        {
+          "Issue_Title": "Mobile-Agent-v3.5 agent cannot open system apps like Phone; failed click shows misleading install error",
+          "Issue_Number": 269,
+          "Status": "Open",
+          "Description": "The agent fails to recognize or open system applications such as the Phone app. When a click fails, the agent incorrectly interprets the response as an instruction to install the app, producing misleading error output instead of a useful diagnostic.",
+          "Citation": "[23]"
+        }
+      ],
+      "Practices": [
+        {
+          "q_id": "q_14",
+          "Summary": "Bug resolution follows an informal GitHub Issues workflow: users report issues (often in Chinese), maintainers (primarily junyangwang0410 and zhangxi1997) triage and close them — often on the same day as a fix commit. Recurring engineering problem categories include: (1) image preprocessing inconsistencies (factor values, coordinate mapping); (2) dependency and environment configuration failures (OpenOCR, requirements file gaps, version pinning); (3) unhandled edge cases in output parsing (bare splits, missing XML tags, empty model output); (4) dataset/artifact mismatches (reversed folder labels, mismatched evaluation code); (5) benchmark reproducibility gaps (undisclosed prompt templates).",
+          "evidence": [
+            {
+              "quote": "junyangwang0410 committed a fix that references the issue (commit c389195). The issue was closed as completed on March 25, 2026.",
+              "citation": "[16]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_15",
+          "Summary": "GitHub Issues is the primary bug tracking system. There is no evidence of a dedicated issue tracking tool such as Jira or Linear. Debugging relies on user-provided error logs, stack traces, and screenshots shared directly in issue comments.",
+          "evidence": [
+            {
+              "quote": "Open issues / PRs: 192 / 2",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_16",
+          "Summary": "Core maintainers junyangwang0410 (Junyang Wang) and zhangxi1997 (Xi Zhang), both Tongyi Lab researchers at Alibaba Group, handle the majority of bug triage and fixes. Community contributors also submit fixes via pull requests (e.g., Lendle-King, Kingpython123, vw2x).",
+          "evidence": [
+            {
+              "quote": "junyangwang0410: 11 commits (mostly merging pull requests)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_17",
+          "Summary": "A systemic pattern is that the research team prioritizes releasing new model versions and benchmark results rapidly, sometimes leading to underdocumented configuration requirements, unpinned dependencies, and inconsistent preprocessing parameters across submodules. Many closed issues are resolved within hours to days, suggesting responsive but reactive (rather than proactive) quality assurance.",
+          "evidence": [
+            {
+              "quote": "The correct and incorrect subfolder labels were reversed in the Hugging Face upload across several datasets, so the JSON annotations didn't match the images.",
+              "citation": "[20]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "q_id": "q_18",
+          "Summary": "Mobile-Agent follows a research-driven, paper-first development model typical of academic AI labs. Each major release corresponds to an academic paper (ICLR 2024 Workshop for v1, NeurIPS 2024 for v2, preprints for v3 and v3.5). Development appears iterative: each version improves the agent architecture and training methodology incrementally, with formal evaluation against established benchmarks before release. The team does not appear to follow Scrum or Agile sprints; development cadence is tied to research milestones and paper submission deadlines.",
+          "evidence": [
+            {
+              "quote": "Mobile-Agent-v1 (ICLR 2024 Workshop); Mobile-Agent-v2 (NeurIPS 2024); UI-S1 (ACL 2026 main); GUI-Critic-R1 (NeurIPS 2025)",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_19",
+          "Summary": "Development uses Python as the primary language with PyTorch for model training. The team uses a self-evolving data pipeline (automated query generation, rollout, critic filtering) and scalable RL frameworks (TRPO for v3, MRPO for v3.5). Git with GitHub is used for source control and collaboration.",
+          "evidence": [
+            {
+              "quote": "A self-evolving pipeline generates queries, rolls out trajectories, judges correctness, and produces guidance for hard queries.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_20",
+          "Summary": "The team is led by Ming Yan (project leader / corresponding author) with Haiyang Xu and Jiabo Ye as co-leads. The research team spans Tongyi Lab at Alibaba Group and academic collaborators from Beijing Jiaotong University. The Mobile-Agent-v3.5 paper lists 19 authors, indicating a moderately large research group.",
+          "evidence": [
+            {
+              "quote": "Ming Yan is the corresponding author and project leader.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Authors (19): Haiyang Xu, Xi Zhang, Haowei Liu, Junyang Wang, Zhaozai Zhu, Shengjie Zhou, Xuhao Hu, Feiyu Gao, Junjie Cao, Zihua Wang, Zhiyuan Chen, Jitong Liao, Qi Zheng, Jiahui Zeng, Ze Xu, Shuai Bai, Junyang Lin, Jingren Zhou, Ming Yan.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_21",
+          "Summary": "Mobile-Agent received Best Demo Awards at CCL 2024 (for Mobile-Agent) and CCL 2025 (for Mobile-Agent-v3), indicating community recognition of the project's engineering quality. The project maintains both English and Simplified Chinese README files to support a dual-audience of international and domestic researchers.",
+          "evidence": [
+            {
+              "quote": "Best demo awards at CCL 2024 (Mobile-Agent) and CCL 2025 (Mobile-Agent-v3).",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "q_id": "q_22",
+          "Summary": "Team communication with the community happens primarily through GitHub Issues. Maintainers respond to issues in English and Chinese, sometimes requesting additional information (e.g., request IDs for API debugging) and occasionally committing fixes directly in response to issue reports. There is no public Discord, Slack, or mailing list identified for the project.",
+          "evidence": [
+            {
+              "quote": "buptcjj (March 16, 2026, maintainer): Asked for the request ID to inspect the failing call. Said a retry would be added to handle occasional model errors.",
+              "citation": "[12]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_23",
+          "Summary": "GitHub Issues is the primary community communication channel. The README provides BibTeX citations for academic communication. Online demos on ModelScope and Hugging Face Spaces serve as interactive demonstrations.",
+          "evidence": [
+            {
+              "quote": "The README provides BibTeX entries for Mobile-Agent-v3.5, Mobile-Agent-v3, UI-S1, GUI-Critic-R1, PC-Agent, Mobile-Agent-E, Mobile-Agent-v2, and Mobile-Agent-v1.",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_24",
+          "Summary": "Core Tongyi Lab researchers (Ming Yan, Haiyang Xu, Junyang Wang, Xi Zhang) communicate research decisions through academic papers. Community contributors and users communicate with maintainers through GitHub Issues. There is no identified community manager or dedicated support role.",
+          "evidence": [
+            {
+              "quote": "Jiabo Ye, Xi Zhang, and Haiyang Xu are marked as equal contributors. Ming Yan is the corresponding author and project leader.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_25",
+          "Summary": "Not Available — no public information was found about internal team communication tools (e.g., Slack, DingTalk, WeChat Work) used by the Tongyi Lab development team.",
+          "evidence": []
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "q_id": "q_26",
+          "Summary": "Documentation is maintained as Markdown README files at multiple levels: a top-level project README (in English and Simplified Chinese), and per-subproject READMEs in each folder (Mobile-Agent-v1 through v3.5, PC-Agent, UI-S1). The top-level README is updated with each new release, following a News section pattern. A TODO checklist in each README tracks planned open-source releases. Documentation covers setup, usage, evaluation, performance tables, and citations, but lacks contribution guidelines, testing instructions, and CI/CD documentation.",
+          "evidence": [
+            {
+              "quote": "The main README is available in English and Simplified Chinese (README_zh.md).",
+              "citation": "[10]"
+            },
+            {
+              "quote": "The README includes a TODO checklist and a news section.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_27",
+          "Summary": "Documentation is hosted directly on GitHub as Markdown files. The repository also includes an index.html for a project webpage. Model documentation is additionally published on Hugging Face model cards (e.g., mPLUG/GUI-Owl-1.5-32B-Instruct) and ModelScope. Academic papers on arXiv serve as the primary technical reference.",
+          "evidence": [
+            {
+              "quote": "Top-level files: README.md and README_zh.md (English and Simplified Chinese); index.html",
+              "citation": "[1]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_28",
+          "Summary": "Documentation is written and maintained by the core research team (primarily zhangxi1997 and xhyandwyy based on commit history). There are no dedicated technical writers identified. Community contributors occasionally submit documentation fixes.",
+          "evidence": [
+            {
+              "quote": "zhangxi1997: 5 commits (README updates); xhyandwyy: 5 commits (README updates)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_29",
+          "Summary": "A notable documentation gap is that configuration requirements are sometimes incomplete, as illustrated by multiple issues where users could not find the required keys for config.py or the correct evaluation prompt templates. The team addresses these gaps reactively through issue responses rather than proactively updating documentation.",
+          "evidence": [
+            {
+              "quote": "The reporter asked for a complete configuration list for config.py, saying they were desperate for one.",
+              "citation": "[18]"
+            }
+          ]
+        }
+      ]
+    },
+    "LLM_Integration_and_Prompt_Management": {
+      "Practices": [
+        {
+          "q_id": "q_30",
+          "Summary": "Mobile-Agent integrates LLMs at multiple levels. Early versions (v1, v2) used GPT-4V via the OpenAI API for visual decision-making and GPT-4 (text-only) for planning. Later versions (v3, v3.5) replaced closed-source APIs with the team's own GUI-Owl model family (built on Qwen2.5-VL and Qwen3-VL). The multi-agent framework in v2 uses three separate LLM agents: a planning agent (text-only), a decision agent (multimodal), and a reflection agent (multimodal). Prompts for each agent are published in the academic paper appendix. The training methodology for GUI-Owl uses a hybrid approach: supervised fine-tuning on curated trajectories followed by reinforcement learning (TRPO, then MRPO) with accuracy rewards and format penalties.",
+          "evidence": [
+            {
+              "quote": "The planning agent (text-only GPT-4) condenses history into a pure-text task progress, so the decision agent doesn't have to read long interleaved image-text histories.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "Prompts for each agent are published in the appendix, with separate initial and subsequent planning prompts.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "The reward is an accuracy reward (1 for success, 0 otherwise) plus a format penalty of -0.5 for malformed actions.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_31",
+          "Summary": "LLM integration tools include: the OpenAI Python SDK (for GPT-4V API calls in early versions), Qwen-Agent library (qwen_agent Python package) for GUI-Owl-based agents, vLLM for serving GUI-Owl models at inference time, and Hugging Face Transformers for local model loading. MCP (Model Context Protocol) is natively supported by GUI-Owl-1.5 for tool calling.",
+          "evidence": [
+            {
+              "quote": "Python packages: qwen_agent, qwen_vl_utils, numpy",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Native tool and MCP calling.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_32",
+          "Summary": "LLM integration and prompt engineering is handled by the core research team. The GUI-Owl training pipeline — including data flywheel design, critic-based filtering, and RL reward design — is led by the Tongyi Lab researchers (Ming Yan, Haiyang Xu, Jiabo Ye, Xi Zhang, and collaborators).",
+          "evidence": [
+            {
+              "quote": "Jiabo Ye, Xi Zhang, and Haiyang Xu are marked as equal contributors. Ming Yan is the corresponding author and project leader.",
+              "citation": "[7]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_33",
+          "Summary": "GUI-Owl-1.5 introduces unified thought synthesis that integrates world modeling, knowledge injection, and MCP reasoning into each training step. The training uses a self-evolving trajectory production framework where the model iteratively refines its own training data. GUI-Owl models output relative coordinates on a 0-1000 scale, and a community-identified bug (issue #285) suggests the coordinate system's factor parameter may be misconfigured relative to the Qwen3-VL tokenizer, illustrating the tight coupling between LLM tokenization and the agent's spatial reasoning.",
+          "evidence": [
+            {
+              "quote": "Unified CoT Synthesis: Integrates world modeling, knowledge injection, and tool/MCP (Model Context Protocol) reasoning into each step.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "The models output relative coordinates on a 0-1000 scale by default.",
+              "citation": "[10]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/X-PLUG/MobileAgent",
+      "Date_Created": "2024-01-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[2]": {
+      "Website_Type": "Official Documentation / MIT AI Agent Index",
+      "Link": "https://aiagentindex.mit.edu/2025/mobile-agent",
+      "Date_Created": "2025-01-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[3]": {
+      "Website_Type": "Academic Paper (arXiv)",
+      "Link": "https://arxiv.org/abs/2401.16158",
+      "Date_Created": "2024-01-29",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[4]": {
+      "Website_Type": "Academic Paper (arXiv)",
+      "Link": "https://arxiv.org/abs/2602.16855",
+      "Date_Created": "2026-02-15",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[5]": {
+      "Website_Type": "Repository Analytics",
+      "Link": "https://ossinsight.io/analyze/X-PLUG/MobileAgent",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[6]": {
+      "Website_Type": "GitHub Commit History",
+      "Link": "https://github.com/X-PLUG/MobileAgent/commits/main",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[7]": {
+      "Website_Type": "Academic Paper HTML (arXiv)",
+      "Link": "https://arxiv.org/html/2508.15144v1",
+      "Date_Created": "2025-08-20",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[8]": {
+      "Website_Type": "Academic Paper HTML (arXiv)",
+      "Link": "https://arxiv.org/html/2406.01014v1",
+      "Date_Created": "2024-06-03",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[9]": {
+      "Website_Type": "README.md",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-v1/README.md",
+      "Date_Created": "2024-01-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[10]": {
+      "Website_Type": "README.md",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-v3.5/README.md",
+      "Date_Created": "2026-02-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[11]": {
+      "Website_Type": "Hugging Face Model Card",
+      "Link": "https://huggingface.co/mPLUG/GUI-Owl-1.5-32B-Instruct/blob/main/README.md",
+      "Date_Created": "2026-02-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[12]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/268",
+      "Date_Created": "2026-03-16",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[13]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/254",
+      "Date_Created": "2026-02-26",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/285",
+      "Date_Created": "2026-05-29",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[15]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/265",
+      "Date_Created": "2026-03-10",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[16]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/273",
+      "Date_Created": "2026-03-24",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[17]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/282",
+      "Date_Created": "2026-05-25",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[18]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/262",
+      "Date_Created": "2026-03-05",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[19]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/236",
+      "Date_Created": "2025-12-12",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[20]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/242",
+      "Date_Created": "2026-01-07",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[21]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/229",
+      "Date_Created": "2025-11-23",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/287",
+      "Date_Created": "2026-06-29",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[23]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/269",
+      "Date_Created": "2026-03-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[24]": {
+      "Website_Type": "Engineering Blog / Technical Overview",
+      "Link": "https://howaiworks.ai/alibaba-gui-owl-1-5-mobile-agent-v3-5/",
+      "Date_Created": "2026-03-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[25]": {
+      "Website_Type": "Academic Paper (arXiv)",
+      "Link": "https://arxiv.org/abs/2508.15144",
+      "Date_Created": "2025-08-20",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[26]": {
+      "Website_Type": "Academic Paper (arXiv)",
+      "Link": "https://arxiv.org/abs/2406.01014",
+      "Date_Created": "2024-06-03",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[27]": {
+      "Website_Type": "README.md",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-v3/README.md",
+      "Date_Created": "2025-08-01",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[28]": {
+      "Website_Type": "Technical News Article",
+      "Link": "https://eu.36kr.com/en/p/3947989442591877",
+      "Date_Created": "2025-07-01",
+      "Date_Pulled": "2026-11-02"
+    }
+  }
+}

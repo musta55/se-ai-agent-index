@@ -19,7 +19,6 @@ AGENT_JSON_MAP = {
     "watsonx orchestrate":    "watsonx_orchestrate_se_index.json",
     "gemini enterprise":      "gemini_enterprise_se_index.json",
     "glean agents":           "glean_agents_se_index.json",
-    "amazonq developer":      "amazon_q_developer_se_index.json",
     "gemini cli":             "gemini_cli_se_index.json",
     "kimi ok computer":       "kimi_ok_computer_se_index.json",
     "anthropic claude code":  "anthropic_claude_code_se_index.json",
@@ -28,6 +27,8 @@ AGENT_JSON_MAP = {
     "opera neon":             "opera_neon_se_index.json",
     "alibaba mobile agent":   "alibaba_mobile_agent_se_index.json",
     "perplexity comet":       "perplexity_comet_se_index.json",
+    "openai codex":           "openai_codex_se_index.json",
+    "n8n ai agent builder":   "n8n_ai_agent_builder_se_index.json",
 }
 
 CATEGORY_ALIASES = {

@@ -1,0 +1,170 @@
+[
+ {
+  "tab": "Mustahid-clean",
+  "cell": "G11",
+  "agent": "Browser Use",
+  "old": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]",
+  "new": "Three core GitHub Actions workflows cover linting, testing and release: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). \n At the May 2026 pull the repository held 11 workflow files in total, also including claude.yml, eval-on-pr.yml, docker.yml and stale-bot.yml. [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]\n\nIn July 2026 the agent sandboxes moved onto AWS Bedrock AgentCore, which provisions a per-session micro-VM and is managed in Terraform; the zero-secret sandbox and the control plane (on ECS Fargate) were kept. [q-123]",
+  "why": "q-71 reworded (11 workflows existed at pull); new q-123 (AgentCore, Jul 2026)"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "H11",
+  "agent": "Browser Use",
+  "old": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]",
+  "new": "Three core GitHub Actions workflows cover linting, testing and release: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). \n At the May 2026 pull the repository held 11 workflow files in total, also including claude.yml, eval-on-pr.yml, docker.yml and stale-bot.yml. [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]\n\nIn July 2026 the agent sandboxes moved onto AWS Bedrock AgentCore, which provisions a per-session micro-VM and is managed in Terraform; the zero-secret sandbox and the control plane (on ECS Fargate) were kept. [q-123]",
+  "why": "q-71 reworded (11 workflows existed at pull); new q-123 (AgentCore, Jul 2026)"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "H11",
+  "agent": "Browser Use",
+  "old": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]",
+  "new": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]\n AWS Bedrock AgentCore for agent sandboxes (since July 2026) and self-built Firecracker microVMs on EC2 for cloud browsers (since June 2026) [q-123] [q-124]",
+  "why": "new q-123/q-124 tools"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "I11",
+  "agent": "Browser Use",
+  "old": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]",
+  "new": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]\n AWS Bedrock AgentCore for agent sandboxes (since July 2026) and self-built Firecracker microVMs on EC2 for cloud browsers (since June 2026) [q-123] [q-124]",
+  "why": "new q-123/q-124 tools"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "B9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "new": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. Since February 2026 the repository also contains Mobile-Agent-v3.5, built on the GUI-Owl-1.5 model family. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025 and v3.5 in February 2026; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "why": "q-1 adds v3.5 (Feb 2026, before the pull)"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "C9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "new": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. Since February 2026 the repository also contains Mobile-Agent-v3.5, built on the GUI-Owl-1.5 model family. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025 and v3.5 in February 2026; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "why": "q-1 adds v3.5 (Feb 2026, before the pull)"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "C9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]",
+  "new": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]\n\nBetween July and October 2026, contributors added the first project-specific unit tests (unittest suites in Mobile-Agent-E/tests and an absltest suite for GUI-Owl image encoding); no CI workflow runs them. [q-68]",
+  "why": "new q-68 (first unit tests)"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "D9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]",
+  "new": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]\n\nBetween July and October 2026, contributors added the first project-specific unit tests (unittest suites in Mobile-Agent-E/tests and an absltest suite for GUI-Owl image encoding); no CI workflow runs them. [q-68]",
+  "why": "new q-68 (first unit tests)"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "N9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal; the team responds to selected issues but rarely merges community patches. [q-50]",
+  "new": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal, and the team responds to selected issues. [q-50]\n\nBetween July and November 2026 the maintainers merged six pull requests from external contributors (#286, #290, #294, #297, #298, #300). [q-69]",
+  "why": "q-50 drops 'rarely merges community patches'; new q-69"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "O9",
+  "agent": "Alibaba Mobile Agent",
+  "old": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal; the team responds to selected issues but rarely merges community patches. [q-50]",
+  "new": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal, and the team responds to selected issues. [q-50]\n\nBetween July and November 2026 the maintainers merged six pull requests from external contributors (#286, #290, #294, #297, #298, #300). [q-69]",
+  "why": "q-50 drops 'rarely merges community patches'; new q-69"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "B7",
+  "agent": "Kimi ok Computer",
+  "old": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "new": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]. It was released on 26 September 2025 as Kimi's first Agent mode; Kimi K3 (July 2026) is now available on Kimi.com. [q-49]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "why": "q-49 adds release date and K3"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "C7",
+  "agent": "Kimi ok Computer",
+  "old": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "new": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]. It was released on 26 September 2025 as Kimi's first Agent mode; Kimi K3 (July 2026) is now available on Kimi.com. [q-49]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "why": "q-49 adds release date and K3"
+ },
+ {
+  "tab": "Mustahid-clean",
+  "cell": "J7",
+  "agent": "Kimi ok Computer",
+  "old": "Not Available",
+  "new": "kimi-cli was archived on 21 September 2026 (read-only, no further releases or fixes) and replaced by Kimi Code CLI (MoonshotAI/kimi-code); the kimi-cli practices indexed here describe it as of April 2026. [q-73]",
+  "why": "new q-73 (kimi-cli archived) replaces 'Not Available'"
+ },
+ {
+  "tab": "Final-clean",
+  "cell": "K7",
+  "agent": "Kimi ok Computer",
+  "old": "Not Available",
+  "new": "kimi-cli was archived on 21 September 2026 (read-only, no further releases or fixes) and replaced by Kimi Code CLI (MoonshotAI/kimi-code); the kimi-cli practices indexed here describe it as of April 2026. [q-73]",
+  "why": "new q-73 (kimi-cli archived) replaces 'Not Available'"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "H12",
+  "agent": "Browser Use",
+  "old": "A three-workflow GitHub Actions pipeline covers the full delivery lifecycle: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]",
+  "new": "Three core GitHub Actions workflows cover linting, testing and release: \n 1. lint.yml (syntax, style, types on every push), \n 2. test.yaml (matrix unit tests plus per-PR agent evaluation), and \n 3. publish.yml (PyPI release triggered on a new GitHub release tag). \n At the May 2026 pull the repository held 11 workflow files in total, also including claude.yml, eval-on-pr.yml, docker.yml and stale-bot.yml. [q-71]\n\nThey scaled their infrastructure in 2 patterns - \n Pattern 1: Single backend with agent loop and isolated terminal uses a sandbox for tool-calling via HTTP.\n Pattern 2: Isolate the agent. The entire agent runs in a sandbox with zero secrets. It talks to the outside world through a control plane that holds all the credentials. [q-74] [q-116]\n\nThey switched from pattern 1 to 2 for scalability, decoupling, and security. [q-74] [q-116] [q-117]\n\nThe tradeoff is an extra network hop (control plane) on every operation and three services to deploy instead of one.\n In practice, the latency is noise compared to LLM response times, and the operational complexity is the kind that ops teams already know how to handle. [q-118]\n\nTheir cloud service receives task requests, sends them to an SQS (Amazon's Queue Service) queue, and returns an HTTP 202 response. \n A Lambda worker (serverless process runner) then processes each queued task and runs the agent until completion. [q-72]\n\nIn July 2026 the agent sandboxes moved onto AWS Bedrock AgentCore, which provisions a per-session micro-VM and is managed in Terraform; the zero-secret sandbox and the control plane (on ECS Fargate) were kept. [q-123]",
+  "why": "q-71 reworded (11 workflows existed at pull); new q-123 (AgentCore, Jul 2026)"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "I12",
+  "agent": "Browser Use",
+  "old": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]",
+  "new": "Github Actions, per-PR agent evaluation via Blacksmith runners. \n AWS SQS, Lambda, ALB, and S3 form the core cloud production stack. SQS decouples ingestion from execution; S3 stores agent checkpoints, screenshots, and output files; \n The DLQ serves as a failure incident tracker [q-75] [q-76]\n AWS Bedrock AgentCore for agent sandboxes (since July 2026) and self-built Firecracker microVMs on EC2 for cloud browsers (since June 2026) [q-123] [q-124]",
+  "why": "new q-123/q-124 tools"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "C10",
+  "agent": "Alibaba Mobile Agent",
+  "old": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "new": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL, wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. Since February 2026 the repository also contains Mobile-Agent-v3.5, built on the GUI-Owl-1.5 model family. [q-1]\n\nPrimary Language: Python\n Stars: 8700\n Contributors: 22\n Update Frequency: Active — major v3 release in August 2025 and v3.5 in February 2026; last commit May 14, 2026 (as of 2026-05-16). [q-65] [q-66]",
+  "why": "q-1 adds v3.5 (Feb 2026, before the pull)"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "D10",
+  "agent": "Alibaba Mobile Agent",
+  "old": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]",
+  "new": "The team evaluates GUI-Owl across ten public benchmarks covering grounding, single-step decision, question answering, and online interactive task completion. Benchmarks include ScreenSpot-v2, ScreenSpot-Pro, OSWorld-Verified, etc. [q-3] [q-67]\n\nAgent behaviour is validated by running the full agent stack against AndroidWorld and OSWorld interactive environments. They launch live agent sessions against real or emulated devices and measure end-to-end task success rate. [q-3]\n\nThe team relies on issue reports to detect runtime failures that would otherwise require live device testing. [q-4]\n\nBetween July and October 2026, contributors added the first project-specific unit tests (unittest suites in Mobile-Agent-E/tests and an absltest suite for GUI-Owl image encoding); no CI workflow runs them. [q-68]",
+  "why": "new q-68 (first unit tests)"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "O10",
+  "agent": "Alibaba Mobile Agent",
+  "old": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal; the team responds to selected issues but rarely merges community patches. [q-50]",
+  "new": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal, and the team responds to selected issues. [q-50]\n\nBetween July and November 2026 the maintainers merged six pull requests from external contributors (#286, #290, #294, #297, #298, #300). [q-69]",
+  "why": "q-50 drops 'rarely merges community patches'; new q-69"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "C8",
+  "agent": "Kimi ok Computer",
+  "old": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "new": "Kimi Ok Computer is a closed-source chat-based AI agent by Moonshot AI. It autonomously operates a cloud computing environment to complete complex multi-step tasks, including web browsing, code execution, image generation, deep research, etc [q-49] [q-50]. It was released on 26 September 2025 as Kimi's first Agent mode; Kimi K3 (July 2026) is now available on Kimi.com. [q-49]\n\nRepo is closed source [q-49] - but related open-source repository: kimi-agent-sdk [q-53]\n Primary language: Python [q-51]\n 50+ team members as contributors [q-52]",
+  "why": "q-49 adds release date and K3"
+ },
+ {
+  "tab": "Antu-clean",
+  "cell": "K8",
+  "agent": "Kimi ok Computer",
+  "old": "Not Available",
+  "new": "kimi-cli was archived on 21 September 2026 (read-only, no further releases or fixes) and replaced by Kimi Code CLI (MoonshotAI/kimi-code); the kimi-cli practices indexed here describe it as of April 2026. [q-73]",
+  "why": "new q-73 (kimi-cli archived) replaces 'Not Available'"
+ }
+]

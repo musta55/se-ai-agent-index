@@ -14,6 +14,48 @@
           "citation": "[8]"
         }
       ]
+    },
+    {
+      "q_id": "q_83",
+      "Summary": "The 2025 AI Agent Index (MIT) entry for Opera Neon records the agent's component accessibility as closed source.",
+      "evidence": [
+        {
+          "quote": "Name of Agent: Opera Neon",
+          "citation": "[13]"
+        },
+        {
+          "quote": "Component accessibility: Closed source",
+          "citation": "[13]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_84",
+      "Summary": "Opera's security blog on Opera Neon states that Opera's browsers are based on the Chromium open-source project.",
+      "evidence": [
+        {
+          "quote": "Opera’s browsers benefit from the robust security efforts of the Chromium open-source project, which they are based on, providing protections such as multi-process design and features including isolated processes and sandboxing.",
+          "citation": "[2]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_85",
+      "Summary": "The official GitHub mirror of the Chromium source (Wayback Machine snapshot, 13 May 2026) shows Chromium's code as 73.4% C++, its largest language.",
+      "evidence": [
+        {
+          "quote": "The official GitHub mirror of the Chromium source",
+          "citation": "[14]"
+        },
+        {
+          "quote": "C++ 73.4%",
+          "citation": "[14]"
+        },
+        {
+          "quote": "Java 9.1%",
+          "citation": "[14]"
+        }
+      ]
     }
   ],
   "Repository_Statistics": {
@@ -214,6 +256,16 @@
           "evidence": [
             {
               "quote": "While evaluating the PoC, the product team was notified and started working on a fix, and relevant internal teams were brought in as well to support as needed.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_86",
+          "Summary": "Opera summarized the prompt-injection vulnerability and the work done to address it in a public blog post.",
+          "evidence": [
+            {
+              "quote": "Staying true to our values of transparency and trust, we have summarized the vulnerability and the work we did to address it in this blog post.",
               "citation": "[6]"
             }
           ]
@@ -557,6 +609,20 @@
               "citation": "[6]"
             }
           ]
+        },
+        {
+          "q_id": "q_87",
+          "Summary": "Neon Make acts like a conductor of AI agents: it breaks the user's needs into smaller tasks, employs AI agents in a cloud virtual machine to execute them, and attempts to self-correct when it encounters errors.",
+          "evidence": [
+            {
+              "quote": "It will act like a conductor of AI agents able to understand your needs and then break them down into different smaller tasks. Once the tasks have been defined, it employs AI agents contained in a virtual machine on our European-hosted servers to make your idea into a tangible (digital) result.",
+              "citation": "[7]"
+            },
+            {
+              "quote": "When Neon encounters errors, it will attempt to self-correct.",
+              "citation": "[7]"
+            }
+          ]
         }
       ]
     },
@@ -875,6 +941,18 @@
       "Link": "https://security.opera.com/en/advisories/",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-14"
+    },
+    "[13]": {
+      "Website_Type": "Research index agent page (2025 AI Agent Index, MIT; Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260508092246/https://aiagentindex.mit.edu/2025/opera-neon/",
+      "Date_Created": "2026-05-08",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub repository page of the Chromium source mirror (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260513112608/https://github.com/chromium/chromium",
+      "Date_Created": "2026-05-13",
+      "Date_Pulled": "2026-11-02"
     }
   }
 }

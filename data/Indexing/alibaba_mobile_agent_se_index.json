@@ -3,7 +3,7 @@
   "Description": [
     {
       "q_id": "q_1",
-      "Summary": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL — wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training.",
+      "Summary": "Mobile-Agent (v3) is an open-source, cross-platform GUI automation agent developed by Tongyi Lab at Alibaba Group. Its core is GUI-Owl — a foundational vision-language model built on Qwen2.5-VL — wrapped in a four-role multi-agent framework (Manager, Worker, Reflector, Notetaker) that automates tasks on Android phones, PCs, and web browsers without requiring app-specific training. Since February 2026 the repository also contains Mobile-Agent-v3.5, built on the GUI-Owl-1.5 model family (Qwen3-VL based) for desktop, mobile and browser automation.",
       "evidence": [
         {
           "quote": "GUI-Owl is a native end-to-end multimodal agent designed as a foundational model for GUI automation.",
@@ -12,6 +12,42 @@
         {
           "quote": "UI Agent is a multimodal agent solution that operates devices such as mobile phones, in-vehicle systems, TVs, and PCs based on screen understanding. It supports cross-application operations, requires no training, and is plug-and-play.",
           "citation": "[3]"
+        },
+        {
+          "quote": "GUI-Owl-1.5 is released, a new family of native multi-platform GUI agent foundation models (2B/4B/8B/32B/235B; Instruct & Thinking).",
+          "citation": "[14]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_65",
+      "Summary": "The X-PLUG/MobileAgent GitHub repository is primarily Python (62.4%), lists 22 contributors and about 8.7k stars; GUI-Owl and Mobile-Agent-v3 were released on 2025.8.20.",
+      "evidence": [
+        {
+          "quote": "Python 62.4%, HTML 17.1%, JavaScript 15.9%, Shell 2.1%, Kotlin 1.5%.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "Contributors 22.",
+          "citation": "[1]"
+        },
+        {
+          "quote": "8.7k stars",
+          "citation": "[1]"
+        },
+        {
+          "quote": "[2025.8.20]All new GUI-Owl and Mobile-Agent-v3 are released! Technical report can be found here.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_66",
+      "Summary": "The GitHub commits API for X-PLUG/MobileAgent, limited to commits up to 16 May 2026 (the indexing pull date), returns as most recent a commit dated 14 May 2026 (\"Update README_zh.md\").",
+      "evidence": [
+        {
+          "quote": "\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\",\"date\":\"2026-05-14T00:33:52Z\"},\"message\":\"Update README_zh.md\"",
+          "citation": "[13]"
         }
       ]
     }
@@ -21,16 +57,16 @@
     "Lines_of_Code": "Not Disclosed (Python 62.4%, HTML 17.1%, JavaScript 15.9%, Shell 2.1%, Kotlin 1.5%)",
     "Stars": "8,700 (as of May 2026)",
     "Contributors": "22",
-    "Update_Frequency": "Active — major v3 release in August 2025; last commit November 2025",
+    "Update_Frequency": "Active — major v3 release in August 2025 and Mobile-Agent-v3.5 / GUI-Owl-1.5 in February 2026; last commit 14 May 2026 as of the 2026-05-16 pull (see q_66)",
     "Primary_Language": "Python",
-    "Last_Updated": "2025-11-25"
+    "Last_Updated": "2026-05-14 (as of the 2026-05-16 pull)"
   },
   "SE_Practices": {
     "Testing_and_Evaluation": {
       "Practices": [
         {
           "q_id": "q_2",
-          "Summary": "There is no conventional unit or integration test suite in the public repository. The repository contains no test discovery configuration. Quality assurance is done entirely through live agent runs against public benchmark environments.",
+          "Summary": "As of the May 2026 pull, there was no conventional unit or integration test suite in the public repository and no test discovery configuration. Quality assurance was done through live agent runs against public benchmark environments (see q_68 for tests added later).",
           "evidence": [
             {
               "quote": "No releases published. No packages published.",
@@ -55,6 +91,42 @@
             {
               "quote": "Open (185) Closed (96).",
               "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_67",
+          "Summary": "GUI-Owl is evaluated on ten GUI benchmarks across desktop and mobile environments covering grounding, question answering, planning and decision-making, including ScreenSpot-V2, ScreenSpot-Pro, OSWorld-G, MMBench-GUI, Android Control, Android World and OSWorld(-Verified).",
+          "evidence": [
+            {
+              "quote": "This paper introduces GUI-Owl, a foundational GUI agent model that achieves state-of-the-art performance among open-source end-to-end models on ten GUI benchmarks across desktop and mobile environments, covering grounding, question answering, planning, decision-making, and procedural knowledge.",
+              "citation": "[2]"
+            },
+            {
+              "quote": "It achieves state-of-the-art performance across a range of GUI automation benchmarks, including ScreenSpot-V2, ScreenSpot-Pro, OSWorld-G, MMBench-GUI, Android Control, Android World, and OSWorld.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Android World and OSWorld-Verified",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_68",
+          "Summary": "Between July and October 2026, contributor commits added the repository's first project-specific unit tests: unittest suites in Mobile-Agent-E/tests (API URL and usage-pricing tests; JSON action-parsing tests) and an absltest suite for GUI-Owl image encoding in Mobile-Agent-v3.5's AndroidWorld agent. There is still no CI workflow that runs them.",
+          "evidence": [
+            {
+              "quote": "class ApiUrlTest(unittest.TestCase):",
+              "citation": "[15]"
+            },
+            {
+              "quote": "class ExtractJsonObjectTest(unittest.TestCase):",
+              "citation": "[16]"
+            },
+            {
+              "quote": "class ImageEncodingTest(absltest.TestCase):",
+              "citation": "[17]"
             }
           ]
         }
@@ -196,11 +268,33 @@
       "Others": [
         {
           "q_id": "q_50",
-          "Summary": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal; the team responds to selected issues but rarely merges community patches.",
+          "Summary": "With 183 open issues and only 2 open pull requests, the project operates as a research artifact rather than a product codebase. External contributions are minimal, and the team responds to selected issues (see q_69 for community pull requests merged after May 2026).",
           "evidence": [
             {
               "quote": "Issues 183. Pull requests 2.",
               "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_69",
+          "Summary": "Between July and November 2026 the maintainers merged six pull requests from external contributors (#286, #290, #294, #297, #298, #300), covering bug fixes, a MiniMax provider for Mobile-Agent-E and AndroidWorld fixes.",
+          "evidence": [
+            {
+              "quote": "Merge pull request #286 from M4rque2/main",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Merge pull request #290 from octo-patch/octo/20260713-add-minimax-provider-recvoLisqIIs3s-v2",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Merge pull request #297 from Lendle-King/fix/gui-owl-png-data-uri",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Merge pull request #300 from Kingpython123/fix-parse-action-268",
+              "citation": "[18]"
             }
           ]
         }
@@ -258,7 +352,7 @@
           "evidence": [
             {
               "quote": "junyangwang0410 added a commit that references this issue on Mar 24: Fix the bug in https://github.com/X-PLUG/MobileAgent/issues/265. junyangwang0410 closed this as completed on Mar 24.",
-              "citation": "[10]"
+              "citation": "[22]"
             }
           ]
         },
@@ -268,7 +362,7 @@
           "evidence": [
             {
               "quote": "Hi, here are our evaluation logs and trajectory. I compared the logs and found that the model outputs were quite different. Did you use the quantized version of GUI-Owl? Or did you deploy the GUI-Owl using vLLM? — junyangwang0410, Oct 10 2025.",
-              "citation": "[10]"
+              "citation": "[20]"
             }
           ]
         },
@@ -288,7 +382,7 @@
           "evidence": [
             {
               "quote": "如果是grounding问题的话可以尝试在使用openai接口调用模型时加上 'vl_high_resolution_images':True 参数 (If it is a grounding problem, try adding the vl_high_resolution_images:True parameter when calling the model via the OpenAI interface) — BUPTyj, community contributor.",
-              "citation": "[10]"
+              "citation": "[21]"
             }
           ]
         }
@@ -324,7 +418,7 @@
           "evidence": [
             {
               "quote": "使用Mobile-Agent3坐标识别不准确 (Coordinate recognition inaccurate in Mobile-Agent3) — Issue #182, 19 comments, still open.",
-              "citation": "[10]"
+              "citation": "[19]"
             }
           ]
         }
@@ -334,11 +428,15 @@
       "Practices": [
         {
           "q_id": "q_58",
-          "Summary": "The team follows a research-gated, version-per-subdirectory development model. Each major iteration (v1 to v2 to Mobile-Agent-E to v3) is developed as a self-contained module in its own directory and released alongside an academic paper. Each release is triggered by a research milestone (paper acceptance or arXiv submission) rather than a sprint cycle or feature roadmap. Older version directories are kept intact to preserve reproducibility.",
+          "Summary": "The team follows a research-gated, version-per-subdirectory development model. Each major iteration (v1 to v2 to Mobile-Agent-E to v3 to v3.5) is developed as a self-contained module in its own directory and released alongside an academic paper. Each release is triggered by a research milestone (paper acceptance or arXiv submission) rather than a sprint cycle or feature roadmap. Older version directories are kept intact to preserve reproducibility.",
           "evidence": [
             {
               "quote": "Mobile-Agent-v3 (Preprint): Multi-modal and multi-platform GUI agent. Mobile-Agent-E (Preprint): Multi-agent for self-evolving mobile phone operation. Mobile-Agent-v2 (NeurIPS 2024): Multi-agent for multimodal mobile phone operation. Mobile-Agent-v1 (ICLR 2024 Workshop): Single-agent for multimodal mobile phone operation.",
               "citation": "[1]"
+            },
+            {
+              "quote": "Mobile-Agent-v3.5 (Preprint): Multi-platform Fundamental GUI Agents.",
+              "citation": "[14]"
             }
           ]
         },
@@ -583,6 +681,66 @@
       "Link": "https://www.alibabacloud.com/help/doc-detail/2975387.html",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-16"
+    },
+    "[13]": {
+      "Website_Type": "GitHub REST API (commit list, JSON)",
+      "Link": "https://api.github.com/repos/X-PLUG/MobileAgent/commits?until=2026-05-16T23:59:59Z&per_page=5",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[14]": {
+      "Website_Type": "GitHub Repository README",
+      "Link": "https://github.com/X-PLUG/MobileAgent",
+      "Date_Created": "2026-02-14 (v3.5 news entry)",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[15]": {
+      "Website_Type": "Test file (GitHub)",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-E/tests/test_api.py",
+      "Date_Created": "2026-07-13",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[16]": {
+      "Website_Type": "Test file (GitHub)",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-E/tests/test_agents_json.py",
+      "Date_Created": "2026-09-21",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[17]": {
+      "Website_Type": "Test file (GitHub)",
+      "Link": "https://github.com/X-PLUG/MobileAgent/blob/main/Mobile-Agent-v3.5/android_world_v3.5/android_world/agents/gui_owl_test.py",
+      "Date_Created": "2026-10-26",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[18]": {
+      "Website_Type": "GitHub Commit History",
+      "Link": "https://github.com/X-PLUG/MobileAgent/commits/main",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[19]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/182",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[20]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/203",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[21]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/238",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-03"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/X-PLUG/MobileAgent/issues/265",
+      "Date_Created": "2026-03-10",
+      "Date_Pulled": "2026-11-03"
     }
   }
 }

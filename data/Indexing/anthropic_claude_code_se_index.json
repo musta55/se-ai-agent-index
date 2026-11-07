@@ -18,6 +18,34 @@
           "citation": "[4]"
         }
       ]
+    },
+    {
+      "q_id": "q_92",
+      "Summary": "Claude Code's TypeScript source code comprises 1,906 files and over 512,000 lines (exposed via a source map in the npm package). The project has 51 contributors. The team pushes ~60-100 internal npm releases daily and 1 external release nearly every day, and engineers averaged 5 pull requests per day during summer.",
+      "evidence": [
+        {
+          "quote": "Then security researcher Chaofan Shou found a 60 MB source map file inside the publicly available npm package for Claude Code. Inside: the complete TypeScript source code – 1,906 files, over 512,000 lines, including all internal systems, unreleased features, and security mechanisms. A missing `*.map` entry in `.npmignore` was all it took for the file `cli.js.map` containing the entire source code to be published as part of the npm package.",
+          "citation": "[7]"
+        },
+        {
+          "quote": "With 51 contributors and active development (the most recent commit landed March 13, 2026), Anthropic is investing sustained engineering effort here.",
+          "citation": "[4]"
+        },
+        {
+          "quote": "~60-100 internal releases daily (npm packages pushed after each change), 1 external release nearly every day. Engineers averaged 5 pull requests per day during summer.",
+          "citation": "[3]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_93",
+      "Summary": "A Wayback Machine snapshot of the anthropics/claude-code GitHub repository page from 16 May 2026 shows 124k stars.",
+      "evidence": [
+        {
+          "quote": "Stars 124k stars",
+          "citation": "[38]"
+        }
+      ]
     }
   ],
   "Repository_Statistics": {
@@ -151,6 +179,38 @@
             {
               "quote": "Leaderboard differences below 3 percentage points deserve skepticism until the eval configuration is documented and matched.",
               "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_94",
+          "Summary": "Anthropic's evals guidance distinguishes single-turn evaluations (a prompt, a response, and grading logic) from multi-turn evaluations, which have become increasingly common. In a simple eval an agent processes a prompt and a grader checks the output against expectations; in a more complex multi-turn eval a coding agent receives tools, a task (building an MCP server) and an environment, executes an agent loop of tool calls and reasoning, updates the environment, and unit tests verify the working MCP server.",
+          "evidence": [
+            {
+              "quote": "Single-turn evaluations are straightforward: a prompt, a response, and grading logic.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "As AI capabilities have advanced, multi-turn evaluations have become increasingly common.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "In a simple eval, an agent processes a prompt, and a grader checks if the output matches expectations.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "For a more complex multi-turn eval, a coding agent receives tools, a task (building an MCP server in this case), and an environment, executes an \"agent loop\" (tool calls and reasoning), and updates the environment with the implementation. Grading then uses unit tests to verify the working MCP server.",
+              "citation": "[10]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_95",
+          "Summary": "Anthropic defines an evaluation suite as a collection of tasks designed to measure specific capabilities or behaviors, where tasks in a suite typically share a broad goal.",
+          "evidence": [
+            {
+              "quote": "An evaluation suite is a collection of tasks designed to measure specific capabilities or behaviors. Tasks in a suite typically share a broad goal.",
+              "citation": "[10]"
             }
           ]
         }
@@ -353,6 +413,28 @@
             {
               "quote": "UI changes can be verified using the Claude in Chrome extension. It opens new tabs in your browser, tests the UI, and iterates until the code works.",
               "citation": "[15]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_96",
+          "Summary": "PRDs are dead on the Claude Code team: prototypes replaced them. Instead of writing Product Requirement Documents (specs), the team builds dozens of working prototypes before shipping, testing 5-10 prototypes per day. Boris's work has shifted to managing multiple parallel agents, and prototypes that feel good are shared with colleagues for feedback.",
+          "evidence": [
+            {
+              "quote": "PRDs are dead on the Claude Code team: prototypes replaced them. Instead of writing Product Requirement Documents (specs), they build dozens of working prototypes before shipping a feature. Boris: “There’s just no way we could have shipped this if we started with static mocks and Figma or if we started with a PRD.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "But now, agents can build prototypes very quickly, so tests of 5-10 prototypes per day are easily done, as the Claude Code team did.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Boris’s work has shifted from deep-focus single-threaded coding to managing multiple parallel agents and context-switching rapidly.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "If it felt good, shared it with colleagues for feedback",
+              "citation": "[3]"
             }
           ]
         }
@@ -651,6 +733,26 @@
             {
               "quote": "Anthropic uses uniform titles ('Member of Technical Staff') and the team is cross-functional, covering product, design, infrastructure, and research.",
               "citation": "[16]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_97",
+          "Summary": "Claude Code's GitHub issue tracker has over 5,000 open issues.",
+          "evidence": [
+            {
+              "quote": "Claude Code has over 5000 open issues.",
+              "citation": "[30]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_98",
+          "Summary": "Anthropic has internal Slack channels; Claude Code's undercover mode prevents it from referencing them in external repositories.",
+          "evidence": [
+            {
+              "quote": "Claude Code operating in external repos cannot reference any of these names, internal Slack channels, or even call itself “Claude Code.”",
+              "citation": "[8]"
             }
           ]
         }
@@ -983,6 +1085,12 @@
       "Link": "https://www.anthropic.com/engineering/writing-tools-for-agents",
       "Date_Created": "2025-09-11",
       "Date_Pulled": "2026-05-18"
+    },
+    "[38]": {
+      "Website_Type": "GitHub repository page (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260516213525/https://github.com/anthropics/claude-code",
+      "Date_Created": "2026-05-16",
+      "Date_Pulled": "2026-11-02"
     }
   }
 }

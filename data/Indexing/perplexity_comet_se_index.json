@@ -14,6 +14,20 @@
           "citation": "[1]"
         }
       ]
+    },
+    {
+      "q_id": "q_62",
+      "Summary": "Perplexity publishes weekly 'This week we shipped' changelog entries; Comet Enterprise shipped in the week of March 13, 2026 and Comet iOS in the week of March 27, 2026.",
+      "evidence": [
+        {
+          "quote": "03.27.26 Comet iOS Launch and Computer Updates - This week we shipped Comet iOS, many Computer updates for individuals and enterprise.",
+          "citation": "[9]"
+        },
+        {
+          "quote": "03.13.26 What We Shipped - This week we shipped Comet Enterprise.",
+          "citation": "[9]"
+        }
+      ]
     }
   ],
   "Repository_Statistics": {
@@ -433,6 +447,16 @@
             {
               "quote": "Discord — discord.gg/perplexity-ai",
               "citation": "[9]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_63",
+          "Summary": "Perplexity lists X (Twitter), Discord, Instagram, Threads, LinkedIn and YouTube as its public 'Follow Us' social channels.",
+          "evidence": [
+            {
+              "quote": "Follow Us X (Twitter) Discord Instagram Threads LinkedIn YouTube",
+              "citation": "[13]"
             }
           ]
         }

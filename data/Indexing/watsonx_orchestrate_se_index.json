@@ -1,15 +1,137 @@
 {
   "Agent_Name": "WatsonX Orchestrate",
-  "Description": {
-    "q_id": "q_49",
-    "Summary": "IBM watsonx Orchestrate is an enterprise AI-agent orchestration platform backed by a public Python-based Agent Development Kit (ADK). Developers use the ADK CLI and library to author, test, and deploy multi-agent workflows locally on the Developer Edition before promoting to shared production tenants. The platform reached ADK version 2.9.0 in May 2026 after 10 iterative releases in six months.",
-    "evidence": [
-      {
-        "quote": "The IBM watsonx Orchestrate Agent Development Kit (ADK) is a set of tools designed to make it easy to build and deploy agents using IBM watsonx Orchestrate. It is packaged as a Python library and command line tool that allows builders to configure agents that run on the IBM watsonx Orchestrate platform.",
-        "citation": "[1]"
-      }
-    ]
-  },
+  "Description": [
+    {
+      "q_id": "q_49",
+      "Summary": "IBM watsonx Orchestrate is an enterprise AI-agent orchestration platform backed by a public Python-based Agent Development Kit (ADK). Developers use the ADK CLI and library to author, test, and deploy multi-agent workflows locally on the Developer Edition before promoting to shared production tenants. The platform reached ADK version 2.9.0 in May 2026 after 10 iterative releases in six months.",
+      "evidence": [
+        {
+          "quote": "The IBM watsonx Orchestrate Agent Development Kit (ADK) is a set of tools designed to make it easy to build and deploy agents using IBM watsonx Orchestrate. It is packaged as a Python library and command line tool that allows builders to configure agents that run on the IBM watsonx Orchestrate platform.",
+          "citation": "[1]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_59",
+      "Summary": "The watsonx Orchestrate ADK documentation describes building and managing agents in the active environment.",
+      "evidence": [
+        {
+          "quote": "Build and manage agents in your active environment.",
+          "citation": "[2]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_60",
+      "Summary": "IBM's watsonx Orchestrate product page lists use cases in which agents coordinate HR and employee-service transactions, automate finance operations (expense reviews, invoice processing, reconciliations, approvals) and automate IT service requests and troubleshooting.",
+      "evidence": [
+        {
+          "quote": "Coordinate policy questions, onboarding, access requests and employee transactions across HR systems.",
+          "citation": "[21]"
+        },
+        {
+          "quote": "Automate expense reviews, invoice processing, reconciliations and financial approvals across finance operations.",
+          "citation": "[21]"
+        },
+        {
+          "quote": "Resolve employee issues, automate service requests and accelerate troubleshooting across IT environments.",
+          "citation": "[21]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_61",
+      "Summary": "The 2025 AI Agent Index (MIT) entry for IBM watsonx Orchestrate records the agent's component accessibility as closed source.",
+      "evidence": [
+        {
+          "quote": "Name of Agent: watsonx Orchestrate",
+          "citation": "[22]"
+        },
+        {
+          "quote": "Component accessibility: Closed source",
+          "citation": "[22]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_62",
+      "Summary": "A Wayback Machine snapshot of the IBM/ibm-watsonx-orchestrate-adk GitHub repository from 28 April 2026 shows a public, MIT-licensed repository with 153 stars, written 99.3% in Python.",
+      "evidence": [
+        {
+          "quote": "IBM / ibm-watsonx-orchestrate-adk Public",
+          "citation": "[23]"
+        },
+        {
+          "quote": "MIT license",
+          "citation": "[23]"
+        },
+        {
+          "quote": "Stars 153 stars",
+          "citation": "[23]"
+        },
+        {
+          "quote": "Python 99.3%",
+          "citation": "[23]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_63",
+      "Summary": "The IBM/ibm-watsonx-orchestrate-adk GitHub repository listed 61 contributors on 28 April 2026 (Wayback Machine snapshot of the repository contributors panel).",
+      "evidence": [
+        {
+          "quote": "Contributors 61",
+          "citation": "[24]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_64",
+      "Summary": "The GitHub Releases API for IBM/ibm-watsonx-orchestrate-adk lists 10 releases from 2.0.0 (published 25 November 2025) to 2.9.0 (published 30 April 2026).",
+      "evidence": [
+        {
+          "quote": "\"tag_name\":\"2.0.0\",\"target_commitish\":\"main\",\"name\":\"2.0.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2025-11-25T13:07:56Z\",\"updated_at\":\"2025-11-25T13:27:58Z\",\"published_at\":\"2025-11-25T13:08:28Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.1.0\",\"target_commitish\":\"main\",\"name\":\"2.1.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2025-12-11T22:52:55Z\",\"updated_at\":\"2025-12-11T22:53:23Z\",\"published_at\":\"2025-12-11T22:53:23Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.2.0\",\"target_commitish\":\"main\",\"name\":\"2.2.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-01-15T23:58:17Z\",\"updated_at\":\"2026-01-16T12:31:40Z\",\"published_at\":\"2026-01-16T12:31:40Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.3.0\",\"target_commitish\":\"main\",\"name\":\"2.3.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-01-30T21:51:17Z\",\"updated_at\":\"2026-01-30T22:16:25Z\",\"published_at\":\"2026-01-30T22:16:25Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.4.0\",\"target_commitish\":\"main\",\"name\":\"2.4.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-02-16T10:10:27Z\",\"updated_at\":\"2026-02-16T10:43:39Z\",\"published_at\":\"2026-02-16T10:43:23Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.5.0\",\"target_commitish\":\"main\",\"name\":\"2.5.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-02-27T20:24:44Z\",\"updated_at\":\"2026-02-27T20:41:10Z\",\"published_at\":\"2026-02-27T20:41:10Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.6.0\",\"target_commitish\":\"main\",\"name\":\"2.6.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-03-13T21:13:41Z\",\"updated_at\":\"2026-03-13T21:19:12Z\",\"published_at\":\"2026-03-13T21:18:26Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.7.0\",\"target_commitish\":\"main\",\"name\":\"2.7.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-03-27T23:30:38Z\",\"updated_at\":\"2026-03-27T23:34:06Z\",\"published_at\":\"2026-03-27T23:34:06Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.8.0\",\"target_commitish\":\"main\",\"name\":\"2.8.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-14T19:02:45Z\",\"updated_at\":\"2026-04-14T19:07:23Z\",\"published_at\":\"2026-04-14T19:07:23Z\"",
+          "citation": "[25]"
+        },
+        {
+          "quote": "\"tag_name\":\"2.9.0\",\"target_commitish\":\"main\",\"name\":\"2.9.0\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-04-30T17:18:02Z\",\"updated_at\":\"2026-04-30T17:32:58Z\",\"published_at\":\"2026-04-30T17:32:58Z\"",
+          "citation": "[25]"
+        }
+      ]
+    }
+  ],
   "Repository_Statistics": {
     "Platform": "GitHub — public repository",
     "URL": "https://github.com/IBM/ibm-watsonx-orchestrate-adk",
@@ -247,6 +369,20 @@
               "citation": "[3]"
             }
           ]
+        },
+        {
+          "q_id": "q_65",
+          "Summary": "ADK releases are tagged and published on the GitHub Releases page of the IBM/ibm-watsonx-orchestrate-adk repository (e.g., Release of ADK 2.9.0).",
+          "evidence": [
+            {
+              "quote": "Releases · IBM/ibm-watsonx-orchestrate-adk",
+              "citation": "[3]"
+            },
+            {
+              "quote": "🚀 Release of ADK 2.9.0",
+              "citation": "[3]"
+            }
+          ]
         }
       ],
       "Stakeholders": [
@@ -311,6 +447,20 @@
             {
               "quote": "update readme with test instructions (#2577)",
               "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_66",
+          "Summary": "GitHub's documentation states that code owners are automatically requested for review when someone opens a pull request that modifies code they own; owners listed for the '*' pattern are the default owners for everything in the repository (the watsonx Orchestrate ADK CODEOWNERS file assigns such default owners, see q-17).",
+          "evidence": [
+            {
+              "quote": "Code owners are automatically requested for review when someone opens a pull request that modifies code that they own.",
+              "citation": "[26]"
+            },
+            {
+              "quote": "# These owners will be the default owners for everything in # the repo.",
+              "citation": "[26]"
             }
           ]
         }
@@ -578,6 +728,20 @@
             {
               "quote": "The IBM watsonx Orchestrate Agent Development Kit (ADK) is a set of tools designed to make it easy to build and deploy agents using IBM watsonx Orchestrate.",
               "citation": "[1]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_67",
+          "Summary": "The ADK added Agent-to-Agent (A2A) protocol support, so external agents and systems can communicate with watsonx Orchestrate agents through a standardized interface.",
+          "evidence": [
+            {
+              "quote": "External agents can communicate with WXO Agents via A2A",
+              "citation": "[3]"
+            },
+            {
+              "quote": "And the Agent-to-Agent (A2A) protocol opens watsonx Orchestrate to cross-platform agentic communication, enabling external systems to discover, message, and task agents through a standardized interface.",
+              "citation": "[13]"
             }
           ]
         }
@@ -881,6 +1045,42 @@
       "Link": "https://developer.watson-orchestrate.ibm.com/developer_edition/wxOde_setup",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-13"
+    },
+    "[21]": {
+      "Website_Type": "Official product page (IBM)",
+      "Link": "https://www.ibm.com/products/watsonx-orchestrate",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[22]": {
+      "Website_Type": "Research index agent page (2025 AI Agent Index, MIT; Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260508081831/https://aiagentindex.mit.edu/2025/watsonx-orchestrate/",
+      "Date_Created": "2026-05-08",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[23]": {
+      "Website_Type": "GitHub repository page (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260428035856/https://github.com/IBM/ibm-watsonx-orchestrate-adk",
+      "Date_Created": "2026-04-28",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[24]": {
+      "Website_Type": "GitHub repository contributors panel (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260428035621/https://github.com/IBM/ibm-watsonx-orchestrate-adk/contributors_list?current_repository=ibm-watsonx-orchestrate-adk&deferred=true",
+      "Date_Created": "2026-04-28",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[25]": {
+      "Website_Type": "GitHub REST API (releases list, JSON)",
+      "Link": "https://api.github.com/repos/IBM/ibm-watsonx-orchestrate-adk/releases?per_page=100",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[26]": {
+      "Website_Type": "Official platform documentation (GitHub Docs; Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20260513164823/https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
     }
   }
 }

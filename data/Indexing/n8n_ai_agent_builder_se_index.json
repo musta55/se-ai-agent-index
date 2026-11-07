@@ -1,0 +1,1544 @@
+{
+  "Agent_Name": "n8n AI Agent Builder",
+  "Description": [
+    {
+      "q_id": "q_1",
+      "Summary": "n8n AI Agent Builder is the agent-building capability of n8n, a fair-code, source-available enterprise workflow-automation platform built by n8n, a company founded in 2019 and centred in Berlin. Users build AI agents on a visual canvas, either with the LangChain-based AI Agent node inside workflows (a chat model plus tools, memory and output-parser sub-nodes) or with the newer standalone Agents builder. The Agents builder treats agents as first-class project artifacts that people reach through chat, channels and schedules. It is deployed as self-hosted software (Docker/npm) or as the n8n Cloud SaaS.",
+      "evidence": [
+        {
+          "quote": "Fair-code platform to build and deploy AI agents and workflows.",
+          "citation": "[2]"
+        },
+        {
+          "quote": "The AI Agent node lets you build an AI agent in n8n. Connect a chat model and one or more tools, and the agent decides which tools to call to complete a task.",
+          "citation": "[31]"
+        },
+        {
+          "quote": "Agents live alongside your workflows as first-class artifacts in your project.",
+          "citation": "[32]"
+        },
+        {
+          "quote": "This package holds n8n's AI nodes: chat models, LLMs, embeddings, rerankers, vector stores, and vendor nodes.",
+          "citation": "[19]"
+        }
+      ]
+    },
+    {
+      "q_id": "q_47",
+      "Summary": "Basic repository information for n8n-io/n8n. A Wayback Machine snapshot of the GitHub repository page from 13 October 2026 (one day after the indexing pull date) shows 207.2k stars, 61.1k forks and 25,632 commits. The ghloc line-counting service reports 5,565,189 lines in the repository (master branch, counted 2 November 2026), of which 4,275,273 are .ts (TypeScript) lines and 327,780 are .vue lines. The GitHub languages API reports 152,221,314 bytes of TypeScript (about 92%) and 10,530,384 bytes of Vue (about 6%) (2 November 2026). The GitHub contributors panel lists 882 contributors (2 November 2026). The n8n release notes (Wayback Machine snapshot from 2 October 2026) state that n8n releases a new minor version most weeks.",
+      "evidence": [
+        {
+          "quote": "207.2k stars",
+          "citation": "[54]"
+        },
+        {
+          "quote": "61.1k forks",
+          "citation": "[54]"
+        },
+        {
+          "quote": "25,632 Commits",
+          "citation": "[54]"
+        },
+        {
+          "quote": "\"loc\":5565189,\"locByLangs\":{\".ts\":4275273",
+          "citation": "[55]"
+        },
+        {
+          "quote": "\"TypeScript\": 152221314",
+          "citation": "[56]"
+        },
+        {
+          "quote": "\"Vue\": 10530384",
+          "citation": "[56]"
+        },
+        {
+          "quote": "Contributors 882",
+          "citation": "[57]"
+        },
+        {
+          "quote": "n8n releases a new minor version most weeks.",
+          "citation": "[58]"
+        }
+      ]
+    }
+  ],
+  "Repository_Statistics": {
+    "Lines_of_Code": [
+      {
+        "Summary": "No official line count is published. The GitHub languages API reports about 149 MB of source in the n8n-io/n8n pnpm/Turbo monorepo (30,700+ tracked files), which is roughly 4 million lines at about 35 bytes per line. A shallow checkout on 2026-10-12 counted about 166K lines of TS/JS in the AI/LangChain node package (packages/@n8n/nodes-langchain, 255 test files) and about 90K lines in the new @n8n/agents package (168 test files).",
+        "evidence": [
+          {
+            "quote": "n8n is a workflow automation platform written in TypeScript, using a monorepo structure managed by pnpm workspaces.",
+            "citation": "[4]"
+          },
+          {
+            "quote": "TypeScript 92.2%",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Stars": [
+      {
+        "Summary": "207,141 GitHub stars (shown as 207.1k) on 2026-10-12. The repository also has 61.1k forks.",
+        "evidence": [
+          {
+            "quote": "207.1k stars",
+            "citation": "[1]"
+          },
+          {
+            "quote": "61.1k forks",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ],
+    "Contributors": [
+      {
+        "Summary": "812 contributors according to the GitHub contributors API, counting anonymous/email-only authors; 429 are linked GitHub accounts. n8n reported an internal engineering team of more than 50 people at the 2.0 release in December 2025.",
+        "evidence": [
+          {
+            "quote": "812 contributors",
+            "citation": "[1]"
+          },
+          {
+            "quote": "And of course our engineering team of over 50 people who have been working tirelessly to make this happen.",
+            "citation": "[33]"
+          }
+        ]
+      }
+    ],
+    "Update_Frequency": [
+      {
+        "Summary": "Very high. The GitHub API lists 269 tagged n8n@ releases between 2026-04-12 and 2026-10-12 (166 regular and 103 pre-releases), about 45 per month. These include 28 minor version lines (2.16 to 2.43, about one per week) plus patch releases on the stable, beta and 1.x tracks. The official docs and the 2.0 announcement confirm a new minor version almost every week, promoted from beta to stable.",
+        "evidence": [
+          {
+            "quote": "n8n releases a new minor version most weeks. The stable version is for production use. beta is the most recent release.",
+            "citation": "[26]"
+          },
+          {
+            "quote": "Releases: Over 120 new releases (almost every week)",
+            "citation": "[33]"
+          },
+          {
+            "quote": "It should work in 1.108.0 which is now in beta and will be available in stable release channel next Monday.",
+            "citation": "[39]"
+          }
+        ]
+      }
+    ],
+    "Primary_Language": [
+      {
+        "Summary": "TypeScript (92.2%), Vue (6.4%), JavaScript (0.7%), with small amounts of SCSS, Python (task runner), Handlebars, Shell, Dockerfile and HCL.",
+        "evidence": [
+          {
+            "quote": "TypeScript 92.2%",
+            "citation": "[1]"
+          },
+          {
+            "quote": "Vue 6.4%",
+            "citation": "[1]"
+          },
+          {
+            "quote": "Frontend: Vue 3 + TypeScript + Vite + Pinia + Storybook UI Library",
+            "citation": "[4]"
+          },
+          {
+            "quote": "Backend: Node.js + TypeScript + Express + TypeORM",
+            "citation": "[4]"
+          }
+        ]
+      }
+    ],
+    "Last_Updated": [
+      {
+        "Summary": "Under active development. The latest commit to master was on 2026-10-12 (\"fix(core): Stabilise background child approval wait (#40834)\"), and stable release 2.42.7 was published the same day. The repository shows 25,629 commits.",
+        "evidence": [
+          {
+            "quote": "2.42.7 (2026-10-12)",
+            "citation": "[22]"
+          },
+          {
+            "quote": "25,629 Commits",
+            "citation": "[1]"
+          }
+        ]
+      }
+    ]
+  },
+  "SE_Practices": {
+    "Testing_and_Reliability": {
+      "Practices": [
+        {
+          "q_id": "q_2",
+          "Summary": "Tests are a merge requirement. Every PR must include unit tests, plus integration, workflow (JSON) and UI tests where relevant. A bug fix must add a regression test that fails on master without the fix. The PR checklist makes the author attest that they ran and own the code.",
+          "evidence": [
+            {
+              "quote": "For a bug fix, include at least one regression test that fails against the latest master without your change and passes with it.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Detailed steps under the \"How to test\" section of the PR template to cover how to manually test the feature or bug fix.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "I have seen this code, I have run this code, and I take responsibility for this code.",
+              "citation": "[6]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_3",
+          "Summary": "The test suite is layered: Vitest unit tests, JSON-based workflow tests for nodes, and Playwright suites for UI, API, infrastructure, lifecycle and performance. The AI Agent node has its own integration tests that run real workflow JSON fixtures through a node test harness against mocked OpenAI chat-completion and tool-call responses (via nock), which makes agent behaviour deterministic in CI.",
+          "evidence": [
+            {
+              "quote": "Testing: Vitest (unit) + Playwright (UI, API, infrastructure, lifecycle, performance, and E2E orchestration)",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Workflow tests are JSON-based for integration testing",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Helper to create an OpenAI chat completion response with tool calls.",
+              "citation": "[14]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_4",
+          "Summary": "n8n evaluates its own agentic features with internal eval harnesses that are separate from the user-facing Evaluations product feature. The AI Workflow Builder harness runs LLM-judge, pairwise and programmatic evaluators locally or on LangSmith. The Instance AI harness builds workflows and standalone Agents, runs them against LLM-generated HTTP mocks, and has an LLM verify success criteria. A small, high-reliability eval dataset gates PRs that touch the eval surface. It runs once per PR state change because LLM-bound evals are expensive.",
+          "evidence": [
+            {
+              "quote": "Internal evaluation harness for the AI Workflow Builder. Supports local CLI runs and LangSmith-backed runs, using the same evaluators.",
+              "citation": "[12]"
+            },
+            {
+              "quote": "Tests the workflows and standalone Agents that Instance AI builds.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Workflow runs use LLM-generated mock HTTP responses.",
+              "citation": "[13]"
+            },
+            {
+              "quote": "Running it on every push made cost untenable; firing on every review approval cascaded through the dismiss-stale-on-push → re-approve loop, which also blew up.",
+              "citation": "[5]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_5",
+          "Summary": "AI coding agents take part in testing. The repo provides agent-specific test wrappers and setup commands, and n8n is staffing a platform role to embed agents across planning, building, testing and review, with benchmarks that measure agent output quality and CI pass rates.",
+          "evidence": [
+            {
+              "quote": "For focused tests, use pnpm agent:test or pnpm agent:playwright.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Your main goal will be to keep n8n operating as an AI-native engineering organization where agents are embedded across the development cycle; helping teams plan, build, test, review, learn, and improve.",
+              "citation": "[38]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_6",
+          "Summary": "Core test tooling: Vitest for unit tests, Playwright for E2E/API/infrastructure tests (migrated from Cypress), Testcontainers for SQLite/Postgres/queue/multi-main stacks, Codecov for coverage, Currents for Playwright reporting and flakiness analytics, nock for HTTP mocking, and Chromatic for visual regression.",
+          "evidence": [
+            {
+              "quote": "n8n uses Playwright for E2E testing.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "We use Testcontainers to easily and quickly spin up a local instance with multiple different configurations for testing.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "We track coverage for all our code on Codecov.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Currents played a key role by making flaky tests easy to identify, analyze, and fix.",
+              "citation": "[36]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_7",
+          "Summary": "AI evaluation tooling: LangSmith experiments and datasets, a LangTracer test-case suite used as the source of truth for CI evals, LLM-as-judge verifiers, and a manually dispatched MCP eval that drives the Claude CLI to build workflows through n8n's MCP server.",
+          "evidence": [
+            {
+              "quote": "Test cases are pulled at run time from the LangTracer suite baseline — the source of truth; CI has no disk fallback",
+              "citation": "[5]"
+            },
+            {
+              "quote": "They reuse the Instance AI verifier but build each workflow through the instance MCP server by driving the claude CLI, which adds Anthropic build cost on top of the verifier — too expensive to run automatically.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_8",
+          "Summary": "Dedicated QA engineers (for example a Senior Quality Engineer) lead test infrastructure, together with the QA & DX team that owns the build/test/CI surface. The AI Trust team builds the internal evaluation and observability layer for n8n's agents. Product developers write and maintain their own tests.",
+          "evidence": [
+            {
+              "quote": "The migration itself took roughly one quarter and involved a small, focused group: two QA engineers and a few developers.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "QA & DX covers the build, test, and CI surface — the same paths OWNERS assigns to @n8n-io/qa-dx.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "AI Trust — builds the evaluation, observability, and safety layer so both n8n and our users can trust what these agents actually do.",
+              "citation": "[25]"
+            },
+            {
+              "quote": "Developers became more involved in writing and maintaining tests.",
+              "citation": "[36]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_9",
+          "Summary": "Coverage is targeted at critical paths, not a hard percentage: Codecov patch coverage is informational, and the AI reviewer flags untested new behaviour. Moving from Cypress to Playwright plus Currents cut the flaky-test rate from about 2-3% to about 0.3% and made performance regressions in test helpers visible. On security, n8n reports continuous monitoring, regular penetration testing and a responsible-disclosure program.",
+          "evidence": [
+            {
+              "quote": "Coverage does not need to be complete; core functionality and the critical path do.",
+              "citation": "[10]"
+            },
+            {
+              "quote": "Before (Cypress): ~2–3% flaky test rate",
+              "citation": "[36]"
+            },
+            {
+              "quote": "Someone made a small change to a central helper. Tests still passed—but it added ~30% to total execution time.",
+              "citation": "[36]"
+            },
+            {
+              "quote": "n8n maintains a proactive security standards through continuous monitoring, regular penetration testing, and a responsible disclosure program.",
+              "citation": "[35]"
+            }
+          ]
+        }
+      ]
+    },
+    "Integration_and_Infrastructure_CICD": {
+      "Practices": [
+        {
+          "q_id": "q_10",
+          "Summary": "Every PR runs a GitHub Actions orchestrator (ci-pull-requests.yml): build plus path filtering, unit tests, typecheck, lint, sharded E2E and security checks, all feeding a required-checks merge gate. Fork PRs run a reduced, secret-free SQLite E2E mode. Workflows must declare least-privilege permissions, and engineers leave comprehensive lint, typecheck and test runs to CI.",
+          "evidence": [
+            {
+              "quote": "Fork PRs cannot access repository secrets. Local mode with SQLite provides feedback without paid services.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Always declare a least-privilege top-level permissions: block (usually contents: read) — without one the workflow runs with the repo's broad default token and review flags it.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "Use CI for comprehensive lint, typechecks, and test suites.",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_11",
+          "Summary": "Releases are PR-driven and automated. A manually dispatched workflow opens a release PR with version bump and changelog. Merging it into release/* publishes npm packages and multi-arch Docker images, creates GitHub and Sentry releases and signed SBOMs, and versions are then promoted to the beta or stable channels. A new minor version ships most weeks under semantic versioning, and a failed publish is recovered by re-releasing the next patch version.",
+          "evidence": [
+            {
+              "quote": "Merging it fires release-publish.yml as normal — release-publish.yml has no workflow_dispatch, so a release PR is the only way to re-drive it.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "If the pipeline publishes n8n@X.Y.Z to npm and then fails, that version is burned — npm versions are immutable.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "n8n releases a new minor version most weeks.",
+              "citation": "[26]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_12",
+          "Summary": "Trunk-based development with feature flags. New features land on master behind opt-in flags (PostHog). Breaking changes for the next major go to a long-lived 3.x branch that a daily job keeps in sync with master. Urgent fixes are backported to beta, stable or v1 by PR label.",
+          "evidence": [
+            {
+              "quote": "Normal feature work → land on master, behind an opt-in feature flag.",
+              "citation": "[17]"
+            },
+            {
+              "quote": "We use Posthog for feature flags",
+              "citation": "[4]"
+            },
+            {
+              "quote": "PR Labeled with `Backport to Beta`, `Backport to Stable`, or `Backport to v1` (if the PR is an urgent fix that needs to be backported)",
+              "citation": "[6]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_13",
+          "Summary": "GitHub Actions on Blacksmith runners, pnpm workspaces with Turbo build orchestration, Docker (native amd64/arm64 builds), npm, Sentry (release sourcemaps), CycloneDX/Cosign SBOM signing, Trivy, Poutine and Zizmor workflow scanners, actionlint and the in-house @n8n/code-health static analysis. n8n also dogfoods its own product: CI telemetry goes through webhooks into n8n and then BigQuery.",
+          "evidence": [
+            {
+              "quote": "Monorepo Structure: pnpm workspaces with Turbo build orchestration",
+              "citation": "[4]"
+            },
+            {
+              "quote": "`pnpm lint`, `pnpm typecheck`, Poutine, Zizmor and `@n8n/code-health` run on every PR.",
+              "citation": "[8]"
+            },
+            {
+              "quote": "CI metrics are collected via webhooks to n8n, then stored in BigQuery for analysis.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_14",
+          "Summary": "The QA & DX team owns .github, docker, scripts and the test/lint configuration. A Developer Platform team and a dedicated Agentic Engineering Platform role work with Security, AI/Agents and product teams on CI and agent guardrails. The Catalysts team (default code owners) handles engineering excellence and tech debt.",
+          "evidence": [
+            {
+              "quote": "QA & DX covers the build, test, and CI surface — the same paths OWNERS assigns to @n8n-io/qa-dx.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Integrate agentic workflows with Linear, GitHub, CI, test infrastructure, and developer review processes.",
+              "citation": "[38]"
+            },
+            {
+              "quote": "Catalysts team focuses on engineering excellence & tackling tech debt.",
+              "citation": "[24]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_15",
+          "Summary": "Because the repository is public, security fixes follow strict hygiene: branch names, commits and test names must not reveal the vulnerability. A private mirror is synced hourly for security work. Build failures on master post to Slack through an in-house notifier, and the Notion engineering page describes frequent, incremental deployments.",
+          "evidence": [
+            {
+              "quote": "This is a public repository. When working on security fixes, never expose the attack vector or vulnerability type in any public-facing artifact.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "All workflows post via .github/scripts/slack/notify.mjs — a direct fetch to chat.postMessage that exits non-zero on any Slack error.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Deployment & Releases — Frequent, incremental deployments ensure stability and keep feedback loops tight.",
+              "citation": "[24]"
+            }
+          ]
+        }
+      ]
+    },
+    "Code_Review_Process": {
+      "Practices": [
+        {
+          "q_id": "q_16",
+          "Summary": "Every PR is reviewed by hand. PRs must be small (no more than 1000 added lines and one logical change), linked to an issue or forum topic, described in the author's own words, and titled by the Angular convention. Large changes are split into stacked PRs that are reviewed layer by layer. Contributors who do not answer review requests within 14 days have their PRs auto-closed.",
+          "evidence": [
+            {
+              "quote": "We read and review every pull request by hand.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Each PR should add no more than 1000 lines and cover one logical change.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "A large change is easier to review as a chain of small PRs, each building on the one below it — a stack.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Please address the requested changes or provide feedback within 14 days.",
+              "citation": "[3]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_17",
+          "Summary": "The AI reviewer (cubic) gives the first review on every PR. Engineers must resolve its comments before asking a human for review. Its behaviour is version-controlled in cubic.yaml and in domain rule files (security, backend, DB migrations, frontend, QA & DX), and findings are ranked with architecture fit first and style last.",
+          "evidence": [
+            {
+              "quote": "Because everyone is expected to resolve cubic’s feedback before requesting a colleague’s review, human attention now arrives only after the easy wins are out of the way.",
+              "citation": "[37]"
+            },
+            {
+              "quote": "Rules the AI reviewer (cubic) enforces on pull requests.",
+              "citation": "[9]"
+            },
+            {
+              "quote": "Rank findings in this order: architecture fit, solution complexity, bugs and behavioural regressions, security edge cases, code quality, missing tests.",
+              "citation": "[8]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_18",
+          "Summary": "AI-assisted code is welcome, but authors must understand and own every line, write their own PR descriptions, and are encouraged to disclose which AI tools they used.",
+          "evidence": [
+            {
+              "quote": "You must understand every line you submit and be able to explain what it does and how it fits the rest of the system, without the AI.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "We encourage you to note in the PR if AI tools did a meaningful part of the work, and which tools.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_19",
+          "Summary": "Tools: GitHub Pull Requests (including gh-stack stacked PRs and a merge queue), the cubic AI reviewer, OWNERS-driven reviewer-recommendation and auto-assignment workflows, a PR-title check based on the Angular commit convention, Biome/ESLint/lefthook pre-commit hooks, and on-demand Codespaces previews that give reviewers a running instance of the PR.",
+          "evidence": [
+            {
+              "quote": "This format basically follows the Angular Commit Message Convention.",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Code Quality: Biome (for formatting) + ESLint + lefthook git hooks",
+              "citation": "[4]"
+            },
+            {
+              "quote": "A reviewer gets a running instance of the PR without a Docker build or a cloud deploy.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_20",
+          "Summary": "Review is team-based through the OWNERS file. Every path maps to a GitHub team (default @n8n-io/catalysts), and the AI/LangChain node and @n8n/agents packages map to @n8n-io/ai. Entries marked required (DB migrations, ESLint config, OWNERS itself, the encryption boundary for IAM/security) need approval from a member of that team before merge.",
+          "evidence": [
+            {
+              "quote": "Default catch-all (ensures every file gets at least one reviewer)",
+              "citation": "[7]"
+            },
+            {
+              "quote": "packages/@n8n/nodes-langchain/                          @n8n-io/ai",
+              "citation": "[7]"
+            },
+            {
+              "quote": "An entry with the required option makes team approval mandatory: when a PR changes a non-test file whose winning entry carries required, a member of each listed team must approve the PR.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_21",
+          "Summary": "Merges are gated by a Required Reviews commit status and the merge queue, with a label-based exemption for members of the large-scale-changes team. An automated bot requests CLA signature on every PR. Before the AI reviewer was adopted, PRs could wait a full day for a first review and developers pinged each other on Slack to move reviews along.",
+          "evidence": [
+            {
+              "quote": "Merge-queue runs report success on the queue head without re-evaluating: a PR cannot enter the queue unless the status is green on its head, and the queue does not change approvals.",
+              "citation": "[5]"
+            },
+            {
+              "quote": "Once a pull request is opened, an automated bot will promptly leave a comment requesting the agreement to be signed.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Before cubic, a pull request on Marc’s team could sit for an entire day waiting for its first review.",
+              "citation": "[37]"
+            }
+          ]
+        }
+      ]
+    },
+    "Bug_Solving_Approaches": {
+      "Issues": [
+        {
+          "Issue_Title": "AI Agent with Anthropic models fails: 'temperature and top_p cannot both be specified' error",
+          "Issue_Number": 18304,
+          "Status": "Closed",
+          "Description": "The Anthropic chat model sub-node sent both temperature and top_p by default, which Anthropic's API rejects, making the AI Agent unusable with newer Claude models. It is a provider API-contract mismatch; staff tracked it as Linear ticket GHC-3725 and shipped the fix through beta and then the stable channel.",
+          "Citation": "[39]"
+        },
+        {
+          "Issue_Title": "AI Agent V3 sends tools[0].strict = null to OpenAI-compatible backends, causing validation error",
+          "Issue_Number": 23656,
+          "Status": "Closed",
+          "Description": "AI Agent V3 serialized tool definitions with \"strict\": null, which OpenAI-compatible backends reject because they expect a boolean. It is a schema-validation gap in the tool-definition layer, fixed in n8n@2.5.0 and announced by the n8n-assistant bot.",
+          "Citation": "[40]"
+        },
+        {
+          "Issue_Title": "[Bug] DeepSeek AI Agent node fails with 400 \"Missing reasoning_content\" when using tools with thinking mode (deepseek-v4-flash)",
+          "Issue_Number": 29119,
+          "Status": "Closed",
+          "Description": "The agent stripped the provider-specific reasoning_content field from assistant messages during multi-turn tool calls, so DeepSeek thinking-mode models returned HTTP 400. Provider message formats change quickly, and the agent's message normalization did not keep up.",
+          "Citation": "[41]"
+        },
+        {
+          "Issue_Title": "AI Agent: Newer Gemini models (e.g., gemini-2.5-flash-preview) fail with 'Cannot read properties of undefined (reading 'content')' when tools are connected",
+          "Issue_Number": 15563,
+          "Status": "Closed",
+          "Description": "Preview Gemini models crashed the LangChain ToolCallingAgentOutputParser when tools were attached. This shows how much the AI Agent node depends on upstream LangChain JS parsing logic for each provider's tool-call format. The issue was closed as not planned.",
+          "Citation": "[42]"
+        },
+        {
+          "Issue_Title": "AI Agent doesn't store the Tool usages in memory",
+          "Issue_Number": 14361,
+          "Status": "Open",
+          "Description": "Memory nodes persisted only user and assistant messages and dropped tool-call messages, so models learned to claim tool use without calling tools. It is a long-standing state-serialization design gap (internal ticket GHC-1434) that is still open.",
+          "Citation": "[43]"
+        },
+        {
+          "Issue_Title": "AI Agent v3.0 stores full intermediate tool outputs in Redis Chat Memory (memory pollution)",
+          "Issue_Number": 22112,
+          "Status": "Open",
+          "Description": "After the V3 rewrite, full intermediate tool outputs were written into Redis chat history even with returnIntermediateSteps disabled. V2.2 did not do this, so this is a version-to-version behavioural regression in memory handling.",
+          "Citation": "[44]"
+        },
+        {
+          "Issue_Title": "AI Agent: Hardcoded \"[Used tools...]\" string injection in memoryManagement.ts triggers hallucination loops in non-OpenAI models (DeepSeek/Qwen)",
+          "Issue_Number": 23819,
+          "Status": "Closed",
+          "Description": "saveToMemory flattened tool steps into a hard-coded text prefix, which open-weight models then imitated instead of making native function calls. The issue was auto-closed by the n8n-assistant bot after no reply, which shows the stale-issue policy.",
+          "Citation": "[45]"
+        },
+        {
+          "Issue_Title": "AI Agent with nested AgentToolV3 + Redis Memory sends invalid OpenAI tool messages in n8n 2.25.1",
+          "Issue_Number": 31860,
+          "Status": "Closed",
+          "Description": "Staff root-caused this to two physical copies of @langchain/core in the 2.24-2.29 images, which broke instanceof checks in the orphaned-tool-message cleanup. It is a dependency-duplication defect. The fix was to pin the LangChain core packages and later upgrade @langchain/core.",
+          "Citation": "[46]"
+        },
+        {
+          "Issue_Title": "AI Agent node: Tool node errors fail workflow instead of returning error to agent for handling",
+          "Issue_Number": 24042,
+          "Status": "Open",
+          "Description": "An error from any tool sub-node aborted the whole workflow instead of being returned to the agent as an observation, which defeats agentic error recovery. The AI and Nodes teams own it jointly, and it is still open.",
+          "Citation": "[47]"
+        },
+        {
+          "Issue_Title": "AI Agent (V1): a schema-invalid tool call from the model terminates the whole execution instead of being returned as a recoverable error",
+          "Issue_Number": 37916,
+          "Status": "Open",
+          "Description": "A model-generated tool call that fails Zod schema validation raises a NodeOperationError and ends the run. This is another case where the agent loop treats non-deterministic LLM output as a fatal error instead of a recoverable one.",
+          "Citation": "[48]"
+        },
+        {
+          "Issue_Title": "AI Agent V3 can lose canonical tool names and silently drop the next tool call",
+          "Issue_Number": 38503,
+          "Status": "Open",
+          "Description": "The reporter traced on master that buildSteps.resolveToolName() ignores the canonical tool name stored in action metadata and falls back to a node-derived name, so later tool calls are dropped silently. It is an internal contract mismatch between components of the V3 agent engine.",
+          "Citation": "[49]"
+        },
+        {
+          "Issue_Title": "MCP Client Tool drops structuredContent from MCP tool results, causing AI Agent tool loops",
+          "Issue_Number": 26963,
+          "Status": "Closed",
+          "Description": "The MCP Client Tool reduced MCP tool results to text, so the agent never saw the structured payload and called the same tool repeatedly. The Nodes team fixed it in PR #27297 and the fix shipped in n8n@2.19.0.",
+          "Citation": "[50]"
+        },
+        {
+          "Issue_Title": "AI Agent V3 breaks multi-turn tool calling with OpenAI-compatible providers (Regression from V2)",
+          "Issue_Number": 23185,
+          "Status": "Closed",
+          "Description": "A regression in the V3 agent made OpenAI-compatible providers (Cerebras, OpenRouter) output raw tool logs instead of real tool calls from the second turn onward. It was closed as not planned after the triage:needs-info and triage:stalled labels were applied.",
+          "Citation": "[51]"
+        },
+        {
+          "Issue_Title": "AI Agent node missing inputs/providers after upgrading (worked on pre-1.109, broken on 1.111.x–1.112.1)",
+          "Issue_Number": 19682,
+          "Status": "Closed",
+          "Description": "After an upgrade, the AI Agent node was no longer registered in /rest/node-types and rendered without inputs, which broke existing workflows. It is an upgrade and packaging regression that the release pipeline did not catch.",
+          "Citation": "[52]"
+        },
+        {
+          "Issue_Title": "Task Runner: Workflow hangs and crash when Code node uses $node[] with AI Agent containing postgresTool sub-nodes",
+          "Issue_Number": 20752,
+          "Status": "Closed",
+          "Description": "Enabling task runners, a Code node that uses $node[], and an AI Agent with postgresTool together caused the workflow to hang and crash. This shows interaction bugs between the sandboxed execution infrastructure and AI sub-nodes.",
+          "Citation": "[53]"
+        }
+      ],
+      "Practices": [
+        {
+          "q_id": "q_22",
+          "Summary": "Triage runs from GitHub Issues into Linear. A bug-only issue form requires reproduction steps and debug info, while features and questions go to the community forum and vulnerabilities go to the disclosure program. Staff acknowledge each report, open an internal Linear ticket (GHC-xxxx), and label it by owning team and triage state. The fix ships through a PR, first in beta and then in stable, and the n8n-assistant bot comments when the fix is released.",
+          "evidence": [
+            {
+              "quote": "To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-3725\".",
+              "citation": "[39]"
+            },
+            {
+              "quote": "This form is for reporting bugs only.",
+              "citation": "[15]"
+            },
+            {
+              "quote": "An issue must already exist that describes the problem and gives clear steps to reproduce it.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Fix got released with n8n@2.5.0",
+              "citation": "[40]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_23",
+          "Summary": "Recurring category 1, provider API-contract drift: the AI Agent node and its chat-model sub-nodes keep breaking when LLM providers change request or response schemas (Anthropic temperature/top_p, null tool strict flags, DeepSeek reasoning_content, Gemini preview tool-call formats). The cause is a thin normalization layer over LangChain and fast-moving provider APIs.",
+          "evidence": [
+            {
+              "quote": "This strongly suggests an incompatibility between the tool calling output format of the newer Gemini models and the parsing logic within the version of LangChain JS used by n8n.",
+              "citation": "[42]"
+            },
+            {
+              "quote": "n8n sends both temperature and top_p parameters by default, but Anthropic's API requires only one to be set",
+              "citation": "[39]"
+            },
+            {
+              "quote": "The n8n AI Agent node strips this field, causing the DeepSeek API to respond with HTTP 400",
+              "citation": "[41]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_24",
+          "Summary": "Recurring category 2, agent-loop state and dependency handling: chat-memory serialization drops or pollutes tool messages, and tool errors or schema-invalid tool calls abort the run instead of being returned to the model. One major defect came from duplicated @langchain/core copies in release images.",
+          "evidence": [
+            {
+              "quote": "The n8n images for 2.24.0 – 2.29.x contained two physical copies of the same @langchain/core version.",
+              "citation": "[46]"
+            },
+            {
+              "quote": "The error is not passed back to the AI Agent for processing, which prevents the agent from implementing error-handling logic defined in its system prompt.",
+              "citation": "[47]"
+            },
+            {
+              "quote": "The current implementation of the AI Agent and the Memory nodes stores only the input and output messages, not the Tool messages.",
+              "citation": "[43]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_25",
+          "Summary": "Recurring category 3, version regressions across agent node versions and releases: the V3 rewrite changed memory and tool-calling behaviour compared with V2, and upgrades broke node registration. These regressions show gaps in cross-provider and cross-version regression testing.",
+          "evidence": [
+            {
+              "quote": "I have identified a regression in the AI Agent Node Version 3.",
+              "citation": "[51]"
+            },
+            {
+              "quote": "This behavior does NOT occur in AI Agent v2.2.",
+              "citation": "[44]"
+            },
+            {
+              "quote": "The node types API (/rest/node-types) also does not list the AI Agent node, suggesting it isn’t being registered properly in these builds.",
+              "citation": "[52]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_26",
+          "Summary": "Tools: GitHub Issues with structured issue forms and labels (team:ai, status:in-linear, triage:*), Linear for internal ticket tracking (also reachable through a Linear MCP server in the team's shared Claude Code setup), the n8n community forum, a Vulnerability Disclosure Program, and the n8n-assistant bot that manages release notifications and stale issues.",
+          "evidence": [
+            {
+              "quote": "We use Linear as a ticket tracking system",
+              "citation": "[4]"
+            },
+            {
+              "quote": "We have created an internal ticket to look into this which we will be tracking as \"GHC-1434\"",
+              "citation": "[43]"
+            },
+            {
+              "quote": "If you discover a (suspected) security vulnerability, please report it through our Vulnerability Disclosure Program.",
+              "citation": "[21]"
+            },
+            {
+              "quote": "As we haven’t heard back from you, we’re going to close this issue to keep things organized.",
+              "citation": "[45]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_27",
+          "Summary": "n8n staff (community and support engineers) do first-line triage and route issues to product teams. The AI team owns AI Agent/LangChain bugs, sometimes jointly with the Nodes team. Product-driven squads fix bugs alongside feature work, and community reporters often supply root-cause analysis or fork-based fixes, but they must ask before picking up an issue.",
+          "evidence": [
+            {
+              "quote": "Product-driven teams (Adore, Nodes, Payday, AI) focus on features but also handle bug fixes.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Hey, thank you for the report! This was fixed just recently by this PR: #18213",
+              "citation": "[39]"
+            },
+            {
+              "quote": "If you want to work on an existing issue, comment to ask first and wait for a team member to respond before you pick it up.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Thanks for the detailed report. We investigated this and found the root cause.",
+              "citation": "[46]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_28",
+          "Summary": "Architectural limitation: the legacy LangChain-based agent node is in maintenance while a new in-house agent runtime (@n8n/agents) powers new agentic work. Security bugs follow responsible disclosure: the patch ships first, a public advisory follows later, and CVEs are published on GitHub. Many AI-agent issues close as stale or \"not planned\" after info requests, which points to triage-backlog pressure.",
+          "evidence": [
+            {
+              "quote": "Maintenance of older agentic functionality still in use, like the legacy LangChain-based agent node and chat experience",
+              "citation": "[25]"
+            },
+            {
+              "quote": "We wanted to ensure the patches had been released and offer our customers the opportunity to update on their own timing.",
+              "citation": "[35]"
+            },
+            {
+              "quote": "We disclose our CVEs on GitHub.",
+              "citation": "[35]"
+            }
+          ]
+        }
+      ]
+    },
+    "Software_Engineering_Methodology": {
+      "Practices": [
+        {
+          "q_id": "q_29",
+          "Summary": "Agile squad model. Each team is an autonomous squad. Most teams run 2-week sprints that mix feature work, bug fixes and technical improvements. The process stays deliberately light and pragmatic.",
+          "evidence": [
+            {
+              "quote": "Each team follows a squad model built for speed and autonomy:",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Most teams work in 2-week sprints balancing feature work, bug fixes, and technical improvements.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Product-minded and pragmatic - empowered to make quick decisions, and keep process light to focus on progress.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "He opened a second pull request, patched both endpoints in the same sprint and accepted cubic’s suggested regression tests so the issue can’t recur.",
+              "citation": "[37]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_30",
+          "Summary": "Ticket-driven, trunk-based lifecycle. Work starts from a Linear ticket and a branch off fresh master, features ship behind flags, and versioning is semantic. Minor releases ship weekly and n8n now plans one or two major (breaking) releases per year, after the long gap between 1.0 and 2.0.",
+          "evidence": [
+            {
+              "quote": "When starting to work on a new ticket – create a new branch from fresh master with the name specified in Linear ticket",
+              "citation": "[4]"
+            },
+            {
+              "quote": "We're planning to ship one to two major versions per year, allowing us to iterate faster and ship improvements without long delays.",
+              "citation": "[33]"
+            },
+            {
+              "quote": "n8n follows semantic versioning.",
+              "citation": "[33]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_31",
+          "Summary": "AI-native and agentic development. n8n engineers use AI coding agents (shared Claude Code/OpenCode skills, AGENTS.md per package), and a dedicated platform role is building pilots where agents pick up Linear issues and produce draft PRs.",
+          "evidence": [
+            {
+              "quote": "We use AI tools ourselves and we welcome AI-assisted contributions.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "This directory contains shared Claude Code configuration for the n8n team.",
+              "citation": "[16]"
+            },
+            {
+              "quote": "Build pilot workflows that allow selected Linear issues to be picked up by agents, tested, and converted into useful draft PRs.",
+              "citation": "[38]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_32",
+          "Summary": "Methods and tools: Scrum-style 2-week sprints, Linear ticket tracking, PostHog feature flags, Notion for company engineering processes (technical decisions, ADRs), GitHub stacked PRs (gh stack), Architecture Decision Records, and Claude Code/OpenCode agent skills.",
+          "evidence": [
+            {
+              "quote": "We use Posthog for feature flags",
+              "citation": "[4]"
+            },
+            {
+              "quote": "The company process is defined in the Notion page Engineering Technical Decisions and its sub-page Architecture Decision Records.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Stacked PRs are enabled on n8n-io/n8n.",
+              "citation": "[3]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_33",
+          "Summary": "The company has more than 260 people, and the engineering team had more than 50 at the 2.0 release. Engineering is organised into specialised squads (for example Adore, Nodes, AI, Catalysts, IAM, Core Platform, Developer Platform). AI work is split across three teams: AI Agents (agent runtime and the user-facing agent builder), AI Assistant, and AI Trust (evals, observability, safety).",
+          "evidence": [
+            {
+              "quote": "AI is core to where n8n is headed, and the work is currently split across 3 teams, each tackling a different piece of the problem:",
+              "citation": "[25]"
+            },
+            {
+              "quote": "The new user-facing agent builder — a visual UI over everything the package offers, plus file-based knowledge bases, first-class chat support (Slack, Linear, Telegram, etc.), session logging, and an agent node for use inside workflows",
+              "citation": "[25]"
+            },
+            {
+              "quote": "packages/@n8n/agents/                                   @n8n-io/ai",
+              "citation": "[7]"
+            },
+            {
+              "quote": "packages/@n8n/instance-ai/                              @n8n-io/ai-assistant",
+              "citation": "[7]"
+            },
+            {
+              "quote": "Since our founding in 2019, we’ve grown into a diverse team of over 260 - working across Europe and the US, connected by a shared builder spirit and with our centre of gravity in Berlin.",
+              "citation": "[38]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_34",
+          "Summary": "Tech debt is managed deliberately. The Catalysts squad focuses on code health, and CI-enforced Code Health rules keep shrink-only baselines (new violations fail CI). The AI Agents team works in a fast-moving domain through research, prototyping and testing.",
+          "evidence": [
+            {
+              "quote": "Existing business-logic imports stay in the shrink-only Code Health baseline. A new business-logic import fails CI.",
+              "citation": "[4]"
+            },
+            {
+              "quote": "Tech Debt & Refactoring — We deliberately balance new features with long-term code health — no shortcuts that haunt us later.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Best suited for engineers who enjoy ambiguity — this space moves fast and requires research, prototyping, and testing.",
+              "citation": "[25]"
+            }
+          ]
+        }
+      ]
+    },
+    "Team_Communication": {
+      "Practices": [
+        {
+          "q_id": "q_35",
+          "Summary": "n8n is a remote-first, fully distributed company with async-friendly communication. People work across Europe, the UK and sometimes the US, with local hubs and regular all-company offsites. Values were codified in a written Culture/Code because informal, office-style calibration does not happen by default.",
+          "evidence": [
+            {
+              "quote": "Our people work from almost anywhere in Europe, the UK and sometimes the US. We meet at regular offsites to stay connected - because the best talent isn’t all in one place.",
+              "citation": "[23]"
+            },
+            {
+              "quote": "We're a fully distributed team with async-friendly communication!",
+              "citation": "[24]"
+            },
+            {
+              "quote": "But we can’t rely on osmosis anymore - so we’ve written them down.",
+              "citation": "[34]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_36",
+          "Summary": "Technical decisions are made through RFCs and Architecture Decision Records under a company-wide Notion process. ADRs live in the repo with CI-enforced conventions. Every engineer has a say in technical choices, and cross-team alignment happens through tech discussions and working groups.",
+          "evidence": [
+            {
+              "quote": "An Architecture Decision Record (ADR) is a short, dated record of one important technical decision: the context, the decision, the alternatives, and the consequences.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Source names where the decision came from: a ticket, an RFC, or an incident.",
+              "citation": "[11]"
+            },
+            {
+              "quote": "Every engineer has a say in technical choices — we balance pragmatism with scalability.",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Cross-team collaboration happens through internal tech discussions, working groups & joint initiatives.",
+              "citation": "[24]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_37",
+          "Summary": "Contributors are asked to communicate before writing code. Features are discussed on the community forum first, and bug fixes must reference an existing issue. PR descriptions link the related Linear ticket or GitHub issue.",
+          "evidence": [
+            {
+              "quote": "Open a topic on the n8n community forum first so we can discuss it before you build.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "If there is a corresponding Linear ticket, reference it in the PR description",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_38",
+          "Summary": "Tools: Slack (team threads and CI alert channels such as #alerts-build), Linear, Notion (handbook and decision process), GitHub PRs and issues, the community forum (community.n8n.io), and PR bots (CLA bot, Codespaces preview comments, n8n-assistant release comments).",
+          "evidence": [
+            {
+              "quote": "Every month, people join n8n who didn’t experience the company when it was small enough for the culture to be felt rather than explained - when a thread on Slack, or a decision made in front of everyone, naturally set the tone.",
+              "citation": "[34]"
+            },
+            {
+              "quote": "developers pinged one another on Slack just to keep reviews moving.",
+              "citation": "[37]"
+            },
+            {
+              "quote": "All workflows post via .github/scripts/slack/notify.mjs — a direct fetch to chat.postMessage that exits non-zero on any Slack error.",
+              "citation": "[5]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_39",
+          "Summary": "Participants: squad engineers and engineering managers working with Product, leadership (the founder meets every new hire), and the wider community of contributors, template builders and forum regulars, whom n8n treats as part of how it works.",
+          "evidence": [
+            {
+              "quote": "Importantly, n8n has always been more than a bunch of people with the same email signature - our community of contributors, users, template-builders, and forum regulars is part of how we actually work, and how we’re going to thrive.",
+              "citation": "[34]"
+            },
+            {
+              "quote": "I still love meeting every new hire, I just have less time with each of them than I used to, and less of the ongoing back-and-forth and daily interactions that used to follow.",
+              "citation": "[34]"
+            },
+            {
+              "quote": "And everyone has a direct line to leadership.",
+              "citation": "[23]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_40",
+          "Summary": "Onboarding uses a structured plan, an assigned buddy, regular 1:1s and in-team mentorship. On the tooling side, a one-command agent:setup bootstraps new hires and agents. All technical writing (comments, PRs, issues, docs) follows ASD-STE100 Simplified Technical English so that communication stays consistent.",
+          "evidence": [
+            {
+              "quote": "Structured onboarding plan covering tools & workflows",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Assigned buddy to help you integrate smoothly",
+              "citation": "[24]"
+            },
+            {
+              "quote": "Write all technical text (code comments, PR descriptions, issue and ticket descriptions, docs) in ASD-STE100 Simplified Technical English: use short sentences, the active voice, and one instruction for each sentence",
+              "citation": "[4]"
+            },
+            {
+              "quote": "For a fresh checkout (cat-bot, a new hire, any agent verifying the repo builds), prefer pnpm agent:setup over running install + build + tests by hand.",
+              "citation": "[4]"
+            }
+          ]
+        }
+      ]
+    },
+    "Holistic_Documentation": {
+      "Practices": [
+        {
+          "q_id": "q_41",
+          "Summary": "Docs-as-code in a separate n8n-docs repository published with GitBook. The PR checklist requires docs to be updated or a follow-up ticket created. Code PRs that change documented behaviour need a matching docs PR, which is reviewed only after the code PR merges.",
+          "evidence": [
+            {
+              "quote": "n8n Docs content is managed on our GitHub repository. The site is generated with GitBook.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "If you're opening a PR on the main n8n repository — for example, to add a node, change a configuration option, or fix a bug that affects documented behaviour — open a docs PR to reflect the change.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Contributions linked to a PR int the main code base will not be reviewed until the main PR Is merged.",
+              "citation": "[28]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_42",
+          "Summary": "Engineering knowledge lives in the monorepo: a root AGENTS.md plus per-package AGENTS.md/CLAUDE.md files, a full CI/CD reference (WORKFLOWS.md) that must be updated with every new workflow, in-package ADRs, mermaid diagrams, and database schema docs generated from migrations by git hooks.",
+          "evidence": [
+            {
+              "quote": "Add workflow: Create in workflows/, document in WORKFLOWS.md.",
+              "citation": "[20]"
+            },
+            {
+              "quote": "The database schema docs under docs/generated/ are generated from the migrations with tbls.",
+              "citation": "[3]"
+            },
+            {
+              "quote": "Use mermaid diagrams in MD files when you need to visualise something",
+              "citation": "[4]"
+            }
+          ]
+        },
+        {
+          "q_id": "q_43",
+          "Summary": "Release documentation is generated automatically. Conventional PR titles feed the changelog and GitHub releases, and feature-level release notes are generated from merged PRs and reviewed before they are published.",
+          "evidence": [
+            {
+              "quote": "It leads to easier to read commit history and allows for automated generation of release notes:",
+              "citation": "[18]"
+            },
+            {
+              "quote": "Entries are generated from merged pull requests and reviewed before publishing.",
+              "citation": "[27]"
+            }
+          ]
+        }
+      ],
+      "Tools": [
+        {
+          "q_id": "q_44",
+          "Summary": "Tools: GitBook (hosting, PR previews), Markdown, Vale prose linting run by a GitHub Action on every docs PR, the Microsoft Writing Style Guide, document templates per page type, an n8n-docs-author AI skill, tbls for schema docs, and machine-readable delivery (per-page Markdown, llms.txt, a docs MCP server, Context7, and Kapa.ai search).",
+          "evidence": [
+            {
+              "quote": "n8n uses Vale to lint documentation against the rules in this guide.",
+              "citation": "[29]"
+            },
+            {
+              "quote": "n8n Docs uses plain, direct language in the second person (\"you\"), present tense, and active voice, following the Microsoft Writing Style Guide.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Every page is available as clean Markdown, not just rendered HTML.",
+              "citation": "[30]"
+            }
+          ]
+        }
+      ],
+      "Stakeholders": [
+        {
+          "q_id": "q_45",
+          "Summary": "The n8n Docs team (technical writers) owns docs and reviews every docs PR. Subject-matter experts give technical sign-off when needed, the cubic AI reviewer checks consistency, and engineers and community contributors write content.",
+          "evidence": [
+            {
+              "quote": "It's maintained by the n8n team, but community contributions can help by improving explanations, updating content, fixing errors, and more.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Your PR is in the queue and waiting for a technical writer to review it",
+              "citation": "[28]"
+            },
+            {
+              "quote": "Your PR requires review from a subject matter expert before it can be merged",
+              "citation": "[28]"
+            },
+            {
+              "quote": "New pages and modifications are reviewed for consistency and technical accuracy before they're published, on n8n Docs' open-access GitHub repository, by both human reviewers and n8n Docs' AI-reviewer cubic.",
+              "citation": "[30]"
+            }
+          ]
+        }
+      ],
+      "Others": [
+        {
+          "q_id": "q_46",
+          "Summary": "Documentation is generated and maintained with automation, including n8n itself: fully generated pages are kept up to date by n8n workflows. The docs follow an explicit agent-friendly standard (consistent terminology, stable URLs with redirects, availability facts scoped to the exact section), and a GitHub Action runs Vale on every docs PR and reports style violations on it.",
+          "evidence": [
+            {
+              "quote": "These pages are automatically generated and kept up to date via n8n workflows.",
+              "citation": "[28]"
+            },
+            {
+              "quote": "URLs stay stable across a page rename, with a redirect in place whenever a URL does change.",
+              "citation": "[30]"
+            },
+            {
+              "quote": "A GitHub Action that runs Vale on every PR and reports violations directly on it.",
+              "citation": "[29]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "References": {
+    "[1]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/n8n-io/n8n",
+      "Date_Created": "2019-06-22",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[2]": {
+      "Website_Type": "README.md",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[3]": {
+      "Website_Type": "CONTRIBUTING.md",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/CONTRIBUTING.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[4]": {
+      "Website_Type": "AGENTS.md (repository-wide engineering guidelines)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/AGENTS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[5]": {
+      "Website_Type": "CI/CD Documentation (.github/WORKFLOWS.md)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.github/WORKFLOWS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[6]": {
+      "Website_Type": "Pull Request Template (raw)",
+      "Link": "https://raw.githubusercontent.com/n8n-io/n8n/master/.github/pull_request_template.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[7]": {
+      "Website_Type": "OWNERS file (raw)",
+      "Link": "https://raw.githubusercontent.com/n8n-io/n8n/master/OWNERS",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[8]": {
+      "Website_Type": "AI Code Review Configuration (cubic.yaml, raw)",
+      "Link": "https://raw.githubusercontent.com/n8n-io/n8n/master/cubic.yaml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[9]": {
+      "Website_Type": "Review Rules README (.agents/review-rules)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.agents/review-rules/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[10]": {
+      "Website_Type": "Review Rule: Test Coverage",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.agents/review-rules/testing/coverage.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[11]": {
+      "Website_Type": "Architecture Decision Records README",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/docs/adr/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[12]": {
+      "Website_Type": "AI Workflow Builder Evaluations README",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/packages/@n8n/ai-workflow-builder.ee/evaluations/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[13]": {
+      "Website_Type": "Instance AI / Agent Evaluations README",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/packages/@n8n/instance-ai/evaluations/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[14]": {
+      "Website_Type": "AI Agent Node V3 Integration Test (raw source)",
+      "Link": "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/@n8n/nodes-langchain/nodes/agents/Agent/test/integration/agent-v3.workflow.test.ts",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[15]": {
+      "Website_Type": "GitHub Issue Template (raw)",
+      "Link": "https://raw.githubusercontent.com/n8n-io/n8n/master/.github/ISSUE_TEMPLATE/01-bug.yml",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[16]": {
+      "Website_Type": "Claude Code Team Configuration README (.claude)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.claude/README.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[17]": {
+      "Website_Type": "Developing v3 Guide (.github/DEVELOPING_V3.md)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.github/DEVELOPING_V3.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[18]": {
+      "Website_Type": "PR Title Conventions",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.github/pull_request_title_conventions.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[19]": {
+      "Website_Type": "AGENTS.md (packages/@n8n/nodes-langchain)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/packages/@n8n/nodes-langchain/AGENTS.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[20]": {
+      "Website_Type": "CLAUDE.md (.github quick reference)",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/.github/CLAUDE.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[21]": {
+      "Website_Type": "SECURITY.md",
+      "Link": "https://github.com/n8n-io/n8n/blob/master/SECURITY.md",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[22]": {
+      "Website_Type": "GitHub Releases",
+      "Link": "https://github.com/n8n-io/n8n/releases",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[23]": {
+      "Website_Type": "Official Careers Page",
+      "Link": "https://n8n.io/careers/",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[24]": {
+      "Website_Type": "Official Engineering Handbook Page (Notion)",
+      "Link": "https://n8n.notion.site/Discover-Engineering-n8n-1b65b6e0c94f80688f43d9bbc76023c3",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[25]": {
+      "Website_Type": "Official Engineering Team Page - AI Teams (Notion)",
+      "Link": "https://n8n.notion.site/AI-Teams-39e5b6e0c94f8001a08ef9a6e5412e04",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[26]": {
+      "Website_Type": "Official Documentation - Release Notes 2.x",
+      "Link": "https://docs.n8n.io/changelog/release-notes-2.x",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[27]": {
+      "Website_Type": "Official Documentation - Release Notes",
+      "Link": "https://docs.n8n.io/changelog/release-notes",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[28]": {
+      "Website_Type": "Official Documentation - Docs Contribution Guide",
+      "Link": "https://docs.n8n.io/contribute/contribution-guide-for-n8n-docs",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[29]": {
+      "Website_Type": "Official Documentation - Docs Style Guide",
+      "Link": "https://docs.n8n.io/contribute/contribution-guide-for-n8n-docs/style-guide-for-n8n-docs",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[30]": {
+      "Website_Type": "Official Documentation - Agent-friendly Docs Standard",
+      "Link": "https://docs.n8n.io/contribute/contribution-guide-for-n8n-docs/agent-friendly-docs",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[31]": {
+      "Website_Type": "Official Documentation - AI Agent Node",
+      "Link": "https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[32]": {
+      "Website_Type": "Official Documentation - Build and Manage Agents",
+      "Link": "https://docs.n8n.io/build/build-and-manage-agents",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[33]": {
+      "Website_Type": "Official Blog - Release Announcement (n8n 2.0)",
+      "Link": "https://blog.n8n.io/introducing-n8n-2-0/",
+      "Date_Created": "2025-12-08",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[34]": {
+      "Website_Type": "Official Blog - Founder Post (Culture/Code)",
+      "Link": "https://blog.n8n.io/n8n-culture-code/",
+      "Date_Created": "2026-08-12",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[35]": {
+      "Website_Type": "Official Blog - Security Advisory",
+      "Link": "https://blog.n8n.io/security-advisory-20260108/",
+      "Date_Created": "2026-01-08",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[36]": {
+      "Website_Type": "Vendor Case Study (Currents.dev, interview with n8n Senior Quality Engineer)",
+      "Link": "https://currents.dev/posts/currents-and-n8n",
+      "Date_Created": "2026-01-19",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[37]": {
+      "Website_Type": "Vendor Case Study (cubic.dev, interview with n8n Engineering Manager)",
+      "Link": "https://www.cubic.dev/customers/n8n",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[38]": {
+      "Website_Type": "Official Job Posting (Agentic Engineering Platform Engineer, Ashby)",
+      "Link": "https://jobs.ashbyhq.com/n8n/1af7a193-334d-4d5c-b45d-250122d9c3f1",
+      "Date_Created": "2026-09-24",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[39]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/18304",
+      "Date_Created": "2025-08-13",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[40]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/23656",
+      "Date_Created": "2025-12-26",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[41]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/29119",
+      "Date_Created": "2026-04-24",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[42]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/15563",
+      "Date_Created": "2025-05-21",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[43]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/14361",
+      "Date_Created": "2025-04-02",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[44]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/22112",
+      "Date_Created": "2025-11-20",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[45]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/23819",
+      "Date_Created": "2026-01-04",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[46]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/31860",
+      "Date_Created": "2026-06-05",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[47]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/24042",
+      "Date_Created": "2026-01-08",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[48]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/37916",
+      "Date_Created": "2026-09-06",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[49]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/38503",
+      "Date_Created": "2026-09-12",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[50]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/26963",
+      "Date_Created": "2026-03-12",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[51]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/23185",
+      "Date_Created": "2025-12-13",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[52]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/19682",
+      "Date_Created": "2025-09-18",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[53]": {
+      "Website_Type": "GitHub Issue",
+      "Link": "https://github.com/n8n-io/n8n/issues/20752",
+      "Date_Created": "2025-10-14",
+      "Date_Pulled": "2026-10-12"
+    },
+    "[54]": {
+      "Website_Type": "GitHub repository page (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20261013060609/https://github.com/n8n-io/n8n",
+      "Date_Created": "2026-10-13",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[55]": {
+      "Website_Type": "Lines-of-code service (ghloc JSON API)",
+      "Link": "https://ghloc.ifels.dev/n8n-io/n8n/master?pretty=false",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[56]": {
+      "Website_Type": "GitHub REST API (Repository Languages)",
+      "Link": "https://api.github.com/repos/n8n-io/n8n/languages",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[57]": {
+      "Website_Type": "GitHub Repository Contributors List",
+      "Link": "https://github.com/n8n-io/n8n/contributors_list?current_repository=n8n&deferred=true",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-02"
+    },
+    "[58]": {
+      "Website_Type": "Official Documentation - Release Notes 2.x (Wayback Machine snapshot)",
+      "Link": "https://web.archive.org/web/20261002034729/https://docs.n8n.io/changelog/release-notes-2.x",
+      "Date_Created": "2026-10-02",
+      "Date_Pulled": "2026-11-02"
+    }
+  }
+}
