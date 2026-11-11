@@ -185,14 +185,10 @@
         },
         {
           "q_id": "q_3",
-          "Summary": "MoonshotAI systematically dogfoods the agent on internal production workloads, using real operational worklogs as reliability signals alongside extended long-horizon stress tasks to validate out-of-distribution generalization. For the robustness check they averaged over 10 independent checks MoonshotAI employs systematic dogfooding as a reliability testing practice; ran 4k+ tool calls, over 12 hours of continuous execution as stress testing",
+          "Summary": "MoonshotAI dogfoods the agent on internal production workloads: its RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations.",
           "evidence": [
             {
               "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
-              "citation": "[8]"
-            },
-            {
-              "quote": "Across 4,000+ tool calls, over 12 hours of continuous execution, and 14 iterations",
               "citation": "[8]"
             }
           ]
@@ -275,7 +271,7 @@
         },
         {
           "q_id": "q_37",
-          "Summary": "Before K2.6 was released externally, the RL infrastructure team ran it as a live autonomous agent managing real production operations — monitoring, incident response, and system operations — for five continuous days across 4,000+ tool calls. The anonymized worklog was published alongside the release announcement as the team's pre-release production validation record.",
+          "Summary": "Before K2.6 was released externally, the RL infrastructure team ran it as a live autonomous agent managing real production operations — monitoring, incident response, and system operations — for five continuous days. The anonymized worklog was published alongside the release announcement as the team's pre-release production validation record.",
           "evidence": [
             {
               "quote": "Our RL infra team used a K2.6-backed agent that operated autonomously for 5 days, managing monitoring, incident response, and system operations",
@@ -508,7 +504,7 @@
       "Stakeholders": [
         {
           "q_id": "q_10",
-          "Summary": "MoonshotAI model and infrastructure teams manage deployment internally; enterprise evaluators (CodeBuddy, Factory.ai, Vercel AI) publish independent pre-release benchmark results that function as external validation before general availability.",
+          "Summary": "MoonshotAI model and infrastructure teams manage deployment internally; enterprise evaluators (CodeBuddy, Vercel AI) publish independent pre-release benchmark results that function as external validation before general availability.",
           "evidence": [
             {
               "quote": "K2.6 is a clear improvement on K2.5 on both our benchmarks (+15%) and in side-by-side comparisons.",
@@ -854,7 +850,7 @@
       "Practices": [
         {
           "q_id": "q_19",
-          "Summary": "MoonshotAI maintains multiple public community communication channels: GitHub Discussions on kimi-cli for technical Q&A, a Discord server (discord.gg/FBDhVhVH7M) for real-time chat, a community forum at forum.moonshot.ai for longer-form discussions, and a Reddit community at r/kimi for broader community engagement.",
+          "Summary": "MoonshotAI uses GitHub Discussions on kimi-cli as a public community channel for technical Q&A.",
           "evidence": [
             {
               "quote": "This is an early research preview. We will continue to harden the architecture, introducing direct sub-agent communication, dynamic control of parallel width—but the foundation is ready for your most demanding work.",
@@ -902,7 +898,7 @@
       "Tools": [
         {
           "q_id": "q_22",
-          "Summary": "Communication channels span developer-focused platforms (Discord at discord.gg/FBDhVhVH7M, Reddit at r/kimi), community forums (forum.moonshot.ai), official publishing surfaces (kimi.com/blog, X @Kimi_Moonshot, Instagram @kimiai.official), and technical support (support@moonshot.cn), providing multi-channel presence for both technical and general audiences.",
+          "Summary": "Communication channels span official publishing surfaces (kimi.com/blog, X @Kimi_Moonshot, Instagram @kimiai.official) and technical support (support@moonshot.cn).",
           "evidence": [
             {
               "quote": "To reproduce official Kimi-K2.6 benchmark results, we recommend using the official API. For third-party providers, refer to Kimi Vendor Verifier (KVV) to choose high-accuracy services.",

@@ -323,10 +323,6 @@
             {
               "quote": "The watsonx Orchestrate ADK version 2.8.0 is now available.",
               "citation": "[13]"
-            },
-            {
-              "quote": "The releases in April and early May of IBM watsonx Orchestrate deliver enhancements that make it easier to collaborate across teams, manage workflows with confidence, and design richer agent interactions.",
-              "citation": "[12]"
             }
           ]
         },
@@ -683,13 +679,8 @@
         },
         {
           "q_id": "q_54",
-          "Summary": "The ADK team ships on a bi-weekly minor-release train with semantic versioning (2.0.0 through 2.9.0 across six months, averaging one release every two weeks). Each release consolidates contributions from multiple product squads — ADK, Developer Edition, Flows, Evaluations, Channels, Observability, Builder, AI Gateway — into a single tagged version. Breaking changes are called out in a dedicated section with explicit migration steps, and the team maintains backwards compatibility within major versions. This cadence forces continuous integration discipline: squads must merge and stabilize contributions within each two-week window.",
-          "evidence": [
-            {
-              "quote": "The releases in April and early May of IBM watsonx Orchestrate deliver enhancements that make it easier to collaborate across teams, manage workflows with confidence, and design richer agent interactions.",
-              "citation": "[12]"
-            }
-          ]
+          "Summary": "Not Available - the only source (IBM Community blog \"What's New in watsonx Orchestrate: April 2026 Highlights\") now returns Page Not Found and has no Wayback snapshot.",
+          "evidence": []
         },
         {
           "q_id": "q_55",
@@ -780,13 +771,8 @@
         },
         {
           "q_id": "q_33",
-          "Summary": "Each release consolidates contributions from multiple squads — ADK, Developer Edition, Flows, Evaluations, Channels, Observability, Builder, and AI Gateway — into a single versioned release. The structured release notes, which list contributions from each squad in separate sections, are evidence of internal cross-squad coordination happening before each release is published. IBM's internal communication tools and meeting cadences are not publicly disclosed.",
-          "evidence": [
-            {
-              "quote": "The releases in April and early May of IBM watsonx Orchestrate deliver enhancements that make it easier to collaborate across teams, manage workflows with confidence, and design richer agent interactions.",
-              "citation": "[12]"
-            }
-          ]
+          "Summary": "Not Available - the only source (IBM Community blog \"What's New in watsonx Orchestrate: April 2026 Highlights\") now returns Page Not Found and has no Wayback snapshot.",
+          "evidence": []
         },
         {
           "q_id": "q_34",
@@ -814,13 +800,8 @@
       "Stakeholders": [
         {
           "q_id": "q_57",
-          "Summary": "Internal coordination involves the module owners defined in CODEOWNERS, the release engineers who consolidate multi-squad contributions, and the feature engineers who author PRs. IBM does not publicly disclose whether it uses engineering managers, scrum masters, or designated leads to facilitate internal team communication.",
-          "evidence": [
-            {
-              "quote": "Together, these updates give teams greater transparency and confidence as workflows grow in complexity.",
-              "citation": "[12]"
-            }
-          ]
+          "Summary": "Not Available - the only source (IBM Community blog \"What's New in watsonx Orchestrate: April 2026 Highlights\") now returns Page Not Found and has no Wayback snapshot.",
+          "evidence": []
         }
       ],
       "Others": [
@@ -874,17 +855,8 @@
         },
         {
           "q_id": "q_39",
-          "Summary": "IBM Style compliance was established as the documentation standard from the first public PR ('updt: apply changes according to IBM Style'), aligning the ADK's developer-facing content with IBM's enterprise technical writing style guide. This ensures a consistent voice, terminology, and structure across the ADK docs, the community blog posts, and the official IBM Docs pages (ibm.com/docs/en/watsonx/watson-orchestrate) that describe the platform.",
-          "evidence": [
-            {
-              "quote": "Flow builder continues to evolve with features that improve understanding and troubleshooting of workflows.",
-              "citation": "[12]"
-            },
-            {
-              "quote": "Inspect historic flow versions to see exactly how a workflow ran at a point in time.",
-              "citation": "[12]"
-            }
-          ]
+          "Summary": "Not Available - the only source (IBM Community blog \"What's New in watsonx Orchestrate: April 2026 Highlights\") now returns Page Not Found and has no Wayback snapshot.",
+          "evidence": []
         }
       ],
       "Tools": [
@@ -990,12 +962,6 @@
       "Website_Type": "GitHub File — IBM watsonx Orchestrate ADK .github/CODEOWNERS and Closed Pull Requests",
       "Link": "https://github.com/IBM/ibm-watsonx-orchestrate-adk/blob/main/.github/CODEOWNERS",
       "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-05-13"
-    },
-    "[12]": {
-      "Website_Type": "IBM Community Blog — What's New in watsonx Orchestrate: April 2026 Highlights (watsonx Orchestrate Blog Team)",
-      "Link": "https://community.ibm.com/community/user/blogs/watsonx-watsonx-orchestrate-blog-team/2026/04/29/whats-new-in-watsonx-orchestrate-april-2026-highli",
-      "Date_Created": "2026-04-29",
       "Date_Pulled": "2026-05-13"
     },
     "[13]": {

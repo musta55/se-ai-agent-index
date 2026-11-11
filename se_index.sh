@@ -137,6 +137,8 @@ matched = next((k for k in index if k.lower() == lower), None)
 if not matched:
     matched = next((k for k in index if k.lower().startswith(lower) or lower.startswith(k.lower())), None)
 if not matched:
+    matched = next((k for k in index if lower in k.lower()), None)
+if not matched:
     print(f"Agent '{name_input}' not found.", file=sys.stderr)
     sys.exit(1)
 print(f"Agent: {matched}\n")
@@ -389,8 +391,8 @@ ${BOLD}FULL WORKFLOW${RESET}
   # Manually curate Excel spreadsheet from JSON with q-ids
   # → data/dataset/Index.xlsx (manual curation + verification)
 
-  # Build query index from curated spreadsheet:
-  python3 tool/build_query_index.py   # builds tool/query_index.json from Excel
+  # Build query index (for list-queries / agents) from the JSON files:
+  python3 tool/build_query_index.py   # builds tool/query_index.json
 
   # Query the index for verification:
   ./se_index.sh query        "HubSpot Breeze Studio" "q-3"

@@ -364,13 +364,8 @@
       "Practices": [
         {
           "q_id": "q_47",
-          "Summary": "Public bug surface for Gemini lives on Google Cloud's Issue Tracker (issuetracker.google.com) under the Gemini API and Vertex AI components, and on the public 'Build with Google AI' GitHub org for SDK issues. Common reported issues: rate-limit / quota errors, safety-filter false positives, JSON-mode malformed output, and tool-calling regressions across model revisions.",
-          "evidence": [
-            {
-              "quote": "Google Issue Tracker - Gemini API",
-              "citation": "[5]"
-            }
-          ]
+          "Summary": "Not Available - the only source (Google Issue Tracker, component 1166207) is a login-gated app, its public component API says the component does not exist, and there is no Wayback snapshot.",
+          "evidence": []
         },
         {
           "q_id": "q_48",
@@ -400,13 +395,8 @@
         },
         {
           "q_id": "q_61",
-          "Summary": "Google Issue Tracker (issuetracker.google.com, component 1166207) is used to track Gemini API issues.",
-          "evidence": [
-            {
-              "quote": "Google Issue Tracker - Gemini API",
-              "citation": "[5]"
-            }
-          ]
+          "Summary": "Not Available - the only source (Google Issue Tracker, component 1166207) is a login-gated app, its public component API says the component does not exist, and there is no Wayback snapshot.",
+          "evidence": []
         }
       ],
       "Stakeholders": [
@@ -475,11 +465,11 @@
           "evidence": [
             {
               "quote": "Moving documentation to source control was initially met with a lot of controversy. Many engineers were convinced that doing away with the GooWiki, that bastion of freedom of information, would lead to poor quality because the bar for documentation (requiring a review, requiring owners for documents, etc.) would be higher.",
-              "citation": "[24]"
+              "citation": "[25]"
             },
             {
               "quote": "The introduction of Markdown as a common documentation formatting language also helped because it made it easier for engineers to understand how to edit documents without needing specialized expertise in HTML or CSS.",
-              "citation": "[24]"
+              "citation": "[25]"
             },
             {
               "quote": "Such documents are designed to be collaborative, so they are often shared in Google Docs, which has good collaboration tools.",
@@ -539,7 +529,7 @@
           "evidence": [
             {
               "quote": "Most teams at Google require an approved design document before starting work on any major project.",
-              "citation": "[24]"
+              "citation": "[25]"
             }
           ]
         },
@@ -673,12 +663,6 @@
       "Date_Created": "2018-05-01",
       "Date_Pulled": "2026-04-26"
     },
-    "[5]": {
-      "Website_Type": "Issue Tracker",
-      "Link": "https://issuetracker.google.com/issues?q=componentid:1166207",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-04-26"
-    },
     "[6]": {
       "Website_Type": "Status Dashboard",
       "Link": "https://status.cloud.google.com/",
@@ -792,6 +776,12 @@
       "Link": "https://abseil.io/resources/swe-book/html/ch03.html",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-04-26"
+    },
+    "[25]": {
+      "Website_Type": "Engineering Practice Book",
+      "Link": "https://abseil.io/resources/swe-book/html/ch10.html",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-09"
     }
   }
 }

@@ -659,13 +659,6 @@
           "Citation": "[51]"
         },
         {
-          "Issue_Title": "AI Agent node missing inputs/providers after upgrading (worked on pre-1.109, broken on 1.111.x–1.112.1)",
-          "Issue_Number": 19682,
-          "Status": "Closed",
-          "Description": "After an upgrade, the AI Agent node was no longer registered in /rest/node-types and rendered without inputs, which broke existing workflows. It is an upgrade and packaging regression that the release pipeline did not catch.",
-          "Citation": "[52]"
-        },
-        {
           "Issue_Title": "Task Runner: Workflow hangs and crash when Code node uses $node[] with AI Agent containing postgresTool sub-nodes",
           "Issue_Number": 20752,
           "Status": "Closed",
@@ -734,7 +727,7 @@
         },
         {
           "q_id": "q_25",
-          "Summary": "Recurring category 3, version regressions across agent node versions and releases: the V3 rewrite changed memory and tool-calling behaviour compared with V2, and upgrades broke node registration. These regressions show gaps in cross-provider and cross-version regression testing.",
+          "Summary": "Recurring category 3, version regressions across agent node versions: the V3 rewrite changed memory and tool-calling behaviour compared with V2. These regressions show gaps in cross-provider and cross-version regression testing.",
           "evidence": [
             {
               "quote": "I have identified a regression in the AI Agent Node Version 3.",
@@ -743,10 +736,6 @@
             {
               "quote": "This behavior does NOT occur in AI Agent v2.2.",
               "citation": "[44]"
-            },
-            {
-              "quote": "The node types API (/rest/node-types) also does not list the AI Agent node, suggesting it isn’t being registered properly in these builds.",
-              "citation": "[52]"
             }
           ]
         }
@@ -1496,12 +1485,6 @@
       "Website_Type": "GitHub Issue",
       "Link": "https://github.com/n8n-io/n8n/issues/23185",
       "Date_Created": "2025-12-13",
-      "Date_Pulled": "2026-10-12"
-    },
-    "[52]": {
-      "Website_Type": "GitHub Issue",
-      "Link": "https://github.com/n8n-io/n8n/issues/19682",
-      "Date_Created": "2025-09-18",
       "Date_Pulled": "2026-10-12"
     },
     "[53]": {

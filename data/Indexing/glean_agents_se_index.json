@@ -263,7 +263,7 @@
             },
             {
               "quote": "They run test queries on any new search engine before proceeding with switchover, and run the same verification procedure on the active search engine before deleting the old one in case rollback is needed.",
-              "citation": "[10]"
+              "citation": "[9]"
             }
           ]
         },
@@ -539,7 +539,7 @@
             },
             {
               "quote": "They've added important verification procedures for sensitive steps such as cluster switchover.",
-              "citation": "[10]"
+              "citation": "[9]"
             }
           ]
         }
@@ -567,7 +567,7 @@
             },
             {
               "quote": "For AWS deployments specifically, Glean uses IAM role assumption for deployment automation and support access, with CI/CD roles involved in the process.",
-              "citation": "[10]"
+              "citation": "[17]"
             }
           ]
         }
@@ -778,13 +778,6 @@
     "Bug_Solving_Approaches": {
       "Issues": [
         {
-          "Issue_Title": "Open Issue #10 in glean-agent-toolkit",
-          "Issue_Number": 10,
-          "Status": "Open",
-          "Description": "Issue opened by ArchishmanSengupta on August 19, 2025 in the glean-agent-toolkit repository. Specific details require direct repository access.",
-          "Citation": "[23]"
-        },
-        {
           "Issue_Title": "OAuth discovery error surfacing",
           "Issue_Number": "Not Disclosed",
           "Status": "Closed",
@@ -803,14 +796,14 @@
           "Issue_Number": "Not Disclosed",
           "Status": "Known Limitation",
           "Description": "Execution state is in-memory and active execution history is lost when the MCP server restarts, requiring re-run of in-progress executions. Architectural limitation affecting long-running workflows.",
-          "Citation": "[25]"
+          "Citation": "[63]"
         },
         {
           "Issue_Title": "Missing uv installation dependency",
           "Issue_Number": "Not Disclosed",
           "Status": "Known Issue",
           "Description": "MCP server requires uv to be installed and on PATH to scaffold connector projects and run Python worker, causing setup failures when dependency is missing.",
-          "Citation": "[25]"
+          "Citation": "[63]"
         },
         {
           "Issue_Title": "Broken links in documentation build",
@@ -856,10 +849,6 @@
             {
               "quote": "surface actual error when OAuth discovery fails",
               "citation": "[24]"
-            },
-            {
-              "quote": "Execution state is in-memory, and active execution history is lost when the MCP server restarts.",
-              "citation": "[25]"
             },
             {
               "quote": "The glean-developer-site catches broken links, missing imports, or other build-time errors",
@@ -933,12 +922,8 @@
       "Tools": [
         {
           "q_id": "q_18",
-          "Summary": "GitHub Issues for public bug tracking, diagnostic tool (glean-mcp doctor) for common problems, and error classification systems across API clients. The team uses build-time error detection for documentation and automated link checking.",
+          "Summary": "GitHub Issues for public bug tracking, and error classification systems across API clients. The team uses build-time error detection for documentation and automated link checking.",
           "evidence": [
-            {
-              "quote": "glean-mcp doctor — diagnose common problems",
-              "citation": "[25]"
-            },
             {
               "quote": "The glean-developer-site catches broken links, missing imports, or other build-time errors",
               "citation": "[26]"
@@ -1451,7 +1436,7 @@
           "evidence": [
             {
               "quote": "The site automatically generates API documentation from OpenAPI specifications located in the openapi/ directory.",
-              "citation": "[33]"
+              "citation": "[26]"
             },
             {
               "quote": "The launch documentation agent helps product, engineering, and marketing teams save time by automating the most tedious parts of release note creation. It pulls completed JIRA tickets from a defined sprint window, generates concise summaries for each feature, and publishes a formatted draft to your documentation hub via pull request.",
@@ -1519,11 +1504,11 @@
           "evidence": [
             {
               "quote": "The site automatically generates API documentation from OpenAPI specifications located in the openapi/ directory.",
-              "citation": "[33]"
+              "citation": "[26]"
             },
             {
               "quote": "The documentation is available at docs.glean.com and developers.glean.com.",
-              "citation": "[33]"
+              "citation": "[26]"
             },
             {
               "quote": "The platform offers a Custom Metadata API that enables tagging and classifying documents already indexed in Glean without re-indexing the source document.",
@@ -1561,7 +1546,7 @@
             },
             {
               "quote": "For questions about the documentation or to report issues, users can access the glean-developer-site repository.",
-              "citation": "[33]"
+              "citation": "[26]"
             }
           ]
         }
@@ -1573,7 +1558,7 @@
           "evidence": [
             {
               "quote": "The documentation is available at docs.glean.com and developers.glean.com.",
-              "citation": "[33]"
+              "citation": "[26]"
             },
             {
               "quote": "The documentation emphasizes that freshness windows should match the pace of each source, with different connectors supporting various update mechanisms including webhooks for real-time updates and scheduled crawls for batch processing.",
@@ -1669,7 +1654,7 @@
     },
     "[14]": {
       "Website_Type": "Official Documentation",
-      "Link": "https://www.glean.com/perspectives/how-to-effectively-test-ai-automation-workflows-before-deployment",
+      "Link": "https://docs.glean.com/get-started/prepare/self-hosted-deployment/gcp/deploy-gcp",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-21"
     },
@@ -1718,12 +1703,6 @@
     "[22]": {
       "Website_Type": "Engineering Blog",
       "Link": "https://www.glean.com/blog/incrementally-deploying-ranking-code-at-glean",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-05-21"
-    },
-    "[23]": {
-      "Website_Type": "GitHub Issues",
-      "Link": "https://github.com/gleanwork/glean-agent-toolkit/issues",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-21"
     },
@@ -1778,12 +1757,6 @@
     "[32]": {
       "Website_Type": "Official Documentation",
       "Link": "https://docs.glean.com/user-guide/mcp/usage",
-      "Date_Created": "Not Disclosed",
-      "Date_Pulled": "2026-05-21"
-    },
-    "[33]": {
-      "Website_Type": "Developer Platform",
-      "Link": "https://developers.glean.com/",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-05-21"
     },
@@ -1960,6 +1933,12 @@
       "Link": "https://community.glean.com/",
       "Date_Created": "Not Disclosed",
       "Date_Pulled": "2026-11-02"
+    },
+    "[63]": {
+      "Website_Type": "GitHub Repository",
+      "Link": "https://github.com/gleanwork/connector-mcp",
+      "Date_Created": "Not Disclosed",
+      "Date_Pulled": "2026-11-09"
     }
   }
 }

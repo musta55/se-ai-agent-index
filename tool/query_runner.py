@@ -18,6 +18,7 @@ import json
 import sys
 
 from se_index_core import (
+    AGENT_DISPLAY_NAMES,
     AGENT_JSON_MAP,
     build_agent_index,
     fuzzy_match_agent,
@@ -50,7 +51,9 @@ def main():
         sys.exit(1)
 
     data = load_json(json_file)
-    agent_display = data.get("Agent_Name", data.get("Agent Name", matched_key))
+    agent_display = AGENT_DISPLAY_NAMES.get(
+        json_file, data.get("Agent_Name", data.get("Agent Name", matched_key))
+    )
 
     query_entries, _ = build_agent_index(data)
 

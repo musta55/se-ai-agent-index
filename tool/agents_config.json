@@ -72,21 +72,15 @@
     "reviewed": true
   },
   {
-    "id": 13,
-    "agent_name": "Amazon Q Developer",
-    "indexing_status": "completed",
-    "reviewed": true
-  },
-  {
     "id": 14,
     "agent_name": "OpenAI Codex",
     "indexing_status": "completed",
-    "reviewed": false
+    "reviewed": true
   },
   {
     "id": 15,
     "agent_name": "n8n AI Agent Builder",
     "indexing_status": "completed",
-    "reviewed": false
+    "reviewed": true
   }
 ]

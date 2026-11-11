@@ -29,6 +29,30 @@ AGENT_JSON_MAP = {
     "perplexity comet":       "perplexity_comet_se_index.json",
     "openai codex":           "openai_codex_se_index.json",
     "n8n ai agent builder":   "n8n_ai_agent_builder_se_index.json",
+    # Aliases: agent names as written in the paper
+    "ibm watsonx orchestrate":  "watsonx_orchestrate_se_index.json",
+    "google gemini cli":        "gemini_cli_se_index.json",
+    "google gemini enterprise": "gemini_enterprise_se_index.json",
+    "n8n":                      "n8n_ai_agent_builder_se_index.json",
+}
+
+# JSON filename → agent name as written in the paper, in the paper's order
+# (chat-based, browser-based, enterprise). These 14 agents form the index.
+AGENT_DISPLAY_NAMES = {
+    "anthropic_claude_code_se_index.json": "Anthropic Claude Code",
+    "openai_codex_se_index.json":          "OpenAI Codex",
+    "gemini_cli_se_index.json":            "Google Gemini CLI",
+    "google_gemini_se_index.json":         "Google Gemini",
+    "kimi_ok_computer_se_index.json":      "Kimi OK Computer",
+    "opera_neon_se_index.json":            "Opera Neon",
+    "perplexity_comet_se_index.json":      "Perplexity Comet",
+    "alibaba_mobile_agent_se_index.json":  "Alibaba Mobile Agent",
+    "gemini_enterprise_se_index.json":     "Google Gemini Enterprise",
+    "glean_agents_se_index.json":          "Glean Agents",
+    "watsonx_orchestrate_se_index.json":   "IBM watsonx Orchestrate",
+    "hubspot_breeze_studio_se_index.json": "HubSpot Breeze Studio",
+    "browser_use_se_index.json":           "Browser Use",
+    "n8n_ai_agent_builder_se_index.json":  "n8n",
 }
 
 CATEGORY_ALIASES = {
