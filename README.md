@@ -60,19 +60,34 @@ Some files use the older dimension keys (`Testing_and_Reliability`, `Integration
 
 ### Examples Used in the Paper
 
-| Agent Name              | Example In the Paper                                                                                                                                                                                       | Reference                                                                                                                                                                              |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OpenAI Codex            | The Codex team reviews every pull request with its own code-review model, but still requires careful human review for critical code such as the core agent and the open-source components                 | [newsletter.pragmaticengineer.com/p/how-codex-is-built](https://newsletter.pragmaticengineer.com/p/how-codex-is-built)                                                                 |
-| Browser Use             | Stores every token, prompt, and cost of its evaluation runs in [Laminar](https://www.lmnr.ai/) (ClickHouse) for observability                                                                              | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system)                                                         |
-| HubSpot Breeze Studio   | Uses dashboards that track token usage, API costs, and failure counts for each tool                                                                                                                        | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                                   |
-| IBM watsonx Orchestrate | Uses [OpenTelemetry](https://opentelemetry.io/) traces to inspect each step of an agent run                                                                                                                | [developer.watson-orchestrate.ibm.com/traces/overview](https://developer.watson-orchestrate.ibm.com/traces/overview)                                                                   |
-| IBM watsonx Orchestrate | The [Agent Development Kit (ADK)](https://developer.watson-orchestrate.ibm.com/) ships with a built-in red-teaming command that simulates 15+ attack types, including prompt injection and instruction override | [developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability](https://developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability)                                     |
-| OpenAI Codex            | More than 90% of the Codex app's code is written by Codex                                                                                                                                                  | [newsletter.pragmaticengineer.com/p/how-codex-is-built](https://newsletter.pragmaticengineer.com/p/how-codex-is-built)                                                                 |
-| OpenAI Codex            | Codex reviews essentially every internal pull request at OpenAI                                                                                                                                            | [cerebralvalley.beehiiv.com/p/openai-s-codex-lets-one-engineer-ship-like-a-team-of-ten](https://cerebralvalley.beehiiv.com/p/openai-s-codex-lets-one-engineer-ship-like-a-team-of-ten) |
-| Browser Use             | Uses [Gemini 2.5 Flash](https://deepmind.google/models/gemini/) as an [LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate whether web agents completed their tasks, achieving 87% alignment with human labels | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system)                                             |
-| HubSpot Breeze Studio   | A Judge Agent evaluates the AI code reviewer's comments for succinctness, accuracy, and actionability before they are posted                                                                               | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution)                                   |
-| Glean Agents            | Evaluates agents against curated datasets of real-world examples graded on binary sub-metrics: completeness, tone, and groundedness                                                                        | [glean.com/blog/enterprise-agent-evaluation-guide](https://www.glean.com/blog/enterprise-agent-evaluation-guide)                                                                       |
-| Glean Agents            | PR Review agents scan code changes, flag risk areas, and produce prioritized checklists to keep review quality consistent at scale                                                                         | [glean.com/agent-library/pull-request-review](https://www.glean.com/agent-library/pull-request-review)                                                                                 |
+These are the examples from Section IV (Index Usage Scenarios and Examples) of the paper, grouped by the same audiences and scenarios, with the references the paper omits for space.
+
+**AI agent developers**
+
+| Scenario | Agent Name | Example In the Paper | Reference |
+| --- | --- | --- | --- |
+| Assess internal engineering practices | OpenAI Codex | The Codex team reviews every pull request with its own code-review model, but still requires careful human review for critical code such as the core agent and the open-source components | [newsletter.pragmaticengineer.com/p/how-codex-is-built](https://newsletter.pragmaticengineer.com/p/how-codex-is-built) |
+| Identify tools for AI-specific challenges | Browser Use | Stores every token, prompt, and cost of its evaluation runs in [Laminar](https://www.lmnr.ai/) (ClickHouse) for observability | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system) |
+| Identify tools for AI-specific challenges | HubSpot Breeze Studio | Uses dashboards that track token usage, API costs, and failure counts for each tool | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) |
+| Identify tools for AI-specific challenges | IBM watsonx Orchestrate | Uses [OpenTelemetry](https://opentelemetry.io/) traces to inspect each step of an agent run | [developer.watson-orchestrate.ibm.com/traces/overview](https://developer.watson-orchestrate.ibm.com/traces/overview) |
+| Strengthen security against adversarial attacks | IBM watsonx Orchestrate | The [Agent Development Kit (ADK)](https://developer.watson-orchestrate.ibm.com/) ships with a built-in red-teaming command that simulates 15+ attack types, including prompt injection and instruction override | [developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability](https://developer.watson-orchestrate.ibm.com/evaluate/llm_vulnerability) |
+
+**Researchers**
+
+| Scenario | Agent Name | Example In the Paper | Reference |
+| --- | --- | --- | --- |
+| Cross-analysis of agent engineering | OpenAI Codex | More than 90% of the Codex app's code is written by Codex | [newsletter.pragmaticengineer.com/p/how-codex-is-built](https://newsletter.pragmaticengineer.com/p/how-codex-is-built) |
+| Cross-analysis of agent engineering | Browser Use | Uses [Gemini 2.5 Flash](https://deepmind.google/models/gemini/) as an [LLM-as-judge](https://arxiv.org/abs/2306.05685) to evaluate whether web agents completed their tasks, achieving 87% alignment with human labels | [browser-use.com/posts/our-browser-agent-evaluation-system](https://browser-use.com/posts/our-browser-agent-evaluation-system) |
+| Cross-analysis of agent engineering | HubSpot Breeze Studio | A Judge Agent evaluates the AI code reviewer's comments for succinctness, accuracy, and actionability before they are posted | [product.hubspot.com/blog/automated-code-review-the-6-month-evolution](https://product.hubspot.com/blog/automated-code-review-the-6-month-evolution) |
+| Evaluate engineering decisions | Google Gemini CLI | A new integration test must pass at least 5 runs of the deflake (flakiness) check before it can join the CI pipeline | [geminicli.com/docs/integration-tests](https://geminicli.com/docs/integration-tests) |
+| Evaluate engineering decisions | Browser Use | Moved from sandboxing only its tools to running the entire agent in a zero-secret sandbox behind a credential-holding control plane, so the agent can be killed, restarted, and scaled independently | [browser-use.com/posts/two-ways-to-sandbox-agents](https://browser-use.com/posts/two-ways-to-sandbox-agents) |
+
+**Educators**
+
+| Scenario | Agent Name | Example In the Paper | Reference |
+| --- | --- | --- | --- |
+| Case studies of industrial AI agents | n8n | Tests its AI Agent node against mocked LLM chat-completion and tool-call responses, so its integration tests stay deterministic in CI | [n8n-io/n8n: agent-v3.workflow.test.ts](https://github.com/n8n-io/n8n/blob/master/packages/@n8n/nodes-langchain/nodes/agents/Agent/test/integration/agent-v3.workflow.test.ts) |
+| Case studies of industrial AI agents | n8n | Runs its LLM-based evaluations separately from the regular tests, once per pull-request state change rather than on every push, because running them on every push made the cost untenable | [n8n-io/n8n: .github/WORKFLOWS.md](https://github.com/n8n-io/n8n/blob/master/.github/WORKFLOWS.md) |
 
 ---
 
@@ -177,4 +192,4 @@ pip install anthropic openpyxl
 
 ## License
 
-Research use only. Data derived from publicly available sources.
+This project is released under the [MIT License](LICENSE). The index summarizes publicly available sources. The quoted excerpts and linked sources remain the property of their respective owners.

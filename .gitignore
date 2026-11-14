@@ -44,5 +44,6 @@ quality_rev/
 others/
 data/web_sources/
 related study/
-# Paper PDF (keep local only)
 SE_AI_Agent_Index.pdf
+.specstory/
+paper.pdf
